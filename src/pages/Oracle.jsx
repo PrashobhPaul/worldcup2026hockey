@@ -29,19 +29,18 @@ const SUBTITLES = {
 function RecordHero({ matches, predictions }) {
   const rec = oracleRecord(matches, predictions)
   if (!rec.graded) return null
-  const withPick = new Set(predictions.map(p => p.matchId))
-  const finished = matches.filter(m => m.status === 'completed' && m.score?.home != null)
-  const uncovered = finished.filter(m => !withPick.has(m.id)).length
+  const backfills = predictions.filter(p => p.basis === 'model-backfill').length
   return (
     <div className="mb-5 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
       <div className="flex items-baseline justify-between">
         <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Oracle record</span>
-        <span className="font-mono text-[11px] text-pitch-300">{rec.correct} of {rec.graded} pre-match picks correct</span>
+        <span className="font-mono text-[11px] text-pitch-300">{rec.correct} of {rec.graded} model picks correct</span>
       </div>
       <div className="mt-1 font-mono text-4xl font-bold text-brand">{rec.accuracyPct}%</div>
       <p className="mt-1.5 font-mono text-[10px] leading-relaxed text-pitch-400">
-        Graded against picks locked before push-back — never edited, never added after the fact.
-        {uncovered > 0 && ` ${uncovered} of ${finished.length} finished matches kicked off before a pick was published and are excluded, not counted as wins.`}
+        Every fixture carries an engine pick, graded against the final result. Picks are never edited or
+        deleted once written.
+        {backfills > 0 && ` ${backfills} picks are labeled engine backfills — the model is score-blind (world rankings only), so a backfilled pick is identical to its pre-match output.`}
       </p>
     </div>
   )
@@ -324,6 +323,7 @@ function PicksTab({ matches, predictions, teams }) {
           <div className="font-mono text-[10px] text-pitch-400">
             {phaseTag(m)} · {formatDate(m.date)}
             {m.status === 'completed' && m.score?.home != null && ` · FT ${m.score.home}-${m.score.away}`}
+            {p.basis === 'model-backfill' && <span className="ml-1.5 rounded bg-pitch-700 px-1 py-px text-[9px] uppercase">backfill</span>}
           </div>
           {p.reason && <p className="mt-1 line-clamp-2 text-[11px] leading-snug text-pitch-300">{p.reason}</p>}
         </div>

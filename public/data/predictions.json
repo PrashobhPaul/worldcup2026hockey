@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-16T19:17:27.094112+00:00",
+  "updated_at": "2026-08-16T19:31:33.408114+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -253,6 +253,45 @@
       "pick_confidence": 0.604,
       "reason": "FIH #8 ESP favoured over #12 IRL — Elo model from world rankings, published before push-back.",
       "publishedAt": "2026-08-16T19:17:27.093932+00:00"
+    },
+    {
+      "id": "oracle-v1:D2",
+      "matchId": "D2",
+      "source": "oracle-v1",
+      "basis": "model-backfill",
+      "p_home_win": 0.49,
+      "p_draw": 0.194,
+      "p_away_win": 0.316,
+      "pick": "HOME",
+      "pick_confidence": 0.49,
+      "reason": "FIH #7 ENG favoured over #9 PAK — Elo model from world rankings. Engine backfill — the model reads world rankings only (score-blind), so this pick is identical to its pre-match output.",
+      "publishedAt": "2026-08-16T19:31:33.408015+00:00"
+    },
+    {
+      "id": "oracle-v1:B1",
+      "matchId": "B1",
+      "source": "oracle-v1",
+      "basis": "model-backfill",
+      "p_home_win": 0.604,
+      "p_draw": 0.145,
+      "p_away_win": 0.252,
+      "pick": "HOME",
+      "pick_confidence": 0.604,
+      "reason": "FIH #6 GER favoured over #10 MAS — Elo model from world rankings. Engine backfill — the model reads world rankings only (score-blind), so this pick is identical to its pre-match output.",
+      "publishedAt": "2026-08-16T19:31:33.408015+00:00"
+    },
+    {
+      "id": "oracle-v1:B2",
+      "matchId": "B2",
+      "source": "oracle-v1",
+      "basis": "model-backfill",
+      "p_home_win": 0.87,
+      "p_draw": 0.052,
+      "p_away_win": 0.078,
+      "pick": "HOME",
+      "pick_confidence": 0.87,
+      "reason": "FIH #2 BEL favoured over #13 FRA — Elo model from world rankings. Engine backfill — the model reads world rankings only (score-blind), so this pick is identical to its pre-match output.",
+      "publishedAt": "2026-08-16T19:31:33.408015+00:00"
     }
   ]
 }
