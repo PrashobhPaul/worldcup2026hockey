@@ -191,6 +191,49 @@ for (const f of uiFiles) {
     !/simulateTournament|championProgression|mulberry32|samplePoisson/.test(src))
 }
 
+// ── 8. Team intros must not contradict the official rankings ─────────────
+// The pipeline rewrites fih_rank from fih.hockey on every run, and an intro
+// written against the old table silently becomes false. Any rank claim an
+// intro makes is checked against the current data here.
+section('8. Team intro rank claims vs official ranks')
+const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth',
+  'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth']
+const rankOf = code => teams.find(t => t.code === code)?.fihRank
+const worstInPool = pool => Math.max(...teams.filter(t => t.pool === pool).map(t => t.fihRank))
+
+for (const t of teams) {
+  const intro = t.intro || ''
+  if (!intro) { ok(`${t.code} has a pre-tournament intro`, false); continue }
+  checks++ // an intro that makes no rank claim still counts as checked
+
+  // "ranked first in the world" / "arrive fourth in the world"
+  for (const [i, word] of ORDINALS.entries()) {
+    const claim = new RegExp(`(ranked|arrive|start[^.]*?)\\s+${word}\\s+in the world`, 'i')
+    if (claim.test(intro)) {
+      ok(`${t.code} claims world #${i + 1}`, t.fihRank === i + 1, `actually #${t.fihRank}`)
+    }
+  }
+  // "ranked sixteenth of sixteen"
+  const ofN = intro.match(/ranked (\w+) of (\d+)/i)
+  if (ofN) {
+    const claimed = ORDINALS.indexOf(ofN[1].toLowerCase()) + 1
+    ok(`${t.code} claims #${claimed} of ${ofN[2]}`, claimed === t.fihRank, `actually #${t.fihRank}`)
+  }
+  // "the lowest ranking / lowest-ranked side in Pool X"
+  const lowest = intro.match(/lowest[- ](?:ranking|ranked side) in Pool ([A-D])/i)
+  if (lowest) {
+    const pool = lowest[1].toUpperCase()
+    ok(`${t.code} claims lowest rank in Pool ${pool}`,
+      t.pool === pool && t.fihRank === worstInPool(pool),
+      `#${t.fihRank}, worst in pool is #${worstInPool(pool)}`)
+  }
+  // "outside the top ten"
+  if (/outside the top ten/i.test(intro)) {
+    ok(`${t.code} claims outside the top ten`, t.fihRank > 10, `actually #${t.fihRank}`)
+  }
+}
+console.log(`  checked ${teams.length} intros against fih_rank`)
+
 // ── Summary ───────────────────────────────────────────────────────────────
 const top = bundle.current.probabilities.slice(0, 5)
   .map(p => `${p.teamId} ${formatProbability(p.champion)}`).join(' · ')
