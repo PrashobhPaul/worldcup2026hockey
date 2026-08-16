@@ -1,9 +1,42 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import MatchCard, { formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
+import { oracleRecord } from '../engine/prediction'
+import { SIM_ID, SIM_MATCH } from '../content/sim'
+
+function OracleRecordStrip({ matches }) {
+  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
+  const rec = oracleRecord(matches, predictions)
+  if (!rec.graded) return null
+  return (
+    <Link to="/prediction-race"
+      className="mb-4 flex items-center justify-between rounded-lg border border-brand/20 bg-brand/5 px-3.5 py-2 font-mono text-[11px] transition-colors hover:border-brand/40">
+      <span className="text-pitch-300">🎯 AI pre-match picks</span>
+      <span className="font-bold text-brand">{rec.correct}/{rec.graded} correct · {rec.accuracyPct}%</span>
+    </Link>
+  )
+}
+
+function SimulationCard() {
+  return (
+    <div className="mb-4">
+      <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">✨ AI Simulation</div>
+      <Link to={`/match/sim/${SIM_ID}`}
+        className="flex items-center gap-3 rounded-xl border border-brand/20 bg-gradient-to-r from-brand/10 to-pitch-800 p-3.5 transition-colors hover:border-brand/40">
+        <span className="rounded-full border border-brand/30 bg-brand/10 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-brand">
+          {SIM_MATCH.statusChip}
+        </span>
+        <span className="min-w-0 flex-1 truncate text-sm font-semibold">
+          {SIM_MATCH.homeLabel} <span className="font-mono text-xs text-pitch-400">vs</span> {SIM_MATCH.awayLabel}
+        </span>
+        <span className="font-mono text-sm font-bold text-brand">{SIM_MATCH.result.home}–{SIM_MATCH.result.away}</span>
+      </Link>
+    </div>
+  )
+}
 
 const STATUS_TABS = [
   { id: 'all', label: 'All' },
@@ -75,6 +108,9 @@ export default function MatchesPage() {
           </button>
         ))}
       </div>
+
+      {tab === 'completed' && !loading && <OracleRecordStrip matches={all} />}
+      {tab === 'live' && <SimulationCard />}
 
       {loading ? <Skeleton h={400} /> : (
         <div className="space-y-2.5">

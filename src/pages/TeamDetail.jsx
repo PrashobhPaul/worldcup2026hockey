@@ -3,17 +3,78 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import MatchCard from '../components/MatchCard'
 import { Skeleton, TierBadge } from '../components/shared'
+import { useOracleBundle } from '../engine/oracleBundle'
 import { ArrowLeft } from 'lucide-react'
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+
+function OracleSnapshot({ team, teams, matches }) {
+  const bundle = useOracleBundle(teams, matches)
+  if (!bundle) return null
+  const reach = bundle.live.reach.get(team.code)
+  if (!reach) return null
+  const out = bundle.eliminationAt.has(team.code)
+  const champPct = out ? 0 : reach.champion * 100
+
+  const series = bundle.progression.map(step => {
+    const cut = bundle.eliminationAt.get(team.code)
+    return {
+      match: step.finishedCount,
+      pct: cut && step.finishedCount >= cut.finishedCount ? 0 : +((step.champion[team.code] ?? 0) * 100).toFixed(1),
+    }
+  })
+  const peak = Math.max(...series.map(s => s.pct))
+
+  return (
+    <section className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <div className="mb-3 flex items-baseline justify-between">
+        <h2 className="font-display text-lg font-semibold">Oracle snapshot</h2>
+        <Link to="/prediction-race" className="font-mono text-[11px] text-brand hover:underline">From Oracle ›</Link>
+      </div>
+      <div className="flex items-baseline gap-3">
+        <span className={`font-mono text-3xl font-bold ${out ? 'text-pitch-400' : 'text-brand'}`}>{champPct.toFixed(1)}%</span>
+        <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">
+          Champion probability{out && ' · eliminated'}
+        </span>
+      </div>
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        {[['QF', reach.qf], ['SF', reach.sf], ['Final', reach.final]].map(([k, v]) => (
+          <div key={k} className="rounded-lg bg-pitch-950/50 p-2.5 text-center">
+            <div className="font-mono text-[9px] uppercase tracking-widest text-pitch-400">{k}</div>
+            <div className="mt-0.5 font-mono text-sm font-bold">{out ? '—' : `${Math.round(v * 100)}%`}</div>
+          </div>
+        ))}
+      </div>
+      {series.length > 1 && (
+        <div className="mt-4">
+          <div className="mb-1 flex justify-between font-mono text-[10px] text-pitch-400">
+            <span>Champion probability · this cup</span>
+            <span>peak {peak.toFixed(1)}% · now {champPct.toFixed(1)}%</span>
+          </div>
+          <ResponsiveContainer width="100%" height={110}>
+            <LineChart data={series} margin={{ top: 4, right: 8, bottom: 0, left: -22 }}>
+              <XAxis dataKey="match" type="number" domain={['dataMin', 'dataMax']}
+                tick={{ fill: '#5b75a8', fontSize: 9, fontFamily: 'JetBrains Mono' }} tickLine={false} axisLine={false} />
+              <YAxis domain={[0, 'auto']}
+                tick={{ fill: '#5b75a8', fontSize: 9, fontFamily: 'JetBrains Mono' }} tickLine={false} axisLine={false} />
+              <Tooltip contentStyle={{ background: '#111f4d', border: '1px solid rgba(255,181,71,.2)', borderRadius: 8, fontSize: 11 }}
+                formatter={v => [`${v}%`, 'Champion']} labelFormatter={l => `after match ${l}`} />
+              <Line dataKey="pct" type="monotone" dot={false} isAnimationActive={false}
+                stroke="var(--color-brand)" strokeWidth={2.5} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </section>
+  )
+}
 
 export default function TeamDetailPage() {
   const { teamCode } = useParams()
   const team = useLiveQuery(() => db.teams.get(teamCode), [teamCode])
+  const teams = useLiveQuery(() => db.teams.toArray(), [], [])
+  const allMatches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
   const players = useLiveQuery(() => db.players.where('team').equals(teamCode).toArray(), [teamCode], [])
-  const matches = useLiveQuery(
-    () => db.matches.orderBy('kickoffUtc').toArray()
-      .then(all => all.filter(m => m.home === teamCode || m.away === teamCode)),
-    [teamCode], [],
-  )
+  const matches = (allMatches ?? []).filter(m => m.home === teamCode || m.away === teamCode)
 
   if (team === undefined) return <Skeleton h={400} />
   if (!team) return <div className="text-sm text-pitch-400">Team not found. <Link className="text-brand" to="/teams">← Teams</Link></div>
@@ -51,6 +112,8 @@ export default function TeamDetailPage() {
           ))}
         </div>
       </div>
+
+      <OracleSnapshot team={team} teams={teams} matches={allMatches} />
 
       <section>
         <h2 className="mb-3 font-display text-lg font-semibold">Squad Spotlight</h2>

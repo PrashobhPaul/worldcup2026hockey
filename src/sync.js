@@ -4,7 +4,7 @@
 // written by GitHub Actions (zero backend). data-version.json bumps -> full resync.
 import { db } from './db'
 
-const DATA_BASE = '/data'
+const DATA_BASE = `${import.meta.env.BASE_URL}data`
 
 async function fetchJSON(path) {
   const r = await fetch(`${DATA_BASE}/${path}?t=${Date.now()}`)
