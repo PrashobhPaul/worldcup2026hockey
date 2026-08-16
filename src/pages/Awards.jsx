@@ -5,6 +5,18 @@ import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { HOF_AWARDS, AWARDS_STATE, AWARDS_DISCLAIMER, POTM_MODEL } from '../content/awards'
+import honourBall from '../assets/honours/icon-honour-ball.png'
+import honourBoot from '../assets/honours/icon-honour-boot.png'
+import honourGlove from '../assets/honours/icon-honour-glove.png'
+import honourLeaf from '../assets/honours/icon-honour-leaf.png'
+
+const AWARD_ICON = {
+  best_player: honourBall,
+  top_scorer: honourBoot,
+  best_goalkeeper: honourGlove,
+  rising_star: honourLeaf,
+  fair_play: honourLeaf,
+}
 
 const RING = {
   gold: 'ring-yellow-400/70 shadow-[0_0_14px_rgba(250,204,21,0.25)]',
@@ -56,6 +68,7 @@ function HallOfFame({ byCode }) {
                 <li key={a.key}>
                   <button onClick={() => setOpenKey(open ? null : a.key)}
                     className="flex w-full items-center gap-3 p-3.5 text-left transition-colors hover:bg-pitch-700/40">
+                    <img src={AWARD_ICON[a.key] ?? honourBall} alt="" className="h-7 w-7 shrink-0" />
                     <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl ring-2 ${RING[a.ringTone]}`}>
                       {team?.flag ?? '🏑'}
                     </span>

@@ -84,6 +84,9 @@ export default function PlayersPage() {
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-pitch-300">{p.position}</span>
               </div>
               <div className="mt-2.5 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                {p.ai_rating != null && (
+                  <span className="rounded bg-live/10 px-1.5 py-0.5 font-bold text-live">AI {p.ai_rating}</span>
+                )}
                 <span className={`rounded px-1.5 py-0.5 ${p.goals > 0 ? 'bg-brand/10 text-brand' : 'bg-pitch-700 text-pitch-300'}`}>⚡ {p.goals}G</span>
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">{p.assists}A</span>
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">🔴 {p.pc_scored} PC</span>

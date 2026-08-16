@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
@@ -6,17 +7,112 @@ import { Skeleton } from '../components/shared'
 import { deriveClock } from '../engine/clock'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
 import { ArrowLeft } from 'lucide-react'
+import { EventIcon } from '../components/eventIcons'
 
-function EventRow({ ev, homeCode }) {
+function EventRow({ ev, homeCode, homeFlag, awayFlag }) {
   const isHome = ev.team === homeCode
-  const icon = ev.type === 'goal' ? (ev.via === 'PC' ? '🔴' : ev.via === 'PS' ? '🎯' : '🏑')
-    : ev.type === 'green_card' ? '🟩' : ev.type === 'yellow_card' ? '🟨' : ev.type === 'red_card' ? '🟥' : '•'
   return (
-    <div className={`flex items-center gap-2 ${isHome ? 'flex-row' : 'flex-row-reverse text-right'}`}>
-      <span className="font-mono text-[11px] font-bold text-brand">{ev.minute}'</span>
-      <span>{icon}</span>
-      <span className="text-sm font-medium">{ev.player}</span>
-      {ev.type === 'goal' && <span className="font-mono text-[10px] text-pitch-400">{ev.via}</span>}
+    <div className={`flex items-center gap-2.5 ${isHome ? 'flex-row' : 'flex-row-reverse text-right'}`}>
+      <span className="flex h-9 w-8 shrink-0 items-center justify-center rounded-md bg-pitch-950/60 font-mono text-[11px] font-bold text-brand">
+        {ev.minute}'
+      </span>
+      <EventIcon ev={ev} />
+      <div className={isHome ? '' : 'text-right'}>
+        <div className="text-sm font-medium">
+          {ev.player}
+          {ev.type === 'goal' && <span className="ml-1.5 rounded bg-pitch-700 px-1 py-0.5 font-mono text-[9px] font-bold text-pitch-300">{ev.via}</span>}
+        </div>
+        {ev.assist && <div className="font-mono text-[10px] text-pitch-400">assist: {ev.assist}</div>}
+      </div>
+      {ev.type === 'goal' && ev._score && (
+        <span className={`rounded-md bg-pitch-950/60 px-1.5 py-1 font-mono text-[10px] font-bold text-pitch-300 ${isHome ? 'ml-auto' : 'mr-auto'}`}>
+          {homeFlag} {ev._score.h}–{ev._score.a} {awayFlag}
+        </span>
+      )}
+    </div>
+  )
+}
+
+function StatBar({ label, home, away, asPercent }) {
+  if (home == null || away == null) return null
+  const total = asPercent ? 100 : (home + away) || 1
+  return (
+    <div className="mb-2.5">
+      <div className="mb-1 grid grid-cols-[2.5rem_1fr_2.5rem] items-baseline gap-2 font-mono text-xs">
+        <span className="font-bold text-brand">{home}{asPercent && '%'}</span>
+        <span className="text-center text-[10px] uppercase tracking-wider text-pitch-400">{label}</span>
+        <span className="text-right font-bold text-sky-400">{away}{asPercent && '%'}</span>
+      </div>
+      <div className="flex h-1.5 gap-0.5 overflow-hidden rounded-full">
+        <div className="rounded-l-full bg-brand" style={{ width: `${(home / total) * 100}%` }} />
+        <div className="flex-1 rounded-r-full bg-sky-400/70" />
+      </div>
+    </div>
+  )
+}
+
+function MatchStatsPanel({ match, live }) {
+  const s = match.stats
+  if (!s?.home || !s?.away) {
+    return (
+      <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+        <h3 className="mb-1 font-display text-sm font-semibold">Match stats</h3>
+        <p className="text-xs text-pitch-400">Stats land with the next data update after full-time.</p>
+      </div>
+    )
+  }
+  return (
+    <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
+        Match stats
+        <span className="font-mono text-[10px] font-normal text-pitch-400">
+          {live ? 'Live · refreshes 60s' : 'Final'}{match.enrichment === 'estimated' && ' · est.'}
+        </span>
+      </h3>
+      <StatBar label="Possession" home={s.home.possession} away={s.away.possession} asPercent />
+      <StatBar label="Shots" home={s.home.shots} away={s.away.shots} />
+      <StatBar label="Circle entries" home={s.home.circle_entries} away={s.away.circle_entries} />
+      <StatBar label="Penalty corners" home={s.home.penalty_corners} away={s.away.penalty_corners} />
+      <div className="mt-3 flex justify-between border-t border-white/5 pt-2.5 font-mono text-[11px] text-pitch-300">
+        <span>🟩 {s.home.green_cards} · 🟨 {s.home.yellow_cards} · 🟥 {s.home.red_cards}</span>
+        <span className="text-[10px] uppercase tracking-wider text-pitch-400">Cards</span>
+        <span>🟩 {s.away.green_cards} · 🟨 {s.away.yellow_cards} · 🟥 {s.away.red_cards}</span>
+      </div>
+    </div>
+  )
+}
+
+function CommentaryFeed({ match, home, away }) {
+  const [showAll, setShowAll] = useState(false)
+  const beats = [...(match.commentary ?? [])].sort((x, y) => y.minute - x.minute || y.seq - x.seq)
+  if (!beats.length) return null
+  const visible = showAll ? beats : beats.slice(0, 10)
+  const colorOf = code => code === match.home ? home?.color : code === match.away ? away?.color : null
+  return (
+    <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
+        Running commentary
+        <span className="font-mono text-[10px] font-normal text-pitch-400">
+          {match.status === 'live' ? 'Live · running' : 'Full match'} · {beats.length} beats
+        </span>
+      </h3>
+      <div className="space-y-2">
+        {visible.map((b, i) => (
+          <div key={`${b.seq}-${i}`} className="flex items-start gap-2.5">
+            <span className="mt-0.5 w-8 shrink-0 rounded bg-pitch-950/60 py-0.5 text-center font-mono text-[10px] font-bold text-pitch-300">
+              {b.minute}'
+            </span>
+            <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
+              style={{ background: colorOf(b.team) ?? 'var(--color-pitch-600)' }} />
+            <p className="text-xs leading-relaxed text-pitch-300">{b.text}</p>
+          </div>
+        ))}
+      </div>
+      {beats.length > 10 && (
+        <button onClick={() => setShowAll(!showAll)} className="mt-2.5 font-mono text-[11px] text-brand hover:underline">
+          {showAll ? 'Show less' : `Show all ${beats.length} beats`}
+        </button>
+      )}
     </div>
   )
 }
@@ -111,8 +207,16 @@ export default function MatchDetailPage() {
   const grade = prediction ? gradePrediction(match, prediction) : null
   const pc = match.penalty_corners
 
+  // Progressive scoreboard: annotate each goal with the score at that moment
+  let _h = 0, _a = 0
+  const annotated = (events ?? []).map(ev => {
+    if (ev.type !== 'goal') return ev
+    if (ev.team === match.home) _h++
+    else _a++
+    return { ...ev, _score: { h: _h, a: _a } }
+  })
   const byQuarter = { Q1: [], Q2: [], Q3: [], Q4: [] }
-  for (const ev of events ?? []) byQuarter[quarterOf(ev.minute)]?.push(ev)
+  for (const ev of annotated) byQuarter[quarterOf(ev.minute)]?.push(ev)
 
   const homeForm = tournamentForm(allMatches, match.home).filter(f => f.id !== match.id)
   const awayForm = tournamentForm(allMatches, match.away).filter(f => f.id !== match.id)
@@ -237,21 +341,35 @@ export default function MatchDetailPage() {
       {/* Quarter timeline */}
       {(done || live) && (events?.length ?? 0) > 0 && (
         <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
-          <h3 className="mb-3 font-display text-sm font-semibold">Match Timeline</h3>
+          <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
+            Match Timeline
+            <span className="font-mono text-[10px] font-normal text-pitch-400">
+              scorers + minutes{match.enrichment === 'estimated' && ' · est. from final score'}
+            </span>
+          </h3>
           <div className="space-y-4">
             {['Q1', 'Q2', 'Q3', 'Q4'].map(q => byQuarter[q].length > 0 && (
               <div key={q}>
                 <div className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-pitch-400">
                   <span className="h-px w-4 bg-white/10" />{q}
                 </div>
-                <div className="space-y-1.5">
-                  {byQuarter[q].map((ev, i) => <EventRow key={i} ev={ev} homeCode={match.home} />)}
+                <div className="space-y-2">
+                  {byQuarter[q].map((ev, i) => (
+                    <EventRow key={i} ev={ev} homeCode={match.home}
+                      homeFlag={home?.flag} awayFlag={away?.flag} />
+                  ))}
                 </div>
               </div>
             ))}
           </div>
         </div>
       )}
+
+      {/* Match stats */}
+      {(done || live) && <MatchStatsPanel match={match} live={live} />}
+
+      {/* Running commentary */}
+      {(done || live) && <CommentaryFeed match={match} home={home} away={away} />}
 
       {/* AI story */}
       {story && (

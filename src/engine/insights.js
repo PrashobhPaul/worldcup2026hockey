@@ -329,7 +329,7 @@ export function buildDrivers({ match, home, away, pred }) {
 export function buildMatchDNA({ match, matches, allEvents }) {
   if (match.status !== 'completed' || match.score?.home == null) return null
 
-  // Corpus: one row per team per completed match
+  // Corpus: one row per team per completed match (prefers real per-match stats)
   const rows = []
   for (const m of matches) {
     if (m.status !== 'completed' || m.score?.home == null) continue
@@ -338,11 +338,15 @@ export function buildMatchDNA({ match, matches, allEvents }) {
       const code = m[side]
       const opp = side === 'home' ? 'away' : 'home'
       const teamEvents = evs.filter(e => e.team === code)
+      const st = m.stats?.[side]
       rows.push({
         matchId: m.id, code,
         goals: m.score[side] ?? 0,
         conceded: m.score[opp] ?? 0,
-        pc: m.penalty_corners?.[side] ?? null,
+        shots: st?.shots ?? null,
+        circle: st?.circle_entries ?? null,
+        possession: st?.possession ?? null,
+        pc: st?.penalty_corners ?? m.penalty_corners?.[side] ?? null,
         pcGoals: teamEvents.filter(e => e.type === 'goal' && e.via === 'PC').length,
         fieldGoals: teamEvents.filter(e => e.type === 'goal' && e.via === 'FG').length,
         discipline: -cardPoints(evs, code),
@@ -361,7 +365,9 @@ export function buildMatchDNA({ match, matches, allEvents }) {
 
   const axes = [
     { key: 'goals', label: 'Attack' },
-    { key: 'fieldGoals', label: 'Open Play' },
+    { key: 'shots', label: 'Shots' },
+    { key: 'circle', label: 'Circle Entries' },
+    { key: 'possession', label: 'Control' },
     { key: 'pc', label: 'PC Volume' },
     { key: 'pcGoals', label: 'PC Conversion' },
     { key: 'discipline', label: 'Discipline' },
