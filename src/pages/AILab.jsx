@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
@@ -65,8 +65,10 @@ function StatBlock({ label, value, sub }) {
   )
 }
 
-function LivePanel({ matches, teams, byCode }) {
-  const [selectedId, setSelectedId] = useState(null)
+function LivePanel({ matches, teams, byCode, initialMatchId, onSelectMatch }) {
+  const [localId, setLocalId] = useState(null)
+  const selectedId = localId ?? initialMatchId
+  const setSelectedId = (id) => { setLocalId(id); onSelectMatch?.(id) }
 
   const candidates = useMemo(() => {
     const all = (matches ?? []).filter(m => m.home !== 'TBD')
@@ -151,6 +153,8 @@ function LivePanel({ matches, teams, byCode }) {
                 : done ? `${tele.clock.display} ${match.score?.home}-${match.score?.away}`
                 : `push-back ${formatDate(match.date)}, ${match.time} CET`}
               {' · '}{match.venue === 'AMV' ? 'Amstelveen' : 'Brussels'}
+              {' · '}
+              <Link to={`/matches/${match.id}`} className="text-brand hover:underline">Full match →</Link>
             </div>
           </div>
           <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-pitch-950/60">
@@ -454,25 +458,38 @@ function StoriesPanel({ matches, byCode }) {
 }
 
 export default function AILabPage() {
-  const [tab, setTab] = useState('live')
+  const [params, setParams] = useSearchParams()
+  const tab = TABS.some(t => t.id === params.get('tab')) ? params.get('tab') : 'live'
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const byCode = new Map(teams.map(t => [t.code, t]))
+
+  const setTab = (t) => {
+    const next = new URLSearchParams(params)
+    t === 'live' ? next.delete('tab') : next.set('tab', t)
+    setParams(next, { replace: true })
+  }
+  const setMatchParam = (id) => {
+    const next = new URLSearchParams(params)
+    id ? next.set('match', id) : next.delete('match')
+    next.delete('tab')
+    setParams(next, { replace: true })
+  }
 
   if (matches === undefined) return <Skeleton h={500} />
 
   return (
     <div>
-      <div className="mb-5 border-b border-white/5 pb-4">
+      <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🧠 AI Lab</h1>
         <p className="mt-1 text-xs text-pitch-400">
           Per-match AI insight — live momentum, upcoming-fixture previews and post-match stories, recalibrated after every completed match.
         </p>
       </div>
 
-      <div className="mb-5 flex gap-1.5">
+      <div className="sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
         {TABS.map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)}
+          <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}
             className={`rounded-md border px-3.5 py-1.5 font-mono text-xs font-semibold lowercase transition-colors ${
               tab === t.id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
             }`}>
@@ -481,7 +498,10 @@ export default function AILabPage() {
         ))}
       </div>
 
-      {tab === 'live' && <LivePanel matches={matches} teams={teams} byCode={byCode} />}
+      {tab === 'live' && (
+        <LivePanel matches={matches} teams={teams} byCode={byCode}
+          initialMatchId={params.get('match')} onSelectMatch={setMatchParam} />
+      )}
       {tab === 'previews' && <PreviewsPanel matches={matches} teams={teams} byCode={byCode} />}
       {tab === 'stories' && <StoriesPanel matches={matches} byCode={byCode} />}
     </div>

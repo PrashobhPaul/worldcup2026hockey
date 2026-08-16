@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
@@ -347,26 +347,33 @@ function PicksTab({ matches, predictions, teams }) {
 }
 
 export default function OraclePage() {
-  const [tab, setTab] = useState('race')
+  const [params, setParams] = useSearchParams()
+  const tab = TABS.some(t => t.id === params.get('tab')) ? params.get('tab') : 'race'
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
   const predictions = useLiveQuery(() => db.predictions.toArray(), [])
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const bundle = useOracleBundle(teams, matches)
 
+  const setTab = (t) => {
+    const next = new URLSearchParams(params)
+    t === 'race' ? next.delete('tab') : next.set('tab', t)
+    setParams(next, { replace: true })
+  }
+
   if (matches === undefined || predictions === undefined) return <Skeleton h={500} />
 
   return (
     <div>
-      <div className="mb-5 border-b border-white/5 pb-4">
+      <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
         <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
       </div>
 
       <RecordHero matches={matches} predictions={predictions} />
 
-      <div className="mb-5 flex flex-wrap gap-1.5">
+      <div className="sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
         {TABS.map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)}
+          <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}
             className={`rounded-md border px-3.5 py-1.5 font-mono text-xs font-semibold lowercase transition-colors ${
               tab === t.id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
             }`}>
