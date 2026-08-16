@@ -50,7 +50,7 @@ body {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   background:
-    linear-gradient(90deg, rgba(7, 20, 52, 0.92) 0%, rgba(10, 25, 65, 0.78) 50%, rgba(20, 12, 45, 0.65) 100%),
+    linear-gradient(90deg, rgba(7, 20, 52, 0.88) 0%, rgba(10, 25, 65, 0.55) 45%, rgba(20, 12, 45, 0.22) 100%),
     var(--hero-bg, none) center / cover no-repeat,
     linear-gradient(135deg, var(--color-pitch-800), var(--color-pitch-900));
   box-shadow:
