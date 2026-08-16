@@ -87,7 +87,7 @@ export default function MatchesPage() {
         </p>
       </div>
 
-      <div className="mb-3 flex flex-wrap gap-1.5">
+      <div className="sticky top-14 z-30 -mx-4 mb-3 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl no-scrollbar" role="tablist">
         {STATUS_TABS.map(t => (
           <button key={t.id} onClick={() => setFilter('tab', t.id, setTab)}
             className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors ${

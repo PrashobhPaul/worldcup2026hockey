@@ -226,9 +226,14 @@ export default function MatchDetailPage() {
 
   return (
     <div className="space-y-5">
-      <Link to="/matches" className="inline-flex items-center gap-1.5 text-xs font-medium text-pitch-300 hover:text-brand">
-        <ArrowLeft size={14} /> All matches
-      </Link>
+      <div className="flex items-center justify-between">
+        <Link to="/matches" className="inline-flex items-center gap-1.5 text-xs font-medium text-pitch-300 hover:text-brand">
+          <ArrowLeft size={14} /> All matches
+        </Link>
+        <Link to={`/ai-lab?match=${match.id}`} className="text-xs font-medium text-brand hover:underline">
+          🧠 AI Lab breakdown →
+        </Link>
+      </div>
 
       <AlsoLiveStrip currentId={match.id} />
 

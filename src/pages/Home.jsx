@@ -8,14 +8,71 @@ import { computeStandings } from '../engine/standings'
 import { oracleRecord, derivePrediction } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { SIM_ID, SIM_MATCH } from '../content/sim'
-import { FlaskConical, Target, Trophy, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
+import { FlaskConical, Trophy, Award, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
 
-const quickLinks = [
-  { to: '/ai-lab', icon: FlaskConical, title: 'AI Lab', sub: 'Match intelligence' },
-  { to: '/prediction-race', icon: Target, title: 'Oracle', sub: 'Race · odds · bracket' },
-  { to: '/awards', icon: Trophy, title: 'Awards', sub: 'Hall of Fame · POTM' },
-  { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation', sub: SIM_MATCH.homeShort + ' vs ' + SIM_MATCH.awayShort },
+// Hero quick-access tiles — same four destinations as Soccer.AI's hero card
+const heroTiles = [
+  { to: '/ai-lab', icon: FlaskConical, title: 'AI Lab' },
+  { to: '/tournament?tab=best', icon: Trophy, title: "Tournament's Best" },
+  { to: '/awards', icon: Award, title: 'Awards' },
+  { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
+
+function HeroCard({ liveNow }) {
+  return (
+    <section className="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-pitch-800 to-pitch-900">
+      {/* Banner backdrop: public/banner.png when present, energy-streak fallback otherwise */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-24 top-0 h-full w-2/3 rotate-12 bg-gradient-to-l from-brand/25 via-red-500/15 to-transparent blur-2xl" />
+        <div className="absolute -right-10 bottom-0 h-1/2 w-1/2 rotate-45 bg-gradient-to-tl from-sky-500/15 to-transparent blur-3xl" />
+        <img src={`${import.meta.env.BASE_URL}banner.png`} alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          onError={e => { e.currentTarget.style.display = 'none' }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-pitch-950/90 via-pitch-950/60 to-transparent" />
+      </div>
+
+      <div className="relative p-6 sm:p-8">
+        <div className="mb-3 flex items-center gap-3">
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-14 w-14 rounded-2xl shadow-[0_0_28px_rgba(255,181,71,0.35)]" />
+          <div>
+            <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+              Hockey<span className="text-brand">.AI</span>
+            </h1>
+          </div>
+        </div>
+        <p className="max-w-md text-sm text-pitch-300">
+          One game. Countless stories. <span className="font-semibold text-white">Stay informed. Stay ahead.</span>
+        </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-brand">
+            🏑 FIH Hockey World Cup 2026
+          </span>
+          <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
+          {liveNow && (
+            <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
+              <span className="live-dot" /> Live Now
+            </span>
+          )}
+        </div>
+
+        {/* In-card quick access — AI Lab · Tournament's Best · Awards · AI Simulation */}
+        <div className="mt-5 grid max-w-md grid-cols-2 gap-2.5">
+          {heroTiles.map(({ to, icon: Icon, title }) => (
+            <Link key={to} to={to}
+              className="flex min-h-16 items-center gap-2.5 rounded-xl border border-white/10 bg-pitch-950/60 px-3.5 py-3 backdrop-blur transition-all hover:border-brand/40 active:scale-[0.98]">
+              <Icon size={18} className="shrink-0 text-brand" />
+              <span className="text-sm font-bold leading-tight">{title}</span>
+            </Link>
+          ))}
+        </div>
+
+        <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
+          Your World Cup companion · <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
+        </p>
+      </div>
+    </section>
+  )
+}
 
 function Countdown({ kickoffUtc }) {
   const [now, setNow] = useState(Date.now())
@@ -162,43 +219,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-8">
-      {/* Hero */}
-      <section className="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-pitch-800 to-pitch-900 p-6 sm:p-8">
-        <div className="pointer-events-none absolute -right-16 top-1/2 hidden h-64 w-64 -translate-y-1/2 rounded-full border border-brand/10 sm:block">
-          <div className="absolute inset-5 rounded-full border border-brand/5" />
-        </div>
-        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-pitch-300">
-          🏑 Men's · Aug 15–30 · Belgium & Netherlands
-        </p>
-        <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
-          Hockey<span className="text-brand">.AI</span>
-        </h1>
-        <p className="mt-2 max-w-md text-sm text-pitch-300">
-          AI stories, match intelligence, simulations and visual analytics for every FIH Hockey World Cup 2026 fixture.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
-          {liveNow && (
-            <span className="flex items-center gap-1.5 rounded-md border border-live/30 bg-live/10 px-2.5 py-1 text-live">
-              <span className="live-dot" /> Live Now
-            </span>
-          )}
-          <span className="rounded-md border border-white/5 bg-pitch-800 px-2.5 py-1 text-pitch-300">🌍 16 Nations</span>
-          <span className="rounded-md border border-white/5 bg-pitch-800 px-2.5 py-1 text-pitch-300">🏑 32 Matches</span>
-          <span className="rounded-md border border-brand/20 bg-brand/10 px-2.5 py-1 text-brand">🤖 AI Predictions</span>
-        </div>
-      </section>
-
-      {/* Quick links */}
-      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-        {quickLinks.map(({ to, icon: Icon, title, sub }) => (
-          <Link key={to} to={to}
-            className="rounded-xl border border-white/5 bg-pitch-800 p-3.5 text-center transition-colors hover:border-brand/25">
-            <Icon size={18} className="mx-auto mb-1.5 text-brand" />
-            <div className="text-sm font-bold">{title}</div>
-            <div className="text-[11px] text-pitch-400">{sub}</div>
-          </Link>
-        ))}
-      </div>
+      <HeroCard liveNow={liveNow} />
 
       {/* Live now / next-match countdown */}
       {!loading && !liveNow && upcoming[0] && upcoming[0].home !== 'TBD' && (
