@@ -27,42 +27,48 @@ function HeroCard({ liveNow }) {
     <section className="hero-card"
       style={{ '--hero-bg': `url(${import.meta.env.BASE_URL}hero-bg.png)` }}>
       <div className="hero-layout">
-        <div className="hero-content min-w-0">
-          {/* No app icon here — this card is about the World Cup */}
-          <h1 className="mb-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Hockey<span className="text-brand">.AI</span>
-          </h1>
-          <p className="max-w-md text-sm text-pitch-300">
-            One game. Countless stories. <span className="font-semibold text-white">Stay informed. Stay ahead.</span>
-          </p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-brand">
-              🏑 FIH Hockey World Cup 2026
-            </span>
-            <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
-            {liveNow && (
-              <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
-                <span className="live-dot" /> Live Now
-              </span>
-            )}
-          </div>
-          <div className="mt-5 grid max-w-md grid-cols-2 gap-2.5">
-            {heroTiles.map(({ to, icon: Icon, title }) => (
-              <Link key={to} to={to} className="hero-tile">
-                <Icon size={18} className="hero-tile-icon shrink-0 text-brand" />
-                <span className="text-sm font-bold leading-tight">{title}</span>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
-            Your World Cup companion · <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
-          </p>
-        </div>
-        {/* Official tournament emblem — owner's artwork, shown once present */}
+        {/* 1 — World Cup emblem: the visual entry point on every device */}
         <div className={`hero-emblem-wrap ${emblem ? '' : 'hidden'}`}>
           <img src={`${import.meta.env.BASE_URL}emblem.png`} alt="FIH Hockey World Cup 2026"
             onLoad={() => setEmblem(true)} onError={e => { e.currentTarget.style.display = 'none' }}
             className="hero-emblem" />
+        </div>
+
+        {/* 2 — Tournament identity */}
+        <h1 className="hero-caption font-display font-bold text-white">
+          FIH HOCKEY WORLD CUP <span className="text-brand">2026</span>
+        </h1>
+        <p className="hero-hosts font-semibold text-pitch-300">Belgium &amp; Netherlands</p>
+
+        {/* 3 — Tournament meta */}
+        <div className="mt-1 flex flex-wrap items-center justify-center gap-2">
+          <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
+          {liveNow && (
+            <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
+              <span className="live-dot" /> Live Now
+            </span>
+          )}
+        </div>
+
+        {/* 4 — Feature navigation */}
+        <div className="hero-grid">
+          {heroTiles.map(({ to, icon: Icon, title }) => (
+            <Link key={to} to={to} className="hero-tile">
+              <Icon size={18} className="hero-tile-icon text-brand" />
+              <span className="hero-tile-label">{title}</span>
+            </Link>
+          ))}
+        </div>
+
+        {/* 5 — Hockey.AI positioning: the hero's conclusion */}
+        <div className="mt-4">
+          <p className="font-display text-sm font-bold">
+            Hockey<span className="text-brand">.AI</span>
+            <span className="font-sans font-normal text-pitch-300"> — your intelligent World Cup companion</span>
+          </p>
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
+            <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
+          </p>
         </div>
       </div>
     </section>

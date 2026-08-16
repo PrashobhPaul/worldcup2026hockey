@@ -41,95 +41,127 @@ body {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 
-/* ── Hero card: World Cup visual, background & animation ─────────────
-   Background artwork: public/hero-bg.png (owner-supplied). The gradient
-   overlay keeps text legible and stands alone until the file exists. */
+/* ── Hero card: tournament-first hierarchy ───────────────────────────
+   Emblem → caption → meta → feature grid → Hockey.AI positioning, same
+   order on every device. Background artwork: public/hero-bg.png
+   (owner-supplied); overlay keeps a dark readable core under the
+   centered content while the artwork stays visible at the edges. */
 .hero-card {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 190, 70, 0.16);
   background:
-    linear-gradient(90deg, rgba(7, 20, 52, 0.88) 0%, rgba(10, 25, 65, 0.55) 45%, rgba(20, 12, 45, 0.22) 100%),
+    radial-gradient(ellipse 75% 95% at 50% 42%, rgba(6, 16, 44, 0.82) 0%, rgba(6, 16, 44, 0.55) 55%, rgba(10, 10, 45, 0.18) 100%),
     var(--hero-bg, none) center / cover no-repeat,
     linear-gradient(135deg, var(--color-pitch-800), var(--color-pitch-900));
   box-shadow:
-    0 0 0 1px rgba(255, 190, 70, 0.12),
     0 8px 35px rgba(0, 0, 0, 0.28),
     0 0 45px rgba(255, 170, 60, 0.06);
   animation: hero-glow 8s ease-in-out infinite;
 }
 @media (max-width: 599px) {
-  .hero-card { background-position: 0 0, 65% center, 0 0; }
+  .hero-card { background-position: 0 0, 70% center, 0 0; }
 }
 
 @keyframes hero-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 1px rgba(255, 190, 70, 0.12), 0 8px 35px rgba(0, 0, 0, 0.28), 0 0 45px rgba(255, 170, 60, 0.06);
-  }
-  50% {
-    box-shadow: 0 0 0 1px rgba(255, 190, 70, 0.18), 0 8px 35px rgba(0, 0, 0, 0.28), 0 0 60px rgba(255, 170, 60, 0.10);
-  }
+  0%, 100% { box-shadow: 0 8px 35px rgba(0, 0, 0, 0.28), 0 0 45px rgba(255, 170, 60, 0.06); }
+  50% { box-shadow: 0 8px 35px rgba(0, 0, 0, 0.28), 0 0 60px rgba(255, 170, 60, 0.10); }
 }
 
-/* Two-column composition ≥600px, stacked below; emblem last on mobile */
+/* Centered column, content-driven height */
 .hero-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-}
-@media (min-width: 600px) {
-  .hero-layout { flex-direction: row; padding: 1.75rem; }
-  .hero-content { flex: 0 1 60%; }
-  .hero-emblem-wrap { flex: 1 0 40%; display: flex; justify-content: center; }
-}
-@media (min-width: 1024px) {
-  .hero-layout { padding: 2rem; }
-  .hero-content { flex: 0 1 63%; }
-  .hero-emblem-wrap { flex: 1 0 37%; }
+  text-align: center;
+  gap: 0.35rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem) clamp(1rem, 4vw, 2rem);
 }
 
-/* World Cup emblem: responsive size, rounded clip, subtle golden glow */
-.hero-emblem {
-  width: clamp(140px, 40vw, 200px);
-  border-radius: clamp(20px, 3vw, 30px);
+/* World Cup emblem: never cropped, rounded, subtle glow + slow float */
+.hero-emblem-wrap {
+  border-radius: clamp(18px, 2vw, 28px);
   overflow: hidden;
-  filter: drop-shadow(0 0 12px rgba(255, 190, 70, 0.18)) drop-shadow(0 0 28px rgba(255, 170, 50, 0.08));
-  animation: emblem-breathe 3.5s ease-in-out infinite;
+  line-height: 0;
+  filter: drop-shadow(0 0 10px rgba(255, 190, 70, 0.20)) drop-shadow(0 0 25px rgba(255, 170, 50, 0.08));
+  animation: emblem-float 5s ease-in-out infinite;
 }
-@media (min-width: 600px) { .hero-emblem { width: clamp(180px, 25vw, 250px); } }
-@media (min-width: 1024px) { .hero-emblem { width: clamp(220px, 22vw, 320px); } }
+.hero-emblem {
+  width: clamp(130px, 38vw, 180px);
+  height: auto;
+  object-fit: contain;
+}
+@media (min-width: 600px) { .hero-emblem { width: clamp(160px, 24vw, 220px); } }
+@media (min-width: 1024px) { .hero-emblem { width: clamp(180px, 16vw, 240px); } }
 
-@keyframes emblem-breathe {
-  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 190, 70, 0.18)) drop-shadow(0 0 28px rgba(255, 170, 50, 0.08)); }
-  50% { filter: drop-shadow(0 0 16px rgba(255, 190, 70, 0.26)) drop-shadow(0 0 34px rgba(255, 170, 50, 0.12)); }
+@keyframes emblem-float {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(255, 190, 70, 0.20)) drop-shadow(0 0 25px rgba(255, 170, 50, 0.08));
+  }
+  50% {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 14px rgba(255, 190, 70, 0.26)) drop-shadow(0 0 30px rgba(255, 170, 50, 0.11));
+  }
 }
 
-/* Feature tiles: staggered entrance + premium hover/tap */
+/* Tournament identity under the emblem */
+.hero-caption {
+  margin-top: 1rem;
+  font-size: clamp(1.25rem, 3.4vw, 1.9rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+.hero-hosts { font-size: clamp(0.8rem, 1.6vw, 0.95rem); }
+
+/* Feature grid: 2×2, equal heights, labels always contained */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+  width: min(100%, 30rem);
+  margin-top: 1.25rem;
+}
 .hero-tile {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  min-height: 4rem;
+  justify-content: flex-start;
+  gap: 12px;
+  min-width: 0;
+  min-height: 64px;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(8, 23, 55, 0.58);
   backdrop-filter: blur(8px);
-  padding: 0.75rem 0.875rem;
+  padding: 0.625rem 0.875rem;
+  text-align: left;
   opacity: 0;
-  animation: tile-in 420ms ease-out forwards;
+  animation: tile-in 400ms ease-out forwards;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
     border-color 180ms ease,
     background-color 180ms ease;
 }
+.hero-tile-label {
+  min-width: 0;
+  /* Wraps at spaces ("Tournament's / Best"); break-word is only the
+     last-resort safety net for a single word wider than the whole label */
+  overflow-wrap: break-word;
+  hyphens: none;
+  font-size: clamp(0.78rem, 1.2vw, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+@media (max-width: 389px) {
+  .hero-tile { gap: 8px; padding: 0.5rem 0.625rem; }
+  .hero-tile-label { font-size: 0.75rem; }
+}
 .hero-tile:nth-child(1) { animation-delay: 0ms; }
-.hero-tile:nth-child(2) { animation-delay: 80ms; }
-.hero-tile:nth-child(3) { animation-delay: 160ms; }
-.hero-tile:nth-child(4) { animation-delay: 240ms; }
+.hero-tile:nth-child(2) { animation-delay: 70ms; }
+.hero-tile:nth-child(3) { animation-delay: 140ms; }
+.hero-tile:nth-child(4) { animation-delay: 210ms; }
 .hero-tile:hover, .hero-tile:focus-visible {
   transform: translateY(-2px);
   border-color: rgba(255, 181, 71, 0.45);
@@ -141,15 +173,15 @@ body {
   filter: drop-shadow(0 0 6px rgba(255, 181, 71, 0.5));
 }
 .hero-tile:active { transform: scale(0.98); }
-.hero-tile-icon { transition: transform 180ms ease, filter 180ms ease; }
+.hero-tile-icon { flex-shrink: 0; transition: transform 180ms ease, filter 180ms ease; }
 
 @keyframes tile-in {
-  from { opacity: 0; transform: translateY(8px); filter: blur(2px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-card, .hero-emblem { animation: none; }
+  .hero-card, .hero-emblem-wrap { animation: none; }
   .hero-tile { animation: none; opacity: 1; }
   .hero-tile:hover, .hero-tile:active { transform: none; }
 }
