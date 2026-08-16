@@ -29,6 +29,9 @@ const SUBTITLES = {
 function RecordHero({ matches, predictions }) {
   const rec = oracleRecord(matches, predictions)
   if (!rec.graded) return null
+  const withPick = new Set(predictions.map(p => p.matchId))
+  const finished = matches.filter(m => m.status === 'completed' && m.score?.home != null)
+  const uncovered = finished.filter(m => !withPick.has(m.id)).length
   return (
     <div className="mb-5 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
       <div className="flex items-baseline justify-between">
@@ -36,6 +39,10 @@ function RecordHero({ matches, predictions }) {
         <span className="font-mono text-[11px] text-pitch-300">{rec.correct} of {rec.graded} pre-match picks correct</span>
       </div>
       <div className="mt-1 font-mono text-4xl font-bold text-brand">{rec.accuracyPct}%</div>
+      <p className="mt-1.5 font-mono text-[10px] leading-relaxed text-pitch-400">
+        Graded against picks locked before push-back — never edited, never added after the fact.
+        {uncovered > 0 && ` ${uncovered} of ${finished.length} finished matches kicked off before a pick was published and are excluded, not counted as wins.`}
+      </p>
     </div>
   )
 }

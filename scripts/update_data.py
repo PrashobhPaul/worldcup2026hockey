@@ -569,9 +569,11 @@ def predict(home_rank, away_rank):
 
 def generate_predictions(fixtures, teams, predictions):
     """
-    Publish picks before push-back, never edited. Pool matches publish inside
-    48h; knockout matches publish as soon as both teams are slotted (bracket-
-    aware — the slot itself came from real standings).
+    Publish picks before push-back, never edited. Every future fixture with
+    both teams known gets a pick immediately — the whole pool schedule is
+    known from day one, and knockouts publish the moment they are slotted.
+    (An earlier 48h window left early fixtures without picks, which made the
+    Oracle record's denominator smaller than the finished-match count.)
     """
     rank_of = {t['code']: t['fih_rank'] for t in teams['teams']}
     have = {p['matchId'] for p in predictions['predictions']}
@@ -586,8 +588,6 @@ def generate_predictions(fixtures, teams, predictions):
         except ValueError:
             continue
         knockout = m['phase'] != 'pool'
-        if not knockout and not (timedelta(0) <= ko - now <= timedelta(hours=48)):
-            continue
         if ko <= now:
             continue  # never publish after push-back
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])

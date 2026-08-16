@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import MatchCard, { formatDate, phaseTag } from '../components/MatchCard'
-import { SectionHead, Skeleton, StandingsTable, WinProbBar, TierBadge } from '../components/shared'
-import { computeStandings } from '../engine/standings'
-import { oracleRecord, derivePrediction } from '../engine/prediction'
+import { SectionHead, Skeleton, TierBadge } from '../components/shared'
+import { derivePrediction } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
-import { SIM_ID, SIM_MATCH } from '../content/sim'
+import { SIM_ID } from '../content/sim'
 import { FlaskConical, Trophy, Award, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
 
 // Hero quick-access tiles — same four destinations as Soccer.AI's hero card
@@ -19,57 +18,81 @@ const heroTiles = [
 ]
 
 function HeroCard({ liveNow }) {
+  // When the banner artwork (public/banner.png) is present it IS the card —
+  // branding and copy live in the artwork, we only overlay the access tiles.
+  // Until the file exists, a text lockup on a banner-palette gradient stands in.
+  const [bannerLoaded, setBannerLoaded] = useState(false)
+
   return (
     <section className="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-pitch-800 to-pitch-900">
-      {/* Banner backdrop: public/banner.png when present, energy-streak fallback otherwise */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-24 top-0 h-full w-2/3 rotate-12 bg-gradient-to-l from-brand/25 via-red-500/15 to-transparent blur-2xl" />
-        <div className="absolute -right-10 bottom-0 h-1/2 w-1/2 rotate-45 bg-gradient-to-tl from-sky-500/15 to-transparent blur-3xl" />
-        <img src={`${import.meta.env.BASE_URL}banner.png`} alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
-          onError={e => { e.currentTarget.style.display = 'none' }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-pitch-950/90 via-pitch-950/60 to-transparent" />
+        {!bannerLoaded && (
+          <>
+            <div className="absolute -right-24 top-0 h-full w-2/3 rotate-12 bg-gradient-to-l from-brand/25 via-red-500/15 to-transparent blur-2xl" />
+            <div className="absolute -right-10 bottom-0 h-1/2 w-1/2 rotate-45 bg-gradient-to-tl from-sky-500/15 to-transparent blur-3xl" />
+          </>
+        )}
       </div>
-
-      <div className="relative p-6 sm:p-8">
-        <div className="mb-3 flex items-center gap-3">
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-14 w-14 rounded-2xl shadow-[0_0_28px_rgba(255,181,71,0.35)]" />
-          <div>
+      {bannerLoaded ? (
+        <div className="relative">
+          <img src={`${import.meta.env.BASE_URL}banner.png`} alt="Hockey.AI — FIH Hockey World Cup 2026"
+            className="w-full object-cover" />
+          {liveNow && (
+            <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-live/40 bg-pitch-950/80 px-2.5 py-1 font-mono text-[11px] font-semibold text-live backdrop-blur">
+              <span className="live-dot" /> Live Now
+            </span>
+          )}
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pitch-950/95 via-pitch-950/60 to-transparent p-4 pt-10">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {heroTiles.map(({ to, icon: Icon, title }) => (
+                <Link key={to} to={to}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-pitch-950/70 px-3 py-2.5 backdrop-blur transition-all hover:border-brand/50 active:scale-[0.98]">
+                  <Icon size={16} className="shrink-0 text-brand" />
+                  <span className="text-xs font-bold leading-tight">{title}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="relative p-6 sm:p-8">
+          <div className="mb-3 flex items-center gap-3">
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-14 w-14 rounded-2xl shadow-[0_0_28px_rgba(255,181,71,0.35)]" />
             <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
               Hockey<span className="text-brand">.AI</span>
             </h1>
           </div>
-        </div>
-        <p className="max-w-md text-sm text-pitch-300">
-          One game. Countless stories. <span className="font-semibold text-white">Stay informed. Stay ahead.</span>
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-brand">
-            🏑 FIH Hockey World Cup 2026
-          </span>
-          <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
-          {liveNow && (
-            <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
-              <span className="live-dot" /> Live Now
+          <p className="max-w-md text-sm text-pitch-300">
+            One game. Countless stories. <span className="font-semibold text-white">Stay informed. Stay ahead.</span>
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-brand">
+              🏑 FIH Hockey World Cup 2026
             </span>
-          )}
+            <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
+            {liveNow && (
+              <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
+                <span className="live-dot" /> Live Now
+              </span>
+            )}
+          </div>
+          <div className="mt-5 grid max-w-md grid-cols-2 gap-2.5">
+            {heroTiles.map(({ to, icon: Icon, title }) => (
+              <Link key={to} to={to}
+                className="flex min-h-16 items-center gap-2.5 rounded-xl border border-white/10 bg-pitch-950/60 px-3.5 py-3 backdrop-blur transition-all hover:border-brand/40 active:scale-[0.98]">
+                <Icon size={18} className="shrink-0 text-brand" />
+                <span className="text-sm font-bold leading-tight">{title}</span>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
+            Your World Cup companion · <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
+          </p>
         </div>
-
-        {/* In-card quick access — AI Lab · Tournament's Best · Awards · AI Simulation */}
-        <div className="mt-5 grid max-w-md grid-cols-2 gap-2.5">
-          {heroTiles.map(({ to, icon: Icon, title }) => (
-            <Link key={to} to={to}
-              className="flex min-h-16 items-center gap-2.5 rounded-xl border border-white/10 bg-pitch-950/60 px-3.5 py-3 backdrop-blur transition-all hover:border-brand/40 active:scale-[0.98]">
-              <Icon size={18} className="shrink-0 text-brand" />
-              <span className="text-sm font-bold leading-tight">{title}</span>
-            </Link>
-          ))}
-        </div>
-
-        <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
-          Your World Cup companion · <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
-        </p>
-      </div>
+      )}
+      {/* Probe the banner asset once; flips the card into artwork mode when it exists */}
+      <img src={`${import.meta.env.BASE_URL}banner.png`} alt="" className="hidden"
+        onLoad={() => setBannerLoaded(true)} />
     </section>
   )
 }
@@ -159,14 +182,14 @@ function TrendingTeams({ teams, matches }) {
         out: bundle.eliminationAt.has(t.code),
       }))
       .sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta) || y.now - x.now)
-      .slice(0, 6)
+      .slice(0, 3)
   }, [bundle, teams])
 
   if (!cards.length) return null
   return (
     <section>
-      <SectionHead title="📈 Trending Teams" sub="Champion-odds movement since the last result" />
-      <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+      <SectionHead title="📈 Trending Teams" to="/prediction-race" toLabel="Full race →" />
+      <div className="grid gap-2.5 sm:grid-cols-3">
         {cards.map(({ team, now, delta, out }) => (
           <Link key={team.code} to={`/teams/${team.code}`}
             className="rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/25"
@@ -193,112 +216,46 @@ function TrendingTeams({ teams, matches }) {
   )
 }
 
+// Home is a glance page: hero, the next (or live) match, the last two
+// results, the three biggest movers. Everything deeper lives in its own tab.
 export default function HomePage() {
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
-  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
-  const [pool, setPool] = useState('A')
 
   const loading = teams === undefined || matches === undefined
-  const today = new Date().toISOString().slice(0, 10)
-  const todayMatches = (matches ?? []).filter(m => m.date === today)
-  const upcoming = (matches ?? []).filter(m => m.status !== 'completed').slice(0, 3)
-  const showMatches = todayMatches.length ? todayMatches : upcoming
-  const liveNow = (matches ?? []).some(m => m.status === 'live')
-
-  const standings = computeStandings(teams ?? [], matches ?? [])
-  const poolStandings = standings.find(p => p.id === pool)?.standings ?? []
-
-  const sorted = [...(teams ?? [])].sort((a, b) => b.winProb - a.winProb)
-  const favourites = sorted.filter(t => t.contender_tier === 'favourite')
-  const darkHorses = sorted.filter(t => t.contender_tier === 'dark_horse')
-
-  const completed = (matches ?? []).filter(m => m.status === 'completed' && m.score?.home != null)
-  const latest = completed[completed.length - 1]
-  const rec = oracleRecord(matches ?? [], predictions ?? [])
+  const live = (matches ?? []).filter(m => m.status === 'live')
+  const liveNow = live.length > 0
+  const nextUp = (matches ?? []).find(m => m.status === 'scheduled' && m.home !== 'TBD')
+  const lastTwo = (matches ?? [])
+    .filter(m => m.status === 'completed' && m.score?.home != null)
+    .slice(-2)
+    .reverse()
 
   return (
     <div className="space-y-8">
       <HeroCard liveNow={liveNow} />
 
-      {/* Live now / next-match countdown */}
-      {!loading && !liveNow && upcoming[0] && upcoming[0].home !== 'TBD' && (
-        <NextMatchCard match={upcoming[0]} teams={teams ?? []} />
-      )}
-
-      {/* Today's matches */}
-      <section>
-        <SectionHead title={todayMatches.length ? "🔴 Today's Matches" : '⏭ Next Matches'} to="/matches" toLabel="All matches →" />
-        {loading ? <Skeleton h={260} /> : (
-          <div className="space-y-2.5">
-            {showMatches.length
-              ? showMatches.map(m => <MatchCard key={m.id} match={m} />)
-              : <div className="rounded-xl border border-white/5 bg-pitch-800 p-4 text-sm text-pitch-400">No matches scheduled.</div>}
-          </div>
-        )}
-      </section>
-
-      {/* Trending teams */}
-      {!loading && <TrendingTeams teams={teams} matches={matches} />}
-
-      {/* Standings preview */}
-      <section>
-        <SectionHead title="📊 Pool Standings" to="/tournament" toLabel="Full table →" />
-        <div className="mb-3 flex gap-1.5">
-          {['A', 'B', 'C', 'D'].map(p => (
-            <button key={p} onClick={() => setPool(p)}
-              className={`rounded-md border px-3 py-1 font-mono text-xs font-semibold transition-colors ${
-                pool === p ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
-              }`}>
-              Pool {p}
-            </button>
-          ))}
-        </div>
-        {loading ? <Skeleton h={220} /> : (
-          <div className="rounded-xl border border-white/5 bg-pitch-800 p-3">
-            <StandingsTable standings={poolStandings} />
-          </div>
-        )}
-      </section>
-
-      {/* Win probability */}
-      <section>
-        <SectionHead title="📈 Tournament Win Probability" sub="Recalibrated after every match" />
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-pitch-400">⭐ Favourites</p>
-        <div className="space-y-2">
-          {loading ? <Skeleton h={200} /> : favourites.map(t => <WinProbBar key={t.code} team={t} />)}
-        </div>
-        <p className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-wider text-pitch-400">🐎 Dark Horses</p>
-        <div className="space-y-2">
-          {loading ? <Skeleton h={130} /> : darkHorses.map(t => <WinProbBar key={t.code} team={t} />)}
-        </div>
-      </section>
-
-      {/* Oracle preview */}
-      <section>
-        <SectionHead title="🎯 The Oracle" to="/prediction-race" toLabel="Full record →" />
-        <div className="flex items-center gap-5 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
-          <div className="text-center">
-            <div className="font-mono text-3xl font-bold text-brand">{rec.accuracyPct != null ? `${rec.accuracyPct}%` : '—'}</div>
-            <div className="mt-0.5 text-[10px] uppercase tracking-wider text-pitch-400">Accuracy</div>
-          </div>
-          <div className="text-center">
-            <div className="font-mono text-3xl font-bold text-brand">{rec.correct}/{rec.graded}</div>
-            <div className="mt-0.5 text-[10px] uppercase tracking-wider text-pitch-400">Correct picks</div>
-          </div>
-          <p className="flex-1 text-xs leading-relaxed text-pitch-300">
-            Every pick published before push-back, graded publicly. No edits. No deletions.
-          </p>
-        </div>
-      </section>
-
-      {/* Latest result */}
-      {latest && (
+      {loading ? <Skeleton h={220} /> : liveNow ? (
         <section>
-          <SectionHead title="⚡ Latest Result" to="/matches?tab=completed" toLabel="All results →" />
-          <MatchCard match={latest} />
+          <SectionHead title="🔴 Live Now" to="/matches?tab=live" toLabel="Match centre →" />
+          <div className="space-y-2.5">
+            {live.map(m => <MatchCard key={m.id} match={m} />)}
+          </div>
+        </section>
+      ) : nextUp ? (
+        <NextMatchCard match={nextUp} teams={teams ?? []} />
+      ) : null}
+
+      {!loading && lastTwo.length > 0 && (
+        <section>
+          <SectionHead title="⚡ Latest Results" to="/matches?tab=completed" toLabel="All results →" />
+          <div className="space-y-2.5">
+            {lastTwo.map(m => <MatchCard key={m.id} match={m} />)}
+          </div>
         </section>
       )}
+
+      {!loading && <TrendingTeams teams={teams} matches={matches} />}
     </div>
   )
 }
