@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-16T17:12:36.931823+00:00",
+  "last_updated": "2026-08-16T18:31:54.030465+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -97,17 +97,17 @@
       "team": "AUS",
       "position": "Midfielder",
       "number": 5,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": true,
       "profile": "Kookaburras captain. World-class link-up midfielder.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 70.0
     },
     {
       "id": "AUS_02",
@@ -115,8 +115,8 @@
       "team": "AUS",
       "position": "Forward",
       "number": 9,
-      "goals": 0,
-      "assists": 0,
+      "goals": 1,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -124,8 +124,8 @@
       "fih_star": true,
       "profile": "Prolific forward. Australia's main goal threat in open play.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 69.5
     },
     {
       "id": "AUS_03",
@@ -133,8 +133,8 @@
       "team": "AUS",
       "position": "Forward",
       "number": 16,
-      "goals": 0,
-      "assists": 0,
+      "goals": 1,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -142,8 +142,8 @@
       "fih_star": true,
       "profile": "Drag flick specialist. High PC conversion rate.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 69.5
     },
     {
       "id": "AUS_04",
@@ -160,8 +160,8 @@
       "fih_star": false,
       "profile": "Elite goalkeeper. Known for shootout saves.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 80.0
     },
     {
       "id": "BEL_01",
@@ -169,17 +169,17 @@
       "team": "BEL",
       "position": "Midfielder",
       "number": 10,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 2,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": true,
       "profile": "World's most feared drag flicker. Penalty corner conversion rate 50%+.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 77.0
     },
     {
       "id": "BEL_02",
@@ -196,8 +196,8 @@
       "fih_star": true,
       "profile": "Red Lions captain. Dictates tempo from midfield.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 62.0
     },
     {
       "id": "BEL_03",
@@ -205,17 +205,17 @@
       "team": "BEL",
       "position": "Midfielder",
       "number": 6,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": true,
       "profile": "Experienced international. Key link in Belgium's midfield.",
-      "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "green_cards": 1,
+      "matches_played": 1,
+      "ai_rating": 69.0
     },
     {
       "id": "BEL_04",
@@ -232,8 +232,8 @@
       "fih_star": true,
       "profile": "World's best goalkeeper. Multiple FIH Goalkeeper of the Year.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 74.0
     },
     {
       "id": "NED_01",
@@ -241,17 +241,17 @@
       "team": "NED",
       "position": "Forward",
       "number": 9,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": true,
       "profile": "Captain of the host nation. Explosive forward with international pedigree.",
-      "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "green_cards": 1,
+      "matches_played": 1,
+      "ai_rating": 74.0
     },
     {
       "id": "NED_02",
@@ -259,17 +259,17 @@
       "team": "NED",
       "position": "Midfielder",
       "number": 7,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": true,
       "profile": "Creative midfielder. Known for incisive passing.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 69.0
     },
     {
       "id": "NED_03",
@@ -277,17 +277,17 @@
       "team": "NED",
       "position": "Midfielder",
       "number": 11,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
+      "goals": 2,
+      "assists": 1,
+      "pc_scored": 2,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": false,
       "profile": "Dynamic midfielder. Key to Netherlands' high press.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 79.0
     },
     {
       "id": "NED_04",
@@ -304,8 +304,8 @@
       "fih_star": false,
       "profile": "Steady presence between the sticks for Oranje.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 80.0
     },
     {
       "id": "ARG_01",
@@ -367,17 +367,17 @@
       "team": "GER",
       "position": "Defender",
       "number": 5,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 2,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": false,
       "profile": "Germany's captain and solid defensive anchor.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 87.0
     },
     {
       "id": "GER_02",
@@ -385,7 +385,7 @@
       "team": "GER",
       "position": "Forward",
       "number": 11,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -394,8 +394,8 @@
       "fih_star": true,
       "profile": "Germany's top goal scorer. International class forward.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 66.0
     },
     {
       "id": "GER_03",
@@ -403,17 +403,17 @@
       "team": "GER",
       "position": "Midfielder",
       "number": 8,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
+      "pc_scored": 2,
+      "yellow_cards": 1,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": false,
       "profile": "Midfield workhorse for Die Mannschaft.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 72.0
     },
     {
       "id": "ENG_01",
@@ -421,17 +421,17 @@
       "team": "ENG",
       "position": "Midfielder",
       "number": 7,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 2,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": false,
       "profile": "England's captain. Commanding midfielder.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 75.0
     },
     {
       "id": "ENG_02",
@@ -439,7 +439,7 @@
       "team": "ENG",
       "position": "Forward",
       "number": 9,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -448,8 +448,8 @@
       "fih_star": true,
       "profile": "England's most dangerous forward. Clinical finisher.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 73.0
     },
     {
       "id": "ENG_03",
@@ -466,8 +466,8 @@
       "fih_star": false,
       "profile": "Experienced England goalkeeper. Known for big-game performances.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 80.0
     },
     {
       "id": "ESP_01",
@@ -475,17 +475,17 @@
       "team": "ESP",
       "position": "Midfielder",
       "number": 7,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": false,
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 67.0
     },
     {
       "id": "ESP_02",
@@ -493,8 +493,8 @@
       "team": "ESP",
       "position": "Forward",
       "number": 11,
-      "goals": 0,
-      "assists": 0,
+      "goals": 1,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -502,8 +502,8 @@
       "fih_star": false,
       "profile": "Pace and power forward. Spain's goal threat.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 66.5
     },
     {
       "id": "ESP_03",
@@ -511,7 +511,7 @@
       "team": "ESP",
       "position": "Midfielder",
       "number": 9,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -519,9 +519,9 @@
       "is_captain": false,
       "fih_star": false,
       "profile": "Creative playmaker. Scored in multiple major tournaments.",
-      "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "green_cards": 1,
+      "matches_played": 1,
+      "ai_rating": 63.0
     },
     {
       "id": "PAK_01",
@@ -538,8 +538,8 @@
       "fih_star": false,
       "profile": "Pakistan's captain. Skilful and combative.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 59.0
     },
     {
       "id": "PAK_02",
@@ -555,9 +555,9 @@
       "is_captain": false,
       "fih_star": false,
       "profile": "Prolific forward. Carries Pakistan's goal-scoring burden.",
-      "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "green_cards": 1,
+      "matches_played": 1,
+      "ai_rating": 56.0
     },
     {
       "id": "PAK_03",
@@ -565,17 +565,17 @@
       "team": "PAK",
       "position": "Midfielder",
       "number": 6,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": false,
       "profile": "Energetic midfielder. Links defence and attack.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 66.0
     },
     {
       "id": "IRL_01",
@@ -583,7 +583,7 @@
       "team": "IRL",
       "position": "Forward",
       "number": 9,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -592,8 +592,8 @@
       "fih_star": false,
       "profile": "Ireland's leading goal scorer. Drag flick specialist.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 63.0
     },
     {
       "id": "IRL_02",
@@ -609,9 +609,9 @@
       "is_captain": true,
       "fih_star": false,
       "profile": "Green Machine captain. Experienced defender.",
-      "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "green_cards": 1,
+      "matches_played": 1,
+      "ai_rating": 59.0
     },
     {
       "id": "MAS_01",
@@ -628,8 +628,8 @@
       "fih_star": false,
       "profile": "Malaysia's skipper. Hard-working midfield dynamo.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 59.0
     },
     {
       "id": "MAS_02",
@@ -637,7 +637,7 @@
       "team": "MAS",
       "position": "Forward",
       "number": 11,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -646,8 +646,8 @@
       "fih_star": false,
       "profile": "Quick forward. Tigers' main counter-attack weapon.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 63.0
     },
     {
       "id": "RSA_01",
@@ -655,17 +655,17 @@
       "team": "RSA",
       "position": "Midfielder",
       "number": 7,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "pc_scored": 0,
-      "yellow_cards": 0,
+      "yellow_cards": 1,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": false,
       "profile": "South Africa's captain. Dogged and determined.",
-      "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "green_cards": 1,
+      "matches_played": 1,
+      "ai_rating": 62.0
     },
     {
       "id": "NZL_01",
@@ -673,7 +673,7 @@
       "team": "NZL",
       "position": "Defender",
       "number": 5,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -682,8 +682,8 @@
       "fih_star": false,
       "profile": "Black Sticks skipper. Solid defensive leader.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 62.0
     },
     {
       "id": "JPN_01",
@@ -709,17 +709,17 @@
       "team": "FRA",
       "position": "Forward",
       "number": 9,
-      "goals": 0,
+      "goals": 2,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 2,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": false,
       "profile": "France's captain and main attacking force.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 71.0
     },
     {
       "id": "WAL_01",

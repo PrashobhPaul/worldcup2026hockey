@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-16T17:12:36.931823+00:00",
+  "last_updated": "2026-08-16T18:31:54.030465+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -156,14 +156,143 @@
       "venue": "AMV",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 1
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 8,
+        "away": 7
       },
-      "events": []
+      "events": [
+        {
+          "minute": 6,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Will Calnan"
+        },
+        {
+          "minute": 11,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Arshad Liaquat"
+        },
+        {
+          "minute": 18,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PS",
+          "player": "Sam Ward"
+        },
+        {
+          "minute": 19,
+          "team": "PAK",
+          "type": "goal",
+          "via": "PC",
+          "player": "Muhammad Umar Bhutta"
+        },
+        {
+          "minute": 26,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Will Calnan"
+        },
+        {
+          "minute": 49,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Ward"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 4,
+          "shots": 11,
+          "circle_entries": 24,
+          "penalty_corners": 8,
+          "possession": 61,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 6,
+          "circle_entries": 15,
+          "penalty_corners": 7,
+          "possession": 39,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ENG vs PAK under way.",
+          "seq": 0
+        },
+        {
+          "minute": 6,
+          "team": "ENG",
+          "text": "GOAL! Will Calnan (ENG) scores from a penalty corner — ENG 1-0 PAK.",
+          "seq": 1
+        },
+        {
+          "minute": 11,
+          "team": "PAK",
+          "text": "Green Card for Arshad Liaquat (PAK) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ENG 1-0 PAK.",
+          "seq": 3
+        },
+        {
+          "minute": 18,
+          "team": "ENG",
+          "text": "GOAL! Sam Ward (ENG) scores from a penalty stroke — ENG 2-0 PAK.",
+          "seq": 4
+        },
+        {
+          "minute": 19,
+          "team": "PAK",
+          "text": "GOAL! Muhammad Umar Bhutta (PAK) scores from a penalty corner — ENG 2-1 PAK.",
+          "seq": 5
+        },
+        {
+          "minute": 26,
+          "team": "ENG",
+          "text": "GOAL! Will Calnan (ENG) scores from a penalty corner — ENG 3-1 PAK.",
+          "seq": 6
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ENG 3-1 PAK.",
+          "seq": 7
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ENG 3-1 PAK.",
+          "seq": 8
+        },
+        {
+          "minute": 49,
+          "team": "ENG",
+          "text": "GOAL! Sam Ward (ENG) scores from a field goal — ENG 4-1 PAK.",
+          "seq": 9
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ENG 4-1 PAK.",
+          "seq": 10
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "B1",
@@ -177,14 +306,156 @@
       "venue": "BRU",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 1
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 9,
+        "away": 5
       },
-      "events": []
+      "events": [
+        {
+          "minute": 3,
+          "team": "GER",
+          "type": "goal",
+          "via": "PC",
+          "player": "Mats Grambusch"
+        },
+        {
+          "minute": 12,
+          "team": "GER",
+          "type": "goal",
+          "via": "PC",
+          "player": "Mats Grambusch"
+        },
+        {
+          "minute": 13,
+          "team": "MAS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tengku Ahmad Tajuddin"
+        },
+        {
+          "minute": 20,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Christopher Rühr"
+        },
+        {
+          "minute": 32,
+          "team": "GER",
+          "type": "yellow_card",
+          "player": "Mats Grambusch"
+        },
+        {
+          "minute": 45,
+          "team": "GER",
+          "type": "goal",
+          "via": "PC",
+          "player": "Niklas Wellen"
+        },
+        {
+          "minute": 56,
+          "team": "GER",
+          "type": "goal",
+          "via": "PC",
+          "player": "Niklas Wellen"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 5,
+          "shots": 10,
+          "circle_entries": 27,
+          "penalty_corners": 9,
+          "possession": 65,
+          "green_cards": 0,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 6,
+          "circle_entries": 20,
+          "penalty_corners": 5,
+          "possession": 35,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! GER vs MAS under way.",
+          "seq": 0
+        },
+        {
+          "minute": 3,
+          "team": "GER",
+          "text": "GOAL! Mats Grambusch (GER) scores from a penalty corner — GER 1-0 MAS.",
+          "seq": 1
+        },
+        {
+          "minute": 12,
+          "team": "GER",
+          "text": "GOAL! Mats Grambusch (GER) scores from a penalty corner — GER 2-0 MAS.",
+          "seq": 2
+        },
+        {
+          "minute": 13,
+          "team": "MAS",
+          "text": "GOAL! Tengku Ahmad Tajuddin (MAS) scores from a field goal — GER 2-1 MAS.",
+          "seq": 3
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: GER 2-1 MAS.",
+          "seq": 4
+        },
+        {
+          "minute": 20,
+          "team": "GER",
+          "text": "GOAL! Christopher Rühr (GER) scores from a field goal — GER 3-1 MAS.",
+          "seq": 5
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: GER 3-1 MAS.",
+          "seq": 6
+        },
+        {
+          "minute": 32,
+          "team": "GER",
+          "text": "Yellow Card for Mats Grambusch (GER) — 5-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 45,
+          "team": "GER",
+          "text": "GOAL! Niklas Wellen (GER) scores from a penalty corner — GER 4-1 MAS.",
+          "seq": 8
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: GER 4-1 MAS.",
+          "seq": 9
+        },
+        {
+          "minute": 56,
+          "team": "GER",
+          "text": "GOAL! Niklas Wellen (GER) scores from a penalty corner — GER 5-1 MAS.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: GER 5-1 MAS.",
+          "seq": 11
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "B2",
@@ -198,14 +469,143 @@
       "venue": "BRU",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 8,
+        "away": 6
       },
-      "events": []
+      "events": [
+        {
+          "minute": 6,
+          "team": "BEL",
+          "type": "green_card",
+          "player": "Loick Luypaert"
+        },
+        {
+          "minute": 26,
+          "team": "FRA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Victor Charlet"
+        },
+        {
+          "minute": 35,
+          "team": "BEL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Loick Luypaert"
+        },
+        {
+          "minute": 48,
+          "team": "BEL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Alexander Hendrickx"
+        },
+        {
+          "minute": 48,
+          "team": "FRA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Victor Charlet"
+        },
+        {
+          "minute": 50,
+          "team": "BEL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Alexander Hendrickx"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 8,
+          "circle_entries": 27,
+          "penalty_corners": 8,
+          "possession": 56,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 7,
+          "circle_entries": 21,
+          "penalty_corners": 6,
+          "possession": 44,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! BEL vs FRA under way.",
+          "seq": 0
+        },
+        {
+          "minute": 6,
+          "team": "BEL",
+          "text": "Green Card for Loick Luypaert (BEL) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: BEL 0-0 FRA.",
+          "seq": 2
+        },
+        {
+          "minute": 26,
+          "team": "FRA",
+          "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — BEL 0-1 FRA.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: BEL 0-1 FRA.",
+          "seq": 4
+        },
+        {
+          "minute": 35,
+          "team": "BEL",
+          "text": "GOAL! Loick Luypaert (BEL) scores from a penalty corner — BEL 1-1 FRA.",
+          "seq": 5
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: BEL 1-1 FRA.",
+          "seq": 6
+        },
+        {
+          "minute": 48,
+          "team": "BEL",
+          "text": "GOAL! Alexander Hendrickx (BEL) scores from a penalty corner — BEL 2-1 FRA.",
+          "seq": 7
+        },
+        {
+          "minute": 48,
+          "team": "FRA",
+          "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — BEL 2-2 FRA.",
+          "seq": 8
+        },
+        {
+          "minute": 50,
+          "team": "BEL",
+          "text": "GOAL! Alexander Hendrickx (BEL) scores from a penalty corner — BEL 3-2 FRA.",
+          "seq": 9
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: BEL 3-2 FRA.",
+          "seq": 10
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "A1",
@@ -240,14 +640,157 @@
       "venue": "AMV",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 1
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 6,
+        "away": 3
       },
-      "events": []
+      "events": [
+        {
+          "minute": 3,
+          "team": "NED",
+          "type": "goal",
+          "via": "PC",
+          "player": "Thierry Brinkman"
+        },
+        {
+          "minute": 8,
+          "team": "NED",
+          "type": "goal",
+          "via": "PC",
+          "player": "Florent van Aubel"
+        },
+        {
+          "minute": 23,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Thierry Brinkman",
+          "assist": "Seve van Ass"
+        },
+        {
+          "minute": 25,
+          "team": "NED",
+          "type": "green_card",
+          "player": "Thierry Brinkman"
+        },
+        {
+          "minute": 42,
+          "team": "NED",
+          "type": "goal",
+          "via": "PC",
+          "player": "Seve van Ass"
+        },
+        {
+          "minute": 44,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Lane"
+        },
+        {
+          "minute": 47,
+          "team": "NED",
+          "type": "goal",
+          "via": "PC",
+          "player": "Seve van Ass"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 5,
+          "shots": 13,
+          "circle_entries": 28,
+          "penalty_corners": 6,
+          "possession": 62,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 8,
+          "circle_entries": 16,
+          "penalty_corners": 3,
+          "possession": 38,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! NED vs NZL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 3,
+          "team": "NED",
+          "text": "GOAL! Thierry Brinkman (NED) scores from a penalty corner — NED 1-0 NZL.",
+          "seq": 1
+        },
+        {
+          "minute": 8,
+          "team": "NED",
+          "text": "GOAL! Florent van Aubel (NED) scores from a penalty corner — NED 2-0 NZL.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: NED 2-0 NZL.",
+          "seq": 3
+        },
+        {
+          "minute": 23,
+          "team": "NED",
+          "text": "GOAL! Thierry Brinkman (NED) scores from a field goal — NED 3-0 NZL.",
+          "seq": 4
+        },
+        {
+          "minute": 25,
+          "team": "NED",
+          "text": "Green Card for Thierry Brinkman (NED) — 2-minute suspension.",
+          "seq": 5
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: NED 3-0 NZL.",
+          "seq": 6
+        },
+        {
+          "minute": 42,
+          "team": "NED",
+          "text": "GOAL! Seve van Ass (NED) scores from a penalty corner — NED 4-0 NZL.",
+          "seq": 7
+        },
+        {
+          "minute": 44,
+          "team": "NZL",
+          "text": "GOAL! Sam Lane (NZL) scores from a field goal — NED 4-1 NZL.",
+          "seq": 8
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: NED 4-1 NZL.",
+          "seq": 9
+        },
+        {
+          "minute": 47,
+          "team": "NED",
+          "text": "GOAL! Seve van Ass (NED) scores from a penalty corner — NED 5-1 NZL.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: NED 5-1 NZL.",
+          "seq": 11
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "C1",
@@ -261,14 +804,132 @@
       "venue": "AMV",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 5
       },
-      "events": []
+      "events": [
+        {
+          "minute": 10,
+          "team": "AUS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Blake Govers",
+          "assist": "Tom Wickham"
+        },
+        {
+          "minute": 23,
+          "team": "IRL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Shane O'Donoghue"
+        },
+        {
+          "minute": 27,
+          "team": "AUS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tom Wickham",
+          "assist": "Blake Govers"
+        },
+        {
+          "minute": 47,
+          "team": "AUS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Aran Zalewski"
+        },
+        {
+          "minute": 58,
+          "team": "IRL",
+          "type": "green_card",
+          "player": "Conor Harte"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 11,
+          "circle_entries": 19,
+          "penalty_corners": 5,
+          "possession": 54,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 5,
+          "circle_entries": 18,
+          "penalty_corners": 5,
+          "possession": 46,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! AUS vs IRL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 10,
+          "team": "AUS",
+          "text": "GOAL! Blake Govers (AUS) scores from a field goal — AUS 1-0 IRL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: AUS 1-0 IRL.",
+          "seq": 2
+        },
+        {
+          "minute": 23,
+          "team": "IRL",
+          "text": "GOAL! Shane O'Donoghue (IRL) scores from a field goal — AUS 1-1 IRL.",
+          "seq": 3
+        },
+        {
+          "minute": 27,
+          "team": "AUS",
+          "text": "GOAL! Tom Wickham (AUS) scores from a field goal — AUS 2-1 IRL.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: AUS 2-1 IRL.",
+          "seq": 5
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: AUS 2-1 IRL.",
+          "seq": 6
+        },
+        {
+          "minute": 47,
+          "team": "AUS",
+          "text": "GOAL! Aran Zalewski (AUS) scores from a penalty corner — AUS 3-1 IRL.",
+          "seq": 7
+        },
+        {
+          "minute": 58,
+          "team": "IRL",
+          "text": "Green Card for Conor Harte (IRL) — 2-minute suspension.",
+          "seq": 8
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: AUS 3-1 IRL.",
+          "seq": 9
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "C2",
@@ -282,14 +943,155 @@
       "venue": "BRU",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 6,
+        "away": 6
       },
-      "events": []
+      "events": [
+        {
+          "minute": 15,
+          "team": "RSA",
+          "type": "green_card",
+          "player": "Jethro Eustice"
+        },
+        {
+          "minute": 17,
+          "team": "ESP",
+          "type": "goal",
+          "via": "FG",
+          "player": "Pau Quemada"
+        },
+        {
+          "minute": 27,
+          "team": "ESP",
+          "type": "green_card",
+          "player": "Álvaro Iglesias"
+        },
+        {
+          "minute": 32,
+          "team": "ESP",
+          "type": "goal",
+          "via": "PC",
+          "player": "Marc Miralles"
+        },
+        {
+          "minute": 35,
+          "team": "RSA",
+          "type": "goal",
+          "via": "PS",
+          "player": "Jethro Eustice"
+        },
+        {
+          "minute": 36,
+          "team": "ESP",
+          "type": "goal",
+          "via": "FG",
+          "player": "Álvaro Iglesias",
+          "assist": "Pau Quemada"
+        },
+        {
+          "minute": 38,
+          "team": "RSA",
+          "type": "yellow_card",
+          "player": "Jethro Eustice"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 9,
+          "circle_entries": 26,
+          "penalty_corners": 6,
+          "possession": 57,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 9,
+          "circle_entries": 17,
+          "penalty_corners": 6,
+          "possession": 43,
+          "green_cards": 1,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ESP vs RSA under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "team": "RSA",
+          "text": "Green Card for Jethro Eustice (RSA) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ESP 0-0 RSA.",
+          "seq": 2
+        },
+        {
+          "minute": 17,
+          "team": "ESP",
+          "text": "GOAL! Pau Quemada (ESP) scores from a field goal — ESP 1-0 RSA.",
+          "seq": 3
+        },
+        {
+          "minute": 27,
+          "team": "ESP",
+          "text": "Green Card for Álvaro Iglesias (ESP) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ESP 1-0 RSA.",
+          "seq": 5
+        },
+        {
+          "minute": 32,
+          "team": "ESP",
+          "text": "GOAL! Marc Miralles (ESP) scores from a penalty corner — ESP 2-0 RSA.",
+          "seq": 6
+        },
+        {
+          "minute": 35,
+          "team": "RSA",
+          "text": "GOAL! Jethro Eustice (RSA) scores from a penalty stroke — ESP 2-1 RSA.",
+          "seq": 7
+        },
+        {
+          "minute": 36,
+          "team": "ESP",
+          "text": "GOAL! Álvaro Iglesias (ESP) scores from a field goal — ESP 3-1 RSA.",
+          "seq": 8
+        },
+        {
+          "minute": 38,
+          "team": "RSA",
+          "text": "Yellow Card for Jethro Eustice (RSA) — 5-minute suspension.",
+          "seq": 9
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ESP 3-1 RSA.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ESP 3-1 RSA.",
+          "seq": 11
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "D3",
