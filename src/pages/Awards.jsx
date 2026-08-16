@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
@@ -222,43 +222,49 @@ function PotmRace({ teams, byCode }) {
   )
 }
 
-export default function AwardsPage() {
+/**
+ * Awards body — rendered inside the Tournament tab (?tab=awards). The old
+ * /awards route redirects here so existing links keep working.
+ */
+export function AwardsView() {
   const [params, setParams] = useSearchParams()
-  const tab = params.get('tab') === 'potm' ? 'potm' : 'hall-of-fame'
+  const view = params.get('awards') === 'potm' ? 'potm' : 'hall-of-fame'
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const byCode = new Map(teams.map(t => [t.code, t]))
 
-  const setTab = t => {
+  const setView = v => {
     const next = new URLSearchParams(params)
-    t === 'hall-of-fame' ? next.delete('tab') : next.set('tab', t)
+    v === 'hall-of-fame' ? next.delete('awards') : next.set('awards', v)
     setParams(next, { replace: true })
   }
 
   return (
     <div>
-      <div className="mb-5 border-b border-white/5 pb-4">
-        <h1 className="font-display text-2xl font-bold tracking-tight">🏆 Awards</h1>
-        <p className="mt-1 text-xs text-pitch-400">
-          Official FIH awards graded against Oracle's pre-tournament picks, plus the live Player of the Tournament race.
-        </p>
-      </div>
+      <p className="mb-4 text-xs text-pitch-400">
+        Official FIH awards graded against Oracle&apos;s pre-tournament picks, plus the live Player of the Tournament race.
+      </p>
 
       <div className="mb-5 flex gap-1.5" role="tablist">
         {[['hall-of-fame', 'Hall of Fame'], ['potm', 'Player of the Tournament']].map(([id, label]) => (
-          <button key={id} role="tab" aria-selected={tab === id} onClick={() => setTab(id)}
+          <button key={id} role="tab" aria-selected={view === id} onClick={() => setView(id)}
             className={`rounded-md border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-              tab === id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
+              view === id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
             }`}>
             {label}
           </button>
         ))}
       </div>
 
-      {tab === 'hall-of-fame' ? <HallOfFame byCode={byCode} /> : <PotmRace teams={teams} byCode={byCode} />}
+      {view === 'hall-of-fame' ? <HallOfFame byCode={byCode} /> : <PotmRace teams={teams} byCode={byCode} />}
 
       <div className="mt-6">
         <Link to="/prediction-race" className="text-xs font-medium text-brand hover:underline">Oracle match record →</Link>
       </div>
     </div>
   )
+}
+
+/** /awards → the Tournament tab that now hosts it. */
+export default function AwardsRedirect() {
+  return <Navigate to="/tournament?tab=awards" replace />
 }

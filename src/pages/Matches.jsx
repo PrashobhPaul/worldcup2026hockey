@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSwipeTabs } from '../components/useSwipeTabs'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
@@ -66,6 +67,12 @@ export default function MatchesPage() {
     const statusOk = tab === 'all' ? true : m.status === tab
     const poolOk = pool === 'all' ? true : pool === 'knockout' ? m.phase !== 'pool' : m.pool === pool
     return statusOk && poolOk
+  })
+
+  useSwipeTabs({
+    count: STATUS_TABS.length,
+    index: Math.max(0, STATUS_TABS.findIndex(t => (t.id ?? t) === tab)),
+    onChange: i => setFilter('tab', STATUS_TABS[i].id ?? STATUS_TABS[i], setTab),
   })
 
   const byDate = {}

@@ -13,7 +13,7 @@ import PlayersPage from './pages/Players'
 import TournamentPage from './pages/Tournament'
 import OraclePage from './pages/Oracle'
 import AILabPage from './pages/AILab'
-import AwardsPage from './pages/Awards'
+import AwardsRedirect from './pages/Awards'
 import TrustPage from './pages/Trust'
 import MatchSimPage from './pages/MatchSim'
 
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       { path: '/tournament', element: <TournamentPage /> },
       { path: '/prediction-race', element: <OraclePage /> },
       { path: '/ai-lab', element: <AILabPage /> },
-      { path: '/awards', element: <AwardsPage /> },
+      { path: '/awards', element: <AwardsRedirect /> },
       { path: '/trust', element: <TrustPage /> },
       { path: '/match/sim/:simId', element: <MatchSimPage /> },
       { path: '*', element: <HomePage /> },

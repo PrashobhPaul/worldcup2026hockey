@@ -14,11 +14,17 @@
       "color": "#FF6400",
       "captain": "Thierry Brinkman",
       "coach": "Jeroen Delmee",
-      "key_players": ["Thierry Brinkman", "Florent van Aubel", "Seve van Ass", "Pirmin Blaak"],
+      "key_players": [
+        "Thierry Brinkman",
+        "Florent van Aubel",
+        "Seve van Ass",
+        "Pirmin Blaak"
+      ],
       "titles": 3,
       "last_title": 2004,
       "contender_tier": "favourite",
-      "win_prob": 18.2
+      "win_prob": 18.2,
+      "intro": "Three-time world champions and the most decorated side never to stop rebuilding, the Netherlands arrive as hosts of half the tournament and as the team the draw was arranged around. Oranje's last world title came in 2004, an absence that sits uneasily with a nation that treats hockey as a birthright. Thierry Brinkman captains a squad built on relentless circle entries and a goalkeeper in Pirmin Blaak who has seen every kind of World Cup night. In Pool A they should have room to find rhythm early."
     },
     {
       "code": "ARG",
@@ -31,11 +37,17 @@
       "color": "#75AADB",
       "captain": "Lucas Martín Rossi",
       "coach": "Germán Orozco",
-      "key_players": ["Agustín Bugallo", "Matías Paredes", "Lucas Martín Rossi", "Tomás Santiago"],
+      "key_players": [
+        "Agustín Bugallo",
+        "Matías Paredes",
+        "Lucas Martín Rossi",
+        "Tomás Santiago"
+      ],
       "titles": 2,
       "last_title": 2010,
       "contender_tier": "favourite",
-      "win_prob": 14.7
+      "win_prob": 14.7,
+      "intro": "Los Leones changed the sport's power map when they took Olympic gold in 2016, and they have never gone back to being anyone's outsiders. Two world titles sit in the cabinet, the most recent in 2010. Argentina's game is built on speed of thought — quick restarts, aggressive pressing, drag-flick threat from distance — and Lucas Martín Rossi leads a group that has grown up together. Pool A pits them against the hosts immediately, which is exactly the kind of opening night they enjoy."
     },
     {
       "code": "NZL",
@@ -48,11 +60,17 @@
       "color": "#000000",
       "captain": "Sam Lane",
       "coach": "Darren Smith",
-      "key_players": ["Brad Read", "Marcus Child", "Sam Lane", "Leon Hayward"],
+      "key_players": [
+        "Brad Read",
+        "Marcus Child",
+        "Sam Lane",
+        "Leon Hayward"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "challenger",
-      "win_prob": 3.8
+      "win_prob": 3.8,
+      "intro": "The Black Sticks come to Belgium and the Netherlands as the tournament's most familiar dark horses: never world champions, never comfortable to play against. Ranked outside the top ten, New Zealand's route out of Pool A runs through the Netherlands and Argentina, which means their tournament may be decided in the seventy minutes against Japan. Sam Lane's side counter well and defend the circle in numbers; if their penalty corner clicks early, the pool's arithmetic changes."
     },
     {
       "code": "JPN",
@@ -65,11 +83,17 @@
       "color": "#BC002D",
       "captain": "Koji Kayukawa",
       "coach": "Siegfried Aiken",
-      "key_players": ["Kosuke Yamada", "Koji Kayukawa", "Shota Yamada", "Koji Yamasaki"],
+      "key_players": [
+        "Kosuke Yamada",
+        "Koji Kayukawa",
+        "Shota Yamada",
+        "Koji Yamasaki"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "dark_horse",
-      "win_prob": 1.4
+      "win_prob": 1.4,
+      "intro": "Samurai Japan qualified as Asian contenders and arrive with the lowest ranking in Pool A and none of the associated resignation. Japan's hockey is quick, structured and unusually disciplined at the back — a side that concedes late rarely and turns games into low-scoring tests of patience. Koji Kayukawa leads a squad that will look at a pool containing the Netherlands and Argentina and see two chances to be remembered."
     },
     {
       "code": "BEL",
@@ -82,11 +106,17 @@
       "color": "#EF3340",
       "captain": "Arthur de Sloover",
       "coach": "Koen Van der Gucht",
-      "key_players": ["Alexander Hendrickx", "Loick Luypaert", "Arthur de Sloover", "Vincent Vanasch"],
+      "key_players": [
+        "Alexander Hendrickx",
+        "Loick Luypaert",
+        "Arthur de Sloover",
+        "Vincent Vanasch"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "favourite",
-      "win_prob": 16.9
+      "win_prob": 16.9,
+      "intro": "The Red Lions are the modern era's great overachievers: Olympic champions, world champions in 2018, and co-hosts here with a home crowd in Brussels for the knockout nights. Belgium have no World Cup title from before their golden generation and everything since. Alexander Hendrickx remains the most feared drag-flicker in the game, Vincent Vanasch one of its best goalkeepers, and Arthur de Sloover captains a side that treats structure as a weapon. Anything less than the medal rounds would count as failure."
     },
     {
       "code": "FRA",
@@ -99,11 +129,17 @@
       "color": "#002395",
       "captain": "Victor Charlet",
       "coach": "Gilles Verdier",
-      "key_players": ["Victor Charlet", "Pierre Brichard", "Timothée Clément", "Arthur Thieffry"],
+      "key_players": [
+        "Victor Charlet",
+        "Pierre Brichard",
+        "Timothée Clément",
+        "Arthur Thieffry"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "challenger",
-      "win_prob": 2.1
+      "win_prob": 2.1,
+      "intro": "Les Bleus are the story of the last decade in European hockey — from qualification afterthought to a side nobody wants in their pool. France build around Victor Charlet, whose corner routines can win a match on their own, and a counter-attack that punishes a single lost midfield duel. Drawn with Belgium and Germany in Pool B, they will need one upset; on their evidence of recent years, that is not a fanciful ask."
     },
     {
       "code": "GER",
@@ -116,11 +152,17 @@
       "color": "#FFCE00",
       "captain": "Niklas Wellen",
       "coach": "André Henning",
-      "key_players": ["Niklas Wellen", "Christopher Rühr", "Mats Grambusch", "Jean-Paul Danneberg"],
+      "key_players": [
+        "Niklas Wellen",
+        "Christopher Rühr",
+        "Mats Grambusch",
+        "Jean-Paul Danneberg"
+      ],
       "titles": 4,
       "last_title": 2006,
       "contender_tier": "contender",
-      "win_prob": 9.3
+      "win_prob": 9.3,
+      "intro": "Four world titles, the most of any nation here, and a habit of arriving at tournaments in better shape than the rankings suggest. Germany's last World Cup came in 2006, but the intervening years have produced a stream of finals and a culture that reloads rather than rebuilds. Niklas Wellen and Christopher Rühr give them scoring from open play as well as set pieces. Pool B alongside Belgium is the toughest first-round draw in the tournament."
     },
     {
       "code": "MAS",
@@ -133,11 +175,17 @@
       "color": "#CC0001",
       "captain": "Adrian Albert",
       "coach": "A. Arulselvaraj",
-      "key_players": ["Tengku Ahmad Tajuddin", "Adrian Albert", "Razie Rahim", "Hafizuddin Othman"],
+      "key_players": [
+        "Tengku Ahmad Tajuddin",
+        "Adrian Albert",
+        "Razie Rahim",
+        "Hafizuddin Othman"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "challenger",
-      "win_prob": 2.6
+      "win_prob": 2.6,
+      "intro": "The Tigers arrive as Asia's most improved side and the team most likely to make the pool stage uncomfortable for somebody. Malaysia's hockey is played at pace, with Tengku Ahmad Tajuddin driving from midfield and Adrian Albert leading a squad that has closed the gap on the European sides in recent seasons. In Pool B with Belgium, Germany and France, they will need to take at least one scalp — and they have taken them before."
     },
     {
       "code": "AUS",
@@ -150,11 +198,17 @@
       "color": "#00843D",
       "captain": "Aran Zalewski",
       "coach": "Colin Batch",
-      "key_players": ["Tom Wickham", "Blake Govers", "Tyler Lovell", "Aran Zalewski"],
+      "key_players": [
+        "Tom Wickham",
+        "Blake Govers",
+        "Tyler Lovell",
+        "Aran Zalewski"
+      ],
       "titles": 3,
       "last_title": 2010,
       "contender_tier": "favourite",
-      "win_prob": 21.6
+      "win_prob": 21.6,
+      "intro": "The Kookaburras start this World Cup ranked first in the world, which is where Australia have spent most of the last two decades. Three world titles, the most recent in 2010, and a system that produces the same relentless, high-tempo hockey no matter who is in the shirt. Aran Zalewski captains a squad with Blake Govers' flick and Tom Wickham's movement in front of goal. Pool C should be a formality; Australia's tournament begins in the quarter-finals."
     },
     {
       "code": "ESP",
@@ -167,11 +221,17 @@
       "color": "#AA151B",
       "captain": "Marc Miralles",
       "coach": "Ángel Ferreiro",
-      "key_players": ["Pau Quemada", "Álvaro Iglesias", "Marc Miralles", "Quico Cortés"],
+      "key_players": [
+        "Pau Quemada",
+        "Álvaro Iglesias",
+        "Marc Miralles",
+        "Quico Cortés"
+      ],
       "titles": 1,
       "last_title": 1998,
       "contender_tier": "contender",
-      "win_prob": 6.2
+      "win_prob": 6.2,
+      "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a quarter-final where their patience and set-piece accuracy can outlast a more expansive opponent."
     },
     {
       "code": "IRL",
@@ -184,11 +244,17 @@
       "color": "#169B62",
       "captain": "Conor Harte",
       "coach": "Mark Tumilty",
-      "key_players": ["Shane O'Donoghue", "Cian Doyle", "Conor Harte", "Mark Ingram"],
+      "key_players": [
+        "Shane O'Donoghue",
+        "Cian Doyle",
+        "Conor Harte",
+        "Mark Ingram"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "dark_horse",
-      "win_prob": 2.8
+      "win_prob": 2.8,
+      "intro": "The Green Machine reached this World Cup the hard way, and that has been Ireland's pattern for a decade: qualify against the odds, then make life miserable for someone better resourced. Conor Harte leads a squad with Shane O'Donoghue's experience and a defensive block that stays compact for the full seventy minutes. Pool C offers Spain and South Africa as realistic targets, and Ireland have made a habit of taking realistic targets."
     },
     {
       "code": "RSA",
@@ -201,11 +267,17 @@
       "color": "#007A4D",
       "captain": "Jethro Eustice",
       "coach": "Greg Clark",
-      "key_players": ["Austin Smith", "Ryan Julius", "Jethro Eustice", "Rassie Pieterse"],
+      "key_players": [
+        "Austin Smith",
+        "Ryan Julius",
+        "Jethro Eustice",
+        "Rassie Pieterse"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "outsider",
-      "win_prob": 0.9
+      "win_prob": 0.9,
+      "intro": "Amabhungane arrive as Africa's representatives and the lowest-ranked side in Pool C, a position South Africa have turned into an identity. Austin Smith's experience anchors a squad that plays with more freedom than its ranking implies, and their tournament will hinge on the fixture against Ireland. South Africa have never got out of a World Cup pool; this is a group where the arithmetic at least allows the conversation."
     },
     {
       "code": "IND",
@@ -218,11 +290,17 @@
       "color": "#FF9933",
       "captain": "Harmanpreet Singh",
       "coach": "Craig Fulton",
-      "key_players": ["Harmanpreet Singh", "Manpreet Singh", "Amit Rohidas", "Krishan Pathak"],
+      "key_players": [
+        "Harmanpreet Singh",
+        "Manpreet Singh",
+        "Amit Rohidas",
+        "Krishan Pathak"
+      ],
       "titles": 2,
       "last_title": 1975,
       "contender_tier": "contender",
-      "win_prob": 7.4
+      "win_prob": 7.4,
+      "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not the quarter-finals."
     },
     {
       "code": "ENG",
@@ -235,11 +313,17 @@
       "color": "#CF142B",
       "captain": "Will Calnan",
       "coach": "David Ralph",
-      "key_players": ["Sam Ward", "Lee Morton", "Will Calnan", "George Pinner"],
+      "key_players": [
+        "Sam Ward",
+        "Lee Morton",
+        "Will Calnan",
+        "George Pinner"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "contender",
-      "win_prob": 8.1
+      "win_prob": 8.1,
+      "intro": "England have never won a World Cup, a fact that sits alongside a consistent presence in the last eight and a domestic system that keeps producing forwards. Sam Ward's finishing and Will Calnan's captaincy give them a spine, and their pressing game is among the most organised in Europe. Pool D pairs them with India in what may be the tie of the first round, with Pakistan and Wales offering no free points."
     },
     {
       "code": "PAK",
@@ -252,11 +336,17 @@
       "color": "#01411C",
       "captain": "Sufyan Khan",
       "coach": "Siegfried Aikman",
-      "key_players": ["Arshad Liaquat", "Muhammad Umar Bhutta", "Sufyan Khan", "Usman Qadir"],
+      "key_players": [
+        "Arshad Liaquat",
+        "Muhammad Umar Bhutta",
+        "Sufyan Khan",
+        "Usman Qadir"
+      ],
       "titles": 4,
       "last_title": 1994,
       "contender_tier": "dark_horse",
-      "win_prob": 3.1
+      "win_prob": 3.1,
+      "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Sufyan Khan leads a young squad in which Muhammad Umar Bhutta's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game."
     },
     {
       "code": "WAL",
@@ -269,11 +359,18 @@
       "color": "#C8102E",
       "captain": "Gareth Furlong",
       "coach": "Steve Morgan",
-      "key_players": ["Rupert Shipperley", "James Carson", "Gareth Furlong", "Tom Williams"],
+      "key_players": [
+        "Rupert Shipperley",
+        "James Carson",
+        "Gareth Furlong",
+        "Tom Williams"
+      ],
       "titles": 0,
       "last_title": null,
       "contender_tier": "outsider",
-      "win_prob": 0.9
+      "win_prob": 0.9,
+      "intro": "The Dragons arrive ranked sixteenth of sixteen, at their second World Cup, and with nothing to lose in the most literal sense. Wales defend deep, break through Rupert Shipperley, and treat every corner won as a genuine event. Drawn with India, England and Pakistan in Pool D, they will be underdogs in all three matches — which, as Wales have shown before, is the situation in which they are hardest to beat."
     }
-  ]
+  ],
+  "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results."
 }

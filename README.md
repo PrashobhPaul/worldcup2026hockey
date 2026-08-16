@@ -1,48 +1,95 @@
-# 🏑 Hockey.AI — FIH Hockey World Cup 2026
+<div align="center">
 
-AI stories, match intelligence, simulations and visual analytics for every FIH Hockey World Cup 2026 fixture. Sister app to [Soccer.AI](https://fifa2026.prashobhpaul.com).
+<img src="public/logo.png" alt="" width="104" height="104">
 
-**Live:** https://hockey2026.prashobhpaul.com
+<img src="public/hockeyai_name.png" alt="Hockey.AI" width="320">
 
-## Architecture
+### Your intelligent companion for the FIH Hockey World Cup 2026
 
-Same product DNA as Soccer.AI:
+**Analyze. Predict. Experience.**
 
-- **React SPA** (Vite) + React Router · **Tailwind CSS v4** · Space Grotesk / Inter / JetBrains Mono
-- **Dexie (IndexedDB)** — offline-first client datastore; standings computed live from finished matches
-- **PWA** (vite-plugin-pwa + Workbox) — installable, full offline support, NetworkFirst data / CacheFirst assets
-- **Oracle engine** — per-match probability rows (`p_home_win / p_draw / p_away_win`); knockout advance = `home + draw/2`; picks published before push-back, graded publicly, never edited
-- **Zero backend** — GitHub Actions is the data plane:
-  - `scripts/update_data.py` (every 30 min): FIH TMS PDF parse, status transitions, Oracle pick generation, `data-version.json` bump → every installed PWA resyncs
-  - `scripts/generate_ai_stories.py`: Claude generates match stories for completed fixtures (needs `ANTHROPIC_API_KEY` repo secret)
+16 nations · 32 matches · Belgium &amp; Netherlands · 15–30 August 2026
 
-## Feature parity with Soccer.AI
+<br>
 
-Every Soccer.AI surface has a hockey twin:
+<a href="https://prashobhpaul.github.io/worldcup2026hockey/">
+<img src="https://img.shields.io/badge/▶%20Open%20Hockey.AI-Install%20as%20an%20app-ffb547?style=for-the-badge&labelColor=0b1736" alt="Open Hockey.AI">
+</a>
 
-| Soccer.AI | Hockey.AI |
+<br><br>
+
+<img src="https://img.shields.io/badge/works-offline-22c55e?style=flat-square&labelColor=0b1736" alt="Works offline">
+<img src="https://img.shields.io/badge/no-account%20needed-8fa3d1?style=flat-square&labelColor=0b1736" alt="No account needed">
+<img src="https://img.shields.io/badge/no-ads%20or%20trackers-8fa3d1?style=flat-square&labelColor=0b1736" alt="No ads or trackers">
+<img src="https://img.shields.io/badge/free-forever-ffb547?style=flat-square&labelColor=0b1736" alt="Free">
+
+</div>
+
+---
+
+## Install it in five seconds
+
+Hockey.AI is a web app that installs like a native one — no store, no sign-up, no download queue.
+
+| | |
 |---|---|
-| AI Lab (live intelligence · previews · stories) | `/ai-lab` — momentum, win-prob evolution, chaos index, comeback, key drivers, tactical insights, match DNA radar |
-| Oracle (race worm · odds · bracket) | `/prediction-race` — champion-probability race, per-team stage odds, predictive knockout bracket, graded picks ledger |
-| Awards + Ballon d'Or | `/awards` — FIH Hall of Fame picks + live Player of the Tournament race (softmax model) |
-| AI Simulation (Best XI exhibition) | `/match/sim/sim_best_xi_vs_rising_xi` — Tournament's Best XI vs Rising Stars XI |
-| Stats (leaderboards + standings) | `/tournament` — Golden Stick, assists, attack & defense, fair play + pool standings |
-| Trust & Privacy | `/trust` |
-| Team pages with Oracle snapshot + champion worm | `/teams/:code` |
+| **iPhone / iPad** | Open the link in Safari → **Share** → **Add to Home Screen** |
+| **Android** | Open the link in Chrome → tap **Install** when it appears, or **⋮ → Install app** |
+| **Desktop** | Open the link in Chrome or Edge → click the **install icon** in the address bar |
 
-Where Soccer.AI runs its Elo + Dixon-Coles engine server-side, Hockey.AI ships a seeded
-client-side Monte-Carlo engine (`src/engine/strength.js`, `simulate.js`) — 16 teams and 32
-matches are cheap enough to simulate in the browser, deterministically.
+Once installed it keeps working on the underground, on a plane, and in a stadium with no signal — every match, table and prediction is stored on your device and refreshes itself the moment you're back online.
 
-## Manual score entry (phone, GitHub web UI)
+---
 
-Edit `public/data/fixtures.json` → set `score`, `status: "completed"`, `penalty_corners`, `events` → bump `version` in `public/data/data-version.json` → commit. The pipeline never overwrites manual scores.
+## What it does
 
-## Deploy
+### 🏑 Every match, as it happens
+Live scores, quarter-by-quarter timelines, penalty corners, cards and full match stats — with the key moments marked so you can catch up on a match in fifteen seconds.
 
-**GitHub Pages** — `.github/workflows/deploy-pages.yml` builds and publishes on every push to
-`main` (enable is automatic on first run). The build honors the Pages base path, so the app
-works at `https://<user>.github.io/worldcup2026hockey/` and on a custom domain alike.
+### 🎯 Predictions that are graded in public
+Every fixture gets an engine pick **before** it's played. Once the result is in, the pick is graded — correct or wrong, on the record. Picks are never edited or deleted after the fact, and the running accuracy is shown at the top of every screen. If the model is having a bad tournament, you'll see it.
 
-**Cloudflare Pages** (alternative) — build command `npm run build` · output directory `dist` ·
-custom domain `hockey2026.prashobhpaul.com`.
+### 📈 One champion probability, everywhere
+A Monte-Carlo simulation runs the remaining tournament thousands of times after every completed match. The number you see on the Oracle race chart is the same number on the odds table, the team page and the home screen — one calculation, one answer, no contradictions.
+
+### 🧠 AI Lab
+Live win-probability that moves with the match, momentum swings, upcoming-fixture previews, and a written brief for every finished match.
+
+### 🏆 Tournament centre
+Pool tables, stat boards, the bracket as it locks, the Tournament's Best XI picked purely on AI player ratings — and the awards, with the engine's pre-tournament picks graded against the real ones.
+
+### 🌍 Teams and players
+All 16 squads with a pre-tournament introduction, a live title probability, and per-player AI ratings out of 100 that update after every match. Filter the field by who's still alive, the favourites, the contenders, the dark horses.
+
+---
+
+## Why you can trust the numbers
+
+- **The engine shows its work.** Every probability names the snapshot it came from — how many matches are counted, which model version, how many simulations.
+- **It says when it doesn't know.** No fake 33/33/33 splits, no invented stats. Where data is estimated rather than official, it's labelled as estimated.
+- **Nothing is quietly rewritten.** Match results, predictions and awards are append-only; the git history is the audit trail.
+- **Your data stays yours.** No account, no analytics, no ad network. The app never sends anything about you anywhere.
+
+---
+
+## Under the hood
+
+React + Vite, offline storage in IndexedDB, and a GitHub Actions pipeline that pulls official FIH results every 30 minutes, recomputes player ratings and predictions, and redeploys itself. There is no server and no database to pay for — the tournament data lives in this repository.
+
+```bash
+npm install
+npm run dev               # local dev server
+npm run build             # production build
+npm run test:probability  # probability consistency suite
+```
+
+---
+
+<div align="center">
+
+Sister app: **[Soccer.AI](https://fifa2026.prashobhpaul.com)** — the same engine for the football World Cup.
+
+<sub>An independent project. Not affiliated with, endorsed by, or connected to the FIH.<br>
+Team names, results and rankings are the property of their respective owners.</sub>
+
+</div>

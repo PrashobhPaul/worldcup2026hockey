@@ -5,6 +5,7 @@ import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
+import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
 import { formatDate, phaseTag } from '../components/MatchCard'
 import {
@@ -367,6 +368,12 @@ export default function OraclePage() {
     t === 'race' ? next.delete('tab') : next.set('tab', t)
     setParams(next, { replace: true })
   }
+
+  useSwipeTabs({
+    count: TABS.length,
+    index: TABS.findIndex(t => t.id === tab),
+    onChange: i => setTab(TABS[i].id),
+  })
 
   if (matches === undefined || predictions === undefined) return <Skeleton h={500} />
 

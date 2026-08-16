@@ -41,6 +41,11 @@ TEAM_CODE_MAP = {
     'india': 'IND', 'england': 'ENG', 'pakistan': 'PAK', 'wales': 'WAL',
 }
 
+FIH_RANKING_URLS = [
+    'https://www.fih.hockey/outdoor-hockey-rankings',
+    'https://www.fih.hockey/rankings/outdoor',
+]
+
 def load(name):
     with open(os.path.join(DATA_DIR, name)) as f:
         return json.load(f)
@@ -147,6 +152,82 @@ def fetch_tms_standings():
 
 # ---------------------------------------------------- status transitions
 MATCH_DURATION_MIN = 105  # 60 play + breaks + buffer
+
+# ── FIH world rankings ────────────────────────────────────────────────────
+# The app's FIH ranks must match fih.hockey. The ranking page is unreachable
+# from local dev sandboxes (egress policy), so it is fetched here, inside the
+# GitHub Actions runner, and the result is written back into teams.json.
+# Ranks are never hand-typed: if the fetch or parse fails, the existing data is
+# left untouched and the failure is logged loudly for the next run to fix.
+
+def fetch_fih_rankings():
+    """Scrape the official men's outdoor world ranking → {code: rank}."""
+    html = None
+    for url in FIH_RANKING_URLS:
+        try:
+            req = urllib.request.Request(url, headers={
+                'User-Agent': 'Mozilla/5.0 (compatible; hockey-ai-bot/1.0)',
+                'Accept': 'text/html,application/xhtml+xml',
+            })
+            with urllib.request.urlopen(req, timeout=45) as resp:
+                print(f'FIH rankings fetched: HTTP {resp.status} from {url}')
+                html = resp.read().decode('utf-8', 'replace')
+            if html:
+                break
+        except Exception as e:
+            print(f'FIH rankings fetch failed for {url}: {e.__class__.__name__}: {e}')
+    if not html:
+        print('RANKINGS: no ranking page reachable — leaving fih_rank untouched.')
+        return None
+
+    text = re.sub(r'<[^>]+>', '\n', html)
+    text = (text.replace('&amp;', '&').replace('&nbsp;', ' ')
+                .replace('&#039;', "'").replace('&quot;', '"'))
+    lines = [ln.strip() for ln in text.split('\n') if ln.strip()]
+
+    # The table renders as a flat run of cells: rank, nation, points, …
+    # Pair each known nation with the nearest preceding standalone integer.
+    ranks, seen_rank = {}, None
+    for ln in lines:
+        if re.fullmatch(r'\d{1,3}', ln):
+            seen_rank = int(ln)
+            continue
+        code = TEAM_CODE_MAP.get(ln.lower().strip())
+        if code and seen_rank and code not in ranks and 1 <= seen_rank <= 150:
+            ranks[code] = seen_rank
+            seen_rank = None
+
+    if len(ranks) < 8:
+        print(f'RANKINGS: parse matched only {len(ranks)} nations — treating as failure.')
+        print('RANKINGS: sample of page text follows for parser tuning:')
+        for ln in lines[:40]:
+            print(f'  | {ln[:90]}')
+        return None
+
+    print(f'RANKINGS: parsed {len(ranks)} World Cup nations: '
+          + ', '.join(f'{c}#{r}' for c, r in sorted(ranks.items(), key=lambda kv: kv[1])))
+    return ranks
+
+def apply_rankings(teams, ranks):
+    """Write official ranks into teams.json. Returns True if anything changed."""
+    if not ranks:
+        return False
+    changed = False
+    for t in teams['teams']:
+        new = ranks.get(t['code'])
+        if new is None:
+            print(f"RANKINGS: {t['code']} not present in the official table — keeping #{t['fih_rank']}")
+            continue
+        if t['fih_rank'] != new:
+            print(f"RANKINGS: {t['code']} #{t['fih_rank']} -> #{new}")
+            t['fih_rank'] = new
+            changed = True
+    if changed:
+        teams['rankings_source'] = FIH_RANKING_URLS[0]
+        teams['rankings_updated_at'] = now_utc().isoformat()
+    else:
+        print('RANKINGS: already in sync with fih.hockey.')
+    return changed
 
 def update_statuses(fixtures):
     """scheduled -> live -> completed based on kickoff time. Never touches scores."""
@@ -630,6 +711,10 @@ def main():
     changed = False
     changed |= update_statuses(fixtures)
 
+    # Official FIH world rankings — fetched here because CI has the egress
+    # that local sandboxes don't. Feeds both the UI and the model prior.
+    teams_changed = apply_rankings(teams, fetch_fih_rankings())
+
     tms = fetch_tms_standings()
     if tms:
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
@@ -641,6 +726,11 @@ def main():
     changed |= generate_predictions(fixtures, teams, predictions)
 
     stamp = now_utc().isoformat()
+    if teams_changed:
+        save('teams.json', teams)
+        changed = True
+        print('teams.json updated with official FIH ranks.')
+
     if changed:
         fixtures['last_updated'] = stamp
         predictions['updated_at'] = stamp

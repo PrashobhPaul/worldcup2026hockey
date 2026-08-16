@@ -110,6 +110,15 @@ export default function TeamDetailPage() {
             <TitleOdds team={team} teams={teams} matches={allMatches} />
           </div>
         </div>
+        {team.intro && (
+          <div className="mt-4 rounded-xl border-l-2 border-l-brand/60 border-white/5 bg-pitch-950/40 p-4">
+            <div className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-pitch-400">
+              Before the tournament
+            </div>
+            <p className="text-sm leading-relaxed text-pitch-300">{team.intro}</p>
+          </div>
+        )}
+
         <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
           {[
             ['Captain', team.captain],
