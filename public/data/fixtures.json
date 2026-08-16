@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-16T18:31:54.030465+00:00",
+  "last_updated": "2026-08-16T18:55:55.302708+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -619,14 +619,105 @@
       "venue": "BRU",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 0
       },
       "penalty_corners": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 3
       },
-      "events": []
+      "events": [
+        {
+          "minute": 7,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Agustín Bugallo"
+        },
+        {
+          "minute": 18,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Lucas Martín Rossi"
+        },
+        {
+          "minute": 50,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Matías Paredes"
+        }
+      ],
+      "result_source": "fih-tms",
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 6,
+          "circle_entries": 24,
+          "penalty_corners": 5,
+          "possession": 65,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 0,
+          "shots": 3,
+          "circle_entries": 13,
+          "penalty_corners": 3,
+          "possession": 35,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ARG vs JPN under way.",
+          "seq": 0
+        },
+        {
+          "minute": 7,
+          "team": "ARG",
+          "text": "GOAL! Agustín Bugallo (ARG) scores from a penalty corner — ARG 1-0 JPN.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ARG 1-0 JPN.",
+          "seq": 2
+        },
+        {
+          "minute": 18,
+          "team": "ARG",
+          "text": "GOAL! Lucas Martín Rossi (ARG) scores from a penalty corner — ARG 2-0 JPN.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ARG 2-0 JPN.",
+          "seq": 4
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ARG 2-0 JPN.",
+          "seq": 5
+        },
+        {
+          "minute": 50,
+          "team": "ARG",
+          "text": "GOAL! Matías Paredes (ARG) scores from a penalty corner — ARG 3-0 JPN.",
+          "seq": 6
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ARG 3-0 JPN.",
+          "seq": 7
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "A2",

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-16T18:31:54.030465+00:00",
+  "last_updated": "2026-08-16T18:55:55.302708+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -313,17 +313,17 @@
       "team": "ARG",
       "position": "Midfielder",
       "number": 6,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": true,
       "fih_star": false,
       "profile": "Los Leones captain. Tenacious and experienced.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 67.0
     },
     {
       "id": "ARG_02",
@@ -331,17 +331,17 @@
       "team": "ARG",
       "position": "Forward",
       "number": 11,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": false,
       "profile": "Argentina's key forward threat. Quick and clinical.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 63.0
     },
     {
       "id": "ARG_03",
@@ -349,17 +349,17 @@
       "team": "ARG",
       "position": "Defender",
       "number": 3,
-      "goals": 0,
+      "goals": 1,
       "assists": 0,
-      "pc_scored": 0,
+      "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
       "is_captain": false,
       "fih_star": false,
       "profile": "Experienced drag-flicker. Argentina's primary PC option.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 82.0
     },
     {
       "id": "GER_01",
@@ -700,8 +700,8 @@
       "fih_star": false,
       "profile": "Samurai Japan's captain. Engine of Japan's midfield.",
       "green_cards": 0,
-      "matches_played": 0,
-      "ai_rating": 40
+      "matches_played": 1,
+      "ai_rating": 59.0
     },
     {
       "id": "FRA_01",
