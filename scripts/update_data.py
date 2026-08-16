@@ -110,7 +110,10 @@ def fetch_tms_standings():
                 for line in (page.extract_text() or '').split('\n'):
                     if line.strip():
                         all_lines.append(line)
-                    pool_m = re.search(r'\bPool\s+([A-D])\b', line, re.I)
+                    # TMS pool headers are bare letter lines ("A" / "A Games Goals"),
+                    # confirmed from CI diagnostics — "Pool A" style kept as fallback.
+                    pool_m = (re.match(r'^\s*([A-D])(?:\s+Games\b.*)?\s*$', line)
+                              or re.search(r'\bPool\s+([A-D])\b', line, re.I))
                     if pool_m:
                         current_pool = pool_m.group(1).upper()
                         pools.setdefault(current_pool, [])
