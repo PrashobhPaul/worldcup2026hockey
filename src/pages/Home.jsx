@@ -31,12 +31,11 @@ function HeroCard({ liveNow }) {
       </div>
       <div className="relative flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:p-8">
         <div className="min-w-0 flex-1">
-          <div className="mb-3 flex items-center gap-3">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-14 w-14 rounded-2xl shadow-[0_0_28px_rgba(255,181,71,0.35)]" />
-            <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
-              Hockey<span className="text-brand">.AI</span>
-            </h1>
-          </div>
+          {/* No app icon here — this card is about the World Cup; its only
+              artwork is the official tournament emblem (owner-supplied). */}
+          <h1 className="mb-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Hockey<span className="text-brand">.AI</span>
+          </h1>
           <p className="max-w-md text-sm text-pitch-300">
             One game. Countless stories. <span className="font-semibold text-white">Stay informed. Stay ahead.</span>
           </p>
