@@ -4,9 +4,18 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-16T00:00:00Z",
+  "last_updated": "2026-08-16T14:57:58.642768+00:00",
   "source": "FIH TMS",
-  "phases": ["Pool A","Pool B","Pool C","Pool D","Quarter-finals","Semi-finals","Bronze Final","Gold Final"],
+  "phases": [
+    "Pool A",
+    "Pool B",
+    "Pool C",
+    "Pool D",
+    "Quarter-finals",
+    "Semi-finals",
+    "Bronze Final",
+    "Gold Final"
+  ],
   "venues": {
     "AMV": "Wagener Stadion, Amstelveen",
     "BRU": "Royal Leopold Club, Brussels"
@@ -23,13 +32,43 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
-      "score": {"home": 3, "away": 1},
-      "penalty_corners": {"home": 8, "away": 2},
+      "score": {
+        "home": 3,
+        "away": 1
+      },
+      "penalty_corners": {
+        "home": 8,
+        "away": 2
+      },
       "events": [
-        {"type": "goal", "team": "IND", "minute": 12, "player": "Harmanpreet Singh", "via": "PC"},
-        {"type": "goal", "team": "WAL", "minute": 24, "player": "Gareth Furlong", "via": "FG"},
-        {"type": "goal", "team": "IND", "minute": 38, "player": "Amit Rohidas", "via": "PC"},
-        {"type": "goal", "team": "IND", "minute": 54, "player": "Abhishek", "via": "FG"}
+        {
+          "type": "goal",
+          "team": "IND",
+          "minute": 12,
+          "player": "Harmanpreet Singh",
+          "via": "PC"
+        },
+        {
+          "type": "goal",
+          "team": "WAL",
+          "minute": 24,
+          "player": "Gareth Furlong",
+          "via": "FG"
+        },
+        {
+          "type": "goal",
+          "team": "IND",
+          "minute": 38,
+          "player": "Amit Rohidas",
+          "via": "PC"
+        },
+        {
+          "type": "goal",
+          "team": "IND",
+          "minute": 54,
+          "player": "Abhishek",
+          "via": "FG"
+        }
       ]
     },
     {
@@ -43,8 +82,14 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -58,8 +103,14 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "completed",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -73,8 +124,14 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "completed",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -87,9 +144,15 @@
       "time": "13:30",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "scheduled",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "status": "completed",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -103,8 +166,14 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -117,9 +186,15 @@
       "time": "13:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "scheduled",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "status": "completed",
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -133,8 +208,14 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
-      "penalty_corners": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
+      "penalty_corners": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -148,7 +229,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -162,7 +246,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -176,7 +263,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -190,7 +280,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -204,7 +297,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -218,7 +314,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -232,7 +331,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -246,7 +348,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -260,7 +365,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -274,7 +382,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -288,7 +399,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -302,7 +416,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -316,7 +433,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -330,7 +450,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -344,7 +467,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -358,7 +484,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -373,7 +502,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -388,7 +520,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -403,7 +538,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -418,7 +556,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -433,7 +574,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -448,7 +592,10 @@
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -463,7 +610,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     },
     {
@@ -478,7 +628,10 @@
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
-      "score": {"home": null, "away": null},
+      "score": {
+        "home": null,
+        "away": null
+      },
       "events": []
     }
   ]
