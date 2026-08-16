@@ -18,44 +18,19 @@ const heroTiles = [
 ]
 
 function HeroCard({ liveNow }) {
-  // When the banner artwork (public/banner.png) is present it IS the card —
-  // branding and copy live in the artwork, we only overlay the access tiles.
-  // Until the file exists, a text lockup on a banner-palette gradient stands in.
-  const [bannerLoaded, setBannerLoaded] = useState(false)
+  // The tournament emblem is the owner's artwork, used verbatim: upload the
+  // original as public/emblem-source.png and the data pipeline crops it along
+  // the golden border into public/emblem.png — displayed here untouched.
+  const [emblem, setEmblem] = useState(false)
 
   return (
     <section className="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-pitch-800 to-pitch-900">
       <div className="pointer-events-none absolute inset-0">
-        {!bannerLoaded && (
-          <>
-            <div className="absolute -right-24 top-0 h-full w-2/3 rotate-12 bg-gradient-to-l from-brand/25 via-red-500/15 to-transparent blur-2xl" />
-            <div className="absolute -right-10 bottom-0 h-1/2 w-1/2 rotate-45 bg-gradient-to-tl from-sky-500/15 to-transparent blur-3xl" />
-          </>
-        )}
+        <div className="absolute -right-24 top-0 h-full w-2/3 rotate-12 bg-gradient-to-l from-brand/25 via-red-500/15 to-transparent blur-2xl" />
+        <div className="absolute -right-10 bottom-0 h-1/2 w-1/2 rotate-45 bg-gradient-to-tl from-sky-500/15 to-transparent blur-3xl" />
       </div>
-      {bannerLoaded ? (
-        <div className="relative">
-          <img src={`${import.meta.env.BASE_URL}banner.png`} alt="Hockey.AI — FIH Hockey World Cup 2026"
-            className="w-full object-cover" />
-          {liveNow && (
-            <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-live/40 bg-pitch-950/80 px-2.5 py-1 font-mono text-[11px] font-semibold text-live backdrop-blur">
-              <span className="live-dot" /> Live Now
-            </span>
-          )}
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pitch-950/95 via-pitch-950/60 to-transparent p-4 pt-10">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {heroTiles.map(({ to, icon: Icon, title }) => (
-                <Link key={to} to={to}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-pitch-950/70 px-3 py-2.5 backdrop-blur transition-all hover:border-brand/50 active:scale-[0.98]">
-                  <Icon size={16} className="shrink-0 text-brand" />
-                  <span className="text-xs font-bold leading-tight">{title}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="relative p-6 sm:p-8">
+      <div className="relative flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:p-8">
+        <div className="min-w-0 flex-1">
           <div className="mb-3 flex items-center gap-3">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-14 w-14 rounded-2xl shadow-[0_0_28px_rgba(255,181,71,0.35)]" />
             <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
@@ -89,10 +64,11 @@ function HeroCard({ liveNow }) {
             Your World Cup companion · <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
           </p>
         </div>
-      )}
-      {/* Probe the banner asset once; flips the card into artwork mode when it exists */}
-      <img src={`${import.meta.env.BASE_URL}banner.png`} alt="" className="hidden"
-        onLoad={() => setBannerLoaded(true)} />
+        {/* Official tournament emblem — rendered only once the owner's artwork is in the repo */}
+        <img src={`${import.meta.env.BASE_URL}emblem.png`} alt="FIH Hockey World Cup 2026"
+          onLoad={() => setEmblem(true)} onError={e => { e.currentTarget.style.display = 'none' }}
+          className={`mx-auto w-44 shrink-0 rounded-2xl sm:mx-0 sm:w-52 ${emblem ? 'drop-shadow-[0_0_30px_rgba(255,181,71,0.25)]' : 'hidden'}`} />
+      </div>
     </section>
   )
 }

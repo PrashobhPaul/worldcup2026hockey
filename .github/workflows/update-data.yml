@@ -32,6 +32,9 @@ jobs:
       - name: Update fixtures, statuses & Oracle picks
         run: python scripts/update_data.py
 
+      - name: Crop uploaded emblem artwork (if present)
+        run: python scripts/crop_emblem.py
+
       - name: Generate AI match stories
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -43,6 +46,7 @@ jobs:
           git config user.name "hockey-ai-bot"
           git config user.email "actions@github.com"
           git add public/data/
+          git add public/emblem.png 2>/dev/null || true
           if ! git diff --staged --quiet; then
             git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
