@@ -6,6 +6,12 @@ import { computeStandings } from '../engine/standings'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { StandingsTable, Skeleton, WinProbBar } from '../components/shared'
 import { formatDate } from '../components/MatchCard'
+import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
+import iconAssists from '../assets/boards/icon-top-assists.png'
+import iconAttacking from '../assets/boards/icon-most-attacking.png'
+import iconDefense from '../assets/boards/icon-strongest-defense.png'
+import iconStandings from '../assets/boards/icon-standings.png'
+import iconPerformers from '../assets/boards/icon-attack-defense.png'
 
 const VIEWS = [
   { id: 'standings', label: 'Pool Standings' },
@@ -14,11 +20,14 @@ const VIEWS = [
   { id: 'probability', label: 'Win Probability' },
 ]
 
-function Board({ title, sub, rows, accent = 'text-brand', footnote }) {
+function Board({ title, sub, rows, accent = 'text-brand', footnote, icon }) {
   const max = Math.max(1, ...rows.map(r => r.value))
   return (
     <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
-      <h2 className="font-display text-base font-semibold">{title}</h2>
+      <h2 className="flex items-center gap-2 font-display text-base font-semibold">
+        {icon && <img src={icon} alt="" className="h-6 w-6 rounded" />}
+        {title}
+      </h2>
       <p className="mb-3 mt-0.5 text-[11px] text-pitch-400">{sub}</p>
       {rows.length === 0
         ? <p className="text-xs text-pitch-400">No data yet — boards fill as matches complete.</p>
@@ -103,18 +112,57 @@ function StatsView({ teams, matches, byCode }) {
         to: `/teams/${r.code}`, value: r.pts, invert: true,
       }))
 
-    return { scorers, assists, attackRows, defenseRows, fairPlay }
+    const performers = {}
+    for (const pos of ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']) {
+      performers[pos] = [...players]
+        .filter(p => p.position === pos && p.ai_rating != null)
+        .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
+        .slice(0, 8)
+        .map(p => ({
+          key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
+          chip: pos === 'Goalkeeper' ? `${p.matches_played ?? 0} MP` : `${p.goals}G · ${p.assists}A`,
+          value: p.ai_rating,
+        }))
+    }
+
+    return { scorers, assists, attackRows, defenseRows, fairPlay, performers }
   }, [players, events, matches, teams, byCode])
 
+  const hasRatings = Object.values(boards.performers).some(r => r.length > 0)
+
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      <Board title="🥇 Golden Stick" sub="Most goals in the tournament" rows={boards.scorers}
-        footnote="Ranked by goals, then assists — penalty-corner goals at full value." />
-      <Board title="🎯 Top Assists" sub="Most assists in the tournament" rows={boards.assists} />
-      <Board title="⚡ Most Attacking" sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
-      <Board title="🛡 Strongest Defense" sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
-      <Board title="🤝 Fair Play" sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
-        footnote="Totals grow with matches played, so deep runs carry more bookings." />
+    <div className="space-y-4">
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Board title="Golden Stick" icon={iconGoldenStick} sub="Most goals in the tournament" rows={boards.scorers}
+          footnote="Ranked by goals, then assists — penalty-corner goals at full value." />
+        <Board title="Top Assists" icon={iconAssists} sub="Most assists in the tournament" rows={boards.assists} />
+        <Board title="Most Attacking" icon={iconAttacking} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
+        <Board title="Strongest Defense" icon={iconDefense} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
+        <Board title="Fair Play" icon={iconStandings} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
+          footnote="Totals grow with matches played, so deep runs carry more bookings." />
+      </div>
+
+      {hasRatings && (
+        <>
+          <div className="flex items-center gap-2.5 pt-2">
+            <img src={iconPerformers} alt="" className="h-8 w-8 rounded" />
+            <div>
+              <h2 className="font-display text-base font-semibold">Top Performers</h2>
+              <p className="text-[11px] text-pitch-400">AI positional ratings · updated after every completed match</p>
+            </div>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-2">
+            <Board title="Goalkeepers" sub="Save reliability × clean sheets" rows={boards.performers.Goalkeeper} accent="text-sky-400" />
+            <Board title="Defenders" sub="Drag-flick threat, outletting, goals conceded" rows={boards.performers.Defender} />
+            <Board title="Midfielders" sub="Goal involvement + penalty-corner build-up" rows={boards.performers.Midfielder} />
+            <Board title="Forwards" sub="Goals, assists and circle threat" rows={boards.performers.Forward} accent="text-live" />
+          </div>
+          <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
+            Rule-based Hockey.AI positional model on the match event ledger. Volume-weighted, so pitch time
+            matters — a one-match cameo cannot outrank a tournament-long starter on the same rating.
+          </p>
+        </>
+      )}
     </div>
   )
 }

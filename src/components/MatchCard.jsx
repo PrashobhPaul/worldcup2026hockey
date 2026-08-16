@@ -64,6 +64,21 @@ function PredictionChip({ match }) {
   )
 }
 
+function ScorerLine({ match }) {
+  const goals = useLiveQuery(
+    () => db.match_events.where('matchId').equals(match.id).toArray()
+      .then(evs => evs.filter(e => e.type === 'goal').sort((x, y) => x.minute - y.minute)),
+    [match.id], [],
+  )
+  if (!goals.length) return null
+  const line = goals
+    .map(g => `${g.player?.split(' ').slice(-1)[0] ?? '?'} ${g.minute}'${g.via === 'PC' ? ' (PC)' : g.via === 'PS' ? ' (PS)' : ''}`)
+    .join(', ')
+  return (
+    <p className="mt-2 line-clamp-1 font-mono text-[10px] leading-snug text-pitch-400">🏑 {line}</p>
+  )
+}
+
 function TeamSide({ team, code, align, isWinner }) {
   return (
     <div className={`flex flex-col gap-0.5 ${align === 'right' ? 'items-end text-right' : 'items-start text-left'}`}>
@@ -124,6 +139,8 @@ export default function MatchCard({ match, compact = false }) {
         <TeamSide team={away} code={isTBD ? (match.label?.split('vs')[1]?.trim() || 'TBD') : match.away}
           align="right" isWinner={winner === 'A'} />
       </div>
+
+      {!compact && (done || live) && <ScorerLine match={match} />}
 
       {!compact && (
         <div className="mt-3 flex items-center justify-between border-t border-white/5 pt-2.5">

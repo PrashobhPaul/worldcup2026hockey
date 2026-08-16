@@ -79,8 +79,9 @@ async function _sync(force) {
   return { status: 'synced', version: remote.version }
 }
 
-// Poll for new data versions while the app is open (matches Soccer.AI's refresh cadence)
-export function startAutoSync(intervalMs = 5 * 60 * 1000) {
+// Poll for new data versions while the app is open (matches Soccer.AI's 60s cadence —
+// the version check is one tiny JSON fetch, so live results land within a minute)
+export function startAutoSync(intervalMs = 60 * 1000) {
   syncData()
   const id = setInterval(() => syncData(), intervalMs)
   document.addEventListener('visibilitychange', () => {

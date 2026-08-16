@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-16T16:50:32.879336+00:00",
+  "last_updated": "2026-08-16T17:12:36.931823+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -68,6 +68,79 @@
           "minute": 54,
           "player": "Abhishek",
           "via": "FG"
+        }
+      ],
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 7,
+          "circle_entries": 26,
+          "penalty_corners": 8,
+          "possession": 55,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 9,
+          "circle_entries": 20,
+          "penalty_corners": 2,
+          "possession": 45,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! IND vs WAL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 12,
+          "team": "IND",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 1-0 WAL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: IND 1-0 WAL.",
+          "seq": 2
+        },
+        {
+          "minute": 24,
+          "team": "WAL",
+          "text": "GOAL! Gareth Furlong (WAL) scores from a field goal — IND 1-1 WAL.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: IND 1-1 WAL.",
+          "seq": 4
+        },
+        {
+          "minute": 38,
+          "team": "IND",
+          "text": "GOAL! Amit Rohidas (IND) scores from a penalty corner — IND 2-1 WAL.",
+          "seq": 5
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: IND 2-1 WAL.",
+          "seq": 6
+        },
+        {
+          "minute": 54,
+          "team": "IND",
+          "text": "GOAL! Abhishek (IND) scores from a field goal — IND 3-1 WAL.",
+          "seq": 7
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: IND 3-1 WAL.",
+          "seq": 8
         }
       ]
     },

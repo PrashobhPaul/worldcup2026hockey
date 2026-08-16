@@ -3,6 +3,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { oracleRecord } from '../engine/prediction'
 import { Home, CalendarDays, Users, Trophy, Target, FlaskConical } from 'lucide-react'
+import InstallPrompt from './InstallPrompt'
 
 const topLinks = [
   { to: '/', label: 'Home', end: true },
@@ -46,7 +47,7 @@ export default function AppShell() {
       <header className="sticky top-0 z-50 border-b border-white/5 bg-pitch-950/90 backdrop-blur-xl">
         <nav className="mx-auto flex h-14 max-w-5xl items-center gap-4 px-4">
           <Link to="/" className="flex shrink-0 items-center gap-2">
-            <img src="/logo.png" alt="Hockey.AI" className="h-8 w-8 rounded-lg" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Hockey.AI" className="h-8 w-8 rounded-lg" />
             <span className="font-display text-lg font-700 tracking-tight text-brand">Hockey.AI</span>
             <span className="hidden border-l border-white/10 pl-2 text-xs text-pitch-300 sm:block">
               FIH World Cup 2026
@@ -70,6 +71,8 @@ export default function AppShell() {
       <main className="mx-auto max-w-5xl px-4 py-5">
         <Outlet />
       </main>
+
+      <InstallPrompt />
 
       <footer className="mt-10 hidden border-t border-white/5 px-4 py-6 text-center text-xs leading-relaxed text-pitch-400 md:block">
         <span className="font-display text-brand">Hockey.AI</span> · FIH Hockey World Cup 2026 · Men's<br />
