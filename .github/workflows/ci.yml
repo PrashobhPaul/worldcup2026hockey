@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Guards the single-source-of-truth rule: every surface must read the
+      # same canonical tournament probability snapshot, and snapshots must be
+      # reproducible. A drift between Tournament, Oracle and Home fails here.
+      - name: Tournament probability consistency
+        run: npm run test:probability
+
+      - name: Build
+        run: npm run build

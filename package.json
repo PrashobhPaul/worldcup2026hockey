@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:probability": "node scripts/verify_probability.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.8",

@@ -4,6 +4,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
+import { formatProbability } from '../engine/probability.js'
 import { HOF_AWARDS, AWARDS_STATE, AWARDS_DISCLAIMER, POTM_MODEL } from '../content/awards'
 import honourBall from '../assets/honours/icon-honour-ball.png'
 import honourBoot from '../assets/honours/icon-honour-boot.png'
@@ -112,7 +113,7 @@ function PotmRace({ teams, byCode }) {
 
   const race = useMemo(() => {
     if (!players.length) return []
-    const champOf = code => bundle?.live.reach.get(code)?.champion ?? 0
+    const champOf = code => bundle?.current.championOf(code) ?? 0
     const scored = players.map(p => {
       const score =
         (p.goals ?? 0) * 3.0 +
@@ -159,7 +160,7 @@ function PotmRace({ teams, byCode }) {
                 ['Goals', p.goals],
                 ['Assists', p.assists],
                 ['PC goals', p.pc_scored],
-                ['Team odds', `${((bundle?.live.reach.get(p.team)?.champion ?? 0) * 100).toFixed(1)}%`],
+                ['Team odds', formatProbability(bundle?.current.championOf(p.team) ?? 0)],
                 ['Score', p.score.toFixed(2)],
               ].map(([k, v]) => (
                 <div key={k} className="rounded-lg bg-pitch-800 p-2">

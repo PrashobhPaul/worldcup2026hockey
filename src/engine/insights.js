@@ -4,8 +4,8 @@
 // null / empty and the UI renders an explicit empty state — never a synthetic
 // curve or a fake 33/33/33 split.
 
-import { deriveClock } from './clock'
-import { teamRating } from './strength'
+import { deriveClock } from './clock.js'
+import { teamRating } from './strength.js'
 
 const clamp = (v, lo = 0, hi = 100) => Math.max(lo, Math.min(hi, v))
 
@@ -301,11 +301,13 @@ export function buildDrivers({ match, home, away, pred }) {
       text: `${pickTeam.key_players[0]} is the premium drag-flick weapon in this fixture.`,
     })
   }
+  // Seed-file tier — a pre-tournament model input, explicitly labelled as such.
+  // Live team classification comes from the canonical snapshot, never from here.
   if (home?.contender_tier && away?.contender_tier && home.contender_tier !== away.contender_tier) {
     out.push({
       tone: 'neutral',
-      title: 'Tier matchup',
-      text: `${(home.contender_tier ?? '').replace('_', ' ')} vs ${(away.contender_tier ?? '').replace('_', ' ')} — tournament pedigree is in the prior.`,
+      title: 'Seeding matchup',
+      text: `Pre-tournament seeding: ${(home.contender_tier ?? '').replace('_', ' ')} vs ${(away.contender_tier ?? '').replace('_', ' ')} — pedigree sits in the model prior, not in today's odds.`,
     })
   }
   if ((home?.host || away?.host)) {
