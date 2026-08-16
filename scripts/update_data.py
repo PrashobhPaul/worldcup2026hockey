@@ -84,41 +84,63 @@ def fetch_tms_standings():
         return None
     try:
         req = urllib.request.Request(TMS_URL, headers={'User-Agent': 'Mozilla/5.0'})
-        pdf_bytes = urllib.request.urlopen(req, timeout=30).read()
+        resp = urllib.request.urlopen(req, timeout=30)
+        pdf_bytes = resp.read()
     except Exception as e:
         print(f'TMS fetch failed: {e}')
         return None
 
+    print(f'TMS fetched: HTTP {getattr(resp, "status", "?")}, {len(pdf_bytes)} bytes, '
+          f'content-type {resp.headers.get("Content-Type", "?")}')
+    if not pdf_bytes.startswith(b'%PDF'):
+        print(f'TMS response is not a PDF — first 200 bytes: {pdf_bytes[:200]!r}')
+        return None
+
     pools = {}
     current_pool = None
-    row_re = re.compile(
-        r'^\s*(\d+)\s+([A-Za-z ]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(-?\d+)\s+(\d+)\s*$'
-    )
+    all_lines = []
+    # Row shapes seen in FIH TMS exports: with or without a leading rank column.
+    row_res = [
+        re.compile(r'^\s*(?:\d+\.?\s+)?([A-Za-z][A-Za-z ]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(-?\d+)\s+(\d+)\s*$'),
+        re.compile(r'^\s*(?:\d+\.?\s+)?([A-Za-z][A-Za-z ]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s*[-:–]\s*(\d+)\s+(-?\d+)\s+(\d+)\s*$'),
+    ]
     try:
         with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
             for page in pdf.pages:
                 for line in (page.extract_text() or '').split('\n'):
-                    pool_m = re.match(r'^\s*Pool\s+([A-D])\b', line, re.I)
+                    if line.strip():
+                        all_lines.append(line)
+                    pool_m = re.search(r'\bPool\s+([A-D])\b', line, re.I)
                     if pool_m:
                         current_pool = pool_m.group(1).upper()
                         pools.setdefault(current_pool, [])
                         continue
-                    m = row_re.match(line)
-                    if m and current_pool:
-                        name = m.group(2).strip().lower()
-                        code = TEAM_CODE_MAP.get(name)
-                        if code:
-                            pools[current_pool].append({
-                                'team': code,
-                                'played': int(m.group(3)), 'won': int(m.group(4)),
-                                'drawn': int(m.group(5)), 'lost': int(m.group(6)),
-                                'gf': int(m.group(7)), 'ga': int(m.group(8)),
-                                'gd': int(m.group(9)), 'points': int(m.group(10)),
-                            })
+                    for row_re in row_res:
+                        m = row_re.match(line)
+                        if m and current_pool:
+                            name = m.group(1).strip().lower()
+                            code = TEAM_CODE_MAP.get(name)
+                            if code:
+                                pools[current_pool].append({
+                                    'team': code,
+                                    'played': int(m.group(2)), 'won': int(m.group(3)),
+                                    'drawn': int(m.group(4)), 'lost': int(m.group(5)),
+                                    'gf': int(m.group(6)), 'ga': int(m.group(7)),
+                                    'gd': int(m.group(8)), 'points': int(m.group(9)),
+                                })
+                            break
     except Exception as e:
         print(f'TMS parse failed: {e}')
         return None
-    return pools if any(pools.values()) else None
+
+    if not any(pools.values()):
+        # Loud diagnostic: a silent parse miss must never hide the PDF's format
+        print(f'TMS parse matched ZERO rows across {len(all_lines)} text lines. '
+              f'Sample lines for parser tuning:')
+        for line in all_lines[:20]:
+            print(f'  | {line}')
+        return None
+    return pools
 
 # ---------------------------------------------------- status transitions
 MATCH_DURATION_MIN = 105  # 60 play + breaks + buffer
