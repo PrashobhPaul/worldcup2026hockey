@@ -3,7 +3,12 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// GitHub Pages project sites serve from /<repo>/ — the deploy workflow passes
+// BASE_PATH from actions/configure-pages; Cloudflare/custom-domain builds get "/".
+const base = `${process.env.BASE_PATH || ''}/`
+
 export default defineConfig({
+  base,
   build: {
     rollupOptions: {
       output: {
@@ -25,9 +30,9 @@ export default defineConfig({
         name: 'Hockey.AI',
         short_name: 'Hockey.AI',
         description: 'AI stories, match intelligence, simulations and visual analytics for the FIH Hockey World Cup 2026.',
-        id: '/?v=1',
-        start_url: '/',
-        scope: '/',
+        id: `${base}?v=1`,
+        start_url: base,
+        scope: base,
         display: 'standalone',
         orientation: 'any',
         theme_color: '#0b1736',
@@ -39,10 +44,10 @@ export default defineConfig({
         ]
       },
       workbox: {
-        navigateFallback: '/index.html',
+        navigateFallback: `${base}index.html`,
         runtimeCaching: [
           {
-            urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/data/'),
+            urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.includes('/data/'),
             handler: 'NetworkFirst',
             options: {
               cacheName: 'hockeyai-data',

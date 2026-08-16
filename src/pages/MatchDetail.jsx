@@ -28,6 +28,58 @@ function quarterOf(minute) {
   return 'Q1'
 }
 
+function AlsoLiveStrip({ currentId }) {
+  const live = useLiveQuery(
+    () => db.matches.where('status').equals('live').toArray(), [], [])
+  const others = live.filter(m => m.id !== currentId)
+  if (!others.length) return null
+  return (
+    <div className="no-scrollbar flex gap-2 overflow-x-auto">
+      {others.map(m => (
+        <Link key={m.id} to={`/matches/${m.id}`}
+          className="flex shrink-0 items-center gap-2 rounded-lg border border-live/30 bg-pitch-800 px-3 py-1.5 font-mono text-xs">
+          <span className="live-dot" />
+          <span className="font-bold">{m.home} {m.score?.home ?? 0}–{m.score?.away ?? 0} {m.away}</span>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
+function tournamentForm(matches, code) {
+  return matches
+    .filter(m => m.status === 'completed' && m.score?.home != null && (m.home === code || m.away === code))
+    .map(m => {
+      const gf = m.home === code ? m.score.home : m.score.away
+      const ga = m.home === code ? m.score.away : m.score.home
+      const opp = m.home === code ? m.away : m.home
+      return { id: m.id, result: gf > ga ? 'W' : gf < ga ? 'L' : 'D', gf, ga, opp, home: m.home === code }
+    })
+}
+
+function FormRow({ name, form }) {
+  return (
+    <div>
+      <div className="text-xs font-semibold">{name}</div>
+      <div className="mt-1 font-mono text-[10px] text-pitch-400">
+        {form.length
+          ? `${form.filter(f => f.result === 'W').length}W ${form.filter(f => f.result === 'D').length}D ${form.filter(f => f.result === 'L').length}L this tournament`
+          : 'No completed matches yet'}
+      </div>
+      <div className="mt-1.5 flex gap-1.5">
+        {[...form].reverse().map(f => (
+          <span key={f.id} title={`${f.home ? 'vs' : '@'} ${f.opp} ${f.gf}-${f.ga}`}
+            className={`flex h-5 w-5 items-center justify-center rounded font-mono text-[10px] font-bold ${
+              f.result === 'W' ? 'bg-live/15 text-live' : f.result === 'L' ? 'bg-red-400/15 text-red-400' : 'bg-pitch-700 text-pitch-300'
+            }`}>
+            {f.result}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function MatchDetailPage() {
   const { matchId } = useParams()
   const match = useLiveQuery(() => db.matches.get(matchId), [matchId])
@@ -40,6 +92,7 @@ export default function MatchDetailPage() {
     [matchId],
   )
   const story = useLiveQuery(() => db.ai_stories.get(matchId), [matchId])
+  const allMatches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
   const home = useTeam(match?.home)
   const away = useTeam(match?.away)
 
@@ -61,11 +114,19 @@ export default function MatchDetailPage() {
   const byQuarter = { Q1: [], Q2: [], Q3: [], Q4: [] }
   for (const ev of events ?? []) byQuarter[quarterOf(ev.minute)]?.push(ev)
 
+  const homeForm = tournamentForm(allMatches, match.home).filter(f => f.id !== match.id)
+  const awayForm = tournamentForm(allMatches, match.away).filter(f => f.id !== match.id)
+  const h2h = allMatches.filter(m =>
+    m.id !== match.id && m.status === 'completed' && m.score?.home != null &&
+    ((m.home === match.home && m.away === match.away) || (m.home === match.away && m.away === match.home)))
+
   return (
     <div className="space-y-5">
       <Link to="/matches" className="inline-flex items-center gap-1.5 text-xs font-medium text-pitch-300 hover:text-brand">
         <ArrowLeft size={14} /> All matches
       </Link>
+
+      <AlsoLiveStrip currentId={match.id} />
 
       {/* Score header */}
       <div className={`rounded-2xl border p-6 ${live ? 'border-live/40' : 'border-white/5'} bg-gradient-to-br from-pitch-800 to-pitch-900`}>
@@ -141,6 +202,37 @@ export default function MatchDetailPage() {
           </div>
         </div>
       )}
+
+      {/* Tournament form */}
+      <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+        <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
+          Recent form <span className="font-mono text-[10px] font-normal text-pitch-400">this tournament</span>
+        </h3>
+        <div className="grid grid-cols-2 gap-4">
+          <FormRow name={home?.name ?? match.home} form={homeForm} />
+          <FormRow name={away?.name ?? match.away} form={awayForm} />
+        </div>
+      </div>
+
+      {/* Head to head */}
+      <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+        <h3 className="mb-2 flex items-baseline justify-between font-display text-sm font-semibold">
+          Head to head <span className="font-mono text-[10px] font-normal text-pitch-400">in tournament</span>
+        </h3>
+        {h2h.length ? (
+          <div className="space-y-1.5">
+            {h2h.map(m => (
+              <Link key={m.id} to={`/matches/${m.id}`}
+                className="flex items-center justify-between rounded-lg border border-white/5 bg-pitch-950/40 px-3 py-2 font-mono text-xs transition-colors hover:border-brand/20">
+                <span className="font-bold">{m.home} {m.score.home} – {m.score.away} {m.away}</span>
+                <span className="text-[10px] text-pitch-400">{phaseTag(m)} · {formatDate(m.date)}</span>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-xs text-pitch-400">No prior meeting in this tournament yet.</p>
+        )}
+      </div>
 
       {/* Quarter timeline */}
       {(done || live) && (events?.length ?? 0) > 0 && (

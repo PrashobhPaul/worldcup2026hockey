@@ -1,26 +1,299 @@
-import { useLiveQuery } from 'dexie-react-hooks'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
+import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { formatDate, phaseTag } from '../components/MatchCard'
+import {
+  LineChart, Line, XAxis, YAxis, Tooltip, ReferenceLine, ResponsiveContainer,
+} from 'recharts'
 
-export default function OraclePage() {
-  const matches = useLiveQuery(() => db.matches.toArray(), [])
-  const predictions = useLiveQuery(() => db.predictions.toArray(), [])
-  const teams = useLiveQuery(() => db.teams.toArray(), [], [])
+const TABS = [
+  { id: 'race', label: 'Race' },
+  { id: 'odds', label: 'Odds' },
+  { id: 'bracket', label: 'Bracket' },
+  { id: 'picks', label: 'Picks' },
+]
 
-  if (matches === undefined || predictions === undefined) return <Skeleton h={500} />
+const RACE_COLORS = ['#22d3ee', '#f472b6', '#a3e635', '#facc15', '#60a5fa', '#fb923c', '#34d399', '#c084fc', '#f87171', '#e879f9']
 
+const SUBTITLES = {
+  race: 'Champion-probability race · one simulation snapshot per completed match (0 → 32).',
+  odds: 'Per-team stage odds · same engine snapshot as the race and bracket.',
+  bracket: 'Live knockout bracket · pool standings drive every slot · engine predicts forward to the Gold Final.',
+  picks: 'Every pick published before push-back · graded publicly · no edits, no deletions.',
+}
+
+function RecordHero({ matches, predictions }) {
+  const rec = oracleRecord(matches, predictions)
+  if (!rec.graded) return null
+  return (
+    <div className="mb-5 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
+      <div className="flex items-baseline justify-between">
+        <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Oracle record</span>
+        <span className="font-mono text-[11px] text-pitch-300">{rec.correct} of {rec.graded} pre-match picks correct</span>
+      </div>
+      <div className="mt-1 font-mono text-4xl font-bold text-brand">{rec.accuracyPct}%</div>
+    </div>
+  )
+}
+
+function RaceTooltip({ active, payload, label, byCode }) {
+  if (!active || !payload?.length) return null
+  const rows = [...payload].filter(p => p.value > 0).sort((x, y) => y.value - x.value).slice(0, 6)
+  return (
+    <div className="rounded-lg border border-brand/20 bg-pitch-900/95 p-2.5 font-mono text-[11px] shadow-xl backdrop-blur">
+      <div className="mb-1 text-pitch-400">After match #{label}</div>
+      {rows.map(p => (
+        <div key={p.dataKey} className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full" style={{ background: p.stroke }} />
+          <span className="w-10">{byCode.get(p.dataKey)?.flag} {p.dataKey}</span>
+          <span className="font-bold" style={{ color: p.stroke }}>{Number(p.value).toFixed(1)}%</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function RaceTab({ bundle, teams }) {
+  const { data, top, eliminated, byCode } = useMemo(() => buildRaceSeries(bundle, teams), [bundle, teams])
+  const [focus, setFocus] = useState(null)
+  if (!data.length) return <div className="rounded-xl border border-white/5 bg-pitch-800 p-5 text-sm text-pitch-400">No completed matches yet — the race starts after the first result.</div>
+
+  const currentMatch = data[data.length - 1].match
+  return (
+    <div>
+      <div className="mb-3 flex flex-wrap gap-1.5">
+        {top.map((code, i) => (
+          <button key={code} onClick={() => setFocus(focus === code ? null : code)}
+            className={`flex items-center gap-1.5 rounded-md border px-2 py-1 font-mono text-[11px] transition-opacity ${
+              focus && focus !== code ? 'opacity-40' : ''
+            } ${focus === code ? 'border-brand/40 bg-brand/10' : 'border-white/5 bg-pitch-800'}`}>
+            <span className="h-2 w-2 rounded-full" style={{ background: RACE_COLORS[i % RACE_COLORS.length] }} />
+            {byCode.get(code)?.flag} {code}
+          </button>
+        ))}
+      </div>
+
+      <div className="rounded-xl border border-white/5 bg-pitch-800 p-3">
+        <ResponsiveContainer width="100%" height={360}>
+          <LineChart data={data} margin={{ top: 8, right: 42, bottom: 4, left: -18 }}>
+            <XAxis dataKey="match" type="number" domain={[0, 32]}
+              tick={{ fill: '#5b75a8', fontSize: 9, fontFamily: 'JetBrains Mono' }} tickLine={false} axisLine={false} />
+            <YAxis tickFormatter={v => `${v}%`}
+              tick={{ fill: '#5b75a8', fontSize: 9, fontFamily: 'JetBrains Mono' }} tickLine={false} axisLine={false} />
+            <Tooltip content={<RaceTooltip byCode={byCode} />} />
+            <ReferenceLine x={currentMatch} stroke="rgba(255,255,255,0.35)" strokeDasharray="4 3"
+              label={{ value: `#${currentMatch}`, fill: '#8fa3d1', fontSize: 9, position: 'top' }} />
+            {eliminated.map(code => (
+              <Line key={code} dataKey={code} type="stepAfter" dot={false} isAnimationActive={false}
+                stroke="rgba(180,190,210,0.45)" strokeDasharray="4 3" strokeWidth={1}
+                opacity={focus ? 0.15 : 1} />
+            ))}
+            {top.map((code, i) => (
+              <Line key={code} dataKey={code} type="monotone" dot={false} isAnimationActive={false}
+                stroke={RACE_COLORS[i % RACE_COLORS.length]}
+                strokeWidth={focus === code ? 3 : 2}
+                opacity={focus && focus !== code ? 0.18 : 1} />
+            ))}
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {eliminated.length > 0 && (
+        <div className="mt-3 flex flex-wrap items-center gap-1.5">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">Out:</span>
+          {eliminated.map(code => (
+            <span key={code} className="rounded bg-pitch-800 px-1.5 py-0.5 font-mono text-[10px] text-pitch-400 line-through">
+              {byCode.get(code)?.flag} {code}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
+        X-axis: completed matches (0 at push-back of the tournament, 32 at the Gold Final).
+        Y-axis: model-estimated probability of lifting the trophy. Each finished result triggers a fresh Monte-Carlo run — {bundle.live.runs.toLocaleString()} simulated tournaments per snapshot, seeded and reproducible.
+      </p>
+    </div>
+  )
+}
+
+function OddsTab({ bundle, teams }) {
+  const byCode = new Map(teams.map(t => [t.code, t]))
+  const rows = [...bundle.live.reach.entries()]
+    .map(([code, r]) => ({ code, ...r }))
+    .sort((x, y) => y.champion - x.champion || y.final - x.final || y.sf - x.sf || y.qf - x.qf || x.code.localeCompare(y.code))
+
+  const pct = v => `${(v * 100).toFixed(1)}%`
+  return (
+    <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <h2 className="font-display text-base font-semibold">Champion Probabilities</h2>
+      <p className="mb-3 mt-0.5 text-[11px] text-pitch-400">
+        Live Monte-Carlo snapshot after {bundle.live.finishedCount} results · identical numbers across Race, Odds and Bracket.
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[520px] border-collapse text-sm">
+          <thead>
+            <tr className="border-b border-white/5 font-mono text-[10px] uppercase tracking-wider text-pitch-400">
+              <th className="py-2 pl-1 text-left">#</th>
+              <th className="py-2 text-left">Team</th>
+              <th className="px-1.5 py-2 text-right">QF</th>
+              <th className="px-1.5 py-2 text-right">SF</th>
+              <th className="px-1.5 py-2 text-right">Final</th>
+              <th className="px-1.5 py-2 text-right text-brand">Champion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r, i) => {
+              const t = byCode.get(r.code)
+              const out = bundle.eliminationAt.has(r.code)
+              return (
+                <tr key={r.code} className={`border-b border-white/5 last:border-0 ${out ? 'opacity-50' : ''}`}>
+                  <td className="py-2 pl-1 font-mono text-[11px] text-pitch-400">{i + 1}</td>
+                  <td className="py-2">
+                    <Link to={`/teams/${r.code}`} className="flex items-center gap-2 hover:text-brand">
+                      <span>{t?.flag}</span>
+                      <span className={`font-semibold ${out ? 'line-through' : ''}`}>{t?.name ?? r.code}</span>
+                    </Link>
+                  </td>
+                  <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.qf)}</td>
+                  <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.sf)}</td>
+                  <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.final)}</td>
+                  <td className="px-1.5 text-right font-mono text-[12px] font-bold text-brand">{pct(r.champion)}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+function TieCard({ tie, byCode }) {
+  const [open, setOpen] = useState(false)
+  const h = byCode.get(tie.home), a = byCode.get(tie.away)
+  const state = tie.played ? 'FINISHED' : tie.locked ? 'CONFIRMED' : 'PROJECTED'
+  const pH = tie.pHomeAdvance
+
+  if (tie.played) {
+    return (
+      <div className="rounded-xl border border-live/30 bg-pitch-800 p-3.5">
+        <div className="mb-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+          <span className="text-pitch-400">{tie.id}</span>
+          <span className="text-live">Finished</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm font-bold">
+          {byCode.get(tie.winner)?.flag} {byCode.get(tie.winner)?.name ?? tie.winner}
+          <span className="font-mono text-[10px] font-normal text-live">100%</span>
+        </div>
+        {tie.loser && (
+          <div className="mt-1 text-xs text-pitch-400 line-through">
+            {byCode.get(tie.loser)?.flag} {byCode.get(tie.loser)?.name ?? tie.loser} eliminated
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  const row = (code, team, prob) => (
+    <div className="flex items-center gap-2.5">
+      <span className={`flex h-7 w-7 items-center justify-center rounded-full text-base ring-1 ${
+        tie.locked ? 'ring-live/60' : 'ring-white/20 ring-dashed'
+      }`} style={{ borderStyle: tie.locked ? 'solid' : 'dashed' }}>
+        {team?.flag ?? '❓'}
+      </span>
+      <span className={`flex-1 text-sm ${tie.predicted === code ? 'font-bold' : 'text-pitch-300'}`}>
+        {team?.name ?? code ?? 'TBD'}
+      </span>
+      {prob != null && tie.predicted === code && (
+        <span className="font-mono text-xs font-bold text-brand">{Math.round(prob * 100)}%</span>
+      )}
+    </div>
+  )
+
+  return (
+    <button onClick={() => setOpen(!open)}
+      className="w-full rounded-xl border border-white/5 bg-pitch-800 p-3.5 text-left transition-colors hover:border-brand/20">
+      <div className="mb-2 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+        <span className="text-pitch-400">{tie.id}</span>
+        <span className={state === 'CONFIRMED' ? 'text-live' : 'text-pitch-400'}>
+          {state === 'CONFIRMED' ? '● Locked' : '○ Projected'} · Advance %
+        </span>
+      </div>
+      <div className="space-y-2">
+        {row(tie.home, h, pH)}
+        {pH != null && tie.home && tie.away && (
+          <div className="flex justify-center">
+            <span className="rounded bg-pitch-700 px-2 py-0.5 font-mono text-[10px] text-pitch-300">
+              vs · {Math.round((tie.predicted === tie.home ? pH : 1 - pH) * 100)}% {tie.predicted}
+            </span>
+          </div>
+        )}
+        {row(tie.away, a, pH != null ? 1 - pH : null)}
+      </div>
+      {open && tie.match?.label && (
+        <div className="mt-2 border-t border-white/5 pt-2 font-mono text-[10px] text-pitch-400">
+          {tie.match.label} · {formatDate(tie.match.date)} · {tie.match.venue === 'AMV' ? 'Amstelveen' : 'Brussels'}
+        </div>
+      )}
+    </button>
+  )
+}
+
+function BracketTab({ bundle, teams }) {
+  const byCode = new Map(teams.map(t => [t.code, t]))
+  const groups = [
+    ['Quarter-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('QF'))],
+    ['Semi-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('SF'))],
+    ['Medal Matches', bundle.bracket.ties.filter(t => t.id === 'BRZ' || t.id === 'GOLD')],
+  ]
+  const champRows = [...bundle.live.reach.entries()].sort((x, y) => y[1].champion - x[1].champion)
+  const [champCode, champReach] = champRows[0] ?? []
+  const gold = bundle.bracket.byId.get('GOLD')
+  const decided = gold?.played
+
+  return (
+    <div className="space-y-6">
+      <div className="mb-1 flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-pitch-400">
+        <span><span className="text-live">●</span> Locked</span>
+        <span>○ Projected</span>
+      </div>
+      {groups.map(([label, ties]) => (
+        <div key={label}>
+          <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">{label}</h2>
+          <div className="grid gap-2.5 sm:grid-cols-2">
+            {ties.map(tie => <TieCard key={tie.id} tie={tie} byCode={byCode} />)}
+          </div>
+        </div>
+      ))}
+      {champCode && (
+        <div className="rounded-2xl border border-brand/30 bg-gradient-to-br from-brand/10 to-pitch-900 p-5 text-center">
+          <div className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">
+            {decided ? '🏆 Champion' : '🏆 Predicted Champion'}
+          </div>
+          <div className="mt-2 text-3xl">{byCode.get(decided ? gold.winner : champCode)?.flag}</div>
+          <div className="mt-1 font-display text-xl font-bold">{byCode.get(decided ? gold.winner : champCode)?.name}</div>
+          {!decided && <div className="mt-1 font-mono text-sm text-brand">{(champReach.champion * 100).toFixed(1)}% trophy</div>}
+        </div>
+      )}
+      <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
+        Each forward tie shows the most likely matchup from current pool standings. The odds table integrates every
+        possible bracket — never collapsed to the favourite.
+      </p>
+    </div>
+  )
+}
+
+function PicksTab({ matches, predictions, teams }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
   const byMatch = new Map(matches.map(m => [m.id, m]))
-  const rec = oracleRecord(matches, predictions)
-
   const rows = predictions
     .map(p => ({ p, m: byMatch.get(p.matchId) }))
     .filter(r => r.m)
     .sort((a, b) => b.m.kickoffUtc - a.m.kickoffUtc)
-
   const graded = rows.filter(r => r.m.status === 'completed')
   const pending = rows.filter(r => r.m.status !== 'completed')
 
@@ -57,40 +330,61 @@ export default function OraclePage() {
 
   return (
     <div>
-      <div className="mb-5 border-b border-white/5 pb-4">
-        <h1 className="font-display text-2xl font-bold tracking-tight">🎯 The Oracle</h1>
-        <p className="mt-1 text-xs text-pitch-400">
-          Every pick published before push-back · graded publicly · no edits, no deletions
-        </p>
-      </div>
-
-      <div className="mb-6 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-        {[
-          [rec.accuracyPct != null ? `${rec.accuracyPct}%` : '—', 'Accuracy'],
-          [`${rec.correct}/${rec.graded}`, 'Correct picks'],
-          [rec.total, 'Total published'],
-          [pending.length, 'Awaiting result'],
-        ].map(([v, l]) => (
-          <div key={l} className="rounded-xl border border-white/5 bg-pitch-800 p-4 text-center">
-            <div className="font-mono text-2xl font-bold text-brand">{v}</div>
-            <div className="mt-0.5 text-[10px] uppercase tracking-wider text-pitch-400">{l}</div>
-          </div>
-        ))}
-      </div>
-
       {pending.length > 0 && (
         <section className="mb-6">
           <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">⏳ Pending Picks</h2>
           <div className="space-y-2">{pending.map(r => <PredCard key={r.p.id} {...r} />)}</div>
         </section>
       )}
-
       <section>
         <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">📋 Graded Record</h2>
         {graded.length === 0
           ? <div className="rounded-xl border border-white/5 bg-pitch-800 p-4 text-sm text-pitch-400">No graded picks yet.</div>
           : <div className="space-y-2">{graded.map(r => <PredCard key={r.p.id} {...r} />)}</div>}
       </section>
+    </div>
+  )
+}
+
+export default function OraclePage() {
+  const [tab, setTab] = useState('race')
+  const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
+  const predictions = useLiveQuery(() => db.predictions.toArray(), [])
+  const teams = useLiveQuery(() => db.teams.toArray(), [], [])
+  const bundle = useOracleBundle(teams, matches)
+
+  if (matches === undefined || predictions === undefined) return <Skeleton h={500} />
+
+  return (
+    <div>
+      <div className="mb-5 border-b border-white/5 pb-4">
+        <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
+        <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
+      </div>
+
+      <RecordHero matches={matches} predictions={predictions} />
+
+      <div className="mb-5 flex flex-wrap gap-1.5">
+        {TABS.map(t => (
+          <button key={t.id} onClick={() => setTab(t.id)}
+            className={`rounded-md border px-3.5 py-1.5 font-mono text-xs font-semibold lowercase transition-colors ${
+              tab === t.id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
+            }`}>
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {!bundle && tab !== 'picks'
+        ? <Skeleton h={400} />
+        : (
+          <>
+            {tab === 'race' && <RaceTab bundle={bundle} teams={teams} />}
+            {tab === 'odds' && <OddsTab bundle={bundle} teams={teams} />}
+            {tab === 'bracket' && <BracketTab bundle={bundle} teams={teams} />}
+            {tab === 'picks' && <PicksTab matches={matches} predictions={predictions} teams={teams} />}
+          </>
+        )}
     </div>
   )
 }

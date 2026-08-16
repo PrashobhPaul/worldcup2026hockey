@@ -12,13 +12,15 @@ const topLinks = [
   { to: '/tournament', label: 'Tournament' },
   { to: '/prediction-race', label: 'Oracle' },
   { to: '/ai-lab', label: 'AI Lab' },
+  { to: '/awards', label: 'Awards' },
 ]
 
 const bottomLinks = [
   { to: '/', label: 'Home', icon: Home, end: true },
   { to: '/matches', label: 'Matches', icon: CalendarDays },
+  { to: '/teams', label: 'Teams', icon: Users },
   { to: '/tournament', label: 'Cup', icon: Trophy },
-  { to: '/prediction-race', label: 'Race', icon: Target },
+  { to: '/prediction-race', label: 'Oracle', icon: Target },
   { to: '/ai-lab', label: 'AI Lab', icon: FlaskConical },
 ]
 
@@ -73,6 +75,7 @@ export default function AppShell() {
         <span className="font-display text-brand">Hockey.AI</span> · FIH Hockey World Cup 2026 · Men's<br />
         AI-powered analytics. Not affiliated with FIH. Sister app:{' '}
         <a href="https://fifa2026.prashobhpaul.com" className="text-brand hover:underline">Soccer.AI</a>
+        {' · '}<Link to="/trust" className="text-brand hover:underline">Trust &amp; Privacy</Link>
       </footer>
 
       {/* Bottom nav (mobile) */}
