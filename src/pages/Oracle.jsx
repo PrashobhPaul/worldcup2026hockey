@@ -5,6 +5,7 @@ import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
+import { formatProbability } from '../engine/probability.js'
 import { formatDate, phaseTag } from '../components/MatchCard'
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ReferenceLine, ResponsiveContainer,
@@ -120,7 +121,7 @@ function RaceTab({ bundle, teams }) {
       )}
       <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
         X-axis: completed matches (0 at push-back of the tournament, 32 at the Gold Final).
-        Y-axis: model-estimated probability of lifting the trophy. Each finished result triggers a fresh Monte-Carlo run — {bundle.live.runs.toLocaleString()} simulated tournaments per snapshot, seeded and reproducible.
+        Y-axis: model-estimated probability of lifting the trophy. Each finished result triggers a fresh Monte-Carlo run — {bundle.current.simulationCount.toLocaleString()} simulated tournaments per snapshot, seeded and reproducible. The right-hand end of every line is the same number the Tournament tab and Odds table show.
       </p>
     </div>
   )
@@ -128,16 +129,16 @@ function RaceTab({ bundle, teams }) {
 
 function OddsTab({ bundle, teams }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
-  const rows = [...bundle.live.reach.entries()]
-    .map(([code, r]) => ({ code, ...r }))
-    .sort((x, y) => y.champion - x.champion || y.final - x.final || y.sf - x.sf || y.qf - x.qf || x.code.localeCompare(y.code))
-
-  const pct = v => `${(v * 100).toFixed(1)}%`
+  // Canonical current snapshot — already ranked and normalized.
+  const snap = bundle.current
+  const rows = snap.probabilities
+  const pct = formatProbability
   return (
     <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
       <h2 className="font-display text-base font-semibold">Champion Probabilities</h2>
       <p className="mb-3 mt-0.5 text-[11px] text-pitch-400">
-        Live Monte-Carlo snapshot after {bundle.live.finishedCount} results · identical numbers across Race, Odds and Bracket.
+        Snapshot {snap.snapshotId} · after {snap.completedMatches} results · {snap.simulationCount.toLocaleString()} simulations ·
+        identical numbers across Race, Odds, Bracket, Tournament and Home.
       </p>
       <div className="overflow-x-auto">
         <table className="w-full min-w-[520px] border-collapse text-sm">
@@ -153,15 +154,15 @@ function OddsTab({ bundle, teams }) {
           </thead>
           <tbody>
             {rows.map((r, i) => {
-              const t = byCode.get(r.code)
-              const out = bundle.eliminationAt.has(r.code)
+              const t = byCode.get(r.teamId)
+              const out = bundle.eliminationAt.has(r.teamId)
               return (
-                <tr key={r.code} className={`border-b border-white/5 last:border-0 ${out ? 'opacity-50' : ''}`}>
-                  <td className="py-2 pl-1 font-mono text-[11px] text-pitch-400">{i + 1}</td>
+                <tr key={r.teamId} className={`border-b border-white/5 last:border-0 ${out ? 'opacity-50' : ''}`}>
+                  <td className="py-2 pl-1 font-mono text-[11px] text-pitch-400">{r.rank}</td>
                   <td className="py-2">
-                    <Link to={`/teams/${r.code}`} className="flex items-center gap-2 hover:text-brand">
+                    <Link to={`/teams/${r.teamId}`} className="flex items-center gap-2 hover:text-brand">
                       <span>{t?.flag}</span>
-                      <span className={`font-semibold ${out ? 'line-through' : ''}`}>{t?.name ?? r.code}</span>
+                      <span className={`font-semibold ${out ? 'line-through' : ''}`}>{t?.name ?? r.teamName}</span>
                     </Link>
                   </td>
                   <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.qf)}</td>
@@ -256,8 +257,8 @@ function BracketTab({ bundle, teams }) {
     ['Semi-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('SF'))],
     ['Medal Matches', bundle.bracket.ties.filter(t => t.id === 'BRZ' || t.id === 'GOLD')],
   ]
-  const champRows = [...bundle.live.reach.entries()].sort((x, y) => y[1].champion - x[1].champion)
-  const [champCode, champReach] = champRows[0] ?? []
+  const champLeader = bundle.current.probabilities[0]
+  const champCode = champLeader?.teamId
   const gold = bundle.bracket.byId.get('GOLD')
   const decided = gold?.played
 
@@ -282,7 +283,7 @@ function BracketTab({ bundle, teams }) {
           </div>
           <div className="mt-2 text-3xl">{byCode.get(decided ? gold.winner : champCode)?.flag}</div>
           <div className="mt-1 font-display text-xl font-bold">{byCode.get(decided ? gold.winner : champCode)?.name}</div>
-          {!decided && <div className="mt-1 font-mono text-sm text-brand">{(champReach.champion * 100).toFixed(1)}% trophy</div>}
+          {!decided && <div className="mt-1 font-mono text-sm text-brand">{formatProbability(champLeader.champion)} trophy</div>}
         </div>
       )}
       <p className="font-mono text-[10px] leading-relaxed text-pitch-400">

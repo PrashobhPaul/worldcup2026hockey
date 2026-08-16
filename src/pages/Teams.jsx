@@ -2,9 +2,15 @@ import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton, TierBadge } from '../components/shared'
+import { useOracleBundle } from '../engine/oracleBundle'
+import { formatProbability } from '../engine/probability.js'
 
 export default function TeamsPage() {
   const teams = useLiveQuery(() => db.teams.toArray(), [])
+  const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
+  // Same canonical snapshot as every other surface — tier badges here can
+  // never disagree with the percentages shown elsewhere.
+  const bundle = useOracleBundle(teams ?? [], matches ?? [])
   if (teams === undefined) return <Skeleton h={500} />
 
   const pools = ['A', 'B', 'C', 'D']
@@ -26,7 +32,14 @@ export default function TeamsPage() {
                 <div className="mb-1.5 text-4xl">{t.flag}</div>
                 <div className="text-sm font-bold">{t.name}</div>
                 <div className="font-mono text-[10px] text-pitch-400">{t.nickname}</div>
-                <div className="mt-2"><TierBadge tier={t.contender_tier} /></div>
+                <div className="mt-2 flex items-center justify-between gap-1">
+                  <TierBadge tier={bundle?.eliminationAt.has(t.code) ? 'outsider' : bundle?.current.get(t.code)?.classification} />
+                  {bundle && (
+                    <span className="font-mono text-[10px] text-pitch-400">
+                      {formatProbability(bundle.eliminationAt.has(t.code) ? 0 : bundle.current.championOf(t.code))}
+                    </span>
+                  )}
+                </div>
               </Link>
             ))}
           </div>

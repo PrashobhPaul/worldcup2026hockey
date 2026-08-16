@@ -4,24 +4,23 @@ import { db } from '../db'
 import MatchCard from '../components/MatchCard'
 import { Skeleton, TierBadge } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
+import { formatProbability, toPercent } from '../engine/probability.js'
 import { ArrowLeft } from 'lucide-react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
 function OracleSnapshot({ team, teams, matches }) {
   const bundle = useOracleBundle(teams, matches)
   if (!bundle) return null
-  const reach = bundle.live.reach.get(team.code)
+  const reach = bundle.current.get(team.code)
   if (!reach) return null
   const out = bundle.eliminationAt.has(team.code)
-  const champPct = out ? 0 : reach.champion * 100
+  const champion = out ? 0 : reach.champion
 
-  const series = bundle.progression.map(step => {
-    const cut = bundle.eliminationAt.get(team.code)
-    return {
-      match: step.finishedCount,
-      pct: cut && step.finishedCount >= cut.finishedCount ? 0 : +((step.champion[team.code] ?? 0) * 100).toFixed(1),
-    }
-  })
+  const cut = bundle.eliminationAt.get(team.code)
+  const series = bundle.snapshots.map(snap => ({
+    match: snap.completedMatches,
+    pct: cut && snap.completedMatches >= cut.finishedCount ? 0 : toPercent(snap.championOf(team.code), 1),
+  }))
   const peak = Math.max(...series.map(s => s.pct))
 
   return (
@@ -31,7 +30,7 @@ function OracleSnapshot({ team, teams, matches }) {
         <Link to="/prediction-race" className="font-mono text-[11px] text-brand hover:underline">From Oracle ›</Link>
       </div>
       <div className="flex items-baseline gap-3">
-        <span className={`font-mono text-3xl font-bold ${out ? 'text-pitch-400' : 'text-brand'}`}>{champPct.toFixed(1)}%</span>
+        <span className={`font-mono text-3xl font-bold ${out ? 'text-pitch-400' : 'text-brand'}`}>{formatProbability(champion)}</span>
         <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">
           Champion probability{out && ' · eliminated'}
         </span>
@@ -48,7 +47,7 @@ function OracleSnapshot({ team, teams, matches }) {
         <div className="mt-4">
           <div className="mb-1 flex justify-between font-mono text-[10px] text-pitch-400">
             <span>Champion probability · this cup</span>
-            <span>peak {peak.toFixed(1)}% · now {champPct.toFixed(1)}%</span>
+            <span>peak {peak.toFixed(1)}% · now {formatProbability(champion)}</span>
           </div>
           <ResponsiveContainer width="100%" height={110}>
             <LineChart data={series} margin={{ top: 4, right: 8, bottom: 0, left: -22 }}>
@@ -65,6 +64,22 @@ function OracleSnapshot({ team, teams, matches }) {
         </div>
       )}
     </section>
+  )
+}
+
+// Header badges — canonical snapshot only. The seed file's pre-tournament
+// win_prob is a model input, never a displayed "current" probability.
+function TitleOdds({ team, teams, matches }) {
+  const bundle = useOracleBundle(teams, matches)
+  const entry = bundle?.current.get(team.code)
+  const out = bundle?.eliminationAt.has(team.code)
+  return (
+    <div className="mt-2 flex items-center gap-2">
+      <TierBadge tier={out ? 'outsider' : entry?.classification} />
+      <span className="rounded bg-brand/10 px-2 py-0.5 font-mono text-[10px] font-bold text-brand">
+        {entry ? formatProbability(out ? 0 : entry.champion) : '…'} title prob
+      </span>
+    </div>
   )
 }
 
@@ -92,10 +107,7 @@ export default function TeamDetailPage() {
           <div>
             <h1 className="font-display text-3xl font-bold tracking-tight">{team.name}</h1>
             <p className="font-mono text-xs text-pitch-300">{team.nickname} · FIH #{team.fihRank} · Pool {team.pool}{team.host ? ' · Host' : ''}</p>
-            <div className="mt-2 flex items-center gap-2">
-              <TierBadge tier={team.contender_tier} />
-              <span className="rounded bg-brand/10 px-2 py-0.5 font-mono text-[10px] font-bold text-brand">{team.winProb}% title prob</span>
-            </div>
+            <TitleOdds team={team} teams={teams} matches={allMatches} />
           </div>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">

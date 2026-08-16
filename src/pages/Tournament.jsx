@@ -5,6 +5,7 @@ import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings } from '../engine/standings'
 import { useOracleBundle } from '../engine/oracleBundle'
+import { formatProbability } from '../engine/probability.js'
 import { StandingsTable, Skeleton, WinProbBar } from '../components/shared'
 import { formatDate } from '../components/MatchCard'
 import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
@@ -257,6 +258,41 @@ function StatsView({ teams, matches, byCode }) {
   )
 }
 
+// Win Probability reads the canonical current snapshot — the identical object
+// the Oracle race chart ends on. No simulation, sorting rule or rounding of
+// its own lives here.
+function WinProbabilityView({ bundle, byCode }) {
+  const snap = bundle.current
+  const lead = snap.probabilities[0]?.champion ?? 0
+
+  return (
+    <div className="space-y-2">
+      <div className="mb-3 rounded-xl border border-white/5 bg-pitch-800 p-3.5">
+        <p className="text-xs text-pitch-400">
+          All 16 teams ranked by AI tournament win probability — {snap.simulationCount.toLocaleString()} simulated
+          tournaments from the state after {snap.completedMatches} completed {snap.completedMatches === 1 ? 'match' : 'matches'}.
+        </p>
+        <p className="mt-1.5 font-mono text-[10px] text-pitch-400">
+          Snapshot <span className="text-pitch-300">{snap.snapshotId}</span> · model {snap.modelVersion} ·
+          the same snapshot powers the <Link to="/prediction-race" className="text-brand hover:underline">Oracle race</Link> endpoint,
+          odds table and bracket.
+        </p>
+      </div>
+      {snap.probabilities.map(entry => {
+        const team = byCode.get(entry.teamId)
+        if (!team) return null
+        return (
+          <WinProbBar key={entry.teamId} team={team} entry={entry} lead={lead}
+            out={bundle.eliminationAt.has(entry.teamId)} />
+        )
+      })}
+      <p className="pt-1 font-mono text-[10px] text-pitch-400">
+        Champion column sums to {formatProbability(snap.probabilities.reduce((s, p) => s + p.champion, 0), 0)} across all 16 teams.
+      </p>
+    </div>
+  )
+}
+
 function BracketView({ bundle, byCode, matches }) {
   const groups = [
     ['Quarter-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('QF'))],
@@ -335,7 +371,6 @@ export default function TournamentPage() {
   const loading = teams === undefined || matches === undefined
   const standings = computeStandings(teams ?? [], matches ?? [])
   const byCode = new Map((teams ?? []).map(t => [t.code, t]))
-  const sorted = [...(teams ?? [])].sort((a, b) => b.winProb - a.winProb)
 
   return (
     <div>
@@ -383,12 +418,9 @@ export default function TournamentPage() {
             ? <BracketView bundle={bundle} byCode={byCode} matches={matches} />
             : <Skeleton h={400} />)}
 
-          {view === 'probability' && (
-            <div className="space-y-2">
-              <p className="mb-3 text-xs text-pitch-400">All 16 teams ranked by AI tournament win probability. Recalibrated after every completed match.</p>
-              {sorted.map(t => <WinProbBar key={t.code} team={t} />)}
-            </div>
-          )}
+          {view === 'probability' && (bundle
+            ? <WinProbabilityView bundle={bundle} byCode={byCode} />
+            : <Skeleton h={400} />)}
         </>
       )}
     </div>

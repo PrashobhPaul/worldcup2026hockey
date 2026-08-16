@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
+import { formatProbability } from '../engine/probability.js'
 
 export function Skeleton({ h = 100, className = '' }) {
   return <div className={`skeleton ${className}`} style={{ height: h }} />
@@ -86,22 +87,32 @@ export function StandingsTable({ standings, highlight = 2 }) {
   )
 }
 
-export function WinProbBar({ team }) {
+/**
+ * Champion-probability row. `entry` is a canonical snapshot entry from
+ * engine/probability.js — this component never computes or rounds a
+ * probability of its own. `lead` is the leader's probability, used only to
+ * scale the bar.
+ */
+export function WinProbBar({ team, entry, lead, out }) {
+  const champion = entry?.champion ?? 0
+  const width = lead > 0 ? Math.max(champion > 0 ? 2 : 0, (champion / lead) * 100) : 0
   return (
     <Link to={`/teams/${team.code}`}
-      className="flex items-center gap-3 rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/20">
+      className={`flex items-center gap-3 rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/20 ${out ? 'opacity-60' : ''}`}>
       <span className="shrink-0 text-2xl">{team.flag}</span>
       <div className="min-w-0 flex-1">
-        <div className="truncate text-sm font-bold">{team.name}</div>
+        <div className={`truncate text-sm font-bold ${out ? 'line-through' : ''}`}>{team.name}</div>
         <div className="font-mono text-[10px] text-pitch-400">FIH #{team.fihRank} · Pool {team.pool}</div>
-        <TierBadge tier={team.contender_tier} />
+        <TierBadge tier={out ? 'outsider' : entry?.classification} />
       </div>
       <div className="w-28 shrink-0 sm:w-40">
         <div className="h-1.5 overflow-hidden rounded-full bg-pitch-600">
           <div className="h-full rounded-full bg-gradient-to-r from-brand to-brand-deep transition-all duration-700"
-            style={{ width: `${Math.min(100, team.winProb * 3.5)}%` }} />
+            style={{ width: `${width}%` }} />
         </div>
-        <div className="mt-1 text-right font-mono text-xs font-bold text-brand">{team.winProb}%</div>
+        <div className={`mt-1 text-right font-mono text-xs font-bold ${out ? 'text-pitch-400' : 'text-brand'}`}>
+          {formatProbability(champion)}
+        </div>
       </div>
     </Link>
   )

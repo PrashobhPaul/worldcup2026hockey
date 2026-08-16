@@ -6,7 +6,7 @@
 import {
   MODEL_PARAMS, teamRating, goalRates, matchProbabilities,
   mulberry32, samplePoisson,
-} from './strength'
+} from './strength.js'
 
 const QF_SLOTS = [
   { id: 'QF1', home: { pool: 'A', place: 0 }, away: { pool: 'C', place: 0 } },
@@ -98,7 +98,7 @@ export function simulateTournament(teams, matches, opts = {}) {
     const rows = new Map()
     const rowFor = code => {
       let r = rows.get(code)
-      if (!r) { r = { code, pts: 0, gd: 0, gf: 0 }; rows.set(code, r) }
+      if (!r) { r = { code, pts: 0, gd: 0, gf: 0, tb: 0 }; rows.set(code, r) }
       return r
     }
     const apply = (home, away, h, a) => {
@@ -112,11 +112,18 @@ export function simulateTournament(teams, matches, opts = {}) {
     for (const m of fixedPool) apply(m.home, m.away, m.h, m.a)
     for (const m of openPool) apply(m.home, m.away, samplePoisson(m.lambdaH, rng), samplePoisson(m.lambdaA, rng))
 
+    // Drawing the tie-break key up front — one per team, in a fixed order —
+    // instead of calling rng() from inside the sort comparator. A comparator
+    // that consumes randomness makes the RNG stream depend on the JS engine's
+    // sort internals, so the same seed produced different numbers in Node and
+    // in Chromium. Keys drawn here give a total, algorithm-independent order.
+    for (const [, codes] of poolTeams) for (const c of codes) rowFor(c).tb = rng()
+
     const placed = new Map()
     for (const [pool, codes] of poolTeams) {
       placed.set(pool, [...codes]
         .map(c => rowFor(c))
-        .sort((x, y) => y.pts - x.pts || y.gd - x.gd || y.gf - x.gf || (rng() < 0.5 ? -1 : 1))
+        .sort((x, y) => y.pts - x.pts || y.gd - x.gd || y.gf - x.gf || x.tb - y.tb)
         .map(r => r.code))
     }
 
@@ -156,29 +163,11 @@ export function simulateTournament(teams, matches, opts = {}) {
   return { reach: out, runs, finishedCount: counted.length }
 }
 
-/**
- * Champion-probability progression: one simulation snapshot per completed
- * match (0 = pre-tournament). Powers the Oracle race worm.
- */
-export function championProgression(teams, matches, opts = {}) {
-  const runsPerStep = opts.runsPerStep ?? 1200
-  const results = orderedResults(matches)
-  const steps = []
-  for (let k = 0; k <= results.length; k++) {
-    const snap = simulateTournament(teams, matches, {
-      runs: runsPerStep,
-      seed: MODEL_PARAMS.rngSeed + k * 7919,
-      truncateAfter: k,
-    })
-    steps.push({
-      finishedCount: k,
-      matchId: k > 0 ? results[k - 1].id : null,
-      champion: snap.champion ?? Object.fromEntries(
-        [...snap.reach.entries()].map(([code, r]) => [code, r.champion])),
-    })
-  }
-  return steps
-}
+// The champion-probability progression that used to live here (a second,
+// independently-seeded Monte-Carlo run per step) is gone: it produced numbers
+// that disagreed with this file's own current-state simulation for the exact
+// same tournament state. Snapshots — including the current one — are now built
+// in one place, engine/probability.js.
 
 /** Current standings-driven QF projection (most likely bracket). */
 export function projectBracket(teams, matches, standings) {

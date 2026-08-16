@@ -6,6 +6,7 @@ import MatchCard, { formatDate, phaseTag } from '../components/MatchCard'
 import { SectionHead, Skeleton, TierBadge } from '../components/shared'
 import { derivePrediction } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
+import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
 import { FlaskConical, Trophy, Award, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
 
@@ -149,14 +150,17 @@ function NextMatchCard({ match, teams }) {
 function TrendingTeams({ teams, matches }) {
   const bundle = useOracleBundle(teams, matches)
   const cards = useMemo(() => {
-    if (!bundle || bundle.progression.length < 2) return []
-    const last = bundle.progression[bundle.progression.length - 1].champion
-    const prev = bundle.progression[bundle.progression.length - 2].champion
+    if (!bundle || bundle.snapshots.length < 2) return []
+    // Both ends of the delta come from the canonical snapshot series, so
+    // `now` is exactly what the Tournament tab and Oracle odds display.
+    const last = bundle.current
+    const prev = bundle.snapshots[bundle.snapshots.length - 2]
     return teams
       .map(t => ({
         team: t,
-        now: (last[t.code] ?? 0) * 100,
-        delta: ((last[t.code] ?? 0) - (prev[t.code] ?? 0)) * 100,
+        entry: last.get(t.code),
+        now: last.championOf(t.code) * 100,
+        delta: (last.championOf(t.code) - prev.championOf(t.code)) * 100,
         out: bundle.eliminationAt.has(t.code),
       }))
       .sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta) || y.now - x.now)
@@ -168,7 +172,7 @@ function TrendingTeams({ teams, matches }) {
     <section>
       <SectionHead title="📈 Trending Teams" to="/prediction-race" toLabel="Full race →" />
       <div className="grid gap-2.5 sm:grid-cols-3">
-        {cards.map(({ team, now, delta, out }) => (
+        {cards.map(({ team, entry, now, delta, out }) => (
           <Link key={team.code} to={`/teams/${team.code}`}
             className="rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/25"
             style={{ background: `linear-gradient(135deg, ${team.color}14, var(--color-pitch-800))` }}>
@@ -184,8 +188,8 @@ function TrendingTeams({ teams, matches }) {
               </span>
             </div>
             <div className="mt-1.5 flex items-center justify-between">
-              <TierBadge tier={team.contender_tier} />
-              <span className="font-mono text-[11px] text-brand">{now.toFixed(1)}% champion</span>
+              <TierBadge tier={out ? 'outsider' : entry?.classification} />
+              <span className="font-mono text-[11px] text-brand">{formatProbability(entry?.champion ?? 0)} champion</span>
             </div>
           </Link>
         ))}
