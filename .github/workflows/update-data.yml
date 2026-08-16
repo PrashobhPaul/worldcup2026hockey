@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: write  # chain the Pages deploy after a data push
 
 concurrency:
   group: data-pipeline
@@ -37,6 +38,7 @@ jobs:
         run: python scripts/generate_ai_stories.py
 
       - name: Commit & push if changed
+        id: commit
         run: |
           git config user.name "hockey-ai-bot"
           git config user.email "actions@github.com"
@@ -44,6 +46,20 @@ jobs:
           if ! git diff --staged --quiet; then
             git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No data changes."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
+
+      # GITHUB_TOKEN pushes never trigger `on: push` workflows, so the Pages
+      # deploy must be dispatched explicitly or the live site serves stale data.
+      - name: Redeploy GitHub Pages with fresh data
+        if: steps.commit.outputs.pushed == 'true'
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-pages.yml/dispatches" \
+            -d '{"ref":"main"}'
+          echo "Pages redeploy dispatched."
