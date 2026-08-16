@@ -18,55 +18,58 @@ const heroTiles = [
 ]
 
 function HeroCard({ liveNow }) {
-  // The tournament emblem is the owner's artwork, used verbatim: upload the
-  // original as public/emblem-source.png and the data pipeline crops it along
-  // the golden border into public/emblem.png — displayed here untouched.
+  // Artwork is owner-supplied, verbatim: the emblem (public/emblem.png, cropped
+  // by the pipeline from emblem-source.png) and the card background
+  // (public/hero-bg.png — activates automatically once uploaded).
   const [emblem, setEmblem] = useState(false)
 
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-pitch-800 to-pitch-900">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -right-24 top-0 h-full w-2/3 rotate-12 bg-gradient-to-l from-brand/25 via-red-500/15 to-transparent blur-2xl" />
-        <div className="absolute -right-10 bottom-0 h-1/2 w-1/2 rotate-45 bg-gradient-to-tl from-sky-500/15 to-transparent blur-3xl" />
-      </div>
-      <div className="relative flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:p-8">
-        <div className="min-w-0 flex-1">
-          {/* No app icon here — this card is about the World Cup; its only
-              artwork is the official tournament emblem (owner-supplied). */}
-          <h1 className="mb-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Hockey<span className="text-brand">.AI</span>
-          </h1>
-          <p className="max-w-md text-sm text-pitch-300">
-            One game. Countless stories. <span className="font-semibold text-white">Stay informed. Stay ahead.</span>
-          </p>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-brand/30 bg-brand/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-widest text-brand">
-              🏑 FIH Hockey World Cup 2026
+    <section className="hero-card"
+      style={{ '--hero-bg': `url(${import.meta.env.BASE_URL}hero-bg.png)` }}>
+      <div className="hero-layout">
+        {/* 1 — World Cup emblem: the visual entry point on every device */}
+        <div className={`hero-emblem-wrap ${emblem ? '' : 'hidden'}`}>
+          <img src={`${import.meta.env.BASE_URL}emblem.png`} alt="FIH Hockey World Cup 2026"
+            onLoad={() => setEmblem(true)} onError={e => { e.currentTarget.style.display = 'none' }}
+            className="hero-emblem" />
+        </div>
+
+        {/* 2 — Tournament identity */}
+        <h1 className="hero-caption font-display font-bold text-white">
+          FIH HOCKEY WORLD CUP <span className="text-brand">2026</span>
+        </h1>
+        <p className="hero-hosts font-semibold text-pitch-300">Belgium &amp; Netherlands</p>
+
+        {/* 3 — Tournament meta */}
+        <div className="mt-1 flex flex-wrap items-center justify-center gap-2">
+          <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
+          {liveNow && (
+            <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
+              <span className="live-dot" /> Live Now
             </span>
-            <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
-            {liveNow && (
-              <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
-                <span className="live-dot" /> Live Now
-              </span>
-            )}
-          </div>
-          <div className="mt-5 grid max-w-md grid-cols-2 gap-2.5">
-            {heroTiles.map(({ to, icon: Icon, title }) => (
-              <Link key={to} to={to}
-                className="flex min-h-16 items-center gap-2.5 rounded-xl border border-white/10 bg-pitch-950/60 px-3.5 py-3 backdrop-blur transition-all hover:border-brand/40 active:scale-[0.98]">
-                <Icon size={18} className="shrink-0 text-brand" />
-                <span className="text-sm font-bold leading-tight">{title}</span>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
-            Your World Cup companion · <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
+          )}
+        </div>
+
+        {/* 4 — Feature navigation */}
+        <div className="hero-grid">
+          {heroTiles.map(({ to, icon: Icon, title }) => (
+            <Link key={to} to={to} className="hero-tile">
+              <Icon size={18} className="hero-tile-icon text-brand" />
+              <span className="hero-tile-label">{title}</span>
+            </Link>
+          ))}
+        </div>
+
+        {/* 5 — Hockey.AI positioning: the hero's conclusion */}
+        <div className="mt-4">
+          <p className="font-display text-sm font-bold">
+            Hockey<span className="text-brand">.AI</span>
+            <span className="font-sans font-normal text-pitch-300"> — your intelligent World Cup companion</span>
+          </p>
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-pitch-400">
+            <span className="text-brand">Analyze.</span> <span className="text-red-400">Predict.</span> <span className="text-sky-400">Experience.</span>
           </p>
         </div>
-        {/* Official tournament emblem — rendered only once the owner's artwork is in the repo */}
-        <img src={`${import.meta.env.BASE_URL}emblem.png`} alt="FIH Hockey World Cup 2026"
-          onLoad={() => setEmblem(true)} onError={e => { e.currentTarget.style.display = 'none' }}
-          className={`mx-auto w-44 shrink-0 rounded-2xl sm:mx-0 sm:w-52 ${emblem ? 'drop-shadow-[0_0_30px_rgba(255,181,71,0.25)]' : 'hidden'}`} />
       </div>
     </section>
   )
