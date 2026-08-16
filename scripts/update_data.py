@@ -569,9 +569,12 @@ def predict(home_rank, away_rank):
 
 def generate_predictions(fixtures, teams, predictions):
     """
-    Publish picks before push-back, never edited. Pool matches publish inside
-    48h; knockout matches publish as soon as both teams are slotted (bracket-
-    aware — the slot itself came from real standings).
+    Every fixture with both teams known carries an engine pick — including
+    matches that finished before the pipeline existed. The model is
+    SCORE-BLIND (FIH ranks only), so a backfilled pick is byte-identical to
+    what the engine would have output pre-match; those rows are labeled
+    basis='model-backfill' in the ledger for full transparency. Once written,
+    a pick is never edited or deleted.
     """
     rank_of = {t['code']: t['fih_rank'] for t in teams['teams']}
     have = {p['matchId'] for p in predictions['predictions']}
@@ -579,17 +582,14 @@ def generate_predictions(fixtures, teams, predictions):
     now = now_utc()
 
     for m in fixtures['matches']:
-        if m['id'] in have or m['home'] == 'TBD' or m['status'] == 'completed':
+        if m['id'] in have or m['home'] == 'TBD':
             continue
         try:
             ko = kickoff(m)
         except ValueError:
             continue
         knockout = m['phase'] != 'pool'
-        if not knockout and not (timedelta(0) <= ko - now <= timedelta(hours=48)):
-            continue
-        if ko <= now:
-            continue  # never publish after push-back
+        pre_match = ko > now
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
@@ -603,17 +603,20 @@ def generate_predictions(fixtures, teams, predictions):
             conf = round(max(ph, pd, pa), 3)
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         stage_note = f" {m['phase'].replace('-', ' ').title()} slot decided by pool standings." if knockout else ''
+        basis_note = (' Published before push-back.' if pre_match else
+                      ' Engine backfill — the model reads world rankings only (score-blind), so this pick is identical to its pre-match output.')
         predictions['predictions'].append({
             'id': f"oracle-v1:{m['id']}",
             'matchId': m['id'],
             'source': 'oracle-v1',
+            'basis': 'pre-match' if pre_match else 'model-backfill',
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': pick, 'pick_confidence': conf,
-            'reason': f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model from world rankings, published before push-back.{stage_note}",
+            'reason': f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model from world rankings.{stage_note}{basis_note}",
             'publishedAt': now.isoformat(),
         })
         changed = True
-        print(f"ORACLE PICK: {m['id']} -> {pick} ({round(conf*100)}%)")
+        print(f"ORACLE PICK ({'pre-match' if pre_match else 'backfill'}): {m['id']} -> {pick} ({round(conf*100)}%)")
     return changed
 
 # ---------------------------------------------------------------- main
