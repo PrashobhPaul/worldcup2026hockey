@@ -1,0 +1,108 @@
+import { Link } from 'react-router-dom'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db'
+
+export function Skeleton({ h = 100, className = '' }) {
+  return <div className={`skeleton ${className}`} style={{ height: h }} />
+}
+
+export function SectionHead({ title, sub, to, toLabel = 'View all →' }) {
+  return (
+    <div className="mb-3 flex items-baseline justify-between gap-3">
+      <h2 className="font-display text-lg font-semibold tracking-tight">{title}</h2>
+      {sub && <span className="text-xs text-pitch-400">{sub}</span>}
+      {to && <Link to={to} className="text-xs font-medium text-brand hover:underline">{toLabel}</Link>}
+    </div>
+  )
+}
+
+const TIERS = {
+  favourite:  { label: '⭐ Favourite',  cls: 'bg-brand/15 text-brand' },
+  contender:  { label: '🔥 Contender',  cls: 'bg-sky-400/10 text-sky-400' },
+  dark_horse: { label: '🐎 Dark Horse', cls: 'bg-violet-400/10 text-violet-400' },
+  challenger: { label: 'Challenger',    cls: 'bg-pitch-700 text-pitch-300' },
+  outsider:   { label: 'Outsider',      cls: 'bg-pitch-700 text-pitch-400' },
+}
+
+export function TierBadge({ tier }) {
+  const t = TIERS[tier] || TIERS.outsider
+  return (
+    <span className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${t.cls}`}>
+      {t.label}
+    </span>
+  )
+}
+
+export function StandingsTable({ standings, highlight = 2 }) {
+  const teams = useLiveQuery(() => db.teams.toArray(), [], [])
+  const byCode = new Map((teams ?? []).map(t => [t.code, t]))
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full min-w-[440px] border-collapse text-sm">
+        <thead>
+          <tr className="border-b border-white/5 font-mono text-[10px] uppercase tracking-wider text-pitch-400">
+            <th className="py-2 pl-2 text-left">Team</th>
+            <th className="px-1.5 py-2 text-center">P</th>
+            <th className="px-1.5 py-2 text-center">W</th>
+            <th className="px-1.5 py-2 text-center">D</th>
+            <th className="px-1.5 py-2 text-center">L</th>
+            <th className="px-1.5 py-2 text-center">GF</th>
+            <th className="px-1.5 py-2 text-center">GA</th>
+            <th className="px-1.5 py-2 text-center">GD</th>
+            <th className="px-1.5 py-2 text-center">Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          {standings.map((r, i) => {
+            const t = byCode.get(r.team)
+            return (
+              <tr key={r.team}
+                className={`border-b border-white/5 last:border-0 ${i < highlight ? 'border-l-2 border-l-live' : ''}`}>
+                <td className="py-2.5 pl-2">
+                  <Link to={`/teams/${r.team}`} className="flex items-center gap-2 hover:text-brand">
+                    <span className="w-4 text-center font-mono text-[10px] text-pitch-400">{i + 1}</span>
+                    <span className="text-base">{t?.flag ?? '🏑'}</span>
+                    <span className="font-semibold">{t?.name ?? r.team}</span>
+                    {t?.host && <span className="text-[10px] text-pitch-400">(H)</span>}
+                  </Link>
+                </td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.played}</td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.w}</td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.d}</td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.l}</td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.gf}</td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.ga}</td>
+                <td className="px-1.5 text-center font-mono text-pitch-300">{r.gd >= 0 ? `+${r.gd}` : r.gd}</td>
+                <td className="px-1.5 text-center font-mono font-bold text-brand">{r.pts}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      <div className="mt-2 flex items-center gap-1.5 text-[10px] text-pitch-400">
+        <span className="inline-block h-2 w-2 rounded-sm bg-live" /> Top 2 qualify for quarter-finals
+      </div>
+    </div>
+  )
+}
+
+export function WinProbBar({ team }) {
+  return (
+    <Link to={`/teams/${team.code}`}
+      className="flex items-center gap-3 rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/20">
+      <span className="shrink-0 text-2xl">{team.flag}</span>
+      <div className="min-w-0 flex-1">
+        <div className="truncate text-sm font-bold">{team.name}</div>
+        <div className="font-mono text-[10px] text-pitch-400">FIH #{team.fihRank} · Pool {team.pool}</div>
+        <TierBadge tier={team.contender_tier} />
+      </div>
+      <div className="w-28 shrink-0 sm:w-40">
+        <div className="h-1.5 overflow-hidden rounded-full bg-pitch-600">
+          <div className="h-full rounded-full bg-gradient-to-r from-brand to-brand-deep transition-all duration-700"
+            style={{ width: `${Math.min(100, team.winProb * 3.5)}%` }} />
+        </div>
+        <div className="mt-1 text-right font-mono text-xs font-bold text-brand">{team.winProb}%</div>
+      </div>
+    </Link>
+  )
+}

@@ -1,0 +1,31 @@
+{
+  "last_updated": "2026-08-15T12:46:00Z",
+  "source": "FIH TMS",
+  "tournament": "FIH Hockey World Cup 2026 (Men's)",
+  "pools": {
+    "A": [
+      {"rank": 1, "team": "ARG", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "JPN", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "NED", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "NZL", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0}
+    ],
+    "B": [
+      {"rank": 1, "team": "BEL", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "FRA", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "GER", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "MAS", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0}
+    ],
+    "C": [
+      {"rank": 1, "team": "AUS", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "ESP", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "IRL", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 1, "team": "RSA", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0}
+    ],
+    "D": [
+      {"rank": 1, "team": "IND", "played": 1, "won": 1, "drawn": 0, "lost": 0, "gf": 3, "ga": 1, "gd": 2, "points": 3},
+      {"rank": 2, "team": "ENG", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 2, "team": "PAK", "played": 0, "won": 0, "drawn": 0, "lost": 0, "gf": 0, "ga": 0, "gd": 0, "points": 0},
+      {"rank": 4, "team": "WAL", "played": 1, "won": 0, "drawn": 0, "lost": 1, "gf": 1, "ga": 3, "gd": -2, "points": 0}
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tournament — Hockey.AI</title>
+  <meta name="description" content="FIH Hockey World Cup 2026 pool standings, knockout bracket and tournament statistics.">
+  <meta name="theme-color" content="#0b1736">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🏑 Hockey.AI <span>FIH World Cup 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link" data-nav="nav-home">Home</a></li>
+      <li><a href="/matches" class="nav-link" data-nav="nav-matches">Matches</a></li>
+      <li><a href="/teams" class="nav-link" data-nav="nav-teams">Teams</a></li>
+      <li><a href="/players" class="nav-link" data-nav="nav-players">Players</a></li>
+      <li><a href="/tournament" class="nav-link active" data-nav="nav-tournament">Tournament</a></li>
+      <li><a href="/oracle" class="nav-link" data-nav="nav-oracle">Oracle</a></li>
+      <li><a href="/ai-lab" class="nav-link" data-nav="nav-ai-lab">AI Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="page-header">
+    <h1 class="page-title font-display">📊 Tournament</h1>
+    <p class="page-desc">Pool standings · Knockout bracket · Win probability</p>
+  </div>
+
+  <!-- View tabs -->
+  <div class="tabs" id="view-tabs">
+    <button class="tab active" data-view="standings">Pool Standings</button>
+    <button class="tab" data-view="bracket">Bracket</button>
+    <button class="tab" data-view="probability">Win Probability</button>
+  </div>
+
+  <!-- Standings view -->
+  <div id="view-standings">
+    <div id="all-standings">
+      <div class="skeleton" style="height:200px;margin-bottom:0.75rem;border-radius:10px"></div>
+      <div class="skeleton" style="height:200px;margin-bottom:0.75rem;border-radius:10px"></div>
+    </div>
+    <div class="text-xs text-muted mt-2 font-mono" id="last-updated"></div>
+  </div>
+
+  <!-- Bracket view -->
+  <div id="view-bracket" class="hidden">
+    <div id="bracket-content">
+      <div class="skeleton" style="height:300px;border-radius:10px"></div>
+    </div>
+  </div>
+
+  <!-- Probability view -->
+  <div id="view-probability" class="hidden">
+    <div id="prob-content">
+      <div class="skeleton" style="height:300px;border-radius:10px"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <strong>Hockey.AI</strong> · Standings sourced from FIH TMS · Updated every 30 min
+</footer>
+
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item" data-nav="nav-home"><span class="icon">🏠</span>Home</a>
+    <a href="/matches" class="bottom-nav-item" data-nav="nav-matches"><span class="icon">🏑</span>Matches</a>
+    <a href="/tournament" class="bottom-nav-item active" data-nav="nav-tournament"><span class="icon">📊</span>Table</a>
+    <a href="/players" class="bottom-nav-item" data-nav="nav-players"><span class="icon">👤</span>Players</a>
+    <a href="/ai-lab" class="bottom-nav-item" data-nav="nav-ai-lab"><span class="icon">🤖</span>AI Lab</a>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+<script>
+(async () => {
+  const [standingsData, teamsData, fixturesData] = await Promise.all([
+    loadJSON('/data/standings.json'),
+    loadJSON('/data/teams.json'),
+    loadJSON('/data/fixtures.json'),
+  ]);
+
+  const teams   = teamsData?.teams || [];
+  const pools   = standingsData?.pools || {};
+  const matches = fixturesData?.matches || [];
+
+  // ── View switching ──────────────────────
+  function showView(name) {
+    ['standings','bracket','probability'].forEach(v => {
+      document.getElementById('view-' + v).classList.toggle('hidden', v !== name);
+    });
+  }
+
+  document.querySelectorAll('#view-tabs .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#view-tabs .tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      showView(tab.dataset.view);
+    });
+  });
+
+  // ── All Pool Standings ──────────────────
+  const standingsEl = document.getElementById('all-standings');
+  const poolNames = { A:'Pool A', B:'Pool B', C:'Pool C', D:'Pool D' };
+  let html = '';
+
+  for (const [pool, data] of Object.entries(pools)) {
+    const poolMatches  = matches.filter(m => m.pool === pool && m.phase === 'pool');
+    const played       = poolMatches.filter(m => m.status === 'completed').length;
+    const teams4Pool   = teams.filter(t => t.pool === pool);
+
+    html += `
+      <div class="card mb-4">
+        <div class="section-head" style="margin-bottom:0.75rem">
+          <div class="section-title">${poolNames[pool]}</div>
+          <span class="text-xs text-muted font-mono">${played}/${poolMatches.length} played</span>
+        </div>
+        ${buildStandingsTable(data, teams)}
+      </div>
+    `;
+  }
+  standingsEl.innerHTML = html || '<div class="text-muted text-sm">Standings loading...</div>';
+  showRefreshTime(standingsData?.last_updated);
+
+  // ── Bracket ─────────────────────────────
+  const knockouts = matches.filter(m => m.phase !== 'pool');
+  const phaseOrder = ['quarter-final','semi-final','bronze-final','gold-final'];
+  const phaseLabels = {
+    'quarter-final':'Quarter-Finals',
+    'semi-final':   'Semi-Finals',
+    'bronze-final': 'Bronze Medal Match',
+    'gold-final':   '🥇 Gold Medal Final',
+  };
+
+  let bracketHtml = '';
+  for (const phase of phaseOrder) {
+    const phaseMatches = knockouts.filter(m => m.phase === phase);
+    if (phaseMatches.length === 0) continue;
+    bracketHtml += `
+      <div class="bracket-phase">
+        <div class="bracket-phase-title">${phaseLabels[phase]}</div>
+        <div class="bracket-matches">
+    `;
+    for (const m of phaseMatches) {
+      const homeTeam = teams.find(t => t.code === m.home);
+      const awayTeam = teams.find(t => t.code === m.away);
+      const isTBD    = m.home === 'TBD' || m.away === 'TBD';
+      bracketHtml += `
+        <div class="bracket-match">
+          <span>${isTBD ? '❓ TBD' : `${homeTeam?.flag||'🏑'} ${homeTeam?.name||m.home}`}</span>
+          <span class="text-muted font-mono">vs</span>
+          <span>${isTBD ? 'TBD' : `${awayTeam?.flag||'🏑'} ${awayTeam?.name||m.away}`}</span>
+          <span class="bracket-match-label">${m.label||''} · ${formatMatchDate(m.date)} · ${m.venue==='AMV'?'Amstelveen':'Brussels'}</span>
+        </div>
+      `;
+    }
+    bracketHtml += `</div></div>`;
+  }
+  document.getElementById('bracket-content').innerHTML = bracketHtml ||
+    '<div class="card text-muted text-sm">Knockout bracket will be set after pool stage (Aug 20–21).</div>';
+
+  // ── Win Probability ──────────────────────
+  const sorted = [...teams].sort((a,b) => b.win_prob - a.win_prob);
+  document.getElementById('prob-content').innerHTML = `
+    <div class="mb-3">
+      <div class="text-xs text-muted mb-2">All 16 teams ranked by AI tournament win probability</div>
+      ${sorted.map((t,i) => `<div class="mb-2">${buildWinProbBar(t, i+1)}</div>`).join('')}
+      <div class="text-xs text-muted mt-3 font-mono">
+        Model uses FIH World Rankings, recent form, pool difficulty and head-to-head records.
+        Recalibrated after every completed match.
+      </div>
+    </div>
+  `;
+})();
+</script>
+</body>
+</html>

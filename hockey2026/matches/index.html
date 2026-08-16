@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Matches — Hockey.AI</title>
+  <meta name="description" content="All FIH Hockey World Cup 2026 fixtures. Live scores, results and upcoming matches.">
+  <meta name="theme-color" content="#0b1736">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🏑 Hockey.AI <span>FIH World Cup 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link" data-nav="nav-home">Home</a></li>
+      <li><a href="/matches" class="nav-link active" data-nav="nav-matches">Matches</a></li>
+      <li><a href="/teams" class="nav-link" data-nav="nav-teams">Teams</a></li>
+      <li><a href="/players" class="nav-link" data-nav="nav-players">Players</a></li>
+      <li><a href="/tournament" class="nav-link" data-nav="nav-tournament">Tournament</a></li>
+      <li><a href="/oracle" class="nav-link" data-nav="nav-oracle">Oracle</a></li>
+      <li><a href="/ai-lab" class="nav-link" data-nav="nav-ai-lab">AI Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="page-header">
+    <h1 class="page-title font-display">🏑 Matches</h1>
+    <p class="page-desc" id="match-summary">Loading fixtures…</p>
+  </div>
+
+  <!-- Status tabs -->
+  <div class="tabs" id="status-tabs">
+    <button class="tab active" data-filter="all">All <span class="tab-count" id="count-all">—</span></button>
+    <button class="tab" data-filter="live">🔴 Live <span class="tab-count" id="count-live">—</span></button>
+    <button class="tab" data-filter="completed">Played <span class="tab-count" id="count-played">—</span></button>
+    <button class="tab" data-filter="scheduled">Upcoming <span class="tab-count" id="count-upcoming">—</span></button>
+  </div>
+
+  <!-- Pool filter -->
+  <div class="pool-tabs" id="pool-filter">
+    <button class="pool-tab active" data-pool="all">All Pools</button>
+    <button class="pool-tab" data-pool="A">Pool A</button>
+    <button class="pool-tab" data-pool="B">Pool B</button>
+    <button class="pool-tab" data-pool="C">Pool C</button>
+    <button class="pool-tab" data-pool="D">Pool D</button>
+    <button class="pool-tab" data-pool="knockout">Knockouts</button>
+  </div>
+
+  <!-- Match list -->
+  <div id="matches-list">
+    <div class="skeleton" style="height:120px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:120px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:120px;border-radius:10px"></div>
+  </div>
+
+  <div class="text-xs text-muted mt-3 font-mono" id="last-updated"></div>
+</main>
+
+<footer class="footer">
+  <strong>Hockey.AI</strong> · FIH Hockey World Cup 2026 · Match data updated every 30 min via GitHub Actions
+</footer>
+
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item" data-nav="nav-home"><span class="icon">🏠</span>Home</a>
+    <a href="/matches" class="bottom-nav-item active" data-nav="nav-matches"><span class="icon">🏑</span>Matches</a>
+    <a href="/tournament" class="bottom-nav-item" data-nav="nav-tournament"><span class="icon">📊</span>Table</a>
+    <a href="/players" class="bottom-nav-item" data-nav="nav-players"><span class="icon">👤</span>Players</a>
+    <a href="/ai-lab" class="bottom-nav-item" data-nav="nav-ai-lab"><span class="icon">🤖</span>AI Lab</a>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+<script>
+(async () => {
+  const [fixturesData, teamsData] = await Promise.all([
+    loadJSON('/data/fixtures.json'),
+    loadJSON('/data/teams.json'),
+  ]);
+
+  const teams   = teamsData?.teams || [];
+  const matches = fixturesData?.matches || [];
+
+  let activeFilter = 'all';
+  let activePool   = 'all';
+
+  // Read URL params
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('tab')) activeFilter = params.get('tab');
+  if (params.get('pool')) activePool = params.get('pool');
+
+  // Counts
+  const counts = {
+    all:       matches.length,
+    live:      matches.filter(m => m.status === 'live').length,
+    completed: matches.filter(m => m.status === 'completed').length,
+    scheduled: matches.filter(m => m.status === 'scheduled').length,
+  };
+  document.getElementById('count-all').textContent      = counts.all;
+  document.getElementById('count-live').textContent     = counts.live;
+  document.getElementById('count-played').textContent   = counts.completed;
+  document.getElementById('count-upcoming').textContent = counts.scheduled;
+
+  document.getElementById('match-summary').textContent =
+    `${counts.completed} of ${counts.all} fixtures · ${counts.live > 0 ? counts.live + ' LIVE' : 'pull down to refresh'}`;
+
+  // Filter function
+  function filterMatches() {
+    return matches.filter(m => {
+      const statusOk = activeFilter === 'all' ? true :
+                       activeFilter === 'knockout' ? m.phase !== 'pool' :
+                       m.status === activeFilter;
+      const poolOk   = activePool === 'all' ? true :
+                       activePool === 'knockout' ? m.phase !== 'pool' :
+                       m.pool === activePool;
+      return statusOk && poolOk;
+    });
+  }
+
+  // Group by date
+  async function renderMatches() {
+    const filtered = filterMatches();
+    const listEl   = document.getElementById('matches-list');
+
+    if (filtered.length === 0) {
+      listEl.innerHTML = '<div class="card text-muted text-sm">No matches found for this filter.</div>';
+      return;
+    }
+
+    // Group by date
+    const byDate = {};
+    for (const m of filtered) {
+      if (!byDate[m.date]) byDate[m.date] = [];
+      byDate[m.date].push(m);
+    }
+
+    const cards = [];
+    for (const [date, dayMatches] of Object.entries(byDate).sort()) {
+      const dayLabel = isToday(date) ? `<span class="badge badge-upcoming">Today</span> ${formatMatchDate(date)}` : formatMatchDate(date);
+      cards.push(`<div class="divider-label">${dayLabel}</div>`);
+      for (const m of dayMatches) {
+        cards.push(await buildMatchCard(m, teams));
+      }
+    }
+    listEl.innerHTML = cards.join('');
+  }
+
+  // Status tabs
+  document.querySelectorAll('#status-tabs .tab').forEach(tab => {
+    if (tab.dataset.filter === activeFilter) tab.classList.add('active');
+    else tab.classList.remove('active');
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#status-tabs .tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeFilter = tab.dataset.filter;
+      renderMatches();
+    });
+  });
+
+  // Pool filter tabs
+  document.querySelectorAll('#pool-filter .pool-tab').forEach(tab => {
+    if (tab.dataset.pool === activePool) tab.classList.add('active');
+    else tab.classList.remove('active');
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#pool-filter .pool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activePool = tab.dataset.pool;
+      renderMatches();
+    });
+  });
+
+  await renderMatches();
+  showRefreshTime(fixturesData?.last_updated);
+
+  // Add live badge to tab if needed
+  if (counts.live > 0) {
+    document.querySelector('[data-filter="live"]').innerHTML =
+      `<span class="live-dot"></span> Live <span class="tab-count">${counts.live}</span>`;
+  }
+})();
+</script>
+</body>
+</html>

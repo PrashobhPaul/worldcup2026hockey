@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Oracle — Hockey.AI</title>
+  <meta name="description" content="Hockey.AI Oracle: AI match predictions for every FIH Hockey World Cup 2026 fixture. Every pick published before kick-off.">
+  <meta name="theme-color" content="#0b1736">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🏑 Hockey.AI <span>FIH World Cup 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link" data-nav="nav-home">Home</a></li>
+      <li><a href="/matches" class="nav-link" data-nav="nav-matches">Matches</a></li>
+      <li><a href="/teams" class="nav-link" data-nav="nav-teams">Teams</a></li>
+      <li><a href="/players" class="nav-link" data-nav="nav-players">Players</a></li>
+      <li><a href="/tournament" class="nav-link" data-nav="nav-tournament">Tournament</a></li>
+      <li><a href="/oracle" class="nav-link active" data-nav="nav-oracle">Oracle</a></li>
+      <li><a href="/ai-lab" class="nav-link" data-nav="nav-ai-lab">AI Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="page-header">
+    <h1 class="page-title font-display">🎯 The Oracle</h1>
+    <p class="page-desc">AI pre-match predictions · Published before kick-off · No edits, no deletions.</p>
+  </div>
+
+  <!-- Stats bar -->
+  <div id="oracle-stats">
+    <div class="skeleton" style="height:100px;border-radius:10px;margin-bottom:1rem"></div>
+  </div>
+
+  <!-- How it works -->
+  <div class="card mb-4" style="border-left:3px solid var(--accent)">
+    <div class="text-sm font-bold mb-2">How the Oracle Works</div>
+    <p class="text-xs" style="line-height:1.7">
+      Before every match, the Oracle publishes a prediction: which team wins, with a confidence % and key drivers.
+      Predictions are logged to <code class="font-mono text-accent">data/oracle.json</code> before kick-off and never changed afterwards.
+      After the match, the result is graded (✓ correct / ✗ wrong). The running accuracy builds the public record.
+    </p>
+    <div class="text-xs text-muted mt-2 font-mono">
+      Inputs: FIH World Rankings · Recent form · Head-to-head · Pool stakes · Home advantage
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="tabs" id="pred-tabs">
+    <button class="tab active" data-f="all">All</button>
+    <button class="tab" data-f="correct">✓ Correct</button>
+    <button class="tab" data-f="wrong">✗ Wrong</button>
+    <button class="tab" data-f="pending">⏳ Pending</button>
+  </div>
+
+  <!-- Predictions list -->
+  <div id="predictions-list">
+    <div class="skeleton" style="height:120px;border-radius:10px;margin-bottom:0.5rem"></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <strong>Hockey.AI</strong> · Oracle accuracy is publicly verifiable. All picks timestamped at publication.
+</footer>
+
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item" data-nav="nav-home"><span class="icon">🏠</span>Home</a>
+    <a href="/matches" class="bottom-nav-item" data-nav="nav-matches"><span class="icon">🏑</span>Matches</a>
+    <a href="/tournament" class="bottom-nav-item" data-nav="nav-tournament"><span class="icon">📊</span>Table</a>
+    <a href="/players" class="bottom-nav-item" data-nav="nav-players"><span class="icon">👤</span>Players</a>
+    <a href="/ai-lab" class="bottom-nav-item" data-nav="nav-ai-lab"><span class="icon">🤖</span>AI Lab</a>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+<script>
+(async () => {
+  const [oracleData, teamsData, fixturesData] = await Promise.all([
+    loadJSON('/data/oracle.json'),
+    loadJSON('/data/teams.json'),
+    loadJSON('/data/fixtures.json'),
+  ]);
+
+  const teams       = teamsData?.teams || [];
+  const matches     = fixturesData?.matches || [];
+  const predictions = oracleData?.predictions || [];
+  const summary     = oracleData?.summary || {};
+
+  // ── Stats bar ────────────────────────────
+  document.getElementById('oracle-stats').innerHTML = `
+    <div class="card hero-match">
+      <div class="flex gap-3" style="flex-wrap:wrap;justify-content:center">
+        <div class="oracle-stat">
+          <div class="oracle-big">${summary.accuracy_pct ?? 0}%</div>
+          <div class="oracle-label">Accuracy</div>
+        </div>
+        <div class="oracle-stat">
+          <div class="oracle-big">${summary.correct ?? 0}<span style="font-size:1rem;color:var(--text-muted)">/${summary.total_picks ?? 0}</span></div>
+          <div class="oracle-label">Correct</div>
+        </div>
+        <div class="oracle-stat">
+          <div class="oracle-big">${summary.pool_picks ?? 0}</div>
+          <div class="oracle-label">Pool picks</div>
+        </div>
+        <div class="oracle-stat">
+          <div class="oracle-big">${summary.knockout_picks ?? 0}</div>
+          <div class="oracle-label">Knockout picks</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // ── Render predictions ───────────────────
+  let activeFilter = 'all';
+
+  function renderPredictions() {
+    const filtered = predictions.filter(p =>
+      activeFilter === 'all' ? true : p.result === activeFilter
+    ).sort((a,b) => new Date(b.published_at) - new Date(a.published_at));
+
+    const listEl = document.getElementById('predictions-list');
+    if (filtered.length === 0) {
+      listEl.innerHTML = '<div class="card text-muted text-sm">No predictions in this category yet.</div>';
+      return;
+    }
+
+    listEl.innerHTML = filtered.map(p => {
+      const match  = matches.find(m => m.id === p.match_id);
+      const pick   = teams.find(t => t.code === p.pick);
+      const home   = match ? teams.find(t => t.code === match.home) : null;
+      const away   = match ? teams.find(t => t.code === match.away) : null;
+      const resultIcons = { correct:'✅', wrong:'❌', pending:'⏳' };
+      const resultCls   = { correct:'pred-correct', wrong:'pred-wrong', pending:'pred-pending' };
+
+      return `
+        <div class="card mb-3">
+          <div class="flex gap-3 items-center">
+            <div class="prediction-result ${resultCls[p.result]||'pred-pending'}">${resultIcons[p.result]||'⏳'}</div>
+            <div style="flex:1">
+              <div class="flex gap-2 items-center mb-1">
+                ${home ? `<span>${home.flag} <strong>${home.name}</strong></span>` : ''}
+                <span class="text-muted">vs</span>
+                ${away ? `<span>${away.flag} <strong>${away.name}</strong></span>` : ''}
+                ${match ? `<span class="match-phase-badge" style="margin-left:auto">Pool ${match.pool}</span>` : ''}
+              </div>
+              <div class="text-sm">
+                Pick: ${pick ? pick.flag : '🏑'} <strong>${pick?.name || p.pick}</strong>
+                <span class="text-accent font-mono ml-1">${p.confidence}% confidence</span>
+              </div>
+              <div class="text-xs text-muted mt-1">${p.reason}</div>
+              ${p.actual_score ? `<div class="text-xs font-mono text-live mt-1">Result: ${p.actual_score}</div>` : ''}
+            </div>
+          </div>
+          <div class="text-xs text-muted font-mono mt-2" style="border-top:1px solid var(--border-dim);padding-top:0.5rem">
+            Published ${new Date(p.published_at).toLocaleString()}
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  document.querySelectorAll('#pred-tabs .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#pred-tabs .tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeFilter = tab.dataset.f;
+      renderPredictions();
+    });
+  });
+
+  renderPredictions();
+
+  if (predictions.length === 0) {
+    document.getElementById('predictions-list').innerHTML =
+      '<div class="card text-muted text-sm">⏳ Oracle predictions will appear here before each kick-off. First picks incoming…</div>';
+  }
+})();
+</script>
+</body>
+</html>

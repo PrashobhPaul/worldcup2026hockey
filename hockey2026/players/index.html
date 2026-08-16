@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Players — Hockey.AI</title>
+  <meta name="description" content="Player stats and profiles from FIH Hockey World Cup 2026. Top scorers, penalty corner specialists and key players.">
+  <meta name="theme-color" content="#0b1736">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🏑 Hockey.AI <span>FIH World Cup 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link" data-nav="nav-home">Home</a></li>
+      <li><a href="/matches" class="nav-link" data-nav="nav-matches">Matches</a></li>
+      <li><a href="/teams" class="nav-link" data-nav="nav-teams">Teams</a></li>
+      <li><a href="/players" class="nav-link active" data-nav="nav-players">Players</a></li>
+      <li><a href="/tournament" class="nav-link" data-nav="nav-tournament">Tournament</a></li>
+      <li><a href="/oracle" class="nav-link" data-nav="nav-oracle">Oracle</a></li>
+      <li><a href="/ai-lab" class="nav-link" data-nav="nav-ai-lab">AI Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="page-header">
+    <h1 class="page-title font-display">👤 Players</h1>
+    <p class="page-desc">Key players · Stats · Tournament leaders</p>
+  </div>
+
+  <!-- Top scorers leaderboard -->
+  <div class="section-head">
+    <div class="section-title">⚽ Top Goal Scorers</div>
+  </div>
+  <div id="top-scorers">
+    <div class="skeleton" style="height:120px;border-radius:10px;margin-bottom:0.75rem"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PC specialists -->
+  <div class="section-head">
+    <div class="section-title">🔴 PC Specialists</div>
+    <span class="section-sub">Penalty Corner Goals</span>
+  </div>
+  <div id="pc-leaders">
+    <div class="skeleton" style="height:80px;border-radius:10px;margin-bottom:0.75rem"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- All players -->
+  <div class="section-head">
+    <div class="section-title">All Players</div>
+  </div>
+
+  <!-- Filters -->
+  <div class="flex gap-2 mb-3" style="flex-wrap:wrap;align-items:center">
+    <div class="pool-tabs" id="team-filter" style="margin:0;flex-wrap:wrap">
+      <button class="pool-tab active" data-team="all">All Teams</button>
+    </div>
+  </div>
+  <div class="pool-tabs mb-3" id="pos-filter">
+    <button class="pool-tab active" data-pos="all">All</button>
+    <button class="pool-tab" data-pos="Goalkeeper">GK</button>
+    <button class="pool-tab" data-pos="Defender">DF</button>
+    <button class="pool-tab" data-pos="Midfielder">MF</button>
+    <button class="pool-tab" data-pos="Forward">FW</button>
+  </div>
+
+  <div class="players-grid" id="players-grid">
+    <div class="skeleton" style="height:130px;border-radius:10px"></div>
+    <div class="skeleton" style="height:130px;border-radius:10px"></div>
+    <div class="skeleton" style="height:130px;border-radius:10px"></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <strong>Hockey.AI</strong> · Player stats updated after each match via FIH TMS
+</footer>
+
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item" data-nav="nav-home"><span class="icon">🏠</span>Home</a>
+    <a href="/matches" class="bottom-nav-item" data-nav="nav-matches"><span class="icon">🏑</span>Matches</a>
+    <a href="/tournament" class="bottom-nav-item" data-nav="nav-tournament"><span class="icon">📊</span>Table</a>
+    <a href="/players" class="bottom-nav-item active" data-nav="nav-players"><span class="icon">👤</span>Players</a>
+    <a href="/ai-lab" class="bottom-nav-item" data-nav="nav-ai-lab"><span class="icon">🤖</span>AI Lab</a>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+<script>
+(async () => {
+  const [playersData, teamsData] = await Promise.all([
+    loadJSON('/data/players.json'),
+    loadJSON('/data/teams.json'),
+  ]);
+
+  const players = playersData?.players || [];
+  const teams   = teamsData?.teams || [];
+
+  // Helpers
+  function getTeam(code) { return teams.find(t => t.code === code) || {name:code,flag:'🏑',color:'#ffb547'}; }
+  function posShort(pos) {
+    return {Goalkeeper:'GK',Defender:'DF',Midfielder:'MF',Forward:'FW'}[pos] || pos;
+  }
+
+  // ── Top scorers ──────────────────────────
+  const scorers = [...players].sort((a,b) => b.goals - a.goals || b.assists - a.assists).slice(0, 8);
+  const scorersEl = document.getElementById('top-scorers');
+  if (scorers.every(p => p.goals === 0)) {
+    scorersEl.innerHTML = '<div class="card text-muted text-sm">⏳ Goals will appear here after matches complete.</div>';
+  } else {
+    scorersEl.innerHTML = scorers.filter(p => p.goals > 0).map((p, i) => {
+      const t = getTeam(p.team);
+      return `
+        <div class="prediction-row">
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);width:1.5rem;text-align:center">${i+1}</span>
+          <span>${t.flag}</span>
+          <span class="font-bold">${p.name} ${p.is_captain ? '©' : ''}</span>
+          <span class="text-xs text-muted">${t.name} · ${posShort(p.position)}</span>
+          <span class="text-accent font-mono font-bold ml-auto">${p.goals} ⚽</span>
+          ${p.assists > 0 ? `<span class="stat-chip">${p.assists} A</span>` : ''}
+        </div>
+      `;
+    }).join('') || '<div class="card text-muted text-sm">⏳ Waiting for first goals…</div>';
+  }
+
+  // ── PC specialists ───────────────────────
+  const pcLeaders = [...players].sort((a,b) => b.pc_scored - a.pc_scored).slice(0, 5);
+  const pcEl = document.getElementById('pc-leaders');
+  if (pcLeaders.every(p => p.pc_scored === 0)) {
+    pcEl.innerHTML = '<div class="card text-muted text-sm">⏳ Penalty corner stats will appear after matches complete.</div>';
+  } else {
+    pcEl.innerHTML = pcLeaders.filter(p => p.pc_scored > 0).map((p, i) => {
+      const t = getTeam(p.team);
+      return `
+        <div class="prediction-row">
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);width:1.5rem;text-align:center">${i+1}</span>
+          <span>${t.flag}</span>
+          <span class="font-bold">${p.name}</span>
+          <span class="text-xs text-muted">${t.name}</span>
+          <span class="text-accent font-mono font-bold ml-auto">${p.pc_scored} PC</span>
+        </div>
+      `;
+    }).join('') || '<div class="card text-muted text-sm">⏳ Stats coming soon.</div>';
+  }
+
+  // ── Build team filter tabs ───────────────
+  const teamFilterEl = document.getElementById('team-filter');
+  const uniqueTeams  = [...new Set(players.map(p => p.team))].sort();
+  for (const code of uniqueTeams) {
+    const t = getTeam(code);
+    teamFilterEl.innerHTML += `<button class="pool-tab" data-team="${code}">${t.flag}</button>`;
+  }
+
+  // ── All players grid ─────────────────────
+  let activeTeam = 'all';
+  let activePos  = 'all';
+
+  function buildPlayerCard(p) {
+    const t = getTeam(p.team);
+    return `
+      <div class="player-card">
+        <div class="player-header">
+          <span class="player-num font-mono">#${p.number}</span>
+          <span class="player-team-flag">${t.flag}</span>
+          <span class="player-name">${p.name} ${p.is_captain ? '<span class="captain-icon">©</span>' : ''} ${p.fih_star ? '⭐' : ''}</span>
+        </div>
+        <div><span class="player-pos">${posShort(p.position)}</span> <span class="text-xs text-muted">${t.name}</span></div>
+        ${p.profile ? `<div class="text-xs text-muted mt-2" style="line-height:1.5">${p.profile}</div>` : ''}
+        <div class="player-stats">
+          <span class="stat-chip ${p.goals > 0 ? 'highlight' : ''}">⚽ ${p.goals}</span>
+          <span class="stat-chip">A ${p.assists}</span>
+          <span class="stat-chip ${p.pc_scored > 0 ? 'highlight' : ''}">🔴 ${p.pc_scored}</span>
+          ${p.yellow_cards > 0 ? `<span class="stat-chip" style="background:rgba(251,191,36,0.15);color:var(--yellow-card)">🟡</span>` : ''}
+          ${p.red_cards > 0 ? `<span class="stat-chip" style="background:rgba(239,68,68,0.15);color:var(--red-card)">🔴</span>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderGrid() {
+    const filtered = players.filter(p =>
+      (activeTeam === 'all' || p.team === activeTeam) &&
+      (activePos  === 'all' || p.position === activePos)
+    );
+    document.getElementById('players-grid').innerHTML =
+      filtered.length ? filtered.map(buildPlayerCard).join('') :
+      '<div class="card text-muted text-sm">No players match the filter.</div>';
+  }
+
+  // Team filter
+  document.querySelectorAll('#team-filter .pool-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#team-filter .pool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeTeam = tab.dataset.team;
+      renderGrid();
+    });
+  });
+
+  // Position filter
+  document.querySelectorAll('#pos-filter .pool-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#pos-filter .pool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activePos = tab.dataset.pos;
+      renderGrid();
+    });
+  });
+
+  renderGrid();
+})();
+</script>
+</body>
+</html>

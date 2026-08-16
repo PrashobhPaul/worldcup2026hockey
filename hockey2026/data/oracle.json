@@ -1,0 +1,21 @@
+{
+  "last_updated": "2026-08-16T00:00:00Z",
+  "summary": {
+    "total_picks": 1,
+    "correct": 1,
+    "accuracy_pct": 100,
+    "pool_picks": 1,
+    "knockout_picks": 0
+  },
+  "predictions": [
+    {
+      "match_id": "D1",
+      "pick": "IND",
+      "confidence": 68,
+      "reason": "India ranked #5 vs Wales #16. Home form and FIH ranking gap favour India. Harmanpreet Singh's drag flick is a premium weapon.",
+      "result": "correct",
+      "actual_score": "IND 3-1 WAL",
+      "published_at": "2026-08-15T10:00:00Z"
+    }
+  ]
+}

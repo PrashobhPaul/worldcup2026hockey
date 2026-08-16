@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Teams — Hockey.AI</title>
+  <meta name="description" content="All 16 teams at FIH Hockey World Cup 2026. Rankings, pools, key players and AI win probability.">
+  <meta name="theme-color" content="#0b1736">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🏑 Hockey.AI <span>FIH World Cup 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link" data-nav="nav-home">Home</a></li>
+      <li><a href="/matches" class="nav-link" data-nav="nav-matches">Matches</a></li>
+      <li><a href="/teams" class="nav-link active" data-nav="nav-teams">Teams</a></li>
+      <li><a href="/players" class="nav-link" data-nav="nav-players">Players</a></li>
+      <li><a href="/tournament" class="nav-link" data-nav="nav-tournament">Tournament</a></li>
+      <li><a href="/oracle" class="nav-link" data-nav="nav-oracle">Oracle</a></li>
+      <li><a href="/ai-lab" class="nav-link" data-nav="nav-ai-lab">AI Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="page-header">
+    <h1 class="page-title font-display">🌍 Teams</h1>
+    <p class="page-desc">16 nations · 4 pools · Aug 15 – 30, 2026</p>
+  </div>
+
+  <!-- Pool filter -->
+  <div class="tabs" id="pool-tabs">
+    <button class="tab active" data-pool="all">All Teams</button>
+    <button class="tab" data-pool="A">Pool A</button>
+    <button class="tab" data-pool="B">Pool B</button>
+    <button class="tab" data-pool="C">Pool C</button>
+    <button class="tab" data-pool="D">Pool D</button>
+  </div>
+
+  <!-- Sort -->
+  <div class="flex gap-2 mb-3" style="align-items:center">
+    <span class="text-xs text-muted">Sort:</span>
+    <div class="pool-tabs" style="margin:0">
+      <button class="pool-tab active" data-sort="rank">FIH Rank</button>
+      <button class="pool-tab" data-sort="prob">Win %</button>
+      <button class="pool-tab" data-sort="pool">Pool</button>
+    </div>
+  </div>
+
+  <!-- Teams grid -->
+  <div class="team-grid" id="teams-grid">
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+  </div>
+
+  <div class="divider-label mt-4">📈 Tournament Win Probability</div>
+
+  <!-- Win probability bars -->
+  <div id="prob-list">
+    <div class="skeleton" style="height:60px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:60px;border-radius:10px"></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <strong>Hockey.AI</strong> · FIH Rankings sourced from FIH.ch · AI win probability updated after each match
+</footer>
+
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item" data-nav="nav-home"><span class="icon">🏠</span>Home</a>
+    <a href="/matches" class="bottom-nav-item" data-nav="nav-matches"><span class="icon">🏑</span>Matches</a>
+    <a href="/tournament" class="bottom-nav-item" data-nav="nav-tournament"><span class="icon">📊</span>Table</a>
+    <a href="/players" class="bottom-nav-item" data-nav="nav-players"><span class="icon">👤</span>Players</a>
+    <a href="/ai-lab" class="bottom-nav-item" data-nav="nav-ai-lab"><span class="icon">🤖</span>AI Lab</a>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+<script>
+(async () => {
+  const teamsData = await loadJSON('/data/teams.json');
+  const teams     = teamsData?.teams || [];
+
+  const tiers = {
+    favourite:  { label: '⭐ Favourite',  cls:'tier-favourite' },
+    contender:  { label: '🔥 Contender',  cls:'tier-contender' },
+    dark_horse: { label: '🐎 Dark Horse', cls:'tier-dark_horse' },
+    challenger: { label: 'Challenger',    cls:'tier-challenger' },
+    outsider:   { label: 'Outsider',      cls:'tier-outsider' },
+  };
+
+  let activePool = 'all';
+  let activeSort = 'rank';
+
+  function getSorted() {
+    let list = activePool === 'all' ? [...teams] : teams.filter(t => t.pool === activePool);
+    if (activeSort === 'rank')  list.sort((a,b) => a.fih_rank - b.fih_rank);
+    if (activeSort === 'prob')  list.sort((a,b) => b.win_prob - a.win_prob);
+    if (activeSort === 'pool')  list.sort((a,b) => a.pool.localeCompare(b.pool) || a.fih_rank - b.fih_rank);
+    return list;
+  }
+
+  function buildTeamCard(t) {
+    const tier    = tiers[t.contender_tier] || tiers.outsider;
+    const players = (t.key_players || []).slice(0, 3).join(', ');
+    return `
+      <div class="team-card" style="--team-color:${t.color}">
+        <span class="team-card-rank">FIH #${t.fih_rank}</span>
+        <div class="team-flag-large">${t.flag}</div>
+        <div class="team-card-name">${t.name} ${t.host ? '<small style="color:var(--accent);font-size:0.65em">(Host)</small>' : ''}</div>
+        <div class="team-card-meta">Pool ${t.pool} · ${t.nickname}</div>
+        ${t.titles ? `<div class="team-card-meta mt-1">🏆 ${t.titles}× World Champion (${t.last_title})</div>` : ''}
+        <span class="tier-badge ${tier.cls}">${tier.label}</span>
+        <div class="text-xs text-muted mt-2">${players}</div>
+        <div class="text-xs font-mono text-accent mt-1">${t.win_prob}% win probability</div>
+      </div>
+    `;
+  }
+
+  function render() {
+    const list = getSorted();
+    document.getElementById('teams-grid').innerHTML = list.map(buildTeamCard).join('');
+  }
+
+  // Pool tabs
+  document.querySelectorAll('#pool-tabs .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#pool-tabs .tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activePool = tab.dataset.pool;
+      render();
+    });
+  });
+
+  // Sort tabs
+  document.querySelectorAll('[data-sort]').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('[data-sort]').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeSort = tab.dataset.sort;
+      render();
+    });
+  });
+
+  render();
+
+  // Win probability
+  const sortedByProb = [...teams].sort((a,b) => b.win_prob - a.win_prob);
+  document.getElementById('prob-list').innerHTML =
+    sortedByProb.map((t,i) => buildWinProbBar(t, i+1)).join('');
+})();
+</script>
+</body>
+</html>

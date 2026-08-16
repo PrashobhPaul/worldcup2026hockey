@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hockey.AI — FIH Hockey World Cup 2026</title>
+  <meta name="description" content="AI-powered match predictions, stories and analytics for every FIH Hockey World Cup 2026 fixture.">
+  <meta name="author" content="Hockey.AI">
+  <meta name="theme-color" content="#0b1736">
+  <meta property="og:title" content="Hockey.AI — FIH Hockey World Cup 2026">
+  <meta property="og:description" content="AI stories, match intelligence, simulations and visual analytics.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- ── Top Nav ────────────────────────────────── -->
+<header>
+  <nav class="nav">
+    <a href="/" class="nav-logo">🏑 Hockey.AI <span>FIH World Cup 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link active" data-nav="nav-home">Home</a></li>
+      <li><a href="/matches" class="nav-link" data-nav="nav-matches">Matches</a></li>
+      <li><a href="/teams" class="nav-link" data-nav="nav-teams">Teams</a></li>
+      <li><a href="/players" class="nav-link" data-nav="nav-players">Players</a></li>
+      <li><a href="/tournament" class="nav-link" data-nav="nav-tournament">Tournament</a></li>
+      <li><a href="/oracle" class="nav-link" data-nav="nav-oracle">Oracle</a></li>
+      <li><a href="/ai-lab" class="nav-link" data-nav="nav-ai-lab">AI Lab</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ── Page ───────────────────────────────────── -->
+<main class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="pitch-circle"></div>
+    <div class="hero-eyebrow">🏑 Men's · Aug 15 – 30 · Belgium &amp; Netherlands</div>
+    <h1 class="hero-title font-display">
+      Hockey<span class="accent">.AI</span>
+    </h1>
+    <p class="hero-sub">AI stories, match intelligence, simulations and visual analytics for every FIH Hockey World Cup 2026 fixture.</p>
+    <div class="hero-badges">
+      <span class="hero-badge accent" id="live-badge" style="display:none"><span class="live-dot"></span>&nbsp;Live Now</span>
+      <span class="hero-badge">🌍 16 Nations</span>
+      <span class="hero-badge">🏑 45 Matches</span>
+      <span class="hero-badge">🤖 AI Predictions</span>
+      <span class="hero-badge">📊 Live Standings</span>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <div class="flex gap-2 mb-4" style="flex-wrap:wrap">
+    <a href="/ai-lab" style="flex:1;min-width:120px;text-align:center" class="card card-accent">
+      <div class="text-accent font-bold">🤖 AI Lab</div>
+      <div class="text-xs text-muted mt-1">Match intelligence</div>
+    </a>
+    <a href="/oracle" style="flex:1;min-width:120px;text-align:center" class="card">
+      <div class="font-bold">🎯 Oracle</div>
+      <div class="text-xs text-muted mt-1">Prediction race</div>
+    </a>
+    <a href="/tournament" style="flex:1;min-width:120px;text-align:center" class="card">
+      <div class="font-bold">📊 Standings</div>
+      <div class="text-xs text-muted mt-1">All 4 pools</div>
+    </a>
+    <a href="/players" style="flex:1;min-width:120px;text-align:center" class="card">
+      <div class="font-bold">👤 Players</div>
+      <div class="text-xs text-muted mt-1">Stats &amp; profiles</div>
+    </a>
+  </div>
+
+  <!-- Live / Latest Match -->
+  <div class="section-head">
+    <div class="section-title">🔴 Today's Matches</div>
+    <a href="/matches" class="section-link">All matches →</a>
+  </div>
+  <div id="today-matches">
+    <div class="skeleton" style="height:120px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:120px;margin-bottom:0.5rem;border-radius:10px"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Pool Standings preview -->
+  <div class="section-head">
+    <div class="section-title">📊 Pool Standings</div>
+    <a href="/tournament" class="section-link">Full table →</a>
+  </div>
+  <div class="pool-tabs" id="pool-tabs">
+    <button class="pool-tab active" data-pool="A">Pool A</button>
+    <button class="pool-tab" data-pool="B">Pool B</button>
+    <button class="pool-tab" data-pool="C">Pool C</button>
+    <button class="pool-tab" data-pool="D">Pool D</button>
+  </div>
+  <div id="standings-preview">
+    <div class="skeleton" style="height:160px;border-radius:10px"></div>
+  </div>
+  <div class="text-xs text-muted mt-2" id="last-updated"></div>
+
+  <div class="divider"></div>
+
+  <!-- Tournament Win Probability -->
+  <div class="section-head">
+    <div class="section-title">📈 Tournament Win Probability</div>
+    <span class="section-sub">AI Model · Updated after each match</span>
+  </div>
+  <div class="section-head mt-2 mb-2">
+    <span class="text-xs text-muted">⭐ Favourites</span>
+  </div>
+  <div id="favourites-list">
+    <div class="skeleton" style="height:68px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:68px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:68px;margin-bottom:0.5rem;border-radius:10px"></div>
+  </div>
+
+  <div class="divider-label">🐎 Dark Horses</div>
+
+  <div id="dark-horses-list">
+    <div class="skeleton" style="height:68px;margin-bottom:0.5rem;border-radius:10px"></div>
+    <div class="skeleton" style="height:68px;border-radius:10px"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Oracle preview -->
+  <div class="section-head">
+    <div class="section-title">🎯 Oracle · AI Picks</div>
+    <a href="/oracle" class="section-link">Full record →</a>
+  </div>
+  <div id="oracle-preview">
+    <div class="skeleton" style="height:100px;border-radius:10px"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Latest result highlight -->
+  <div class="section-head">
+    <div class="section-title">⚡ Latest Result</div>
+    <a href="/matches?tab=played" class="section-link">All results →</a>
+  </div>
+  <div id="latest-result">
+    <div class="skeleton" style="height:120px;border-radius:10px"></div>
+  </div>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────── -->
+<footer class="footer">
+  <strong>Hockey.AI</strong> · FIH Hockey World Cup 2026 · Men's<br>
+  AI-powered analytics. Not affiliated with FIH. Data: FIH TMS &amp; official sources.<br>
+  Also check out <a href="https://fifa2026.prashobhpaul.com" style="color:var(--accent)">Soccer.AI</a> · Built by Prashobh Paul
+</footer>
+
+<!-- ── Bottom Nav ─────────────────────────────── -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="/" class="bottom-nav-item active" data-nav="nav-home"><span class="icon">🏠</span>Home</a>
+    <a href="/matches" class="bottom-nav-item" data-nav="nav-matches"><span class="icon">🏑</span>Matches</a>
+    <a href="/tournament" class="bottom-nav-item" data-nav="nav-tournament"><span class="icon">📊</span>Table</a>
+    <a href="/players" class="bottom-nav-item" data-nav="nav-players"><span class="icon">👤</span>Players</a>
+    <a href="/ai-lab" class="bottom-nav-item" data-nav="nav-ai-lab"><span class="icon">🤖</span>AI Lab</a>
+  </div>
+</nav>
+
+<script src="/app.js"></script>
+<script>
+(async () => {
+  const [fixturesData, standingsData, teamsData, oracleData] = await Promise.all([
+    loadJSON('/data/fixtures.json'),
+    loadJSON('/data/standings.json'),
+    loadJSON('/data/teams.json'),
+    loadJSON('/data/oracle.json'),
+  ]);
+
+  const teams  = teamsData?.teams || [];
+  const matches = fixturesData?.matches || [];
+
+  // ── Today's matches ──────────────────────
+  const today = new Date().toISOString().slice(0, 10);
+  const todayMatches = matches.filter(m => m.date === today);
+  const todayEl = document.getElementById('today-matches');
+  if (todayMatches.length === 0) {
+    // Show next upcoming matches
+    const upcoming = matches.filter(m => m.status === 'scheduled' || m.status === 'live').slice(0, 3);
+    if (upcoming.length > 0) {
+      todayEl.innerHTML = (await Promise.all(upcoming.map(m => buildMatchCard(m, teams)))).join('');
+    } else {
+      todayEl.innerHTML = '<div class="card text-muted text-sm">No matches today. <a href="/matches" class="text-accent">See full schedule →</a></div>';
+    }
+    // Update badge
+  } else {
+    todayEl.innerHTML = (await Promise.all(todayMatches.map(m => buildMatchCard(m, teams)))).join('');
+    const hasLive = todayMatches.some(m => m.status === 'live');
+    if (hasLive) document.getElementById('live-badge').style.display = 'flex';
+  }
+
+  // ── Pool standings ───────────────────────
+  const standingsEl = document.getElementById('standings-preview');
+  const poolsData = standingsData?.pools || {};
+  let activePool = 'A';
+
+  function renderPool(pool) {
+    const data = poolsData[pool];
+    if (!data) { standingsEl.innerHTML = '<div class="text-muted text-sm">Standings updating...</div>'; return; }
+    const poolMatches = matches.filter(m => m.pool === pool && m.phase === 'pool');
+    const played = poolMatches.filter(m => m.status === 'completed').length;
+    standingsEl.innerHTML = `
+      <div class="card">
+        ${buildStandingsTable(data, teams)}
+        <div class="text-xs text-muted mt-2 font-mono">${played}/${poolMatches.length} matches played</div>
+      </div>
+    `;
+  }
+
+  document.querySelectorAll('.pool-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.pool-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activePool = tab.dataset.pool;
+      renderPool(activePool);
+    });
+  });
+  renderPool('A');
+  showRefreshTime(standingsData?.last_updated);
+
+  // ── Win probability ──────────────────────
+  const sorted = [...teams].sort((a, b) => b.win_prob - a.win_prob);
+  const favourites = sorted.filter(t => t.contender_tier === 'favourite');
+  const darkHorses = sorted.filter(t => t.contender_tier === 'dark_horse');
+
+  document.getElementById('favourites-list').innerHTML =
+    favourites.map(t => buildWinProbBar(t)).join('');
+
+  document.getElementById('dark-horses-list').innerHTML =
+    darkHorses.map(t => buildWinProbBar(t)).join('');
+
+  // ── Oracle preview ───────────────────────
+  const oracleEl = document.getElementById('oracle-preview');
+  if (oracleData) {
+    const s = oracleData.summary;
+    oracleEl.innerHTML = `
+      <div class="card card-accent">
+        <div class="flex gap-3 items-center">
+          <div class="oracle-stat">
+            <div class="oracle-big font-mono">${s.accuracy_pct}%</div>
+            <div class="oracle-label">Accuracy</div>
+          </div>
+          <div class="oracle-stat">
+            <div class="oracle-big font-mono">${s.correct}/${s.total_picks}</div>
+            <div class="oracle-label">Correct picks</div>
+          </div>
+          <div style="flex:1">
+            <div class="text-sm font-bold">🎯 The Oracle</div>
+            <div class="text-xs text-muted mt-1">Every pick published before kick-off. No edits, no deletions.</div>
+            <a href="/oracle" class="section-link mt-2 block">See all predictions →</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ── Latest result ────────────────────────
+  const completed = matches.filter(m => m.status === 'completed' && m.score.home !== null);
+  const latestEl = document.getElementById('latest-result');
+  if (completed.length > 0) {
+    const last = completed[completed.length - 1];
+    latestEl.innerHTML = await buildMatchCard(last, teams);
+  } else {
+    latestEl.innerHTML = '<div class="card text-muted text-sm">Results will appear here as matches complete.</div>';
+  }
+})();
+</script>
+</body>
+</html>
