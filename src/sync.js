@@ -46,6 +46,7 @@ async function _sync(force) {
     ...t,
     fihRank: t.fih_rank,
     winProb: t.win_prob,
+    intro: t.intro,
   }))
 
   const matches = (fixturesDoc.matches || []).map(m => ({

@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings } from '../engine/standings'
 import { useOracleBundle } from '../engine/oracleBundle'
+import { AwardsView } from './Awards'
+import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
 import { StandingsTable, Skeleton, WinProbBar } from '../components/shared'
 import { formatDate } from '../components/MatchCard'
@@ -20,7 +22,7 @@ const VIEWS = [
   { id: 'stats', label: 'Stats' },
   { id: 'best', label: "Tournament's Best" },
   { id: 'bracket', label: 'Bracket' },
-  { id: 'probability', label: 'Win Probability' },
+  { id: 'awards', label: 'Awards' },
 ]
 
 // Best XI selection: top AI ratings per position line, 4-3-3.
@@ -348,12 +350,21 @@ function BracketView({ bundle, byCode, matches }) {
 
 export default function TournamentPage() {
   const [params, setParams] = useSearchParams()
-  const view = VIEWS.some(v => v.id === params.get('tab')) ? params.get('tab') : 'standings'
+  const requested = params.get('tab')
+  // Win Probability moved to the Oracle, where the same canonical snapshot
+  // powers the race and the odds table — one home for one number.
+  const view = VIEWS.some(v => v.id === requested) ? requested : 'standings'
   const xi = params.get('xi') === 'rising' ? 'rising' : 'best'
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
   const players = useLiveQuery(() => db.players.toArray(), [], [])
   const bundle = useOracleBundle(teams ?? [], matches ?? [])
+
+  useSwipeTabs({
+    count: VIEWS.length,
+    index: VIEWS.findIndex(v => v.id === view),
+    onChange: i => setView(VIEWS[i].id),
+  })
 
   const setView = (v) => {
     const next = new URLSearchParams(params)
@@ -375,7 +386,11 @@ export default function TournamentPage() {
   return (
     <div>
       <div className="mb-4 border-b border-white/5 pb-4">
-        <h1 className="font-display text-2xl font-bold tracking-tight">📊 Tournament</h1>
+        <h1 className="flex items-center gap-2.5 font-display text-2xl font-bold tracking-tight">
+          <img src={`${import.meta.env.BASE_URL}emblem.png`} alt=""
+            className="h-8 w-8 shrink-0 rounded-md object-contain" />
+          Tournament
+        </h1>
         <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and bracket — computed live from completed matches</p>
       </div>
 
@@ -389,6 +404,8 @@ export default function TournamentPage() {
           </button>
         ))}
       </div>
+
+      {requested === 'probability' && <Navigate to="/prediction-race?tab=odds" replace />}
 
       {loading ? <Skeleton h={500} /> : (
         <>
@@ -418,9 +435,7 @@ export default function TournamentPage() {
             ? <BracketView bundle={bundle} byCode={byCode} matches={matches} />
             : <Skeleton h={400} />)}
 
-          {view === 'probability' && (bundle
-            ? <WinProbabilityView bundle={bundle} byCode={byCode} />
-            : <Skeleton h={400} />)}
+          {view === 'awards' && <AwardsView />}
         </>
       )}
     </div>

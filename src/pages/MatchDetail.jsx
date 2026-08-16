@@ -382,7 +382,9 @@ export default function MatchDetailPage() {
           <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-brand">🧠 AI Match Story</div>
           <p className="whitespace-pre-line text-sm leading-relaxed text-pitch-300">{story.story}</p>
           <div className="mt-3 border-t border-white/5 pt-2 font-mono text-[10px] text-pitch-400">
-            Generated {new Date(story.generatedAt).toLocaleString()} · {story.model}
+            {story.source === 'engine'
+              ? 'Engine brief — composed directly from this match’s event ledger. Upgraded to a written AI story when the reporter runs.'
+              : 'AI match story'} · {new Date(story.generatedAt).toLocaleString()} · {story.model}
           </div>
         </div>
       )}

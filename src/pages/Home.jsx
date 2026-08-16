@@ -14,7 +14,7 @@ import { FlaskConical, Trophy, Award, Sparkles, ArrowUp, ArrowDown, Minus } from
 const heroTiles = [
   { to: '/ai-lab', icon: FlaskConical, title: 'AI Lab' },
   { to: '/tournament?tab=best', icon: Trophy, title: "Tournament's Best" },
-  { to: '/awards', icon: Award, title: 'Awards' },
+  { to: '/tournament?tab=awards', icon: Award, title: 'Awards' },
   { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
 

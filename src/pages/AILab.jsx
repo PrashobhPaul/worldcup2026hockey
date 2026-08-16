@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useSwipeTabs } from '../components/useSwipeTabs'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
@@ -469,6 +470,12 @@ export default function AILabPage() {
     t === 'live' ? next.delete('tab') : next.set('tab', t)
     setParams(next, { replace: true })
   }
+  useSwipeTabs({
+    count: TABS.length,
+    index: TABS.findIndex(t => t.id === tab),
+    onChange: i => setTab(TABS[i].id),
+  })
+
   const setMatchParam = (id) => {
     const next = new URLSearchParams(params)
     id ? next.set('match', id) : next.delete('match')
