@@ -222,31 +222,75 @@ ENTRY_ROW = re.compile(
     r'^\s*(\d{1,2})\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,3})\s+(\d{1,4})\s*$')
 # Each nation's page opens "Team Details Australia".
 TEAM_HEADING = re.compile(r'^Team Details\s+(.+?)\s*$')
+MIN_SQUAD = 15          # a World Cup squad is 18; well short of that is a misread
+
+# Longest first, so "New Zealand" is never read as nothing because "Zealand"
+# was checked on its own.
+_NATIONS_BY_LENGTH = sorted(TEAM_CODE_MAP, key=len, reverse=True)
+
+def _heading_code(line):
+    """Team code if this line is a nation heading, else None.
+
+    Tolerates a heading that PDF extraction has run together with the column
+    titles that follow it — the nation is read as a prefix, not as the whole
+    line, so "Team Details England Shirt No. Player" is still England.
+    """
+    text = line.strip()
+    heading = TEAM_HEADING.match(text)
+    if heading:
+        text = heading.group(1)
+    low = text.lower()
+    for name in _NATIONS_BY_LENGTH:
+        if low == name or (heading and low.startswith(name + ' ')):
+            return TEAM_CODE_MAP[name]
+    return None
 
 # FIH writes names surname-first in capitals — "VAN DER WEERDEN Mink". The app
 # writes them the way a broadcaster would, and the pitch renderer takes the
 # surname off the end, so "SHARP Lachlan" left as-is would put "Lachlan" on the
 # shirt. The surname is the run of capitalised tokens at the front.
-NAME_PARTICLES = {'van', 'der', 'den', 'de', 'del', 'di', 'da', 'dos', 'du',
-                  'la', 'le', 'ter', 'ten', 'von', "'t"}
+NAME_PARTICLES = {'van', 'der', 'den', 'de', 'del', 'della', 'di', 'da', 'dos',
+                  'du', 'la', 'le', 'los', 'ter', 'ten', 'von', "'t"}
 
 def _title_token(tok):
     """Capitalise across apostrophes and hyphens: O'BRIEN -> O'Brien."""
     out = tok.lower()
     for sep in ("'", '-', '.'):
         out = sep.join(part[:1].upper() + part[1:] for part in out.split(sep))
-    return out[:1].upper() + out[1:]
+    out = out[:1].upper() + out[1:]
+    # MCNELLIS and McKEE both mean McNellis / McKee. "Mac" is left alone —
+    # Machado and Macario are not Mac-names, and guessing would break them.
+    if len(out) > 2 and out[:2] == 'Mc':
+        out = 'Mc' + out[2].upper() + out[3:]
+    return out
+
+def _is_surname_token(tok):
+    """FIH writes the surname in capitals, so capitals are what identify it.
+
+    Not simply isupper(): real entry lists carry "McKEE John" and
+    "della TORRE Nicolas", where the surname is mixed case or a lowercase
+    particle. A given name has exactly one capital, which is what separates it.
+    """
+    letters = [c for c in tok if c.isalpha()]
+    if not letters:
+        return False
+    if tok.lower() in NAME_PARTICLES:
+        return True
+    return sum(1 for c in letters if c.isupper()) >= 2
 
 def normalize_fih_name(raw):
     """'VAN DER WEERDEN Mink' -> 'Mink van der Weerden'."""
     tokens = raw.split()
     if len(tokens) < 2:
         return raw.strip()
-    surname = [t for i, t in enumerate(tokens)
-               if t.isupper() and all(x.isupper() for x in tokens[:i + 1])]
+    surname = []
+    for tok in tokens:
+        if not _is_surname_token(tok):
+            break
+        surname.append(tok)
     given = tokens[len(surname):]
     if not surname or not given:
-        return raw.strip()
+        return raw.strip()          # already in given-name-first order, or unreadable
     parts = [t.lower() if t.lower() in NAME_PARTICLES else _title_token(t) for t in surname]
     return ' '.join([_title_token(g) for g in given] + parts)
 
@@ -285,9 +329,7 @@ def parse_squad_lines(lines):
     """
     squads, current = {}, None
     for ln in lines:
-        stripped = ln.strip()
-        heading = TEAM_HEADING.match(stripped)
-        code = TEAM_CODE_MAP.get((heading.group(1) if heading else stripped).lower())
+        code = _heading_code(ln)
         if code:
             current = code
             squads.setdefault(code, [])
@@ -385,6 +427,16 @@ def _dump(label, lines, n=60):
     for ln in lines[:n]:
         print(f'  | {ln[:110]}')
 
+def _dump_team_page(lines, code):
+    """The slice of the entry list belonging to one nation, for tuning."""
+    start = next((i for i, ln in enumerate(lines) if _heading_code(ln) == code), None)
+    if start is None:
+        print(f'  {code}: no "Team Details" heading found at all.')
+        return
+    end = next((i for i in range(start + 1, len(lines))
+                if _heading_code(lines[i]) and _heading_code(lines[i]) != code), len(lines))
+    _dump(f'{code} page', lines[start:end], 40)
+
 def fetch_tms_squads():
     """Official entry lists for all 16 nations, or None."""
     for path in TMS_SQUAD_PATHS:
@@ -396,7 +448,18 @@ def fetch_tms_squads():
         total = sum(len(v) for v in squads.values())
         if total >= 80:  # a real entry list is ~16 x 18
             print(f'SQUADS: parsed {total} players across {len(squads)} teams from {path}')
-            return squads
+            print('SQUADS: ' + ' '.join(f'{c}:{len(v)}' for c, v in sorted(squads.items())))
+            # A World Cup squad is 18. A nation that comes back well short was
+            # misread, and a half-read nation is worse than none: it would field
+            # a team sheet from whoever happened to parse. Drop it and say so.
+            short = {c: v for c, v in squads.items() if len(v) < MIN_SQUAD}
+            for code, v in short.items():
+                print(f'SQUADS: {code} parsed only {len(v)} players — dropped as a misread.')
+                _dump_team_page(lines, code)
+            missing = sorted(set(TEAM_CODE_MAP.values()) - set(squads))
+            if missing:
+                print(f'SQUADS: no page found for {", ".join(missing)}')
+            return {c: v for c, v in squads.items() if len(v) >= MIN_SQUAD}
         print(f'SQUADS: {path} yielded only {total} players across {len(squads)} teams — not usable.')
         _dump(path, lines)
     print('SQUADS: no usable TMS team list this run — squads unchanged.')
@@ -469,6 +532,42 @@ def probe_tms_lineups():
         if code is None or len(roster) < 11:
             _dump(f'match {mid} team {tid}', lines)
 
+def reconcile_team_lists(players_doc, squads):
+    """Mark who is actually in the tournament, and undo earlier misreads.
+
+    Two things go wrong without this. A player seeded before the tournament may
+    not have made the squad, and would otherwise keep his place in team sheets
+    ahead of players who did. And a nation misread on an earlier run leaves
+    wrong names behind for good, because the merge only ever adds.
+
+    So for every nation the entry list reports cleanly, players it names are
+    flagged, and players a previous run added for that nation but this one does
+    not name are removed. Only machine-added rows are ever removed — a
+    hand-seeded player is flagged, never deleted — and no accumulated statistic
+    is touched.
+    """
+    if not squads:
+        return False
+    changed = False
+    for code, roster in squads.items():
+        listed = {e['name'].lower() for e in roster}
+        keep = []
+        for p in players_doc['players']:
+            if p['team'] != code:
+                keep.append(p)
+                continue
+            on_list = p['name'].lower() in listed
+            if not on_list and p.get('source') == 'fih-team-list':
+                print(f"SQUADS: dropping {code} {p['name']} — not on the current team list.")
+                changed = True
+                continue
+            if p.get('on_team_list') != on_list:
+                p['on_team_list'] = on_list
+                changed = True
+            keep.append(p)
+        players_doc['players'] = keep
+    return changed
+
 def merge_squads(players_doc, squads, teams):
     """Add officially-listed players that we do not already carry. Never
     invents a player and never edits an existing one's accumulated stats."""
@@ -484,7 +583,12 @@ def merge_squads(players_doc, squads, teams):
             if (code, entry['name'].lower()) in have:
                 continue
             if entry['number'] in by_team_numbers.get(code, set()):
-                continue  # same shirt already held by a player we know
+                # Same shirt, different name: one of the two is stale. The list
+                # is the authority, so this is worth seeing rather than skipping
+                # in silence.
+                print(f"SQUADS: {code} #{entry['number']} {entry['name']} skipped — "
+                      f'shirt already held by a player we carry.')
+                continue
             seq = len([p for p in players_doc['players'] if p['team'] == code]) + 1
             caps = entry.get('caps')
             players_doc['players'].append({
@@ -504,7 +608,7 @@ def merge_squads(players_doc, squads, teams):
                             if caps else 'Named on the official FIH team list.'),
                 'dob': entry.get('dob'), 'caps': caps,
                 'matches_played': 0, 'ai_rating': None,
-                'source': 'fih-team-list',
+                'source': 'fih-team-list', 'on_team_list': True,
             })
             by_team_numbers.setdefault(code, set()).add(entry['number'])
             added += 1
@@ -524,52 +628,96 @@ HOCKEY_FORMATION = '4-3-3'   # GK + 4 defenders + 3 midfielders + 3 forwards
 LINE_ORDER = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
 LINE_NEED = {'Goalkeeper': 1, 'Defender': 4, 'Midfielder': 3, 'Forward': 3}
 
+def _lineup_rank(p):
+    """Captain first, then rating, then international experience."""
+    return (0 if p.get('is_captain') else 1,
+            -(p.get('ai_rating') or 0),
+            -(p.get('caps') or 0),
+            -(p.get('matches_played') or 0),
+            p.get('number') or 99)
+
 def compose_lineup(code, squad, rng):
     """Pick a starting XI by line, the rest become rolling substitutes."""
+    # Once FIH has published a team list for this nation, only those players can
+    # take the field. A player seeded before the tournament who did not make the
+    # squad must not appear, however highly the model rates him.
+    listed = [p for p in squad if p.get('on_team_list')]
+    from_team_list = len(listed) >= 11
+    if from_team_list:
+        squad = listed
     if len(squad) < 11:
         return None
-    pool = {line: [p for p in squad if p.get('position') == line] for line in LINE_ORDER}
-    spare = [p for p in squad if p.get('position') not in LINE_NEED]
 
-    def rank(p):  # captain first, then rating, then international experience
-        return (0 if p.get('is_captain') else 1,
-                -(p.get('ai_rating') or 0),
-                -(p.get('caps') or 0),
-                -(p.get('matches_played') or 0),
-                p.get('number') or 99)
+    ranked = sorted(squad, key=_lineup_rank)
+    keepers = [p for p in ranked if p.get('position') == 'Goalkeeper']
+    if not keepers:
+        return None                      # no keeper, no honest team sheet
 
-    xi, used = [], set()
-    for line in LINE_ORDER:
-        candidates = sorted(pool[line], key=rank)
-        for p in candidates[:LINE_NEED[line]]:
+    xi = [('Goalkeeper', keepers[0])]
+    used = {keepers[0]['id']}
+
+    def fill(line, exact):
+        """Take players for one line: named position first, then unstated.
+
+        A known defender is never drawn as a forward while a player whose
+        position the entry list never stated is still available.
+        """
+        for p in ranked:
+            if sum(1 for l, _ in xi if l == line) >= LINE_NEED[line]:
+                return
+            if p['id'] in used or p.get('position') == 'Goalkeeper':
+                continue
+            pos = p.get('position')
+            wanted = (pos == line) if exact else (pos not in LINE_NEED)
+            if not wanted:
+                continue
             xi.append((line, p)); used.add(p['id'])
-    # Fill any short line from whoever is left, so the XI is always 11 real players
-    leftovers = sorted([p for p in squad + spare if p['id'] not in used], key=rank)
-    for line in LINE_ORDER:
-        while len([1 for l, _ in xi if l == line]) < LINE_NEED[line] and leftovers:
-            p = leftovers.pop(0)
-            xi.append((line, p)); used.add(p['id'])
-    if len(xi) < 11:
+
+    for line in ('Defender', 'Midfielder', 'Forward'):
+        fill(line, exact=True)
+    for line in ('Defender', 'Midfielder', 'Forward'):
+        fill(line, exact=False)
+    # Any line still short takes whoever is left, outfield only.
+    for line in ('Defender', 'Midfielder', 'Forward'):
+        while sum(1 for l, _ in xi if l == line) < LINE_NEED[line]:
+            spare = next((p for p in ranked if p['id'] not in used
+                          and p.get('position') != 'Goalkeeper'), None)
+            if spare is None:
+                return None
+            xi.append((line, spare)); used.add(spare['id'])
+    if len(xi) != 11:
         return None
 
     subs = []
-    for p in sorted([p for p in squad if p['id'] not in used], key=rank):
+    for p in sorted([p for p in squad if p['id'] not in used], key=_lineup_rank):
         # Rolling substitutions: hockey subs come and go, shown as a clock time
         minute = 8 + int(rng() * 44)
         subs.append({
             'playerId': p['id'], 'name': p['name'], 'number': p.get('number'),
-            'position': p.get('position'), 'onAt': f'{minute:02d}:{int(rng() * 60):02d}',
+            'position': _stated(p), 'onAt': f'{minute:02d}:{int(rng() * 60):02d}',
         })
 
     return {
         'formation': HOCKEY_FORMATION,
+        # Every name here is off the official FIH team list; only which eleven
+        # of them start is the engine's call. That is a materially stronger
+        # claim than a sheet built from a pre-tournament seed, and the UI says so.
+        'fromTeamList': from_team_list,
         'startingXI': [{
             'playerId': p['id'], 'name': p['name'], 'number': p.get('number'),
-            'position': line, 'captain': bool(p.get('is_captain')),
+            # "line" is where they are drawn on the pitch; "position" is only
+            # what is actually known about them. Recording the drawn line as the
+            # position would turn a layout decision into a claim about a player.
+            'line': line, 'position': _stated(p),
+            'captain': bool(p.get('is_captain')),
             'goalkeeper': line == 'Goalkeeper',
         } for line, p in xi],
         'substitutes': subs,
     }
+
+def _stated(p):
+    pos = p.get('position')
+    return pos if pos in LINE_NEED else None
 
 def build_lineups(fixtures, players_doc, teams):
     """Attach line-ups to every match that can field one. Idempotent."""
@@ -1227,7 +1375,9 @@ def main():
     teams_changed = apply_rankings(teams, fetch_fih_rankings())
 
     # Official entry lists, when TMS publishes them — squads gate the line-ups.
-    players_changed = merge_squads(players, fetch_tms_squads(), teams)
+    squads = fetch_tms_squads()
+    players_changed = reconcile_team_lists(players, squads)
+    players_changed |= merge_squads(players, squads, teams)
     probe_tms_lineups()
 
     tms = fetch_tms_standings()

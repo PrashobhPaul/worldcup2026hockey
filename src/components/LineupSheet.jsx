@@ -169,13 +169,19 @@ export default function LineupSheet({ match, events = [], home, away }) {
   const active = lineups[side]
   const team = teams[side]
   const official = lineups.source === 'official' || lineups.source === 'manual'
+  // Between "we made this up" and "FIH published it" sits the real case: every
+  // name is off the official team list, and only the eleven who start is ours.
+  const listed = !official && lineups.home.fromTeamList && lineups.away.fromTeamList
 
   return (
     <section className="rounded-xl border border-white/5 bg-pitch-800 p-4">
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="font-display text-lg font-semibold">Line-ups</h2>
-        <span className={`font-mono text-[10px] uppercase tracking-widest ${official ? 'text-live' : 'text-pitch-400'}`}>
-          {official ? 'Confirmed · FIH team list' : 'Estimated · engine team sheet'}
+        <span className={`font-mono text-[10px] uppercase tracking-widest ${
+          official ? 'text-live' : listed ? 'text-brand' : 'text-pitch-400'}`}>
+          {official ? 'Confirmed · FIH team list'
+            : listed ? 'Official squad · estimated XI'
+              : 'Estimated · engine team sheet'}
         </span>
       </div>
 
@@ -232,8 +238,9 @@ export default function LineupSheet({ match, events = [], home, away }) {
 
       {!official && (
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-          Composed from the squad Hockey.AI holds for each nation — real players only, deterministic per
-          match. It is replaced by the official team list the moment FIH publishes one.
+          {listed
+            ? 'Every player named here is on the official FIH entry list for this squad. Which eleven of them start is Hockey.AI’s call — ranked on caps, form and AI rating, deterministic per match. It is replaced by the official team sheet the moment FIH publishes one.'
+            : 'Composed from the squad Hockey.AI holds for each nation — real players only, deterministic per match. It is replaced by the official team list the moment FIH publishes one.'}
         </p>
       )}
     </section>

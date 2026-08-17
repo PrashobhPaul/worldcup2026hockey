@@ -15,7 +15,7 @@ import os
 sys.path.insert(0, os.path.dirname(__file__))
 from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
-    TMS_LINEUP_LINK,
+    compose_lineup, seeded_rng, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -120,6 +120,12 @@ check('date of birth is captured', aus[2]['dob'] == '3 Sep 1995')
 check('goalkeeper flag survives the extra columns', aus[12]['goalkeeper'])
 check('a date is never mistaken for a shirt number', set(aus) == {1, 2, 12, 13})
 
+check('a heading run together with the column titles still names the nation',
+      set(parse_squad_lines([
+          'Team Details England Shirt No. Player Date of Birth Age* Caps',
+          '4 WARD Sam 1 Jan 1990 36 200',
+      ])) == {'ENG'})
+
 print('\nFIH name order')
 # FIH writes surname-first in capitals; the app and the pitch renderer both take
 # the surname from the end, so leaving them as-is puts a given name on the shirt.
@@ -130,6 +136,12 @@ for raw, want in [
     ("O'BRIEN Sean", "Sean O'Brien"),
     ('VAN ASS Seve', 'Seve van Ass'),
     ('SINGH Harmanpreet', 'Harmanpreet Singh'),
+    # Real rows from the live entry list that the first attempt left untouched,
+    # because the surname is not uniformly capitalised.
+    ('McKEE John', 'John McKee'),
+    ('della TORRE Nicolas', 'Nicolas della Torre'),
+    ('MCNELLIS Mark', 'Mark McNellis'),
+    ('MCALLISTER Adam', 'Adam McAllister'),
 ]:
     check(f'{raw} -> {want}', normalize_fih_name(raw) == want, f'got {normalize_fih_name(raw)}')
 check('an already-normal name is left alone', normalize_fih_name('Thierry Brinkman') == 'Thierry Brinkman')
@@ -163,6 +175,59 @@ check('running text is not read as a name',
 check('lineup links are recognised',
       TMS_LINEUP_LINK.findall('href="/matches/22334/lineups/8575" href="/matches/22334/lineups/8586"')
       == [('22334', '8575'), ('22334', '8586')])
+
+print('\nTeam sheet composition')
+
+def player(pid, name, position=None, **kw):
+    p = {'id': pid, 'name': name, 'position': position, 'number': int(pid[-2:]),
+         'on_team_list': True}
+    p.update(kw)
+    return p
+
+# A squad shaped like the live data: one keeper, a few players whose position we
+# know, and a majority whose position the entry list never stated.
+squad = ([player('T_01', 'A Keeper', 'Goalkeeper'),
+          player('T_02', 'B Back', 'Defender'),
+          player('T_03', 'C Mid', 'Midfielder'),
+          player('T_04', 'D Front', 'Forward')]
+         + [player(f'T_{i:02d}', f'Squad {i}', 'Squad', caps=100 - i) for i in range(5, 21)])
+sheet = compose_lineup('TST', squad, seeded_rng('t'))
+xi = sheet['startingXI']
+check('a full XI is picked', len(xi) == 11)
+# The live run produced "32 Vivek Sagar Prasad" twice, because the leftover pool
+# held the unstated-position players a second time.
+check('no player appears twice in the XI', len({p['playerId'] for p in xi}) == 11)
+check('no player is both starter and substitute',
+      not ({p['playerId'] for p in xi} & {p['playerId'] for p in sheet['substitutes']}))
+# The live run drew a goalkeeper as a defender.
+check('exactly one goalkeeper, and it is the keeper',
+      [p['name'] for p in xi if p['goalkeeper']] == ['A Keeper'])
+check('the keeper is first, so the pitch draws him in goal', xi[0]['name'] == 'A Keeper')
+check('lines are 1-4-3-3',
+      [sum(1 for p in xi if p['line'] == l) for l in ('Goalkeeper', 'Defender', 'Midfielder', 'Forward')]
+      == [1, 4, 3, 3])
+check('a known defender is drawn in defence', next(p for p in xi if p['name'] == 'B Back')['line'] == 'Defender')
+check('a known forward is drawn in attack', next(p for p in xi if p['name'] == 'D Front')['line'] == 'Forward')
+# The drawn line is a layout decision; it must not be recorded as a claim about
+# a player whose position nobody stated.
+check('an unstated position stays unstated',
+      all(p['position'] is None for p in xi if p['name'].startswith('Squad')))
+check('a stated position is preserved',
+      next(p for p in xi if p['name'] == 'C Mid')['position'] == 'Midfielder')
+check('the sheet is deterministic',
+      compose_lineup('TST', squad, seeded_rng('t')) == sheet)
+
+# A player seeded before the tournament who did not make the squad must not play,
+# however highly he is rated.
+dropped = player('T_99', 'Z Legend', 'Forward', ai_rating=99, on_team_list=False)
+with_dropped = compose_lineup('TST', squad + [dropped], seeded_rng('t'))
+check('a player left out of the squad never appears',
+      'Z Legend' not in [p['name'] for p in with_dropped['startingXI']]
+      + [p['name'] for p in with_dropped['substitutes']])
+
+check('a squad with no keeper yields no sheet',
+      compose_lineup('TST', [p for p in squad if p['position'] != 'Goalkeeper'], seeded_rng('t')) is None)
+check('too small a squad yields no sheet', compose_lineup('TST', squad[:6], seeded_rng('t')) is None)
 
 print()
 if failures:
