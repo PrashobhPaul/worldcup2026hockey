@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-17T03:14:50.938965+00:00",
+  "last_updated": "2026-08-17T03:19:12.943734+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -2960,7 +2960,7 @@
     },
     {
       "id": "IRL_09",
-      "name": "Mark Mcnellis",
+      "name": "Mark McNellis",
       "team": "IRL",
       "position": "Squad",
       "number": 18,
@@ -3180,7 +3180,7 @@
     },
     {
       "id": "IRL_20",
-      "name": "Adam Mcallister",
+      "name": "Adam McAllister",
       "team": "IRL",
       "position": "Squad",
       "number": 47,
@@ -4654,7 +4654,7 @@
     },
     {
       "id": "PAK_04",
-      "name": "WAQAR",
+      "name": "Waqar",
       "team": "PAK",
       "position": "Goalkeeper",
       "number": 1,
@@ -4896,7 +4896,7 @@
     },
     {
       "id": "PAK_15",
-      "name": "AFRAZ",
+      "name": "Afraz",
       "team": "PAK",
       "position": "Squad",
       "number": 21,
@@ -4984,7 +4984,7 @@
     },
     {
       "id": "PAK_19",
-      "name": "Abdul MANAN",
+      "name": "Abdul Manan",
       "team": "PAK",
       "position": "Squad",
       "number": 32,
