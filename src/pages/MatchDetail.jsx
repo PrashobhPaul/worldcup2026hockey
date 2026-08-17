@@ -67,7 +67,7 @@ function MatchStatsPanel({ match, live }) {
       <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
         Match stats
         <span className="font-mono text-[10px] font-normal text-pitch-400">
-          {live ? 'Live · refreshes 60s' : 'Final'}{match.enrichment === 'estimated' && ' · est.'}
+          {live ? 'Live · refreshes 60s' : 'Final'}{match.enrichment === 'official' ? ' · FIH' : match.enrichment === 'estimated' ? ' · est.' : ''}
         </span>
       </h3>
       <StatBar label="Possession" home={s.home.possession} away={s.away.possession} asPercent />
@@ -351,7 +351,7 @@ export default function MatchDetailPage() {
           <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
             Match Timeline
             <span className="font-mono text-[10px] font-normal text-pitch-400">
-              scorers + minutes{match.enrichment === 'estimated' && ' · est. from final score'}
+              scorers + minutes{match.enrichment === 'official' ? ' · official FIH report' : match.enrichment === 'estimated' ? ' · est. from final score' : ''}
             </span>
           </h3>
           <div className="space-y-4">

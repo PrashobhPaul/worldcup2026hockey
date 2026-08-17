@@ -98,15 +98,15 @@ export function simulateTournament(teams, matches, opts = {}) {
     const rows = new Map()
     const rowFor = code => {
       let r = rows.get(code)
-      if (!r) { r = { code, pts: 0, gd: 0, gf: 0, tb: 0 }; rows.set(code, r) }
+      if (!r) { r = { code, pts: 0, w: 0, gd: 0, gf: 0, tb: 0 }; rows.set(code, r) }
       return r
     }
     const apply = (home, away, h, a) => {
       const rh = rowFor(home), ra = rowFor(away)
       rh.gf += h; rh.gd += h - a
       ra.gf += a; ra.gd += a - h
-      if (h > a) rh.pts += 3
-      else if (h < a) ra.pts += 3
+      if (h > a) { rh.pts += 3; rh.w++ }
+      else if (h < a) { ra.pts += 3; ra.w++ }
       else { rh.pts++; ra.pts++ }
     }
     for (const m of fixedPool) apply(m.home, m.away, m.h, m.a)
@@ -123,7 +123,7 @@ export function simulateTournament(teams, matches, opts = {}) {
     for (const [pool, codes] of poolTeams) {
       placed.set(pool, [...codes]
         .map(c => rowFor(c))
-        .sort((x, y) => y.pts - x.pts || y.gd - x.gd || y.gf - x.gf || x.tb - y.tb)
+        .sort((x, y) => y.pts - x.pts || y.w - x.w || y.gd - x.gd || y.gf - x.gf || x.tb - y.tb)
         .map(r => r.code))
     }
 

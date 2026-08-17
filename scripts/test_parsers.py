@@ -19,7 +19,7 @@ from update_data import (  # noqa: E402
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
     parse_tms_results, update_statuses, backfill_scores_from_tms,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
-    parse_match_page, apply_player_rankings,
+    parse_match_page, apply_player_rankings, parse_match_report_goals,
     TMS_LINEUP_LINK,
 )
 
@@ -498,6 +498,31 @@ check('pool D plays at the Wagener', vfix['matches'][0]['venue'] == 'AMV')
 check('pool B plays at the Belfius', vfix['matches'][1]['venue'] == 'BRU')
 check('a correct venue is left alone', vfix['matches'][2]['venue'] == 'AMV')
 check('knockout venues are not guessed', vfix['matches'][3]['venue'] == 'AMV')
+
+print('\nMatch report goals (real timeline)')
+
+# Verbatim from the live ENG v IND report's scoring section.
+eng_ind = parse_match_report_goals([
+    'Team Minute Number Action Score Team Minute Number Action Score',
+    'ENG 14 23 FG 0 - 1', 'IND 17 13 PC 1 - 1', 'IND 25 9 FG 2 - 1',
+    'ENG 39 17 FG 2 - 2', 'ENG 43 9 FG 2 - 3', 'ENG 55 23 PC 2 - 4',
+    'FG - Field Goal, PC - Penalty Corner, PS - Penalty Stroke',
+])
+check('every goal line is read', len(eng_ind) == 6)
+check('team, minute, shirt and method are read',
+      eng_ind[0] == {'team': 'ENG', 'minute': 14, 'shirt': 23, 'via': 'FG'})
+check('goals count reconstructs the score by explicit team code',
+      sum(g['team'] == 'ENG' for g in eng_ind) == 4 and sum(g['team'] == 'IND' for g in eng_ind) == 2)
+check('the header and legend rows are not read as goals',
+      all(g['team'] in ('ENG', 'IND') for g in eng_ind))
+# A penalty stroke, and orientation independence (WAL is the away team here).
+pak_wal = parse_match_report_goals([
+    'PAK 3 18 FG 1 - 0', 'WAL 25 18 PC 1 - 1', 'WAL 26 15 FG 1 - 2',
+    'PAK 49 5 PC 2 - 2', 'PAK 51 9 FG 3 - 2', 'WAL 53 18 PS 3 - 3',
+])
+check('a penalty stroke is read', any(g['via'] == 'PS' for g in pak_wal))
+check('the score orientation in the line is ignored',
+      sum(g['team'] == 'PAK' for g in pak_wal) == 3 and sum(g['team'] == 'WAL' for g in pak_wal) == 3)
 
 print('\nMatch model calibration (v2, points-based)')
 

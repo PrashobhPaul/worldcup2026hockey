@@ -1359,6 +1359,142 @@ def pick_scorer(rng, players, code, via, picked=None):
         picked[name] = picked.get(name, 0) + 1
     return name
 
+# ── Official match events from the TMS match report ───────────────────────
+# The report PDF (/matches/{id}/reports/matchreport) carries the real timeline.
+# Its scoring section is unambiguous — each goal names its own team, minute,
+# shirt number and method, so orientation never matters:
+#   ENG 14 23 FG 0 - 1   ->  England, 14', shirt 23, field goal
+# Cards live in a two-team table above it; those are read by coordinate, below.
+
+GOAL_LINE = re.compile(r'^([A-Z]{3})\s+(\d{1,3})\s+(\d{1,2})\s+(FG|PC|PS)\s+\d+\s*-\s*\d+\s*$')
+
+def parse_match_report_goals(lines):
+    """[{team, minute, shirt, via}] from the report's scoring section."""
+    out = []
+    for ln in lines:
+        m = GOAL_LINE.match(ln.strip())
+        if m:
+            out.append({'team': m.group(1), 'minute': int(m.group(2)),
+                        'shirt': int(m.group(3)), 'via': m.group(4)})
+    return out
+
+def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
+    """
+    [{minute, team, type, player}] from the report's two-team card table.
+
+    The table puts home on the left, away on the right, each with Green/Yellow/
+    Red columns carrying the minute a card was shown. Flattened text loses which
+    column a number sits in, so this reads word coordinates: a numeric token is
+    a card only if it lands inside a colour column's x-band, and it is attributed
+    to the player on its row and the team on its side of the page. Anything that
+    fails validation (minute out of range, shirt not on that team) drops the
+    whole match's cards rather than risk a wrong attribution — goals are kept.
+    """
+    try:
+        import pdfplumber
+    except ImportError:
+        return None
+    TYPE = {'Green': 'green_card', 'Yellow': 'yellow_card', 'Red': 'red_card'}
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            words = pdf.pages[0].extract_words(use_text_flow=False, keep_blank_chars=False)
+    except Exception as e:
+        print(f'  card-table parse failed: {e}')
+        return None
+
+    heads = [w for w in words if w['text'] in TYPE]
+    if len(heads) != 6:               # 3 colours × 2 teams
+        return None
+    heads.sort(key=lambda w: w['x0'])
+    page_mid = sum(w['x0'] for w in heads) / len(heads)
+    # x-band for each colour column: from its header to the next header on that side
+    def bands(side_heads):
+        side_heads = sorted(side_heads, key=lambda w: w['x0'])
+        b = []
+        for i, w in enumerate(side_heads):
+            right = side_heads[i + 1]['x0'] if i + 1 < len(side_heads) else w['x1'] + 60
+            b.append((w['x0'] - 6, right - 6, TYPE[w['text']]))
+        return b
+    left_bands = bands([w for w in heads if w['x0'] < page_mid])
+    right_bands = bands([w for w in heads if w['x0'] >= page_mid])
+    header_bottom = max(w['bottom'] for w in heads)
+
+    # Group every word below the header into rows by vertical position.
+    rows = {}
+    for w in words:
+        if w['top'] <= header_bottom:
+            continue
+        rows.setdefault(round(w['top'] / 3), []).append(w)
+
+    events = []
+    for _, rw in sorted(rows.items()):
+        for side, code, band in (('L', home_code, left_bands), ('R', away_code, right_bands)):
+            cells = [w for w in rw if (w['x0'] < page_mid) == (side == 'L')]
+            nums = [w for w in cells if w['text'].isdigit()]
+            names = [w['text'] for w in sorted(cells, key=lambda w: w['x0'])
+                     if w['text'].isalpha() and w['text'][:1].isupper()]
+            shirts = [int(w['text']) for w in nums if band[0][0] - 40 < w['x0'] < band[0][0]]
+            for w in nums:
+                x = w['x0']; val = int(w['text'])
+                for lo, hi, kind in band:
+                    if lo <= x < hi:
+                        who = shirt_name.get((code, shirts[0])) if shirts else None
+                        if not (1 <= val <= 60):
+                            return None
+                        events.append({'minute': val, 'team': code, 'type': kind,
+                                       'player': who or (f'{code} #{shirts[0]}' if shirts else code)})
+    return events
+
+def apply_official_events(fixtures, players_doc):
+    """Replace estimated timelines with the real one from the TMS match report."""
+    shirt_name = {(p['team'], p['number']): p['name']
+                  for p in players_doc['players'] if p.get('number') is not None}
+    changed = False
+    for m in fixtures['matches']:
+        if m['status'] != 'completed' or not has_score(m) or not m.get('tms_id'):
+            continue
+        if m.get('enrichment') in ('official', 'manual'):
+            continue                    # already real; never refetch or overwrite
+        body, ctype = _tms_get(f'{TMS_HOST}/matches/{m["tms_id"]}/reports/matchreport',
+                               referer=f'{TMS_HOST}/matches/{m["tms_id"]}')
+        if not body or not body.startswith(b'%PDF'):
+            continue
+        goals = parse_match_report_goals(_pdf_lines(body))
+        gh = sum(1 for g in goals if g['team'] == m['home'])
+        ga = sum(1 for g in goals if g['team'] == m['away'])
+        if (not goals or {g['team'] for g in goals} - {m['home'], m['away']}
+                or gh != m['score']['home'] or ga != m['score']['away']):
+            print(f"OFFICIAL {m['id']}: report goals {gh}-{ga} != score "
+                  f"{m['score']['home']}-{m['score']['away']} — keeping estimated.")
+            continue
+        events = []
+        for g in goals:
+            who = shirt_name.get((g['team'], g['shirt']))
+            if not who:
+                print(f"OFFICIAL {m['id']}: no roster name for {g['team']} #{g['shirt']}")
+            events.append({'minute': g['minute'], 'team': g['team'], 'type': 'goal',
+                           'via': g['via'], 'player': who or f"{g['team']} #{g['shirt']}"})
+        cards = _report_cards(body, m['home'], m['away'], shirt_name)
+        if cards is None:
+            print(f"OFFICIAL {m['id']}: card table not read cleanly — goals only this run.")
+            cards = []
+        events += cards
+        events.sort(key=lambda e: e['minute'])
+        m['events'] = events
+        pc = {s: sum(1 for e in events if e['team'] == m[s] and e['type'] == 'goal' and e.get('via') == 'PC')
+              for s in ('home', 'away')}
+        # PC goals are real; total PC attempts aren't in the report, so keep any
+        # prior estimate but never let it read below the real PC goals scored.
+        prev = m.get('penalty_corners') or {}
+        m['penalty_corners'] = {s: max(prev.get(s) or 0, pc[s]) for s in ('home', 'away')}
+        m['stats'] = derive_stats_from_events(m)
+        m['commentary'] = build_commentary(m)
+        m['enrichment'] = 'official'
+        changed = True
+        print(f"OFFICIAL: {m['id']} {m['home']} {gh}-{ga} {m['away']} — "
+              f"{len(goals)} goals, {len(cards)} cards from match report")
+    return changed
+
 def estimate_enrichment(fixtures, players_doc):
     """
     For completed matches with a real score but no timeline: generate seeded,
@@ -1831,7 +1967,7 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
-    if os.environ.get('PROBE_MATCH_IDS'):
+    if os.environ.get('PROBE_MATCH_IDS'):   # debug hook, dormant unless set
         for _pid in os.environ['PROBE_MATCH_IDS'].split(','):
             probe_match_report(_pid.strip())
     changed |= fix_venues(fixtures)
@@ -1867,6 +2003,9 @@ def main():
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
         changed |= backfill_scores_from_tms(fixtures, tms, page_results)
 
+    # Real timeline from the TMS match report first; estimation only fills the
+    # matches a report hasn't been published for yet.
+    changed |= apply_official_events(fixtures, players)
     changed |= estimate_enrichment(fixtures, players)
     changed |= update_player_stats(fixtures, players)
     changed |= slot_knockouts(fixtures)
