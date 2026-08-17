@@ -644,16 +644,24 @@ def probe_match_report(tms_id):
             print(f'  R| {ln[:120]}')
     else:
         print(f'PROBE report {tms_id}: not a PDF ({ctype})')
-    body, _ = _tms_get(f'{TMS_HOST}/matches/{tms_id}', referer=TMS_BASE + '/matches')
-    if body:
-        lines = _tms_lines(body)
-        # Dump the window around the Goals and Cards headings.
-        for anchor in ('Goals', 'Cards'):
-            idxs = [i for i, l in enumerate(lines) if l.strip() == anchor]
-            for i in idxs[:1]:
-                print(f'PROBE page {tms_id} — around "{anchor}" [{i}]:')
-                for j in range(i, min(i + 40, len(lines))):
-                    print(f'  P| {lines[j][:110]}')
+    # Word coordinates of the card table, to place the colour columns exactly.
+    if body and body.startswith(b'%PDF'):
+        try:
+            import pdfplumber
+            with pdfplumber.open(io.BytesIO(body)) as pdf:
+                ws = pdf.pages[0].extract_words()
+            heads = [w for w in ws if w['text'] in ('Green', 'Yellow', 'Red', 'Name', 'Coach')]
+            print(f'PROBE coords {tms_id}: headers')
+            for w in sorted(heads, key=lambda w: (round(w['top']), w['x0'])):
+                print(f"  H| {w['text']:8} x0={w['x0']:.1f} x1={w['x1']:.1f} top={w['top']:.1f}")
+            top0 = min((w['top'] for w in heads if w['text'] == 'Name'), default=0)
+            top1 = min((w['top'] for w in heads if w['text'] == 'Coach'), default=9999)
+            body_words = [w for w in ws if top0 < w['top'] < top1]
+            print(f'PROBE coords {tms_id}: {len(body_words)} body words')
+            for w in sorted(body_words, key=lambda w: (round(w['top']), w['x0']))[:120]:
+                print(f"  W| top={w['top']:.0f} x0={w['x0']:.0f} {w['text'][:22]}")
+        except Exception as e:
+            print(f'PROBE coords {tms_id} failed: {e}')
 
 
 def sync_schedule_from_match_pages(fixtures, links):
