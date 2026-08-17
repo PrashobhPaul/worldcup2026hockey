@@ -120,6 +120,25 @@ check('date of birth is captured', aus[2]['dob'] == '3 Sep 1995')
 check('goalkeeper flag survives the extra columns', aus[12]['goalkeeper'])
 check('a date is never mistaken for a shirt number', set(aus) == {1, 2, 12, 13})
 
+# England's players hold both England and Great Britain caps, so their rows —
+# and only theirs — carry a breakdown after the total. Requiring the row to end
+# at the caps figure read two England players out of eighteen, and the nation
+# was dropped as a misread.
+england = parse_squad_lines([
+    'Team Details England',
+    'Shirt No. Player Date of Birth Age* Caps',
+    '2 PARK Nicholas 8 Apr 1999 27 79 (ENG 56, GBR 23)',
+    '7 WALLACE Zachary (C) 29 Sep 1999 26 160 (ENG 84, GBR 76)',
+    '16 MAZARELO James (GK) 4 Feb 2001 25 68 (ENG 47, GBR 21)',
+    '33 HOOPER Samuel 7 Aug 1998 28 30',
+])['ENG']
+check('a caps breakdown after the total does not break the row', len(england) == 4)
+by_no = {p['number']: p for p in england}
+check('the caps total is read, not the breakdown', by_no[2]['caps'] == 79)
+check('captain still read behind a caps breakdown', by_no[7]['is_captain'])
+check('goalkeeper still read behind a caps breakdown', by_no[16]['goalkeeper'])
+check('a row without a breakdown still reads', by_no[33]['caps'] == 30)
+
 check('a heading run together with the column titles still names the nation',
       set(parse_squad_lines([
           'Team Details England Shirt No. Player Date of Birth Age* Caps',
@@ -142,6 +161,16 @@ for raw, want in [
     ('della TORRE Nicolas', 'Nicolas della Torre'),
     ('MCNELLIS Mark', 'Mark McNellis'),
     ('MCALLISTER Adam', 'Adam McAllister'),
+    ('GROßE Johannes', 'Johannes Große'),
+    ('von MONTGELAS Hugo', 'Hugo von Montgelas'),
+    # A hyphenated given name carries two capitals without being a surname —
+    # counting capitals across the whole token read these as surnames, left the
+    # given-name half empty, and shipped the name backwards.
+    ('KAUFMANN Paul-Philipp', 'Paul-Philipp Kaufmann'),
+    ('DANNEBERG Jean-Paul', 'Jean-Paul Danneberg'),
+    # Mononyms, and a row already the right way round with the surname shouted.
+    ('WAQAR', 'Waqar'),
+    ('Abdul MANAN', 'Abdul Manan'),
 ]:
     check(f'{raw} -> {want}', normalize_fih_name(raw) == want, f'got {normalize_fih_name(raw)}')
 check('an already-normal name is left alone', normalize_fih_name('Thierry Brinkman') == 'Thierry Brinkman')

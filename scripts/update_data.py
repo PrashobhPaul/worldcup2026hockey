@@ -218,8 +218,12 @@ ROLE_TOKENS = {'GK', 'G', 'C'}
 
 # The real entry list carries four more columns:
 #   "12 SNOWDEN Jed (GK) 15 Aug 2001 25 25"  -> no, name, date of birth, age, caps
+# England's players hold caps for both England and Great Britain, so their rows
+# alone end with a breakdown: "... 79 (ENG 56, GBR 23)". Requiring the row to
+# end at the caps figure read two England players out of eighteen.
 ENTRY_ROW = re.compile(
-    r'^\s*(\d{1,2})\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,3})\s+(\d{1,4})\s*$')
+    r'^\s*(\d{1,2})\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,3})\s+(\d{1,4})'
+    r'(?:\s*\([^)]*\))?\s*$')
 # Each nation's page opens "Team Details Australia".
 TEAM_HEADING = re.compile(r'^Team Details\s+(.+?)\s*$')
 MIN_SQUAD = 15          # a World Cup squad is 18; well short of that is a misread
@@ -264,24 +268,33 @@ def _title_token(tok):
         out = 'Mc' + out[2].upper() + out[3:]
     return out
 
+def _shouted(tok):
+    letters = [c for c in tok if c.isalpha()]
+    return len(letters) >= 2 and all(c.isupper() for c in letters)
+
 def _is_surname_token(tok):
     """FIH writes the surname in capitals, so capitals are what identify it.
 
     Not simply isupper(): real entry lists carry "McKEE John" and
     "della TORRE Nicolas", where the surname is mixed case or a lowercase
-    particle. A given name has exactly one capital, which is what separates it.
+    particle. Counting capitals across the whole token is not enough either —
+    "Paul-Philipp" and "Jean-Paul" carry two, and they are given names. So each
+    hyphenated part is judged on its own.
     """
-    letters = [c for c in tok if c.isalpha()]
-    if not letters:
+    if not any(c.isalpha() for c in tok):
         return False
     if tok.lower() in NAME_PARTICLES:
         return True
-    return sum(1 for c in letters if c.isupper()) >= 2
+    for part in re.split(r"[-']", tok):
+        letters = [c for c in part if c.isalpha()]
+        if len(letters) >= 2 and sum(1 for c in letters if c.isupper()) >= 2:
+            return True
+    return False
 
 def normalize_fih_name(raw):
     """'VAN DER WEERDEN Mink' -> 'Mink van der Weerden'."""
     tokens = raw.split()
-    if len(tokens) < 2:
+    if not tokens:
         return raw.strip()
     surname = []
     for tok in tokens:
@@ -290,7 +303,9 @@ def normalize_fih_name(raw):
         surname.append(tok)
     given = tokens[len(surname):]
     if not surname or not given:
-        return raw.strip()          # already in given-name-first order, or unreadable
+        # Not in surname-first order — a mononym, or a name already the right
+        # way round. Either way it must not be left shouting in capitals.
+        return ' '.join(_title_token(t) if _shouted(t) else t for t in tokens)
     parts = [t.lower() if t.lower() in NAME_PARTICLES else _title_token(t) for t in surname]
     return ' '.join([_title_token(g) for g in given] + parts)
 
@@ -574,20 +589,24 @@ def merge_squads(players_doc, squads, teams):
     if not squads:
         return False
     have = {(p['team'], p['name'].lower()) for p in players_doc['players']}
+    # Only a player who is himself on the official list can hold a shirt against
+    # someone else on it. The first run of this guard compared against seeded
+    # numbers too, and a guessed shirt number then blocked 24 real squad members
+    # — Maurits Visser, Thijs van Dam, Lachlan Sharp among them.
     by_team_numbers = {}
     for p in players_doc['players']:
-        by_team_numbers.setdefault(p['team'], set()).add(p.get('number'))
+        if p.get('on_team_list'):
+            by_team_numbers.setdefault(p['team'], set()).add(p.get('number'))
     added = 0
     for code, roster in squads.items():
         for entry in roster:
             if (code, entry['name'].lower()) in have:
                 continue
             if entry['number'] in by_team_numbers.get(code, set()):
-                # Same shirt, different name: one of the two is stale. The list
-                # is the authority, so this is worth seeing rather than skipping
-                # in silence.
+                # Two listed players cannot wear the same shirt, so the page was
+                # misread. Worth seeing rather than skipping in silence.
                 print(f"SQUADS: {code} #{entry['number']} {entry['name']} skipped — "
-                      f'shirt already held by a player we carry.')
+                      f'shirt already held by another listed player.')
                 continue
             seq = len([p for p in players_doc['players'] if p['team'] == code]) + 1
             caps = entry.get('caps')
