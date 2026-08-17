@@ -87,6 +87,9 @@ export default function PlayersPage() {
                 {p.ai_rating != null && (
                   <span className="rounded bg-live/10 px-1.5 py-0.5 font-bold text-live">AI {p.ai_rating}</span>
                 )}
+                {p.world_rank != null && (
+                  <span className="rounded bg-sky-400/10 px-1.5 py-0.5 font-bold text-sky-300" title="FIH player world ranking">World #{p.world_rank}</span>
+                )}
                 <span className={`rounded px-1.5 py-0.5 ${p.goals > 0 ? 'bg-brand/10 text-brand' : 'bg-pitch-700 text-pitch-300'}`}>⚡ {p.goals}G</span>
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">{p.assists}A</span>
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">🔴 {p.pc_scored} PC</span>

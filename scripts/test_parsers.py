@@ -18,7 +18,8 @@ from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
     parse_tms_results, update_statuses, backfill_scores_from_tms,
-    revise_stale_predictions, fix_venues, predict, parse_match_page,
+    revise_stale_predictions, fix_venues, predict, points_from_rank,
+    parse_match_page, apply_player_rankings,
     TMS_LINEUP_LINK,
 )
 
@@ -442,19 +443,21 @@ stale = lambda mid: {
 }
 preds = {'predictions': [stale('B4'), stale('B9')]}
 ranks = {'FRA': 9, 'MAS': 14}
-revise_stale_predictions(future, preds, ranks, afternoon)
+points = {c: points_from_rank(r) for c, r in ranks.items()}
+revise_stale_predictions(future, preds, ranks, points, afternoon)
 b4 = [p for p in preds['predictions'] if p['matchId'] == 'B4']
 b9 = [p for p in preds['predictions'] if p['matchId'] == 'B9']
 check('a stale pick on an unstarted match is superseded, not rewritten',
       b4[0]['superseded'] and b4[0]['pick'] == 'AWAY' and len(b4) == 2)
 check('the revision favours the higher-ranked team',
       b4[1]['pick'] == 'HOME' and b4[1]['revises'] == 'oracle-v1:B4')
-check('revision probabilities come from the corrected ranks',
-      (b4[1]['p_home_win'], b4[1]['p_draw'], b4[1]['p_away_win']) == predict(9, 14))
+check('revision probabilities come from the corrected ranking points',
+      (b4[1]['p_home_win'], b4[1]['p_draw'], b4[1]['p_away_win'])
+      == predict(points['FRA'], points['MAS']))
 check('a started match is never touched',
       len(b9) == 1 and not b9[0].get('superseded'))
 check('a second pass changes nothing',
-      not revise_stale_predictions(future, preds, ranks, afternoon))
+      not revise_stale_predictions(future, preds, ranks, points, afternoon))
 
 print('\nTMS match page (kickoff and venue)')
 
@@ -495,6 +498,79 @@ check('pool D plays at the Wagener', vfix['matches'][0]['venue'] == 'AMV')
 check('pool B plays at the Belfius', vfix['matches'][1]['venue'] == 'BRU')
 check('a correct venue is left alone', vfix['matches'][2]['venue'] == 'AMV')
 check('knockout venues are not guessed', vfix['matches'][3]['venue'] == 'AMV')
+
+print('\nMatch model calibration (v2, points-based)')
+
+ph, pd, pa = predict(3000, 3000)
+check('equal teams sit near thirds with a full draw', pd >= 0.30 and abs(ph - pa) < 0.01)
+ph, pd, pa = predict(2550, 2409)   # PAK v WAL — finished 3-3
+check('a 141-point gap is a narrow favourite, not 75%', ph < 0.50 and pd > 0.28)
+ph, pd, pa = predict(3838, 2397)   # BEL v JPN
+check('a 1,400-point gap is still decisive', ph > 0.85 and pd <= 0.06)
+ph, pd, pa = predict(2409, 2550)
+check('the model is symmetric', (pa, pd) == (predict(2550, 2409)[0], predict(2550, 2409)[1]))
+check('probabilities always sum to ~1',
+      all(abs(sum(predict(a, b)) - 1) < 0.01
+          for a, b in [(3838, 2397), (2550, 2409), (3000, 3000), (2397, 3838)]))
+check('the rank fallback spans the real table', 3800 < points_from_rank(1) < 3900
+      and 2350 < points_from_rank(16) < 2450)
+
+print('\nFIH player world ranking')
+
+pdoc = {'players': [
+    {'team': 'NED', 'name': 'Max de Bie', 'goals': 1},
+    {'team': 'PAK', 'name': 'Rehman Abdul'},
+    {'team': 'ENG', 'name': 'Christopher Bowen'},
+    {'team': 'GER', 'name': 'Luca Alvarez-Kirsch'},
+    {'team': 'IND', 'name': 'Harmanpreet Singh'},
+]}
+sheet = {'players': [
+    {'rank': 57, 'name': 'De Bie Max', 'country': 'NED'},
+    {'rank': 7, 'name': 'Rehman Abdul', 'country': 'PAK'},
+    {'rank': 13, 'name': 'Bowen Christopher', 'country': 'GBR'},
+    {'rank': 12, 'name': 'Alvarez-kirsch Luca', 'country': 'GER'},
+    {'rank': 1, 'name': 'Zhou Chuanzu', 'country': 'CHN'},
+    {'rank': 11, 'name': 'Upton Patrick Althony Ho…', 'country': 'RSA'},
+]}
+apply_player_rankings(pdoc, sheet)
+by = {p['name']: p for p in pdoc['players']}
+check('surname-first sheet names match our given-first names',
+      by['Max de Bie'].get('world_rank') == 57)
+check('an already-matching name order matches too',
+      by['Rehman Abdul'].get('world_rank') == 7)
+check('a GBR entry finds its England player', by['Christopher Bowen'].get('world_rank') == 13)
+check('hyphens and case do not break the match',
+      by['Luca Alvarez-Kirsch'].get('world_rank') == 12)
+check('a matched player becomes a star', by['Max de Bie'].get('fih_star') is True)
+check('a non-tournament nation is ignored',
+      not any(p.get('world_rank') == 1 for p in pdoc['players']))
+check('a truncated sheet name is skipped, never guessed',
+      not any(p.get('world_rank') == 11 for p in pdoc['players']))
+check('an unmatched star is never invented',
+      by['Harmanpreet Singh'].get('world_rank') is None)
+check('a second pass changes nothing', not apply_player_rankings(pdoc, sheet))
+
+# The sheet writes full given names where squads use the everyday form —
+# 'Neild Timothy' is our 'Tim Neild'. Exact token equality missed nearly every
+# real match; the prefix rule closes it without ever guessing between two
+# same-surname teammates.
+pdoc2 = {'players': [
+    {'team': 'NZL', 'name': 'Tim Neild'},
+    {'team': 'NZL', 'name': 'Charlie Morrison'},
+    {'team': 'NZL', 'name': 'Joseph Morrison'},
+    {'team': 'GER', 'name': 'Hannes Müller'},
+]}
+apply_player_rankings(pdoc2, {'players': [
+    {'rank': 2, 'name': 'Neild Timothy', 'country': 'NZL'},
+    {'rank': 78, 'name': 'Morrison Charlie', 'country': 'NZL'},
+    {'rank': 90, 'name': 'Mueller Hans', 'country': 'GER'},
+]})
+by2 = {p['name']: p for p in pdoc2['players']}
+check('a diminutive matches its full given name', by2['Tim Neild'].get('world_rank') == 2)
+check('two same-surname teammates never cross-match',
+      by2['Charlie Morrison'].get('world_rank') == 78
+      and by2['Joseph Morrison'].get('world_rank') is None)
+check('a near-miss given name is not a match', by2['Hannes Müller'].get('world_rank') is None)
 
 print()
 if failures:
