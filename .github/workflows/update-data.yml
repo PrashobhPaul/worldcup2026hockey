@@ -6,7 +6,12 @@ on:
     - cron: '0,30 10-20 15-30 8 *'
     # Hourly fallback rest of day
     - cron: '0 * * * *'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      probe_match_ids:
+        description: 'Comma-separated TMS match ids to dump (debug only)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -30,6 +35,8 @@ jobs:
         run: pip install pdfplumber
 
       - name: Update fixtures, statuses & Oracle picks
+        env:
+          PROBE_MATCH_IDS: ${{ github.event.inputs.probe_match_ids }}
         run: python scripts/update_data.py
 
       - name: Crop uploaded emblem artwork (if present)

@@ -44,8 +44,11 @@ export function computeStandings(teams, matches) {
     id: pool,
     standings: Array.from(pools.get(pool))
       .map(code => rowFor(code))
+      // FIH pool ranking order: points, then matches won, then goal
+      // difference, then goals for. (The "matches won" step is the FIH
+      // criterion that a plain points→GD sort omits.)
       .sort((x, y) =>
-        y.pts - x.pts || y.gd - x.gd || y.gf - x.gf || x.team.localeCompare(y.team)
+        y.pts - x.pts || y.w - x.w || y.gd - x.gd || y.gf - x.gf || x.team.localeCompare(y.team)
       ),
   }))
 }

@@ -632,6 +632,38 @@ def parse_match_page(lines):
         return None
     return {'pair': pair, 'date': date, 'time': time, 'venue': venue}
 
+def probe_match_report(tms_id):
+    """One-shot: dump the real goals/cards for a match, from both the report
+    PDF and the match page, so the events parser is written against fact."""
+    body, ctype = _tms_get(f'{TMS_HOST}/matches/{tms_id}/reports/matchreport',
+                           referer=f'{TMS_HOST}/matches/{tms_id}')
+    if body and body.startswith(b'%PDF'):
+        lines = _pdf_lines(body)
+        print(f'PROBE report PDF {tms_id}: {len(lines)} lines')
+        for ln in lines:
+            print(f'  R| {ln[:120]}')
+    else:
+        print(f'PROBE report {tms_id}: not a PDF ({ctype})')
+    # Word coordinates of the card table, to place the colour columns exactly.
+    if body and body.startswith(b'%PDF'):
+        try:
+            import pdfplumber
+            with pdfplumber.open(io.BytesIO(body)) as pdf:
+                ws = pdf.pages[0].extract_words()
+            heads = [w for w in ws if w['text'] in ('Green', 'Yellow', 'Red', 'Name', 'Coach')]
+            print(f'PROBE coords {tms_id}: headers')
+            for w in sorted(heads, key=lambda w: (round(w['top']), w['x0'])):
+                print(f"  H| {w['text']:8} x0={w['x0']:.1f} x1={w['x1']:.1f} top={w['top']:.1f}")
+            top0 = min((w['top'] for w in heads if w['text'] == 'Name'), default=0)
+            top1 = min((w['top'] for w in heads if w['text'] == 'Coach'), default=9999)
+            body_words = [w for w in ws if top0 < w['top'] < top1]
+            print(f'PROBE coords {tms_id}: {len(body_words)} body words')
+            for w in sorted(body_words, key=lambda w: (round(w['top']), w['x0']))[:120]:
+                print(f"  W| top={w['top']:.0f} x0={w['x0']:.0f} {w['text'][:22]}")
+        except Exception as e:
+            print(f'PROBE coords {tms_id} failed: {e}')
+
+
 def sync_schedule_from_match_pages(fixtures, links):
     """
     Correct kickoff date, time and venue against each TMS match page.
@@ -671,6 +703,75 @@ def sync_schedule_from_match_pages(fixtures, links):
                       f"{m.get(field)} -> {want} (fih-tms)")
                 m[field] = want
                 changed = True
+    return changed
+
+# ── FIH player world ranking ──────────────────────────────────────────────
+# A user-supplied sheet of the FIH men's top 114, kept in the repo as
+# player_rankings.json. Matched into our squads by name, it feeds the AI
+# player rating as a prior and marks matched players as world-ranked stars.
+
+def _name_tokens(name):
+    """Order- and accent-insensitive tokens: 'De Bie Max' ~ 'Max de Bie'."""
+    import unicodedata
+    flat = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode()
+    return sorted(t for t in re.sub(r"[-'.]", ' ', flat.lower()).split() if t)
+
+def _names_match(a, b):
+    """True when every token of the shorter name pairs off against a distinct
+    token of the longer one, exactly or as a prefix of 3+ letters.
+
+    The ranking sheet writes full given names where squads use the everyday
+    form — 'Neild Timothy' is our 'Tim Neild' — so exact token equality missed
+    nearly every real match. The prefix rule closes that; the caller's
+    unique-within-team requirement keeps it from ever guessing between two
+    candidates."""
+    ta, tb = _name_tokens(a), _name_tokens(b)
+    short, long_ = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
+    used = set()
+    for s in short:
+        hit = next((i for i, l in enumerate(long_) if i not in used and
+                    (s == l or (len(s) >= 3 and l.startswith(s)) or
+                     (len(l) >= 3 and s.startswith(l)))), None)
+        if hit is None:
+            return False
+        used.add(hit)
+    return True
+
+# The ranking sheet tags Great Britain players GBR; at a World Cup they play
+# for England or Wales, so the name decides which squad (if either) holds them.
+RANKING_COUNTRY_MAP = {'GBR': ['ENG', 'WAL']}
+
+def apply_player_rankings(players_doc, rankings):
+    """Attach world_rank to squad players named in the FIH top-114."""
+    if not rankings:
+        return False
+    by_team = {}
+    for p in players_doc['players']:
+        by_team.setdefault(p['team'], []).append(p)
+    ours = set(by_team)
+    changed = False
+    for entry in rankings['players']:
+        codes = RANKING_COUNTRY_MAP.get(entry['country'], [entry['country']])
+        codes = [c for c in codes if c in ours]
+        if not codes:
+            continue                      # nation not at this World Cup
+        if '…' in entry['name']:
+            print(f"PLAYER RANK: #{entry['rank']} {entry['country']} name truncated in the sheet — skipped.")
+            continue
+        hits = [p for c in codes for p in by_team[c] if _names_match(entry['name'], p['name'])]
+        if len(hits) > 1:
+            print(f"PLAYER RANK: #{entry['rank']} {entry['name']} matches {len(hits)} players — skipped.")
+            continue
+        if not hits:
+            print(f"PLAYER RANK: #{entry['rank']} {entry['name']} ({entry['country']}) "
+                  f"not found in our squad — no guess made.")
+            continue
+        p = hits[0]
+        if p.get('world_rank') != entry['rank'] or not p.get('fih_star'):
+            print(f"PLAYER RANK: {p['team']} {p['name']} = world #{entry['rank']}")
+            p['world_rank'] = entry['rank']
+            p['fih_star'] = True
+            changed = True
     return changed
 
 def reconcile_team_lists(players_doc, squads):
@@ -804,9 +905,10 @@ LINE_ORDER = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
 LINE_NEED = {'Goalkeeper': 1, 'Defender': 4, 'Midfielder': 3, 'Forward': 3}
 
 def _lineup_rank(p):
-    """Captain first, then rating, then international experience."""
+    """Captain, then rating, then FIH world rank, then experience."""
     return (0 if p.get('is_captain') else 1,
             -(p.get('ai_rating') or 0),
+            p.get('world_rank') or 999,
             -(p.get('caps') or 0),
             -(p.get('matches_played') or 0),
             p.get('number') or 99)
@@ -1037,21 +1139,29 @@ def fetch_fih_rankings():
     print('RANKINGS: official table read as ' + ', '.join(
         f'{code}#{rank}' + (f'({points:g}pts)' if points is not None else '')
         for rank, code, points in rows))
-    return {code: rank for rank, code, _ in rows}
+    return {code: (rank, points) for rank, code, points in rows}
 
 def apply_rankings(teams, ranks):
-    """Write official ranks into teams.json. Returns True if anything changed."""
+    """Write official ranks AND ranking points into teams.json.
+
+    The points are not decoration: rank positions are unevenly spaced (NED to
+    GER is 214 points across 3 places; PAK to WAL is 141 across 3), and the
+    match model reads the points, not the positions."""
     if not ranks:
         return False
     changed = False
     for t in teams['teams']:
-        new = ranks.get(t['code'])
-        if new is None:
+        entry = ranks.get(t['code'])
+        if entry is None:
             print(f"RANKINGS: {t['code']} not present in the official table — keeping #{t['fih_rank']}")
             continue
+        new, points = entry
         if t['fih_rank'] != new:
             print(f"RANKINGS: {t['code']} #{t['fih_rank']} -> #{new}")
             t['fih_rank'] = new
+            changed = True
+        if points is not None and t.get('fih_points') != points:
+            t['fih_points'] = points
             changed = True
     if changed:
         teams['rankings_source'] = FIH_RANKING_URLS[0]
@@ -1257,6 +1367,191 @@ def pick_scorer(rng, players, code, via, picked=None):
         picked[name] = picked.get(name, 0) + 1
     return name
 
+# ── Official match events from the TMS match report ───────────────────────
+# The report PDF (/matches/{id}/reports/matchreport) carries the real timeline.
+# Its scoring section is unambiguous — each goal names its own team, minute,
+# shirt number and method, so orientation never matters:
+#   ENG 14 23 FG 0 - 1   ->  England, 14', shirt 23, field goal
+# Cards live in a two-team table above it; those are read by coordinate, below.
+
+GOAL_LINE = re.compile(r'^([A-Z]{3})\s+(\d{1,3})\s+(\d{1,2})\s+(FG|PC|PS)\s+\d+\s*-\s*\d+\s*$')
+
+def parse_match_report_goals(lines):
+    """[{team, minute, shirt, via}] from the report's scoring section."""
+    out = []
+    for ln in lines:
+        m = GOAL_LINE.match(ln.strip())
+        if m:
+            out.append({'team': m.group(1), 'minute': int(m.group(2)),
+                        'shirt': int(m.group(3)), 'via': m.group(4)})
+    return out
+
+def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
+    """
+    [{minute, team, type, player}] from the report's two-team card table, read
+    by word coordinate.
+
+    The table is two player lists side by side, each with Green/Yellow/Red
+    columns holding the minute a card was shown. Flattened text loses which
+    column a number sits in, so this uses the PDF word positions: the six colour
+    headers fix three narrow x-bands per side; a numeric token counts as a card
+    only inside one of those bands, coloured by the band and attributed to the
+    shirt on its row and side. The report's left/right is not our home/away, so
+    each side's team is resolved by voting shirt+surname against the two squads.
+    Anything inconsistent — a minute out of range, a side that resolves to
+    neither team, a shirt not on it — drops the whole match's cards rather than
+    risk a wrong attribution. The goals are always kept.
+    """
+    try:
+        import pdfplumber
+    except ImportError:
+        return None
+    COLOUR = {'Green': 'green_card', 'Yellow': 'yellow_card', 'Red': 'red_card'}
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            words = pdf.pages[0].extract_words(use_text_flow=False, keep_blank_chars=False)
+    except Exception as e:
+        print(f'  card-table parse failed: {e}')
+        return None
+
+    heads = [w for w in words if w['text'] in COLOUR]
+    if len(heads) != 6:                       # 3 colours × 2 sides
+        return None
+    heads.sort(key=lambda w: w['x0'])
+    left_h, right_h = heads[:3], heads[3:]
+
+    def zone(hs):
+        g, y, r = (h['x0'] for h in hs)       # Green, Yellow, Red centres
+        return {'lo': g - 12, 'hi': r + (r - y),
+                'gy': (g + y) / 2, 'yr': (y + r) / 2}
+    lz, rz = zone(left_h), zone(right_h)
+    mid = (left_h[-1]['x0'] + right_h[0]['x0']) / 2   # between the two card blocks
+    top_head = min(h['top'] for h in heads)
+    top_end = min((w['top'] for w in words if w['text'] in ('Coach', 'Umpire')),
+                  default=1e9)
+
+    # Cluster the body words into rows by vertical position.
+    body = sorted((w for w in words if top_head < w['top'] < top_end), key=lambda w: w['top'])
+    rows, cur, cy = [], [], None
+    for w in body:
+        if cy is None or abs(w['top'] - cy) <= 5:
+            cur.append(w); cy = w['top'] if cy is None else cy
+        else:
+            rows.append(cur); cur, cy = [w], w['top']
+    if cur:
+        rows.append(cur)
+
+    def colour(x, z):
+        return 'green_card' if x < z['gy'] else 'yellow_card' if x < z['yr'] else 'red_card'
+
+    # Resolve which squad is the left column and which the right (votes below).
+    def surname_hit(code, shirt, caps):
+        name = shirt_name.get((code, shirt))
+        return bool(name) and caps and caps.lower() in name.lower()
+
+    votes = {'L': {home_code: 0, away_code: 0}, 'R': {home_code: 0, away_code: 0}}
+    parsed = []   # (side, shirt, surname, [(minute, type)])
+    for rw in rows:
+        for side, sx_lo, sx_hi, z in (('L', 55, 82, lz), ('R', 340, 366, rz)):
+            shirts = [int(w['text']) for w in rw if w['text'].isdigit() and sx_lo < w['x0'] < sx_hi]
+            if not shirts:
+                continue
+            shirt = shirts[0]
+            caps = next((w['text'] for w in sorted(rw, key=lambda w: w['x0'])
+                         if w['text'].isalpha() and w['text'].isupper()
+                         and (sx_hi < w['x0'] < mid if side == 'L' else w['x0'] > sx_hi)), '')
+            cards = []
+            for w in rw:
+                if not w['text'].isdigit():
+                    continue
+                x = w['x0']
+                if z['lo'] <= x <= z['hi']:
+                    cards.append((int(w['text']), colour(x, z)))
+            parsed.append((side, shirt, caps, cards))
+            for code in (home_code, away_code):
+                if surname_hit(code, shirt, caps):
+                    votes[side][code] += 1
+
+    team = {}
+    for side in ('L', 'R'):
+        home_v, away_v = votes[side][home_code], votes[side][away_code]
+        if home_v == away_v:
+            return None                        # cannot tell the sides apart
+        team[side] = home_code if home_v > away_v else away_code
+    if team['L'] == team['R']:
+        return None
+
+    events = []
+    for side, shirt, caps, cards in parsed:
+        code = team[side]
+        for minute, kind in cards:
+            if not (1 <= minute <= 60):
+                return None
+            who = shirt_name.get((code, shirt))
+            events.append({'minute': minute, 'team': code, 'type': kind,
+                           'player': who or f'{code} #{shirt}'})
+    return events
+
+# Bumped when the report parser improves, so already-official matches re-read
+# the report once and pick up the better data instead of staying frozen.
+EVENTS_REV = 2
+
+def apply_official_events(fixtures, players_doc):
+    """Replace estimated timelines with the real one from the TMS match report."""
+    shirt_name = {(p['team'], p['number']): p['name']
+                  for p in players_doc['players'] if p.get('number') is not None}
+    changed = False
+    for m in fixtures['matches']:
+        if m['status'] != 'completed' or not has_score(m) or not m.get('tms_id'):
+            continue
+        if m.get('enrichment') == 'manual':
+            continue                    # hand-entered — never touch
+        if m.get('enrichment') == 'official' and m.get('events_rev') == EVENTS_REV:
+            continue                    # already read at this parser revision
+        body, ctype = _tms_get(f'{TMS_HOST}/matches/{m["tms_id"]}/reports/matchreport',
+                               referer=f'{TMS_HOST}/matches/{m["tms_id"]}')
+        if not body or not body.startswith(b'%PDF'):
+            continue
+        goals = parse_match_report_goals(_pdf_lines(body))
+        gh = sum(1 for g in goals if g['team'] == m['home'])
+        ga = sum(1 for g in goals if g['team'] == m['away'])
+        if (not goals or {g['team'] for g in goals} - {m['home'], m['away']}
+                or gh != m['score']['home'] or ga != m['score']['away']):
+            print(f"OFFICIAL {m['id']}: report goals {gh}-{ga} != score "
+                  f"{m['score']['home']}-{m['score']['away']} — keeping estimated.")
+            continue
+        events = []
+        for g in goals:
+            who = shirt_name.get((g['team'], g['shirt']))
+            if not who:
+                print(f"OFFICIAL {m['id']}: no roster name for {g['team']} #{g['shirt']}")
+            events.append({'minute': g['minute'], 'team': g['team'], 'type': 'goal',
+                           'via': g['via'], 'player': who or f"{g['team']} #{g['shirt']}"})
+        cards = _report_cards(body, m['home'], m['away'], shirt_name)
+        if cards is None:
+            print(f"OFFICIAL {m['id']}: card table not read cleanly — goals only this run.")
+            cards = []
+        events += cards
+        events.sort(key=lambda e: e['minute'])
+        m['events'] = events
+        pc = {s: sum(1 for e in events if e['team'] == m[s] and e['type'] == 'goal' and e.get('via') == 'PC')
+              for s in ('home', 'away')}
+        # PC goals are real; total PC attempts aren't in the report, so keep any
+        # prior estimate but never let it read below the real PC goals scored.
+        prev = m.get('penalty_corners') or {}
+        m['penalty_corners'] = {s: max(prev.get(s) or 0, pc[s]) for s in ('home', 'away')}
+        m['stats'] = derive_stats_from_events(m)
+        m['commentary'] = build_commentary(m)
+        m['enrichment'] = 'official'
+        m['events_rev'] = EVENTS_REV
+        changed = True
+        cd = {}
+        for e in cards:
+            cd[e['team']] = cd.get(e['team'], 0) + 1
+        print(f"OFFICIAL: {m['id']} {m['home']} {gh}-{ga} {m['away']} — "
+              f"{len(goals)} goals, {len(cards)} cards {cd or ''} from match report")
+    return changed
+
 def estimate_enrichment(fixtures, players_doc):
     """
     For completed matches with a real score but no timeline: generate seeded,
@@ -1446,7 +1741,13 @@ def update_player_stats(fixtures, players_doc):
             rating = None
         else:
             base -= a['yellow'] * 2 + a['red'] * 6
-            if p.get('fih_star'): base += 3
+            if p.get('world_rank'):
+                # FIH world top-114 standing as a prior: #1 is worth +8,
+                # tailing to nothing at #114 — enough to separate stars before
+                # events accrue, small enough for the ledger to overrule it.
+                base += (115 - p['world_rank']) / 114 * 8
+            elif p.get('fih_star'):
+                base += 3
             if p.get('is_captain'): base += 1
             volume = math.sqrt(mp / max_team_mp) if max_team_mp else 1
             rating = round(min(99, max(40, 40 + (base - 40) * volume)), 1)
@@ -1546,19 +1847,31 @@ def slot_knockouts(fixtures):
     return changed
 
 # ------------------------------------------------------------- oracle
-def elo_from_rank(rank):
-    return 2000 - 38 * (rank - 1)
+def points_from_rank(rank):
+    """Pseudo-points fallback when the official points are missing — the
+    observed 2026 table spans ~3838 (#1) to ~2397 (#16), ~96 points a place."""
+    return 3850 - 96 * (rank - 1)
 
-def predict(home_rank, away_rank):
-    rh, ra = elo_from_rank(home_rank), elo_from_rank(away_rank)
-    p_home_raw = 1 / (1 + 10 ** ((ra - rh) / 400))
-    gap = abs(rh - ra)
-    p_draw = 0.26 * math.exp(-gap / 260)  # hockey pool draw rate baseline
-    p_home = p_home_raw * (1 - p_draw)
-    p_away = (1 - p_home_raw) * (1 - p_draw)
+def predict(home_pts, away_pts):
+    """(p_home, p_draw, p_away) from official FIH ranking points.
+
+    v2, recalibrated after PAK v WAL: the old model turned rank POSITIONS into
+    synthetic Elo, so a 3-place gap looked the same everywhere on the table,
+    and its thin draw term made near-equals read as 75/25 — then the match
+    finished 3-3. Rank positions are unevenly spaced; the ranking points are
+    the actual currency. Near-equal teams now sit near thirds (the draw is a
+    full outcome, not a residue), PAK(2550) v WAL(2409) reads ~44/32/24, and
+    a 1,400-point gap still clears 90% without pretending to certainty.
+    """
+    dr = home_pts - away_pts
+    e = 1 / (1 + 10 ** (-dr / 500))
+    e = 0.5 + (e - 0.5) * 0.92          # temper: sport keeps its long tails
+    p_draw = max(0.05, 0.33 * math.exp(-(dr / 700) ** 2))
+    p_home = (1 - p_draw) * e
+    p_away = (1 - p_draw) * (1 - e)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
-def revise_stale_predictions(fixtures, predictions, rank_of, now):
+def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now):
     """
     Publish a visible correction for a pick whose match has not started but
     whose inputs were wrong when it was written.
@@ -1594,7 +1907,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, now):
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
-        ph, pd, pa = predict(hr, ar)
+        ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
         if m['phase'] != 'pool':
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
@@ -1614,7 +1927,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, now):
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         p['superseded'] = True
         p['superseded_at'] = now.isoformat()
-        p['superseded_reason'] = 'FIH ranks corrected against fih.hockey; pick revised before push-back.'
+        p['superseded_reason'] = 'Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model.'
         predictions['predictions'].append({
             'id': f"oracle-v1:{mid}:r{rev}",
             'matchId': mid,
@@ -1623,9 +1936,9 @@ def revise_stale_predictions(fixtures, predictions, rank_of, now):
             'revises': p['id'],
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': pick, 'pick_confidence': conf,
-            'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model "
-                       f"from world rankings. Revised before push-back: the original pick used "
-                       f"seeded ranks later corrected against fih.hockey, and stays in the ledger."),
+            'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
+                       f"Elo with a full draw model. Revised before push-back; the original pick "
+                       f"stays in the ledger."),
             'publishedAt': now.isoformat(),
         })
         changed = True
@@ -1656,11 +1969,13 @@ def generate_predictions(fixtures, teams, predictions):
     a pick is never edited or deleted.
     """
     rank_of = {t['code']: t['fih_rank'] for t in teams['teams']}
+    points_of = {t['code']: t.get('fih_points') or points_from_rank(t['fih_rank'])
+                 for t in teams['teams']}
     have = {p['matchId'] for p in predictions['predictions']}
     changed = False
     now = now_utc()
 
-    changed |= revise_stale_predictions(fixtures, predictions, rank_of, now)
+    changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':
@@ -1674,7 +1989,7 @@ def generate_predictions(fixtures, teams, predictions):
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
-        ph, pd, pa = predict(hr, ar)
+        ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
         if knockout:
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
@@ -1709,6 +2024,9 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
+    if os.environ.get('PROBE_MATCH_IDS'):   # debug hook, dormant unless set
+        for _pid in os.environ['PROBE_MATCH_IDS'].split(','):
+            probe_match_report(_pid.strip())
     changed |= fix_venues(fixtures)
     # The official schedule before the clock speaks: statuses are computed
     # from kickoff times, and the per-match pages are the authority on those.
@@ -1732,12 +2050,19 @@ def main():
     players_changed = reconcile_team_lists(players, squads)
     players_changed |= merge_squads(players, squads, teams)
     teams_changed |= apply_coaches(teams, staff)
+    try:
+        players_changed |= apply_player_rankings(players, load('player_rankings.json'))
+    except FileNotFoundError:
+        pass
 
     tms = fetch_tms_standings()
     if tms:
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
         changed |= backfill_scores_from_tms(fixtures, tms, page_results)
 
+    # Real timeline from the TMS match report first; estimation only fills the
+    # matches a report hasn't been published for yet.
+    changed |= apply_official_events(fixtures, players)
     changed |= estimate_enrichment(fixtures, players)
     changed |= update_player_stats(fixtures, players)
     changed |= slot_knockouts(fixtures)

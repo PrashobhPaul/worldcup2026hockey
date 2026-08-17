@@ -1,0 +1,576 @@
+{
+ "source": "FIH men’s outdoor player world ranking — top 114 (user-supplied sheet)",
+ "updated_at": "2026-08-17",
+ "players": [
+  {
+   "rank": 1,
+   "name": "Zhou Chuanzu",
+   "country": "CHN"
+  },
+  {
+   "rank": 2,
+   "name": "Neild Timothy",
+   "country": "NZL"
+  },
+  {
+   "rank": 3,
+   "name": "Murugesan Ranganathan",
+   "country": "IND"
+  },
+  {
+   "rank": 4,
+   "name": "Zahid Ali",
+   "country": "AZE"
+  },
+  {
+   "rank": 5,
+   "name": "Muhammed Minhaj",
+   "country": "IND"
+  },
+  {
+   "rank": 6,
+   "name": "Huo Kelin",
+   "country": "CHN"
+  },
+  {
+   "rank": 7,
+   "name": "Rehman Abdul",
+   "country": "PAK"
+  },
+  {
+   "rank": 8,
+   "name": "Wagner Maximilian",
+   "country": "GER"
+  },
+  {
+   "rank": 9,
+   "name": "Veldhof Bob",
+   "country": "NED"
+  },
+  {
+   "rank": 10,
+   "name": "Sapart Lionel",
+   "country": "BEL"
+  },
+  {
+   "rank": 11,
+   "name": "Upton Patrick Althony Ho…",
+   "country": "RSA"
+  },
+  {
+   "rank": 12,
+   "name": "Alvarez-kirsch Luca",
+   "country": "GER"
+  },
+  {
+   "rank": 13,
+   "name": "Bowen Christopher",
+   "country": "GBR"
+  },
+  {
+   "rank": 14,
+   "name": "Huang Yongsheng",
+   "country": "CHN"
+  },
+  {
+   "rank": 15,
+   "name": "Singh Shivendra",
+   "country": "IND"
+  },
+  {
+   "rank": 16,
+   "name": "Cho Kyungchan",
+   "country": "KOR"
+  },
+  {
+   "rank": 17,
+   "name": "Sodiqov Manuchehr",
+   "country": "TJK"
+  },
+  {
+   "rank": 18,
+   "name": "Hayward Andy",
+   "country": "NZL"
+  },
+  {
+   "rank": 19,
+   "name": "Anupapimol Ratthapol",
+   "country": "THA"
+  },
+  {
+   "rank": 20,
+   "name": "Qian Fangzhou",
+   "country": "CHN"
+  },
+  {
+   "rank": 21,
+   "name": "O'Ryan Jorge",
+   "country": "CHI"
+  },
+  {
+   "rank": 22,
+   "name": "Salim Muhammad Haseef",
+   "country": "SGP"
+  },
+  {
+   "rank": 23,
+   "name": "Pego Georna",
+   "country": "SOL"
+  },
+  {
+   "rank": 24,
+   "name": "Spencer Kevin",
+   "country": "GUY"
+  },
+  {
+   "rank": 25,
+   "name": "Klein Rutger",
+   "country": "NED"
+  },
+  {
+   "rank": 26,
+   "name": "Nepote Ignacio",
+   "country": "ARG"
+  },
+  {
+   "rank": 27,
+   "name": "Davis Rowan",
+   "country": "ENG"
+  },
+  {
+   "rank": 28,
+   "name": "Ilham Muhammad",
+   "country": "INA"
+  },
+  {
+   "rank": 29,
+   "name": "Megat Azrafiq",
+   "country": "MAS"
+  },
+  {
+   "rank": 30,
+   "name": "Turna Abdullah",
+   "country": "TUR"
+  },
+  {
+   "rank": 31,
+   "name": "Molina Miguel",
+   "country": "ESP"
+  },
+  {
+   "rank": 32,
+   "name": "Kuper Riet",
+   "country": "IRL"
+  },
+  {
+   "rank": 33,
+   "name": "Vazquez Olvin",
+   "country": "PUR"
+  },
+  {
+   "rank": 34,
+   "name": "Yildiz Muhammed",
+   "country": "TUR"
+  },
+  {
+   "rank": 35,
+   "name": "Dotta Mastracusa Ignacio",
+   "country": "URU"
+  },
+  {
+   "rank": 36,
+   "name": "Al Hosni Abdullah",
+   "country": "OMA"
+  },
+  {
+   "rank": 37,
+   "name": "Wood Michael",
+   "country": "WAL"
+  },
+  {
+   "rank": 38,
+   "name": "Marbus Remco",
+   "country": "NED"
+  },
+  {
+   "rank": 39,
+   "name": "Correa Luis",
+   "country": "PAN"
+  },
+  {
+   "rank": 40,
+   "name": "Obunyasi Daniel",
+   "country": "KEN"
+  },
+  {
+   "rank": 41,
+   "name": "Thomson Jonathan",
+   "country": "RSA"
+  },
+  {
+   "rank": 42,
+   "name": "Lange R",
+   "country": "FRG"
+  },
+  {
+   "rank": 43,
+   "name": "Tyagi Pankaj",
+   "country": "IND"
+  },
+  {
+   "rank": 44,
+   "name": "Simmen Max",
+   "country": "SUI"
+  },
+  {
+   "rank": 45,
+   "name": "Mat Mohamad",
+   "country": "MAS"
+  },
+  {
+   "rank": 46,
+   "name": "Williams Scott",
+   "country": "USA"
+  },
+  {
+   "rank": 47,
+   "name": "Sloan Martin",
+   "country": "IRL"
+  },
+  {
+   "rank": 48,
+   "name": "Spatz Alexander",
+   "country": "AUT"
+  },
+  {
+   "rank": 49,
+   "name": "Volhand Barry",
+   "country": "SAM"
+  },
+  {
+   "rank": 50,
+   "name": "Vonhoegen Jan",
+   "country": "GER"
+  },
+  {
+   "rank": 51,
+   "name": "Verrier Hugo",
+   "country": "FRA"
+  },
+  {
+   "rank": 52,
+   "name": "Khan Moniruzzaman",
+   "country": "BAN"
+  },
+  {
+   "rank": 53,
+   "name": "Pereira Carlos",
+   "country": "RSA"
+  },
+  {
+   "rank": 54,
+   "name": "Faes Thomas",
+   "country": "BEL"
+  },
+  {
+   "rank": 55,
+   "name": "Vintskevitch Albert",
+   "country": "BLR"
+  },
+  {
+   "rank": 56,
+   "name": "Yasukawa Gaku",
+   "country": "JPN"
+  },
+  {
+   "rank": 57,
+   "name": "De Bie Max",
+   "country": "NED"
+  },
+  {
+   "rank": 58,
+   "name": "Santos Pedro",
+   "country": "POR"
+  },
+  {
+   "rank": 59,
+   "name": "Satsiuk Maksim",
+   "country": "BLR"
+  },
+  {
+   "rank": 60,
+   "name": "Medina Alexander",
+   "country": "DOM"
+  },
+  {
+   "rank": 61,
+   "name": "Caramalho Afonso",
+   "country": "POR"
+  },
+  {
+   "rank": 62,
+   "name": "Smith Rahsaan",
+   "country": "JAM"
+  },
+  {
+   "rank": 63,
+   "name": "Murphy Louis",
+   "country": "IRL"
+  },
+  {
+   "rank": 64,
+   "name": "Mamoshkin Alexei",
+   "country": "RUS"
+  },
+  {
+   "rank": 65,
+   "name": "Feeney Barry",
+   "country": "IRL"
+  },
+  {
+   "rank": 66,
+   "name": "Shabani Javad",
+   "country": "IRI"
+  },
+  {
+   "rank": 67,
+   "name": "Ciccazzo Simone",
+   "country": "ITA"
+  },
+  {
+   "rank": 68,
+   "name": "Kholopov Vitali",
+   "country": "BEL"
+  },
+  {
+   "rank": 69,
+   "name": "Morales Erick",
+   "country": "BOL"
+  },
+  {
+   "rank": 70,
+   "name": "Samin M M Mehrab Hasan",
+   "country": "BAN"
+  },
+  {
+   "rank": 71,
+   "name": "Montag Hans",
+   "country": "FRG"
+  },
+  {
+   "rank": 72,
+   "name": "Short Robert",
+   "country": "CAN"
+  },
+  {
+   "rank": 73,
+   "name": "Kim Jaeho",
+   "country": "KOR"
+  },
+  {
+   "rank": 74,
+   "name": "Steele Cameron",
+   "country": "IRL"
+  },
+  {
+   "rank": 75,
+   "name": "Cheema Arjun",
+   "country": "CAN"
+  },
+  {
+   "rank": 76,
+   "name": "Alborch Ignacio",
+   "country": "ESP"
+  },
+  {
+   "rank": 77,
+   "name": "Stachowiak Daniel",
+   "country": "POL"
+  },
+  {
+   "rank": 78,
+   "name": "Morrison Charlie",
+   "country": "NZL"
+  },
+  {
+   "rank": 79,
+   "name": "Tobar Mahmoud",
+   "country": "EGY"
+  },
+  {
+   "rank": 80,
+   "name": "Delas Miguel",
+   "country": "ESP"
+  },
+  {
+   "rank": 81,
+   "name": "Randiek Nashon",
+   "country": "KEN"
+  },
+  {
+   "rank": 82,
+   "name": "Fujishima Raiki",
+   "country": "JPN"
+  },
+  {
+   "rank": 83,
+   "name": "Mohd Mohd",
+   "country": "MAS"
+  },
+  {
+   "rank": 84,
+   "name": "Nielsen Frederik",
+   "country": "DEN"
+  },
+  {
+   "rank": 85,
+   "name": "Brown Euan",
+   "country": "SCO"
+  },
+  {
+   "rank": 86,
+   "name": "Arunasalam Kiran",
+   "country": "AUS"
+  },
+  {
+   "rank": 87,
+   "name": "Mwathe Peter",
+   "country": "KEN"
+  },
+  {
+   "rank": 88,
+   "name": "Gilbert Mike",
+   "country": "SCO"
+  },
+  {
+   "rank": 89,
+   "name": "Richmond Alasdair",
+   "country": "SCO"
+  },
+  {
+   "rank": 90,
+   "name": "Trustham Peter",
+   "country": "ZIM"
+  },
+  {
+   "rank": 91,
+   "name": "Gotoshia Saba",
+   "country": "GEO"
+  },
+  {
+   "rank": 92,
+   "name": "Gilders Chris",
+   "country": "AUS"
+  },
+  {
+   "rank": 93,
+   "name": "Rovira Miguel",
+   "country": "ESP"
+  },
+  {
+   "rank": 94,
+   "name": "Mushavi Tinavo",
+   "country": "ZIM"
+  },
+  {
+   "rank": 95,
+   "name": "Parmar Ajit",
+   "country": "USA"
+  },
+  {
+   "rank": 96,
+   "name": "Owino Victor",
+   "country": "KEN"
+  },
+  {
+   "rank": 97,
+   "name": "Nam Yunseon",
+   "country": "KOR"
+  },
+  {
+   "rank": 98,
+   "name": "Kayrancioğlu Fatih",
+   "country": "TUR"
+  },
+  {
+   "rank": 99,
+   "name": "Gobinsingh Donny",
+   "country": "TTO"
+  },
+  {
+   "rank": 100,
+   "name": "Ju Chol Song",
+   "country": "PRK"
+  },
+  {
+   "rank": 101,
+   "name": "Wassermeyer Marius",
+   "country": "BRA"
+  },
+  {
+   "rank": 102,
+   "name": "Yury Khalupka",
+   "country": "BLR"
+  },
+  {
+   "rank": 103,
+   "name": "Kularatne Biyagamage",
+   "country": "SRI"
+  },
+  {
+   "rank": 104,
+   "name": "Coppelmans Frederic",
+   "country": "NED"
+  },
+  {
+   "rank": 105,
+   "name": "Iswarapatham Vikneswar…",
+   "country": "MAS"
+  },
+  {
+   "rank": 106,
+   "name": "Hong Doopyo",
+   "country": "KOR"
+  },
+  {
+   "rank": 107,
+   "name": "Kullar Bindi",
+   "country": "CAN"
+  },
+  {
+   "rank": 108,
+   "name": "Kihara Seiji",
+   "country": "JPN"
+  },
+  {
+   "rank": 109,
+   "name": "Singh Prince Deep",
+   "country": "IND"
+  },
+  {
+   "rank": 110,
+   "name": "Hubach Darren",
+   "country": "RSA"
+  },
+  {
+   "rank": 111,
+   "name": "Colclough Freddie",
+   "country": "WAL"
+  },
+  {
+   "rank": 112,
+   "name": "Ferre Nil",
+   "country": "ESP"
+  },
+  {
+   "rank": 113,
+   "name": "Barbarić Nikola",
+   "country": "CRO"
+  },
+  {
+   "rank": 114,
+   "name": "Kim Jeong Yong",
+   "country": "KOR"
+  }
+ ]
+}

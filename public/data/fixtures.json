@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T18:38:18.464969+00:00",
+  "last_updated": "2026-08-17T19:09:28.392946+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -42,32 +42,32 @@
       },
       "events": [
         {
-          "type": "goal",
+          "minute": 8,
           "team": "IND",
-          "minute": 12,
-          "player": "Harmanpreet Singh",
-          "via": "PC"
+          "type": "goal",
+          "via": "PC",
+          "player": "Sanjay"
         },
         {
+          "minute": 11,
+          "team": "IND",
           "type": "goal",
+          "via": "PC",
+          "player": "Harmanpreet Singh"
+        },
+        {
+          "minute": 43,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Harmanpreet Singh"
+        },
+        {
+          "minute": 56,
           "team": "WAL",
-          "minute": 24,
-          "player": "Gareth Furlong",
-          "via": "FG"
-        },
-        {
           "type": "goal",
-          "team": "IND",
-          "minute": 38,
-          "player": "Amit Rohidas",
-          "via": "PC"
-        },
-        {
-          "type": "goal",
-          "team": "IND",
-          "minute": 54,
-          "player": "Abhishek",
-          "via": "FG"
+          "via": "FG",
+          "player": "Sam Welsh"
         }
       ],
       "stats": {
@@ -99,42 +99,42 @@
           "seq": 0
         },
         {
-          "minute": 12,
+          "minute": 8,
           "team": "IND",
-          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 1-0 WAL.",
+          "text": "GOAL! Sanjay (IND) scores from a penalty corner — IND 1-0 WAL.",
           "seq": 1
         },
         {
-          "minute": 15,
-          "text": "End of Q1: IND 1-0 WAL.",
+          "minute": 11,
+          "team": "IND",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 2-0 WAL.",
           "seq": 2
         },
         {
-          "minute": 24,
-          "team": "WAL",
-          "text": "GOAL! Gareth Furlong (WAL) scores from a field goal — IND 1-1 WAL.",
+          "minute": 15,
+          "text": "End of Q1: IND 2-0 WAL.",
           "seq": 3
         },
         {
           "minute": 30,
-          "text": "Half-time: IND 1-1 WAL.",
+          "text": "Half-time: IND 2-0 WAL.",
           "seq": 4
         },
         {
-          "minute": 38,
+          "minute": 43,
           "team": "IND",
-          "text": "GOAL! Amit Rohidas (IND) scores from a penalty corner — IND 2-1 WAL.",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 3-0 WAL.",
           "seq": 5
         },
         {
           "minute": 45,
-          "text": "End of Q3: IND 2-1 WAL.",
+          "text": "End of Q3: IND 3-0 WAL.",
           "seq": 6
         },
         {
-          "minute": 54,
-          "team": "IND",
-          "text": "GOAL! Abhishek (IND) scores from a field goal — IND 3-1 WAL.",
+          "minute": 56,
+          "team": "WAL",
+          "text": "GOAL! Sam Welsh (WAL) scores from a field goal — IND 3-1 WAL.",
           "seq": 7
         },
         {
@@ -491,7 +491,9 @@
           "coach": "Daniel Newcombe"
         }
       },
-      "tms_id": 22334
+      "tms_id": 22334,
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "D2",
@@ -514,45 +516,45 @@
       },
       "events": [
         {
-          "minute": 6,
+          "minute": 12,
           "team": "ENG",
           "type": "goal",
-          "via": "PC",
-          "player": "Will Calnan"
+          "via": "FG",
+          "player": "Stuart Rushmere"
         },
         {
-          "minute": 11,
+          "minute": 20,
           "team": "PAK",
           "type": "green_card",
-          "player": "Arshad Liaquat"
+          "player": "Abu Mahmood"
         },
         {
-          "minute": 18,
-          "team": "ENG",
-          "type": "goal",
-          "via": "PS",
-          "player": "Sam Ward"
-        },
-        {
-          "minute": 19,
-          "team": "PAK",
-          "type": "goal",
-          "via": "PC",
-          "player": "Muhammad Umar Bhutta"
-        },
-        {
-          "minute": 26,
-          "team": "ENG",
-          "type": "goal",
-          "via": "PC",
-          "player": "Will Calnan"
-        },
-        {
-          "minute": 49,
+          "minute": 28,
           "team": "ENG",
           "type": "goal",
           "via": "FG",
           "player": "Sam Ward"
+        },
+        {
+          "minute": 31,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Samuel Hooper"
+        },
+        {
+          "minute": 47,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "James Albery"
+        },
+        {
+          "minute": 50,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Afraz"
         }
       ],
       "result_source": "fih-tms",
@@ -560,9 +562,9 @@
         "home": {
           "goals": 4,
           "shots": 11,
-          "circle_entries": 24,
+          "circle_entries": 31,
           "penalty_corners": 8,
-          "possession": 61,
+          "possession": 62,
           "green_cards": 0,
           "yellow_cards": 0,
           "red_cards": 0
@@ -570,9 +572,9 @@
         "away": {
           "goals": 1,
           "shots": 6,
-          "circle_entries": 15,
+          "circle_entries": 17,
           "penalty_corners": 7,
-          "possession": 39,
+          "possession": 38,
           "green_cards": 1,
           "yellow_cards": 0,
           "red_cards": 0
@@ -585,54 +587,54 @@
           "seq": 0
         },
         {
-          "minute": 6,
+          "minute": 12,
           "team": "ENG",
-          "text": "GOAL! Will Calnan (ENG) scores from a penalty corner — ENG 1-0 PAK.",
+          "text": "GOAL! Stuart Rushmere (ENG) scores from a field goal — ENG 1-0 PAK.",
           "seq": 1
-        },
-        {
-          "minute": 11,
-          "team": "PAK",
-          "text": "Green Card for Arshad Liaquat (PAK) — 2-minute suspension.",
-          "seq": 2
         },
         {
           "minute": 15,
           "text": "End of Q1: ENG 1-0 PAK.",
+          "seq": 2
+        },
+        {
+          "minute": 20,
+          "team": "PAK",
+          "text": "Green Card for Abu Mahmood (PAK) — 2-minute suspension.",
           "seq": 3
         },
         {
-          "minute": 18,
+          "minute": 28,
           "team": "ENG",
-          "text": "GOAL! Sam Ward (ENG) scores from a penalty stroke — ENG 2-0 PAK.",
+          "text": "GOAL! Sam Ward (ENG) scores from a field goal — ENG 2-0 PAK.",
           "seq": 4
         },
         {
-          "minute": 19,
-          "team": "PAK",
-          "text": "GOAL! Muhammad Umar Bhutta (PAK) scores from a penalty corner — ENG 2-1 PAK.",
+          "minute": 30,
+          "text": "Half-time: ENG 2-0 PAK.",
           "seq": 5
         },
         {
-          "minute": 26,
+          "minute": 31,
           "team": "ENG",
-          "text": "GOAL! Will Calnan (ENG) scores from a penalty corner — ENG 3-1 PAK.",
+          "text": "GOAL! Samuel Hooper (ENG) scores from a penalty corner — ENG 3-0 PAK.",
           "seq": 6
         },
         {
-          "minute": 30,
-          "text": "Half-time: ENG 3-1 PAK.",
+          "minute": 45,
+          "text": "End of Q3: ENG 3-0 PAK.",
           "seq": 7
         },
         {
-          "minute": 45,
-          "text": "End of Q3: ENG 3-1 PAK.",
+          "minute": 47,
+          "team": "ENG",
+          "text": "GOAL! James Albery (ENG) scores from a penalty corner — ENG 4-0 PAK.",
           "seq": 8
         },
         {
-          "minute": 49,
-          "team": "ENG",
-          "text": "GOAL! Sam Ward (ENG) scores from a field goal — ENG 4-1 PAK.",
+          "minute": 50,
+          "team": "PAK",
+          "text": "GOAL! Afraz (PAK) scores from a field goal — ENG 4-1 PAK.",
           "seq": 9
         },
         {
@@ -641,10 +643,10 @@
           "seq": 10
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.045229+00:00",
+        "generated_at": "2026-08-17T17:06:19.864973+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -840,6 +842,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_12",
               "name": "Ammad Butt",
               "number": 16,
@@ -858,20 +869,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_05",
-              "name": "Muhammad Abdullah",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_01",
               "name": "Sufyan Khan",
               "number": 5,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_05",
+              "name": "Muhammad Abdullah",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -888,7 +899,7 @@
               "playerId": "PAK_06",
               "name": "Moin Shakeel",
               "number": 7,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -910,15 +921,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_08",
-              "name": "Zikriya Hayat",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -930,30 +932,30 @@
               "onAt": "46:00"
             },
             {
+              "playerId": "PAK_08",
+              "name": "Zikriya Hayat",
+              "number": 10,
+              "position": null,
+              "onAt": "27:46"
+            },
+            {
               "playerId": "PAK_07",
               "name": "Hannan Shahid",
               "number": 9,
               "position": null,
-              "onAt": "27:46"
+              "onAt": "23:47"
             },
             {
               "playerId": "PAK_13",
               "name": "Muhammad Hammadudin",
               "number": 17,
               "position": null,
-              "onAt": "23:47"
+              "onAt": "19:02"
             },
             {
               "playerId": "PAK_10",
               "name": "Ahmad Nadeem",
               "number": 14,
-              "position": null,
-              "onAt": "19:02"
-            },
-            {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
               "position": null,
               "onAt": "46:14"
             },
@@ -990,7 +992,8 @@
           "coach": "Bob Veldhof"
         }
       },
-      "tms_id": 22336
+      "tms_id": 22336,
+      "events_rev": 2
     },
     {
       "id": "B1",
@@ -1017,69 +1020,75 @@
           "team": "GER",
           "type": "goal",
           "via": "PC",
-          "player": "Mats Grambusch"
+          "player": "Jakob Brilla"
         },
         {
-          "minute": 12,
-          "team": "GER",
-          "type": "goal",
-          "via": "PC",
-          "player": "Mats Grambusch"
-        },
-        {
-          "minute": 13,
-          "team": "MAS",
-          "type": "goal",
-          "via": "FG",
-          "player": "Tengku Ahmad Tajuddin"
-        },
-        {
-          "minute": 20,
+          "minute": 4,
           "team": "GER",
           "type": "goal",
           "via": "FG",
           "player": "Christopher Rühr"
         },
         {
-          "minute": 32,
-          "team": "GER",
-          "type": "yellow_card",
-          "player": "Mats Grambusch"
-        },
-        {
-          "minute": 45,
+          "minute": 7,
           "team": "GER",
           "type": "goal",
-          "via": "PC",
-          "player": "Niklas Wellen"
+          "via": "FG",
+          "player": "Justus Weigand"
         },
         {
-          "minute": 56,
-          "team": "GER",
+          "minute": 13,
+          "team": "MAS",
+          "type": "green_card",
+          "player": "Faizal Saari"
+        },
+        {
+          "minute": 39,
+          "team": "MAS",
           "type": "goal",
           "via": "PC",
-          "player": "Niklas Wellen"
+          "player": "Abu Kamal Azrai"
+        },
+        {
+          "minute": 44,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Justus Warweg"
+        },
+        {
+          "minute": 52,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Paul-Philipp Kaufmann"
+        },
+        {
+          "minute": 58,
+          "team": "MAS",
+          "type": "green_card",
+          "player": "Norsyafiq Sumantri"
         }
       ],
       "result_source": "fih-tms",
       "stats": {
         "home": {
           "goals": 5,
-          "shots": 10,
-          "circle_entries": 27,
+          "shots": 11,
+          "circle_entries": 33,
           "penalty_corners": 9,
           "possession": 65,
           "green_cards": 0,
-          "yellow_cards": 1,
+          "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 1,
           "shots": 6,
-          "circle_entries": 20,
+          "circle_entries": 21,
           "penalty_corners": 5,
           "possession": 35,
-          "green_cards": 0,
+          "green_cards": 2,
           "yellow_cards": 0,
           "red_cards": 0
         }
@@ -1093,47 +1102,47 @@
         {
           "minute": 3,
           "team": "GER",
-          "text": "GOAL! Mats Grambusch (GER) scores from a penalty corner — GER 1-0 MAS.",
+          "text": "GOAL! Jakob Brilla (GER) scores from a penalty corner — GER 1-0 MAS.",
           "seq": 1
         },
         {
-          "minute": 12,
+          "minute": 4,
           "team": "GER",
-          "text": "GOAL! Mats Grambusch (GER) scores from a penalty corner — GER 2-0 MAS.",
+          "text": "GOAL! Christopher Rühr (GER) scores from a field goal — GER 2-0 MAS.",
           "seq": 2
+        },
+        {
+          "minute": 7,
+          "team": "GER",
+          "text": "GOAL! Justus Weigand (GER) scores from a field goal — GER 3-0 MAS.",
+          "seq": 3
         },
         {
           "minute": 13,
           "team": "MAS",
-          "text": "GOAL! Tengku Ahmad Tajuddin (MAS) scores from a field goal — GER 2-1 MAS.",
-          "seq": 3
-        },
-        {
-          "minute": 15,
-          "text": "End of Q1: GER 2-1 MAS.",
+          "text": "Green Card for Faizal Saari (MAS) — 2-minute suspension.",
           "seq": 4
         },
         {
-          "minute": 20,
-          "team": "GER",
-          "text": "GOAL! Christopher Rühr (GER) scores from a field goal — GER 3-1 MAS.",
+          "minute": 15,
+          "text": "End of Q1: GER 3-0 MAS.",
           "seq": 5
         },
         {
           "minute": 30,
-          "text": "Half-time: GER 3-1 MAS.",
+          "text": "Half-time: GER 3-0 MAS.",
           "seq": 6
         },
         {
-          "minute": 32,
-          "team": "GER",
-          "text": "Yellow Card for Mats Grambusch (GER) — 5-minute suspension.",
+          "minute": 39,
+          "team": "MAS",
+          "text": "GOAL! Abu Kamal Azrai (MAS) scores from a penalty corner — GER 3-1 MAS.",
           "seq": 7
         },
         {
-          "minute": 45,
+          "minute": 44,
           "team": "GER",
-          "text": "GOAL! Niklas Wellen (GER) scores from a penalty corner — GER 4-1 MAS.",
+          "text": "GOAL! Justus Warweg (GER) scores from a field goal — GER 4-1 MAS.",
           "seq": 8
         },
         {
@@ -1142,18 +1151,24 @@
           "seq": 9
         },
         {
-          "minute": 56,
+          "minute": 52,
           "team": "GER",
-          "text": "GOAL! Niklas Wellen (GER) scores from a penalty corner — GER 5-1 MAS.",
+          "text": "GOAL! Paul-Philipp Kaufmann (GER) scores from a field goal — GER 5-1 MAS.",
           "seq": 10
+        },
+        {
+          "minute": 58,
+          "team": "MAS",
+          "text": "Green Card for Norsyafiq Sumantri (MAS) — 2-minute suspension.",
+          "seq": 11
         },
         {
           "minute": 60,
           "text": "Full-time: GER 5-1 MAS.",
-          "seq": 11
+          "seq": 12
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.045545+00:00",
@@ -1481,7 +1496,8 @@
           "coach": "Brendon Carolan"
         }
       },
-      "tms_id": 22335
+      "tms_id": 22335,
+      "events_rev": 2
     },
     {
       "id": "B2",
@@ -1504,41 +1520,47 @@
       },
       "events": [
         {
-          "minute": 6,
+          "minute": 3,
+          "team": "FRA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Eliot Curty"
+        },
+        {
+          "minute": 11,
           "team": "BEL",
           "type": "green_card",
-          "player": "Loick Luypaert"
+          "player": "Nelson Onana"
+        },
+        {
+          "minute": 17,
+          "team": "BEL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Nelson Onana"
+        },
+        {
+          "minute": 18,
+          "team": "FRA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Florent Vaal"
         },
         {
           "minute": 26,
           "team": "FRA",
-          "type": "goal",
-          "via": "PC",
-          "player": "Victor Charlet"
+          "type": "green_card",
+          "player": "François Goyet"
         },
         {
-          "minute": 35,
+          "minute": 44,
           "team": "BEL",
           "type": "goal",
           "via": "PC",
-          "player": "Loick Luypaert"
+          "player": "Roman Duvekot"
         },
         {
-          "minute": 48,
-          "team": "BEL",
-          "type": "goal",
-          "via": "PC",
-          "player": "Alexander Hendrickx"
-        },
-        {
-          "minute": 48,
-          "team": "FRA",
-          "type": "goal",
-          "via": "PC",
-          "player": "Victor Charlet"
-        },
-        {
-          "minute": 50,
+          "minute": 56,
           "team": "BEL",
           "type": "goal",
           "via": "PC",
@@ -1549,21 +1571,21 @@
       "stats": {
         "home": {
           "goals": 3,
-          "shots": 8,
-          "circle_entries": 27,
+          "shots": 9,
+          "circle_entries": 26,
           "penalty_corners": 8,
-          "possession": 56,
+          "possession": 57,
           "green_cards": 1,
           "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 2,
-          "shots": 7,
-          "circle_entries": 21,
+          "shots": 10,
+          "circle_entries": 23,
           "penalty_corners": 6,
-          "possession": 44,
-          "green_cards": 0,
+          "possession": 43,
+          "green_cards": 1,
           "yellow_cards": 0,
           "red_cards": 0
         }
@@ -1575,63 +1597,69 @@
           "seq": 0
         },
         {
-          "minute": 6,
-          "team": "BEL",
-          "text": "Green Card for Loick Luypaert (BEL) — 2-minute suspension.",
+          "minute": 3,
+          "team": "FRA",
+          "text": "GOAL! Eliot Curty (FRA) scores from a field goal — BEL 0-1 FRA.",
           "seq": 1
         },
         {
-          "minute": 15,
-          "text": "End of Q1: BEL 0-0 FRA.",
+          "minute": 11,
+          "team": "BEL",
+          "text": "Green Card for Nelson Onana (BEL) — 2-minute suspension.",
           "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: BEL 0-1 FRA.",
+          "seq": 3
+        },
+        {
+          "minute": 17,
+          "team": "BEL",
+          "text": "GOAL! Nelson Onana (BEL) scores from a field goal — BEL 1-1 FRA.",
+          "seq": 4
+        },
+        {
+          "minute": 18,
+          "team": "FRA",
+          "text": "GOAL! Florent Vaal (FRA) scores from a field goal — BEL 1-2 FRA.",
+          "seq": 5
         },
         {
           "minute": 26,
           "team": "FRA",
-          "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — BEL 0-1 FRA.",
-          "seq": 3
-        },
-        {
-          "minute": 30,
-          "text": "Half-time: BEL 0-1 FRA.",
-          "seq": 4
-        },
-        {
-          "minute": 35,
-          "team": "BEL",
-          "text": "GOAL! Loick Luypaert (BEL) scores from a penalty corner — BEL 1-1 FRA.",
-          "seq": 5
-        },
-        {
-          "minute": 45,
-          "text": "End of Q3: BEL 1-1 FRA.",
+          "text": "Green Card for François Goyet (FRA) — 2-minute suspension.",
           "seq": 6
         },
         {
-          "minute": 48,
-          "team": "BEL",
-          "text": "GOAL! Alexander Hendrickx (BEL) scores from a penalty corner — BEL 2-1 FRA.",
+          "minute": 30,
+          "text": "Half-time: BEL 1-2 FRA.",
           "seq": 7
         },
         {
-          "minute": 48,
-          "team": "FRA",
-          "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — BEL 2-2 FRA.",
+          "minute": 44,
+          "team": "BEL",
+          "text": "GOAL! Roman Duvekot (BEL) scores from a penalty corner — BEL 2-2 FRA.",
           "seq": 8
         },
         {
-          "minute": 50,
+          "minute": 45,
+          "text": "End of Q3: BEL 2-2 FRA.",
+          "seq": 9
+        },
+        {
+          "minute": 56,
           "team": "BEL",
           "text": "GOAL! Alexander Hendrickx (BEL) scores from a penalty corner — BEL 3-2 FRA.",
-          "seq": 9
+          "seq": 10
         },
         {
           "minute": 60,
           "text": "Full-time: BEL 3-2 FRA.",
-          "seq": 10
+          "seq": 11
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.045851+00:00",
@@ -1966,7 +1994,8 @@
           "coach": "John-John Dohmen"
         }
       },
-      "tms_id": 22337
+      "tms_id": 22337,
+      "events_rev": 2
     },
     {
       "id": "A1",
@@ -1989,33 +2018,33 @@
       },
       "events": [
         {
-          "minute": 7,
+          "minute": 21,
           "team": "ARG",
           "type": "goal",
-          "via": "PC",
-          "player": "Agustín Bugallo"
+          "via": "FG",
+          "player": "Lucas Toscani"
         },
         {
-          "minute": 18,
+          "minute": 54,
           "team": "ARG",
           "type": "goal",
-          "via": "PC",
-          "player": "Lucas Martín Rossi"
+          "via": "FG",
+          "player": "Lucio Mendez"
         },
         {
-          "minute": 50,
+          "minute": 58,
           "team": "ARG",
           "type": "goal",
-          "via": "PC",
-          "player": "Matías Paredes"
+          "via": "FG",
+          "player": "Maico Casella"
         }
       ],
       "result_source": "fih-tms",
       "stats": {
         "home": {
           "goals": 3,
-          "shots": 6,
-          "circle_entries": 24,
+          "shots": 10,
+          "circle_entries": 23,
           "penalty_corners": 5,
           "possession": 65,
           "green_cards": 0,
@@ -2040,36 +2069,36 @@
           "seq": 0
         },
         {
-          "minute": 7,
-          "team": "ARG",
-          "text": "GOAL! Agustín Bugallo (ARG) scores from a penalty corner — ARG 1-0 JPN.",
+          "minute": 15,
+          "text": "End of Q1: ARG 0-0 JPN.",
           "seq": 1
         },
         {
-          "minute": 15,
-          "text": "End of Q1: ARG 1-0 JPN.",
+          "minute": 21,
+          "team": "ARG",
+          "text": "GOAL! Lucas Toscani (ARG) scores from a field goal — ARG 1-0 JPN.",
           "seq": 2
         },
         {
-          "minute": 18,
-          "team": "ARG",
-          "text": "GOAL! Lucas Martín Rossi (ARG) scores from a penalty corner — ARG 2-0 JPN.",
+          "minute": 30,
+          "text": "Half-time: ARG 1-0 JPN.",
           "seq": 3
         },
         {
-          "minute": 30,
-          "text": "Half-time: ARG 2-0 JPN.",
+          "minute": 45,
+          "text": "End of Q3: ARG 1-0 JPN.",
           "seq": 4
         },
         {
-          "minute": 45,
-          "text": "End of Q3: ARG 2-0 JPN.",
+          "minute": 54,
+          "team": "ARG",
+          "text": "GOAL! Lucio Mendez (ARG) scores from a field goal — ARG 2-0 JPN.",
           "seq": 5
         },
         {
-          "minute": 50,
+          "minute": 58,
           "team": "ARG",
-          "text": "GOAL! Matías Paredes (ARG) scores from a penalty corner — ARG 3-0 JPN.",
+          "text": "GOAL! Maico Casella (ARG) scores from a field goal — ARG 3-0 JPN.",
           "seq": 6
         },
         {
@@ -2078,7 +2107,7 @@
           "seq": 7
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T03:29:29.319023+00:00",
@@ -2420,7 +2449,8 @@
           "coach": "Yoshihiro Anai"
         }
       },
-      "tms_id": 22341
+      "tms_id": 22341,
+      "events_rev": 2
     },
     {
       "id": "A2",
@@ -2443,73 +2473,72 @@
       },
       "events": [
         {
-          "minute": 3,
-          "team": "NED",
-          "type": "goal",
-          "via": "PC",
-          "player": "Thierry Brinkman"
-        },
-        {
-          "minute": 8,
-          "team": "NED",
-          "type": "goal",
-          "via": "PC",
-          "player": "Florent van Aubel"
-        },
-        {
-          "minute": 23,
-          "team": "NED",
-          "type": "goal",
-          "via": "FG",
-          "player": "Thierry Brinkman",
-          "assist": "Seve van Ass"
-        },
-        {
-          "minute": 25,
-          "team": "NED",
-          "type": "green_card",
-          "player": "Thierry Brinkman"
-        },
-        {
-          "minute": 42,
-          "team": "NED",
-          "type": "goal",
-          "via": "PC",
-          "player": "Seve van Ass"
-        },
-        {
-          "minute": 44,
+          "minute": 24,
           "team": "NZL",
           "type": "goal",
           "via": "FG",
-          "player": "Sam Lane"
+          "player": "James Hickson"
         },
         {
-          "minute": 47,
+          "minute": 35,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tjep Hoedemakers"
+        },
+        {
+          "minute": 41,
           "team": "NED",
           "type": "goal",
           "via": "PC",
-          "player": "Seve van Ass"
+          "player": "Duco Telgenkamp"
+        },
+        {
+          "minute": 46,
+          "team": "NED",
+          "type": "green_card",
+          "player": "Floris Middendorp"
+        },
+        {
+          "minute": 49,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Thierry Brinkman"
+        },
+        {
+          "minute": 50,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tjep Hoedemakers"
+        },
+        {
+          "minute": 52,
+          "team": "NED",
+          "type": "goal",
+          "via": "PC",
+          "player": "Koen Bijen"
         }
       ],
       "result_source": "fih-tms",
       "stats": {
         "home": {
           "goals": 5,
-          "shots": 13,
-          "circle_entries": 28,
+          "shots": 12,
+          "circle_entries": 27,
           "penalty_corners": 6,
-          "possession": 62,
+          "possession": 65,
           "green_cards": 1,
           "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 1,
-          "shots": 8,
-          "circle_entries": 16,
+          "shots": 4,
+          "circle_entries": 20,
           "penalty_corners": 3,
-          "possession": 38,
+          "possession": 35,
           "green_cards": 0,
           "yellow_cards": 0,
           "red_cards": 0
@@ -2522,60 +2551,60 @@
           "seq": 0
         },
         {
-          "minute": 3,
-          "team": "NED",
-          "text": "GOAL! Thierry Brinkman (NED) scores from a penalty corner — NED 1-0 NZL.",
+          "minute": 15,
+          "text": "End of Q1: NED 0-0 NZL.",
           "seq": 1
         },
         {
-          "minute": 8,
-          "team": "NED",
-          "text": "GOAL! Florent van Aubel (NED) scores from a penalty corner — NED 2-0 NZL.",
+          "minute": 24,
+          "team": "NZL",
+          "text": "GOAL! James Hickson (NZL) scores from a field goal — NED 0-1 NZL.",
           "seq": 2
         },
         {
-          "minute": 15,
-          "text": "End of Q1: NED 2-0 NZL.",
+          "minute": 30,
+          "text": "Half-time: NED 0-1 NZL.",
           "seq": 3
         },
         {
-          "minute": 23,
+          "minute": 35,
           "team": "NED",
-          "text": "GOAL! Thierry Brinkman (NED) scores from a field goal — NED 3-0 NZL.",
+          "text": "GOAL! Tjep Hoedemakers (NED) scores from a field goal — NED 1-1 NZL.",
           "seq": 4
         },
         {
-          "minute": 25,
+          "minute": 41,
           "team": "NED",
-          "text": "Green Card for Thierry Brinkman (NED) — 2-minute suspension.",
+          "text": "GOAL! Duco Telgenkamp (NED) scores from a penalty corner — NED 2-1 NZL.",
           "seq": 5
         },
         {
-          "minute": 30,
-          "text": "Half-time: NED 3-0 NZL.",
+          "minute": 45,
+          "text": "End of Q3: NED 2-1 NZL.",
           "seq": 6
         },
         {
-          "minute": 42,
+          "minute": 46,
           "team": "NED",
-          "text": "GOAL! Seve van Ass (NED) scores from a penalty corner — NED 4-0 NZL.",
+          "text": "Green Card for Floris Middendorp (NED) — 2-minute suspension.",
           "seq": 7
         },
         {
-          "minute": 44,
-          "team": "NZL",
-          "text": "GOAL! Sam Lane (NZL) scores from a field goal — NED 4-1 NZL.",
+          "minute": 49,
+          "team": "NED",
+          "text": "GOAL! Thierry Brinkman (NED) scores from a field goal — NED 3-1 NZL.",
           "seq": 8
         },
         {
-          "minute": 45,
-          "text": "End of Q3: NED 4-1 NZL.",
+          "minute": 50,
+          "team": "NED",
+          "text": "GOAL! Tjep Hoedemakers (NED) scores from a field goal — NED 4-1 NZL.",
           "seq": 9
         },
         {
-          "minute": 47,
+          "minute": 52,
           "team": "NED",
-          "text": "GOAL! Seve van Ass (NED) scores from a penalty corner — NED 5-1 NZL.",
+          "text": "GOAL! Koen Bijen (NED) scores from a penalty corner — NED 5-1 NZL.",
           "seq": 10
         },
         {
@@ -2584,10 +2613,10 @@
           "seq": 11
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.046431+00:00",
+        "generated_at": "2026-08-17T17:06:19.866245+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2776,6 +2805,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_04",
+              "name": "Charlie Morrison",
+              "number": 8,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -2788,7 +2835,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2797,7 +2844,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2815,16 +2862,7 @@
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_04",
-              "name": "Charlie Morrison",
-              "number": 8,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2846,15 +2884,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_15",
-              "name": "Isaac Houlbrooke",
-              "number": 37,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -2866,37 +2895,37 @@
               "onAt": "32:35"
             },
             {
+              "playerId": "NZL_15",
+              "name": "Isaac Houlbrooke",
+              "number": 37,
+              "position": null,
+              "onAt": "18:38"
+            },
+            {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "18:38"
+              "onAt": "32:29"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "32:29"
+              "onAt": "40:49"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
               "position": null,
-              "onAt": "40:49"
+              "onAt": "11:02"
             },
             {
               "playerId": "NZL_12",
               "name": "Finn Ward",
               "number": 30,
-              "position": null,
-              "onAt": "11:02"
-            },
-            {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
               "position": null,
               "onAt": "33:46"
             },
@@ -2926,7 +2955,8 @@
           "coach": "Greg Nicol"
         }
       },
-      "tms_id": 22340
+      "tms_id": 22340,
+      "events_rev": 2
     },
     {
       "id": "C1",
@@ -2949,40 +2979,44 @@
       },
       "events": [
         {
-          "minute": 10,
+          "minute": 7,
           "team": "AUS",
           "type": "goal",
-          "via": "FG",
-          "player": "Blake Govers",
-          "assist": "Tom Wickham"
+          "via": "PC",
+          "player": "Joel Rintala"
+        },
+        {
+          "minute": 17,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Joshua Beltz"
         },
         {
           "minute": 23,
-          "team": "IRL",
+          "team": "AUS",
           "type": "goal",
-          "via": "FG",
-          "player": "Shane O'Donoghue"
+          "via": "PC",
+          "player": "Joel Rintala"
         },
         {
           "minute": 27,
           "team": "AUS",
           "type": "goal",
-          "via": "FG",
-          "player": "Tom Wickham",
-          "assist": "Blake Govers"
-        },
-        {
-          "minute": 47,
-          "team": "AUS",
-          "type": "goal",
           "via": "PC",
-          "player": "Aran Zalewski"
+          "player": "Blake Govers"
         },
         {
-          "minute": 58,
+          "minute": 45,
           "team": "IRL",
           "type": "green_card",
-          "player": "Conor Harte"
+          "player": "Alistair Empey"
+        },
+        {
+          "minute": 54,
+          "team": "IRL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Alistair Empey"
         }
       ],
       "result_source": "fih-tms",
@@ -2990,19 +3024,19 @@
         "home": {
           "goals": 3,
           "shots": 11,
-          "circle_entries": 19,
+          "circle_entries": 21,
           "penalty_corners": 5,
-          "possession": 54,
-          "green_cards": 0,
+          "possession": 57,
+          "green_cards": 1,
           "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 1,
-          "shots": 5,
-          "circle_entries": 18,
+          "shots": 6,
+          "circle_entries": 17,
           "penalty_corners": 5,
-          "possession": 46,
+          "possession": 43,
           "green_cards": 1,
           "yellow_cards": 0,
           "red_cards": 0
@@ -3015,9 +3049,9 @@
           "seq": 0
         },
         {
-          "minute": 10,
+          "minute": 7,
           "team": "AUS",
-          "text": "GOAL! Blake Govers (AUS) scores from a field goal — AUS 1-0 IRL.",
+          "text": "GOAL! Joel Rintala (AUS) scores from a penalty corner — AUS 1-0 IRL.",
           "seq": 1
         },
         {
@@ -3026,46 +3060,52 @@
           "seq": 2
         },
         {
-          "minute": 23,
-          "team": "IRL",
-          "text": "GOAL! Shane O'Donoghue (IRL) scores from a field goal — AUS 1-1 IRL.",
+          "minute": 17,
+          "team": "AUS",
+          "text": "Green Card for Joshua Beltz (AUS) — 2-minute suspension.",
           "seq": 3
+        },
+        {
+          "minute": 23,
+          "team": "AUS",
+          "text": "GOAL! Joel Rintala (AUS) scores from a penalty corner — AUS 2-0 IRL.",
+          "seq": 4
         },
         {
           "minute": 27,
           "team": "AUS",
-          "text": "GOAL! Tom Wickham (AUS) scores from a field goal — AUS 2-1 IRL.",
-          "seq": 4
-        },
-        {
-          "minute": 30,
-          "text": "Half-time: AUS 2-1 IRL.",
+          "text": "GOAL! Blake Govers (AUS) scores from a penalty corner — AUS 3-0 IRL.",
           "seq": 5
         },
         {
-          "minute": 45,
-          "text": "End of Q3: AUS 2-1 IRL.",
+          "minute": 30,
+          "text": "Half-time: AUS 3-0 IRL.",
           "seq": 6
         },
         {
-          "minute": 47,
-          "team": "AUS",
-          "text": "GOAL! Aran Zalewski (AUS) scores from a penalty corner — AUS 3-1 IRL.",
+          "minute": 45,
+          "team": "IRL",
+          "text": "Green Card for Alistair Empey (IRL) — 2-minute suspension.",
           "seq": 7
         },
         {
-          "minute": 58,
-          "team": "IRL",
-          "text": "Green Card for Conor Harte (IRL) — 2-minute suspension.",
+          "minute": 45,
+          "text": "End of Q3: AUS 3-0 IRL.",
           "seq": 8
+        },
+        {
+          "minute": 54,
+          "team": "IRL",
+          "text": "GOAL! Alistair Empey (IRL) scores from a penalty corner — AUS 3-1 IRL.",
+          "seq": 9
         },
         {
           "minute": 60,
           "text": "Full-time: AUS 3-1 IRL.",
-          "seq": 9
+          "seq": 10
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.046730+00:00",
@@ -3400,7 +3440,8 @@
           "coach": "Mark Tumilty"
         }
       },
-      "tms_id": 22338
+      "tms_id": 22338,
+      "events_rev": 2
     },
     {
       "id": "C2",
@@ -3423,73 +3464,66 @@
       },
       "events": [
         {
-          "minute": 15,
-          "team": "RSA",
-          "type": "green_card",
-          "player": "Jethro Eustice"
-        },
-        {
-          "minute": 17,
+          "minute": 12,
           "team": "ESP",
           "type": "goal",
           "via": "FG",
-          "player": "Pau Quemada"
+          "player": "Marc Reyne"
         },
         {
-          "minute": 27,
+          "minute": 13,
           "team": "ESP",
-          "type": "green_card",
-          "player": "Álvaro Iglesias"
+          "type": "goal",
+          "via": "FG",
+          "player": "José Basterra"
         },
         {
-          "minute": 32,
+          "minute": 28,
           "team": "ESP",
+          "type": "goal",
+          "via": "FG",
+          "player": "José Basterra"
+        },
+        {
+          "minute": 45,
+          "team": "RSA",
           "type": "goal",
           "via": "PC",
-          "player": "Marc Miralles"
+          "player": "Mustaphaa Cassiem"
         },
         {
-          "minute": 35,
+          "minute": 52,
           "team": "RSA",
-          "type": "goal",
-          "via": "PS",
-          "player": "Jethro Eustice"
+          "type": "green_card",
+          "player": "Kenton Melville"
         },
         {
-          "minute": 36,
-          "team": "ESP",
-          "type": "goal",
-          "via": "FG",
-          "player": "Álvaro Iglesias",
-          "assist": "Pau Quemada"
-        },
-        {
-          "minute": 38,
+          "minute": 56,
           "team": "RSA",
-          "type": "yellow_card",
-          "player": "Jethro Eustice"
+          "type": "green_card",
+          "player": "Mustaphaa Cassiem"
         }
       ],
       "result_source": "fih-tms",
       "stats": {
         "home": {
           "goals": 3,
-          "shots": 9,
-          "circle_entries": 26,
+          "shots": 11,
+          "circle_entries": 20,
           "penalty_corners": 6,
-          "possession": 57,
-          "green_cards": 1,
+          "possession": 58,
+          "green_cards": 0,
           "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 1,
-          "shots": 9,
+          "shots": 4,
           "circle_entries": 17,
           "penalty_corners": 6,
-          "possession": 43,
-          "green_cards": 1,
-          "yellow_cards": 1,
+          "possession": 42,
+          "green_cards": 2,
+          "yellow_cards": 0,
           "red_cards": 0
         }
       },
@@ -3500,69 +3534,63 @@
           "seq": 0
         },
         {
-          "minute": 15,
-          "team": "RSA",
-          "text": "Green Card for Jethro Eustice (RSA) — 2-minute suspension.",
+          "minute": 12,
+          "team": "ESP",
+          "text": "GOAL! Marc Reyne (ESP) scores from a field goal — ESP 1-0 RSA.",
           "seq": 1
         },
         {
-          "minute": 15,
-          "text": "End of Q1: ESP 0-0 RSA.",
+          "minute": 13,
+          "team": "ESP",
+          "text": "GOAL! José Basterra (ESP) scores from a field goal — ESP 2-0 RSA.",
           "seq": 2
         },
         {
-          "minute": 17,
-          "team": "ESP",
-          "text": "GOAL! Pau Quemada (ESP) scores from a field goal — ESP 1-0 RSA.",
+          "minute": 15,
+          "text": "End of Q1: ESP 2-0 RSA.",
           "seq": 3
         },
         {
-          "minute": 27,
+          "minute": 28,
           "team": "ESP",
-          "text": "Green Card for Álvaro Iglesias (ESP) — 2-minute suspension.",
+          "text": "GOAL! José Basterra (ESP) scores from a field goal — ESP 3-0 RSA.",
           "seq": 4
         },
         {
           "minute": 30,
-          "text": "Half-time: ESP 1-0 RSA.",
+          "text": "Half-time: ESP 3-0 RSA.",
           "seq": 5
         },
         {
-          "minute": 32,
-          "team": "ESP",
-          "text": "GOAL! Marc Miralles (ESP) scores from a penalty corner — ESP 2-0 RSA.",
+          "minute": 45,
+          "team": "RSA",
+          "text": "GOAL! Mustaphaa Cassiem (RSA) scores from a penalty corner — ESP 3-1 RSA.",
           "seq": 6
-        },
-        {
-          "minute": 35,
-          "team": "RSA",
-          "text": "GOAL! Jethro Eustice (RSA) scores from a penalty stroke — ESP 2-1 RSA.",
-          "seq": 7
-        },
-        {
-          "minute": 36,
-          "team": "ESP",
-          "text": "GOAL! Álvaro Iglesias (ESP) scores from a field goal — ESP 3-1 RSA.",
-          "seq": 8
-        },
-        {
-          "minute": 38,
-          "team": "RSA",
-          "text": "Yellow Card for Jethro Eustice (RSA) — 5-minute suspension.",
-          "seq": 9
         },
         {
           "minute": 45,
           "text": "End of Q3: ESP 3-1 RSA.",
-          "seq": 10
+          "seq": 7
+        },
+        {
+          "minute": 52,
+          "team": "RSA",
+          "text": "Green Card for Kenton Melville (RSA) — 2-minute suspension.",
+          "seq": 8
+        },
+        {
+          "minute": 56,
+          "team": "RSA",
+          "text": "Green Card for Mustaphaa Cassiem (RSA) — 2-minute suspension.",
+          "seq": 9
         },
         {
           "minute": 60,
           "text": "Full-time: ESP 3-1 RSA.",
-          "seq": 11
+          "seq": 10
         }
       ],
-      "enrichment": "estimated",
+      "enrichment": "official",
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.047024+00:00",
@@ -3904,7 +3932,8 @@
           "coach": "Devon van der Merwe"
         }
       },
-      "tms_id": 22339
+      "tms_id": 22339,
+      "events_rev": 2
     },
     {
       "id": "D3",
@@ -3923,52 +3952,75 @@
       },
       "events": [
         {
-          "minute": 15,
+          "minute": 10,
+          "team": "IND",
+          "type": "green_card",
+          "player": "Sumit"
+        },
+        {
+          "minute": 14,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Nicholas Bandurak"
+        },
+        {
+          "minute": 17,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Harmanpreet Singh"
+        },
+        {
+          "minute": 25,
+          "team": "IND",
+          "type": "goal",
+          "via": "FG",
+          "player": "Dilpreet Singh"
+        },
+        {
+          "minute": 39,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Stuart Rushmere"
+        },
+        {
+          "minute": 40,
           "team": "ENG",
           "type": "green_card",
-          "player": "Timothy Nurse"
+          "player": "Zachary Wallace"
         },
         {
-          "minute": 18,
-          "team": "ENG",
-          "type": "goal",
-          "via": "PC",
-          "player": "Ben Fox"
-        },
-        {
-          "minute": 22,
+          "minute": 43,
           "team": "ENG",
           "type": "goal",
           "via": "FG",
-          "player": "Liam Sanford",
-          "assist": "Nicholas Bandurak"
+          "player": "Henry Croft"
         },
         {
-          "minute": 22,
+          "minute": 45,
+          "team": "ENG",
+          "type": "green_card",
+          "player": "Conor Williamson"
+        },
+        {
+          "minute": 51,
+          "team": "ENG",
+          "type": "green_card",
+          "player": "Henry Croft"
+        },
+        {
+          "minute": 53,
           "team": "IND",
-          "type": "goal",
-          "via": "PC",
-          "player": "Manpreet Singh"
+          "type": "green_card",
+          "player": "Nilakanta Sharma"
         },
         {
-          "minute": 30,
-          "team": "IND",
-          "type": "goal",
-          "via": "PC",
-          "player": "Hardik Singh"
-        },
-        {
-          "minute": 35,
+          "minute": 55,
           "team": "ENG",
           "type": "goal",
           "via": "PC",
-          "player": "David Goodfield"
-        },
-        {
-          "minute": 50,
-          "team": "ENG",
-          "type": "goal",
-          "via": "FG",
           "player": "Nicholas Bandurak"
         }
       ],
@@ -4328,21 +4380,21 @@
       "stats": {
         "home": {
           "goals": 4,
-          "shots": 12,
-          "circle_entries": 31,
+          "shots": 8,
+          "circle_entries": 22,
           "penalty_corners": 7,
-          "possession": 56,
-          "green_cards": 1,
+          "possession": 61,
+          "green_cards": 3,
           "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 2,
-          "shots": 7,
-          "circle_entries": 20,
+          "shots": 9,
+          "circle_entries": 19,
           "penalty_corners": 8,
-          "possession": 44,
-          "green_cards": 0,
+          "possession": 39,
+          "green_cards": 2,
           "yellow_cards": 0,
           "red_cards": 0
         }
@@ -4354,70 +4406,95 @@
           "seq": 0
         },
         {
-          "minute": 15,
-          "team": "ENG",
-          "text": "Green Card for Timothy Nurse (ENG) — 2-minute suspension.",
+          "minute": 10,
+          "team": "IND",
+          "text": "Green Card for Sumit (IND) — 2-minute suspension.",
           "seq": 1
         },
         {
-          "minute": 15,
-          "text": "End of Q1: ENG 0-0 IND.",
+          "minute": 14,
+          "team": "ENG",
+          "text": "GOAL! Nicholas Bandurak (ENG) scores from a field goal — ENG 1-0 IND.",
           "seq": 2
         },
         {
-          "minute": 18,
-          "team": "ENG",
-          "text": "GOAL! Ben Fox (ENG) scores from a penalty corner — ENG 1-0 IND.",
+          "minute": 15,
+          "text": "End of Q1: ENG 1-0 IND.",
           "seq": 3
         },
         {
-          "minute": 22,
-          "team": "ENG",
-          "text": "GOAL! Liam Sanford (ENG) scores from a field goal — ENG 2-0 IND.",
+          "minute": 17,
+          "team": "IND",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — ENG 1-1 IND.",
           "seq": 4
         },
         {
-          "minute": 22,
+          "minute": 25,
           "team": "IND",
-          "text": "GOAL! Manpreet Singh (IND) scores from a penalty corner — ENG 2-1 IND.",
+          "text": "GOAL! Dilpreet Singh (IND) scores from a field goal — ENG 1-2 IND.",
           "seq": 5
         },
         {
           "minute": 30,
-          "team": "IND",
-          "text": "GOAL! Hardik Singh (IND) scores from a penalty corner — ENG 2-2 IND.",
+          "text": "Half-time: ENG 1-2 IND.",
           "seq": 6
         },
         {
-          "minute": 30,
-          "text": "Half-time: ENG 2-2 IND.",
+          "minute": 39,
+          "team": "ENG",
+          "text": "GOAL! Stuart Rushmere (ENG) scores from a field goal — ENG 2-2 IND.",
           "seq": 7
         },
         {
-          "minute": 35,
+          "minute": 40,
           "team": "ENG",
-          "text": "GOAL! David Goodfield (ENG) scores from a penalty corner — ENG 3-2 IND.",
+          "text": "Green Card for Zachary Wallace (ENG) — 2-minute suspension.",
           "seq": 8
+        },
+        {
+          "minute": 43,
+          "team": "ENG",
+          "text": "GOAL! Henry Croft (ENG) scores from a field goal — ENG 3-2 IND.",
+          "seq": 9
+        },
+        {
+          "minute": 45,
+          "team": "ENG",
+          "text": "Green Card for Conor Williamson (ENG) — 2-minute suspension.",
+          "seq": 10
         },
         {
           "minute": 45,
           "text": "End of Q3: ENG 3-2 IND.",
-          "seq": 9
+          "seq": 11
         },
         {
-          "minute": 50,
+          "minute": 51,
           "team": "ENG",
-          "text": "GOAL! Nicholas Bandurak (ENG) scores from a field goal — ENG 4-2 IND.",
-          "seq": 10
+          "text": "Green Card for Henry Croft (ENG) — 2-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 53,
+          "team": "IND",
+          "text": "Green Card for Nilakanta Sharma (IND) — 2-minute suspension.",
+          "seq": 13
+        },
+        {
+          "minute": 55,
+          "team": "ENG",
+          "text": "GOAL! Nicholas Bandurak (ENG) scores from a penalty corner — ENG 4-2 IND.",
+          "seq": 14
         },
         {
           "minute": 60,
           "text": "Full-time: ENG 4-2 IND.",
-          "seq": 11
+          "seq": 15
         }
       ],
-      "enrichment": "estimated",
-      "tms_id": 22344
+      "enrichment": "official",
+      "tms_id": 22344,
+      "events_rev": 2
     },
     {
       "id": "D4",
@@ -4436,66 +4513,93 @@
       },
       "events": [
         {
-          "minute": 15,
-          "team": "WAL",
+          "minute": 3,
+          "team": "PAK",
           "type": "goal",
           "via": "FG",
-          "player": "Jacob Draper",
-          "assist": "Alf Dinnie"
+          "player": "Rehman Abdul"
         },
         {
-          "minute": 19,
-          "team": "WAL",
-          "type": "goal",
-          "via": "PS",
-          "player": "Benjamin Francis"
+          "minute": 9,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Sufyan Khan"
         },
         {
           "minute": 20,
           "team": "WAL",
+          "type": "green_card",
+          "player": "James Tyson"
+        },
+        {
+          "minute": 24,
+          "team": "PAK",
           "type": "yellow_card",
-          "player": "Jack Pritchard"
+          "player": "Sufyan Khan"
+        },
+        {
+          "minute": 25,
+          "team": "WAL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Gareth Furlong"
+        },
+        {
+          "minute": 26,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Rhys Bradshaw"
         },
         {
           "minute": 31,
           "team": "PAK",
-          "type": "goal",
-          "via": "FG",
-          "player": "Rehman Abdul",
-          "assist": "Arshad Liaquat"
+          "type": "green_card",
+          "player": "Abu Mahmood"
         },
         {
           "minute": 32,
-          "team": "PAK",
+          "team": "WAL",
           "type": "green_card",
-          "player": "Moin Shakeel"
+          "player": "Benjamin Francis"
         },
         {
-          "minute": 34,
+          "minute": 42,
+          "team": "WAL",
+          "type": "yellow_card",
+          "player": "James Tyson"
+        },
+        {
+          "minute": 49,
           "team": "PAK",
           "type": "goal",
           "via": "PC",
-          "player": "Muhammad Umar Bhutta"
+          "player": "Sufyan Khan"
         },
         {
-          "minute": 52,
-          "team": "WAL",
-          "type": "goal",
-          "via": "FG",
-          "player": "Gareth Furlong",
-          "assist": "Daniel Kyriakides"
-        },
-        {
-          "minute": 56,
+          "minute": 51,
           "team": "PAK",
           "type": "goal",
+          "via": "FG",
+          "player": "Hannan Shahid"
+        },
+        {
+          "minute": 53,
+          "team": "WAL",
+          "type": "goal",
           "via": "PS",
-          "player": "Abu Mahmood"
+          "player": "Gareth Furlong"
+        },
+        {
+          "minute": 59,
+          "team": "WAL",
+          "type": "yellow_card",
+          "player": "Hywel Jones"
         }
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.047621+00:00",
+        "generated_at": "2026-08-17T17:06:19.867467+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4519,6 +4623,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_12",
               "name": "Ammad Butt",
               "number": 16,
@@ -4537,20 +4650,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_05",
-              "name": "Muhammad Abdullah",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_01",
               "name": "Sufyan Khan",
               "number": 5,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_05",
+              "name": "Muhammad Abdullah",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -4567,7 +4680,7 @@
               "playerId": "PAK_06",
               "name": "Moin Shakeel",
               "number": 7,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -4589,15 +4702,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_08",
-              "name": "Zikriya Hayat",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -4609,30 +4713,30 @@
               "onAt": "38:50"
             },
             {
+              "playerId": "PAK_08",
+              "name": "Zikriya Hayat",
+              "number": 10,
+              "position": null,
+              "onAt": "43:31"
+            },
+            {
               "playerId": "PAK_07",
               "name": "Hannan Shahid",
               "number": 9,
               "position": null,
-              "onAt": "43:31"
+              "onAt": "51:58"
             },
             {
               "playerId": "PAK_13",
               "name": "Muhammad Hammadudin",
               "number": 17,
               "position": null,
-              "onAt": "51:58"
+              "onAt": "08:02"
             },
             {
               "playerId": "PAK_10",
               "name": "Ahmad Nadeem",
               "number": 14,
-              "position": null,
-              "onAt": "08:02"
-            },
-            {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
               "position": null,
               "onAt": "10:24"
             },
@@ -4850,22 +4954,22 @@
       "stats": {
         "home": {
           "goals": 3,
-          "shots": 6,
-          "circle_entries": 25,
+          "shots": 7,
+          "circle_entries": 20,
           "penalty_corners": 4,
-          "possession": 50,
-          "green_cards": 1,
-          "yellow_cards": 0,
+          "possession": 51,
+          "green_cards": 2,
+          "yellow_cards": 1,
           "red_cards": 0
         },
         "away": {
           "goals": 3,
           "shots": 6,
-          "circle_entries": 19,
+          "circle_entries": 22,
           "penalty_corners": 2,
-          "possession": 50,
-          "green_cards": 0,
-          "yellow_cards": 1,
+          "possession": 49,
+          "green_cards": 2,
+          "yellow_cards": 2,
           "red_cards": 0
         }
       },
@@ -4876,75 +4980,106 @@
           "seq": 0
         },
         {
-          "minute": 15,
-          "team": "WAL",
-          "text": "GOAL! Jacob Draper (WAL) scores from a field goal — PAK 0-1 WAL.",
+          "minute": 3,
+          "team": "PAK",
+          "text": "GOAL! Rehman Abdul (PAK) scores from a field goal — PAK 1-0 WAL.",
           "seq": 1
         },
         {
-          "minute": 15,
-          "text": "End of Q1: PAK 0-1 WAL.",
+          "minute": 9,
+          "team": "PAK",
+          "text": "Green Card for Sufyan Khan (PAK) — 2-minute suspension.",
           "seq": 2
         },
         {
-          "minute": 19,
-          "team": "WAL",
-          "text": "GOAL! Benjamin Francis (WAL) scores from a penalty stroke — PAK 0-2 WAL.",
+          "minute": 15,
+          "text": "End of Q1: PAK 1-0 WAL.",
           "seq": 3
         },
         {
           "minute": 20,
           "team": "WAL",
-          "text": "Yellow Card for Jack Pritchard (WAL) — 5-minute suspension.",
+          "text": "Green Card for James Tyson (WAL) — 2-minute suspension.",
           "seq": 4
         },
         {
-          "minute": 30,
-          "text": "Half-time: PAK 0-2 WAL.",
+          "minute": 24,
+          "team": "PAK",
+          "text": "Yellow Card for Sufyan Khan (PAK) — 5-minute suspension.",
           "seq": 5
+        },
+        {
+          "minute": 25,
+          "team": "WAL",
+          "text": "GOAL! Gareth Furlong (WAL) scores from a penalty corner — PAK 1-1 WAL.",
+          "seq": 6
+        },
+        {
+          "minute": 26,
+          "team": "WAL",
+          "text": "GOAL! Rhys Bradshaw (WAL) scores from a field goal — PAK 1-2 WAL.",
+          "seq": 7
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: PAK 1-2 WAL.",
+          "seq": 8
         },
         {
           "minute": 31,
           "team": "PAK",
-          "text": "GOAL! Rehman Abdul (PAK) scores from a field goal — PAK 1-2 WAL.",
-          "seq": 6
-        },
-        {
-          "minute": 32,
-          "team": "PAK",
-          "text": "Green Card for Moin Shakeel (PAK) — 2-minute suspension.",
-          "seq": 7
-        },
-        {
-          "minute": 34,
-          "team": "PAK",
-          "text": "GOAL! Muhammad Umar Bhutta (PAK) scores from a penalty corner — PAK 2-2 WAL.",
-          "seq": 8
-        },
-        {
-          "minute": 45,
-          "text": "End of Q3: PAK 2-2 WAL.",
+          "text": "Green Card for Abu Mahmood (PAK) — 2-minute suspension.",
           "seq": 9
         },
         {
-          "minute": 52,
+          "minute": 32,
           "team": "WAL",
-          "text": "GOAL! Gareth Furlong (WAL) scores from a field goal — PAK 2-3 WAL.",
+          "text": "Green Card for Benjamin Francis (WAL) — 2-minute suspension.",
           "seq": 10
         },
         {
-          "minute": 56,
-          "team": "PAK",
-          "text": "GOAL! Abu Mahmood (PAK) scores from a penalty stroke — PAK 3-3 WAL.",
+          "minute": 42,
+          "team": "WAL",
+          "text": "Yellow Card for James Tyson (WAL) — 5-minute suspension.",
           "seq": 11
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: PAK 1-2 WAL.",
+          "seq": 12
+        },
+        {
+          "minute": 49,
+          "team": "PAK",
+          "text": "GOAL! Sufyan Khan (PAK) scores from a penalty corner — PAK 2-2 WAL.",
+          "seq": 13
+        },
+        {
+          "minute": 51,
+          "team": "PAK",
+          "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — PAK 3-2 WAL.",
+          "seq": 14
+        },
+        {
+          "minute": 53,
+          "team": "WAL",
+          "text": "GOAL! Gareth Furlong (WAL) scores from a penalty stroke — PAK 3-3 WAL.",
+          "seq": 15
+        },
+        {
+          "minute": 59,
+          "team": "WAL",
+          "text": "Yellow Card for Hywel Jones (WAL) — 5-minute suspension.",
+          "seq": 16
         },
         {
           "minute": 60,
           "text": "Full-time: PAK 3-3 WAL.",
-          "seq": 12
+          "seq": 17
         }
       ],
-      "enrichment": "estimated"
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "B3",
@@ -5294,64 +5429,76 @@
       },
       "events": [
         {
-          "minute": 4,
-          "team": "FRA",
-          "type": "goal",
-          "via": "PC",
-          "player": "Brieuc Delemazure"
-        },
-        {
           "minute": 5,
           "team": "MAS",
           "type": "goal",
-          "via": "PC",
-          "player": "Norsyafiq Sumantri"
-        },
-        {
-          "minute": 14,
-          "team": "MAS",
-          "type": "goal",
-          "via": "PC",
-          "player": "Akhimullah Anuar"
-        },
-        {
-          "minute": 20,
-          "team": "FRA",
-          "type": "goal",
-          "via": "PC",
-          "player": "Noé Jouin"
-        },
-        {
-          "minute": 21,
-          "team": "MAS",
-          "type": "green_card",
-          "player": "Azimuddin Kamaruddin"
-        },
-        {
-          "minute": 22,
-          "team": "FRA",
-          "type": "goal",
           "via": "FG",
-          "player": "Corentin Sellier"
-        },
-        {
-          "minute": 35,
-          "team": "MAS",
-          "type": "goal",
-          "via": "PS",
           "player": "Shello Silverius"
         },
         {
-          "minute": 43,
+          "minute": 17,
           "team": "MAS",
-          "type": "yellow_card",
-          "player": "Faizal Saari"
+          "type": "green_card",
+          "player": "Aiman Rozemi"
+        },
+        {
+          "minute": 19,
+          "team": "FRA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Victor Charlet"
+        },
+        {
+          "minute": 25,
+          "team": "FRA",
+          "type": "green_card",
+          "player": "Eliot Curty"
+        },
+        {
+          "minute": 27,
+          "team": "FRA",
+          "type": "green_card",
+          "player": "François Goyet"
+        },
+        {
+          "minute": 30,
+          "team": "MAS",
+          "type": "green_card",
+          "player": "Fitri Saari"
+        },
+        {
+          "minute": 37,
+          "team": "FRA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Louis Haertelmeyer"
+        },
+        {
+          "minute": 45,
+          "team": "MAS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Shello Silverius"
         },
         {
           "minute": 57,
+          "team": "MAS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Akhimullah Anuar"
+        },
+        {
+          "minute": 59,
           "team": "FRA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Noé Jouin"
+        },
+        {
+          "minute": 59,
+          "team": "MAS",
           "type": "green_card",
-          "player": "Victor Charlet"
+          "player": "Shello Silverius"
         }
       ],
       "lineups": {
@@ -5711,22 +5858,22 @@
       "stats": {
         "home": {
           "goals": 3,
-          "shots": 6,
-          "circle_entries": 21,
+          "shots": 7,
+          "circle_entries": 19,
           "penalty_corners": 8,
-          "possession": 46,
-          "green_cards": 1,
+          "possession": 52,
+          "green_cards": 2,
           "yellow_cards": 0,
           "red_cards": 0
         },
         "away": {
           "goals": 3,
-          "shots": 10,
-          "circle_entries": 19,
+          "shots": 11,
+          "circle_entries": 25,
           "penalty_corners": 5,
-          "possession": 54,
-          "green_cards": 1,
-          "yellow_cards": 1,
+          "possession": 48,
+          "green_cards": 3,
+          "yellow_cards": 0,
           "red_cards": 0
         }
       },
@@ -5737,81 +5884,94 @@
           "seq": 0
         },
         {
-          "minute": 4,
-          "team": "FRA",
-          "text": "GOAL! Brieuc Delemazure (FRA) scores from a penalty corner — FRA 1-0 MAS.",
+          "minute": 5,
+          "team": "MAS",
+          "text": "GOAL! Shello Silverius (MAS) scores from a field goal — FRA 0-1 MAS.",
           "seq": 1
         },
         {
-          "minute": 5,
-          "team": "MAS",
-          "text": "GOAL! Norsyafiq Sumantri (MAS) scores from a penalty corner — FRA 1-1 MAS.",
+          "minute": 15,
+          "text": "End of Q1: FRA 0-1 MAS.",
           "seq": 2
         },
         {
-          "minute": 14,
+          "minute": 17,
           "team": "MAS",
-          "text": "GOAL! Akhimullah Anuar (MAS) scores from a penalty corner — FRA 1-2 MAS.",
+          "text": "Green Card for Aiman Rozemi (MAS) — 2-minute suspension.",
           "seq": 3
         },
         {
-          "minute": 15,
-          "text": "End of Q1: FRA 1-2 MAS.",
+          "minute": 19,
+          "team": "FRA",
+          "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — FRA 1-1 MAS.",
           "seq": 4
         },
         {
-          "minute": 20,
+          "minute": 25,
           "team": "FRA",
-          "text": "GOAL! Noé Jouin (FRA) scores from a penalty corner — FRA 2-2 MAS.",
+          "text": "Green Card for Eliot Curty (FRA) — 2-minute suspension.",
           "seq": 5
         },
         {
-          "minute": 21,
-          "team": "MAS",
-          "text": "Green Card for Azimuddin Kamaruddin (MAS) — 2-minute suspension.",
+          "minute": 27,
+          "team": "FRA",
+          "text": "Green Card for François Goyet (FRA) — 2-minute suspension.",
           "seq": 6
         },
         {
-          "minute": 22,
-          "team": "FRA",
-          "text": "GOAL! Corentin Sellier (FRA) scores from a field goal — FRA 3-2 MAS.",
+          "minute": 30,
+          "team": "MAS",
+          "text": "Green Card for Fitri Saari (MAS) — 2-minute suspension.",
           "seq": 7
         },
         {
           "minute": 30,
-          "text": "Half-time: FRA 3-2 MAS.",
+          "text": "Half-time: FRA 1-1 MAS.",
           "seq": 8
         },
         {
-          "minute": 35,
-          "team": "MAS",
-          "text": "GOAL! Shello Silverius (MAS) scores from a penalty stroke — FRA 3-3 MAS.",
+          "minute": 37,
+          "team": "FRA",
+          "text": "GOAL! Louis Haertelmeyer (FRA) scores from a field goal — FRA 2-1 MAS.",
           "seq": 9
         },
         {
-          "minute": 43,
+          "minute": 45,
           "team": "MAS",
-          "text": "Yellow Card for Faizal Saari (MAS) — 5-minute suspension.",
+          "text": "GOAL! Shello Silverius (MAS) scores from a penalty corner — FRA 2-2 MAS.",
           "seq": 10
         },
         {
           "minute": 45,
-          "text": "End of Q3: FRA 3-3 MAS.",
+          "text": "End of Q3: FRA 2-2 MAS.",
           "seq": 11
         },
         {
           "minute": 57,
-          "team": "FRA",
-          "text": "Green Card for Victor Charlet (FRA) — 2-minute suspension.",
+          "team": "MAS",
+          "text": "GOAL! Akhimullah Anuar (MAS) scores from a field goal — FRA 2-3 MAS.",
           "seq": 12
+        },
+        {
+          "minute": 59,
+          "team": "FRA",
+          "text": "GOAL! Noé Jouin (FRA) scores from a field goal — FRA 3-3 MAS.",
+          "seq": 13
+        },
+        {
+          "minute": 59,
+          "team": "MAS",
+          "text": "Green Card for Shello Silverius (MAS) — 2-minute suspension.",
+          "seq": 14
         },
         {
           "minute": 60,
           "text": "Full-time: FRA 3-3 MAS.",
-          "seq": 13
+          "seq": 15
         }
       ],
-      "enrichment": "estimated"
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "A3",
@@ -6183,7 +6343,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.048785+00:00",
+        "generated_at": "2026-08-17T17:06:19.868658+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6379,6 +6539,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_04",
+              "name": "Charlie Morrison",
+              "number": 8,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -6391,7 +6569,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6400,7 +6578,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6418,16 +6596,7 @@
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_04",
-              "name": "Charlie Morrison",
-              "number": 8,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6449,15 +6618,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_15",
-              "name": "Isaac Houlbrooke",
-              "number": 37,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -6469,37 +6629,37 @@
               "onAt": "14:15"
             },
             {
+              "playerId": "NZL_15",
+              "name": "Isaac Houlbrooke",
+              "number": 37,
+              "position": null,
+              "onAt": "11:42"
+            },
+            {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "11:42"
+              "onAt": "48:28"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "48:28"
+              "onAt": "12:04"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
               "position": null,
-              "onAt": "12:04"
+              "onAt": "42:58"
             },
             {
               "playerId": "NZL_12",
               "name": "Finn Ward",
               "number": 30,
-              "position": null,
-              "onAt": "42:58"
-            },
-            {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
               "position": null,
               "onAt": "09:41"
             },
@@ -7626,7 +7786,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.049982+00:00",
+        "generated_at": "2026-08-17T17:06:19.869889+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7822,6 +7982,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_12",
               "name": "Ammad Butt",
               "number": 16,
@@ -7840,20 +8009,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_05",
-              "name": "Muhammad Abdullah",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_01",
               "name": "Sufyan Khan",
               "number": 5,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_05",
+              "name": "Muhammad Abdullah",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -7870,7 +8039,7 @@
               "playerId": "PAK_06",
               "name": "Moin Shakeel",
               "number": 7,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7892,15 +8061,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_08",
-              "name": "Zikriya Hayat",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -7912,30 +8072,30 @@
               "onAt": "19:39"
             },
             {
+              "playerId": "PAK_08",
+              "name": "Zikriya Hayat",
+              "number": 10,
+              "position": null,
+              "onAt": "41:18"
+            },
+            {
               "playerId": "PAK_07",
               "name": "Hannan Shahid",
               "number": 9,
               "position": null,
-              "onAt": "41:18"
+              "onAt": "15:18"
             },
             {
               "playerId": "PAK_13",
               "name": "Muhammad Hammadudin",
               "number": 17,
               "position": null,
-              "onAt": "15:18"
+              "onAt": "24:39"
             },
             {
               "playerId": "PAK_10",
               "name": "Ahmad Nadeem",
               "number": 14,
-              "position": null,
-              "onAt": "24:39"
-            },
-            {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
               "position": null,
               "onAt": "28:15"
             },
@@ -9048,7 +9208,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.051150+00:00",
+        "generated_at": "2026-08-17T17:06:19.871109+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9237,6 +9397,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_04",
+              "name": "Charlie Morrison",
+              "number": 8,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -9249,7 +9427,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9258,7 +9436,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9276,16 +9454,7 @@
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_04",
-              "name": "Charlie Morrison",
-              "number": 8,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9307,15 +9476,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_15",
-              "name": "Isaac Houlbrooke",
-              "number": 37,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -9327,37 +9487,37 @@
               "onAt": "10:06"
             },
             {
+              "playerId": "NZL_15",
+              "name": "Isaac Houlbrooke",
+              "number": 37,
+              "position": null,
+              "onAt": "22:32"
+            },
+            {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "22:32"
+              "onAt": "46:31"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "46:31"
+              "onAt": "48:50"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
               "position": null,
-              "onAt": "48:50"
+              "onAt": "17:57"
             },
             {
               "playerId": "NZL_12",
               "name": "Finn Ward",
               "number": 30,
-              "position": null,
-              "onAt": "17:57"
-            },
-            {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
               "position": null,
               "onAt": "50:01"
             },
