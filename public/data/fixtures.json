@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T19:09:28.392946+00:00",
+  "last_updated": "2026-08-17T20:15:51.679402+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -5091,12 +5091,44 @@
       "time": "20:30",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 7,
+          "team": "GER",
+          "type": "green_card",
+          "player": "Justus Warweg"
+        },
+        {
+          "minute": 10,
+          "team": "BEL",
+          "type": "green_card",
+          "player": "Victor Foubert"
+        },
+        {
+          "minute": 16,
+          "team": "BEL",
+          "type": "green_card",
+          "player": "Arno van Dessel"
+        },
+        {
+          "minute": 39,
+          "team": "GER",
+          "type": "goal",
+          "via": "PC",
+          "player": "Jakob Brilla"
+        },
+        {
+          "minute": 58,
+          "team": "BEL",
+          "type": "green_card",
+          "player": "Alexander Hendrickx"
+        }
+      ],
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.047922+00:00",
@@ -5410,7 +5442,93 @@
           "coach": "André Henning"
         }
       },
-      "tms_id": 22345
+      "tms_id": 22345,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 1
+      },
+      "stats": {
+        "home": {
+          "goals": 0,
+          "shots": 4,
+          "circle_entries": 19,
+          "penalty_corners": 0,
+          "possession": 49,
+          "green_cards": 3,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 8,
+          "circle_entries": 21,
+          "penalty_corners": 1,
+          "possession": 51,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! BEL vs GER under way.",
+          "seq": 0
+        },
+        {
+          "minute": 7,
+          "team": "GER",
+          "text": "Green Card for Justus Warweg (GER) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 10,
+          "team": "BEL",
+          "text": "Green Card for Victor Foubert (BEL) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: BEL 0-0 GER.",
+          "seq": 3
+        },
+        {
+          "minute": 16,
+          "team": "BEL",
+          "text": "Green Card for Arno van Dessel (BEL) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: BEL 0-0 GER.",
+          "seq": 5
+        },
+        {
+          "minute": 39,
+          "team": "GER",
+          "text": "GOAL! Jakob Brilla (GER) scores from a penalty corner — BEL 0-1 GER.",
+          "seq": 6
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: BEL 0-1 GER.",
+          "seq": 7
+        },
+        {
+          "minute": 58,
+          "team": "BEL",
+          "text": "Green Card for Alexander Hendrickx (BEL) — 2-minute suspension.",
+          "seq": 8
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: BEL 0-1 GER.",
+          "seq": 9
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "B4",
