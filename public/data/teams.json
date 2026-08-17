@@ -77,7 +77,7 @@
       "name": "Japan",
       "flag": "🇯🇵",
       "pool": "A",
-      "fih_rank": 15,
+      "fih_rank": 16,
       "host": false,
       "nickname": "Samurai Japan",
       "color": "#BC002D",
@@ -353,7 +353,7 @@
       "name": "Wales",
       "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
       "pool": "D",
-      "fih_rank": 16,
+      "fih_rank": 15,
       "host": false,
       "nickname": "Dragons",
       "color": "#C8102E",
@@ -374,5 +374,5 @@
   ],
   "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results.",
   "rankings_source": "https://www.fih.hockey/outdoor-hockey-rankings",
-  "rankings_updated_at": "2026-08-16T23:43:33.116901+00:00"
+  "rankings_updated_at": "2026-08-17T00:19:13.708544+00:00"
 }
