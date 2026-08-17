@@ -565,13 +565,21 @@ def reconcile_team_lists(players_doc, squads):
         return False
     changed = False
     for code, roster in squads.items():
-        listed = {e['name'].lower() for e in roster}
+        listed = {e['name'].lower(): e['name'] for e in roster}
         keep = []
         for p in players_doc['players']:
             if p['team'] != code:
                 keep.append(p)
                 continue
             on_list = p['name'].lower() in listed
+            # Names are matched without case so a re-read finds the same player,
+            # which means a row added before the name reader was fixed would keep
+            # its old spelling for good — WAQAR stayed WAQAR. On a machine-added
+            # row the official spelling wins.
+            if on_list and p.get('source') == 'fih-team-list' and p['name'] != listed[p['name'].lower()]:
+                print(f"SQUADS: respelling {code} {p['name']} -> {listed[p['name'].lower()]}")
+                p['name'] = listed[p['name'].lower()]
+                changed = True
             if not on_list and p.get('source') == 'fih-team-list':
                 print(f"SQUADS: dropping {code} {p['name']} — not on the current team list.")
                 changed = True

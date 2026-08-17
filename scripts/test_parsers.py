@@ -15,7 +15,7 @@ import os
 sys.path.insert(0, os.path.dirname(__file__))
 from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
-    compose_lineup, seeded_rng, TMS_LINEUP_LINK,
+    compose_lineup, seeded_rng, reconcile_team_lists, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -204,6 +204,30 @@ check('running text is not read as a name',
 check('lineup links are recognised',
       TMS_LINEUP_LINK.findall('href="/matches/22334/lineups/8575" href="/matches/22334/lineups/8586"')
       == [('22334', '8575'), ('22334', '8586')])
+
+print('\nReconciling against the official list')
+
+doc = {'players': [
+    {'team': 'PAK', 'name': 'WAQAR', 'source': 'fih-team-list', 'goals': 3},
+    {'team': 'PAK', 'name': 'Ali Raza', 'source': 'fih-team-list'},
+    {'team': 'PAK', 'name': 'Misread Name', 'source': 'fih-team-list'},
+    {'team': 'PAK', 'name': 'Seeded Veteran', 'source': None, 'goals': 5},
+    {'team': 'NED', 'name': 'Untouched', 'source': 'fih-team-list'},
+]}
+reconcile_team_lists(doc, {'PAK': [{'name': 'Waqar'}, {'name': 'Ali Raza'}]})
+names = [p['name'] for p in doc['players']]
+# Matching ignores case so a re-read finds the same player — which meant a row
+# added before the name reader was fixed kept its old spelling for good.
+check('the official spelling replaces an old machine-added one', 'Waqar' in names)
+check('respelling keeps the player, and his record',
+      next(p for p in doc['players'] if p['name'] == 'Waqar').get('goals') == 3)
+check('a name the list no longer carries is removed', 'Misread Name' not in names)
+check('a hand-seeded player is never removed', 'Seeded Veteran' in names)
+check('a hand-seeded player left out of the squad is marked, not deleted',
+      next(p for p in doc['players'] if p['name'] == 'Seeded Veteran')['on_team_list'] is False)
+check('a nation the list did not cover is left alone', 'Untouched' in names)
+check('listed players are marked',
+      all(p['on_team_list'] for p in doc['players'] if p['name'] in ('Waqar', 'Ali Raza')))
 
 print('\nTeam sheet composition')
 
