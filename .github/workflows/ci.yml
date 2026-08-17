@@ -26,6 +26,9 @@ jobs:
       # Guards the single-source-of-truth rule: every surface must read the
       # same canonical tournament probability snapshot, and snapshots must be
       # reproducible. A drift between Tournament, Oracle and Home fails here.
+      - name: Data-pipeline parser tests
+        run: python3 scripts/test_parsers.py
+
       - name: Tournament probability consistency
         run: npm run test:probability
 

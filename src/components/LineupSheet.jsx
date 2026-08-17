@@ -61,12 +61,26 @@ function CardChips({ cards }) {
   ))
 }
 
+const LINES = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
+
+/**
+ * Rows for the pitch. Each player carries the line he was picked for, so group
+ * on that rather than trusting the order the list happens to arrive in —
+ * slicing an unsorted XI by the formation stood a midfielder in the back line.
+ * Sheets written before the line was recorded fall back to slicing.
+ */
+function pitchRows(side) {
+  const xi = side.startingXI
+  if (!xi.every(p => LINES.includes(p.line))) {
+    return rowsFromFormation(xi.map(p => ({ ...p, pos: p.goalkeeper ? 'GK' : 'OUT' })),
+      side.formation || '4-3-3')
+  }
+  return LINES.map(line => xi.filter(p => p.line === line))
+}
+
 /** Numbered shirts laid out on the pitch, hockey formation. */
 function LineupPitch({ side, events, color }) {
-  const rows = rowsFromFormation(
-    side.startingXI.map(p => ({ ...p, pos: p.goalkeeper ? 'GK' : 'OUT' })),
-    side.formation || '4-3-3',
-  )
+  const rows = pitchRows(side)
   return (
     <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0e3a6e] via-[#0b2f5c] to-[#082347]">
       <svg viewBox="0 0 300 400" className="absolute inset-0 h-full w-full opacity-30" fill="none" stroke="#8fd0ff" strokeWidth="1.5">
@@ -169,13 +183,19 @@ export default function LineupSheet({ match, events = [], home, away }) {
   const active = lineups[side]
   const team = teams[side]
   const official = lineups.source === 'official' || lineups.source === 'manual'
+  // Between "we made this up" and "FIH published it" sits the real case: every
+  // name is off the official team list, and only the eleven who start is ours.
+  const listed = !official && lineups.home.fromTeamList && lineups.away.fromTeamList
 
   return (
     <section className="rounded-xl border border-white/5 bg-pitch-800 p-4">
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="font-display text-lg font-semibold">Line-ups</h2>
-        <span className={`font-mono text-[10px] uppercase tracking-widest ${official ? 'text-live' : 'text-pitch-400'}`}>
-          {official ? 'Confirmed · FIH team list' : 'Estimated · engine team sheet'}
+        <span className={`font-mono text-[10px] uppercase tracking-widest ${
+          official ? 'text-live' : listed ? 'text-brand' : 'text-pitch-400'}`}>
+          {official ? 'Confirmed · FIH team list'
+            : listed ? 'Official squad · estimated XI'
+              : 'Estimated · engine team sheet'}
         </span>
       </div>
 
@@ -232,8 +252,9 @@ export default function LineupSheet({ match, events = [], home, away }) {
 
       {!official && (
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-          Composed from the squad Hockey.AI holds for each nation — real players only, deterministic per
-          match. It is replaced by the official team list the moment FIH publishes one.
+          {listed
+            ? 'Every player named here is on the official FIH entry list for this squad. Which eleven of them start is Hockey.AI’s call — ranked on caps, form and AI rating, deterministic per match. It is replaced by the official team sheet the moment FIH publishes one.'
+            : 'Composed from the squad Hockey.AI holds for each nation — real players only, deterministic per match. It is replaced by the official team list the moment FIH publishes one.'}
         </p>
       )}
     </section>
