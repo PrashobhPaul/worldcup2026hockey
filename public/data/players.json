@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-17T02:59:10.655154+00:00",
+  "last_updated": "2026-08-17T03:09:15.436723+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -17,7 +17,8 @@
       "profile": "World's best drag flick specialist and captain. Penalty corner conversion rate 42%.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 81.0
+      "ai_rating": 81.0,
+      "on_team_list": true
     },
     {
       "id": "IND_02",
@@ -35,7 +36,8 @@
       "profile": "Experienced midfield general. Orchestrates India's transitions.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 61.0
+      "ai_rating": 61.0,
+      "on_team_list": true
     },
     {
       "id": "IND_03",
@@ -53,7 +55,8 @@
       "profile": "India's first-choice keeper post-Sreejesh era. Strong shot-stopper.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 80.0
+      "ai_rating": 80.0,
+      "on_team_list": false
     },
     {
       "id": "IND_04",
@@ -71,7 +74,8 @@
       "profile": "Vice-captain and drag flick specialist. Scored in opening match.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 77.0
+      "ai_rating": 77.0,
+      "on_team_list": true
     },
     {
       "id": "IND_05",
@@ -89,7 +93,8 @@
       "profile": "Pacey forward. Scored India's third goal vs Wales.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 63.0
+      "ai_rating": 63.0,
+      "on_team_list": true
     },
     {
       "id": "AUS_01",
@@ -107,7 +112,8 @@
       "profile": "Kookaburras captain. World-class link-up midfielder.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 70.0
+      "ai_rating": 70.0,
+      "on_team_list": false
     },
     {
       "id": "AUS_02",
@@ -125,7 +131,8 @@
       "profile": "Prolific forward. Australia's main goal threat in open play.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 69.5
+      "ai_rating": 69.5,
+      "on_team_list": false
     },
     {
       "id": "AUS_03",
@@ -143,7 +150,8 @@
       "profile": "Drag flick specialist. High PC conversion rate.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 69.5
+      "ai_rating": 69.5,
+      "on_team_list": true
     },
     {
       "id": "AUS_04",
@@ -161,7 +169,8 @@
       "profile": "Elite goalkeeper. Known for shootout saves.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 80.0
+      "ai_rating": 80.0,
+      "on_team_list": false
     },
     {
       "id": "BEL_01",
@@ -179,7 +188,8 @@
       "profile": "World's most feared drag flicker. Penalty corner conversion rate 50%+.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 77.0
+      "ai_rating": 77.0,
+      "on_team_list": true
     },
     {
       "id": "BEL_02",
@@ -197,7 +207,8 @@
       "profile": "Red Lions captain. Dictates tempo from midfield.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 62.0
+      "ai_rating": 62.0,
+      "on_team_list": true
     },
     {
       "id": "BEL_03",
@@ -215,7 +226,8 @@
       "profile": "Experienced international. Key link in Belgium's midfield.",
       "green_cards": 1,
       "matches_played": 1,
-      "ai_rating": 69.0
+      "ai_rating": 69.0,
+      "on_team_list": false
     },
     {
       "id": "BEL_04",
@@ -233,7 +245,8 @@
       "profile": "World's best goalkeeper. Multiple FIH Goalkeeper of the Year.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 74.0
+      "ai_rating": 74.0,
+      "on_team_list": true
     },
     {
       "id": "NED_01",
@@ -251,7 +264,8 @@
       "profile": "Captain of the host nation. Explosive forward with international pedigree.",
       "green_cards": 1,
       "matches_played": 1,
-      "ai_rating": 74.0
+      "ai_rating": 74.0,
+      "on_team_list": true
     },
     {
       "id": "NED_02",
@@ -269,7 +283,8 @@
       "profile": "Creative midfielder. Known for incisive passing.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 69.0
+      "ai_rating": 69.0,
+      "on_team_list": false
     },
     {
       "id": "NED_03",
@@ -287,7 +302,8 @@
       "profile": "Dynamic midfielder. Key to Netherlands' high press.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 79.0
+      "ai_rating": 79.0,
+      "on_team_list": false
     },
     {
       "id": "NED_04",
@@ -305,7 +321,8 @@
       "profile": "Steady presence between the sticks for Oranje.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 80.0
+      "ai_rating": 80.0,
+      "on_team_list": false
     },
     {
       "id": "ARG_01",
@@ -323,7 +340,8 @@
       "profile": "Los Leones captain. Tenacious and experienced.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 67.0
+      "ai_rating": 67.0,
+      "on_team_list": false
     },
     {
       "id": "ARG_02",
@@ -341,7 +359,8 @@
       "profile": "Argentina's key forward threat. Quick and clinical.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 63.0
+      "ai_rating": 63.0,
+      "on_team_list": false
     },
     {
       "id": "ARG_03",
@@ -359,7 +378,8 @@
       "profile": "Experienced drag-flicker. Argentina's primary PC option.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 82.0
+      "ai_rating": 82.0,
+      "on_team_list": false
     },
     {
       "id": "GER_01",
@@ -377,7 +397,8 @@
       "profile": "Germany's captain and solid defensive anchor.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 87.0
+      "ai_rating": 87.0,
+      "on_team_list": false
     },
     {
       "id": "GER_02",
@@ -395,7 +416,8 @@
       "profile": "Germany's top goal scorer. International class forward.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 66.0
+      "ai_rating": 66.0,
+      "on_team_list": true
     },
     {
       "id": "GER_03",
@@ -413,7 +435,8 @@
       "profile": "Midfield workhorse for Die Mannschaft.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 72.0
+      "ai_rating": 72.0,
+      "on_team_list": false
     },
     {
       "id": "ENG_01",
@@ -485,7 +508,8 @@
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 67.0
+      "ai_rating": 67.0,
+      "on_team_list": true
     },
     {
       "id": "ESP_02",
@@ -503,7 +527,8 @@
       "profile": "Pace and power forward. Spain's goal threat.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 66.5
+      "ai_rating": 66.5,
+      "on_team_list": false
     },
     {
       "id": "ESP_03",
@@ -521,7 +546,8 @@
       "profile": "Creative playmaker. Scored in multiple major tournaments.",
       "green_cards": 1,
       "matches_played": 1,
-      "ai_rating": 63.0
+      "ai_rating": 63.0,
+      "on_team_list": false
     },
     {
       "id": "PAK_01",
@@ -539,7 +565,8 @@
       "profile": "Pakistan's captain. Skilful and combative.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 59.0
+      "ai_rating": 59.0,
+      "on_team_list": true
     },
     {
       "id": "PAK_02",
@@ -557,7 +584,8 @@
       "profile": "Prolific forward. Carries Pakistan's goal-scoring burden.",
       "green_cards": 1,
       "matches_played": 1,
-      "ai_rating": 56.0
+      "ai_rating": 56.0,
+      "on_team_list": false
     },
     {
       "id": "PAK_03",
@@ -575,7 +603,8 @@
       "profile": "Energetic midfielder. Links defence and attack.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 66.0
+      "ai_rating": 66.0,
+      "on_team_list": false
     },
     {
       "id": "IRL_01",
@@ -593,7 +622,8 @@
       "profile": "Ireland's leading goal scorer. Drag flick specialist.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 63.0
+      "ai_rating": 63.0,
+      "on_team_list": false
     },
     {
       "id": "IRL_02",
@@ -611,7 +641,8 @@
       "profile": "Green Machine captain. Experienced defender.",
       "green_cards": 1,
       "matches_played": 1,
-      "ai_rating": 59.0
+      "ai_rating": 59.0,
+      "on_team_list": false
     },
     {
       "id": "MAS_01",
@@ -629,7 +660,8 @@
       "profile": "Malaysia's skipper. Hard-working midfield dynamo.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 59.0
+      "ai_rating": 59.0,
+      "on_team_list": false
     },
     {
       "id": "MAS_02",
@@ -647,7 +679,8 @@
       "profile": "Quick forward. Tigers' main counter-attack weapon.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 63.0
+      "ai_rating": 63.0,
+      "on_team_list": false
     },
     {
       "id": "RSA_01",
@@ -665,7 +698,8 @@
       "profile": "South Africa's captain. Dogged and determined.",
       "green_cards": 1,
       "matches_played": 1,
-      "ai_rating": 62.0
+      "ai_rating": 62.0,
+      "on_team_list": false
     },
     {
       "id": "NZL_01",
@@ -683,7 +717,8 @@
       "profile": "Black Sticks skipper. Solid defensive leader.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 62.0
+      "ai_rating": 62.0,
+      "on_team_list": true
     },
     {
       "id": "JPN_01",
@@ -701,7 +736,8 @@
       "profile": "Samurai Japan's captain. Engine of Japan's midfield.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 59.0
+      "ai_rating": 59.0,
+      "on_team_list": false
     },
     {
       "id": "FRA_01",
@@ -719,7 +755,8 @@
       "profile": "France's captain and main attacking force.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 71.0
+      "ai_rating": 71.0,
+      "on_team_list": true
     },
     {
       "id": "WAL_01",
@@ -737,7 +774,8 @@
       "profile": "Wales captain. Spirited leader in the Dragons' midfield.",
       "green_cards": 0,
       "matches_played": 1,
-      "ai_rating": 64.0
+      "ai_rating": 64.0,
+      "on_team_list": false
     },
     {
       "id": "ARG_04",
@@ -758,7 +796,8 @@
       "caps": 119,
       "matches_played": 1,
       "ai_rating": 93.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_05",
@@ -779,7 +818,8 @@
       "caps": 47,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_06",
@@ -800,7 +840,8 @@
       "caps": 106,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_07",
@@ -821,28 +862,8 @@
       "caps": 159,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "ARG_08",
-      "name": "della TORRE Nicolas",
-      "team": "ARG",
-      "position": "Squad",
-      "number": 10,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 146 senior caps.",
-      "dob": "1 Mar 1990",
-      "caps": 146,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_09",
@@ -863,7 +884,8 @@
       "caps": 18,
       "matches_played": 1,
       "ai_rating": 93.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_10",
@@ -884,7 +906,8 @@
       "caps": 23,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_11",
@@ -905,7 +928,8 @@
       "caps": 35,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_12",
@@ -926,7 +950,8 @@
       "caps": 25,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_13",
@@ -947,7 +972,8 @@
       "caps": 117,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_14",
@@ -968,7 +994,8 @@
       "caps": 326,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_15",
@@ -989,7 +1016,8 @@
       "caps": 169,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_16",
@@ -1010,7 +1038,8 @@
       "caps": 131,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_17",
@@ -1031,7 +1060,8 @@
       "caps": 75,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_18",
@@ -1052,7 +1082,8 @@
       "caps": 25,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_19",
@@ -1073,7 +1104,8 @@
       "caps": 117,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_20",
@@ -1094,7 +1126,8 @@
       "caps": 58,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_21",
@@ -1115,7 +1148,8 @@
       "caps": 101,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ARG_22",
@@ -1136,7 +1170,8 @@
       "caps": 38,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_05",
@@ -1157,7 +1192,8 @@
       "caps": 169,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_06",
@@ -1178,7 +1214,8 @@
       "caps": 108,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_07",
@@ -1199,7 +1236,8 @@
       "caps": 15,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_08",
@@ -1220,7 +1258,8 @@
       "caps": 138,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_09",
@@ -1241,7 +1280,8 @@
       "caps": 25,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_10",
@@ -1262,7 +1302,8 @@
       "caps": 37,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_11",
@@ -1283,7 +1324,8 @@
       "caps": 47,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_12",
@@ -1304,7 +1346,8 @@
       "caps": 89,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_13",
@@ -1325,7 +1368,8 @@
       "caps": 69,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_14",
@@ -1346,7 +1390,8 @@
       "caps": 36,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_15",
@@ -1367,7 +1412,8 @@
       "caps": 21,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_16",
@@ -1388,7 +1434,8 @@
       "caps": 56,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_17",
@@ -1409,7 +1456,8 @@
       "caps": 18,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_18",
@@ -1430,7 +1478,8 @@
       "caps": 27,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_19",
@@ -1451,7 +1500,8 @@
       "caps": 133,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "AUS_20",
@@ -1472,28 +1522,8 @@
       "caps": 261,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "BEL_05",
-      "name": "van DOREN Arthur",
-      "team": "BEL",
-      "position": "Squad",
-      "number": 4,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": true,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 289 senior caps.",
-      "dob": "1 Oct 1994",
-      "caps": 289,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_06",
@@ -1514,7 +1544,8 @@
       "caps": 77,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_07",
@@ -1535,7 +1566,8 @@
       "caps": 84,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_08",
@@ -1556,7 +1588,8 @@
       "caps": 87,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_09",
@@ -1577,28 +1610,8 @@
       "caps": 63,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "BEL_10",
-      "name": "de KERPEL Nicolas",
-      "team": "BEL",
-      "position": "Squad",
-      "number": 13,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 164 senior caps.",
-      "dob": "23 Mar 1993",
-      "caps": 164,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_11",
@@ -1619,7 +1632,8 @@
       "caps": 48,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_12",
@@ -1640,7 +1654,8 @@
       "caps": 44,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_13",
@@ -1661,7 +1676,8 @@
       "caps": 15,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_14",
@@ -1682,28 +1698,8 @@
       "caps": 33,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "BEL_15",
-      "name": "de SLOOVER Arthur",
-      "team": "BEL",
-      "position": "Squad",
-      "number": 23,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 209 senior caps.",
-      "dob": "3 May 1997",
-      "caps": 209,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_16",
@@ -1724,7 +1720,8 @@
       "caps": 209,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_17",
@@ -1745,7 +1742,8 @@
       "caps": 392,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_18",
@@ -1766,7 +1764,8 @@
       "caps": 73,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_19",
@@ -1787,7 +1786,8 @@
       "caps": 15,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "BEL_20",
@@ -1808,7 +1808,8 @@
       "caps": 44,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ENG_04",
@@ -1871,7 +1872,8 @@
       "caps": 4,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_03",
@@ -1892,7 +1894,8 @@
       "caps": 69,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_04",
@@ -1913,7 +1916,8 @@
       "caps": 56,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_05",
@@ -1934,7 +1938,8 @@
       "caps": 46,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_06",
@@ -1955,7 +1960,8 @@
       "caps": 26,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_07",
@@ -1976,7 +1982,8 @@
       "caps": 29,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_08",
@@ -1997,7 +2004,8 @@
       "caps": 40,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_09",
@@ -2018,7 +2026,8 @@
       "caps": 60,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_10",
@@ -2039,7 +2048,8 @@
       "caps": 42,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_11",
@@ -2060,7 +2070,8 @@
       "caps": 17,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_12",
@@ -2081,7 +2092,8 @@
       "caps": 180,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_13",
@@ -2102,7 +2114,8 @@
       "caps": 6,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_14",
@@ -2123,7 +2136,8 @@
       "caps": 92,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_15",
@@ -2144,7 +2158,8 @@
       "caps": 1,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_16",
@@ -2165,7 +2180,8 @@
       "caps": 97,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_17",
@@ -2186,7 +2202,8 @@
       "caps": 88,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_18",
@@ -2207,7 +2224,8 @@
       "caps": 61,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "FRA_19",
@@ -2228,7 +2246,8 @@
       "caps": 22,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_04",
@@ -2249,49 +2268,8 @@
       "caps": 10,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "GER_05",
-      "name": "GROßE Johannes",
-      "team": "GER",
-      "position": "Squad",
-      "number": 10,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 147 senior caps.",
-      "dob": "7 Jan 1997",
-      "caps": 147,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "GER_06",
-      "name": "Paul-Philipp Kaufmann",
-      "team": "GER",
-      "position": "Squad",
-      "number": 13,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 92 senior caps.",
-      "dob": "21 Jun 1996",
-      "caps": 92,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_07",
@@ -2312,7 +2290,8 @@
       "caps": 101,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_08",
@@ -2333,7 +2312,8 @@
       "caps": 151,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_09",
@@ -2354,7 +2334,8 @@
       "caps": 88,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_10",
@@ -2375,28 +2356,8 @@
       "caps": 47,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "GER_11",
-      "name": "von MONTGELAS Hugo",
-      "team": "GER",
-      "position": "Squad",
-      "number": 22,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 30 senior caps.",
-      "dob": "17 Apr 2004",
-      "caps": 30,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_12",
@@ -2417,7 +2378,8 @@
       "caps": 41,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_13",
@@ -2438,7 +2400,8 @@
       "caps": 94,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_14",
@@ -2459,7 +2422,8 @@
       "caps": 94,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_15",
@@ -2480,7 +2444,8 @@
       "caps": 17,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_16",
@@ -2501,7 +2466,8 @@
       "caps": 42,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_17",
@@ -2522,7 +2488,8 @@
       "caps": 11,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "GER_18",
@@ -2543,28 +2510,8 @@
       "caps": 80,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "GER_19",
-      "name": "Jean-Paul Danneberg",
-      "team": "GER",
-      "position": "Goalkeeper",
-      "number": 74,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 59 senior caps.",
-      "dob": "8 Nov 2002",
-      "caps": 59,
-      "matches_played": 1,
-      "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_06",
@@ -2585,7 +2532,8 @@
       "caps": 159,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_07",
@@ -2606,7 +2554,8 @@
       "caps": 182,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_08",
@@ -2627,7 +2576,8 @@
       "caps": 123,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_09",
@@ -2648,7 +2598,8 @@
       "caps": 180,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_10",
@@ -2669,7 +2620,8 @@
       "caps": 158,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_11",
@@ -2690,7 +2642,8 @@
       "caps": 14,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_12",
@@ -2711,7 +2664,8 @@
       "caps": 16,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_13",
@@ -2732,7 +2686,8 @@
       "caps": 105,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_14",
@@ -2753,7 +2708,8 @@
       "caps": 194,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_15",
@@ -2774,7 +2730,8 @@
       "caps": 125,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_16",
@@ -2795,7 +2752,8 @@
       "caps": 35,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_17",
@@ -2816,7 +2774,8 @@
       "caps": 91,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_18",
@@ -2837,7 +2796,8 @@
       "caps": 90,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_19",
@@ -2858,7 +2818,8 @@
       "caps": 45,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IND_20",
@@ -2879,7 +2840,8 @@
       "caps": 69,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_03",
@@ -2900,7 +2862,8 @@
       "caps": 97,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_04",
@@ -2921,7 +2884,8 @@
       "caps": 15,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_05",
@@ -2942,28 +2906,8 @@
       "caps": 48,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "IRL_06",
-      "name": "McKEE John",
-      "team": "IRL",
-      "position": "Squad",
-      "number": 8,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 133 senior caps.",
-      "dob": "22 Dec 1996",
-      "caps": 133,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_07",
@@ -2984,7 +2928,8 @@
       "caps": 92,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_08",
@@ -3005,7 +2950,8 @@
       "caps": 165,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_09",
@@ -3026,28 +2972,8 @@
       "caps": 48,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "IRL_10",
-      "name": "McKIBBIN Peter",
-      "team": "IRL",
-      "position": "Squad",
-      "number": 19,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 85 senior caps.",
-      "dob": "19 Mar 1997",
-      "caps": 85,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_11",
@@ -3068,7 +2994,8 @@
       "caps": 150,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_12",
@@ -3089,7 +3016,8 @@
       "caps": 125,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_13",
@@ -3110,7 +3038,8 @@
       "caps": 67,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_14",
@@ -3131,7 +3060,8 @@
       "caps": 83,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_15",
@@ -3152,7 +3082,8 @@
       "caps": 160,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_16",
@@ -3173,7 +3104,8 @@
       "caps": 31,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_17",
@@ -3194,7 +3126,8 @@
       "caps": 59,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_18",
@@ -3215,7 +3148,8 @@
       "caps": 32,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_19",
@@ -3236,7 +3170,8 @@
       "caps": 13,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_20",
@@ -3257,7 +3192,8 @@
       "caps": 22,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "IRL_21",
@@ -3278,7 +3214,8 @@
       "caps": 28,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_02",
@@ -3299,7 +3236,8 @@
       "caps": 158,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_03",
@@ -3320,7 +3258,8 @@
       "caps": 183,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_04",
@@ -3341,7 +3280,8 @@
       "caps": 60,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_05",
@@ -3362,7 +3302,8 @@
       "caps": 196,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_06",
@@ -3383,7 +3324,8 @@
       "caps": 33,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_07",
@@ -3404,7 +3346,8 @@
       "caps": 55,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_08",
@@ -3425,7 +3368,8 @@
       "caps": 71,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_09",
@@ -3446,7 +3390,8 @@
       "caps": 50,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_10",
@@ -3467,7 +3412,8 @@
       "caps": 67,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_11",
@@ -3488,7 +3434,8 @@
       "caps": 258,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_12",
@@ -3509,7 +3456,8 @@
       "caps": 92,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_13",
@@ -3530,7 +3478,8 @@
       "caps": 41,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_14",
@@ -3551,7 +3500,8 @@
       "caps": 25,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_15",
@@ -3572,7 +3522,8 @@
       "caps": 63,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_16",
@@ -3593,7 +3544,8 @@
       "caps": 119,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_17",
@@ -3614,7 +3566,8 @@
       "caps": 60,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_18",
@@ -3635,7 +3588,8 @@
       "caps": 41,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_19",
@@ -3656,7 +3610,8 @@
       "caps": 179,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "JPN_20",
@@ -3677,7 +3632,8 @@
       "caps": 23,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_03",
@@ -3698,7 +3654,8 @@
       "caps": 150,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_04",
@@ -3719,7 +3676,8 @@
       "caps": 357,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_05",
@@ -3740,7 +3698,8 @@
       "caps": 323,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_06",
@@ -3761,7 +3720,8 @@
       "caps": 102,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_07",
@@ -3782,7 +3742,8 @@
       "caps": 31,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_08",
@@ -3803,7 +3764,8 @@
       "caps": 274,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_09",
@@ -3824,7 +3786,8 @@
       "caps": 92,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_10",
@@ -3845,7 +3808,8 @@
       "caps": 150,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_11",
@@ -3866,7 +3830,8 @@
       "caps": 150,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_12",
@@ -3887,7 +3852,8 @@
       "caps": 122,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_13",
@@ -3908,7 +3874,8 @@
       "caps": 198,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_14",
@@ -3929,7 +3896,8 @@
       "caps": 72,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_15",
@@ -3950,7 +3918,8 @@
       "caps": 62,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_16",
@@ -3971,7 +3940,8 @@
       "caps": 87,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_17",
@@ -3992,7 +3962,8 @@
       "caps": 43,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_18",
@@ -4013,7 +3984,8 @@
       "caps": 29,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_19",
@@ -4034,7 +4006,8 @@
       "caps": 36,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "MAS_20",
@@ -4055,7 +4028,8 @@
       "caps": 32,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_05",
@@ -4076,7 +4050,8 @@
       "caps": 139,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_06",
@@ -4097,28 +4072,8 @@
       "caps": 170,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "NED_07",
-      "name": "de GEUS Jonas",
-      "team": "NED",
-      "position": "Squad",
-      "number": 6,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 161 senior caps.",
-      "dob": "29 Apr 1998",
-      "caps": 161,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_08",
@@ -4139,7 +4094,8 @@
       "caps": 177,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_09",
@@ -4160,28 +4116,8 @@
       "caps": 110,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "NED_10",
-      "name": "de VILDER Derck",
-      "team": "NED",
-      "position": "Squad",
-      "number": 14,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 107 senior caps.",
-      "dob": "23 Nov 1998",
-      "caps": 107,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_11",
@@ -4202,7 +4138,8 @@
       "caps": 152,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_12",
@@ -4223,7 +4160,8 @@
       "caps": 76,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_13",
@@ -4244,70 +4182,8 @@
       "caps": 35,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "NED_14",
-      "name": "van der HEIJDEN Pepijn",
-      "team": "NED",
-      "position": "Squad",
-      "number": 22,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 16 senior caps.",
-      "dob": "22 Apr 2003",
-      "caps": 16,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "NED_15",
-      "name": "de MOL Joep",
-      "team": "NED",
-      "position": "Squad",
-      "number": 23,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 191 senior caps.",
-      "dob": "10 Dec 1995",
-      "caps": 191,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "NED_16",
-      "name": "van HEIJNINGEN Steijn",
-      "team": "NED",
-      "position": "Squad",
-      "number": 24,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 84 senior caps.",
-      "dob": "28 Jan 1997",
-      "caps": 84,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_17",
@@ -4328,7 +4204,8 @@
       "caps": 85,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_18",
@@ -4349,7 +4226,8 @@
       "caps": 43,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NED_19",
@@ -4370,7 +4248,8 @@
       "caps": 72,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_02",
@@ -4391,7 +4270,8 @@
       "caps": 61,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_03",
@@ -4412,7 +4292,8 @@
       "caps": 158,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_04",
@@ -4433,7 +4314,8 @@
       "caps": 54,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_05",
@@ -4454,7 +4336,8 @@
       "caps": 48,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_06",
@@ -4475,7 +4358,8 @@
       "caps": 104,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_07",
@@ -4496,7 +4380,8 @@
       "caps": 195,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_08",
@@ -4517,7 +4402,8 @@
       "caps": 51,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_09",
@@ -4538,7 +4424,8 @@
       "caps": 225,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_10",
@@ -4559,7 +4446,8 @@
       "caps": 81,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_11",
@@ -4580,7 +4468,8 @@
       "caps": 7,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_12",
@@ -4601,7 +4490,8 @@
       "caps": 17,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_13",
@@ -4622,7 +4512,8 @@
       "caps": 44,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_14",
@@ -4643,7 +4534,8 @@
       "caps": 7,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_15",
@@ -4664,7 +4556,8 @@
       "caps": 51,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_16",
@@ -4685,7 +4578,8 @@
       "caps": 40,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_17",
@@ -4706,7 +4600,8 @@
       "caps": 12,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_18",
@@ -4727,7 +4622,8 @@
       "caps": 13,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "NZL_19",
@@ -4748,7 +4644,8 @@
       "caps": 17,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_04",
@@ -4769,7 +4666,8 @@
       "caps": 7,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_05",
@@ -4790,7 +4688,8 @@
       "caps": 84,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_06",
@@ -4811,7 +4710,8 @@
       "caps": 77,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_07",
@@ -4832,7 +4732,8 @@
       "caps": 64,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_08",
@@ -4853,7 +4754,8 @@
       "caps": 67,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_09",
@@ -4874,7 +4776,8 @@
       "caps": 3,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_10",
@@ -4895,7 +4798,8 @@
       "caps": 51,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_11",
@@ -4916,7 +4820,8 @@
       "caps": 76,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_12",
@@ -4937,7 +4842,8 @@
       "caps": 192,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_13",
@@ -4958,7 +4864,8 @@
       "caps": 55,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_14",
@@ -4979,7 +4886,8 @@
       "caps": 49,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_15",
@@ -5000,7 +4908,8 @@
       "caps": 69,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_16",
@@ -5021,7 +4930,8 @@
       "caps": 3,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_17",
@@ -5042,7 +4952,8 @@
       "caps": 115,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_18",
@@ -5063,7 +4974,8 @@
       "caps": 20,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_19",
@@ -5084,7 +4996,8 @@
       "caps": 35,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "PAK_20",
@@ -5105,7 +5018,8 @@
       "caps": 36,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_02",
@@ -5126,7 +5040,8 @@
       "caps": 70,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_03",
@@ -5147,7 +5062,8 @@
       "caps": 54,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_04",
@@ -5168,7 +5084,8 @@
       "caps": 29,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_05",
@@ -5189,7 +5106,8 @@
       "caps": 44,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_06",
@@ -5210,7 +5128,8 @@
       "caps": 14,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_07",
@@ -5231,7 +5150,8 @@
       "caps": 11,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_08",
@@ -5252,7 +5172,8 @@
       "caps": 19,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_09",
@@ -5273,7 +5194,8 @@
       "caps": 85,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_10",
@@ -5294,7 +5216,8 @@
       "caps": 16,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_11",
@@ -5315,7 +5238,8 @@
       "caps": 4,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_12",
@@ -5336,7 +5260,8 @@
       "caps": 6,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_13",
@@ -5357,7 +5282,8 @@
       "caps": 24,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_14",
@@ -5378,7 +5304,8 @@
       "caps": 87,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_15",
@@ -5399,28 +5326,8 @@
       "caps": 7,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
-    },
-    {
-      "id": "RSA_16",
-      "name": "de LORA Trevor",
-      "team": "RSA",
-      "position": "Squad",
-      "number": 28,
-      "goals": 0,
-      "assists": 0,
-      "pc_scored": 0,
-      "yellow_cards": 0,
-      "red_cards": 0,
-      "green_cards": 0,
-      "is_captain": false,
-      "fih_star": false,
-      "profile": "Named on the official FIH team list — 32 senior caps.",
-      "dob": "21 Mar 2000",
-      "caps": 32,
-      "matches_played": 1,
-      "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_17",
@@ -5441,7 +5348,8 @@
       "caps": 82,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_18",
@@ -5462,7 +5370,8 @@
       "caps": 18,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_19",
@@ -5483,7 +5392,8 @@
       "caps": 16,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "RSA_20",
@@ -5504,7 +5414,8 @@
       "caps": 10,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_04",
@@ -5525,7 +5436,8 @@
       "caps": 139,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_05",
@@ -5546,7 +5458,8 @@
       "caps": 108,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_06",
@@ -5567,7 +5480,8 @@
       "caps": 117,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_07",
@@ -5588,7 +5502,8 @@
       "caps": 133,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_08",
@@ -5609,7 +5524,8 @@
       "caps": 109,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_09",
@@ -5630,7 +5546,8 @@
       "caps": 101,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_10",
@@ -5651,7 +5568,8 @@
       "caps": 78,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_11",
@@ -5672,7 +5590,8 @@
       "caps": 32,
       "matches_played": 1,
       "ai_rating": 80.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_12",
@@ -5693,7 +5612,8 @@
       "caps": 102,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_13",
@@ -5714,7 +5634,8 @@
       "caps": 37,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_14",
@@ -5735,7 +5656,8 @@
       "caps": 49,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_15",
@@ -5756,7 +5678,8 @@
       "caps": 64,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_16",
@@ -5777,7 +5700,8 @@
       "caps": 39,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_17",
@@ -5798,7 +5722,8 @@
       "caps": 14,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "ESP_18",
@@ -5819,7 +5744,8 @@
       "caps": 21,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_02",
@@ -5840,7 +5766,8 @@
       "caps": 71,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_03",
@@ -5861,7 +5788,8 @@
       "caps": 99,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_04",
@@ -5882,7 +5810,8 @@
       "caps": 131,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_05",
@@ -5903,7 +5832,8 @@
       "caps": 82,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_06",
@@ -5924,7 +5854,8 @@
       "caps": 13,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_07",
@@ -5945,7 +5876,8 @@
       "caps": 47,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_08",
@@ -5966,7 +5898,8 @@
       "caps": 61,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_09",
@@ -5987,7 +5920,8 @@
       "caps": 48,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_10",
@@ -6008,7 +5942,8 @@
       "caps": 87,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_11",
@@ -6029,7 +5964,8 @@
       "caps": 127,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_12",
@@ -6050,7 +5986,8 @@
       "caps": 11,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_13",
@@ -6071,7 +6008,8 @@
       "caps": 4,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_14",
@@ -6092,7 +6030,8 @@
       "caps": 2,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_15",
@@ -6113,7 +6052,8 @@
       "caps": 5,
       "matches_played": 1,
       "ai_rating": 62.0,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
     },
     {
       "id": "WAL_16",
@@ -6134,7 +6074,338 @@
       "caps": 20,
       "matches_played": 1,
       "ai_rating": null,
-      "source": "fih-team-list"
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "ARG_22",
+      "name": "Nicolas della Torre",
+      "team": "ARG",
+      "position": "Squad",
+      "number": 10,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 146 senior caps.",
+      "dob": "1 Mar 1990",
+      "caps": 146,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "BEL_18",
+      "name": "Arthur van Doren",
+      "team": "BEL",
+      "position": "Squad",
+      "number": 4,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": true,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 289 senior caps.",
+      "dob": "1 Oct 1994",
+      "caps": 289,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "BEL_19",
+      "name": "Nicolas de Kerpel",
+      "team": "BEL",
+      "position": "Squad",
+      "number": 13,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 164 senior caps.",
+      "dob": "23 Mar 1993",
+      "caps": 164,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "GER_16",
+      "name": "Johannes Große",
+      "team": "GER",
+      "position": "Squad",
+      "number": 10,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 147 senior caps.",
+      "dob": "7 Jan 1997",
+      "caps": 147,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "GER_17",
+      "name": "KAUFMANN Paul-Philipp",
+      "team": "GER",
+      "position": "Squad",
+      "number": 13,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 92 senior caps.",
+      "dob": "21 Jun 1996",
+      "caps": 92,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "GER_18",
+      "name": "Hugo von Montgelas",
+      "team": "GER",
+      "position": "Squad",
+      "number": 22,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 30 senior caps.",
+      "dob": "17 Apr 2004",
+      "caps": 30,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "GER_19",
+      "name": "DANNEBERG Jean-Paul",
+      "team": "GER",
+      "position": "Goalkeeper",
+      "number": 74,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 59 senior caps.",
+      "dob": "8 Nov 2002",
+      "caps": 59,
+      "matches_played": 1,
+      "ai_rating": 80.0,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "IRL_20",
+      "name": "John McKee",
+      "team": "IRL",
+      "position": "Squad",
+      "number": 8,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 133 senior caps.",
+      "dob": "22 Dec 1996",
+      "caps": 133,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "IRL_21",
+      "name": "Peter McKibbin",
+      "team": "IRL",
+      "position": "Squad",
+      "number": 19,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 85 senior caps.",
+      "dob": "19 Mar 1997",
+      "caps": 85,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "NED_15",
+      "name": "Jonas de Geus",
+      "team": "NED",
+      "position": "Squad",
+      "number": 6,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 161 senior caps.",
+      "dob": "29 Apr 1998",
+      "caps": 161,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "NED_16",
+      "name": "Derck de Vilder",
+      "team": "NED",
+      "position": "Squad",
+      "number": 14,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 107 senior caps.",
+      "dob": "23 Nov 1998",
+      "caps": 107,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "NED_17",
+      "name": "Pepijn van der Heijden",
+      "team": "NED",
+      "position": "Squad",
+      "number": 22,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 16 senior caps.",
+      "dob": "22 Apr 2003",
+      "caps": 16,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "NED_18",
+      "name": "Joep de Mol",
+      "team": "NED",
+      "position": "Squad",
+      "number": 23,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 191 senior caps.",
+      "dob": "10 Dec 1995",
+      "caps": 191,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "NED_19",
+      "name": "Steijn van Heijningen",
+      "team": "NED",
+      "position": "Squad",
+      "number": 24,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 84 senior caps.",
+      "dob": "28 Jan 1997",
+      "caps": 84,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
+    },
+    {
+      "id": "RSA_20",
+      "name": "Trevor de Lora",
+      "team": "RSA",
+      "position": "Squad",
+      "number": 28,
+      "goals": 0,
+      "assists": 0,
+      "pc_scored": 0,
+      "yellow_cards": 0,
+      "red_cards": 0,
+      "green_cards": 0,
+      "is_captain": false,
+      "fih_star": false,
+      "profile": "Named on the official FIH team list — 32 senior caps.",
+      "dob": "21 Mar 2000",
+      "caps": 32,
+      "matches_played": 1,
+      "ai_rating": null,
+      "source": "fih-team-list",
+      "on_team_list": true
     }
   ]
 }
