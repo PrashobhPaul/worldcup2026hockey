@@ -18,7 +18,7 @@ from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
     parse_tms_results, update_statuses, backfill_scores_from_tms,
-    revise_stale_predictions, fix_venues, predict,
+    revise_stale_predictions, fix_venues, predict, parse_match_page,
     TMS_LINEUP_LINK,
 )
 
@@ -449,6 +449,33 @@ check('a started match is never touched',
       len(b9) == 1 and not b9[0].get('superseded'))
 check('a second pass changes nothing',
       not revise_stale_predictions(future, preds, ranks, afternoon))
+
+print('\nTMS match page (kickoff and venue)')
+
+# Shaped like the live dump: the pairing near the top, the head-to-head
+# section carrying dates of PAST meetings, then the labeled Details rows.
+match_page = [
+    'Home', 'FIH Hockey World Cup Belgium &amp; Netherlan...', 'IND v WAL',
+    'D', 'India', '3 - 1', 'Official', 'Wales',
+    'Lineups', 'Goals', 'Cards', 'Officials', 'Head to Head', 'Details',
+    'Senior Mens Outdoor', '19 Jan 2023  19:00', 'IND v WAL (Pool D)',
+    'Senior Mens Outdoor', '4 Aug 2022  14:00', 'IND v WAL (Pool B)',
+    'Date/Time', '2026-08-15 13:00', 'Title',
+    'D', 'Venue', 'Wagener Hockey Stadium, Amstelveen',
+]
+info = parse_match_page(match_page)
+check('the match page parses', info is not None)
+check('the pairing is read', info and info['pair'] == ('IND', 'WAL'))
+check('the labeled Date/Time row wins, not head-to-head history',
+      info and (info['date'], info['time']) == ('2026-08-15', '13:00'))
+check('the venue resolves to its code', info and info['venue'] == 'AMV')
+check('a Belfius venue resolves too',
+      parse_match_page(['GER v BEL', 'Date/Time', '2026-08-17 20:30',
+                        'Venue', 'Belfius Hockey Arena, Brussels'])['venue'] == 'BRU')
+check('a page with no labeled kickoff yields nothing',
+      parse_match_page(['IND v WAL', '19 Jan 2023  19:00']) is None)
+check('a date outside the tournament is refused',
+      parse_match_page(['IND v WAL', 'Date/Time', '2023-01-19 19:00']) is None)
 
 print('\nPool venues')
 vfix = {'matches': [

@@ -601,51 +601,77 @@ def discover_tms_lineup_links():
     print(f'LINEUPS: {len(found)} TMS matches linked, {len(pairs)} with both team sheets.')
     return pairs
 
-def fetch_tms_lineup(mid, tid):
-    """(team_code, [players]) for one side of one match, or (None, [])."""
-    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}/lineups/{tid}',
-                           referer=f'{TMS_HOST}/matches/{mid}')
-    if not body:
-        return None, [], []
-    lines = _tms_lines(body)
-    code = None
-    for ln in lines[:40]:
-        hit = TEAM_CODE_MAP.get(ln.strip().lower())
-        if hit:
-            code = hit
-            break
-    if code is None:                              # nation may sit inside a longer cell
-        blob = ' '.join(lines[:40]).lower()
-        for name, c in TEAM_CODE_MAP.items():
-            if name in blob:
-                code = c
-                break
-    return code, parse_player_rows(lines), lines
+# The per-match page's Details section labels the kickoff and venue outright:
+# a "Date/Time" cell followed by "2026-08-15 13:00" (venue local), a "Venue"
+# cell followed by the stadium name, and the pairing as "IND v WAL" near the
+# top. The head-to-head section carries dates of past meetings, so only the
+# labeled Date/Time row counts — never the first date-shaped thing on the page.
+MATCH_PAIR = re.compile(r'^([A-Z]{3}) v ([A-Z]{3})$')
+MATCH_DT = re.compile(r'^(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})$')
 
-def probe_tms_lineups():
-    """
-    Read two real team sheets and report exactly what came back.
+def parse_match_page(lines):
+    """{'pair': (h, a), 'date': ..., 'time': ..., 'venue': 'AMV'|'BRU'|None} or None."""
+    pair = date = time = venue = None
+    for i, ln in enumerate(lines):
+        ln = ln.strip()
+        m = MATCH_PAIR.match(ln)
+        if m and not pair and m.group(1) in TEAM_CODES and m.group(2) in TEAM_CODES:
+            pair = (m.group(1), m.group(2))
+        if ln == 'Date/Time' and i + 1 < len(lines):
+            dt = MATCH_DT.match(lines[i + 1].strip())
+            if dt:
+                date, t = dt.group(1), dt.group(2)
+                time = f'{int(t.split(":")[0]):02d}:{t.split(":")[1]}'
+        if ln == 'Venue' and i + 1 < len(lines):
+            nxt = lines[i + 1]
+            venue = 'AMV' if 'Wagener' in nxt else 'BRU' if 'Belfius' in nxt else None
+    if not pair or not date:
+        return None
+    if not ('2026-08-14' <= date <= '2026-08-31'):
+        print(f'SCHEDULE: {pair} dated {date}, outside the tournament — ignored.')
+        return None
+    return {'pair': pair, 'date': date, 'time': time, 'venue': venue}
 
-    Deliberately writes nothing. A sheet's layout is still unknown — whether it
-    marks starters, where the nation sits, PDF or HTML — and writing 44 guessed
-    line-ups into fixtures.json is far more expensive to unpick than spending
-    one run looking first. The applier is written against this output.
+def sync_schedule_from_match_pages(fixtures, links):
     """
-    links = discover_tms_lineup_links()
-    if not links:
-        print('LINEUPS: no /matches/{id}/lineups/{team} links found this run.')
-        return
-    probe_tms_match_page(links)
-    mid = sorted(links, key=int)[0]
-    for tid in links[mid][:2]:
-        code, roster, lines = fetch_tms_lineup(mid, tid)
-        print(f'LINEUP PROBE: match {mid} team {tid} -> nation {code or "UNRESOLVED"}, '
-              f'{len(roster)} players parsed')
-        for p in roster[:20]:
-            flags = ''.join(c for c, on in (('C', p['is_captain']), ('GK', p['goalkeeper'])) if on)
-            print(f"    {p['number']:>2} {p['name']}{' ' + flags if flags else ''}")
-        if code is None or len(roster) < 11:
-            _dump(f'match {mid} team {tid}', lines)
+    Correct kickoff date, time and venue against each TMS match page.
+
+    The seeded schedule was wrong in both directions — BEL v GER held at 13:30
+    when FIH plays it at 20:30, IND v WAL at 13:30 when FIH played it at
+    13:00 — and a wrong kickoff is what let the clock fabricate a finished
+    match. Each fixture also learns its TMS match id, so later runs skip pages
+    for matches already completed, and the official line-ups on those pages
+    have an address when they are wired in.
+    """
+    by_pair = {frozenset((m['home'], m['away'])): m for m in fixtures['matches']
+               if m['home'] != 'TBD' and m['away'] != 'TBD'}
+    known = {str(m.get('tms_id')): m for m in fixtures['matches'] if m.get('tms_id')}
+    changed = False
+    for mid in sorted(links, key=int):
+        prior = known.get(mid)
+        if prior is not None and prior['status'] == 'completed' and has_score(prior):
+            continue  # its kickoff is history; don't refetch every run
+        body, _ = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
+        if not body:
+            continue
+        info = parse_match_page(_tms_lines(body))
+        if not info:
+            print(f'SCHEDULE: match page {mid} did not parse — skipped.')
+            continue
+        m = by_pair.get(frozenset(info['pair']))
+        if not m:
+            continue
+        if m.get('tms_id') != int(mid):
+            m['tms_id'] = int(mid)
+            changed = True
+        updates = {'date': info['date'], 'time': info['time'], 'venue': info['venue']}
+        for field, want in updates.items():
+            if want and m.get(field) != want:
+                print(f"SCHEDULE: {m['id']} {m['home']} v {m['away']} {field} "
+                      f"{m.get(field)} -> {want} (fih-tms)")
+                m[field] = want
+                changed = True
+    return changed
 
 def reconcile_team_lists(players_doc, squads):
     """Mark who is actually in the tournament, and undo earlier misreads.
@@ -1677,6 +1703,10 @@ def main():
 
     changed = False
     changed |= fix_venues(fixtures)
+    # The official schedule before the clock speaks: statuses are computed
+    # from kickoff times, and the per-match pages are the authority on those.
+    links = discover_tms_lineup_links()
+    changed |= sync_schedule_from_match_pages(fixtures, links)
     changed |= update_statuses(fixtures)
 
     # The matches page carries every final score by team-code pair — the
@@ -1695,7 +1725,6 @@ def main():
     players_changed = reconcile_team_lists(players, squads)
     players_changed |= merge_squads(players, squads, teams)
     teams_changed |= apply_coaches(teams, staff)
-    probe_tms_lineups()
 
     tms = fetch_tms_standings()
     if tms:
