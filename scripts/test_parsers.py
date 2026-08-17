@@ -358,6 +358,12 @@ update_statuses(f, now=afternoon)
 check('a clock-completed match with no score is walked back',
       f['matches'][0]['status'] == 'scheduled')
 
+# A match left 'live' under a wrong time, whose corrected kickoff is later.
+f = fx('live')
+update_statuses(f, now=afternoon)
+check('a live match before its corrected kickoff walks back to scheduled',
+      f['matches'][0]['status'] == 'scheduled')
+
 f = fx('live')
 update_statuses(f, now=night)
 check('past the window with no score stays live, never completed',

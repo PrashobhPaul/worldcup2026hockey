@@ -1089,6 +1089,13 @@ def update_statuses(fixtures, now=None):
             changed = True
             print(f"STATUS REPAIR: {m['id']} {m['home']} v {m['away']} was 'completed' "
                   f"with no score -> {m['status']}")
+        if m['status'] == 'live' and not has_score(m) and now < ko:
+            # Live under a wrong kickoff time that the schedule sync has since
+            # corrected into the future. Nothing is being played; say so.
+            m['status'] = 'scheduled'
+            changed = True
+            print(f"STATUS REPAIR: {m['id']} {m['home']} v {m['away']} was 'live' "
+                  f"before its corrected kickoff -> scheduled")
         if m['status'] == 'completed':
             continue
 
