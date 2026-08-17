@@ -1388,21 +1388,25 @@ def parse_match_report_goals(lines):
 
 def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
     """
-    [{minute, team, type, player}] from the report's two-team card table.
+    [{minute, team, type, player}] from the report's two-team card table, read
+    by word coordinate.
 
-    The table puts home on the left, away on the right, each with Green/Yellow/
-    Red columns carrying the minute a card was shown. Flattened text loses which
-    column a number sits in, so this reads word coordinates: a numeric token is
-    a card only if it lands inside a colour column's x-band, and it is attributed
-    to the player on its row and the team on its side of the page. Anything that
-    fails validation (minute out of range, shirt not on that team) drops the
-    whole match's cards rather than risk a wrong attribution — goals are kept.
+    The table is two player lists side by side, each with Green/Yellow/Red
+    columns holding the minute a card was shown. Flattened text loses which
+    column a number sits in, so this uses the PDF word positions: the six colour
+    headers fix three narrow x-bands per side; a numeric token counts as a card
+    only inside one of those bands, coloured by the band and attributed to the
+    shirt on its row and side. The report's left/right is not our home/away, so
+    each side's team is resolved by voting shirt+surname against the two squads.
+    Anything inconsistent — a minute out of range, a side that resolves to
+    neither team, a shirt not on it — drops the whole match's cards rather than
+    risk a wrong attribution. The goals are always kept.
     """
     try:
         import pdfplumber
     except ImportError:
         return None
-    TYPE = {'Green': 'green_card', 'Yellow': 'yellow_card', 'Red': 'red_card'}
+    COLOUR = {'Green': 'green_card', 'Yellow': 'yellow_card', 'Red': 'red_card'}
     try:
         with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
             words = pdf.pages[0].extract_words(use_text_flow=False, keep_blank_chars=False)
@@ -1410,48 +1414,87 @@ def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
         print(f'  card-table parse failed: {e}')
         return None
 
-    heads = [w for w in words if w['text'] in TYPE]
-    if len(heads) != 6:               # 3 colours × 2 teams
+    heads = [w for w in words if w['text'] in COLOUR]
+    if len(heads) != 6:                       # 3 colours × 2 sides
         return None
     heads.sort(key=lambda w: w['x0'])
-    page_mid = sum(w['x0'] for w in heads) / len(heads)
-    # x-band for each colour column: from its header to the next header on that side
-    def bands(side_heads):
-        side_heads = sorted(side_heads, key=lambda w: w['x0'])
-        b = []
-        for i, w in enumerate(side_heads):
-            right = side_heads[i + 1]['x0'] if i + 1 < len(side_heads) else w['x1'] + 60
-            b.append((w['x0'] - 6, right - 6, TYPE[w['text']]))
-        return b
-    left_bands = bands([w for w in heads if w['x0'] < page_mid])
-    right_bands = bands([w for w in heads if w['x0'] >= page_mid])
-    header_bottom = max(w['bottom'] for w in heads)
+    left_h, right_h = heads[:3], heads[3:]
 
-    # Group every word below the header into rows by vertical position.
-    rows = {}
-    for w in words:
-        if w['top'] <= header_bottom:
-            continue
-        rows.setdefault(round(w['top'] / 3), []).append(w)
+    def zone(hs):
+        g, y, r = (h['x0'] for h in hs)       # Green, Yellow, Red centres
+        return {'lo': g - 12, 'hi': r + (r - y),
+                'gy': (g + y) / 2, 'yr': (y + r) / 2}
+    lz, rz = zone(left_h), zone(right_h)
+    mid = (left_h[-1]['x0'] + right_h[0]['x0']) / 2   # between the two card blocks
+    top_head = min(h['top'] for h in heads)
+    top_end = min((w['top'] for w in words if w['text'] in ('Coach', 'Umpire')),
+                  default=1e9)
+
+    # Cluster the body words into rows by vertical position.
+    body = sorted((w for w in words if top_head < w['top'] < top_end), key=lambda w: w['top'])
+    rows, cur, cy = [], [], None
+    for w in body:
+        if cy is None or abs(w['top'] - cy) <= 5:
+            cur.append(w); cy = w['top'] if cy is None else cy
+        else:
+            rows.append(cur); cur, cy = [w], w['top']
+    if cur:
+        rows.append(cur)
+
+    def colour(x, z):
+        return 'green_card' if x < z['gy'] else 'yellow_card' if x < z['yr'] else 'red_card'
+
+    # Resolve which squad is the left column and which the right (votes below).
+    def surname_hit(code, shirt, caps):
+        name = shirt_name.get((code, shirt))
+        return bool(name) and caps and caps.lower() in name.lower()
+
+    votes = {'L': {home_code: 0, away_code: 0}, 'R': {home_code: 0, away_code: 0}}
+    parsed = []   # (side, shirt, surname, [(minute, type)])
+    for rw in rows:
+        for side, sx_lo, sx_hi, z in (('L', 55, 82, lz), ('R', 340, 366, rz)):
+            shirts = [int(w['text']) for w in rw if w['text'].isdigit() and sx_lo < w['x0'] < sx_hi]
+            if not shirts:
+                continue
+            shirt = shirts[0]
+            caps = next((w['text'] for w in sorted(rw, key=lambda w: w['x0'])
+                         if w['text'].isalpha() and w['text'].isupper()
+                         and (sx_hi < w['x0'] < mid if side == 'L' else w['x0'] > sx_hi)), '')
+            cards = []
+            for w in rw:
+                if not w['text'].isdigit():
+                    continue
+                x = w['x0']
+                if z['lo'] <= x <= z['hi']:
+                    cards.append((int(w['text']), colour(x, z)))
+            parsed.append((side, shirt, caps, cards))
+            for code in (home_code, away_code):
+                if surname_hit(code, shirt, caps):
+                    votes[side][code] += 1
+
+    team = {}
+    for side in ('L', 'R'):
+        home_v, away_v = votes[side][home_code], votes[side][away_code]
+        if home_v == away_v:
+            return None                        # cannot tell the sides apart
+        team[side] = home_code if home_v > away_v else away_code
+    if team['L'] == team['R']:
+        return None
 
     events = []
-    for _, rw in sorted(rows.items()):
-        for side, code, band in (('L', home_code, left_bands), ('R', away_code, right_bands)):
-            cells = [w for w in rw if (w['x0'] < page_mid) == (side == 'L')]
-            nums = [w for w in cells if w['text'].isdigit()]
-            names = [w['text'] for w in sorted(cells, key=lambda w: w['x0'])
-                     if w['text'].isalpha() and w['text'][:1].isupper()]
-            shirts = [int(w['text']) for w in nums if band[0][0] - 40 < w['x0'] < band[0][0]]
-            for w in nums:
-                x = w['x0']; val = int(w['text'])
-                for lo, hi, kind in band:
-                    if lo <= x < hi:
-                        who = shirt_name.get((code, shirts[0])) if shirts else None
-                        if not (1 <= val <= 60):
-                            return None
-                        events.append({'minute': val, 'team': code, 'type': kind,
-                                       'player': who or (f'{code} #{shirts[0]}' if shirts else code)})
+    for side, shirt, caps, cards in parsed:
+        code = team[side]
+        for minute, kind in cards:
+            if not (1 <= minute <= 60):
+                return None
+            who = shirt_name.get((code, shirt))
+            events.append({'minute': minute, 'team': code, 'type': kind,
+                           'player': who or f'{code} #{shirt}'})
     return events
+
+# Bumped when the report parser improves, so already-official matches re-read
+# the report once and pick up the better data instead of staying frozen.
+EVENTS_REV = 2
 
 def apply_official_events(fixtures, players_doc):
     """Replace estimated timelines with the real one from the TMS match report."""
@@ -1461,8 +1504,10 @@ def apply_official_events(fixtures, players_doc):
     for m in fixtures['matches']:
         if m['status'] != 'completed' or not has_score(m) or not m.get('tms_id'):
             continue
-        if m.get('enrichment') in ('official', 'manual'):
-            continue                    # already real; never refetch or overwrite
+        if m.get('enrichment') == 'manual':
+            continue                    # hand-entered — never touch
+        if m.get('enrichment') == 'official' and m.get('events_rev') == EVENTS_REV:
+            continue                    # already read at this parser revision
         body, ctype = _tms_get(f'{TMS_HOST}/matches/{m["tms_id"]}/reports/matchreport',
                                referer=f'{TMS_HOST}/matches/{m["tms_id"]}')
         if not body or not body.startswith(b'%PDF'):
@@ -1498,9 +1543,13 @@ def apply_official_events(fixtures, players_doc):
         m['stats'] = derive_stats_from_events(m)
         m['commentary'] = build_commentary(m)
         m['enrichment'] = 'official'
+        m['events_rev'] = EVENTS_REV
         changed = True
+        cd = {}
+        for e in cards:
+            cd[e['team']] = cd.get(e['team'], 0) + 1
         print(f"OFFICIAL: {m['id']} {m['home']} {gh}-{ga} {m['away']} — "
-              f"{len(goals)} goals, {len(cards)} cards from match report")
+              f"{len(goals)} goals, {len(cards)} cards {cd or ''} from match report")
     return changed
 
 def estimate_enrichment(fixtures, players_doc):
