@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import LineupSheet from '../components/LineupSheet'
 import { useParams, Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
@@ -369,6 +370,9 @@ export default function MatchDetailPage() {
           </div>
         </div>
       )}
+
+      {/* Line-ups */}
+      <LineupSheet match={match} events={events ?? []} home={home} away={away} />
 
       {/* Match stats */}
       {(done || live) && <MatchStatsPanel match={match} live={live} />}

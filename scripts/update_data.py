@@ -150,6 +150,232 @@ def fetch_tms_standings():
         return None
     return pools
 
+# ── FIH TMS team lists & match line-ups ───────────────────────────────────
+# The competitor apps show official team sheets because FIH TMS publishes them.
+# TMS is unreachable from local dev sandboxes but fine from the Actions runner,
+# so the fetch lives here. Candidate report paths are tried in order and the
+# first one that returns a PDF wins; when none parse, the raw text is dumped so
+# the parser can be tuned from real output rather than guesswork — the same
+# loop that fixed the pool-standings backfill.
+
+TMS_BASE = 'https://tms.fih.ch/competitions/1866'
+TMS_SQUAD_PATHS = [
+    '/reports/teamlists',
+    '/reports/entrylists',
+    '/reports/squads',
+    '/teams/export',
+]
+TMS_MATCH_PATHS = [
+    '/matches/{code}/reports/matchreport',
+    '/matches/{code}/reports/teamlist',
+    '/matches/{code}/report',
+]
+
+def _tms_get(url):
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (hockey-ai-bot)'})
+        with urllib.request.urlopen(req, timeout=45) as resp:
+            body = resp.read()
+            ctype = resp.headers.get('Content-Type', '?')
+            print(f'  TMS {url} -> HTTP {resp.status}, {len(body)} bytes, {ctype}')
+            return body, ctype
+    except Exception as e:
+        print(f'  TMS {url} -> {e.__class__.__name__}: {e}')
+        return None, None
+
+def _pdf_lines(pdf_bytes):
+    try:
+        import pdfplumber
+    except ImportError:
+        return []
+    out = []
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            for page in pdf.pages:
+                out.extend(l for l in (page.extract_text() or '').split('\n') if l.strip())
+    except Exception as e:
+        print(f'  TMS pdf parse failed: {e}')
+    return out
+
+# "8 BRINKMAN Thierry (C)" / "23 VISSER Maurits GK" — number, SURNAME Given, role
+SQUAD_ROW = re.compile(
+    r'^\s*(\d{1,2})\s+([A-ZÀ-ÿ][A-Za-zÀ-ÿ\'`-]+(?:\s+[A-ZÀ-ÿ][A-Za-zÀ-ÿ\'`-]+)*)'
+    r'\s*(\(C\)|\bC\b|\bGK\b|\bG\b)?\s*$')
+
+def parse_squad_lines(lines):
+    """Group '12 SURNAME Given' rows under the team heading above them."""
+    squads, current = {}, None
+    for ln in lines:
+        code = TEAM_CODE_MAP.get(ln.strip().lower())
+        if code:
+            current = code
+            squads.setdefault(code, [])
+            continue
+        m = SQUAD_ROW.match(ln)
+        if m and current:
+            role = (m.group(3) or '').upper()
+            squads[current].append({
+                'number': int(m.group(1)),
+                'name': ' '.join(m.group(2).split()),
+                'is_captain': 'C' in role and 'GK' not in role,
+                'goalkeeper': 'GK' in role or role == 'G',
+            })
+    return {k: v for k, v in squads.items() if v}
+
+def fetch_tms_squads():
+    """Official entry lists for all 16 nations, or None."""
+    for path in TMS_SQUAD_PATHS:
+        body, ctype = _tms_get(TMS_BASE + path)
+        if not body:
+            continue
+        lines = _pdf_lines(body) if body.startswith(b'%PDF') else \
+            [l.strip() for l in re.sub(r'<[^>]+>', '\n', body.decode('utf-8', 'replace')).split('\n') if l.strip()]
+        squads = parse_squad_lines(lines)
+        total = sum(len(v) for v in squads.values())
+        if total >= 80:  # a real entry list is ~16 x 18
+            print(f'SQUADS: parsed {total} players across {len(squads)} teams from {path}')
+            return squads
+        print(f'SQUADS: {path} yielded only {total} players across {len(squads)} teams — not usable.')
+        for ln in lines[:25]:
+            print(f'  | {ln[:100]}')
+    print('SQUADS: no usable TMS team list this run — squads unchanged.')
+    return None
+
+def merge_squads(players_doc, squads, teams):
+    """Add officially-listed players that we do not already carry. Never
+    invents a player and never edits an existing one's accumulated stats."""
+    if not squads:
+        return False
+    have = {(p['team'], p['name'].lower()) for p in players_doc['players']}
+    by_team_numbers = {}
+    for p in players_doc['players']:
+        by_team_numbers.setdefault(p['team'], set()).add(p.get('number'))
+    added = 0
+    for code, roster in squads.items():
+        for entry in roster:
+            if (code, entry['name'].lower()) in have:
+                continue
+            if entry['number'] in by_team_numbers.get(code, set()):
+                continue  # same shirt already held by a player we know
+            seq = len([p for p in players_doc['players'] if p['team'] == code]) + 1
+            players_doc['players'].append({
+                'id': f"{code}_{seq:02d}",
+                'name': entry['name'],
+                'team': code,
+                'position': 'Goalkeeper' if entry['goalkeeper'] else 'Midfielder',
+                'number': entry['number'],
+                'goals': 0, 'assists': 0, 'pc_scored': 0,
+                'yellow_cards': 0, 'red_cards': 0, 'green_cards': 0,
+                'is_captain': entry['is_captain'], 'fih_star': False,
+                'profile': 'Named on the official FIH team list.',
+                'matches_played': 0, 'ai_rating': None,
+                'source': 'fih-team-list',
+            })
+            by_team_numbers.setdefault(code, set()).add(entry['number'])
+            added += 1
+    if added:
+        print(f'SQUADS: added {added} officially-listed players.')
+    return added > 0
+
+# ── Match line-ups ────────────────────────────────────────────────────────
+# Shown on the match page as a team sheet and on the pitch. Official FIH sheets
+# win when TMS publishes them; otherwise a deterministic sheet is composed from
+# the squad we actually hold — real players only, never invented names, and
+# labelled "estimated" in the UI. A team whose squad is too small to field an
+# XI is simply skipped: the app says the sheet is not published yet rather than
+# filling the pitch with fiction.
+
+HOCKEY_FORMATION = '4-3-3'   # GK + 4 defenders + 3 midfielders + 3 forwards
+LINE_ORDER = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
+LINE_NEED = {'Goalkeeper': 1, 'Defender': 4, 'Midfielder': 3, 'Forward': 3}
+
+def compose_lineup(code, squad, rng):
+    """Pick a starting XI by line, the rest become rolling substitutes."""
+    if len(squad) < 11:
+        return None
+    pool = {line: [p for p in squad if p.get('position') == line] for line in LINE_ORDER}
+    spare = [p for p in squad if p.get('position') not in LINE_NEED]
+
+    def rank(p):  # captains and rated players start; stable, then seeded jitter
+        return (0 if p.get('is_captain') else 1,
+                -(p.get('ai_rating') or 0),
+                -(p.get('matches_played') or 0),
+                p.get('number') or 99)
+
+    xi, used = [], set()
+    for line in LINE_ORDER:
+        candidates = sorted(pool[line], key=rank)
+        for p in candidates[:LINE_NEED[line]]:
+            xi.append((line, p)); used.add(p['id'])
+    # Fill any short line from whoever is left, so the XI is always 11 real players
+    leftovers = sorted([p for p in squad + spare if p['id'] not in used], key=rank)
+    for line in LINE_ORDER:
+        while len([1 for l, _ in xi if l == line]) < LINE_NEED[line] and leftovers:
+            p = leftovers.pop(0)
+            xi.append((line, p)); used.add(p['id'])
+    if len(xi) < 11:
+        return None
+
+    subs = []
+    for p in sorted([p for p in squad if p['id'] not in used], key=rank):
+        # Rolling substitutions: hockey subs come and go, shown as a clock time
+        minute = 8 + int(rng() * 44)
+        subs.append({
+            'playerId': p['id'], 'name': p['name'], 'number': p.get('number'),
+            'position': p.get('position'), 'onAt': f'{minute:02d}:{int(rng() * 60):02d}',
+        })
+
+    return {
+        'formation': HOCKEY_FORMATION,
+        'startingXI': [{
+            'playerId': p['id'], 'name': p['name'], 'number': p.get('number'),
+            'position': line, 'captain': bool(p.get('is_captain')),
+            'goalkeeper': line == 'Goalkeeper',
+        } for line, p in xi],
+        'substitutes': subs,
+    }
+
+def build_lineups(fixtures, players_doc, teams):
+    """Attach line-ups to every match that can field one. Idempotent."""
+    by_team = {}
+    for p in players_doc['players']:
+        by_team.setdefault(p['team'], []).append(p)
+    team_meta = {t['code']: t for t in teams['teams']}
+    changed = False
+
+    for m in fixtures['matches']:
+        if m.get('home') == 'TBD' or m.get('away') == 'TBD':
+            continue
+        existing = m.get('lineups') or {}
+        if existing.get('source') in ('official', 'manual'):
+            continue  # never overwrite a real team sheet
+
+        sheet = {'source': 'estimated', 'generated_at': now_utc().isoformat()}
+        complete = True
+        for side in ('home', 'away'):
+            code = m[side]
+            rng = seeded_rng(f"lineup:{m['id']}:{code}")
+            composed = compose_lineup(code, by_team.get(code, []), rng)
+            if not composed:
+                complete = False
+                break
+            meta = team_meta.get(code, {})
+            composed['team'] = code
+            composed['coach'] = meta.get('coach')
+            sheet[side] = composed
+        if not complete:
+            continue
+        if json.dumps(m.get('lineups'), sort_keys=True) != json.dumps(sheet, sort_keys=True):
+            # generated_at churns every run; compare only the sheet content
+            old = dict(m.get('lineups') or {}); old.pop('generated_at', None)
+            new = dict(sheet); new.pop('generated_at', None)
+            if json.dumps(old, sort_keys=True) == json.dumps(new, sort_keys=True):
+                continue
+            m['lineups'] = sheet
+            changed = True
+            print(f"LINEUP: {m['id']} {m['home']} v {m['away']} composed (estimated)")
+    return changed
+
 # ---------------------------------------------------- status transitions
 MATCH_DURATION_MIN = 105  # 60 play + breaks + buffer
 
@@ -715,6 +941,9 @@ def main():
     # that local sandboxes don't. Feeds both the UI and the model prior.
     teams_changed = apply_rankings(teams, fetch_fih_rankings())
 
+    # Official entry lists, when TMS publishes them — squads gate the line-ups.
+    players_changed = merge_squads(players, fetch_tms_squads(), teams)
+
     tms = fetch_tms_standings()
     if tms:
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
@@ -723,9 +952,13 @@ def main():
     changed |= estimate_enrichment(fixtures, players)
     changed |= update_player_stats(fixtures, players)
     changed |= slot_knockouts(fixtures)
+    changed |= build_lineups(fixtures, players, teams)
     changed |= generate_predictions(fixtures, teams, predictions)
 
     stamp = now_utc().isoformat()
+    if players_changed:
+        changed = True
+
     if teams_changed:
         save('teams.json', teams)
         changed = True
