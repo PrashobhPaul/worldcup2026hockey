@@ -172,9 +172,20 @@ TMS_SQUAD_PATHS = [
 # Discovered on the competition matches page, e.g. /matches/22334/lineups/8575
 TMS_LINEUP_LINK = re.compile(r'/matches/(\d+)/lineups/(\d+)')
 
-def _tms_get(url):
+def _tms_get(url, referer=None):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (hockey-ai-bot)',
+        'Accept': 'text/html,application/xhtml+xml,application/pdf,*/*',
+        'Accept-Language': 'en-GB,en;q=0.9',
+    }
+    if referer:
+        # The per-match sheets answer 403 to a bare request. They are opened from
+        # the match page in a browser, so the request is made the same way before
+        # concluding the endpoint is closed to us.
+        headers['Referer'] = referer
+        headers['X-Requested-With'] = 'XMLHttpRequest'
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (hockey-ai-bot)'})
+        req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=45) as resp:
             body = resp.read()
             ctype = resp.headers.get('Content-Type', '?')
@@ -205,6 +216,40 @@ def _pdf_lines(pdf_bytes):
 SQUAD_ROW = re.compile(r'^\s*(\d{1,2})\s+([A-ZÀ-ÿ][^\d]*?)\s*$')
 ROLE_TOKENS = {'GK', 'G', 'C'}
 
+# The real entry list carries four more columns:
+#   "12 SNOWDEN Jed (GK) 15 Aug 2001 25 25"  -> no, name, date of birth, age, caps
+ENTRY_ROW = re.compile(
+    r'^\s*(\d{1,2})\s+(.+?)\s+(\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+(\d{1,3})\s+(\d{1,4})\s*$')
+# Each nation's page opens "Team Details Australia".
+TEAM_HEADING = re.compile(r'^Team Details\s+(.+?)\s*$')
+
+# FIH writes names surname-first in capitals — "VAN DER WEERDEN Mink". The app
+# writes them the way a broadcaster would, and the pitch renderer takes the
+# surname off the end, so "SHARP Lachlan" left as-is would put "Lachlan" on the
+# shirt. The surname is the run of capitalised tokens at the front.
+NAME_PARTICLES = {'van', 'der', 'den', 'de', 'del', 'di', 'da', 'dos', 'du',
+                  'la', 'le', 'ter', 'ten', 'von', "'t"}
+
+def _title_token(tok):
+    """Capitalise across apostrophes and hyphens: O'BRIEN -> O'Brien."""
+    out = tok.lower()
+    for sep in ("'", '-', '.'):
+        out = sep.join(part[:1].upper() + part[1:] for part in out.split(sep))
+    return out[:1].upper() + out[1:]
+
+def normalize_fih_name(raw):
+    """'VAN DER WEERDEN Mink' -> 'Mink van der Weerden'."""
+    tokens = raw.split()
+    if len(tokens) < 2:
+        return raw.strip()
+    surname = [t for i, t in enumerate(tokens)
+               if t.isupper() and all(x.isupper() for x in tokens[:i + 1])]
+    given = tokens[len(surname):]
+    if not surname or not given:
+        return raw.strip()
+    parts = [t.lower() if t.lower() in NAME_PARTICLES else _title_token(t) for t in surname]
+    return ' '.join([_title_token(g) for g in given] + parts)
+
 def split_role(name):
     tokens = name.split()
     roles = set()
@@ -217,26 +262,46 @@ def split_role(name):
             break
     return ' '.join(tokens), roles
 
+def _squad_entry(number, raw_name, dob=None, caps=None):
+    name, roles = split_role(raw_name)
+    if not name:
+        return None
+    return {
+        'number': int(number),
+        'name': normalize_fih_name(' '.join(name.split())),
+        'is_captain': 'C' in roles,
+        'goalkeeper': bool(roles & {'GK', 'G'}),
+        'dob': dob,
+        'caps': int(caps) if caps is not None else None,
+    }
+
 def parse_squad_lines(lines):
-    """Group '12 SURNAME Given' rows under the team heading above them."""
+    """Group player rows under the nation heading above them.
+
+    The live entry list is one PDF page per nation: a "Team Details Australia"
+    heading, then rows carrying date of birth, age and caps beside the name. The
+    shorter "12 SURNAME Given" shape is kept too — it is what a match team sheet
+    uses, and what the earlier fixtures were written against.
+    """
     squads, current = {}, None
     for ln in lines:
-        code = TEAM_CODE_MAP.get(ln.strip().lower())
+        stripped = ln.strip()
+        heading = TEAM_HEADING.match(stripped)
+        code = TEAM_CODE_MAP.get((heading.group(1) if heading else stripped).lower())
         if code:
             current = code
             squads.setdefault(code, [])
             continue
-        m = SQUAD_ROW.match(ln)
-        if m and current:
-            name, roles = split_role(m.group(2))
-            if not name:
-                continue
-            squads[current].append({
-                'number': int(m.group(1)),
-                'name': ' '.join(name.split()),
-                'is_captain': 'C' in roles,
-                'goalkeeper': bool(roles & {'GK', 'G'}),
-            })
+        if not current:
+            continue
+        full = ENTRY_ROW.match(ln)
+        if full:
+            entry = _squad_entry(full.group(1), full.group(2), full.group(3), full.group(5))
+        else:
+            short = SQUAD_ROW.match(ln)
+            entry = _squad_entry(short.group(1), short.group(2)) if short else None
+        if entry:
+            squads[current].append(entry)
     return {k: v for k, v in squads.items() if v}
 
 def discover_tms_reports():
@@ -284,22 +349,28 @@ def parse_player_rows(lines):
     """[{number, name, is_captain, goalkeeper}] from either row shape."""
     out, pending = [], None
     for ln in lines:
+        full = ENTRY_ROW.match(ln)
+        if full:                                  # sheet carrying the extra columns
+            entry = _squad_entry(full.group(1), full.group(2), full.group(3), full.group(5))
+            if entry:
+                out.append(entry)
+            pending = None
+            continue
         m = SQUAD_ROW.match(ln)
         if m:                                     # "8 BRINKMAN Thierry (C)"
-            name, roles = split_role(m.group(2))
-            if name:
-                out.append({'number': int(m.group(1)), 'name': ' '.join(name.split()),
-                            'is_captain': 'C' in roles, 'goalkeeper': bool(roles & {'GK', 'G'})})
+            entry = _squad_entry(m.group(1), m.group(2))
+            if entry:
+                out.append(entry)
             pending = None
             continue
         if re.fullmatch(r'\d{1,2}', ln):          # bare shirt-number cell
             pending = int(ln)
             continue
         if pending is not None:
-            name, roles = split_role(ln)
-            if NAME_CELL.match(name):
-                out.append({'number': pending, 'name': ' '.join(name.split()),
-                            'is_captain': 'C' in roles, 'goalkeeper': bool(roles & {'GK', 'G'})})
+            bare, _ = split_role(ln)
+            entry = _squad_entry(pending, ln) if NAME_CELL.match(bare) else None
+            if entry:
+                out.append(entry)
             pending = None
     seen, uniq = set(), []
     for p in out:                                 # a shirt number is worn once
@@ -355,7 +426,8 @@ def discover_tms_lineup_links():
 
 def fetch_tms_lineup(mid, tid):
     """(team_code, [players]) for one side of one match, or (None, [])."""
-    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}/lineups/{tid}')
+    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}/lineups/{tid}',
+                           referer=f'{TMS_HOST}/matches/{mid}')
     if not body:
         return None, [], []
     lines = _tms_lines(body)
@@ -414,16 +486,23 @@ def merge_squads(players_doc, squads, teams):
             if entry['number'] in by_team_numbers.get(code, set()):
                 continue  # same shirt already held by a player we know
             seq = len([p for p in players_doc['players'] if p['team'] == code]) + 1
+            caps = entry.get('caps')
             players_doc['players'].append({
                 'id': f"{code}_{seq:02d}",
                 'name': entry['name'],
                 'team': code,
-                'position': 'Goalkeeper' if entry['goalkeeper'] else 'Midfielder',
+                # The entry list states who keeps goal and nothing else. Guessing
+                # "Midfielder" for the rest would feed a fiction straight into the
+                # positional rating model and the Best XI, so an unknown position
+                # says so and is scored on nothing.
+                'position': 'Goalkeeper' if entry['goalkeeper'] else 'Squad',
                 'number': entry['number'],
                 'goals': 0, 'assists': 0, 'pc_scored': 0,
                 'yellow_cards': 0, 'red_cards': 0, 'green_cards': 0,
                 'is_captain': entry['is_captain'], 'fih_star': False,
-                'profile': 'Named on the official FIH team list.',
+                'profile': (f'Named on the official FIH team list — {caps} senior caps.'
+                            if caps else 'Named on the official FIH team list.'),
+                'dob': entry.get('dob'), 'caps': caps,
                 'matches_played': 0, 'ai_rating': None,
                 'source': 'fih-team-list',
             })
@@ -452,9 +531,10 @@ def compose_lineup(code, squad, rng):
     pool = {line: [p for p in squad if p.get('position') == line] for line in LINE_ORDER}
     spare = [p for p in squad if p.get('position') not in LINE_NEED]
 
-    def rank(p):  # captains and rated players start; stable, then seeded jitter
+    def rank(p):  # captain first, then rating, then international experience
         return (0 if p.get('is_captain') else 1,
                 -(p.get('ai_rating') or 0),
+                -(p.get('caps') or 0),
                 -(p.get('matches_played') or 0),
                 p.get('number') or 99)
 
@@ -956,14 +1036,21 @@ def update_player_stats(fixtures, players_doc):
             base = 58 + a['pc'] * 6 + a['goals'] * 3 + a['assists'] * 3 + max(0, (3.0 - ga_per_match)) * 5
         elif pos == 'Midfielder':
             base = 58 + a['goals'] * 5 + a['assists'] * 5 + a['pc'] * 3
-        else:  # Forward
+        elif pos == 'Forward':
             base = 56 + a['goals'] * 7 + a['assists'] * 3.5
-        base -= a['yellow'] * 2 + a['red'] * 6
-        if p.get('fih_star'): base += 3
-        if p.get('is_captain'): base += 1
-
-        volume = math.sqrt(mp / max_team_mp) if max_team_mp else 1
-        rating = round(min(99, max(40, 40 + (base - 40) * volume)), 1)
+        else:
+            # Position not stated on the entry list. A positional rating means
+            # nothing without one, and scoring them as forwards by default would
+            # put unrated squad players into the Best XI.
+            base = None
+        if base is None:
+            rating = None
+        else:
+            base -= a['yellow'] * 2 + a['red'] * 6
+            if p.get('fih_star'): base += 3
+            if p.get('is_captain'): base += 1
+            volume = math.sqrt(mp / max_team_mp) if max_team_mp else 1
+            rating = round(min(99, max(40, 40 + (base - 40) * volume)), 1)
 
         new_vals = {
             'goals': a['goals'],

@@ -14,7 +14,8 @@ import os
 
 sys.path.insert(0, os.path.dirname(__file__))
 from update_data import (  # noqa: E402
-    parse_rankings_text, parse_squad_lines, parse_player_rows, TMS_LINEUP_LINK,
+    parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
+    TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -74,12 +75,65 @@ squad_lines = [
 squads = parse_squad_lines(squad_lines)
 check('rows group under their nation', set(squads) == {'NED', 'NZL'})
 check('Netherlands squad size', len(squads.get('NED', [])) == 3)
-check('captain flag read', any(p['is_captain'] and p['name'].startswith('BRINKMAN')
+check('captain flag read', any(p['is_captain'] and p['name'] == 'Thierry Brinkman'
                               for p in squads.get('NED', [])))
-check('goalkeeper flag read', any(p['goalkeeper'] and p['name'].startswith('VISSER')
+check('goalkeeper flag read', any(p['goalkeeper'] and p['name'] == 'Maurits Visser'
                                  for p in squads.get('NED', [])))
 check('shirt numbers read', {p['number'] for p in squads.get('NZL', [])} == {10, 1})
 check('rows with no nation heading are dropped', parse_squad_lines(['8 BRINKMAN Thierry']) == {})
+
+print('\nFIH entry list (the real /reports/teams PDF)')
+
+# Verbatim from the live run's dump, including the surrounding page furniture
+# that must not be mistaken for players.
+entry_pdf = [
+    'FIH Hockey World Cup Belgium & Netherlands 2026 (M)',
+    '15 - 30 Aug 2026',
+    'Amstelveen (NED)',
+    'Team Details Australia',
+    'Shirt No. Player Date of Birth Age* Caps',
+    '1 SHARP Lachlan 2 Jul 1997 29 124',
+    '2 CRAIG Tom 3 Sep 1995 30 169',
+    '12 SNOWDEN Jed (GK) 15 Aug 2001 25 25',
+    '13 GOVERS Blake 6 Jul 1996 30 180',
+    'NB: Team lists are subject to change following the tournament briefing meeting * As of 2026-08-15',
+    'Team Staff',
+    'Role Name',
+    'Head Coach REY Lucas',
+    'Team Colours',
+    'Shorts Light blue | Black',
+    'Page 1 of 16',
+    'Team Details New Zealand',
+    'Shirt No. Player Date of Birth Age* Caps',
+    '10 LANE Sam 4 Feb 1996 30 141',
+]
+squads = parse_squad_lines(entry_pdf)
+check('"Team Details <Nation>" is read as a heading', set(squads) == {'AUS', 'NZL'})
+check('every listed player is read', len(squads.get('AUS', [])) == 4)
+check('page furniture is not read as players',
+      not any(p['name'].lower().startswith(('page', 'role', 'shorts', 'head coach'))
+              for p in squads.get('AUS', [])), f"got {[p['name'] for p in squads.get('AUS', [])]}")
+check('a two-word nation heading is read', len(squads.get('NZL', [])) == 1)
+aus = {p['number']: p for p in squads['AUS']}
+check('caps are captured', aus[13]['caps'] == 180 and aus[1]['caps'] == 124)
+check('date of birth is captured', aus[2]['dob'] == '3 Sep 1995')
+check('goalkeeper flag survives the extra columns', aus[12]['goalkeeper'])
+check('a date is never mistaken for a shirt number', set(aus) == {1, 2, 12, 13})
+
+print('\nFIH name order')
+# FIH writes surname-first in capitals; the app and the pitch renderer both take
+# the surname from the end, so leaving them as-is puts a given name on the shirt.
+for raw, want in [
+    ('SHARP Lachlan', 'Lachlan Sharp'),
+    ('VAN DER WEERDEN Mink', 'Mink van der Weerden'),
+    ('DE KERPEL Antoine', 'Antoine de Kerpel'),
+    ("O'BRIEN Sean", "Sean O'Brien"),
+    ('VAN ASS Seve', 'Seve van Ass'),
+    ('SINGH Harmanpreet', 'Harmanpreet Singh'),
+]:
+    check(f'{raw} -> {want}', normalize_fih_name(raw) == want, f'got {normalize_fih_name(raw)}')
+check('an already-normal name is left alone', normalize_fih_name('Thierry Brinkman') == 'Thierry Brinkman')
+check('a single token is left alone', normalize_fih_name('Ronaldinho') == 'Ronaldinho')
 
 print('\nMatch line-up row reader')
 
@@ -87,7 +141,7 @@ print('\nMatch line-up row reader')
 inline = parse_player_rows(['8 BRINKMAN Thierry (C)', '23 VISSER Maurits GK', '51 TELGENKAMP Duco'])
 check('inline rows read', [p['number'] for p in inline] == [8, 23, 51])
 check('inline captain flag', inline[0]['is_captain'] and not inline[0]['goalkeeper'])
-check('inline goalkeeper flag', inline[1]['goalkeeper'] and inline[1]['name'] == 'VISSER Maurits')
+check('inline goalkeeper flag', inline[1]['goalkeeper'] and inline[1]['name'] == 'Maurits Visser')
 
 # ...an HTML table flattens to one cell per line. Same sheet, different shape.
 cells = parse_player_rows(['8', 'BRINKMAN Thierry (C)', '23', 'VISSER Maurits GK', '51', 'TELGENKAMP Duco'])
