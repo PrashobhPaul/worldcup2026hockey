@@ -632,6 +632,30 @@ def parse_match_page(lines):
         return None
     return {'pair': pair, 'date': date, 'time': time, 'venue': venue}
 
+def probe_match_report(tms_id):
+    """One-shot: dump the real goals/cards for a match, from both the report
+    PDF and the match page, so the events parser is written against fact."""
+    body, ctype = _tms_get(f'{TMS_HOST}/matches/{tms_id}/reports/matchreport',
+                           referer=f'{TMS_HOST}/matches/{tms_id}')
+    if body and body.startswith(b'%PDF'):
+        lines = _pdf_lines(body)
+        print(f'PROBE report PDF {tms_id}: {len(lines)} lines')
+        for ln in lines:
+            print(f'  R| {ln[:120]}')
+    else:
+        print(f'PROBE report {tms_id}: not a PDF ({ctype})')
+    body, _ = _tms_get(f'{TMS_HOST}/matches/{tms_id}', referer=TMS_BASE + '/matches')
+    if body:
+        lines = _tms_lines(body)
+        # Dump the window around the Goals and Cards headings.
+        for anchor in ('Goals', 'Cards'):
+            idxs = [i for i, l in enumerate(lines) if l.strip() == anchor]
+            for i in idxs[:1]:
+                print(f'PROBE page {tms_id} — around "{anchor}" [{i}]:')
+                for j in range(i, min(i + 40, len(lines))):
+                    print(f'  P| {lines[j][:110]}')
+
+
 def sync_schedule_from_match_pages(fixtures, links):
     """
     Correct kickoff date, time and venue against each TMS match page.
@@ -1807,6 +1831,9 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
+    if os.environ.get('PROBE_MATCH_IDS'):
+        for _pid in os.environ['PROBE_MATCH_IDS'].split(','):
+            probe_match_report(_pid.strip())
     changed |= fix_venues(fixtures)
     # The official schedule before the clock speaks: statuses are computed
     # from kickoff times, and the per-match pages are the authority on those.
