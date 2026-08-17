@@ -437,6 +437,99 @@ def parse_player_rows(lines):
         uniq.append(p)
     return uniq
 
+# ── Official match schedule ───────────────────────────────────────────────
+# The kickoff times in fixtures.json were seeded by hand, and at least three
+# were wrong: BEL v GER was held at 13:30 when FIH plays it at 20:30, so the
+# clock-driven status flipper declared an unplayed match finished, and the app
+# showed a 0-0 that never happened. The schedule is data like any other —
+# fetched from TMS, never trusted from a seed.
+
+MONTHS = {m: i + 1 for i, m in enumerate(
+    ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'])}
+# A full-line date heading — "Monday, 17 August 2026" or "17 Aug 2026". Anchored
+# so the tournament banner "15 - 30 Aug 2026" can never be read as a date.
+DATE_HEADING = re.compile(r'^(?:[A-Za-z]+,?\s+)?(\d{1,2})\s+([A-Za-z]{3,9})\.?\s+(\d{4})$')
+TIME_TOKEN = re.compile(r'\b([01]?\d|2[0-3]):([0-5]\d)\b')
+
+def _nations_in(line):
+    low = ' ' + re.sub(r'[^a-z ]', ' ', line.lower()) + ' '
+    found = []
+    for name in _NATIONS_BY_LENGTH:
+        if f' {name} ' in low:
+            found.append(TEAM_CODE_MAP[name])
+            low = low.replace(f' {name} ', ' ')
+    return found
+
+def parse_tms_match_schedule(lines, expected_pairs):
+    """
+    {frozenset({home, away}): (date, time)} from the TMS matches page, or None.
+
+    The page flattens to a stream of date headings, kickoff times and nation
+    names. A match is emitted once two nations and a time have accumulated under
+    the current date. The result is applied only if every expected pool pairing
+    was read exactly once with a date inside the tournament window — a schedule
+    half-read is worse than one not read at all.
+    """
+    sched, current_date = {}, None
+    nations, time_seen = [], None
+    for ln in lines:
+        d = DATE_HEADING.match(ln.strip())
+        if d and d.group(2)[:3].lower() in MONTHS:
+            current_date = f'{int(d.group(3)):04d}-{MONTHS[d.group(2)[:3].lower()]:02d}-{int(d.group(1)):02d}'
+            nations, time_seen = [], None
+            continue
+        found = _nations_in(ln)
+        if found:
+            nations = found if len(found) >= 2 else nations + found
+        t = TIME_TOKEN.search(ln)
+        if t:
+            time_seen = f'{int(t.group(1)):02d}:{t.group(2)}'
+        if len(nations) >= 2 and time_seen and current_date:
+            key = frozenset(nations[:2])
+            if key in sched:
+                print(f'SCHEDULE: {sorted(key)} appears twice — page misread, applying nothing.')
+                return None
+            sched[key] = (current_date, time_seen)
+            nations, time_seen = [], None
+    missing = [sorted(p) for p in expected_pairs if p not in sched]
+    if missing:
+        print(f'SCHEDULE: {len(missing)} expected pairings not found ({missing[:4]}…) — applying nothing.')
+        return None
+    for key, (d, _) in sched.items():
+        if not ('2026-08-14' <= d <= '2026-08-31'):
+            print(f'SCHEDULE: {sorted(key)} dated {d}, outside the tournament — applying nothing.')
+            return None
+    return sched
+
+def sync_schedule_from_tms(fixtures):
+    """Correct fixture dates and kickoff times against the TMS matches page."""
+    body, ctype = _tms_get(TMS_BASE + '/matches')
+    if not body:
+        return False
+    lines = _tms_lines(body)
+    expected = {frozenset({m['home'], m['away']}) for m in fixtures['matches']
+                if m['phase'] == 'pool' and m['home'] != 'TBD' and m['away'] != 'TBD'}
+    sched = parse_tms_match_schedule(lines, expected)
+    if sched is None:
+        _dump('matches page', lines, 100)
+        return False
+    changed = False
+    for m in fixtures['matches']:
+        if m['home'] == 'TBD' or m['away'] == 'TBD':
+            continue
+        entry = sched.get(frozenset({m['home'], m['away']}))
+        if not entry:
+            continue
+        date, time = entry
+        if (m['date'], m['time']) != (date, time):
+            print(f"SCHEDULE: {m['id']} {m['home']} v {m['away']} corrected "
+                  f"{m['date']} {m['time']} -> {date} {time} (fih-tms)")
+            m['date'], m['time'] = date, time
+            changed = True
+    if not changed:
+        print('SCHEDULE: fixtures already match the official TMS schedule.')
+    return changed
+
 HEAD_COACH = re.compile(r'^Head Coach\s+(\S.*)$')
 
 def parse_team_staff(lines):
@@ -941,26 +1034,50 @@ def apply_rankings(teams, ranks):
         print('RANKINGS: already in sync with fih.hockey.')
     return changed
 
-def update_statuses(fixtures):
-    """scheduled -> live -> completed based on kickoff time. Never touches scores."""
+def update_statuses(fixtures, now=None):
+    """scheduled -> live -> completed. Never touches scores.
+
+    The clock decides when a match should be underway; only a real score
+    finishes one. The old rule completed any match whose time window had
+    passed, which turned one wrong kickoff time into a fabricated result —
+    BEL v GER was shown finished 0-0 seven hours before it kicked off. A match
+    past its window with no score now stays live ("awaiting result") until the
+    TMS backfill or manual entry supplies the score, and a match completed by
+    the clock alone is walked back to whatever the clock actually supports.
+    """
     changed = False
-    now = now_utc()
+    now = now or now_utc()
     for m in fixtures['matches']:
-        if m['home'] == 'TBD' or m['status'] == 'completed':
+        if m['home'] == 'TBD':
             continue
         try:
             ko = kickoff(m)
         except ValueError:
             continue
         end = ko + timedelta(minutes=MATCH_DURATION_MIN)
-        if ko <= now < end and m['status'] == 'scheduled':
+
+        if m['status'] == 'completed' and not has_score(m):
+            # Completed by the old clock-only rule, or the schedule moved
+            # under it. There is no result, so it is not completed.
+            m['status'] = 'scheduled' if now < ko else 'live'
+            changed = True
+            print(f"STATUS REPAIR: {m['id']} {m['home']} v {m['away']} was 'completed' "
+                  f"with no score -> {m['status']}")
+        if m['status'] == 'completed':
+            continue
+
+        if m['status'] == 'scheduled' and ko <= now:
             m['status'] = 'live'
             changed = True
             print(f"LIVE: {m['id']} {m['home']} vs {m['away']}")
-        elif now >= end and m['status'] in ('scheduled', 'live'):
-            m['status'] = 'completed'
-            changed = True
-            print(f"COMPLETED (window): {m['id']}")
+        if m['status'] == 'live' and now >= end:
+            if has_score(m):
+                m['status'] = 'completed'
+                changed = True
+                print(f"COMPLETED: {m['id']} {m['home']} {m['score']['home']}-{m['score']['away']} {m['away']}")
+            else:
+                print(f"AWAITING RESULT: {m['id']} {m['home']} v {m['away']} — "
+                      f"window over, no score yet (backfill will finish it)")
     return changed
 
 # ------------------------------------------- score back-fill from TMS
@@ -978,21 +1095,36 @@ def local_pool_tallies(fixtures):
             t['ga'] += m['score'][opp]
     return tally
 
-def backfill_scores_from_tms(fixtures, tms):
+def backfill_scores_from_tms(fixtures, tms, now=None):
     """
-    Fill final scores for completed pool matches without one, using TMS deltas.
+    Fill final scores for finished pool matches, using TMS standings deltas.
     A team's GF delta since our last snapshot IS its score in its one new match,
     so match (A vs B) resolves to (gfΔ_A, gfΔ_B). Skipped (and logged) if any
-    involved team has more than one scoreless completed match — manual entry
+    involved team has more than one scoreless finished match — manual entry
     then remains the fallback, and we never guess.
+
+    Eligibility is the clock, not the stored status: since a match without a
+    score is never marked completed any more, waiting for 'completed' here
+    would deadlock. Any scoreless pool match whose window has passed is fair
+    game, and a filled match is closed on the spot. The played-count delta also
+    protects against a wrong kickoff time: a team whose standings row has not
+    moved yields no result, rather than a phantom 0-0.
     """
     if not tms:
         return False
+    now = now or now_utc()
     local = local_pool_tallies(fixtures)
     remote = {row['team']: row for pool in tms.values() for row in pool}
 
+    def window_over(m):
+        try:
+            return now >= kickoff(m) + timedelta(minutes=MATCH_DURATION_MIN)
+        except ValueError:
+            return False
+
     pending = [m for m in fixtures['matches']
-               if m['phase'] == 'pool' and m['status'] == 'completed' and not has_score(m)]
+               if m['phase'] == 'pool' and m['home'] != 'TBD'
+               and not has_score(m) and window_over(m)]
     pending_count = {}
     for m in pending:
         pending_count[m['home']] = pending_count.get(m['home'], 0) + 1
@@ -1018,6 +1150,7 @@ def backfill_scores_from_tms(fixtures, tms):
             continue
         m['score'] = {'home': sh, 'away': sa}
         m['result_source'] = 'fih-tms'
+        m['status'] = 'completed'
         changed = True
         print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS standings deltas)")
     return changed
@@ -1428,6 +1561,9 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
+    # The official schedule first: statuses are computed from kickoff times, so
+    # the times must be right before the clock is allowed to say anything.
+    changed |= sync_schedule_from_tms(fixtures)
     changed |= update_statuses(fixtures)
 
     # Official FIH world rankings — fetched here because CI has the egress

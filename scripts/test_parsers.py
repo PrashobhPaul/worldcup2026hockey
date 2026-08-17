@@ -13,9 +13,11 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(__file__))
+from datetime import datetime, timezone  # noqa: E402
 from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
+    parse_tms_match_schedule, update_statuses, backfill_scores_from_tms,
     TMS_LINEUP_LINK,
 )
 
@@ -297,6 +299,103 @@ check('a player left out of the squad never appears',
 check('a squad with no keeper yields no sheet',
       compose_lineup('TST', [p for p in squad if p['position'] != 'Goalkeeper'], seeded_rng('t')) is None)
 check('too small a squad yields no sheet', compose_lineup('TST', squad[:6], seeded_rng('t')) is None)
+
+print('\nTMS match schedule')
+
+# The page flattens to date headings, times, nations — with finished matches
+# carrying scores ("3 - 3") that must not be read as anything.
+page = [
+    'Matches', 'Monday, 17 August 2026',
+    '09:30', 'Pakistan', 'Wales', '3 - 3', 'FT',
+    '11:30', 'France', 'Malaysia', '3 - 3',
+    '13:30', 'India', 'England', '2 - 4',
+    '20:30', 'Germany', 'Belgium',
+    'Tuesday, 18 August 2026',
+    '09:30', 'New Zealand', 'Japan',
+]
+pairs = [frozenset(p) for p in
+         (('PAK', 'WAL'), ('FRA', 'MAS'), ('IND', 'ENG'), ('GER', 'BEL'), ('NZL', 'JPN'))]
+sched = parse_tms_match_schedule(page, pairs)
+check('the schedule parses', sched is not None)
+check('BEL v GER reads 20:30, not an invented slot',
+      sched and sched[frozenset(('GER', 'BEL'))] == ('2026-08-17', '20:30'))
+check('the date heading carries across rows',
+      sched and sched[frozenset(('PAK', 'WAL'))] == ('2026-08-17', '09:30'))
+check('a new date heading resets the day',
+      sched and sched[frozenset(('NZL', 'JPN'))] == ('2026-08-18', '09:30'))
+check('a score is never read as a kickoff time',
+      sched and sched[frozenset(('FRA', 'MAS'))][1] == '11:30')
+check('a missing pairing rejects the whole page',
+      parse_tms_match_schedule(page, pairs + [frozenset(('AUS', 'ESP'))]) is None)
+check('the tournament banner is not a date',
+      parse_tms_match_schedule(['15 - 30 Aug 2026', '09:30', 'Pakistan', 'Wales'],
+                               [frozenset(('PAK', 'WAL'))]) is None)
+check('an empty page yields nothing', parse_tms_match_schedule([], pairs) is None)
+
+print('\nMatch status honesty')
+
+def fx(status, date='2026-08-17', time='20:30', score=None):
+    return {'matches': [{'id': 'B3', 'home': 'BEL', 'away': 'GER', 'phase': 'pool',
+                         'pool': 'B', 'date': date, 'time': time, 'status': status,
+                         'score': score, 'venue': 'BRU'}]}
+
+# 15:00 UTC = 17:00 CEST: BEL v GER (20:30) has not kicked off.
+afternoon = datetime(2026, 8, 17, 15, 0, tzinfo=timezone.utc)
+night = datetime(2026, 8, 17, 22, 0, tzinfo=timezone.utc)
+
+f = fx('scheduled')
+update_statuses(f, now=afternoon)
+check('a future match stays scheduled', f['matches'][0]['status'] == 'scheduled')
+
+# The exact reported bug: completed with no score, hours before kickoff.
+f = fx('completed')
+update_statuses(f, now=afternoon)
+check('a clock-completed match with no score is walked back',
+      f['matches'][0]['status'] == 'scheduled')
+
+f = fx('live')
+update_statuses(f, now=night)
+check('past the window with no score stays live, never completed',
+      f['matches'][0]['status'] == 'live')
+
+f = fx('live', score={'home': 2, 'away': 2})
+update_statuses(f, now=night)
+check('past the window with a score completes', f['matches'][0]['status'] == 'completed')
+
+f = fx('completed', score={'home': 2, 'away': 2})
+update_statuses(f, now=afternoon)
+check('a completed match with a real score is never walked back',
+      f['matches'][0]['status'] == 'completed')
+
+# Backfill: the standings row is the witness. PAK and WAL each played one new
+# match and their deltas cross-check as 3-3 — that resolves. GER's row has not
+# moved, so GER v BEL yields nothing rather than a phantom 0-0.
+def rows(**kw):
+    base = {'PAK': (2, 7, 4), 'WAL': (2, 3, 8), 'GER': (2, 5, 2), 'BEL': (2, 6, 3)}
+    base.update(kw)
+    return {'X': [{'team': t, 'played': p, 'gf': gf, 'ga': ga}
+                  for t, (p, gf, ga) in base.items()]}
+
+fixtures = {'matches': [
+    {'id': 'D2', 'home': 'ENG', 'away': 'PAK', 'phase': 'pool', 'pool': 'D',
+     'date': '2026-08-15', 'time': '17:00', 'status': 'completed', 'score': {'home': 4, 'away': 1}},
+    {'id': 'D0', 'home': 'WAL', 'away': 'IND', 'phase': 'pool', 'pool': 'D',
+     'date': '2026-08-15', 'time': '13:30', 'status': 'completed', 'score': {'home': 0, 'away': 5}},
+    {'id': 'D4', 'home': 'PAK', 'away': 'WAL', 'phase': 'pool', 'pool': 'D',
+     'date': '2026-08-17', 'time': '09:30', 'status': 'live', 'score': None},
+    {'id': 'B3', 'home': 'BEL', 'away': 'GER', 'phase': 'pool', 'pool': 'B',
+     'date': '2026-08-17', 'time': '20:30', 'status': 'scheduled', 'score': None},
+]}
+tms = rows(PAK=(2, 4, 7), WAL=(2, 3, 8), GER=(1, 2, 1), BEL=(1, 3, 2))
+# local: PAK played 1 (1 GF, 4 GA), WAL played 1 (0 GF, 5 GA)
+backfill_scores_from_tms(fixtures, tms, now=afternoon)
+d4 = fixtures['matches'][2]
+check('a live match past its window is backfilled from standings deltas',
+      d4['score'] == {'home': 3, 'away': 3})
+check('the backfilled match is closed on the spot', d4['status'] == 'completed')
+b3 = fixtures['matches'][3]
+check('an unplayed match never becomes a phantom 0-0',
+      b3['score'] is None and b3['status'] == 'scheduled')
 
 print()
 if failures:
