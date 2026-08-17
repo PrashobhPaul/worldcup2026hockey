@@ -1733,10 +1733,14 @@ def update_player_stats(fixtures, players_doc):
         elif pos == 'Forward':
             base = 56 + a['goals'] * 7 + a['assists'] * 3.5
         else:
-            # Position not stated on the entry list. A positional rating means
-            # nothing without one, and scoring them as forwards by default would
-            # put unrated squad players into the Best XI.
-            base = None
+            # Position not stated on the entry list. We still won't invent one —
+            # but a player who actually did something on the pitch (scored,
+            # assisted, was carded) has real events to rate, so give them a
+            # position-agnostic score rather than leave a genuine contributor
+            # blank. A squad member with no events stays unrated: no fabricated
+            # number, and the named-position Best XI never draws from them.
+            contributed = a['goals'] or a['assists'] or a['pc'] or a['yellow'] or a['red']
+            base = 57 + a['goals'] * 6 + a['assists'] * 4 + a['pc'] * 2 if contributed else None
         if base is None:
             rating = None
         else:

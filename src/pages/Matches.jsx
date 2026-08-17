@@ -75,8 +75,25 @@ export default function MatchesPage() {
     onChange: i => setFilter('tab', STATUS_TABS[i].id ?? STATUS_TABS[i], setTab),
   })
 
+  // Results lead, newest first — scroll down through the played matches toward
+  // the opening fixture, the order the official app and the competitor use —
+  // and still-upcoming days sit below, soonest first ("what's next"). A day that
+  // is entirely future sinks under the played/live ones.
+  const now = Date.now()
   const byDate = {}
   for (const m of filtered) (byDate[m.date] ??= []).push(m)
+  const dayIsFuture = date =>
+    byDate[date].every(m => m.status === 'scheduled' && (m.kickoffUtc ?? 0) > now)
+  for (const [date, day] of Object.entries(byDate)) {
+    const asc = dayIsFuture(date)
+    day.sort((a, b) => asc ? a.kickoffUtc - b.kickoffUtc : b.kickoffUtc - a.kickoffUtc)
+  }
+  const orderedDates = Object.keys(byDate).sort((a, b) => {
+    const fa = dayIsFuture(a), fb = dayIsFuture(b)
+    if (fa !== fb) return fa ? 1 : -1
+    const ka = byDate[a][0].kickoffUtc ?? 0, kb = byDate[b][0].kickoffUtc ?? 0
+    return fa ? ka - kb : kb - ka
+  })
 
   const setFilter = (key, value, setter) => {
     setter(value)
@@ -126,7 +143,7 @@ export default function MatchesPage() {
               No matches match this filter.
             </div>
           )}
-          {Object.entries(byDate).sort().map(([date, dayMatches]) => (
+          {orderedDates.map(date => (
             <div key={date}>
               <div className="my-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-wider text-pitch-400">
                 <span className="h-px flex-1 bg-white/5" />
@@ -134,7 +151,7 @@ export default function MatchesPage() {
                 <span className="h-px flex-1 bg-white/5" />
               </div>
               <div className="space-y-2.5">
-                {dayMatches.map(m => <MatchCard key={m.id} match={m} />)}
+                {byDate[date].map(m => <MatchCard key={m.id} match={m} />)}
               </div>
             </div>
           ))}
