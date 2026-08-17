@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T16:11:32.096622+00:00",
+  "last_updated": "2026-08-17T16:19:26.815323+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -28,7 +28,7 @@
       "home": "IND",
       "away": "WAL",
       "date": "2026-08-15",
-      "time": "13:30",
+      "time": "13:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
@@ -490,7 +490,8 @@
           "team": "WAL",
           "coach": "Daniel Newcombe"
         }
-      }
+      },
+      "tms_id": 22334
     },
     {
       "id": "D2",
@@ -499,7 +500,7 @@
       "home": "ENG",
       "away": "PAK",
       "date": "2026-08-15",
-      "time": "17:00",
+      "time": "19:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
@@ -988,7 +989,8 @@
           "team": "PAK",
           "coach": "Bob Veldhof"
         }
-      }
+      },
+      "tms_id": 22336
     },
     {
       "id": "B1",
@@ -997,7 +999,7 @@
       "home": "GER",
       "away": "MAS",
       "date": "2026-08-15",
-      "time": "13:30",
+      "time": "14:30",
       "timezone": "CET",
       "venue": "BRU",
       "status": "completed",
@@ -1478,7 +1480,8 @@
           "team": "MAS",
           "coach": "Brendon Carolan"
         }
-      }
+      },
+      "tms_id": 22335
     },
     {
       "id": "B2",
@@ -1487,7 +1490,7 @@
       "home": "BEL",
       "away": "FRA",
       "date": "2026-08-15",
-      "time": "17:00",
+      "time": "21:00",
       "timezone": "CET",
       "venue": "BRU",
       "status": "completed",
@@ -1962,7 +1965,8 @@
           "team": "FRA",
           "coach": "John-John Dohmen"
         }
-      }
+      },
+      "tms_id": 22337
     },
     {
       "id": "A1",
@@ -1971,7 +1975,7 @@
       "home": "ARG",
       "away": "JPN",
       "date": "2026-08-16",
-      "time": "13:30",
+      "time": "19:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
@@ -2415,7 +2419,8 @@
           "team": "JPN",
           "coach": "Yoshihiro Anai"
         }
-      }
+      },
+      "tms_id": 22341
     },
     {
       "id": "A2",
@@ -2424,7 +2429,7 @@
       "home": "NED",
       "away": "NZL",
       "date": "2026-08-16",
-      "time": "17:00",
+      "time": "16:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
@@ -2920,7 +2925,8 @@
           "team": "NZL",
           "coach": "Greg Nicol"
         }
-      }
+      },
+      "tms_id": 22340
     },
     {
       "id": "C1",
@@ -2929,7 +2935,7 @@
       "home": "AUS",
       "away": "IRL",
       "date": "2026-08-16",
-      "time": "13:30",
+      "time": "11:30",
       "timezone": "CET",
       "venue": "BRU",
       "status": "completed",
@@ -3393,7 +3399,8 @@
           "team": "IRL",
           "coach": "Mark Tumilty"
         }
-      }
+      },
+      "tms_id": 22338
     },
     {
       "id": "C2",
@@ -3402,7 +3409,7 @@
       "home": "ESP",
       "away": "RSA",
       "date": "2026-08-16",
-      "time": "17:00",
+      "time": "14:30",
       "timezone": "CET",
       "venue": "BRU",
       "status": "completed",
@@ -3896,7 +3903,8 @@
           "team": "RSA",
           "coach": "Devon van der Merwe"
         }
-      }
+      },
+      "tms_id": 22339
     },
     {
       "id": "D3",
@@ -3905,7 +3913,7 @@
       "home": "ENG",
       "away": "IND",
       "date": "2026-08-17",
-      "time": "13:30",
+      "time": "15:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "completed",
@@ -4408,7 +4416,8 @@
           "seq": 11
         }
       ],
-      "enrichment": "estimated"
+      "enrichment": "estimated",
+      "tms_id": 22344
     },
     {
       "id": "D4",
@@ -4417,15 +4426,73 @@
       "home": "PAK",
       "away": "WAL",
       "date": "2026-08-17",
-      "time": "17:00",
+      "time": "12:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 15,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Jacob Draper",
+          "assist": "Alf Dinnie"
+        },
+        {
+          "minute": 19,
+          "team": "WAL",
+          "type": "goal",
+          "via": "PS",
+          "player": "Benjamin Francis"
+        },
+        {
+          "minute": 20,
+          "team": "WAL",
+          "type": "yellow_card",
+          "player": "Jack Pritchard"
+        },
+        {
+          "minute": 31,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Rehman Abdul",
+          "assist": "Arshad Liaquat"
+        },
+        {
+          "minute": 32,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Moin Shakeel"
+        },
+        {
+          "minute": 34,
+          "team": "PAK",
+          "type": "goal",
+          "via": "PC",
+          "player": "Muhammad Umar Bhutta"
+        },
+        {
+          "minute": 52,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Gareth Furlong",
+          "assist": "Daniel Kyriakides"
+        },
+        {
+          "minute": 56,
+          "team": "PAK",
+          "type": "goal",
+          "via": "PS",
+          "player": "Abu Mahmood"
+        }
+      ],
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.047621+00:00",
@@ -4773,7 +4840,111 @@
           "team": "WAL",
           "coach": "Daniel Newcombe"
         }
-      }
+      },
+      "tms_id": 22342,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 4,
+        "away": 2
+      },
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 6,
+          "circle_entries": 25,
+          "penalty_corners": 4,
+          "possession": 50,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 6,
+          "circle_entries": 19,
+          "penalty_corners": 2,
+          "possession": 50,
+          "green_cards": 0,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! PAK vs WAL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "team": "WAL",
+          "text": "GOAL! Jacob Draper (WAL) scores from a field goal — PAK 0-1 WAL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: PAK 0-1 WAL.",
+          "seq": 2
+        },
+        {
+          "minute": 19,
+          "team": "WAL",
+          "text": "GOAL! Benjamin Francis (WAL) scores from a penalty stroke — PAK 0-2 WAL.",
+          "seq": 3
+        },
+        {
+          "minute": 20,
+          "team": "WAL",
+          "text": "Yellow Card for Jack Pritchard (WAL) — 5-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: PAK 0-2 WAL.",
+          "seq": 5
+        },
+        {
+          "minute": 31,
+          "team": "PAK",
+          "text": "GOAL! Rehman Abdul (PAK) scores from a field goal — PAK 1-2 WAL.",
+          "seq": 6
+        },
+        {
+          "minute": 32,
+          "team": "PAK",
+          "text": "Green Card for Moin Shakeel (PAK) — 2-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 34,
+          "team": "PAK",
+          "text": "GOAL! Muhammad Umar Bhutta (PAK) scores from a penalty corner — PAK 2-2 WAL.",
+          "seq": 8
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: PAK 2-2 WAL.",
+          "seq": 9
+        },
+        {
+          "minute": 52,
+          "team": "WAL",
+          "text": "GOAL! Gareth Furlong (WAL) scores from a field goal — PAK 2-3 WAL.",
+          "seq": 10
+        },
+        {
+          "minute": 56,
+          "team": "PAK",
+          "text": "GOAL! Abu Mahmood (PAK) scores from a penalty stroke — PAK 3-3 WAL.",
+          "seq": 11
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: PAK 3-3 WAL.",
+          "seq": 12
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "B3",
@@ -4782,7 +4953,7 @@
       "home": "BEL",
       "away": "GER",
       "date": "2026-08-17",
-      "time": "13:30",
+      "time": "20:30",
       "timezone": "CET",
       "venue": "BRU",
       "status": "live",
@@ -5103,7 +5274,8 @@
           "team": "GER",
           "coach": "André Henning"
         }
-      }
+      },
+      "tms_id": 22345
     },
     {
       "id": "B4",
@@ -5112,15 +5284,76 @@
       "home": "FRA",
       "away": "MAS",
       "date": "2026-08-17",
-      "time": "17:00",
+      "time": "14:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 4,
+          "team": "FRA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Brieuc Delemazure"
+        },
+        {
+          "minute": 5,
+          "team": "MAS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Norsyafiq Sumantri"
+        },
+        {
+          "minute": 14,
+          "team": "MAS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Akhimullah Anuar"
+        },
+        {
+          "minute": 20,
+          "team": "FRA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Noé Jouin"
+        },
+        {
+          "minute": 21,
+          "team": "MAS",
+          "type": "green_card",
+          "player": "Azimuddin Kamaruddin"
+        },
+        {
+          "minute": 22,
+          "team": "FRA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Corentin Sellier"
+        },
+        {
+          "minute": 35,
+          "team": "MAS",
+          "type": "goal",
+          "via": "PS",
+          "player": "Shello Silverius"
+        },
+        {
+          "minute": 43,
+          "team": "MAS",
+          "type": "yellow_card",
+          "player": "Faizal Saari"
+        },
+        {
+          "minute": 57,
+          "team": "FRA",
+          "type": "green_card",
+          "player": "Victor Charlet"
+        }
+      ],
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T16:00:59.048197+00:00",
@@ -5468,7 +5701,117 @@
           "team": "MAS",
           "coach": "Brendon Carolan"
         }
-      }
+      },
+      "tms_id": 22343,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 8,
+        "away": 5
+      },
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 6,
+          "circle_entries": 21,
+          "penalty_corners": 8,
+          "possession": 46,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 10,
+          "circle_entries": 19,
+          "penalty_corners": 5,
+          "possession": 54,
+          "green_cards": 1,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! FRA vs MAS under way.",
+          "seq": 0
+        },
+        {
+          "minute": 4,
+          "team": "FRA",
+          "text": "GOAL! Brieuc Delemazure (FRA) scores from a penalty corner — FRA 1-0 MAS.",
+          "seq": 1
+        },
+        {
+          "minute": 5,
+          "team": "MAS",
+          "text": "GOAL! Norsyafiq Sumantri (MAS) scores from a penalty corner — FRA 1-1 MAS.",
+          "seq": 2
+        },
+        {
+          "minute": 14,
+          "team": "MAS",
+          "text": "GOAL! Akhimullah Anuar (MAS) scores from a penalty corner — FRA 1-2 MAS.",
+          "seq": 3
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: FRA 1-2 MAS.",
+          "seq": 4
+        },
+        {
+          "minute": 20,
+          "team": "FRA",
+          "text": "GOAL! Noé Jouin (FRA) scores from a penalty corner — FRA 2-2 MAS.",
+          "seq": 5
+        },
+        {
+          "minute": 21,
+          "team": "MAS",
+          "text": "Green Card for Azimuddin Kamaruddin (MAS) — 2-minute suspension.",
+          "seq": 6
+        },
+        {
+          "minute": 22,
+          "team": "FRA",
+          "text": "GOAL! Corentin Sellier (FRA) scores from a field goal — FRA 3-2 MAS.",
+          "seq": 7
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: FRA 3-2 MAS.",
+          "seq": 8
+        },
+        {
+          "minute": 35,
+          "team": "MAS",
+          "text": "GOAL! Shello Silverius (MAS) scores from a penalty stroke — FRA 3-3 MAS.",
+          "seq": 9
+        },
+        {
+          "minute": 43,
+          "team": "MAS",
+          "text": "Yellow Card for Faizal Saari (MAS) — 5-minute suspension.",
+          "seq": 10
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: FRA 3-3 MAS.",
+          "seq": 11
+        },
+        {
+          "minute": 57,
+          "team": "FRA",
+          "text": "Green Card for Victor Charlet (FRA) — 2-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: FRA 3-3 MAS.",
+          "seq": 13
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "A3",
@@ -5477,7 +5820,7 @@
       "home": "ARG",
       "away": "NED",
       "date": "2026-08-18",
-      "time": "13:30",
+      "time": "18:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
@@ -5819,7 +6162,8 @@
           "team": "NED",
           "coach": "Jeroen Delmee"
         }
-      }
+      },
+      "tms_id": 22349
     },
     {
       "id": "A4",
@@ -5828,7 +6172,7 @@
       "home": "JPN",
       "away": "NZL",
       "date": "2026-08-18",
-      "time": "17:00",
+      "time": "09:30",
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
@@ -6184,7 +6528,8 @@
           "team": "NZL",
           "coach": "Greg Nicol"
         }
-      }
+      },
+      "tms_id": 22346
     },
     {
       "id": "C3",
@@ -6193,7 +6538,7 @@
       "home": "AUS",
       "away": "ESP",
       "date": "2026-08-18",
-      "time": "13:30",
+      "time": "14:00",
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
@@ -6549,7 +6894,8 @@
           "team": "ESP",
           "coach": "Max Caldas"
         }
-      }
+      },
+      "tms_id": 22347
     },
     {
       "id": "C4",
@@ -6893,7 +7239,8 @@
           "team": "RSA",
           "coach": "Devon van der Merwe"
         }
-      }
+      },
+      "tms_id": 22348
     },
     {
       "id": "D5",
@@ -6902,7 +7249,7 @@
       "home": "ENG",
       "away": "WAL",
       "date": "2026-08-19",
-      "time": "13:30",
+      "time": "12:30",
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
@@ -7258,7 +7605,8 @@
           "team": "WAL",
           "coach": "Daniel Newcombe"
         }
-      }
+      },
+      "tms_id": 22350
     },
     {
       "id": "D6",
@@ -7267,7 +7615,7 @@
       "home": "IND",
       "away": "PAK",
       "date": "2026-08-19",
-      "time": "17:00",
+      "time": "15:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
@@ -7623,7 +7971,8 @@
           "team": "PAK",
           "coach": "Bob Veldhof"
         }
-      }
+      },
+      "tms_id": 22351
     },
     {
       "id": "B5",
@@ -7632,7 +7981,7 @@
       "home": "BEL",
       "away": "MAS",
       "date": "2026-08-19",
-      "time": "13:30",
+      "time": "20:30",
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
@@ -7974,7 +8323,8 @@
           "team": "MAS",
           "coach": "Brendon Carolan"
         }
-      }
+      },
+      "tms_id": 22353
     },
     {
       "id": "B6",
@@ -8318,7 +8668,8 @@
           "team": "GER",
           "coach": "André Henning"
         }
-      }
+      },
+      "tms_id": 22352
     },
     {
       "id": "A5",
@@ -8327,7 +8678,7 @@
       "home": "JPN",
       "away": "NED",
       "date": "2026-08-20",
-      "time": "13:30",
+      "time": "18:00",
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
@@ -8676,7 +9027,8 @@
           "team": "NED",
           "coach": "Jeroen Delmee"
         }
-      }
+      },
+      "tms_id": 22357
     },
     {
       "id": "A6",
@@ -8685,7 +9037,7 @@
       "home": "ARG",
       "away": "NZL",
       "date": "2026-08-20",
-      "time": "17:00",
+      "time": "12:30",
       "timezone": "CET",
       "venue": "AMV",
       "status": "scheduled",
@@ -9034,7 +9386,8 @@
           "team": "NZL",
           "coach": "Greg Nicol"
         }
-      }
+      },
+      "tms_id": 22355
     },
     {
       "id": "C5",
@@ -9043,7 +9396,7 @@
       "home": "AUS",
       "away": "RSA",
       "date": "2026-08-20",
-      "time": "13:30",
+      "time": "11:00",
       "timezone": "CET",
       "venue": "BRU",
       "status": "scheduled",
@@ -9392,7 +9745,8 @@
           "team": "RSA",
           "coach": "Devon van der Merwe"
         }
-      }
+      },
+      "tms_id": 22354
     },
     {
       "id": "C6",
@@ -9743,7 +10097,8 @@
           "team": "IRL",
           "coach": "Mark Tumilty"
         }
-      }
+      },
+      "tms_id": 22356
     },
     {
       "id": "QF1",

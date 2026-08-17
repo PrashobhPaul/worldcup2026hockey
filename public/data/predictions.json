@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-17T16:11:32.096622+00:00",
+  "updated_at": "2026-08-17T16:19:26.815323+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -96,7 +96,10 @@
       "pick": "HOME",
       "pick_confidence": 0.604,
       "reason": "FIH #2 BEL favoured over #6 GER — Elo model from world rankings, published before push-back.",
-      "publishedAt": "2026-08-16T14:57:56.707310+00:00"
+      "publishedAt": "2026-08-16T14:57:56.707310+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-17T16:19:26.815121+00:00",
+      "superseded_reason": "FIH ranks corrected against fih.hockey; pick revised before push-back."
     },
     {
       "id": "oracle-v1:B4",
@@ -496,6 +499,20 @@
       "pick_confidence": 0.604,
       "reason": "FIH #6 ESP favoured over #10 IRL — Elo model from world rankings. Revised before push-back: the original pick used seeded ranks later corrected against fih.hockey, and stays in the ledger.",
       "publishedAt": "2026-08-17T16:11:32.096316+00:00"
+    },
+    {
+      "id": "oracle-v1:B3:r2",
+      "matchId": "B3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:B3",
+      "p_home_win": 0.604,
+      "p_draw": 0.145,
+      "p_away_win": 0.252,
+      "pick": "HOME",
+      "pick_confidence": 0.604,
+      "reason": "FIH #1 BEL favoured over #5 GER — Elo model from world rankings. Revised before push-back: the original pick used seeded ranks later corrected against fih.hockey, and stays in the ledger.",
+      "publishedAt": "2026-08-17T16:19:26.815121+00:00"
     }
   ]
 }
