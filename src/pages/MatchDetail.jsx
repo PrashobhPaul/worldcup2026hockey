@@ -185,7 +185,8 @@ export default function MatchDetailPage() {
     [matchId], [],
   )
   const prediction = useLiveQuery(
-    () => db.predictions.where('matchId').equals(matchId).first(),
+    () => db.predictions.where('matchId').equals(matchId).toArray()
+      .then(rows => rows.find(p => !p.superseded) ?? null),
     [matchId],
   )
   const story = useLiveQuery(() => db.ai_stories.get(matchId), [matchId])

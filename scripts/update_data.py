@@ -493,8 +493,19 @@ def probe_tms_match_page(links):
         return
     mid = sorted(links, key=int)[0]
     body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
-    if body:
-        _dump(f'match page {mid}', _tms_lines(body), 80)
+    if not body:
+        return
+    lines = _tms_lines(body)
+    _dump(f'match page {mid}', lines, 80)
+    # The first dump showed no kickoff datetime in the opening 80 lines; the
+    # Details section further down should carry it. Hunt for anything date- or
+    # time-shaped with context, so the schedule sync is written against fact.
+    hunt = re.compile(r'\d{1,2}:\d{2}|\d{4}-\d{2}-\d{2}|Aug|venue|stadium|Wagener|Belfius', re.I)
+    hits = [(i, ln) for i, ln in enumerate(lines) if hunt.search(ln)]
+    print(f'  match page {mid} — {len(hits)} date/time/venue-shaped lines:')
+    for i, ln in hits[:40]:
+        ctx = ' | '.join(l.strip()[:30] for l in lines[max(0, i - 1):i + 2])
+        print(f'  [{i}] {ctx}')
 
 HEAD_COACH = re.compile(r'^Head Coach\s+(\S.*)$')
 
@@ -1514,6 +1525,94 @@ def predict(home_rank, away_rank):
     p_away = (1 - p_home_raw) * (1 - p_draw)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
+def revise_stale_predictions(fixtures, predictions, rank_of, now):
+    """
+    Publish a visible correction for a pick whose match has not started but
+    whose inputs were wrong when it was written.
+
+    Every early pick was generated from the hand-seeded FIH ranks, 13 of which
+    were wrong; the FRA v MAS pick read "#10 MAS favoured over #13 FRA" while
+    fih.hockey has FRA #9 and MAS #14. Picks are never rewritten or deleted —
+    the original stays in the ledger, marked superseded, and a revision becomes
+    the active pick. That is an erratum, not revisionism: the record of what
+    was published survives, and the app stops asserting rank claims its own
+    rankings tab contradicts. A match that has kicked off is never touched —
+    a wrong pick that ran is a miss, and it stays one.
+    """
+    by_match = {}
+    for p in predictions['predictions']:
+        if not p.get('superseded'):
+            by_match[p['matchId']] = p
+    matches = {m['id']: m for m in fixtures['matches']}
+    changed = False
+
+    for mid, p in by_match.items():
+        m = matches.get(mid)
+        if not m or m['home'] == 'TBD':
+            continue
+        # The only picks eligible for revision are those whose match has not
+        # kicked off — which by itself excludes every backfill. (Not gated on
+        # basis: the earliest picks predate that field.)
+        try:
+            if kickoff(m) <= now:
+                continue
+        except ValueError:
+            continue
+        hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
+        if hr is None or ar is None:
+            continue
+        ph, pd, pa = predict(hr, ar)
+        if m['phase'] != 'pool':
+            adv_h = ph + pd / 2
+            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
+            conf = round(max(adv_h, 1 - adv_h), 3)
+        else:
+            pick = 'HOME' if ph >= max(pd, pa) else ('AWAY' if pa >= pd else 'DRAW')
+            conf = round(max(ph, pd, pa), 3)
+        # A pick is stale if its numbers no longer follow from the current
+        # ranks — or if the ranks its reason asserts are simply not the ranks.
+        # (IND v PAK moved from #5 v #9 to #8 v #12: same gap, same
+        # probabilities, still a false claim on the page.)
+        stated = sorted(int(x) for x in re.findall(r'#(\d+)', p.get('reason', '')))
+        if ((p['pick'], p['p_home_win'], p['p_draw'], p['p_away_win']) == (pick, ph, pd, pa)
+                and (not stated or stated == sorted((hr, ar)))):
+            continue
+        rev = sum(1 for q in predictions['predictions'] if q['matchId'] == mid) + 1
+        fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
+        p['superseded'] = True
+        p['superseded_at'] = now.isoformat()
+        p['superseded_reason'] = 'FIH ranks corrected against fih.hockey; pick revised before push-back.'
+        predictions['predictions'].append({
+            'id': f"oracle-v1:{mid}:r{rev}",
+            'matchId': mid,
+            'source': 'oracle-v1',
+            'basis': 'pre-match',
+            'revises': p['id'],
+            'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
+            'pick': pick, 'pick_confidence': conf,
+            'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model "
+                       f"from world rankings. Revised before push-back: the original pick used "
+                       f"seeded ranks later corrected against fih.hockey, and stays in the ledger."),
+            'publishedAt': now.isoformat(),
+        })
+        changed = True
+        print(f"ORACLE REVISION: {mid} {p['pick']} -> {pick} (ranks corrected, match not started)")
+    return changed
+
+def fix_venues(fixtures):
+    """Pool venues follow the pool: A and D play at Wagener (Amstelveen), B and
+    C at Belfius (Brussels). The seeded data had them inverted for two pools —
+    the app showed FRA v MAS at the Wagener while FIH plays it in Belgium."""
+    POOL_VENUE = {'A': 'AMV', 'D': 'AMV', 'B': 'BRU', 'C': 'BRU'}
+    changed = False
+    for m in fixtures['matches']:
+        want = POOL_VENUE.get(m.get('pool')) if m['phase'] == 'pool' else None
+        if want and m.get('venue') != want:
+            print(f"VENUE: {m['id']} {m['home']} v {m['away']} {m.get('venue')} -> {want}")
+            m['venue'] = want
+            changed = True
+    return changed
+
 def generate_predictions(fixtures, teams, predictions):
     """
     Every fixture with both teams known carries an engine pick — including
@@ -1527,6 +1626,8 @@ def generate_predictions(fixtures, teams, predictions):
     have = {p['matchId'] for p in predictions['predictions']}
     changed = False
     now = now_utc()
+
+    changed |= revise_stale_predictions(fixtures, predictions, rank_of, now)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':
@@ -1575,6 +1676,7 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
+    changed |= fix_venues(fixtures)
     changed |= update_statuses(fixtures)
 
     # The matches page carries every final score by team-code pair — the

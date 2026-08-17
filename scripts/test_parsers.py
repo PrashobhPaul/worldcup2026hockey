@@ -18,6 +18,7 @@ from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
     parse_tms_results, update_statuses, backfill_scores_from_tms,
+    revise_stale_predictions, fix_venues, predict,
     TMS_LINEUP_LINK,
 )
 
@@ -416,6 +417,51 @@ d4 = fixtures['matches'][2]
 check('a page score is applied once standings confirm, oriented to our fixture',
       d4['score'] == {'home': 3, 'away': 3} and d4['result_source'] == 'fih-tms-matches'
       and d4['status'] == 'completed')
+
+print('\nOracle pick revision (erratum, never rewrite)')
+
+# The reported case: FRA v MAS picked "MAS favoured" off seeded ranks that had
+# MAS #10 / FRA #13, when fih.hockey has FRA #9 / MAS #14.
+future = {'matches': [
+    {'id': 'B4', 'home': 'FRA', 'away': 'MAS', 'phase': 'pool', 'pool': 'B',
+     'date': '2026-08-18', 'time': '17:00', 'status': 'scheduled', 'score': None},
+    {'id': 'B9', 'home': 'FRA', 'away': 'MAS', 'phase': 'pool', 'pool': 'B',
+     'date': '2026-08-16', 'time': '17:00', 'status': 'live', 'score': None},
+]}
+stale = lambda mid: {
+    'id': f'oracle-v1:{mid}', 'matchId': mid, 'source': 'oracle-v1', 'basis': 'pre-match',
+    'p_home_win': 0.28, 'p_draw': 0.17, 'p_away_win': 0.55,
+    'pick': 'AWAY', 'pick_confidence': 0.55,
+    'reason': 'FIH #10 MAS favoured over #13 FRA — Elo model from world rankings.',
+}
+preds = {'predictions': [stale('B4'), stale('B9')]}
+ranks = {'FRA': 9, 'MAS': 14}
+revise_stale_predictions(future, preds, ranks, afternoon)
+b4 = [p for p in preds['predictions'] if p['matchId'] == 'B4']
+b9 = [p for p in preds['predictions'] if p['matchId'] == 'B9']
+check('a stale pick on an unstarted match is superseded, not rewritten',
+      b4[0]['superseded'] and b4[0]['pick'] == 'AWAY' and len(b4) == 2)
+check('the revision favours the higher-ranked team',
+      b4[1]['pick'] == 'HOME' and b4[1]['revises'] == 'oracle-v1:B4')
+check('revision probabilities come from the corrected ranks',
+      (b4[1]['p_home_win'], b4[1]['p_draw'], b4[1]['p_away_win']) == predict(9, 14))
+check('a started match is never touched',
+      len(b9) == 1 and not b9[0].get('superseded'))
+check('a second pass changes nothing',
+      not revise_stale_predictions(future, preds, ranks, afternoon))
+
+print('\nPool venues')
+vfix = {'matches': [
+    {'id': 'D4', 'home': 'PAK', 'away': 'WAL', 'phase': 'pool', 'pool': 'D', 'venue': 'BRU'},
+    {'id': 'B4', 'home': 'FRA', 'away': 'MAS', 'phase': 'pool', 'pool': 'B', 'venue': 'AMV'},
+    {'id': 'A1', 'home': 'ARG', 'away': 'JPN', 'phase': 'pool', 'pool': 'A', 'venue': 'AMV'},
+    {'id': 'QF1', 'home': 'TBD', 'away': 'TBD', 'phase': 'quarter-final', 'venue': 'AMV'},
+]}
+fix_venues(vfix)
+check('pool D plays at the Wagener', vfix['matches'][0]['venue'] == 'AMV')
+check('pool B plays at the Belfius', vfix['matches'][1]['venue'] == 'BRU')
+check('a correct venue is left alone', vfix['matches'][2]['venue'] == 'AMV')
+check('knockout venues are not guessed', vfix['matches'][3]['venue'] == 'AMV')
 
 print()
 if failures:

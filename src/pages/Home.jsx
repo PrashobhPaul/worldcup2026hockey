@@ -100,7 +100,8 @@ function NextMatchCard({ match, teams }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
   const h = byCode.get(match.home), a = byCode.get(match.away)
   const prediction = useLiveQuery(
-    () => db.predictions.where('matchId').equals(match.id).first(), [match.id])
+    () => db.predictions.where('matchId').equals(match.id).toArray()
+      .then(rows => rows.find(p => !p.superseded) ?? null), [match.id])
   const pred = prediction ? derivePrediction({ match, row: prediction }) : null
   return (
     <Link to={`/matches/${match.id}`}

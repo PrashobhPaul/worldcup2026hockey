@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
-import { derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
+import { activePredictions, derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
@@ -298,7 +298,7 @@ function BracketTab({ bundle, teams }) {
 function PicksTab({ matches, predictions, teams }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
   const byMatch = new Map(matches.map(m => [m.id, m]))
-  const rows = predictions
+  const rows = activePredictions(predictions)
     .map(p => ({ p, m: byMatch.get(p.matchId) }))
     .filter(r => r.m)
     .sort((a, b) => b.m.kickoffUtc - a.m.kickoffUtc)

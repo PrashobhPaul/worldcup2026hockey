@@ -41,7 +41,8 @@ function StatusBadge({ match, clock }) {
 
 function PredictionChip({ match }) {
   const row = useLiveQuery(
-    () => db.predictions.where('matchId').equals(match.id).first(),
+    () => db.predictions.where('matchId').equals(match.id).toArray()
+      .then(rows => rows.find(p => !p.superseded) ?? null),
     [match.id],
   )
   if (!row) return null
