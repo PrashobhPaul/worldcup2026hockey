@@ -147,7 +147,7 @@ function OddsTab({ bundle, teams }) {
             <tr className="border-b border-white/5 font-mono text-[10px] uppercase tracking-wider text-pitch-400">
               <th className="py-2 pl-1 text-left">#</th>
               <th className="py-2 text-left">Team</th>
-              <th className="px-1.5 py-2 text-right">QF</th>
+              <th className="px-1.5 py-2 text-right">Last 8</th>
               <th className="px-1.5 py-2 text-right">SF</th>
               <th className="px-1.5 py-2 text-right">Final</th>
               <th className="px-1.5 py-2 text-right text-brand">Champion</th>
@@ -166,7 +166,7 @@ function OddsTab({ bundle, teams }) {
                       <span className={`font-semibold ${out ? 'line-through' : ''}`}>{t?.name ?? r.teamName}</span>
                     </Link>
                   </td>
-                  <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.qf)}</td>
+                  <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.top8)}</td>
                   <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.sf)}</td>
                   <td className="px-1.5 text-right font-mono text-[12px] text-pitch-300">{pct(r.final)}</td>
                   <td className="px-1.5 text-right font-mono text-[12px] font-bold text-brand">{pct(r.champion)}</td>
@@ -254,9 +254,9 @@ function TieCard({ tie, byCode }) {
 function BracketTab({ bundle, teams }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
   const groups = [
-    ['Quarter-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('QF'))],
-    ['Semi-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('SF'))],
-    ['Medal Matches', bundle.bracket.ties.filter(t => t.id === 'BRZ' || t.id === 'GOLD')],
+    ['Semi-Finals', bundle.bracket.ties.filter(t => t.group === 'semi')],
+    ['Medal Matches', bundle.bracket.ties.filter(t => t.group === 'medal')],
+    ['Classification (5th–16th)', bundle.bracket.ties.filter(t => t.group === 'classification')],
   ]
   const champLeader = bundle.current.probabilities[0]
   const champCode = champLeader?.teamId

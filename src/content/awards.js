@@ -59,7 +59,7 @@ export const HOF_AWARDS = [
     ringTone: 'bronze',
     oraclePick: 'Netherlands',
     oraclePickTeam: 'NED',
-    statLine: 'Lowest card count among projected semi-finalists',
+    statLine: 'Lowest card count among projected medal contenders',
     reason: 'Deep runs accumulate bookings — the trophy weighs discipline against distance travelled. The hosts profile cleanest.',
     winner: null, winnerTeam: null, grade: 'not_graded',
   },

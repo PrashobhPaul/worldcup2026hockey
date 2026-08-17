@@ -296,52 +296,91 @@ function WinProbabilityView({ bundle, byCode }) {
 }
 
 function BracketView({ bundle, byCode, matches }) {
-  const groups = [
-    ['Quarter-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('QF'))],
-    ['Semi-Finals', bundle.bracket.ties.filter(t => t.id.startsWith('SF'))],
-    ['Medal Matches', bundle.bracket.ties.filter(t => t.id === 'BRZ' || t.id === 'GOLD')],
-  ]
   const koById = new Map(matches.filter(m => m.phase !== 'pool').map(m => [m.id, m]))
+  const stage2 = bundle.bracket.stage2 ?? {}
+  const groups = [
+    ['Semi-Finals', bundle.bracket.ties.filter(t => t.group === 'semi')],
+    ['Medal Matches', bundle.bracket.ties.filter(t => t.group === 'medal')],
+    ['Classification · 5th–16th', bundle.bracket.ties.filter(t => t.group === 'classification')],
+  ]
+
+  const TieRow = ({ tie }) => {
+    const m = koById.get(tie.id)
+    const h = byCode.get(tie.home), a = byCode.get(tie.away)
+    const pH = tie.pHomeAdvance
+    return (
+      <div className="flex flex-wrap items-center gap-2.5 rounded-lg border border-white/5 bg-pitch-800 px-3.5 py-2.5 text-sm">
+        <span className={`font-medium ${tie.predicted === tie.home ? 'font-bold' : ''}`}>
+          {h ? `${h.flag} ${h.name}` : (tie.home ? tie.home : '❓ TBD')}
+        </span>
+        {pH != null && tie.home && !tie.played && (
+          <span className="font-mono text-[10px] text-brand">{Math.round(pH * 100)}%</span>
+        )}
+        <span className="font-mono text-xs text-pitch-400">vs</span>
+        <span className={`font-medium ${tie.predicted === tie.away ? 'font-bold' : ''}`}>
+          {a ? `${a.flag} ${a.name}` : (tie.away ? tie.away : 'TBD')}
+        </span>
+        {pH != null && tie.away && !tie.played && (
+          <span className="font-mono text-[10px] text-brand">{Math.round((1 - pH) * 100)}%</span>
+        )}
+        {tie.played && tie.winner && (
+          <span className="font-mono text-[10px] font-bold text-live">→ {tie.winner}</span>
+        )}
+        <span className="ml-auto font-mono text-[10px] text-pitch-400">
+          {!tie.locked && '○ projected · '}
+          {m && <>{m.label?.split('—')[0].trim()} · {formatDate(m.date)} · {m.venue === 'AMV' ? 'Amstelveen' : 'Brussels'}</>}
+        </span>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6">
-      {groups.map(([label, ties]) => (
+      {/* Stage 2 — the group phase that replaces the quarter-finals */}
+      <div>
+        <h2 className="mb-1 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Stage 2 · Group Phase</h2>
+        <p className="mb-2.5 font-mono text-[10px] text-pitch-400">
+          Pools A–D reshuffle into four Stage-2 pools; head-to-head between teams from the same
+          Stage-1 pool carries forward. The top two of <b className="text-brand">Pools E &amp; F</b> reach the semi-finals.
+        </p>
+        <div className="grid gap-2.5 sm:grid-cols-2">
+          {Object.values(stage2).map(pool => (
+            <div key={pool.id} className={`rounded-xl border bg-pitch-800 p-3.5 ${pool.championship ? 'border-brand/25' : 'border-white/5'}`}>
+              <div className="mb-2 flex items-center justify-between">
+                <h3 className="font-display text-sm font-semibold">
+                  Pool {pool.id} {pool.championship && <span className="font-mono text-[9px] text-brand">· championship</span>}
+                </h3>
+                <span className="font-mono text-[9px] text-pitch-400">{pool.locked ? '● set' : '○ projected'}</span>
+              </div>
+              <ol className="space-y-1">
+                {pool.teams.map((code, i) => {
+                  const t = code ? byCode.get(code) : null
+                  const advances = pool.championship && i < 2
+                  return (
+                    <li key={i} className="flex items-center gap-2 text-sm">
+                      <span className={`w-4 text-center font-mono text-[10px] ${advances ? 'text-brand' : 'text-pitch-400'}`}>{i + 1}</span>
+                      <span>{t?.flag ?? '❓'}</span>
+                      <span className={`flex-1 truncate ${advances ? 'font-semibold' : 'text-pitch-300'}`}>{t?.name ?? 'TBD'}</span>
+                      {advances && <span className="font-mono text-[9px] text-brand">→ SF</span>}
+                    </li>
+                  )
+                })}
+              </ol>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {groups.map(([label, ties]) => ties.length > 0 && (
         <div key={label}>
           <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">{label}</h2>
           <div className="space-y-2">
-            {ties.map(tie => {
-              const m = koById.get(tie.id)
-              const h = byCode.get(tie.home), a = byCode.get(tie.away)
-              const pH = tie.pHomeAdvance
-              return (
-                <div key={tie.id} className="flex flex-wrap items-center gap-2.5 rounded-lg border border-white/5 bg-pitch-800 px-3.5 py-2.5 text-sm">
-                  <span className={`font-medium ${tie.predicted === tie.home ? 'font-bold' : ''}`}>
-                    {h ? `${h.flag} ${h.name}` : '❓ TBD'}
-                  </span>
-                  {pH != null && tie.home && !tie.played && (
-                    <span className="font-mono text-[10px] text-brand">{Math.round(pH * 100)}%</span>
-                  )}
-                  <span className="font-mono text-xs text-pitch-400">vs</span>
-                  <span className={`font-medium ${tie.predicted === tie.away ? 'font-bold' : ''}`}>
-                    {a ? `${a.flag} ${a.name}` : 'TBD'}
-                  </span>
-                  {pH != null && tie.away && !tie.played && (
-                    <span className="font-mono text-[10px] text-brand">{Math.round((1 - pH) * 100)}%</span>
-                  )}
-                  {tie.played && tie.winner && (
-                    <span className="font-mono text-[10px] font-bold text-live">→ {tie.winner}</span>
-                  )}
-                  <span className="ml-auto font-mono text-[10px] text-pitch-400">
-                    {!tie.locked && '○ projected · '}
-                    {m && <>{m.label} · {formatDate(m.date)} · {m.venue === 'AMV' ? 'Amstelveen' : 'Brussels'}</>}
-                  </span>
-                </div>
-              )
-            })}
+            {ties.map(tie => <TieRow key={tie.id} tie={tie} />)}
           </div>
         </div>
       ))}
       <p className="font-mono text-[11px] text-pitch-400">
-        Slots marked ○ are engine projections from current pool standings — they lock as pools complete (Aug 20).
+        Slots marked ○ are engine projections from current standings — they lock as each stage completes.
         Full candidate math on the <Link to="/prediction-race" className="text-brand hover:underline">Oracle bracket</Link>.
       </p>
     </div>

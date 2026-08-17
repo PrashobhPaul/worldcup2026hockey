@@ -75,7 +75,7 @@ export function toPercent(p, digits = 2) {
 }
 
 // ── Snapshot construction ─────────────────────────────────────────────────
-const EMPTY_REACH = { qf: 0, sf: 0, final: 0, bronze: 0, champion: 0 }
+const EMPTY_REACH = { top8: 0, sf: 0, final: 0, bronze: 0, champion: 0 }
 
 // The simulator draws from the RNG while resolving pool tie-breaks, so the
 // order its inputs arrive in would otherwise change the numbers: Dexie returns
@@ -115,13 +115,13 @@ function buildSnapshot(teams, matches, k, results) {
         champion: mass > 0 ? r.champion / mass : 0,
         final: r.final,
         sf: r.sf,
-        qf: r.qf,
+        top8: r.top8,
         bronze: r.bronze,
       }
     })
     .sort((a, b) =>
       b.champion - a.champion || b.final - a.final || b.sf - a.sf ||
-      b.qf - a.qf || a.teamId.localeCompare(b.teamId))
+      b.top8 - a.top8 || a.teamId.localeCompare(b.teamId))
 
   probabilities.forEach((p, i) => {
     p.rank = i + 1

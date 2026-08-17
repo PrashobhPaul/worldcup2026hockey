@@ -25,8 +25,11 @@ export function computeOracleBundle(teams, matches) {
   const standings = computeStandings(teams, matches)
   const bracket = projectBracket(teams, matches, standings)
 
-  // Elimination point on the finished-count axis: pool exits when the pool
-  // completes without a top-2 finish; knockout losers at that tie's result.
+  // Title-elimination point on the finished-count axis. Everyone advances from
+  // Stage 1 to Stage 2, so nobody is out of the *tournament* at the pool stage —
+  // but finishing 3rd/4th drops a team into pools G/H, which only play for
+  // places 9–16, so they are out of *contention* the moment their pool
+  // completes. Semi-final losers drop out of the gold race at that result.
   const eliminationAt = new Map()
   const poolMatches = matches.filter(m => m.phase === 'pool')
   for (const pool of standings) {
@@ -36,13 +39,13 @@ export function computeOracleBundle(teams, matches) {
     pool.standings.slice(2).forEach(row => {
       const lastIdx = results.reduce((acc, m, i) =>
         (m.home === row.team || m.away === row.team) ? i + 1 : acc, 0)
-      eliminationAt.set(row.team, { finishedCount: lastIdx, stage: 'Pool' })
+      eliminationAt.set(row.team, { finishedCount: lastIdx, stage: 'Stage 2 (9–16)' })
     })
   }
   for (const tie of bracket.ties) {
-    if (tie.played && tie.loser && tie.id !== 'BRZ' && tie.id !== 'GOLD') {
+    if (tie.played && tie.loser && tie.group === 'semi') {
       const idx = results.findIndex(m => m.id === tie.id)
-      if (idx >= 0) eliminationAt.set(tie.loser, { finishedCount: idx + 1, stage: tie.id.startsWith('QF') ? 'QF' : 'SF' })
+      if (idx >= 0) eliminationAt.set(tie.loser, { finishedCount: idx + 1, stage: 'SF' })
     }
   }
 
