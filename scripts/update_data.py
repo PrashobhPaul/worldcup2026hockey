@@ -444,91 +444,57 @@ def parse_player_rows(lines):
 # showed a 0-0 that never happened. The schedule is data like any other —
 # fetched from TMS, never trusted from a seed.
 
-MONTHS = {m: i + 1 for i, m in enumerate(
-    ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'])}
-# A full-line date heading — "Monday, 17 August 2026" or "17 Aug 2026". Anchored
-# so the tournament banner "15 - 30 Aug 2026" can never be read as a date.
-DATE_HEADING = re.compile(r'^(?:[A-Za-z]+,?\s+)?(\d{1,2})\s+([A-Za-z]{3,9})\.?\s+(\d{4})$')
-TIME_TOKEN = re.compile(r'\b([01]?\d|2[0-3]):([0-5]\d)\b')
+# The matches page flattens to triplets per match — "PAK - WAL", then either a
+# final score "3 - 3" or a relative "2 hours from now", then the pool letter.
+# So it carries every final result directly, by team-code pair, but no absolute
+# kickoff times: those live on the per-match pages, which are probed separately.
+TEAM_CODES = set(TEAM_CODE_MAP.values())
+PAIR_ROW = re.compile(r'^([A-Z]{3})\s*-\s*([A-Z]{3})$')
+SCORE_ROW = re.compile(r'^(\d{1,2})\s*-\s*(\d{1,2})$')
 
-def _nations_in(line):
-    low = ' ' + re.sub(r'[^a-z ]', ' ', line.lower()) + ' '
-    found = []
-    for name in _NATIONS_BY_LENGTH:
-        if f' {name} ' in low:
-            found.append(TEAM_CODE_MAP[name])
-            low = low.replace(f' {name} ', ' ')
-    return found
+def parse_tms_results(lines):
+    """{(home, away): (home_goals, away_goals)} from the TMS matches page.
 
-def parse_tms_match_schedule(lines, expected_pairs):
+    Only a pair row immediately answered by a score row counts — an upcoming
+    match's "2 hours from now" matches nothing, so it yields no result. A pair
+    appearing twice with different scores marks the page misread and returns
+    None rather than a coin-flip.
     """
-    {frozenset({home, away}): (date, time)} from the TMS matches page, or None.
-
-    The page flattens to a stream of date headings, kickoff times and nation
-    names. A match is emitted once two nations and a time have accumulated under
-    the current date. The result is applied only if every expected pool pairing
-    was read exactly once with a date inside the tournament window — a schedule
-    half-read is worse than one not read at all.
-    """
-    sched, current_date = {}, None
-    nations, time_seen = [], None
+    results, pending = {}, None
     for ln in lines:
-        d = DATE_HEADING.match(ln.strip())
-        if d and d.group(2)[:3].lower() in MONTHS:
-            current_date = f'{int(d.group(3)):04d}-{MONTHS[d.group(2)[:3].lower()]:02d}-{int(d.group(1)):02d}'
-            nations, time_seen = [], None
+        ln = ln.strip()
+        if ln in ('', '&nbsp;'):
             continue
-        found = _nations_in(ln)
-        if found:
-            nations = found if len(found) >= 2 else nations + found
-        t = TIME_TOKEN.search(ln)
-        if t:
-            time_seen = f'{int(t.group(1)):02d}:{t.group(2)}'
-        if len(nations) >= 2 and time_seen and current_date:
-            key = frozenset(nations[:2])
-            if key in sched:
-                print(f'SCHEDULE: {sorted(key)} appears twice — page misread, applying nothing.')
+        pair = PAIR_ROW.match(ln)
+        if pair and pair.group(1) in TEAM_CODES and pair.group(2) in TEAM_CODES:
+            pending = (pair.group(1), pair.group(2))
+            continue
+        score = SCORE_ROW.match(ln)
+        if score and pending:
+            value = (int(score.group(1)), int(score.group(2)))
+            if pending in results and results[pending] != value:
+                print(f'RESULTS: {pending} appears twice with different scores — page misread.')
                 return None
-            sched[key] = (current_date, time_seen)
-            nations, time_seen = [], None
-    missing = [sorted(p) for p in expected_pairs if p not in sched]
-    if missing:
-        print(f'SCHEDULE: {len(missing)} expected pairings not found ({missing[:4]}…) — applying nothing.')
-        return None
-    for key, (d, _) in sched.items():
-        if not ('2026-08-14' <= d <= '2026-08-31'):
-            print(f'SCHEDULE: {sorted(key)} dated {d}, outside the tournament — applying nothing.')
-            return None
-    return sched
+            results[pending] = value
+        pending = None
+    return results
 
-def sync_schedule_from_tms(fixtures):
-    """Correct fixture dates and kickoff times against the TMS matches page."""
-    body, ctype = _tms_get(TMS_BASE + '/matches')
-    if not body:
-        return False
-    lines = _tms_lines(body)
-    expected = {frozenset({m['home'], m['away']}) for m in fixtures['matches']
-                if m['phase'] == 'pool' and m['home'] != 'TBD' and m['away'] != 'TBD'}
-    sched = parse_tms_match_schedule(lines, expected)
-    if sched is None:
-        _dump('matches page', lines, 100)
-        return False
-    changed = False
-    for m in fixtures['matches']:
-        if m['home'] == 'TBD' or m['away'] == 'TBD':
-            continue
-        entry = sched.get(frozenset({m['home'], m['away']}))
-        if not entry:
-            continue
-        date, time = entry
-        if (m['date'], m['time']) != (date, time):
-            print(f"SCHEDULE: {m['id']} {m['home']} v {m['away']} corrected "
-                  f"{m['date']} {m['time']} -> {date} {time} (fih-tms)")
-            m['date'], m['time'] = date, time
-            changed = True
-    if not changed:
-        print('SCHEDULE: fixtures already match the official TMS schedule.')
-    return changed
+def probe_tms_match_page(links):
+    """
+    Dump one per-match TMS page, to learn where the exact kickoff time lives.
+
+    The matches list only says "2 hours from now" for an upcoming game, and a
+    rounded relative hour is not a kickoff time. The detail page presumably is;
+    its layout is unknown, so one run reads a single page and prints it, and
+    the schedule parser gets written against that output — the same look-first
+    loop as the team sheets.
+    """
+    if not links:
+        return
+    mid = sorted(links, key=int)[0]
+    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
+    if body:
+        _dump(f'match page {mid}', _tms_lines(body), 80)
 
 HEAD_COACH = re.compile(r'^Head Coach\s+(\S.*)$')
 
@@ -658,6 +624,7 @@ def probe_tms_lineups():
     if not links:
         print('LINEUPS: no /matches/{id}/lineups/{team} links found this run.')
         return
+    probe_tms_match_page(links)
     mid = sorted(links, key=int)[0]
     for tid in links[mid][:2]:
         code, roster, lines = fetch_tms_lineup(mid, tid)
@@ -687,21 +654,43 @@ def reconcile_team_lists(players_doc, squads):
         return False
     changed = False
     for code, roster in squads.items():
-        listed = {e['name'].lower(): e['name'] for e in roster}
+        listed = {e['name'].lower(): e for e in roster}
         keep = []
         for p in players_doc['players']:
             if p['team'] != code:
                 keep.append(p)
                 continue
-            on_list = p['name'].lower() in listed
+            entry = listed.get(p['name'].lower())
+            on_list = entry is not None
             # Names are matched without case so a re-read finds the same player,
             # which means a row added before the name reader was fixed would keep
             # its old spelling for good — WAQAR stayed WAQAR. On a machine-added
             # row the official spelling wins.
-            if on_list and p.get('source') == 'fih-team-list' and p['name'] != listed[p['name'].lower()]:
-                print(f"SQUADS: respelling {code} {p['name']} -> {listed[p['name'].lower()]}")
-                p['name'] = listed[p['name'].lower()]
+            if on_list and p.get('source') == 'fih-team-list' and p['name'] != entry['name']:
+                print(f"SQUADS: respelling {code} {p['name']} -> {entry['name']}")
+                p['name'] = entry['name']
                 changed = True
+            if on_list:
+                # The entry list is the authority on identity: shirt number,
+                # captaincy, who keeps goal. A seeded player matched to the list
+                # but keeping his seeded shirt number blocked the real holder —
+                # Calnan sat on #7 while FIH lists him at #31 and Wallace at #7.
+                # Statistics are never touched here.
+                if entry.get('number') is not None and p.get('number') != entry['number']:
+                    print(f"SQUADS: {code} {p['name']} shirt {p.get('number')} -> {entry['number']} (official)")
+                    p['number'] = entry['number']
+                    changed = True
+                if 'is_captain' in entry and bool(p.get('is_captain')) != entry['is_captain']:
+                    p['is_captain'] = entry['is_captain']
+                    changed = True
+                if entry.get('goalkeeper') and p.get('position') != 'Goalkeeper':
+                    print(f"SQUADS: {code} {p['name']} is FIH-listed as a goalkeeper.")
+                    p['position'] = 'Goalkeeper'
+                    changed = True
+                for field in ('dob', 'caps'):
+                    if entry.get(field) is not None and p.get(field) != entry[field]:
+                        p[field] = entry[field]
+                        changed = True
             if not on_list and p.get('source') == 'fih-team-list':
                 print(f"SQUADS: dropping {code} {p['name']} — not on the current team list.")
                 changed = True
@@ -1095,7 +1084,7 @@ def local_pool_tallies(fixtures):
             t['ga'] += m['score'][opp]
     return tally
 
-def backfill_scores_from_tms(fixtures, tms, now=None):
+def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
     """
     Fill final scores for finished pool matches, using TMS standings deltas.
     A team's GF delta since our last snapshot IS its score in its one new match,
@@ -1115,6 +1104,7 @@ def backfill_scores_from_tms(fixtures, tms, now=None):
     now = now or now_utc()
     local = local_pool_tallies(fixtures)
     remote = {row['team']: row for pool in tms.values() for row in pool}
+    page_results = page_results or {}
 
     def window_over(m):
         try:
@@ -1133,15 +1123,39 @@ def backfill_scores_from_tms(fixtures, tms, now=None):
     changed = False
     for m in pending:
         h, a = m['home'], m['away']
-        if pending_count.get(h, 0) > 1 or pending_count.get(a, 0) > 1:
-            print(f"BACKFILL SKIP {m['id']}: team has multiple unresolved matches — needs manual entry")
-            continue
         rh, ra = remote.get(h), remote.get(a)
         lh = local.get(h, {'played': 0, 'gf': 0, 'ga': 0})
         la = local.get(a, {'played': 0, 'gf': 0, 'ga': 0})
         if not rh or not ra:
             continue
-        if rh['played'] - lh['played'] != 1 or ra['played'] - la['played'] != 1:
+        dh, da = rh['played'] - lh['played'], ra['played'] - la['played']
+
+        # Primary source: the matches page names the pair and its final score
+        # outright. The standings played-count is the freshness witness — a
+        # standings row only absorbs a match once it is final, so requiring
+        # both teams' rows to have absorbed every pending match guarantees the
+        # page score is a final, never a live one caught mid-match.
+        page = page_results.get((h, a)) or (
+            page_results.get((a, h)) and page_results[(a, h)][::-1])
+        if page and dh >= pending_count[h] and da >= pending_count[a]:
+            sh, sa = page
+            if dh == 1 and da == 1 and (rh['gf'] - lh['gf'], ra['gf'] - la['gf']) != (sh, sa):
+                print(f"BACKFILL SKIP {m['id']}: page says {sh}-{sa} but standings "
+                      f"deltas disagree — leaving it for the next run.")
+                continue
+            m['score'] = {'home': sh, 'away': sa}
+            m['result_source'] = 'fih-tms-matches'
+            m['status'] = 'completed'
+            changed = True
+            print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS matches page)")
+            continue
+
+        # Fallback: infer the score from standings deltas alone. Only sound
+        # when each team has exactly one new match on its row.
+        if pending_count.get(h, 0) > 1 or pending_count.get(a, 0) > 1:
+            print(f"BACKFILL SKIP {m['id']}: team has multiple unresolved matches — needs manual entry")
+            continue
+        if dh != 1 or da != 1:
             continue  # TMS hasn't published this round yet (or is ahead by 2+)
         sh, sa = rh['gf'] - lh['gf'], ra['gf'] - la['gf']
         # Cross-check: each side's GA delta must equal the opponent's score
@@ -1561,10 +1575,14 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
-    # The official schedule first: statuses are computed from kickoff times, so
-    # the times must be right before the clock is allowed to say anything.
-    changed |= sync_schedule_from_tms(fixtures)
     changed |= update_statuses(fixtures)
+
+    # The matches page carries every final score by team-code pair — the
+    # primary result source, consumed by the backfill below.
+    page_body, _ = _tms_get(TMS_BASE + '/matches')
+    page_results = parse_tms_results(_tms_lines(page_body)) if page_body else {}
+    if page_results:
+        print(f'RESULTS: matches page carries {len(page_results)} final scores.')
 
     # Official FIH world rankings — fetched here because CI has the egress
     # that local sandboxes don't. Feeds both the UI and the model prior.
@@ -1580,7 +1598,7 @@ def main():
     tms = fetch_tms_standings()
     if tms:
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
-        changed |= backfill_scores_from_tms(fixtures, tms)
+        changed |= backfill_scores_from_tms(fixtures, tms, page_results)
 
     changed |= estimate_enrichment(fixtures, players)
     changed |= update_player_stats(fixtures, players)

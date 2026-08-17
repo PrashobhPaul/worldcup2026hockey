@@ -17,7 +17,7 @@ from datetime import datetime, timezone  # noqa: E402
 from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
-    parse_tms_match_schedule, update_statuses, backfill_scores_from_tms,
+    parse_tms_results, update_statuses, backfill_scores_from_tms,
     TMS_LINEUP_LINK,
 )
 
@@ -243,6 +243,17 @@ check('a nation the list did not cover is left alone', 'Untouched' in names)
 check('listed players are marked',
       all(p['on_team_list'] for p in doc['players'] if p['name'] in ('Waqar', 'Ali Raza')))
 
+# Calnan sat on seeded #7 while FIH lists him at #31 — which blocked the real
+# #7, Wallace, from ever being added. The list is the authority on identity.
+doc2 = {'players': [{'team': 'ENG', 'name': 'Will Calnan', 'number': 7,
+                     'position': 'Midfielder', 'goals': 2}]}
+reconcile_team_lists(doc2, {'ENG': [
+    {'name': 'Will Calnan', 'number': 31, 'is_captain': False, 'goalkeeper': False},
+]})
+p = doc2['players'][0]
+check('a stale seeded shirt number is corrected to the official one', p['number'] == 31)
+check('identity correction never touches statistics', p['goals'] == 2)
+
 print('\nTeam sheet composition')
 
 def player(pid, name, position=None, **kw):
@@ -300,37 +311,30 @@ check('a squad with no keeper yields no sheet',
       compose_lineup('TST', [p for p in squad if p['position'] != 'Goalkeeper'], seeded_rng('t')) is None)
 check('too small a squad yields no sheet', compose_lineup('TST', squad[:6], seeded_rng('t')) is None)
 
-print('\nTMS match schedule')
+print('\nTMS matches-page results')
 
-# The page flattens to date headings, times, nations — with finished matches
-# carrying scores ("3 - 3") that must not be read as anything.
+# Verbatim from the live run's dump: pair, then a final score or a relative
+# time for upcoming matches, then the pool letter.
 page = [
-    'Matches', 'Monday, 17 August 2026',
-    '09:30', 'Pakistan', 'Wales', '3 - 3', 'FT',
-    '11:30', 'France', 'Malaysia', '3 - 3',
-    '13:30', 'India', 'England', '2 - 4',
-    '20:30', 'Germany', 'Belgium',
-    'Tuesday, 18 August 2026',
-    '09:30', 'New Zealand', 'Japan',
+    'FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)', '15 - 30 Aug 2026',
+    'Local Time 2026-08-17 17:50:54',
+    '&nbsp;', 'IND - WAL', '&nbsp;', '3 - 1', 'D',
+    '&nbsp;', 'PAK - WAL', '&nbsp;', '3 - 3', 'D',
+    '&nbsp;', 'FRA - MAS', '&nbsp;', '3 - 3', 'B',
+    '&nbsp;', 'IND - ENG', '&nbsp;', '2 - 4', 'D',
+    '&nbsp;', 'GER - BEL', '&nbsp;', '2 hours from now', 'B',
+    '&nbsp;', 'NZL - JPN', '&nbsp;', '15 hours from now', 'A',
 ]
-pairs = [frozenset(p) for p in
-         (('PAK', 'WAL'), ('FRA', 'MAS'), ('IND', 'ENG'), ('GER', 'BEL'), ('NZL', 'JPN'))]
-sched = parse_tms_match_schedule(page, pairs)
-check('the schedule parses', sched is not None)
-check('BEL v GER reads 20:30, not an invented slot',
-      sched and sched[frozenset(('GER', 'BEL'))] == ('2026-08-17', '20:30'))
-check('the date heading carries across rows',
-      sched and sched[frozenset(('PAK', 'WAL'))] == ('2026-08-17', '09:30'))
-check('a new date heading resets the day',
-      sched and sched[frozenset(('NZL', 'JPN'))] == ('2026-08-18', '09:30'))
-check('a score is never read as a kickoff time',
-      sched and sched[frozenset(('FRA', 'MAS'))][1] == '11:30')
-check('a missing pairing rejects the whole page',
-      parse_tms_match_schedule(page, pairs + [frozenset(('AUS', 'ESP'))]) is None)
-check('the tournament banner is not a date',
-      parse_tms_match_schedule(['15 - 30 Aug 2026', '09:30', 'Pakistan', 'Wales'],
-                               [frozenset(('PAK', 'WAL'))]) is None)
-check('an empty page yields nothing', parse_tms_match_schedule([], pairs) is None)
+results = parse_tms_results(page)
+check('finished matches are read with their scores',
+      results.get(('PAK', 'WAL')) == (3, 3) and results.get(('IND', 'ENG')) == (2, 4))
+check('an upcoming match yields no result', ('GER', 'BEL') not in results)
+check('"15 hours from now" is not a score', ('NZL', 'JPN') not in results)
+check('the tournament banner "15 - 30" is not a pair or score',
+      all(k[0] in ('IND', 'PAK', 'FRA') for k in results))
+check('a pair repeated with different scores rejects the page',
+      parse_tms_results(['IND - WAL', '3 - 1', 'IND - WAL', '2 - 1']) is None)
+check('an empty page yields no results', parse_tms_results([]) == {})
 
 print('\nMatch status honesty')
 
@@ -396,6 +400,22 @@ check('the backfilled match is closed on the spot', d4['status'] == 'completed')
 b3 = fixtures['matches'][3]
 check('an unplayed match never becomes a phantom 0-0',
       b3['score'] is None and b3['status'] == 'scheduled')
+
+# The matches page as primary source: the score is applied pair-direct (with
+# orientation), and a page score whose match the standings have not yet
+# absorbed is treated as possibly live and left alone.
+fixtures['matches'][2].update(status='live', score=None)
+fixtures['matches'][2].pop('result_source', None)
+tms_stale = rows(PAK=(1, 1, 4), WAL=(1, 0, 5), GER=(1, 2, 1), BEL=(1, 3, 2))
+backfill_scores_from_tms(fixtures, {'X': tms_stale['X']},
+                         page_results={('WAL', 'PAK'): (2, 1)}, now=afternoon)
+check('a page score is not applied while standings have not absorbed the match',
+      fixtures['matches'][2]['score'] is None)
+backfill_scores_from_tms(fixtures, tms, page_results={('WAL', 'PAK'): (3, 3)}, now=afternoon)
+d4 = fixtures['matches'][2]
+check('a page score is applied once standings confirm, oriented to our fixture',
+      d4['score'] == {'home': 3, 'away': 3} and d4['result_source'] == 'fih-tms-matches'
+      and d4['status'] == 'completed')
 
 print()
 if failures:
