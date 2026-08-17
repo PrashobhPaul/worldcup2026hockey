@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T13:37:44.666540+00:00",
+  "last_updated": "2026-08-17T14:53:44.193820+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -3833,10 +3833,60 @@
       "venue": "BRU",
       "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 15,
+          "team": "ENG",
+          "type": "green_card",
+          "player": "Timothy Nurse"
+        },
+        {
+          "minute": 18,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Ben Fox"
+        },
+        {
+          "minute": 22,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Liam Sanford",
+          "assist": "Nicholas Bandurak"
+        },
+        {
+          "minute": 22,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Manpreet Singh"
+        },
+        {
+          "minute": 30,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Hardik Singh"
+        },
+        {
+          "minute": 35,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "David Goodfield"
+        },
+        {
+          "minute": 50,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Nicholas Bandurak"
+        }
+      ],
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-17T03:29:29.320883+00:00",
@@ -4163,7 +4213,104 @@
           "team": "IND",
           "coach": "Craig Fulton"
         }
-      }
+      },
+      "result_source": "fih-tms",
+      "penalty_corners": {
+        "home": 7,
+        "away": 8
+      },
+      "stats": {
+        "home": {
+          "goals": 4,
+          "shots": 12,
+          "circle_entries": 31,
+          "penalty_corners": 7,
+          "possession": 56,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 7,
+          "circle_entries": 20,
+          "penalty_corners": 8,
+          "possession": 44,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ENG vs IND under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "team": "ENG",
+          "text": "Green Card for Timothy Nurse (ENG) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ENG 0-0 IND.",
+          "seq": 2
+        },
+        {
+          "minute": 18,
+          "team": "ENG",
+          "text": "GOAL! Ben Fox (ENG) scores from a penalty corner — ENG 1-0 IND.",
+          "seq": 3
+        },
+        {
+          "minute": 22,
+          "team": "ENG",
+          "text": "GOAL! Liam Sanford (ENG) scores from a field goal — ENG 2-0 IND.",
+          "seq": 4
+        },
+        {
+          "minute": 22,
+          "team": "IND",
+          "text": "GOAL! Manpreet Singh (IND) scores from a penalty corner — ENG 2-1 IND.",
+          "seq": 5
+        },
+        {
+          "minute": 30,
+          "team": "IND",
+          "text": "GOAL! Hardik Singh (IND) scores from a penalty corner — ENG 2-2 IND.",
+          "seq": 6
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ENG 2-2 IND.",
+          "seq": 7
+        },
+        {
+          "minute": 35,
+          "team": "ENG",
+          "text": "GOAL! David Goodfield (ENG) scores from a penalty corner — ENG 3-2 IND.",
+          "seq": 8
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ENG 3-2 IND.",
+          "seq": 9
+        },
+        {
+          "minute": 50,
+          "team": "ENG",
+          "text": "GOAL! Nicholas Bandurak (ENG) scores from a field goal — ENG 4-2 IND.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ENG 4-2 IND.",
+          "seq": 11
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "D4",
