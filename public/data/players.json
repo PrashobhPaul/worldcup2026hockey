@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-17T16:23:18.183995+00:00",
+  "last_updated": "2026-08-17T17:06:19.872286+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -3489,14 +3489,15 @@
       "red_cards": 0,
       "green_cards": 0,
       "is_captain": true,
-      "fih_star": false,
+      "fih_star": true,
       "profile": "Named on the official FIH team list — 92 senior caps.",
       "dob": "29 Dec 1999",
       "caps": 92,
       "matches_played": 1,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "world_rank": 82
     },
     {
       "id": "JPN_13",
@@ -4347,14 +4348,15 @@
       "red_cards": 0,
       "green_cards": 0,
       "is_captain": false,
-      "fih_star": false,
+      "fih_star": true,
       "profile": "Named on the official FIH team list — 54 senior caps.",
       "dob": "20 Jul 2003",
       "caps": 54,
       "matches_played": 1,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "world_rank": 78
     },
     {
       "id": "NZL_05",
@@ -4677,14 +4679,15 @@
       "red_cards": 0,
       "green_cards": 0,
       "is_captain": false,
-      "fih_star": false,
+      "fih_star": true,
       "profile": "Named on the official FIH team list — 17 senior caps.",
       "dob": "4 Jul 1999",
       "caps": 17,
       "matches_played": 1,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "world_rank": 2
     },
     {
       "id": "PAK_04",
@@ -4919,14 +4922,15 @@
       "red_cards": 0,
       "green_cards": 0,
       "is_captain": false,
-      "fih_star": false,
+      "fih_star": true,
       "profile": "Named on the official FIH team list — 49 senior caps.",
       "dob": "7 Feb 1999",
       "caps": 50,
       "matches_played": 2,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "world_rank": 7
     },
     {
       "id": "PAK_15",

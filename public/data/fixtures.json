@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T16:23:18.183995+00:00",
+  "last_updated": "2026-08-17T17:06:19.872286+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -644,7 +644,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.045229+00:00",
+        "generated_at": "2026-08-17T17:06:19.864973+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -840,6 +840,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_12",
               "name": "Ammad Butt",
               "number": 16,
@@ -858,20 +867,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_05",
-              "name": "Muhammad Abdullah",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_01",
               "name": "Sufyan Khan",
               "number": 5,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_05",
+              "name": "Muhammad Abdullah",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -888,7 +897,7 @@
               "playerId": "PAK_06",
               "name": "Moin Shakeel",
               "number": 7,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -910,15 +919,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_08",
-              "name": "Zikriya Hayat",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -930,30 +930,30 @@
               "onAt": "46:00"
             },
             {
+              "playerId": "PAK_08",
+              "name": "Zikriya Hayat",
+              "number": 10,
+              "position": null,
+              "onAt": "27:46"
+            },
+            {
               "playerId": "PAK_07",
               "name": "Hannan Shahid",
               "number": 9,
               "position": null,
-              "onAt": "27:46"
+              "onAt": "23:47"
             },
             {
               "playerId": "PAK_13",
               "name": "Muhammad Hammadudin",
               "number": 17,
               "position": null,
-              "onAt": "23:47"
+              "onAt": "19:02"
             },
             {
               "playerId": "PAK_10",
               "name": "Ahmad Nadeem",
               "number": 14,
-              "position": null,
-              "onAt": "19:02"
-            },
-            {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
               "position": null,
               "onAt": "46:14"
             },
@@ -2587,7 +2587,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.046431+00:00",
+        "generated_at": "2026-08-17T17:06:19.866245+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2776,6 +2776,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_04",
+              "name": "Charlie Morrison",
+              "number": 8,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -2788,7 +2806,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2797,7 +2815,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2815,16 +2833,7 @@
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_04",
-              "name": "Charlie Morrison",
-              "number": 8,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2846,15 +2855,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_15",
-              "name": "Isaac Houlbrooke",
-              "number": 37,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -2866,37 +2866,37 @@
               "onAt": "32:35"
             },
             {
+              "playerId": "NZL_15",
+              "name": "Isaac Houlbrooke",
+              "number": 37,
+              "position": null,
+              "onAt": "18:38"
+            },
+            {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "18:38"
+              "onAt": "32:29"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "32:29"
+              "onAt": "40:49"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
               "position": null,
-              "onAt": "40:49"
+              "onAt": "11:02"
             },
             {
               "playerId": "NZL_12",
               "name": "Finn Ward",
               "number": 30,
-              "position": null,
-              "onAt": "11:02"
-            },
-            {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
               "position": null,
               "onAt": "33:46"
             },
@@ -4495,7 +4495,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.047621+00:00",
+        "generated_at": "2026-08-17T17:06:19.867467+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4519,6 +4519,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_12",
               "name": "Ammad Butt",
               "number": 16,
@@ -4537,20 +4546,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_05",
-              "name": "Muhammad Abdullah",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_01",
               "name": "Sufyan Khan",
               "number": 5,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_05",
+              "name": "Muhammad Abdullah",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -4567,7 +4576,7 @@
               "playerId": "PAK_06",
               "name": "Moin Shakeel",
               "number": 7,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -4589,15 +4598,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_08",
-              "name": "Zikriya Hayat",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -4609,30 +4609,30 @@
               "onAt": "38:50"
             },
             {
+              "playerId": "PAK_08",
+              "name": "Zikriya Hayat",
+              "number": 10,
+              "position": null,
+              "onAt": "43:31"
+            },
+            {
               "playerId": "PAK_07",
               "name": "Hannan Shahid",
               "number": 9,
               "position": null,
-              "onAt": "43:31"
+              "onAt": "51:58"
             },
             {
               "playerId": "PAK_13",
               "name": "Muhammad Hammadudin",
               "number": 17,
               "position": null,
-              "onAt": "51:58"
+              "onAt": "08:02"
             },
             {
               "playerId": "PAK_10",
               "name": "Ahmad Nadeem",
               "number": 14,
-              "position": null,
-              "onAt": "08:02"
-            },
-            {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
               "position": null,
               "onAt": "10:24"
             },
@@ -6183,7 +6183,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.048785+00:00",
+        "generated_at": "2026-08-17T17:06:19.868658+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6379,6 +6379,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_04",
+              "name": "Charlie Morrison",
+              "number": 8,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -6391,7 +6409,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6400,7 +6418,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6418,16 +6436,7 @@
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_04",
-              "name": "Charlie Morrison",
-              "number": 8,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6449,15 +6458,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_15",
-              "name": "Isaac Houlbrooke",
-              "number": 37,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -6469,37 +6469,37 @@
               "onAt": "14:15"
             },
             {
+              "playerId": "NZL_15",
+              "name": "Isaac Houlbrooke",
+              "number": 37,
+              "position": null,
+              "onAt": "11:42"
+            },
+            {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "11:42"
+              "onAt": "48:28"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "48:28"
+              "onAt": "12:04"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
               "position": null,
-              "onAt": "12:04"
+              "onAt": "42:58"
             },
             {
               "playerId": "NZL_12",
               "name": "Finn Ward",
               "number": 30,
-              "position": null,
-              "onAt": "42:58"
-            },
-            {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
               "position": null,
               "onAt": "09:41"
             },
@@ -7626,7 +7626,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.049982+00:00",
+        "generated_at": "2026-08-17T17:06:19.869889+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7822,6 +7822,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_12",
               "name": "Ammad Butt",
               "number": 16,
@@ -7840,20 +7849,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_05",
-              "name": "Muhammad Abdullah",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_01",
               "name": "Sufyan Khan",
               "number": 5,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_05",
+              "name": "Muhammad Abdullah",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -7870,7 +7879,7 @@
               "playerId": "PAK_06",
               "name": "Moin Shakeel",
               "number": 7,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7892,15 +7901,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_08",
-              "name": "Zikriya Hayat",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -7912,30 +7912,30 @@
               "onAt": "19:39"
             },
             {
+              "playerId": "PAK_08",
+              "name": "Zikriya Hayat",
+              "number": 10,
+              "position": null,
+              "onAt": "41:18"
+            },
+            {
               "playerId": "PAK_07",
               "name": "Hannan Shahid",
               "number": 9,
               "position": null,
-              "onAt": "41:18"
+              "onAt": "15:18"
             },
             {
               "playerId": "PAK_13",
               "name": "Muhammad Hammadudin",
               "number": 17,
               "position": null,
-              "onAt": "15:18"
+              "onAt": "24:39"
             },
             {
               "playerId": "PAK_10",
               "name": "Ahmad Nadeem",
               "number": 14,
-              "position": null,
-              "onAt": "24:39"
-            },
-            {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
               "position": null,
               "onAt": "28:15"
             },
@@ -9048,7 +9048,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T16:00:59.051150+00:00",
+        "generated_at": "2026-08-17T17:06:19.871109+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9237,6 +9237,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_04",
+              "name": "Charlie Morrison",
+              "number": 8,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -9249,7 +9267,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9258,7 +9276,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9276,16 +9294,7 @@
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_04",
-              "name": "Charlie Morrison",
-              "number": 8,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9307,15 +9316,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_15",
-              "name": "Isaac Houlbrooke",
-              "number": 37,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -9327,37 +9327,37 @@
               "onAt": "10:06"
             },
             {
+              "playerId": "NZL_15",
+              "name": "Isaac Houlbrooke",
+              "number": 37,
+              "position": null,
+              "onAt": "22:32"
+            },
+            {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "22:32"
+              "onAt": "46:31"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "46:31"
+              "onAt": "48:50"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
               "position": null,
-              "onAt": "48:50"
+              "onAt": "17:57"
             },
             {
               "playerId": "NZL_12",
               "name": "Finn Ward",
               "number": 30,
-              "position": null,
-              "onAt": "17:57"
-            },
-            {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
               "position": null,
               "onAt": "50:01"
             },
