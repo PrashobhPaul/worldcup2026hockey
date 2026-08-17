@@ -197,10 +197,24 @@ def _pdf_lines(pdf_bytes):
         print(f'  TMS pdf parse failed: {e}')
     return out
 
-# "8 BRINKMAN Thierry (C)" / "23 VISSER Maurits GK" — number, SURNAME Given, role
-SQUAD_ROW = re.compile(
-    r'^\s*(\d{1,2})\s+([A-ZÀ-ÿ][A-Za-zÀ-ÿ\'`-]+(?:\s+[A-ZÀ-ÿ][A-Za-zÀ-ÿ\'`-]+)*)'
-    r'\s*(\(C\)|\bC\b|\bGK\b|\bG\b)?\s*$')
+# "8 BRINKMAN Thierry (C)" / "23 VISSER Maurits GK" — number, then the name,
+# then optional role markers. The role is split off the tail rather than matched
+# inside the name pattern: "GK" is capitalised like a surname, so a greedy name
+# match swallows it and the goalkeeper silently loses their flag.
+SQUAD_ROW = re.compile(r'^\s*(\d{1,2})\s+([A-ZÀ-ÿ][^\d]*?)\s*$')
+ROLE_TOKENS = {'GK', 'G', 'C'}
+
+def split_role(name):
+    tokens = name.split()
+    roles = set()
+    while tokens:
+        tail = tokens[-1].upper().strip('()[].')
+        if tail in ROLE_TOKENS:
+            roles.add(tail)
+            tokens.pop()
+        else:
+            break
+    return ' '.join(tokens), roles
 
 def parse_squad_lines(lines):
     """Group '12 SURNAME Given' rows under the team heading above them."""
@@ -213,14 +227,43 @@ def parse_squad_lines(lines):
             continue
         m = SQUAD_ROW.match(ln)
         if m and current:
-            role = (m.group(3) or '').upper()
+            name, roles = split_role(m.group(2))
+            if not name:
+                continue
             squads[current].append({
                 'number': int(m.group(1)),
-                'name': ' '.join(m.group(2).split()),
-                'is_captain': 'C' in role and 'GK' not in role,
-                'goalkeeper': 'GK' in role or role == 'G',
+                'name': ' '.join(name.split()),
+                'is_captain': 'C' in roles,
+                'goalkeeper': bool(roles & {'GK', 'G'}),
             })
     return {k: v for k, v in squads.items() if v}
+
+def discover_tms_reports():
+    """
+    Print the report links TMS actually publishes for this competition.
+
+    Guessing report paths cost a run: /reports/teamlists, /reports/entrylists,
+    /reports/squads and /teams/export all 404'd while /reports/poolstandings
+    works. Rather than guess again, the competition pages are fetched and every
+    link that looks like a report is logged, so the next run's log names the
+    real endpoints.
+    """
+    seen = set()
+    for path in ('', '/matches', '/teams', '/reports'):
+        body, ctype = _tms_get(TMS_BASE + path)
+        if not body or 'html' not in (ctype or ''):
+            continue
+        html = body.decode('utf-8', 'replace')
+        for href in re.findall(r'href=["\']([^"\']+)["\']', html):
+            if re.search(r'report|teamlist|squad|entry|lineup|\.pdf$', href, re.I):
+                seen.add(href.split('?')[0])
+    if seen:
+        print(f'TMS DISCOVERY: {len(seen)} candidate report links:')
+        for href in sorted(seen)[:40]:
+            print(f'  > {href}')
+    else:
+        print('TMS DISCOVERY: no report-shaped links found on the competition pages.')
+    return sorted(seen)
 
 def fetch_tms_squads():
     """Official entry lists for all 16 nations, or None."""
@@ -239,6 +282,7 @@ def fetch_tms_squads():
         for ln in lines[:25]:
             print(f'  | {ln[:100]}')
     print('SQUADS: no usable TMS team list this run — squads unchanged.')
+    discover_tms_reports()
     return None
 
 def merge_squads(players_doc, squads, teams):
@@ -386,6 +430,57 @@ MATCH_DURATION_MIN = 105  # 60 play + breaks + buffer
 # Ranks are never hand-typed: if the fetch or parse fails, the existing data is
 # left untouched and the failure is logged loudly for the next run to fix.
 
+def parse_rankings_text(lines):
+    """
+    (rank, code, points) triples from the flattened ranking page, or None.
+
+    The page renders one flat cell per line: rank, nation, points, rank, …
+    Pairing a nation with "the nearest preceding integer" is not safe — when a
+    nation's points happen to be a whole number, that value is mistaken for the
+    next row's rank and every following pairing shifts by one. That is what made
+    two runs 36 minutes apart disagree about Wales and Japan.
+
+    So each nation is read as a full row (rank before it, points after it) and
+    the result is checked against what must be true of any ranking table:
+    ranks unique and increasing down the page, points never increasing.
+    """
+    rows, pending_rank = [], None
+    for i, ln in enumerate(lines):
+        if re.fullmatch(r'\d{1,3}', ln):
+            pending_rank = int(ln)
+            continue
+        code = TEAM_CODE_MAP.get(ln.lower().strip())
+        if not code or pending_rank is None:
+            continue
+        points = None
+        for nxt in lines[i + 1:i + 4]:            # points sit just after the nation
+            m = re.fullmatch(r'(\d{1,5}(?:[.,]\d+)?)', nxt.replace(' ', ''))
+            if m:
+                points = float(m.group(1).replace(',', '.'))
+                break
+        rows.append((pending_rank, code, points))
+        pending_rank = None
+
+    if not rows:
+        return None
+    seen = set()
+    for idx, (rank, code, points) in enumerate(rows):
+        if code in seen or not (1 <= rank <= 150):
+            print(f'RANKINGS: rejected — {code} appears twice or rank {rank} out of range.')
+            return None
+        seen.add(code)
+        if idx and rank <= rows[idx - 1][0]:
+            print(f'RANKINGS: rejected — rank {rank} ({code}) does not follow '
+                  f'{rows[idx - 1][0]} ({rows[idx - 1][1]}) down the page.')
+            return None
+        if idx and points is not None and rows[idx - 1][2] is not None \
+                and points > rows[idx - 1][2] + 1e-9:
+            print(f'RANKINGS: rejected — {code} has more points ({points}) than the '
+                  f'nation ranked above it ({rows[idx - 1][1]}, {rows[idx - 1][2]}). '
+                  f'The rank/points columns did not line up.')
+            return None
+    return rows
+
 def fetch_fih_rankings():
     """Scrape the official men's outdoor world ranking → {code: rank}."""
     html = None
@@ -411,28 +506,19 @@ def fetch_fih_rankings():
                 .replace('&#039;', "'").replace('&quot;', '"'))
     lines = [ln.strip() for ln in text.split('\n') if ln.strip()]
 
-    # The table renders as a flat run of cells: rank, nation, points, …
-    # Pair each known nation with the nearest preceding standalone integer.
-    ranks, seen_rank = {}, None
-    for ln in lines:
-        if re.fullmatch(r'\d{1,3}', ln):
-            seen_rank = int(ln)
-            continue
-        code = TEAM_CODE_MAP.get(ln.lower().strip())
-        if code and seen_rank and code not in ranks and 1 <= seen_rank <= 150:
-            ranks[code] = seen_rank
-            seen_rank = None
-
-    if len(ranks) < 8:
-        print(f'RANKINGS: parse matched only {len(ranks)} nations — treating as failure.')
+    rows = parse_rankings_text(lines)
+    if not rows or len(rows) < 12:
+        found = len(rows) if rows else 0
+        print(f'RANKINGS: only {found} of 16 nations parsed cleanly — leaving ranks untouched.')
         print('RANKINGS: sample of page text follows for parser tuning:')
         for ln in lines[:40]:
             print(f'  | {ln[:90]}')
         return None
 
-    print(f'RANKINGS: parsed {len(ranks)} World Cup nations: '
-          + ', '.join(f'{c}#{r}' for c, r in sorted(ranks.items(), key=lambda kv: kv[1])))
-    return ranks
+    print('RANKINGS: official table read as ' + ', '.join(
+        f'{code}#{rank}' + (f'({points:g}pts)' if points is not None else '')
+        for rank, code, points in rows))
+    return {code: rank for rank, code, _ in rows}
 
 def apply_rankings(teams, ranks):
     """Write official ranks into teams.json. Returns True if anything changed."""
