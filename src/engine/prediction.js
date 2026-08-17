@@ -126,9 +126,14 @@ export function gradePrediction(match, row) {
   return 'pending'
 }
 
+// One active pick per match: a superseded row is a retained erratum (the
+// pick was revised before push-back when its rank inputs were corrected) and
+// must never be shown as current or graded.
+export const activePredictions = predictions => predictions.filter(p => !p.superseded)
+
 // Oracle running record across all predictions (header chip: 🏑 5/24 · 71%)
 export function oracleRecord(matches, predictions) {
-  const bySource = predictions.filter(p => p.source === 'oracle-v1' || !p.source)
+  const bySource = activePredictions(predictions).filter(p => p.source === 'oracle-v1' || !p.source)
   let graded = 0, correct = 0
   for (const p of bySource) {
     const m = matches.find(x => x.id === p.matchId)

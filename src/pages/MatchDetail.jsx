@@ -185,7 +185,8 @@ export default function MatchDetailPage() {
     [matchId], [],
   )
   const prediction = useLiveQuery(
-    () => db.predictions.where('matchId').equals(matchId).first(),
+    () => db.predictions.where('matchId').equals(matchId).toArray()
+      .then(rows => rows.find(p => !p.superseded) ?? null),
     [matchId],
   )
   const story = useLiveQuery(() => db.ai_stories.get(matchId), [matchId])
@@ -256,7 +257,7 @@ export default function MatchDetailPage() {
             {(done || live) ? (
               <>
                 <div className={`font-mono text-4xl font-bold tracking-widest ${live ? 'text-live' : ''}`}>
-                  {match.score?.home ?? 0}–{match.score?.away ?? 0}
+                  {match.score?.home ?? (live ? 0 : '–')}–{match.score?.away ?? (live ? 0 : '–')}
                 </div>
                 <span className={`mt-1 rounded px-2 py-0.5 font-mono text-[11px] font-bold ${
                   live ? 'border border-live/30 bg-live/10 text-live' : 'bg-pitch-700 text-pitch-300'

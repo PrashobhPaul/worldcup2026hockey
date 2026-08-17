@@ -437,6 +437,76 @@ def parse_player_rows(lines):
         uniq.append(p)
     return uniq
 
+# ── Official match schedule ───────────────────────────────────────────────
+# The kickoff times in fixtures.json were seeded by hand, and at least three
+# were wrong: BEL v GER was held at 13:30 when FIH plays it at 20:30, so the
+# clock-driven status flipper declared an unplayed match finished, and the app
+# showed a 0-0 that never happened. The schedule is data like any other —
+# fetched from TMS, never trusted from a seed.
+
+# The matches page flattens to triplets per match — "PAK - WAL", then either a
+# final score "3 - 3" or a relative "2 hours from now", then the pool letter.
+# So it carries every final result directly, by team-code pair, but no absolute
+# kickoff times: those live on the per-match pages, which are probed separately.
+TEAM_CODES = set(TEAM_CODE_MAP.values())
+PAIR_ROW = re.compile(r'^([A-Z]{3})\s*-\s*([A-Z]{3})$')
+SCORE_ROW = re.compile(r'^(\d{1,2})\s*-\s*(\d{1,2})$')
+
+def parse_tms_results(lines):
+    """{(home, away): (home_goals, away_goals)} from the TMS matches page.
+
+    Only a pair row immediately answered by a score row counts — an upcoming
+    match's "2 hours from now" matches nothing, so it yields no result. A pair
+    appearing twice with different scores marks the page misread and returns
+    None rather than a coin-flip.
+    """
+    results, pending = {}, None
+    for ln in lines:
+        ln = ln.strip()
+        if ln in ('', '&nbsp;'):
+            continue
+        pair = PAIR_ROW.match(ln)
+        if pair and pair.group(1) in TEAM_CODES and pair.group(2) in TEAM_CODES:
+            pending = (pair.group(1), pair.group(2))
+            continue
+        score = SCORE_ROW.match(ln)
+        if score and pending:
+            value = (int(score.group(1)), int(score.group(2)))
+            if pending in results and results[pending] != value:
+                print(f'RESULTS: {pending} appears twice with different scores — page misread.')
+                return None
+            results[pending] = value
+        pending = None
+    return results
+
+def probe_tms_match_page(links):
+    """
+    Dump one per-match TMS page, to learn where the exact kickoff time lives.
+
+    The matches list only says "2 hours from now" for an upcoming game, and a
+    rounded relative hour is not a kickoff time. The detail page presumably is;
+    its layout is unknown, so one run reads a single page and prints it, and
+    the schedule parser gets written against that output — the same look-first
+    loop as the team sheets.
+    """
+    if not links:
+        return
+    mid = sorted(links, key=int)[0]
+    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
+    if not body:
+        return
+    lines = _tms_lines(body)
+    _dump(f'match page {mid}', lines, 80)
+    # The first dump showed no kickoff datetime in the opening 80 lines; the
+    # Details section further down should carry it. Hunt for anything date- or
+    # time-shaped with context, so the schedule sync is written against fact.
+    hunt = re.compile(r'\d{1,2}:\d{2}|\d{4}-\d{2}-\d{2}|Aug|venue|stadium|Wagener|Belfius', re.I)
+    hits = [(i, ln) for i, ln in enumerate(lines) if hunt.search(ln)]
+    print(f'  match page {mid} — {len(hits)} date/time/venue-shaped lines:')
+    for i, ln in hits[:40]:
+        ctx = ' | '.join(l.strip()[:30] for l in lines[max(0, i - 1):i + 2])
+        print(f'  [{i}] {ctx}')
+
 HEAD_COACH = re.compile(r'^Head Coach\s+(\S.*)$')
 
 def parse_team_staff(lines):
@@ -531,50 +601,77 @@ def discover_tms_lineup_links():
     print(f'LINEUPS: {len(found)} TMS matches linked, {len(pairs)} with both team sheets.')
     return pairs
 
-def fetch_tms_lineup(mid, tid):
-    """(team_code, [players]) for one side of one match, or (None, [])."""
-    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}/lineups/{tid}',
-                           referer=f'{TMS_HOST}/matches/{mid}')
-    if not body:
-        return None, [], []
-    lines = _tms_lines(body)
-    code = None
-    for ln in lines[:40]:
-        hit = TEAM_CODE_MAP.get(ln.strip().lower())
-        if hit:
-            code = hit
-            break
-    if code is None:                              # nation may sit inside a longer cell
-        blob = ' '.join(lines[:40]).lower()
-        for name, c in TEAM_CODE_MAP.items():
-            if name in blob:
-                code = c
-                break
-    return code, parse_player_rows(lines), lines
+# The per-match page's Details section labels the kickoff and venue outright:
+# a "Date/Time" cell followed by "2026-08-15 13:00" (venue local), a "Venue"
+# cell followed by the stadium name, and the pairing as "IND v WAL" near the
+# top. The head-to-head section carries dates of past meetings, so only the
+# labeled Date/Time row counts — never the first date-shaped thing on the page.
+MATCH_PAIR = re.compile(r'^([A-Z]{3}) v ([A-Z]{3})$')
+MATCH_DT = re.compile(r'^(\d{4}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})$')
 
-def probe_tms_lineups():
-    """
-    Read two real team sheets and report exactly what came back.
+def parse_match_page(lines):
+    """{'pair': (h, a), 'date': ..., 'time': ..., 'venue': 'AMV'|'BRU'|None} or None."""
+    pair = date = time = venue = None
+    for i, ln in enumerate(lines):
+        ln = ln.strip()
+        m = MATCH_PAIR.match(ln)
+        if m and not pair and m.group(1) in TEAM_CODES and m.group(2) in TEAM_CODES:
+            pair = (m.group(1), m.group(2))
+        if ln == 'Date/Time' and i + 1 < len(lines):
+            dt = MATCH_DT.match(lines[i + 1].strip())
+            if dt:
+                date, t = dt.group(1), dt.group(2)
+                time = f'{int(t.split(":")[0]):02d}:{t.split(":")[1]}'
+        if ln == 'Venue' and i + 1 < len(lines):
+            nxt = lines[i + 1]
+            venue = 'AMV' if 'Wagener' in nxt else 'BRU' if 'Belfius' in nxt else None
+    if not pair or not date:
+        return None
+    if not ('2026-08-14' <= date <= '2026-08-31'):
+        print(f'SCHEDULE: {pair} dated {date}, outside the tournament — ignored.')
+        return None
+    return {'pair': pair, 'date': date, 'time': time, 'venue': venue}
 
-    Deliberately writes nothing. A sheet's layout is still unknown — whether it
-    marks starters, where the nation sits, PDF or HTML — and writing 44 guessed
-    line-ups into fixtures.json is far more expensive to unpick than spending
-    one run looking first. The applier is written against this output.
+def sync_schedule_from_match_pages(fixtures, links):
     """
-    links = discover_tms_lineup_links()
-    if not links:
-        print('LINEUPS: no /matches/{id}/lineups/{team} links found this run.')
-        return
-    mid = sorted(links, key=int)[0]
-    for tid in links[mid][:2]:
-        code, roster, lines = fetch_tms_lineup(mid, tid)
-        print(f'LINEUP PROBE: match {mid} team {tid} -> nation {code or "UNRESOLVED"}, '
-              f'{len(roster)} players parsed')
-        for p in roster[:20]:
-            flags = ''.join(c for c, on in (('C', p['is_captain']), ('GK', p['goalkeeper'])) if on)
-            print(f"    {p['number']:>2} {p['name']}{' ' + flags if flags else ''}")
-        if code is None or len(roster) < 11:
-            _dump(f'match {mid} team {tid}', lines)
+    Correct kickoff date, time and venue against each TMS match page.
+
+    The seeded schedule was wrong in both directions — BEL v GER held at 13:30
+    when FIH plays it at 20:30, IND v WAL at 13:30 when FIH played it at
+    13:00 — and a wrong kickoff is what let the clock fabricate a finished
+    match. Each fixture also learns its TMS match id, so later runs skip pages
+    for matches already completed, and the official line-ups on those pages
+    have an address when they are wired in.
+    """
+    by_pair = {frozenset((m['home'], m['away'])): m for m in fixtures['matches']
+               if m['home'] != 'TBD' and m['away'] != 'TBD'}
+    known = {str(m.get('tms_id')): m for m in fixtures['matches'] if m.get('tms_id')}
+    changed = False
+    for mid in sorted(links, key=int):
+        prior = known.get(mid)
+        if prior is not None and prior['status'] == 'completed' and has_score(prior):
+            continue  # its kickoff is history; don't refetch every run
+        body, _ = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
+        if not body:
+            continue
+        info = parse_match_page(_tms_lines(body))
+        if not info:
+            print(f'SCHEDULE: match page {mid} did not parse — skipped.')
+            continue
+        m = by_pair.get(frozenset(info['pair']))
+        if not m:
+            continue
+        if m.get('tms_id') != int(mid):
+            m['tms_id'] = int(mid)
+            changed = True
+        updates = {'date': info['date'], 'time': info['time'], 'venue': info['venue']}
+        for field, want in updates.items():
+            if want and m.get(field) != want:
+                print(f"SCHEDULE: {m['id']} {m['home']} v {m['away']} {field} "
+                      f"{m.get(field)} -> {want} (fih-tms)")
+                m[field] = want
+                changed = True
+    return changed
 
 def reconcile_team_lists(players_doc, squads):
     """Mark who is actually in the tournament, and undo earlier misreads.
@@ -594,21 +691,43 @@ def reconcile_team_lists(players_doc, squads):
         return False
     changed = False
     for code, roster in squads.items():
-        listed = {e['name'].lower(): e['name'] for e in roster}
+        listed = {e['name'].lower(): e for e in roster}
         keep = []
         for p in players_doc['players']:
             if p['team'] != code:
                 keep.append(p)
                 continue
-            on_list = p['name'].lower() in listed
+            entry = listed.get(p['name'].lower())
+            on_list = entry is not None
             # Names are matched without case so a re-read finds the same player,
             # which means a row added before the name reader was fixed would keep
             # its old spelling for good — WAQAR stayed WAQAR. On a machine-added
             # row the official spelling wins.
-            if on_list and p.get('source') == 'fih-team-list' and p['name'] != listed[p['name'].lower()]:
-                print(f"SQUADS: respelling {code} {p['name']} -> {listed[p['name'].lower()]}")
-                p['name'] = listed[p['name'].lower()]
+            if on_list and p.get('source') == 'fih-team-list' and p['name'] != entry['name']:
+                print(f"SQUADS: respelling {code} {p['name']} -> {entry['name']}")
+                p['name'] = entry['name']
                 changed = True
+            if on_list:
+                # The entry list is the authority on identity: shirt number,
+                # captaincy, who keeps goal. A seeded player matched to the list
+                # but keeping his seeded shirt number blocked the real holder —
+                # Calnan sat on #7 while FIH lists him at #31 and Wallace at #7.
+                # Statistics are never touched here.
+                if entry.get('number') is not None and p.get('number') != entry['number']:
+                    print(f"SQUADS: {code} {p['name']} shirt {p.get('number')} -> {entry['number']} (official)")
+                    p['number'] = entry['number']
+                    changed = True
+                if 'is_captain' in entry and bool(p.get('is_captain')) != entry['is_captain']:
+                    p['is_captain'] = entry['is_captain']
+                    changed = True
+                if entry.get('goalkeeper') and p.get('position') != 'Goalkeeper':
+                    print(f"SQUADS: {code} {p['name']} is FIH-listed as a goalkeeper.")
+                    p['position'] = 'Goalkeeper'
+                    changed = True
+                for field in ('dob', 'caps'):
+                    if entry.get(field) is not None and p.get(field) != entry[field]:
+                        p[field] = entry[field]
+                        changed = True
             if not on_list and p.get('source') == 'fih-team-list':
                 print(f"SQUADS: dropping {code} {p['name']} — not on the current team list.")
                 changed = True
@@ -941,26 +1060,57 @@ def apply_rankings(teams, ranks):
         print('RANKINGS: already in sync with fih.hockey.')
     return changed
 
-def update_statuses(fixtures):
-    """scheduled -> live -> completed based on kickoff time. Never touches scores."""
+def update_statuses(fixtures, now=None):
+    """scheduled -> live -> completed. Never touches scores.
+
+    The clock decides when a match should be underway; only a real score
+    finishes one. The old rule completed any match whose time window had
+    passed, which turned one wrong kickoff time into a fabricated result —
+    BEL v GER was shown finished 0-0 seven hours before it kicked off. A match
+    past its window with no score now stays live ("awaiting result") until the
+    TMS backfill or manual entry supplies the score, and a match completed by
+    the clock alone is walked back to whatever the clock actually supports.
+    """
     changed = False
-    now = now_utc()
+    now = now or now_utc()
     for m in fixtures['matches']:
-        if m['home'] == 'TBD' or m['status'] == 'completed':
+        if m['home'] == 'TBD':
             continue
         try:
             ko = kickoff(m)
         except ValueError:
             continue
         end = ko + timedelta(minutes=MATCH_DURATION_MIN)
-        if ko <= now < end and m['status'] == 'scheduled':
+
+        if m['status'] == 'completed' and not has_score(m):
+            # Completed by the old clock-only rule, or the schedule moved
+            # under it. There is no result, so it is not completed.
+            m['status'] = 'scheduled' if now < ko else 'live'
+            changed = True
+            print(f"STATUS REPAIR: {m['id']} {m['home']} v {m['away']} was 'completed' "
+                  f"with no score -> {m['status']}")
+        if m['status'] == 'live' and not has_score(m) and now < ko:
+            # Live under a wrong kickoff time that the schedule sync has since
+            # corrected into the future. Nothing is being played; say so.
+            m['status'] = 'scheduled'
+            changed = True
+            print(f"STATUS REPAIR: {m['id']} {m['home']} v {m['away']} was 'live' "
+                  f"before its corrected kickoff -> scheduled")
+        if m['status'] == 'completed':
+            continue
+
+        if m['status'] == 'scheduled' and ko <= now:
             m['status'] = 'live'
             changed = True
             print(f"LIVE: {m['id']} {m['home']} vs {m['away']}")
-        elif now >= end and m['status'] in ('scheduled', 'live'):
-            m['status'] = 'completed'
-            changed = True
-            print(f"COMPLETED (window): {m['id']}")
+        if m['status'] == 'live' and now >= end:
+            if has_score(m):
+                m['status'] = 'completed'
+                changed = True
+                print(f"COMPLETED: {m['id']} {m['home']} {m['score']['home']}-{m['score']['away']} {m['away']}")
+            else:
+                print(f"AWAITING RESULT: {m['id']} {m['home']} v {m['away']} — "
+                      f"window over, no score yet (backfill will finish it)")
     return changed
 
 # ------------------------------------------- score back-fill from TMS
@@ -978,21 +1128,37 @@ def local_pool_tallies(fixtures):
             t['ga'] += m['score'][opp]
     return tally
 
-def backfill_scores_from_tms(fixtures, tms):
+def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
     """
-    Fill final scores for completed pool matches without one, using TMS deltas.
+    Fill final scores for finished pool matches, using TMS standings deltas.
     A team's GF delta since our last snapshot IS its score in its one new match,
     so match (A vs B) resolves to (gfΔ_A, gfΔ_B). Skipped (and logged) if any
-    involved team has more than one scoreless completed match — manual entry
+    involved team has more than one scoreless finished match — manual entry
     then remains the fallback, and we never guess.
+
+    Eligibility is the clock, not the stored status: since a match without a
+    score is never marked completed any more, waiting for 'completed' here
+    would deadlock. Any scoreless pool match whose window has passed is fair
+    game, and a filled match is closed on the spot. The played-count delta also
+    protects against a wrong kickoff time: a team whose standings row has not
+    moved yields no result, rather than a phantom 0-0.
     """
     if not tms:
         return False
+    now = now or now_utc()
     local = local_pool_tallies(fixtures)
     remote = {row['team']: row for pool in tms.values() for row in pool}
+    page_results = page_results or {}
+
+    def window_over(m):
+        try:
+            return now >= kickoff(m) + timedelta(minutes=MATCH_DURATION_MIN)
+        except ValueError:
+            return False
 
     pending = [m for m in fixtures['matches']
-               if m['phase'] == 'pool' and m['status'] == 'completed' and not has_score(m)]
+               if m['phase'] == 'pool' and m['home'] != 'TBD'
+               and not has_score(m) and window_over(m)]
     pending_count = {}
     for m in pending:
         pending_count[m['home']] = pending_count.get(m['home'], 0) + 1
@@ -1001,15 +1167,39 @@ def backfill_scores_from_tms(fixtures, tms):
     changed = False
     for m in pending:
         h, a = m['home'], m['away']
-        if pending_count.get(h, 0) > 1 or pending_count.get(a, 0) > 1:
-            print(f"BACKFILL SKIP {m['id']}: team has multiple unresolved matches — needs manual entry")
-            continue
         rh, ra = remote.get(h), remote.get(a)
         lh = local.get(h, {'played': 0, 'gf': 0, 'ga': 0})
         la = local.get(a, {'played': 0, 'gf': 0, 'ga': 0})
         if not rh or not ra:
             continue
-        if rh['played'] - lh['played'] != 1 or ra['played'] - la['played'] != 1:
+        dh, da = rh['played'] - lh['played'], ra['played'] - la['played']
+
+        # Primary source: the matches page names the pair and its final score
+        # outright. The standings played-count is the freshness witness — a
+        # standings row only absorbs a match once it is final, so requiring
+        # both teams' rows to have absorbed every pending match guarantees the
+        # page score is a final, never a live one caught mid-match.
+        page = page_results.get((h, a)) or (
+            page_results.get((a, h)) and page_results[(a, h)][::-1])
+        if page and dh >= pending_count[h] and da >= pending_count[a]:
+            sh, sa = page
+            if dh == 1 and da == 1 and (rh['gf'] - lh['gf'], ra['gf'] - la['gf']) != (sh, sa):
+                print(f"BACKFILL SKIP {m['id']}: page says {sh}-{sa} but standings "
+                      f"deltas disagree — leaving it for the next run.")
+                continue
+            m['score'] = {'home': sh, 'away': sa}
+            m['result_source'] = 'fih-tms-matches'
+            m['status'] = 'completed'
+            changed = True
+            print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS matches page)")
+            continue
+
+        # Fallback: infer the score from standings deltas alone. Only sound
+        # when each team has exactly one new match on its row.
+        if pending_count.get(h, 0) > 1 or pending_count.get(a, 0) > 1:
+            print(f"BACKFILL SKIP {m['id']}: team has multiple unresolved matches — needs manual entry")
+            continue
+        if dh != 1 or da != 1:
             continue  # TMS hasn't published this round yet (or is ahead by 2+)
         sh, sa = rh['gf'] - lh['gf'], ra['gf'] - la['gf']
         # Cross-check: each side's GA delta must equal the opponent's score
@@ -1018,6 +1208,7 @@ def backfill_scores_from_tms(fixtures, tms):
             continue
         m['score'] = {'home': sh, 'away': sa}
         m['result_source'] = 'fih-tms'
+        m['status'] = 'completed'
         changed = True
         print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS standings deltas)")
     return changed
@@ -1367,6 +1558,94 @@ def predict(home_rank, away_rank):
     p_away = (1 - p_home_raw) * (1 - p_draw)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
+def revise_stale_predictions(fixtures, predictions, rank_of, now):
+    """
+    Publish a visible correction for a pick whose match has not started but
+    whose inputs were wrong when it was written.
+
+    Every early pick was generated from the hand-seeded FIH ranks, 13 of which
+    were wrong; the FRA v MAS pick read "#10 MAS favoured over #13 FRA" while
+    fih.hockey has FRA #9 and MAS #14. Picks are never rewritten or deleted —
+    the original stays in the ledger, marked superseded, and a revision becomes
+    the active pick. That is an erratum, not revisionism: the record of what
+    was published survives, and the app stops asserting rank claims its own
+    rankings tab contradicts. A match that has kicked off is never touched —
+    a wrong pick that ran is a miss, and it stays one.
+    """
+    by_match = {}
+    for p in predictions['predictions']:
+        if not p.get('superseded'):
+            by_match[p['matchId']] = p
+    matches = {m['id']: m for m in fixtures['matches']}
+    changed = False
+
+    for mid, p in by_match.items():
+        m = matches.get(mid)
+        if not m or m['home'] == 'TBD':
+            continue
+        # The only picks eligible for revision are those whose match has not
+        # kicked off — which by itself excludes every backfill. (Not gated on
+        # basis: the earliest picks predate that field.)
+        try:
+            if kickoff(m) <= now:
+                continue
+        except ValueError:
+            continue
+        hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
+        if hr is None or ar is None:
+            continue
+        ph, pd, pa = predict(hr, ar)
+        if m['phase'] != 'pool':
+            adv_h = ph + pd / 2
+            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
+            conf = round(max(adv_h, 1 - adv_h), 3)
+        else:
+            pick = 'HOME' if ph >= max(pd, pa) else ('AWAY' if pa >= pd else 'DRAW')
+            conf = round(max(ph, pd, pa), 3)
+        # A pick is stale if its numbers no longer follow from the current
+        # ranks — or if the ranks its reason asserts are simply not the ranks.
+        # (IND v PAK moved from #5 v #9 to #8 v #12: same gap, same
+        # probabilities, still a false claim on the page.)
+        stated = sorted(int(x) for x in re.findall(r'#(\d+)', p.get('reason', '')))
+        if ((p['pick'], p['p_home_win'], p['p_draw'], p['p_away_win']) == (pick, ph, pd, pa)
+                and (not stated or stated == sorted((hr, ar)))):
+            continue
+        rev = sum(1 for q in predictions['predictions'] if q['matchId'] == mid) + 1
+        fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
+        p['superseded'] = True
+        p['superseded_at'] = now.isoformat()
+        p['superseded_reason'] = 'FIH ranks corrected against fih.hockey; pick revised before push-back.'
+        predictions['predictions'].append({
+            'id': f"oracle-v1:{mid}:r{rev}",
+            'matchId': mid,
+            'source': 'oracle-v1',
+            'basis': 'pre-match',
+            'revises': p['id'],
+            'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
+            'pick': pick, 'pick_confidence': conf,
+            'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model "
+                       f"from world rankings. Revised before push-back: the original pick used "
+                       f"seeded ranks later corrected against fih.hockey, and stays in the ledger."),
+            'publishedAt': now.isoformat(),
+        })
+        changed = True
+        print(f"ORACLE REVISION: {mid} {p['pick']} -> {pick} (ranks corrected, match not started)")
+    return changed
+
+def fix_venues(fixtures):
+    """Pool venues follow the pool: A and D play at Wagener (Amstelveen), B and
+    C at Belfius (Brussels). The seeded data had them inverted for two pools —
+    the app showed FRA v MAS at the Wagener while FIH plays it in Belgium."""
+    POOL_VENUE = {'A': 'AMV', 'D': 'AMV', 'B': 'BRU', 'C': 'BRU'}
+    changed = False
+    for m in fixtures['matches']:
+        want = POOL_VENUE.get(m.get('pool')) if m['phase'] == 'pool' else None
+        if want and m.get('venue') != want:
+            print(f"VENUE: {m['id']} {m['home']} v {m['away']} {m.get('venue')} -> {want}")
+            m['venue'] = want
+            changed = True
+    return changed
+
 def generate_predictions(fixtures, teams, predictions):
     """
     Every fixture with both teams known carries an engine pick — including
@@ -1380,6 +1659,8 @@ def generate_predictions(fixtures, teams, predictions):
     have = {p['matchId'] for p in predictions['predictions']}
     changed = False
     now = now_utc()
+
+    changed |= revise_stale_predictions(fixtures, predictions, rank_of, now)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':
@@ -1428,7 +1709,19 @@ def main():
     version_doc = load('data-version.json')
 
     changed = False
+    changed |= fix_venues(fixtures)
+    # The official schedule before the clock speaks: statuses are computed
+    # from kickoff times, and the per-match pages are the authority on those.
+    links = discover_tms_lineup_links()
+    changed |= sync_schedule_from_match_pages(fixtures, links)
     changed |= update_statuses(fixtures)
+
+    # The matches page carries every final score by team-code pair — the
+    # primary result source, consumed by the backfill below.
+    page_body, _ = _tms_get(TMS_BASE + '/matches')
+    page_results = parse_tms_results(_tms_lines(page_body)) if page_body else {}
+    if page_results:
+        print(f'RESULTS: matches page carries {len(page_results)} final scores.')
 
     # Official FIH world rankings — fetched here because CI has the egress
     # that local sandboxes don't. Feeds both the UI and the model prior.
@@ -1439,12 +1732,11 @@ def main():
     players_changed = reconcile_team_lists(players, squads)
     players_changed |= merge_squads(players, squads, teams)
     teams_changed |= apply_coaches(teams, staff)
-    probe_tms_lineups()
 
     tms = fetch_tms_standings()
     if tms:
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
-        changed |= backfill_scores_from_tms(fixtures, tms)
+        changed |= backfill_scores_from_tms(fixtures, tms, page_results)
 
     changed |= estimate_enrichment(fixtures, players)
     changed |= update_player_stats(fixtures, players)

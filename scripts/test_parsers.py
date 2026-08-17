@@ -13,9 +13,12 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(__file__))
+from datetime import datetime, timezone  # noqa: E402
 from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
+    parse_tms_results, update_statuses, backfill_scores_from_tms,
+    revise_stale_predictions, fix_venues, predict, parse_match_page,
     TMS_LINEUP_LINK,
 )
 
@@ -241,6 +244,17 @@ check('a nation the list did not cover is left alone', 'Untouched' in names)
 check('listed players are marked',
       all(p['on_team_list'] for p in doc['players'] if p['name'] in ('Waqar', 'Ali Raza')))
 
+# Calnan sat on seeded #7 while FIH lists him at #31 — which blocked the real
+# #7, Wallace, from ever being added. The list is the authority on identity.
+doc2 = {'players': [{'team': 'ENG', 'name': 'Will Calnan', 'number': 7,
+                     'position': 'Midfielder', 'goals': 2}]}
+reconcile_team_lists(doc2, {'ENG': [
+    {'name': 'Will Calnan', 'number': 31, 'is_captain': False, 'goalkeeper': False},
+]})
+p = doc2['players'][0]
+check('a stale seeded shirt number is corrected to the official one', p['number'] == 31)
+check('identity correction never touches statistics', p['goals'] == 2)
+
 print('\nTeam sheet composition')
 
 def player(pid, name, position=None, **kw):
@@ -297,6 +311,190 @@ check('a player left out of the squad never appears',
 check('a squad with no keeper yields no sheet',
       compose_lineup('TST', [p for p in squad if p['position'] != 'Goalkeeper'], seeded_rng('t')) is None)
 check('too small a squad yields no sheet', compose_lineup('TST', squad[:6], seeded_rng('t')) is None)
+
+print('\nTMS matches-page results')
+
+# Verbatim from the live run's dump: pair, then a final score or a relative
+# time for upcoming matches, then the pool letter.
+page = [
+    'FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)', '15 - 30 Aug 2026',
+    'Local Time 2026-08-17 17:50:54',
+    '&nbsp;', 'IND - WAL', '&nbsp;', '3 - 1', 'D',
+    '&nbsp;', 'PAK - WAL', '&nbsp;', '3 - 3', 'D',
+    '&nbsp;', 'FRA - MAS', '&nbsp;', '3 - 3', 'B',
+    '&nbsp;', 'IND - ENG', '&nbsp;', '2 - 4', 'D',
+    '&nbsp;', 'GER - BEL', '&nbsp;', '2 hours from now', 'B',
+    '&nbsp;', 'NZL - JPN', '&nbsp;', '15 hours from now', 'A',
+]
+results = parse_tms_results(page)
+check('finished matches are read with their scores',
+      results.get(('PAK', 'WAL')) == (3, 3) and results.get(('IND', 'ENG')) == (2, 4))
+check('an upcoming match yields no result', ('GER', 'BEL') not in results)
+check('"15 hours from now" is not a score', ('NZL', 'JPN') not in results)
+check('the tournament banner "15 - 30" is not a pair or score',
+      all(k[0] in ('IND', 'PAK', 'FRA') for k in results))
+check('a pair repeated with different scores rejects the page',
+      parse_tms_results(['IND - WAL', '3 - 1', 'IND - WAL', '2 - 1']) is None)
+check('an empty page yields no results', parse_tms_results([]) == {})
+
+print('\nMatch status honesty')
+
+def fx(status, date='2026-08-17', time='20:30', score=None):
+    return {'matches': [{'id': 'B3', 'home': 'BEL', 'away': 'GER', 'phase': 'pool',
+                         'pool': 'B', 'date': date, 'time': time, 'status': status,
+                         'score': score, 'venue': 'BRU'}]}
+
+# 15:00 UTC = 17:00 CEST: BEL v GER (20:30) has not kicked off.
+afternoon = datetime(2026, 8, 17, 15, 0, tzinfo=timezone.utc)
+night = datetime(2026, 8, 17, 22, 0, tzinfo=timezone.utc)
+
+f = fx('scheduled')
+update_statuses(f, now=afternoon)
+check('a future match stays scheduled', f['matches'][0]['status'] == 'scheduled')
+
+# The exact reported bug: completed with no score, hours before kickoff.
+f = fx('completed')
+update_statuses(f, now=afternoon)
+check('a clock-completed match with no score is walked back',
+      f['matches'][0]['status'] == 'scheduled')
+
+# A match left 'live' under a wrong time, whose corrected kickoff is later.
+f = fx('live')
+update_statuses(f, now=afternoon)
+check('a live match before its corrected kickoff walks back to scheduled',
+      f['matches'][0]['status'] == 'scheduled')
+
+f = fx('live')
+update_statuses(f, now=night)
+check('past the window with no score stays live, never completed',
+      f['matches'][0]['status'] == 'live')
+
+f = fx('live', score={'home': 2, 'away': 2})
+update_statuses(f, now=night)
+check('past the window with a score completes', f['matches'][0]['status'] == 'completed')
+
+f = fx('completed', score={'home': 2, 'away': 2})
+update_statuses(f, now=afternoon)
+check('a completed match with a real score is never walked back',
+      f['matches'][0]['status'] == 'completed')
+
+# Backfill: the standings row is the witness. PAK and WAL each played one new
+# match and their deltas cross-check as 3-3 — that resolves. GER's row has not
+# moved, so GER v BEL yields nothing rather than a phantom 0-0.
+def rows(**kw):
+    base = {'PAK': (2, 7, 4), 'WAL': (2, 3, 8), 'GER': (2, 5, 2), 'BEL': (2, 6, 3)}
+    base.update(kw)
+    return {'X': [{'team': t, 'played': p, 'gf': gf, 'ga': ga}
+                  for t, (p, gf, ga) in base.items()]}
+
+fixtures = {'matches': [
+    {'id': 'D2', 'home': 'ENG', 'away': 'PAK', 'phase': 'pool', 'pool': 'D',
+     'date': '2026-08-15', 'time': '17:00', 'status': 'completed', 'score': {'home': 4, 'away': 1}},
+    {'id': 'D0', 'home': 'WAL', 'away': 'IND', 'phase': 'pool', 'pool': 'D',
+     'date': '2026-08-15', 'time': '13:30', 'status': 'completed', 'score': {'home': 0, 'away': 5}},
+    {'id': 'D4', 'home': 'PAK', 'away': 'WAL', 'phase': 'pool', 'pool': 'D',
+     'date': '2026-08-17', 'time': '09:30', 'status': 'live', 'score': None},
+    {'id': 'B3', 'home': 'BEL', 'away': 'GER', 'phase': 'pool', 'pool': 'B',
+     'date': '2026-08-17', 'time': '20:30', 'status': 'scheduled', 'score': None},
+]}
+tms = rows(PAK=(2, 4, 7), WAL=(2, 3, 8), GER=(1, 2, 1), BEL=(1, 3, 2))
+# local: PAK played 1 (1 GF, 4 GA), WAL played 1 (0 GF, 5 GA)
+backfill_scores_from_tms(fixtures, tms, now=afternoon)
+d4 = fixtures['matches'][2]
+check('a live match past its window is backfilled from standings deltas',
+      d4['score'] == {'home': 3, 'away': 3})
+check('the backfilled match is closed on the spot', d4['status'] == 'completed')
+b3 = fixtures['matches'][3]
+check('an unplayed match never becomes a phantom 0-0',
+      b3['score'] is None and b3['status'] == 'scheduled')
+
+# The matches page as primary source: the score is applied pair-direct (with
+# orientation), and a page score whose match the standings have not yet
+# absorbed is treated as possibly live and left alone.
+fixtures['matches'][2].update(status='live', score=None)
+fixtures['matches'][2].pop('result_source', None)
+tms_stale = rows(PAK=(1, 1, 4), WAL=(1, 0, 5), GER=(1, 2, 1), BEL=(1, 3, 2))
+backfill_scores_from_tms(fixtures, {'X': tms_stale['X']},
+                         page_results={('WAL', 'PAK'): (2, 1)}, now=afternoon)
+check('a page score is not applied while standings have not absorbed the match',
+      fixtures['matches'][2]['score'] is None)
+backfill_scores_from_tms(fixtures, tms, page_results={('WAL', 'PAK'): (3, 3)}, now=afternoon)
+d4 = fixtures['matches'][2]
+check('a page score is applied once standings confirm, oriented to our fixture',
+      d4['score'] == {'home': 3, 'away': 3} and d4['result_source'] == 'fih-tms-matches'
+      and d4['status'] == 'completed')
+
+print('\nOracle pick revision (erratum, never rewrite)')
+
+# The reported case: FRA v MAS picked "MAS favoured" off seeded ranks that had
+# MAS #10 / FRA #13, when fih.hockey has FRA #9 / MAS #14.
+future = {'matches': [
+    {'id': 'B4', 'home': 'FRA', 'away': 'MAS', 'phase': 'pool', 'pool': 'B',
+     'date': '2026-08-18', 'time': '17:00', 'status': 'scheduled', 'score': None},
+    {'id': 'B9', 'home': 'FRA', 'away': 'MAS', 'phase': 'pool', 'pool': 'B',
+     'date': '2026-08-16', 'time': '17:00', 'status': 'live', 'score': None},
+]}
+stale = lambda mid: {
+    'id': f'oracle-v1:{mid}', 'matchId': mid, 'source': 'oracle-v1', 'basis': 'pre-match',
+    'p_home_win': 0.28, 'p_draw': 0.17, 'p_away_win': 0.55,
+    'pick': 'AWAY', 'pick_confidence': 0.55,
+    'reason': 'FIH #10 MAS favoured over #13 FRA — Elo model from world rankings.',
+}
+preds = {'predictions': [stale('B4'), stale('B9')]}
+ranks = {'FRA': 9, 'MAS': 14}
+revise_stale_predictions(future, preds, ranks, afternoon)
+b4 = [p for p in preds['predictions'] if p['matchId'] == 'B4']
+b9 = [p for p in preds['predictions'] if p['matchId'] == 'B9']
+check('a stale pick on an unstarted match is superseded, not rewritten',
+      b4[0]['superseded'] and b4[0]['pick'] == 'AWAY' and len(b4) == 2)
+check('the revision favours the higher-ranked team',
+      b4[1]['pick'] == 'HOME' and b4[1]['revises'] == 'oracle-v1:B4')
+check('revision probabilities come from the corrected ranks',
+      (b4[1]['p_home_win'], b4[1]['p_draw'], b4[1]['p_away_win']) == predict(9, 14))
+check('a started match is never touched',
+      len(b9) == 1 and not b9[0].get('superseded'))
+check('a second pass changes nothing',
+      not revise_stale_predictions(future, preds, ranks, afternoon))
+
+print('\nTMS match page (kickoff and venue)')
+
+# Shaped like the live dump: the pairing near the top, the head-to-head
+# section carrying dates of PAST meetings, then the labeled Details rows.
+match_page = [
+    'Home', 'FIH Hockey World Cup Belgium &amp; Netherlan...', 'IND v WAL',
+    'D', 'India', '3 - 1', 'Official', 'Wales',
+    'Lineups', 'Goals', 'Cards', 'Officials', 'Head to Head', 'Details',
+    'Senior Mens Outdoor', '19 Jan 2023  19:00', 'IND v WAL (Pool D)',
+    'Senior Mens Outdoor', '4 Aug 2022  14:00', 'IND v WAL (Pool B)',
+    'Date/Time', '2026-08-15 13:00', 'Title',
+    'D', 'Venue', 'Wagener Hockey Stadium, Amstelveen',
+]
+info = parse_match_page(match_page)
+check('the match page parses', info is not None)
+check('the pairing is read', info and info['pair'] == ('IND', 'WAL'))
+check('the labeled Date/Time row wins, not head-to-head history',
+      info and (info['date'], info['time']) == ('2026-08-15', '13:00'))
+check('the venue resolves to its code', info and info['venue'] == 'AMV')
+check('a Belfius venue resolves too',
+      parse_match_page(['GER v BEL', 'Date/Time', '2026-08-17 20:30',
+                        'Venue', 'Belfius Hockey Arena, Brussels'])['venue'] == 'BRU')
+check('a page with no labeled kickoff yields nothing',
+      parse_match_page(['IND v WAL', '19 Jan 2023  19:00']) is None)
+check('a date outside the tournament is refused',
+      parse_match_page(['IND v WAL', 'Date/Time', '2023-01-19 19:00']) is None)
+
+print('\nPool venues')
+vfix = {'matches': [
+    {'id': 'D4', 'home': 'PAK', 'away': 'WAL', 'phase': 'pool', 'pool': 'D', 'venue': 'BRU'},
+    {'id': 'B4', 'home': 'FRA', 'away': 'MAS', 'phase': 'pool', 'pool': 'B', 'venue': 'AMV'},
+    {'id': 'A1', 'home': 'ARG', 'away': 'JPN', 'phase': 'pool', 'pool': 'A', 'venue': 'AMV'},
+    {'id': 'QF1', 'home': 'TBD', 'away': 'TBD', 'phase': 'quarter-final', 'venue': 'AMV'},
+]}
+fix_venues(vfix)
+check('pool D plays at the Wagener', vfix['matches'][0]['venue'] == 'AMV')
+check('pool B plays at the Belfius', vfix['matches'][1]['venue'] == 'BRU')
+check('a correct venue is left alone', vfix['matches'][2]['venue'] == 'AMV')
+check('knockout venues are not guessed', vfix['matches'][3]['venue'] == 'AMV')
 
 print()
 if failures:

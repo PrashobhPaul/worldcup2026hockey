@@ -41,7 +41,8 @@ function StatusBadge({ match, clock }) {
 
 function PredictionChip({ match }) {
   const row = useLiveQuery(
-    () => db.predictions.where('matchId').equals(match.id).first(),
+    () => db.predictions.where('matchId').equals(match.id).toArray()
+      .then(rows => rows.find(p => !p.superseded) ?? null),
     [match.id],
   )
   if (!row) return null
@@ -125,9 +126,11 @@ export default function MatchCard({ match, compact = false }) {
         <div className="flex min-w-[72px] flex-col items-center">
           {done || live ? (
             <div className="font-mono text-2xl font-bold tracking-wider">
-              <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? 0}</span>
+              {/* A live match genuinely starts at 0; a finished one with no
+                  score on file must say "we don't know", never invent 0-0. */}
+              <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? (live ? 0 : '–')}</span>
               <span className="mx-1 text-pitch-400">–</span>
-              <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? 0}</span>
+              <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? (live ? 0 : '–')}</span>
             </div>
           ) : (
             <div className="font-mono text-sm text-pitch-300">{match.time}</div>
