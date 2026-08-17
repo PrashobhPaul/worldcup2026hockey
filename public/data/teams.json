@@ -36,7 +36,7 @@
       "nickname": "Los Leones",
       "color": "#75AADB",
       "captain": "Lucas Martín Rossi",
-      "coach": "Germán Orozco",
+      "coach": "Lucas Rey",
       "key_players": [
         "Agustín Bugallo",
         "Matías Paredes",
@@ -59,7 +59,7 @@
       "nickname": "Black Sticks",
       "color": "#000000",
       "captain": "Sam Lane",
-      "coach": "Darren Smith",
+      "coach": "Greg Nicol",
       "key_players": [
         "Brad Read",
         "Marcus Child",
@@ -82,7 +82,7 @@
       "nickname": "Samurai Japan",
       "color": "#BC002D",
       "captain": "Koji Kayukawa",
-      "coach": "Siegfried Aiken",
+      "coach": "Yoshihiro Anai",
       "key_players": [
         "Kosuke Yamada",
         "Koji Kayukawa",
@@ -105,7 +105,7 @@
       "nickname": "Red Lions",
       "color": "#EF3340",
       "captain": "Arthur de Sloover",
-      "coach": "Koen Van der Gucht",
+      "coach": "Shane McLeod",
       "key_players": [
         "Alexander Hendrickx",
         "Loick Luypaert",
@@ -128,7 +128,7 @@
       "nickname": "Les Bleus",
       "color": "#002395",
       "captain": "Victor Charlet",
-      "coach": "Gilles Verdier",
+      "coach": "John-John Dohmen",
       "key_players": [
         "Victor Charlet",
         "Pierre Brichard",
@@ -174,7 +174,7 @@
       "nickname": "Tigers",
       "color": "#CC0001",
       "captain": "Adrian Albert",
-      "coach": "A. Arulselvaraj",
+      "coach": "Brendon Carolan",
       "key_players": [
         "Tengku Ahmad Tajuddin",
         "Adrian Albert",
@@ -197,7 +197,7 @@
       "nickname": "Kookaburras",
       "color": "#00843D",
       "captain": "Aran Zalewski",
-      "coach": "Colin Batch",
+      "coach": "Mark Hager",
       "key_players": [
         "Tom Wickham",
         "Blake Govers",
@@ -220,7 +220,7 @@
       "nickname": "Los Redsticks",
       "color": "#AA151B",
       "captain": "Marc Miralles",
-      "coach": "Ángel Ferreiro",
+      "coach": "Max Caldas",
       "key_players": [
         "Pau Quemada",
         "Álvaro Iglesias",
@@ -266,7 +266,7 @@
       "nickname": "Amabhungane",
       "color": "#007A4D",
       "captain": "Jethro Eustice",
-      "coach": "Greg Clark",
+      "coach": "Devon van der Merwe",
       "key_players": [
         "Austin Smith",
         "Ryan Julius",
@@ -312,7 +312,7 @@
       "nickname": "Three Lions",
       "color": "#CF142B",
       "captain": "Will Calnan",
-      "coach": "David Ralph",
+      "coach": "Zak Jones",
       "key_players": [
         "Sam Ward",
         "Lee Morton",
@@ -335,7 +335,7 @@
       "nickname": "Green Shirts",
       "color": "#01411C",
       "captain": "Sufyan Khan",
-      "coach": "Siegfried Aikman",
+      "coach": "Bob Veldhof",
       "key_players": [
         "Arshad Liaquat",
         "Muhammad Umar Bhutta",
@@ -358,7 +358,7 @@
       "nickname": "Dragons",
       "color": "#C8102E",
       "captain": "Gareth Furlong",
-      "coach": "Steve Morgan",
+      "coach": "Daniel Newcombe",
       "key_players": [
         "Rupert Shipperley",
         "James Carson",

@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T03:19:12.943734+00:00",
+  "last_updated": "2026-08-17T03:29:29.328328+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -145,7 +145,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.928169+00:00",
+        "generated_at": "2026-08-17T03:29:29.317040+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -178,24 +178,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_02",
-              "name": "Manpreet Singh",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "IND_05",
-              "name": "Abhishek",
-              "number": 11,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "IND_14",
               "name": "Vivek Sagar Prasad",
               "number": 32,
@@ -214,6 +196,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "IND_02",
+              "name": "Manpreet Singh",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
@@ -228,6 +219,15 @@
               "number": 4,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "IND_05",
+              "name": "Abhishek",
+              "number": 11,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -325,15 +325,6 @@
               "goalkeeper": true
             },
             {
-              "playerId": "WAL_01",
-              "name": "Gareth Furlong",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
               "playerId": "WAL_18",
               "name": "Jacob Draper",
               "number": 6,
@@ -367,6 +358,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_01",
+              "name": "Gareth Furlong",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -474,7 +474,7 @@
             }
           ],
           "team": "WAL",
-          "coach": "Steve Morgan"
+          "coach": "Daniel Newcombe"
         }
       }
     },
@@ -629,7 +629,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:19:12.935681+00:00",
+        "generated_at": "2026-08-17T03:29:29.317598+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -642,24 +642,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "ENG_01",
-              "name": "Will Calnan",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ENG_02",
-              "name": "Sam Ward",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "ENG_10",
@@ -698,6 +680,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "ENG_01",
+              "name": "Will Calnan",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ENG_08",
               "name": "Thomas Sorsby",
               "number": 5,
@@ -712,6 +703,15 @@
               "number": 19,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ENG_02",
+              "name": "Sam Ward",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -786,7 +786,7 @@
             }
           ],
           "team": "ENG",
-          "coach": "David Ralph"
+          "coach": "Zak Jones"
         },
         "away": {
           "formation": "4-3-3",
@@ -800,15 +800,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "PAK_01",
-              "name": "Sufyan Khan",
-              "number": 8,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "PAK_17",
@@ -844,6 +835,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_01",
+              "name": "Sufyan Khan",
+              "number": 8,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -951,7 +951,7 @@
             }
           ],
           "team": "PAK",
-          "coach": "Siegfried Aikman"
+          "coach": "Bob Veldhof"
         }
       }
     },
@@ -1119,7 +1119,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.929090+00:00",
+        "generated_at": "2026-08-17T03:29:29.318094+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1132,15 +1132,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "GER_02",
-              "name": "Christopher Rühr",
-              "number": 11,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "GER_08",
@@ -1202,6 +1193,15 @@
               "number": 19,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "GER_02",
+              "name": "Christopher Rühr",
+              "number": 11,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -1434,7 +1434,7 @@
             }
           ],
           "team": "MAS",
-          "coach": "A. Arulselvaraj"
+          "coach": "Brendon Carolan"
         }
       }
     },
@@ -1589,7 +1589,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.929562+00:00",
+        "generated_at": "2026-08-17T03:29:29.318554+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1602,24 +1602,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "BEL_02",
-              "name": "Arthur de Sloover",
-              "number": 8,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_01",
-              "name": "Alexander Hendrickx",
-              "number": 10,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "BEL_18",
@@ -1654,6 +1636,24 @@
               "number": 13,
               "line": "Defender",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_02",
+              "name": "Arthur de Sloover",
+              "number": 8,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_01",
+              "name": "Alexander Hendrickx",
+              "number": 10,
+              "line": "Midfielder",
+              "position": "Midfielder",
               "captain": false,
               "goalkeeper": false
             },
@@ -1739,7 +1739,7 @@
             }
           ],
           "team": "BEL",
-          "coach": "Koen Van der Gucht"
+          "coach": "Shane McLeod"
         },
         "away": {
           "formation": "4-3-3",
@@ -1753,15 +1753,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "FRA_01",
-              "name": "Victor Charlet",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "FRA_12",
@@ -1824,6 +1815,15 @@
               "line": "Midfielder",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "FRA_01",
+              "name": "Victor Charlet",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -1904,7 +1904,7 @@
             }
           ],
           "team": "FRA",
-          "coach": "Gilles Verdier"
+          "coach": "John-John Dohmen"
         }
       }
     },
@@ -2021,7 +2021,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.930029+00:00",
+        "generated_at": "2026-08-17T03:29:29.319023+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2185,7 +2185,7 @@
             }
           ],
           "team": "ARG",
-          "coach": "Germán Orozco"
+          "coach": "Lucas Rey"
         },
         "away": {
           "formation": "4-3-3",
@@ -2357,7 +2357,7 @@
             }
           ],
           "team": "JPN",
-          "coach": "Siegfried Aiken"
+          "coach": "Yoshihiro Anai"
         }
       }
     },
@@ -2526,7 +2526,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.930517+00:00",
+        "generated_at": "2026-08-17T03:29:29.319489+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2539,15 +2539,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "NED_01",
-              "name": "Thierry Brinkman",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "NED_18",
@@ -2610,6 +2601,15 @@
               "line": "Midfielder",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NED_01",
+              "name": "Thierry Brinkman",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -2855,7 +2855,7 @@
             }
           ],
           "team": "NZL",
-          "coach": "Darren Smith"
+          "coach": "Greg Nicol"
         }
       }
     },
@@ -2999,7 +2999,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:19:12.937462+00:00",
+        "generated_at": "2026-08-17T03:29:29.319949+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3012,15 +3012,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "AUS_03",
-              "name": "Blake Govers",
-              "number": 16,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "AUS_20",
@@ -3082,6 +3073,15 @@
               "number": 20,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_03",
+              "name": "Blake Govers",
+              "number": 16,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -3163,7 +3163,7 @@
             }
           ],
           "team": "AUS",
-          "coach": "Colin Batch"
+          "coach": "Mark Hager"
         },
         "away": {
           "formation": "4-3-3",
@@ -3488,7 +3488,7 @@
       "enrichment": "estimated",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.931431+00:00",
+        "generated_at": "2026-08-17T03:29:29.320422+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3501,15 +3501,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "ESP_01",
-              "name": "Marc Miralles",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "ESP_21",
@@ -3545,6 +3536,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ESP_01",
+              "name": "Marc Miralles",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -3652,7 +3652,7 @@
             }
           ],
           "team": "ESP",
-          "coach": "Ángel Ferreiro"
+          "coach": "Max Caldas"
         },
         "away": {
           "formation": "4-3-3",
@@ -3817,7 +3817,7 @@
             }
           ],
           "team": "RSA",
-          "coach": "Greg Clark"
+          "coach": "Devon van der Merwe"
         }
       }
     },
@@ -3839,7 +3839,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.931892+00:00",
+        "generated_at": "2026-08-17T03:29:29.320883+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3852,24 +3852,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "ENG_01",
-              "name": "Will Calnan",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ENG_02",
-              "name": "Sam Ward",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "ENG_10",
@@ -3908,6 +3890,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "ENG_01",
+              "name": "Will Calnan",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ENG_08",
               "name": "Thomas Sorsby",
               "number": 5,
@@ -3922,6 +3913,15 @@
               "number": 19,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ENG_02",
+              "name": "Sam Ward",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -3996,7 +3996,7 @@
             }
           ],
           "team": "ENG",
-          "coach": "David Ralph"
+          "coach": "Zak Jones"
         },
         "away": {
           "formation": "4-3-3",
@@ -4030,24 +4030,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_02",
-              "name": "Manpreet Singh",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "IND_05",
-              "name": "Abhishek",
-              "number": 11,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "IND_14",
               "name": "Vivek Sagar Prasad",
               "number": 32,
@@ -4066,6 +4048,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "IND_02",
+              "name": "Manpreet Singh",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
@@ -4080,6 +4071,15 @@
               "number": 4,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "IND_05",
+              "name": "Abhishek",
+              "number": 11,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -4183,7 +4183,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:19:12.938537+00:00",
+        "generated_at": "2026-08-17T03:29:29.321365+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4196,15 +4196,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "PAK_01",
-              "name": "Sufyan Khan",
-              "number": 8,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "PAK_17",
@@ -4240,6 +4231,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_01",
+              "name": "Sufyan Khan",
+              "number": 8,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -4347,7 +4347,7 @@
             }
           ],
           "team": "PAK",
-          "coach": "Siegfried Aikman"
+          "coach": "Bob Veldhof"
         },
         "away": {
           "formation": "4-3-3",
@@ -4361,15 +4361,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "WAL_01",
-              "name": "Gareth Furlong",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "WAL_18",
@@ -4405,6 +4396,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_01",
+              "name": "Gareth Furlong",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -4512,7 +4512,7 @@
             }
           ],
           "team": "WAL",
-          "coach": "Steve Morgan"
+          "coach": "Daniel Newcombe"
         }
       }
     },
@@ -4534,7 +4534,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.932699+00:00",
+        "generated_at": "2026-08-17T03:29:29.321823+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4547,24 +4547,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "BEL_02",
-              "name": "Arthur de Sloover",
-              "number": 8,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_01",
-              "name": "Alexander Hendrickx",
-              "number": 10,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "BEL_18",
@@ -4599,6 +4581,24 @@
               "number": 13,
               "line": "Defender",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_02",
+              "name": "Arthur de Sloover",
+              "number": 8,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_01",
+              "name": "Alexander Hendrickx",
+              "number": 10,
+              "line": "Midfielder",
+              "position": "Midfielder",
               "captain": false,
               "goalkeeper": false
             },
@@ -4684,7 +4684,7 @@
             }
           ],
           "team": "BEL",
-          "coach": "Koen Van der Gucht"
+          "coach": "Shane McLeod"
         },
         "away": {
           "formation": "4-3-3",
@@ -4698,15 +4698,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "GER_02",
-              "name": "Christopher Rühr",
-              "number": 11,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "GER_08",
@@ -4768,6 +4759,15 @@
               "number": 19,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "GER_02",
+              "name": "Christopher Rühr",
+              "number": 11,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -4850,7 +4850,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.933123+00:00",
+        "generated_at": "2026-08-17T03:29:29.322265+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4863,15 +4863,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "FRA_01",
-              "name": "Victor Charlet",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "FRA_12",
@@ -4934,6 +4925,15 @@
               "line": "Midfielder",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "FRA_01",
+              "name": "Victor Charlet",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -5014,7 +5014,7 @@
             }
           ],
           "team": "FRA",
-          "coach": "Gilles Verdier"
+          "coach": "John-John Dohmen"
         },
         "away": {
           "formation": "4-3-3",
@@ -5186,7 +5186,7 @@
             }
           ],
           "team": "MAS",
-          "coach": "A. Arulselvaraj"
+          "coach": "Brendon Carolan"
         }
       }
     },
@@ -5208,7 +5208,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.933606+00:00",
+        "generated_at": "2026-08-17T03:29:29.322728+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5372,7 +5372,7 @@
             }
           ],
           "team": "ARG",
-          "coach": "Germán Orozco"
+          "coach": "Lucas Rey"
         },
         "away": {
           "formation": "4-3-3",
@@ -5386,15 +5386,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "NED_01",
-              "name": "Thierry Brinkman",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "NED_18",
@@ -5457,6 +5448,15 @@
               "line": "Midfielder",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NED_01",
+              "name": "Thierry Brinkman",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -5552,7 +5552,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.934043+00:00",
+        "generated_at": "2026-08-17T03:29:29.323195+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5723,7 +5723,7 @@
             }
           ],
           "team": "JPN",
-          "coach": "Siegfried Aiken"
+          "coach": "Yoshihiro Anai"
         },
         "away": {
           "formation": "4-3-3",
@@ -5895,7 +5895,7 @@
             }
           ],
           "team": "NZL",
-          "coach": "Darren Smith"
+          "coach": "Greg Nicol"
         }
       }
     },
@@ -5917,7 +5917,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.934526+00:00",
+        "generated_at": "2026-08-17T03:29:29.323670+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5930,15 +5930,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "AUS_03",
-              "name": "Blake Govers",
-              "number": 16,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "AUS_20",
@@ -6000,6 +5991,15 @@
               "number": 20,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_03",
+              "name": "Blake Govers",
+              "number": 16,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -6081,7 +6081,7 @@
             }
           ],
           "team": "AUS",
-          "coach": "Colin Batch"
+          "coach": "Mark Hager"
         },
         "away": {
           "formation": "4-3-3",
@@ -6095,15 +6095,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "ESP_01",
-              "name": "Marc Miralles",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "ESP_21",
@@ -6139,6 +6130,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ESP_01",
+              "name": "Marc Miralles",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -6246,7 +6246,7 @@
             }
           ],
           "team": "ESP",
-          "coach": "Ángel Ferreiro"
+          "coach": "Max Caldas"
         }
       }
     },
@@ -6268,7 +6268,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:19:12.940617+00:00",
+        "generated_at": "2026-08-17T03:29:29.324141+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6590,7 +6590,7 @@
             }
           ],
           "team": "RSA",
-          "coach": "Greg Clark"
+          "coach": "Devon van der Merwe"
         }
       }
     },
@@ -6612,7 +6612,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.935435+00:00",
+        "generated_at": "2026-08-17T03:29:29.324589+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6625,24 +6625,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "ENG_01",
-              "name": "Will Calnan",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ENG_02",
-              "name": "Sam Ward",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "ENG_10",
@@ -6681,6 +6663,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "ENG_01",
+              "name": "Will Calnan",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ENG_08",
               "name": "Thomas Sorsby",
               "number": 5,
@@ -6695,6 +6686,15 @@
               "number": 19,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ENG_02",
+              "name": "Sam Ward",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -6769,7 +6769,7 @@
             }
           ],
           "team": "ENG",
-          "coach": "David Ralph"
+          "coach": "Zak Jones"
         },
         "away": {
           "formation": "4-3-3",
@@ -6783,15 +6783,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "WAL_01",
-              "name": "Gareth Furlong",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "WAL_18",
@@ -6827,6 +6818,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_01",
+              "name": "Gareth Furlong",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -6934,7 +6934,7 @@
             }
           ],
           "team": "WAL",
-          "coach": "Steve Morgan"
+          "coach": "Daniel Newcombe"
         }
       }
     },
@@ -6956,7 +6956,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:19:12.941293+00:00",
+        "generated_at": "2026-08-17T03:29:29.325054+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6989,24 +6989,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_02",
-              "name": "Manpreet Singh",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "IND_05",
-              "name": "Abhishek",
-              "number": 11,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "IND_14",
               "name": "Vivek Sagar Prasad",
               "number": 32,
@@ -7025,6 +7007,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "IND_02",
+              "name": "Manpreet Singh",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
@@ -7039,6 +7030,15 @@
               "number": 4,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "IND_05",
+              "name": "Abhishek",
+              "number": 11,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -7136,15 +7136,6 @@
               "goalkeeper": true
             },
             {
-              "playerId": "PAK_01",
-              "name": "Sufyan Khan",
-              "number": 8,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
               "playerId": "PAK_17",
               "name": "Abu Mahmood",
               "number": 27,
@@ -7178,6 +7169,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "PAK_01",
+              "name": "Sufyan Khan",
+              "number": 8,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -7285,7 +7285,7 @@
             }
           ],
           "team": "PAK",
-          "coach": "Siegfried Aikman"
+          "coach": "Bob Veldhof"
         }
       }
     },
@@ -7307,7 +7307,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.936244+00:00",
+        "generated_at": "2026-08-17T03:29:29.325545+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7320,24 +7320,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "BEL_02",
-              "name": "Arthur de Sloover",
-              "number": 8,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_01",
-              "name": "Alexander Hendrickx",
-              "number": 10,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "BEL_18",
@@ -7372,6 +7354,24 @@
               "number": 13,
               "line": "Defender",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_02",
+              "name": "Arthur de Sloover",
+              "number": 8,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_01",
+              "name": "Alexander Hendrickx",
+              "number": 10,
+              "line": "Midfielder",
+              "position": "Midfielder",
               "captain": false,
               "goalkeeper": false
             },
@@ -7457,7 +7457,7 @@
             }
           ],
           "team": "BEL",
-          "coach": "Koen Van der Gucht"
+          "coach": "Shane McLeod"
         },
         "away": {
           "formation": "4-3-3",
@@ -7629,7 +7629,7 @@
             }
           ],
           "team": "MAS",
-          "coach": "A. Arulselvaraj"
+          "coach": "Brendon Carolan"
         }
       }
     },
@@ -7651,7 +7651,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.936697+00:00",
+        "generated_at": "2026-08-17T03:29:29.326005+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7664,15 +7664,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "FRA_01",
-              "name": "Victor Charlet",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "FRA_12",
@@ -7735,6 +7726,15 @@
               "line": "Midfielder",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "FRA_01",
+              "name": "Victor Charlet",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -7815,7 +7815,7 @@
             }
           ],
           "team": "FRA",
-          "coach": "Gilles Verdier"
+          "coach": "John-John Dohmen"
         },
         "away": {
           "formation": "4-3-3",
@@ -7829,15 +7829,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "GER_02",
-              "name": "Christopher Rühr",
-              "number": 11,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "GER_08",
@@ -7899,6 +7890,15 @@
               "number": 19,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "GER_02",
+              "name": "Christopher Rühr",
+              "number": 11,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -7981,7 +7981,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.937133+00:00",
+        "generated_at": "2026-08-17T03:29:29.326447+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8152,7 +8152,7 @@
             }
           ],
           "team": "JPN",
-          "coach": "Siegfried Aiken"
+          "coach": "Yoshihiro Anai"
         },
         "away": {
           "formation": "4-3-3",
@@ -8166,15 +8166,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "NED_01",
-              "name": "Thierry Brinkman",
-              "number": 9,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "NED_18",
@@ -8237,6 +8228,15 @@
               "line": "Midfielder",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NED_01",
+              "name": "Thierry Brinkman",
+              "number": 9,
+              "line": "Forward",
+              "position": "Forward",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -8332,7 +8332,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.937594+00:00",
+        "generated_at": "2026-08-17T03:29:29.326900+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8496,7 +8496,7 @@
             }
           ],
           "team": "ARG",
-          "coach": "Germán Orozco"
+          "coach": "Lucas Rey"
         },
         "away": {
           "formation": "4-3-3",
@@ -8668,7 +8668,7 @@
             }
           ],
           "team": "NZL",
-          "coach": "Darren Smith"
+          "coach": "Greg Nicol"
         }
       }
     },
@@ -8690,7 +8690,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:14:50.938048+00:00",
+        "generated_at": "2026-08-17T03:29:29.327381+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8703,15 +8703,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "AUS_03",
-              "name": "Blake Govers",
-              "number": 16,
-              "line": "Forward",
-              "position": "Forward",
-              "captain": false,
-              "goalkeeper": false
             },
             {
               "playerId": "AUS_20",
@@ -8773,6 +8764,15 @@
               "number": 20,
               "line": "Midfielder",
               "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_03",
+              "name": "Blake Govers",
+              "number": 16,
+              "line": "Forward",
+              "position": "Forward",
               "captain": false,
               "goalkeeper": false
             },
@@ -8854,7 +8854,7 @@
             }
           ],
           "team": "AUS",
-          "coach": "Colin Batch"
+          "coach": "Mark Hager"
         },
         "away": {
           "formation": "4-3-3",
@@ -9019,7 +9019,7 @@
             }
           ],
           "team": "RSA",
-          "coach": "Greg Clark"
+          "coach": "Devon van der Merwe"
         }
       }
     },
@@ -9041,7 +9041,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-17T03:19:12.943388+00:00",
+        "generated_at": "2026-08-17T03:29:29.327842+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9054,15 +9054,6 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
-            },
-            {
-              "playerId": "ESP_01",
-              "name": "Marc Miralles",
-              "number": 7,
-              "line": "Midfielder",
-              "position": "Midfielder",
-              "captain": true,
-              "goalkeeper": false
             },
             {
               "playerId": "ESP_21",
@@ -9098,6 +9089,15 @@
               "line": "Defender",
               "position": null,
               "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ESP_01",
+              "name": "Marc Miralles",
+              "number": 7,
+              "line": "Midfielder",
+              "position": "Midfielder",
+              "captain": true,
               "goalkeeper": false
             },
             {
@@ -9205,7 +9205,7 @@
             }
           ],
           "team": "ESP",
-          "coach": "Ángel Ferreiro"
+          "coach": "Max Caldas"
         },
         "away": {
           "formation": "4-3-3",
