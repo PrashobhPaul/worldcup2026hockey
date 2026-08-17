@@ -39,17 +39,22 @@ function SimulationCard() {
   )
 }
 
+// Three sections, no "All": Upcoming (what's next), Live (in play), and
+// Results (played). Each tab maps to a fixture status. Results leads because a
+// running tournament is read newest-result-first; if a match is live the badge
+// pulls the eye to it.
 const STATUS_TABS = [
-  { id: 'all', label: 'All' },
-  { id: 'live', label: '🔴 Live' },
-  { id: 'completed', label: 'Played' },
-  { id: 'scheduled', label: 'Upcoming' },
+  { id: 'results', label: 'Results', status: 'completed' },
+  { id: 'live', label: '🔴 Live', status: 'live' },
+  { id: 'upcoming', label: 'Upcoming', status: 'scheduled' },
 ]
 const POOL_TABS = ['all', 'A', 'B', 'C', 'D', 'knockout']
+const DEFAULT_TAB = 'results'
 
 export default function MatchesPage() {
   const [params, setParams] = useSearchParams()
-  const [tab, setTab] = useState(params.get('tab') || 'all')
+  const initialTab = STATUS_TABS.some(t => t.id === params.get('tab')) ? params.get('tab') : DEFAULT_TAB
+  const [tab, setTab] = useState(initialTab)
   const [pool, setPool] = useState(params.get('pool') || 'all')
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
 
@@ -57,14 +62,14 @@ export default function MatchesPage() {
   const all = matches ?? []
 
   const counts = {
-    all: all.length,
+    results: all.filter(m => m.status === 'completed').length,
     live: all.filter(m => m.status === 'live').length,
-    completed: all.filter(m => m.status === 'completed').length,
-    scheduled: all.filter(m => m.status === 'scheduled').length,
+    upcoming: all.filter(m => m.status === 'scheduled').length,
   }
 
+  const activeStatus = (STATUS_TABS.find(t => t.id === tab) ?? STATUS_TABS[0]).status
   const filtered = all.filter(m => {
-    const statusOk = tab === 'all' ? true : m.status === tab
+    const statusOk = m.status === activeStatus
     const poolOk = pool === 'all' ? true : pool === 'knockout' ? m.phase !== 'pool' : m.pool === pool
     return statusOk && poolOk
   })
@@ -75,10 +80,10 @@ export default function MatchesPage() {
     onChange: i => setFilter('tab', STATUS_TABS[i].id ?? STATUS_TABS[i], setTab),
   })
 
-  // Results lead, newest first — scroll down through the played matches toward
-  // the opening fixture, the order the official app and the competitor use —
-  // and still-upcoming days sit below, soonest first ("what's next"). A day that
-  // is entirely future sinks under the played/live ones.
+  // Within a day, Results/Live read newest-first (latest match on top, scroll
+  // down toward the opening fixture — the order the official and competitor
+  // apps use); Upcoming reads soonest-first ("what's next"). Days sort the same
+  // way: most-recent day on top for played/live, nearest day on top for future.
   const now = Date.now()
   const byDate = {}
   for (const m of filtered) (byDate[m.date] ??= []).push(m)
@@ -107,7 +112,7 @@ export default function MatchesPage() {
       <div className="mb-5 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🏑 Matches</h1>
         <p className="mt-1 text-xs text-pitch-400">
-          {counts.completed} of {counts.all} fixtures{counts.live > 0 && <span className="text-live"> · {counts.live} LIVE</span>}
+          {counts.results} of {all.length} fixtures{counts.live > 0 && <span className="text-live"> · {counts.live} LIVE</span>}
         </p>
       </div>
 
@@ -133,7 +138,7 @@ export default function MatchesPage() {
         ))}
       </div>
 
-      {tab === 'completed' && !loading && <OracleRecordStrip matches={all} />}
+      {tab === 'results' && !loading && <OracleRecordStrip matches={all} />}
       {tab === 'live' && <SimulationCard />}
 
       {loading ? <Skeleton h={400} /> : (

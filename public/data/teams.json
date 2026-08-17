@@ -46,7 +46,7 @@
       ],
       "titles": 2,
       "last_title": 2010,
-      "contender_tier": "favourite",
+      "contender_tier": "contender",
       "win_prob": 14.7,
       "intro": "Los Leones changed the sport's power map when they took Olympic gold in 2016, and they have never gone back to being anyone's outsiders. Two world titles sit in the cabinet, the most recent in 2010. Argentina's game is built on speed of thought — quick restarts, aggressive pressing, drag-flick threat from distance — and Lucas Martín Rossi leads a group that has grown up together. Pool A pits them against the hosts immediately, which is exactly the kind of opening night they enjoy.",
       "fih_points": 3279.27
@@ -310,7 +310,7 @@
       ],
       "titles": 2,
       "last_title": 1975,
-      "contender_tier": "contender",
+      "contender_tier": "dark_horse",
       "win_prob": 7.4,
       "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not the quarter-finals.",
       "fih_points": 3253.17
@@ -334,7 +334,7 @@
       ],
       "titles": 0,
       "last_title": null,
-      "contender_tier": "contender",
+      "contender_tier": "favourite",
       "win_prob": 8.1,
       "intro": "England have never won a World Cup, a fact that sits alongside a consistent presence in the last eight and a domestic system that keeps producing forwards. Sam Ward's finishing and Will Calnan's captaincy give them a spine, and their pressing game is among the most organised in Europe. Pool D pairs them with India in what may be the tie of the first round, with Pakistan and Wales offering no free points.",
       "fih_points": 3599.34

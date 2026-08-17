@@ -37,13 +37,13 @@ function HeroCard({ liveNow }) {
 
         {/* 2 — Tournament identity */}
         <h1 className="hero-caption font-display font-bold text-white">
-          FIH HOCKEY WORLD CUP <span className="text-brand">2026</span>
+          FIH MEN&apos;S HOCKEY WORLD CUP <span className="text-brand">2026</span>
         </h1>
-        <p className="hero-hosts font-semibold text-pitch-300">Belgium &amp; Netherlands</p>
+        <p className="hero-hosts font-semibold text-pitch-300">15–30 August · Belgium &amp; Netherlands</p>
 
         {/* 3 — Tournament meta */}
         <div className="mt-1 flex flex-wrap items-center justify-center gap-2">
-          <span className="font-mono text-[11px] text-pitch-300">Aug 15 – 30 · 16 Nations</span>
+          <span className="font-mono text-[11px] tracking-wide text-pitch-300">16 TEAMS · 50 MATCHES · 1 TROPHY</span>
           {liveNow && (
             <span className="flex items-center gap-1.5 rounded-full border border-live/30 bg-live/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-live">
               <span className="live-dot" /> Live Now
