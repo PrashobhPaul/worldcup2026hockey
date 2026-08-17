@@ -13,7 +13,9 @@ import sys
 import os
 
 sys.path.insert(0, os.path.dirname(__file__))
-from update_data import parse_rankings_text, parse_squad_lines  # noqa: E402
+from update_data import (  # noqa: E402
+    parse_rankings_text, parse_squad_lines, parse_player_rows, TMS_LINEUP_LINK,
+)
 
 failures = []
 
@@ -78,6 +80,35 @@ check('goalkeeper flag read', any(p['goalkeeper'] and p['name'].startswith('VISS
                                  for p in squads.get('NED', [])))
 check('shirt numbers read', {p['number'] for p in squads.get('NZL', [])} == {10, 1})
 check('rows with no nation heading are dropped', parse_squad_lines(['8 BRINKMAN Thierry']) == {})
+
+print('\nMatch line-up row reader')
+
+# A PDF team sheet keeps number and name on one line...
+inline = parse_player_rows(['8 BRINKMAN Thierry (C)', '23 VISSER Maurits GK', '51 TELGENKAMP Duco'])
+check('inline rows read', [p['number'] for p in inline] == [8, 23, 51])
+check('inline captain flag', inline[0]['is_captain'] and not inline[0]['goalkeeper'])
+check('inline goalkeeper flag', inline[1]['goalkeeper'] and inline[1]['name'] == 'VISSER Maurits')
+
+# ...an HTML table flattens to one cell per line. Same sheet, different shape.
+cells = parse_player_rows(['8', 'BRINKMAN Thierry (C)', '23', 'VISSER Maurits GK', '51', 'TELGENKAMP Duco'])
+check('cell-per-line rows read', [p['number'] for p in cells] == [8, 23, 51])
+check('both shapes agree', [(p['number'], p['name']) for p in cells]
+      == [(p['number'], p['name']) for p in inline])
+check('cell-per-line captain flag', cells[0]['is_captain'])
+check('cell-per-line goalkeeper flag', cells[1]['goalkeeper'])
+
+# A shirt number is worn by one player; a repeat means the page was misread.
+dupes = parse_player_rows(['8 BRINKMAN Thierry', '8 SOMEONE Else'])
+check('a repeated shirt number is dropped', len(dupes) == 1)
+
+# Stray numbers (scores, minutes, table totals) must not invent players.
+check('a number with no name after it invents nobody', parse_player_rows(['3', '2', '1']) == [])
+check('running text is not read as a name',
+      parse_player_rows(['5', 'match report generated at 14:02']) == [])
+
+check('lineup links are recognised',
+      TMS_LINEUP_LINK.findall('href="/matches/22334/lineups/8575" href="/matches/22334/lineups/8586"')
+      == [('22334', '8575'), ('22334', '8586')])
 
 print()
 if failures:

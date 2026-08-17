@@ -153,23 +153,24 @@ def fetch_tms_standings():
 # ── FIH TMS team lists & match line-ups ───────────────────────────────────
 # The competitor apps show official team sheets because FIH TMS publishes them.
 # TMS is unreachable from local dev sandboxes but fine from the Actions runner,
-# so the fetch lives here. Candidate report paths are tried in order and the
-# first one that returns a PDF wins; when none parse, the raw text is dumped so
-# the parser can be tuned from real output rather than guesswork — the same
-# loop that fixed the pool-standings backfill.
+# so the fetch lives here.
+#
+# The paths below are not guesses: discover_tms_reports() crawled the
+# competition pages and logged what TMS actually links to. Four earlier guesses
+# (/reports/teamlists, /entrylists, /squads, /teams/export) all 404'd; the real
+# entry list is /reports/teams, and — the find that matters — every match links
+# a per-team sheet at /matches/{matchId}/lineups/{teamId}. When a parse fails,
+# the raw text is dumped so the parser is tuned from real output rather than
+# guesswork, the same loop that fixed the pool-standings backfill.
 
-TMS_BASE = 'https://tms.fih.ch/competitions/1866'
+TMS_HOST = 'https://tms.fih.ch'
+TMS_BASE = TMS_HOST + '/competitions/1866'
 TMS_SQUAD_PATHS = [
-    '/reports/teamlists',
+    '/reports/teams',      # confirmed live: the competition entry list
     '/reports/entrylists',
-    '/reports/squads',
-    '/teams/export',
 ]
-TMS_MATCH_PATHS = [
-    '/matches/{code}/reports/matchreport',
-    '/matches/{code}/reports/teamlist',
-    '/matches/{code}/report',
-]
+# Discovered on the competition matches page, e.g. /matches/22334/lineups/8575
+TMS_LINEUP_LINK = re.compile(r'/matches/(\d+)/lineups/(\d+)')
 
 def _tms_get(url):
     try:
@@ -265,25 +266,136 @@ def discover_tms_reports():
         print('TMS DISCOVERY: no report-shaped links found on the competition pages.')
     return sorted(seen)
 
+def _tms_lines(body):
+    """Text lines from a TMS response, whether it came back as PDF or HTML."""
+    if body.startswith(b'%PDF'):
+        return _pdf_lines(body)
+    html = body.decode('utf-8', 'replace')
+    html = re.sub(r'(?is)<(script|style)\b.*?</\1>', ' ', html)
+    return [l.strip() for l in re.sub(r'<[^>]+>', '\n', html).split('\n') if l.strip()]
+
+# An HTML table flattens to one cell per line, so "8" and "BRINKMAN Thierry"
+# arrive as separate lines; a PDF keeps them on one. Both shapes are real —
+# poolstandings comes back as a PDF, the rankings page as flat cells — so the
+# row reader handles either rather than betting on one.
+NAME_CELL = re.compile(r'^[A-ZÀ-ÿ][A-Za-zÀ-ÿ.\'\- ]{2,40}$')
+
+def parse_player_rows(lines):
+    """[{number, name, is_captain, goalkeeper}] from either row shape."""
+    out, pending = [], None
+    for ln in lines:
+        m = SQUAD_ROW.match(ln)
+        if m:                                     # "8 BRINKMAN Thierry (C)"
+            name, roles = split_role(m.group(2))
+            if name:
+                out.append({'number': int(m.group(1)), 'name': ' '.join(name.split()),
+                            'is_captain': 'C' in roles, 'goalkeeper': bool(roles & {'GK', 'G'})})
+            pending = None
+            continue
+        if re.fullmatch(r'\d{1,2}', ln):          # bare shirt-number cell
+            pending = int(ln)
+            continue
+        if pending is not None:
+            name, roles = split_role(ln)
+            if NAME_CELL.match(name):
+                out.append({'number': pending, 'name': ' '.join(name.split()),
+                            'is_captain': 'C' in roles, 'goalkeeper': bool(roles & {'GK', 'G'})})
+            pending = None
+    seen, uniq = set(), []
+    for p in out:                                 # a shirt number is worn once
+        if p['number'] in seen:
+            continue
+        seen.add(p['number'])
+        uniq.append(p)
+    return uniq
+
+def _dump(label, lines, n=60):
+    print(f'  {label} — first {min(n, len(lines))} of {len(lines)} lines:')
+    for ln in lines[:n]:
+        print(f'  | {ln[:110]}')
+
 def fetch_tms_squads():
     """Official entry lists for all 16 nations, or None."""
     for path in TMS_SQUAD_PATHS:
         body, ctype = _tms_get(TMS_BASE + path)
         if not body:
             continue
-        lines = _pdf_lines(body) if body.startswith(b'%PDF') else \
-            [l.strip() for l in re.sub(r'<[^>]+>', '\n', body.decode('utf-8', 'replace')).split('\n') if l.strip()]
+        lines = _tms_lines(body)
         squads = parse_squad_lines(lines)
         total = sum(len(v) for v in squads.values())
         if total >= 80:  # a real entry list is ~16 x 18
             print(f'SQUADS: parsed {total} players across {len(squads)} teams from {path}')
             return squads
         print(f'SQUADS: {path} yielded only {total} players across {len(squads)} teams — not usable.')
-        for ln in lines[:25]:
-            print(f'  | {ln[:100]}')
+        _dump(path, lines)
     print('SQUADS: no usable TMS team list this run — squads unchanged.')
-    discover_tms_reports()
     return None
+
+# ── Official match line-ups ───────────────────────────────────────────────
+# /matches/{matchId}/lineups/{teamId} is the sheet the competitor apps show.
+# Neither id is ours, so both are learned rather than assumed: the competition
+# matches page names every (matchId, teamId) pair, and the sheet itself names
+# the nation — which is what lets a TMS match be tied to one of our fixtures
+# without trusting the order links happen to appear in.
+
+def discover_tms_lineup_links():
+    """{tms_match_id: [team_id, ...]} from the competition matches page."""
+    found = {}
+    for path in ('/matches', ''):
+        body, ctype = _tms_get(TMS_BASE + path)
+        if not body:
+            continue
+        for mid, tid in TMS_LINEUP_LINK.findall(body.decode('utf-8', 'replace')):
+            ids = found.setdefault(mid, [])
+            if tid not in ids:
+                ids.append(tid)
+    pairs = {k: v for k, v in found.items() if len(v) == 2}
+    print(f'LINEUPS: {len(found)} TMS matches linked, {len(pairs)} with both team sheets.')
+    return pairs
+
+def fetch_tms_lineup(mid, tid):
+    """(team_code, [players]) for one side of one match, or (None, [])."""
+    body, ctype = _tms_get(f'{TMS_HOST}/matches/{mid}/lineups/{tid}')
+    if not body:
+        return None, [], []
+    lines = _tms_lines(body)
+    code = None
+    for ln in lines[:40]:
+        hit = TEAM_CODE_MAP.get(ln.strip().lower())
+        if hit:
+            code = hit
+            break
+    if code is None:                              # nation may sit inside a longer cell
+        blob = ' '.join(lines[:40]).lower()
+        for name, c in TEAM_CODE_MAP.items():
+            if name in blob:
+                code = c
+                break
+    return code, parse_player_rows(lines), lines
+
+def probe_tms_lineups():
+    """
+    Read two real team sheets and report exactly what came back.
+
+    Deliberately writes nothing. A sheet's layout is still unknown — whether it
+    marks starters, where the nation sits, PDF or HTML — and writing 44 guessed
+    line-ups into fixtures.json is far more expensive to unpick than spending
+    one run looking first. The applier is written against this output.
+    """
+    links = discover_tms_lineup_links()
+    if not links:
+        print('LINEUPS: no /matches/{id}/lineups/{team} links found this run.')
+        return
+    mid = sorted(links, key=int)[0]
+    for tid in links[mid][:2]:
+        code, roster, lines = fetch_tms_lineup(mid, tid)
+        print(f'LINEUP PROBE: match {mid} team {tid} -> nation {code or "UNRESOLVED"}, '
+              f'{len(roster)} players parsed')
+        for p in roster[:20]:
+            flags = ''.join(c for c, on in (('C', p['is_captain']), ('GK', p['goalkeeper'])) if on)
+            print(f"    {p['number']:>2} {p['name']}{' ' + flags if flags else ''}")
+        if code is None or len(roster) < 11:
+            _dump(f'match {mid} team {tid}', lines)
 
 def merge_squads(players_doc, squads, teams):
     """Add officially-listed players that we do not already carry. Never
@@ -1029,6 +1141,7 @@ def main():
 
     # Official entry lists, when TMS publishes them — squads gate the line-ups.
     players_changed = merge_squads(players, fetch_tms_squads(), teams)
+    probe_tms_lineups()
 
     tms = fetch_tms_standings()
     if tms:
