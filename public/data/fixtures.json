@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-17T16:00:59.052040+00:00",
+  "last_updated": "2026-08-17T16:11:32.096622+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1973,7 +1973,7 @@
       "date": "2026-08-16",
       "time": "13:30",
       "timezone": "CET",
-      "venue": "BRU",
+      "venue": "AMV",
       "status": "completed",
       "score": {
         "home": 3,
@@ -2931,7 +2931,7 @@
       "date": "2026-08-16",
       "time": "13:30",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "completed",
       "score": {
         "home": 3,
@@ -3907,7 +3907,7 @@
       "date": "2026-08-17",
       "time": "13:30",
       "timezone": "CET",
-      "venue": "BRU",
+      "venue": "AMV",
       "status": "completed",
       "score": {
         "home": 4,
@@ -4419,7 +4419,7 @@
       "date": "2026-08-17",
       "time": "17:00",
       "timezone": "CET",
-      "venue": "BRU",
+      "venue": "AMV",
       "status": "live",
       "score": {
         "home": null,
@@ -4784,7 +4784,7 @@
       "date": "2026-08-17",
       "time": "13:30",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "live",
       "score": {
         "home": null,
@@ -5114,7 +5114,7 @@
       "date": "2026-08-17",
       "time": "17:00",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "live",
       "score": {
         "home": null,
@@ -5830,7 +5830,7 @@
       "date": "2026-08-18",
       "time": "17:00",
       "timezone": "CET",
-      "venue": "BRU",
+      "venue": "AMV",
       "status": "scheduled",
       "score": {
         "home": null,
@@ -6560,7 +6560,7 @@
       "date": "2026-08-18",
       "time": "17:00",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "scheduled",
       "score": {
         "home": null,
@@ -7269,7 +7269,7 @@
       "date": "2026-08-19",
       "time": "17:00",
       "timezone": "CET",
-      "venue": "BRU",
+      "venue": "AMV",
       "status": "scheduled",
       "score": {
         "home": null,
@@ -8329,7 +8329,7 @@
       "date": "2026-08-20",
       "time": "13:30",
       "timezone": "CET",
-      "venue": "BRU",
+      "venue": "AMV",
       "status": "scheduled",
       "score": {
         "home": null,
@@ -9045,7 +9045,7 @@
       "date": "2026-08-20",
       "time": "13:30",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "scheduled",
       "score": {
         "home": null,
