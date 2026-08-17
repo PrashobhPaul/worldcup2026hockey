@@ -437,6 +437,34 @@ def parse_player_rows(lines):
         uniq.append(p)
     return uniq
 
+HEAD_COACH = re.compile(r'^Head Coach\s+(\S.*)$')
+
+def parse_team_staff(lines):
+    """{code: coach name} from the Team Staff block on each nation's page."""
+    staff, current = {}, None
+    for ln in lines:
+        code = _heading_code(ln)
+        if code:
+            current = code
+            continue
+        m = HEAD_COACH.match(ln.strip())
+        if m and current and current not in staff:
+            staff[current] = normalize_fih_name(m.group(1))
+    return staff
+
+def apply_coaches(teams, staff):
+    """The entry list names each head coach; the app was carrying stale ones."""
+    if not staff:
+        return False
+    changed = False
+    for t in teams['teams']:
+        coach = staff.get(t['code'])
+        if coach and t.get('coach') != coach:
+            print(f"COACH: {t['code']} {t.get('coach')} -> {coach}")
+            t['coach'] = coach
+            changed = True
+    return changed
+
 def _dump(label, lines, n=60):
     print(f'  {label} — first {min(n, len(lines))} of {len(lines)} lines:')
     for ln in lines[:n]:
@@ -453,7 +481,7 @@ def _dump_team_page(lines, code):
     _dump(f'{code} page', lines[start:end], 40)
 
 def fetch_tms_squads():
-    """Official entry lists for all 16 nations, or None."""
+    """(squads, head coaches) from the official entry list, or (None, None)."""
     for path in TMS_SQUAD_PATHS:
         body, ctype = _tms_get(TMS_BASE + path)
         if not body:
@@ -474,11 +502,12 @@ def fetch_tms_squads():
             missing = sorted(set(TEAM_CODE_MAP.values()) - set(squads))
             if missing:
                 print(f'SQUADS: no page found for {", ".join(missing)}')
-            return {c: v for c, v in squads.items() if len(v) >= MIN_SQUAD}
+            return ({c: v for c, v in squads.items() if len(v) >= MIN_SQUAD},
+                    parse_team_staff(lines))
         print(f'SQUADS: {path} yielded only {total} players across {len(squads)} teams — not usable.')
         _dump(path, lines)
     print('SQUADS: no usable TMS team list this run — squads unchanged.')
-    return None
+    return None, None
 
 # ── Official match line-ups ───────────────────────────────────────────────
 # /matches/{matchId}/lineups/{teamId} is the sheet the competitor apps show.
@@ -714,6 +743,10 @@ def compose_lineup(code, squad, rng):
             xi.append((line, spare)); used.add(spare['id'])
     if len(xi) != 11:
         return None
+    # Players are picked by known position first and unstated second, which
+    # leaves the list interleaved. The pitch draws rows in list order, so an
+    # unsorted XI puts a midfielder in the back line. Sort by line.
+    xi.sort(key=lambda pair: LINE_ORDER.index(pair[0]))
 
     subs = []
     for p in sorted([p for p in squad if p['id'] not in used], key=_lineup_rank):
@@ -1402,9 +1435,10 @@ def main():
     teams_changed = apply_rankings(teams, fetch_fih_rankings())
 
     # Official entry lists, when TMS publishes them — squads gate the line-ups.
-    squads = fetch_tms_squads()
+    squads, staff = fetch_tms_squads()
     players_changed = reconcile_team_lists(players, squads)
     players_changed |= merge_squads(players, squads, teams)
+    teams_changed |= apply_coaches(teams, staff)
     probe_tms_lineups()
 
     tms = fetch_tms_standings()

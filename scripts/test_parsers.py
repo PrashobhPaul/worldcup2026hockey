@@ -15,7 +15,8 @@ import os
 sys.path.insert(0, os.path.dirname(__file__))
 from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
-    compose_lineup, seeded_rng, reconcile_team_lists, TMS_LINEUP_LINK,
+    compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
+    TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -139,6 +140,17 @@ check('captain still read behind a caps breakdown', by_no[7]['is_captain'])
 check('goalkeeper still read behind a caps breakdown', by_no[16]['goalkeeper'])
 check('a row without a breakdown still reads', by_no[33]['caps'] == 30)
 
+# Each nation's page carries a Team Staff block. The app was showing a stale
+# England coach while the entry list named the real one.
+staff = parse_team_staff([
+    'Team Details England', 'Team Staff', 'Role Name',
+    'Team Manager GANNON Paul', 'Head Coach JONES Zak', 'Assistant Coach HICKMAN Mark',
+    'Team Details Argentina', 'Head Coach REY Lucas',
+])
+check('the head coach is read, in the app’s name order', staff == {'ENG': 'Zak Jones', 'ARG': 'Lucas Rey'})
+check('an assistant coach is not read as the head coach',
+      'Mark Hickman' not in staff.values() and 'Paul Gannon' not in staff.values())
+
 check('a heading run together with the column titles still names the nation',
       set(parse_squad_lines([
           'Team Details England Shirt No. Player Date of Birth Age* Caps',
@@ -256,6 +268,10 @@ check('no player is both starter and substitute',
 check('exactly one goalkeeper, and it is the keeper',
       [p['name'] for p in xi if p['goalkeeper']] == ['A Keeper'])
 check('the keeper is first, so the pitch draws him in goal', xi[0]['name'] == 'A Keeper')
+# The pitch draws rows in list order, so an interleaved XI stood a midfielder
+# in the back line — visible on the England sheet.
+check('the XI is ordered by line, so the pitch draws it correctly',
+      [p['line'] for p in xi] == ['Goalkeeper'] + ['Defender'] * 4 + ['Midfielder'] * 3 + ['Forward'] * 3)
 check('lines are 1-4-3-3',
       [sum(1 for p in xi if p['line'] == l) for l in ('Goalkeeper', 'Defender', 'Midfielder', 'Forward')]
       == [1, 4, 3, 3])

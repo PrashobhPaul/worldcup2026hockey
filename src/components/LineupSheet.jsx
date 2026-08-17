@@ -61,12 +61,26 @@ function CardChips({ cards }) {
   ))
 }
 
+const LINES = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
+
+/**
+ * Rows for the pitch. Each player carries the line he was picked for, so group
+ * on that rather than trusting the order the list happens to arrive in —
+ * slicing an unsorted XI by the formation stood a midfielder in the back line.
+ * Sheets written before the line was recorded fall back to slicing.
+ */
+function pitchRows(side) {
+  const xi = side.startingXI
+  if (!xi.every(p => LINES.includes(p.line))) {
+    return rowsFromFormation(xi.map(p => ({ ...p, pos: p.goalkeeper ? 'GK' : 'OUT' })),
+      side.formation || '4-3-3')
+  }
+  return LINES.map(line => xi.filter(p => p.line === line))
+}
+
 /** Numbered shirts laid out on the pitch, hockey formation. */
 function LineupPitch({ side, events, color }) {
-  const rows = rowsFromFormation(
-    side.startingXI.map(p => ({ ...p, pos: p.goalkeeper ? 'GK' : 'OUT' })),
-    side.formation || '4-3-3',
-  )
+  const rows = pitchRows(side)
   return (
     <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0e3a6e] via-[#0b2f5c] to-[#082347]">
       <svg viewBox="0 0 300 400" className="absolute inset-0 h-full w-full opacity-30" fill="none" stroke="#8fd0ff" strokeWidth="1.5">
