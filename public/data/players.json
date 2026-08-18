@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-18T01:21:34.656525+00:00",
+  "last_updated": "2026-08-18T04:38:59.495161+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -898,7 +898,7 @@
       "dob": "5 Jun 1997",
       "caps": 159,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1206,7 +1206,7 @@
       "dob": "20 Aug 2000",
       "caps": 38,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 56.3,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1492,7 +1492,7 @@
       "dob": "24 Jul 1996",
       "caps": 18,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 63.3,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1690,7 +1690,7 @@
       "dob": "21 Jun 2000",
       "caps": 45,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1800,7 +1800,7 @@
       "dob": "1 Mar 2000",
       "caps": 74,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1866,7 +1866,7 @@
       "dob": "7 Aug 1998",
       "caps": 31,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2042,7 +2042,7 @@
       "dob": "2 Aug 2002",
       "caps": 41,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2152,7 +2152,7 @@
       "dob": "3 Nov 2003",
       "caps": 6,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2174,7 +2174,7 @@
       "dob": "18 Sep 1998",
       "caps": 93,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2284,7 +2284,7 @@
       "dob": "9 Apr 2003",
       "caps": 23,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2306,7 +2306,7 @@
       "dob": "18 Dec 2006",
       "caps": 11,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2372,7 +2372,7 @@
       "dob": "20 Apr 2000",
       "caps": 89,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2482,7 +2482,7 @@
       "dob": "4 Nov 2003",
       "caps": 18,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 73.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2614,7 +2614,7 @@
       "dob": "12 Nov 1999",
       "caps": 124,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2812,7 +2812,7 @@
       "dob": "5 May 2001",
       "caps": 92,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -3252,7 +3252,7 @@
       "dob": "11 Dec 2000",
       "caps": 28,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 57.7,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -3759,7 +3759,7 @@
       "dob": "3 Apr 1999",
       "caps": 103,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 71.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -3891,7 +3891,7 @@
       "dob": "3 Oct 1999",
       "caps": 123,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4199,7 +4199,7 @@
       "dob": "14 Oct 1999",
       "caps": 76,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 60.5,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4265,7 +4265,7 @@
       "dob": "17 Jul 2002",
       "caps": 43,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 57.7,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4640,7 +4640,7 @@
       "dob": "2 May 2002",
       "caps": 12,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 56.3,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4773,7 +4773,7 @@
       "dob": "7 Sep 2005",
       "caps": 65,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4927,7 +4927,7 @@
       "dob": "7 Feb 1999",
       "caps": 50,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 70.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "world_rank": 7
@@ -4950,7 +4950,7 @@
       "dob": "10 Apr 1999",
       "caps": 70,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5082,7 +5082,7 @@
       "dob": "19 Mar 2002",
       "caps": 70,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 57.7,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5566,7 +5566,7 @@
       "dob": "3 Jan 1997",
       "caps": 109,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 60.5,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5588,7 +5588,7 @@
       "dob": "18 May 1999",
       "caps": 101,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 56.3,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5874,7 +5874,7 @@
       "dob": "19 Sep 2000",
       "caps": 83,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5896,7 +5896,7 @@
       "dob": "27 Oct 2001",
       "caps": 14,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5984,7 +5984,7 @@
       "dob": "9 Jul 1997",
       "caps": 88,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 55.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6050,7 +6050,7 @@
       "dob": "16 Jul 2003",
       "caps": 5,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 55.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6424,7 +6424,7 @@
       "dob": "22 Sep 1999",
       "caps": 92,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 56.3,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6578,7 +6578,7 @@
       "dob": "2 Oct 1995",
       "caps": 113,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6644,7 +6644,7 @@
       "dob": "9 Sep 2000",
       "caps": 78,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 69.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6732,7 +6732,7 @@
       "dob": "14 Dec 1992",
       "caps": 78,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 71.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6864,7 +6864,7 @@
       "dob": "21 Jun 1996",
       "caps": 93,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6974,7 +6974,7 @@
       "dob": "2 May 2000",
       "caps": 70,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -7326,7 +7326,7 @@
       "dob": "13 Apr 2001",
       "caps": 26,
       "matches_played": 2,
-      "ai_rating": null,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -7414,7 +7414,7 @@
       "dob": "27 Jul 1998",
       "caps": 105,
       "matches_played": 1,
-      "ai_rating": null,
+      "ai_rating": 57.7,
       "source": "fih-team-list",
       "on_team_list": true
     },
