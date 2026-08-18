@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-17T20:15:51.679402+00:00",
+  "updated_at": "2026-08-18T01:21:34.656525+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -565,7 +565,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.597,
       "reason": "FIH #2 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:C3:r3",
@@ -579,7 +582,10 @@
       "pick": "HOME",
       "pick_confidence": 0.488,
       "reason": "FIH #4 AUS favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:A4:r3",
@@ -621,7 +627,10 @@
       "pick": "HOME",
       "pick_confidence": 0.908,
       "reason": "FIH #3 ENG favoured over #15 WAL — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:D6:r3",
@@ -635,7 +644,10 @@
       "pick": "HOME",
       "pick_confidence": 0.814,
       "reason": "FIH #8 IND favoured over #12 PAK — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:B5:r3",
@@ -649,7 +661,10 @@
       "pick": "HOME",
       "pick_confidence": 0.911,
       "reason": "FIH #1 BEL favoured over #14 MAS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:B6:r3",
@@ -663,7 +678,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.77,
       "reason": "FIH #5 GER favoured over #9 FRA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:A5:r3",
@@ -677,7 +695,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.909,
       "reason": "FIH #2 NED favoured over #16 JPN — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:A6:r3",
@@ -705,7 +726,10 @@
       "pick": "HOME",
       "pick_confidence": 0.904,
       "reason": "FIH #4 AUS favoured over #13 RSA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+      "publishedAt": "2026-08-17T17:06:19.872011+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-18T01:21:34.656168+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:C6:r3",
@@ -734,6 +758,118 @@
       "pick_confidence": 0.655,
       "reason": "FIH #1 BEL favoured over #5 GER — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "publishedAt": "2026-08-17T17:06:19.872011+00:00"
+    },
+    {
+      "id": "oracle-v1:A3:r4",
+      "matchId": "A3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:A3:r3",
+      "p_home_win": 0.145,
+      "p_draw": 0.258,
+      "p_away_win": 0.597,
+      "pick": "AWAY",
+      "pick_confidence": 0.597,
+      "reason": "FIH #3 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:C3:r4",
+      "matchId": "C3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:C3:r3",
+      "p_home_win": 0.488,
+      "p_draw": 0.303,
+      "p_away_win": 0.208,
+      "pick": "HOME",
+      "pick_confidence": 0.488,
+      "reason": "FIH #5 AUS favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:D5:r4",
+      "matchId": "D5",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:D5:r3",
+      "p_home_win": 0.909,
+      "p_draw": 0.05,
+      "p_away_win": 0.041,
+      "pick": "HOME",
+      "pick_confidence": 0.909,
+      "reason": "FIH #2 ENG favoured over #15 WAL — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:D6:r4",
+      "matchId": "D6",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:D6:r3",
+      "p_home_win": 0.788,
+      "p_draw": 0.14,
+      "p_away_win": 0.072,
+      "pick": "HOME",
+      "pick_confidence": 0.788,
+      "reason": "FIH #8 IND favoured over #12 PAK — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:B5:r4",
+      "matchId": "B5",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:B5:r3",
+      "p_home_win": 0.909,
+      "p_draw": 0.05,
+      "p_away_win": 0.041,
+      "pick": "HOME",
+      "pick_confidence": 0.909,
+      "reason": "FIH #1 BEL favoured over #14 MAS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:B6:r4",
+      "matchId": "B6",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:B6:r3",
+      "p_home_win": 0.059,
+      "p_draw": 0.098,
+      "p_away_win": 0.843,
+      "pick": "AWAY",
+      "pick_confidence": 0.843,
+      "reason": "FIH #4 GER favoured over #9 FRA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:A5:r4",
+      "matchId": "A5",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:A5:r3",
+      "p_home_win": 0.041,
+      "p_draw": 0.05,
+      "p_away_win": 0.909,
+      "pick": "AWAY",
+      "pick_confidence": 0.909,
+      "reason": "FIH #3 NED favoured over #16 JPN — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
+    },
+    {
+      "id": "oracle-v1:C5:r4",
+      "matchId": "C5",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:C5:r3",
+      "p_home_win": 0.904,
+      "p_draw": 0.05,
+      "p_away_win": 0.046,
+      "pick": "HOME",
+      "pick_confidence": 0.904,
+      "reason": "FIH #5 AUS favoured over #13 RSA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-18T01:21:34.656168+00:00"
     }
   ]
 }
