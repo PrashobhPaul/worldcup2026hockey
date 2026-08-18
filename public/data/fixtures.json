@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-18T17:24:51.720030+00:00",
+  "last_updated": "2026-08-18T17:54:31.235245+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -2128,7 +2128,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.487748+00:00",
+        "generated_at": "2026-08-18T17:54:31.225833+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2161,6 +2161,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ARG_23",
               "name": "Lucas Toscani",
               "number": 11,
@@ -2170,10 +2179,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Lucio Mendez",
-              "number": 33,
-              "line": "Defender",
+              "playerId": "ARG_12",
+              "name": "Matias Andreotti",
+              "number": 20,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2200,7 +2209,7 @@
               "playerId": "ARG_13",
               "name": "Tomas Domene",
               "number": 21,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2222,15 +2231,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_21",
-              "name": "Martin Ferreiro",
-              "number": 32,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -2242,37 +2242,37 @@
               "onAt": "42:08"
             },
             {
+              "playerId": "ARG_21",
+              "name": "Martin Ferreiro",
+              "number": 32,
+              "position": null,
+              "onAt": "19:55"
+            },
+            {
               "playerId": "ARG_17",
               "name": "Tadeo Marcucci",
               "number": 27,
               "position": null,
-              "onAt": "19:55"
+              "onAt": "25:46"
             },
             {
               "playerId": "ARG_20",
               "name": "Bautista Capurro",
               "number": 31,
               "position": null,
-              "onAt": "25:46"
+              "onAt": "11:58"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
               "position": null,
-              "onAt": "11:58"
+              "onAt": "20:28"
             },
             {
               "playerId": "ARG_11",
               "name": "Joaquin Toscani",
               "number": 16,
-              "position": null,
-              "onAt": "20:28"
-            },
-            {
-              "playerId": "ARG_12",
-              "name": "Matias Andreotti",
-              "number": 20,
               "position": null,
               "onAt": "12:57"
             },
@@ -2634,7 +2634,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T09:36:50.538728+00:00",
+        "generated_at": "2026-08-18T17:54:31.226298+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2647,6 +2647,15 @@
               "position": "Goalkeeper",
               "captain": false,
               "goalkeeper": true
+            },
+            {
+              "playerId": "NED_18",
+              "name": "Duco Telgenkamp",
+              "number": 51,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
             },
             {
               "playerId": "NED_12",
@@ -2667,9 +2676,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_18",
-              "name": "Duco Telgenkamp",
-              "number": 51,
+              "playerId": "NED_17",
+              "name": "Tijmen Reyenga",
+              "number": 29,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -2679,7 +2688,7 @@
               "playerId": "NED_08",
               "name": "Jorrit Croon",
               "number": 10,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2703,15 +2712,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_11",
-              "name": "Floris Wortelboer",
-              "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "NED_01",
               "name": "Thierry Brinkman",
               "number": 8,
@@ -2721,18 +2721,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_11",
+              "name": "Floris Wortelboer",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_05",
-              "name": "Jip Janssen",
-              "number": 2,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -2748,30 +2748,30 @@
               "onAt": "26:49"
             },
             {
+              "playerId": "NED_05",
+              "name": "Jip Janssen",
+              "number": 2,
+              "position": null,
+              "onAt": "21:10"
+            },
+            {
               "playerId": "NED_09",
               "name": "Justen Blok",
               "number": 12,
               "position": null,
-              "onAt": "21:10"
+              "onAt": "45:55"
             },
             {
               "playerId": "NED_16",
               "name": "Derck de Vilder",
               "number": 14,
               "position": null,
-              "onAt": "45:55"
+              "onAt": "15:36"
             },
             {
               "playerId": "NED_22",
               "name": "Terrance Pieters",
               "number": 11,
-              "position": null,
-              "onAt": "15:36"
-            },
-            {
-              "playerId": "NED_17",
-              "name": "Tijmen Reyenga",
-              "number": 29,
               "position": null,
               "onAt": "46:15"
             },
@@ -2788,13 +2788,6 @@
               "number": 77,
               "position": null,
               "onAt": "27:41"
-            },
-            {
-              "playerId": "NED_17",
-              "name": "Pepijn van der Heijden",
-              "number": 22,
-              "position": null,
-              "onAt": "40:19"
             }
           ],
           "team": "NED",
@@ -6133,15 +6126,50 @@
       "time": "18:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 7,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Thierry Brinkman"
+        },
+        {
+          "minute": 11,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Nicolas della Torre"
+        },
+        {
+          "minute": 27,
+          "team": "ARG",
+          "type": "yellow_card",
+          "player": "Matias Andreotti"
+        },
+        {
+          "minute": 34,
+          "team": "NED",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tijmen Reyenga"
+        },
+        {
+          "minute": 42,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Duco Telgenkamp"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.490653+00:00",
+        "generated_at": "2026-08-18T17:54:31.229496+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6174,6 +6202,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ARG_23",
               "name": "Lucas Toscani",
               "number": 11,
@@ -6183,10 +6220,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Lucio Mendez",
-              "number": 33,
-              "line": "Defender",
+              "playerId": "ARG_12",
+              "name": "Matias Andreotti",
+              "number": 20,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6213,7 +6250,7 @@
               "playerId": "ARG_13",
               "name": "Tomas Domene",
               "number": 21,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6235,15 +6272,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_21",
-              "name": "Martin Ferreiro",
-              "number": 32,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -6255,37 +6283,37 @@
               "onAt": "21:31"
             },
             {
+              "playerId": "ARG_21",
+              "name": "Martin Ferreiro",
+              "number": 32,
+              "position": null,
+              "onAt": "37:03"
+            },
+            {
               "playerId": "ARG_17",
               "name": "Tadeo Marcucci",
               "number": 27,
               "position": null,
-              "onAt": "37:03"
+              "onAt": "47:18"
             },
             {
               "playerId": "ARG_20",
               "name": "Bautista Capurro",
               "number": 31,
               "position": null,
-              "onAt": "47:18"
+              "onAt": "43:30"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
               "position": null,
-              "onAt": "43:30"
+              "onAt": "17:22"
             },
             {
               "playerId": "ARG_11",
               "name": "Joaquin Toscani",
               "number": 16,
-              "position": null,
-              "onAt": "17:22"
-            },
-            {
-              "playerId": "ARG_12",
-              "name": "Matias Andreotti",
-              "number": 20,
               "position": null,
               "onAt": "32:59"
             },
@@ -6321,6 +6349,15 @@
               "goalkeeper": true
             },
             {
+              "playerId": "NED_18",
+              "name": "Duco Telgenkamp",
+              "number": 51,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NED_12",
               "name": "Tjep Hoedemakers",
               "number": 19,
@@ -6339,9 +6376,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_18",
-              "name": "Duco Telgenkamp",
-              "number": 51,
+              "playerId": "NED_17",
+              "name": "Tijmen Reyenga",
+              "number": 29,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -6351,7 +6388,7 @@
               "playerId": "NED_08",
               "name": "Jorrit Croon",
               "number": 10,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6375,15 +6412,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_11",
-              "name": "Floris Wortelboer",
-              "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "NED_01",
               "name": "Thierry Brinkman",
               "number": 8,
@@ -6393,18 +6421,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_11",
+              "name": "Floris Wortelboer",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_05",
-              "name": "Jip Janssen",
-              "number": 2,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -6420,30 +6448,30 @@
               "onAt": "13:12"
             },
             {
+              "playerId": "NED_05",
+              "name": "Jip Janssen",
+              "number": 2,
+              "position": null,
+              "onAt": "49:51"
+            },
+            {
               "playerId": "NED_09",
               "name": "Justen Blok",
               "number": 12,
               "position": null,
-              "onAt": "49:51"
+              "onAt": "28:29"
             },
             {
               "playerId": "NED_16",
               "name": "Derck de Vilder",
               "number": 14,
               "position": null,
-              "onAt": "28:29"
+              "onAt": "29:38"
             },
             {
               "playerId": "NED_22",
               "name": "Terrance Pieters",
               "number": 11,
-              "position": null,
-              "onAt": "29:38"
-            },
-            {
-              "playerId": "NED_17",
-              "name": "Tijmen Reyenga",
-              "number": 29,
               "position": null,
               "onAt": "38:54"
             },
@@ -6460,20 +6488,99 @@
               "number": 77,
               "position": null,
               "onAt": "11:54"
-            },
-            {
-              "playerId": "NED_17",
-              "name": "Pepijn van der Heijden",
-              "number": 22,
-              "position": null,
-              "onAt": "40:59"
             }
           ],
           "team": "NED",
           "coach": "Jeroen Delmee"
         }
       },
-      "tms_id": 22349
+      "tms_id": 22349,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 1
+      },
+      "stats": {
+        "home": {
+          "goals": 1,
+          "shots": 8,
+          "circle_entries": 17,
+          "penalty_corners": 1,
+          "possession": 43,
+          "green_cards": 0,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 10,
+          "circle_entries": 23,
+          "penalty_corners": 1,
+          "possession": 57,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ARG vs NED under way.",
+          "seq": 0
+        },
+        {
+          "minute": 7,
+          "team": "NED",
+          "text": "GOAL! Thierry Brinkman (NED) scores from a field goal — ARG 0-1 NED.",
+          "seq": 1
+        },
+        {
+          "minute": 11,
+          "team": "ARG",
+          "text": "GOAL! Nicolas della Torre (ARG) scores from a penalty corner — ARG 1-1 NED.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ARG 1-1 NED.",
+          "seq": 3
+        },
+        {
+          "minute": 27,
+          "team": "ARG",
+          "text": "Yellow Card for Matias Andreotti (ARG) — 5-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ARG 1-1 NED.",
+          "seq": 5
+        },
+        {
+          "minute": 34,
+          "team": "NED",
+          "text": "GOAL! Tijmen Reyenga (NED) scores from a penalty corner — ARG 1-2 NED.",
+          "seq": 6
+        },
+        {
+          "minute": 42,
+          "team": "NED",
+          "text": "GOAL! Duco Telgenkamp (NED) scores from a field goal — ARG 1-3 NED.",
+          "seq": 7
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ARG 1-3 NED.",
+          "seq": 8
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ARG 1-3 NED.",
+          "seq": 9
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "A4",
@@ -9420,7 +9527,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.493511+00:00",
+        "generated_at": "2026-08-18T17:54:31.233152+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9607,6 +9714,15 @@
               "goalkeeper": true
             },
             {
+              "playerId": "NED_18",
+              "name": "Duco Telgenkamp",
+              "number": 51,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NED_12",
               "name": "Tjep Hoedemakers",
               "number": 19,
@@ -9625,9 +9741,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_18",
-              "name": "Duco Telgenkamp",
-              "number": 51,
+              "playerId": "NED_17",
+              "name": "Tijmen Reyenga",
+              "number": 29,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9637,7 +9753,7 @@
               "playerId": "NED_08",
               "name": "Jorrit Croon",
               "number": 10,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9661,15 +9777,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_11",
-              "name": "Floris Wortelboer",
-              "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "NED_01",
               "name": "Thierry Brinkman",
               "number": 8,
@@ -9679,18 +9786,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_11",
+              "name": "Floris Wortelboer",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_05",
-              "name": "Jip Janssen",
-              "number": 2,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9706,30 +9813,30 @@
               "onAt": "21:29"
             },
             {
+              "playerId": "NED_05",
+              "name": "Jip Janssen",
+              "number": 2,
+              "position": null,
+              "onAt": "23:02"
+            },
+            {
               "playerId": "NED_09",
               "name": "Justen Blok",
               "number": 12,
               "position": null,
-              "onAt": "23:02"
+              "onAt": "38:06"
             },
             {
               "playerId": "NED_16",
               "name": "Derck de Vilder",
               "number": 14,
               "position": null,
-              "onAt": "38:06"
+              "onAt": "19:51"
             },
             {
               "playerId": "NED_22",
               "name": "Terrance Pieters",
               "number": 11,
-              "position": null,
-              "onAt": "19:51"
-            },
-            {
-              "playerId": "NED_17",
-              "name": "Tijmen Reyenga",
-              "number": 29,
               "position": null,
               "onAt": "10:54"
             },
@@ -9746,13 +9853,6 @@
               "number": 77,
               "position": null,
               "onAt": "17:42"
-            },
-            {
-              "playerId": "NED_17",
-              "name": "Pepijn van der Heijden",
-              "number": 22,
-              "position": null,
-              "onAt": "13:49"
             }
           ],
           "team": "NED",
@@ -9779,7 +9879,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T09:36:50.544503+00:00",
+        "generated_at": "2026-08-18T17:54:31.233610+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9812,6 +9912,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ARG_23",
               "name": "Lucas Toscani",
               "number": 11,
@@ -9821,10 +9930,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Lucio Mendez",
-              "number": 33,
-              "line": "Defender",
+              "playerId": "ARG_12",
+              "name": "Matias Andreotti",
+              "number": 20,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9851,7 +9960,7 @@
               "playerId": "ARG_13",
               "name": "Tomas Domene",
               "number": 21,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9873,15 +9982,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_21",
-              "name": "Martin Ferreiro",
-              "number": 32,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -9893,37 +9993,37 @@
               "onAt": "08:22"
             },
             {
+              "playerId": "ARG_21",
+              "name": "Martin Ferreiro",
+              "number": 32,
+              "position": null,
+              "onAt": "18:22"
+            },
+            {
               "playerId": "ARG_17",
               "name": "Tadeo Marcucci",
               "number": 27,
               "position": null,
-              "onAt": "18:22"
+              "onAt": "11:42"
             },
             {
               "playerId": "ARG_20",
               "name": "Bautista Capurro",
               "number": 31,
               "position": null,
-              "onAt": "11:42"
+              "onAt": "23:24"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
               "position": null,
-              "onAt": "23:24"
+              "onAt": "31:29"
             },
             {
               "playerId": "ARG_11",
               "name": "Joaquin Toscani",
               "number": 16,
-              "position": null,
-              "onAt": "31:29"
-            },
-            {
-              "playerId": "ARG_12",
-              "name": "Matias Andreotti",
-              "number": 20,
               "position": null,
               "onAt": "38:24"
             },
