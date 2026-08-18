@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-18T13:40:43.459910+00:00",
+  "last_updated": "2026-08-18T14:31:22.994936+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -3126,7 +3126,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.488481+00:00",
+        "generated_at": "2026-08-18T14:31:22.986371+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3144,6 +3144,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_19",
+              "name": "Tim Brand",
+              "number": 29,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -3171,7 +3180,7 @@
               "playerId": "AUS_05",
               "name": "Tom Craig",
               "number": 2,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -3180,15 +3189,6 @@
               "playerId": "AUS_08",
               "name": "Joshua Beltz",
               "number": 10,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_19",
-              "name": "Tim Brand",
-              "number": 29,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -6946,15 +6946,59 @@
       "time": "14:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 3,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Hayden Beltz"
+        },
+        {
+          "minute": 18,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Tim Howard"
+        },
+        {
+          "minute": 23,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Craig Marais"
+        },
+        {
+          "minute": 29,
+          "team": "ESP",
+          "type": "green_card",
+          "player": "Marc Miralles"
+        },
+        {
+          "minute": 38,
+          "team": "ESP",
+          "type": "green_card",
+          "player": "Marc Recasens"
+        },
+        {
+          "minute": 47,
+          "team": "AUS",
+          "type": "goal",
+          "via": "PS",
+          "player": "Blake Govers"
+        },
+        {
+          "minute": 54,
+          "team": "AUS",
+          "type": "yellow_card",
+          "player": "Tim Brand"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.491360+00:00",
+        "generated_at": "2026-08-18T14:31:22.990074+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6972,6 +7016,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_19",
+              "name": "Tim Brand",
+              "number": 29,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -6999,7 +7052,7 @@
               "playerId": "AUS_05",
               "name": "Tom Craig",
               "number": 2,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7008,15 +7061,6 @@
               "playerId": "AUS_08",
               "name": "Joshua Beltz",
               "number": 10,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_19",
-              "name": "Tim Brand",
-              "number": 29,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -7300,7 +7344,105 @@
           "coach": "Max Caldas"
         }
       },
-      "tms_id": 22347
+      "tms_id": 22347,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 1,
+          "shots": 4,
+          "circle_entries": 20,
+          "penalty_corners": 0,
+          "possession": 56,
+          "green_cards": 3,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 0,
+          "shots": 8,
+          "circle_entries": 16,
+          "penalty_corners": 0,
+          "possession": 44,
+          "green_cards": 2,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! AUS vs ESP under way.",
+          "seq": 0
+        },
+        {
+          "minute": 3,
+          "team": "AUS",
+          "text": "Green Card for Hayden Beltz (AUS) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: AUS 0-0 ESP.",
+          "seq": 2
+        },
+        {
+          "minute": 18,
+          "team": "AUS",
+          "text": "Green Card for Tim Howard (AUS) — 2-minute suspension.",
+          "seq": 3
+        },
+        {
+          "minute": 23,
+          "team": "AUS",
+          "text": "Green Card for Craig Marais (AUS) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 29,
+          "team": "ESP",
+          "text": "Green Card for Marc Miralles (ESP) — 2-minute suspension.",
+          "seq": 5
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: AUS 0-0 ESP.",
+          "seq": 6
+        },
+        {
+          "minute": 38,
+          "team": "ESP",
+          "text": "Green Card for Marc Recasens (ESP) — 2-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: AUS 0-0 ESP.",
+          "seq": 8
+        },
+        {
+          "minute": 47,
+          "team": "AUS",
+          "text": "GOAL! Blake Govers (AUS) scores from a penalty stroke — AUS 1-0 ESP.",
+          "seq": 9
+        },
+        {
+          "minute": 54,
+          "team": "AUS",
+          "text": "Yellow Card for Tim Brand (AUS) — 5-minute suspension.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: AUS 1-0 ESP.",
+          "seq": 11
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "C4",
@@ -9826,7 +9968,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.494214+00:00",
+        "generated_at": "2026-08-18T14:31:22.993722+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9844,6 +9986,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_19",
+              "name": "Tim Brand",
+              "number": 29,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9871,7 +10022,7 @@
               "playerId": "AUS_05",
               "name": "Tom Craig",
               "number": 2,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9880,15 +10031,6 @@
               "playerId": "AUS_08",
               "name": "Joshua Beltz",
               "number": 10,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_19",
-              "name": "Tim Brand",
-              "number": 29,
               "line": "Midfielder",
               "position": null,
               "captain": false,
