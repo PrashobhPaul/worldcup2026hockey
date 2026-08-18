@@ -11,6 +11,8 @@ export function useTeam(code) {
 export function phaseTag(match) {
   const map = {
     'pool': `Pool ${match.pool}`,
+    'stage2': `Stage 2 · Pool ${match.pool}`,
+    'classification': match.label || 'Classification',
     'quarter-final': 'Quarter-Final',
     'semi-final': 'Semi-Final',
     'bronze-final': 'Bronze Medal',
@@ -121,7 +123,7 @@ export default function MatchCard({ match, compact = false }) {
       </div>
 
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-        <TeamSide team={home} code={isTBD ? (match.label?.split('vs')[0]?.trim() || 'TBD') : match.home}
+        <TeamSide team={home} code={isTBD ? ((match.slotLabel ?? match.label)?.split(' vs ')[0]?.trim() || 'TBD') : match.home}
           align="left" isWinner={winner === 'H'} />
         <div className="flex min-w-[72px] flex-col items-center">
           {done || live ? (
@@ -139,7 +141,7 @@ export default function MatchCard({ match, compact = false }) {
             <div className="mt-0.5 text-center font-mono text-[10px] text-brand">{res.decisiveLine}</div>
           )}
         </div>
-        <TeamSide team={away} code={isTBD ? (match.label?.split('vs')[1]?.trim() || 'TBD') : match.away}
+        <TeamSide team={away} code={isTBD ? ((match.slotLabel ?? match.label)?.split(' vs ')[1]?.trim() || 'TBD') : match.away}
           align="right" isWinner={winner === 'A'} />
       </div>
 

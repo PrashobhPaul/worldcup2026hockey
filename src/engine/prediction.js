@@ -2,7 +2,9 @@
 // Direct port of Soccer.AI's derive-prediction module, adapted for FIH rules:
 // pool matches can draw; knockout matches level after 60' go to shootout (SO).
 
-const KNOCKOUT_PHASES = new Set(['quarter-final', 'semi-final', 'bronze-final', 'gold-final'])
+// Single-match knockouts level after 60' go to a shootout. Stage-2 group
+// matches ('stage2') can draw, like the Stage-1 pools, so they are NOT here.
+const KNOCKOUT_PHASES = new Set(['semi-final', 'bronze-final', 'gold-final', 'classification'])
 
 export function isKnockout(match) {
   return KNOCKOUT_PHASES.has(match.phase)

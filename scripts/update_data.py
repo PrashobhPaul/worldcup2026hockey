@@ -1733,10 +1733,14 @@ def update_player_stats(fixtures, players_doc):
         elif pos == 'Forward':
             base = 56 + a['goals'] * 7 + a['assists'] * 3.5
         else:
-            # Position not stated on the entry list. A positional rating means
-            # nothing without one, and scoring them as forwards by default would
-            # put unrated squad players into the Best XI.
-            base = None
+            # Position not stated on the entry list. We still won't invent one —
+            # but a player who actually did something on the pitch (scored,
+            # assisted, was carded) has real events to rate, so give them a
+            # position-agnostic score rather than leave a genuine contributor
+            # blank. A squad member with no events stays unrated: no fabricated
+            # number, and the named-position Best XI never draws from them.
+            contributed = a['goals'] or a['assists'] or a['pc'] or a['yellow'] or a['red']
+            base = 57 + a['goals'] * 6 + a['assists'] * 4 + a['pc'] * 2 if contributed else None
         if base is None:
             rating = None
         else:
@@ -1791,10 +1795,26 @@ def pool_complete(fixtures, pool):
     ms = [m for m in fixtures['matches'] if m['phase'] == 'pool' and m.get('pool') == pool]
     return ms and all(m['status'] == 'completed' and has_score(m) for m in ms)
 
-QF_SLOTS = {'QF1': ('A', 0, 'C', 0), 'QF2': ('B', 0, 'D', 0), 'QF3': ('A', 1, 'C', 1), 'QF4': ('B', 1, 'D', 1)}
+# ── Real FIH 2026 two-stage bracket (see src/engine/simulate.js for the mirror) ──
+# Stage-2 re-pooling from Stage-1 finishing positions [(pool, 0-indexed place)].
+STAGE2 = {
+    'E': [('A', 0), ('A', 1), ('D', 0), ('D', 1)],
+    'F': [('B', 0), ('B', 1), ('C', 0), ('C', 1)],
+    'G': [('A', 2), ('A', 3), ('D', 2), ('D', 3)],
+    'H': [('B', 2), ('B', 3), ('C', 2), ('C', 3)],
+}
+# Each Stage-2 pool plays the four cross matches (slot-index pairs), in the same
+# order the fixtures were seeded: ids S2{pool}{1..4}.
+S2_MATCHUPS = {1: (0, 2), 2: (1, 3), 3: (0, 3), 4: (1, 2)}
+# Classification / semis over Stage-2 placements: id -> (poolH, placeH, poolA, placeA)
+CLASS_SLOTS = {
+    'C13': ('G', 2, 'H', 2), 'C15': ('G', 3, 'H', 3), 'C11': ('G', 1, 'H', 1),
+    'C9': ('G', 0, 'H', 0), 'C5': ('E', 2, 'F', 2), 'C7': ('E', 3, 'F', 3),
+}
+SEMI_SLOTS = {'SF1': ('E', 0, 'F', 1), 'SF2': ('F', 0, 'E', 1)}
 
 def ko_winner(m):
-    if not has_score(m) or m['status'] != 'completed':
+    if not m or not has_score(m) or m['status'] != 'completed':
         return None
     so = m.get('shootout') or {}
     if so.get('home') is not None and so['home'] != so['away']:
@@ -1803,47 +1823,93 @@ def ko_winner(m):
         return m['home'] if m['score']['home'] > m['score']['away'] else m['away']
     return None
 
+def stage1_placements(fixtures):
+    """[1st..4th] code per Stage-1 pool, or None until every pool is complete."""
+    if not all(pool_complete(fixtures, p) for p in ('A', 'B', 'C', 'D')):
+        return None
+    return {p: [code for code, _ in pool_table(fixtures, p)] for p in ('A', 'B', 'C', 'D')}
+
+def stage2_members(fixtures):
+    """{pool: [4 codes]} once Stage 1 is done, else None."""
+    place1 = stage1_placements(fixtures)
+    if not place1:
+        return None
+    return {s2: [place1[p][i] for p, i in slots] for s2, slots in STAGE2.items()}
+
+def stage2_table(fixtures, pool_letter, members):
+    """Stage-2 pool standings over completed matches among its four members —
+    Stage-1 head-to-head between same-pool teams carries forward automatically."""
+    codes = set(members[pool_letter])
+    rows = {c: {'pts': 0, 'gd': 0, 'gf': 0, 'w': 0} for c in codes}
+    for m in fixtures['matches']:
+        if not has_score(m) or m['status'] != 'completed':
+            continue
+        if m['home'] not in codes or m['away'] not in codes:
+            continue
+        if m['phase'] not in ('pool', 'stage2'):
+            continue
+        for side, opp in (('home', 'away'), ('away', 'home')):
+            r = rows[m[side]]
+            gf, ga = m['score'][side], m['score'][opp]
+            r['gf'] += gf; r['gd'] += gf - ga
+            if gf > ga: r['pts'] += 3; r['w'] += 1
+            elif gf == ga: r['pts'] += 1
+    return sorted(rows.items(), key=lambda kv: (-kv[1]['pts'], -kv[1]['w'], -kv[1]['gd'], -kv[1]['gf'], kv[0]))
+
+def stage2_complete(fixtures, pool_letter):
+    ms = [m for m in fixtures['matches'] if m['phase'] == 'stage2' and m.get('pool') == pool_letter]
+    return bool(ms) and all(m['status'] == 'completed' and has_score(m) for m in ms)
+
 def slot_knockouts(fixtures):
-    """Fill QF/SF/medal fixtures from real results as rounds complete."""
+    """Fill Stage-2, classification, semi and medal fixtures from real results
+    as each stage completes — mirrors the two-stage FIH 2026 progression."""
     by_id = {m['id']: m for m in fixtures['matches']}
     changed = False
 
-    for qf, (ph, pi, pa, pj) in QF_SLOTS.items():
-        m = by_id.get(qf)
-        if not m or m['home'] != 'TBD':
-            continue
-        if pool_complete(fixtures, ph) and pool_complete(fixtures, pa):
-            th = pool_table(fixtures, ph)[pi][0]
-            ta = pool_table(fixtures, pa)[pj][0]
-            m['home'], m['away'] = th, ta
+    # 1) Stage-2 pool fixtures, once Stage 1 is done
+    place1 = stage1_placements(fixtures)
+    if place1:
+        for m in fixtures['matches']:
+            if m['phase'] != 'stage2' or m['home'] != 'TBD':
+                continue
+            pl, n = m['pool'], int(m['id'][-1])
+            i, j = S2_MATCHUPS[n]
+            (ph, hi), (pa, ai) = STAGE2[pl][i], STAGE2[pl][j]
+            m['home'], m['away'] = place1[ph][hi], place1[pa][ai]
             changed = True
-            print(f"SLOTTED {qf}: {th} vs {ta}")
+            print(f"SLOTTED {m['id']}: {m['home']} vs {m['away']}")
 
-    for sf, (q1, q2) in (('SF1', ('QF1', 'QF3')), ('SF2', ('QF2', 'QF4'))):
-        m = by_id.get(sf)
-        if not m or m['home'] != 'TBD':
-            continue
-        w1, w2 = ko_winner(by_id.get(q1, {})), ko_winner(by_id.get(q2, {}))
-        if w1 and w2:
-            m['home'], m['away'] = w1, w2
-            changed = True
-            print(f"SLOTTED {sf}: {w1} vs {w2}")
+    # 2) Semis + classification, once the relevant Stage-2 pools are done
+    members = stage2_members(fixtures)
+    if members:
+        place2 = {}
+        for pl in ('E', 'F', 'G', 'H'):
+            if stage2_complete(fixtures, pl):
+                place2[pl] = [code for code, _ in stage2_table(fixtures, pl, members)]
+        for kid, (ph, hi, pa, ai) in {**SEMI_SLOTS, **CLASS_SLOTS}.items():
+            m = by_id.get(kid)
+            if not m or m['home'] != 'TBD':
+                continue
+            if ph in place2 and pa in place2:
+                m['home'], m['away'] = place2[ph][hi], place2[pa][ai]
+                changed = True
+                print(f"SLOTTED {kid}: {m['home']} vs {m['away']}")
 
+    # 3) Medals, once both semis have a winner
     sf1, sf2 = by_id.get('SF1'), by_id.get('SF2')
-    if sf1 and sf2:
-        w1, w2 = ko_winner(sf1), ko_winner(sf2)
-        if w1 and w2:
-            gold, brz = by_id.get('GOLD'), by_id.get('BRZ')
-            if gold and gold['home'] == 'TBD':
-                gold['home'], gold['away'] = w1, w2
-                changed = True
-                print(f"SLOTTED GOLD: {w1} vs {w2}")
-            if brz and brz['home'] == 'TBD':
-                l1 = sf1['away'] if w1 == sf1['home'] else sf1['home']
-                l2 = sf2['away'] if w2 == sf2['home'] else sf2['home']
-                brz['home'], brz['away'] = l1, l2
-                changed = True
-                print(f"SLOTTED BRZ: {l1} vs {l2}")
+    w1, w2 = ko_winner(sf1), ko_winner(sf2)
+    if w1 and w2:
+        gold, brz = by_id.get('GOLD'), by_id.get('BRZ')
+        if gold and gold['home'] == 'TBD':
+            gold['home'], gold['away'] = w1, w2
+            changed = True
+            print(f"SLOTTED GOLD: {w1} vs {w2}")
+        if brz and brz['home'] == 'TBD':
+            l1 = sf1['away'] if w1 == sf1['home'] else sf1['home']
+            l2 = sf2['away'] if w2 == sf2['home'] else sf2['home']
+            brz['home'], brz['away'] = l1, l2
+            changed = True
+            print(f"SLOTTED BRZ: {l1} vs {l2}")
     return changed
 
 # ------------------------------------------------------------- oracle
@@ -1984,7 +2050,9 @@ def generate_predictions(fixtures, teams, predictions):
             ko = kickoff(m)
         except ValueError:
             continue
-        knockout = m['phase'] != 'pool'
+        # Stage-2 ('stage2') is a group phase like the Stage-1 pools — draws are
+        # allowed. Only the single-match rounds go to a shootout when level.
+        knockout = m['phase'] in ('semi-final', 'bronze-final', 'gold-final', 'classification')
         pre_match = ko > now
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:

@@ -45,6 +45,14 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: `${base}index.html`,
+        // A new deploy must take over immediately, not sit behind the old
+        // worker until every tab closes — that stickiness is what left
+        // installed apps showing stale results. clientsClaim + skipWaiting
+        // hand control to the fresh worker on first load; cleanupOutdatedCaches
+        // evicts the previous precache so no stale shell lingers.
+        clientsClaim: true,
+        skipWaiting: true,
+        cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.includes('/data/'),

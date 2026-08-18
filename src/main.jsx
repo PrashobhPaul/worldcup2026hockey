@@ -19,6 +19,24 @@ import MatchSimPage from './pages/MatchSim'
 
 startAutoSync()
 
+// Keep the installed app honest with the central data source. The service
+// worker already serves /data/ network-first, so an open app resyncs within a
+// minute; this handles the *shell*. When a new deploy's worker activates it
+// takes control (clientsClaim), which fires controllerchange — reload once so
+// the running app swaps to the fresh build instead of lingering on the old one.
+// And poll for a new worker so a long-open app doesn't sit on a stale version.
+if ('serviceWorker' in navigator) {
+  let reloading = false
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloading) return
+    reloading = true
+    window.location.reload()
+  })
+  navigator.serviceWorker.ready.then(reg => {
+    setInterval(() => reg.update().catch(() => {}), 60 * 1000)
+  }).catch(() => {})
+}
+
 // Honor Vite's base path (e.g. /worldcup2026hockey/ on GitHub Pages)
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 

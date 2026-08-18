@@ -1,18 +1,42 @@
 // Hockey.AI — seeded Monte Carlo tournament simulator
-// Soccer.AI runs this server-side after every result; with 16 teams and 32
-// matches the hockey edition is cheap enough to run in the browser. Completed
-// results are honored, everything else is sampled from the strength model.
+// Models the real FIH Hockey World Cup 2026 format: four Stage-1 pools (A–D)
+// feed a Stage-2 group phase (E/F/G/H). Pools E and F are the championship
+// half — their top two go straight to the semi-finals (there are no
+// quarter-finals). Pools G and H, plus the lower Stage-2 finishers, decide
+// classification places 5–16. Where two teams come through from the same
+// Stage-1 pool their head-to-head result is carried forward into Stage 2.
+//
+// Completed results (pool or knockout) are honored; everything else is sampled
+// from the strength model. Fully deterministic: same seed, same tournament.
 
 import {
   MODEL_PARAMS, teamRating, goalRates, matchProbabilities,
   mulberry32, samplePoisson,
 } from './strength.js'
 
-const QF_SLOTS = [
-  { id: 'QF1', home: { pool: 'A', place: 0 }, away: { pool: 'C', place: 0 } },
-  { id: 'QF2', home: { pool: 'B', place: 0 }, away: { pool: 'D', place: 0 } },
-  { id: 'QF3', home: { pool: 'A', place: 1 }, away: { pool: 'C', place: 1 } },
-  { id: 'QF4', home: { pool: 'B', place: 1 }, away: { pool: 'D', place: 1 } },
+// Stage-2 re-pooling from Stage-1 finishing positions ([pool, 0-indexed place]).
+export const STAGE2 = {
+  E: [['A', 0], ['A', 1], ['D', 0], ['D', 1]],
+  F: [['B', 0], ['B', 1], ['C', 0], ['C', 1]],
+  G: [['A', 2], ['A', 3], ['D', 2], ['D', 3]],
+  H: [['B', 2], ['B', 3], ['C', 2], ['C', 3]],
+}
+export const CHAMPIONSHIP_POOLS = ['E', 'F'] // top two of each reach the semis
+
+// Knockout + classification bracket, defined over Stage-2 placements.
+// Each slot is [pool, place]; ties resolve to real fixtures when those exist.
+const SEMIS = [
+  { id: 'SF1', home: ['E', 0], away: ['F', 1] }, // #47: 1st E v 2nd F
+  { id: 'SF2', home: ['F', 0], away: ['E', 1] }, // #48: 1st F v 2nd E
+]
+// Classification matches read straight from Stage-2 placements.
+const CLASSIFICATION = [
+  { id: 'C5', label: '5th/6th Place', places: 5, home: ['E', 2], away: ['F', 2] },   // #45
+  { id: 'C7', label: '7th/8th Place', places: 7, home: ['E', 3], away: ['F', 3] },   // #46
+  { id: 'C9', label: '9th/10th Place', places: 9, home: ['G', 0], away: ['H', 0] },  // #44
+  { id: 'C11', label: '11th/12th Place', places: 11, home: ['G', 1], away: ['H', 1] }, // #43
+  { id: 'C13', label: '13th/14th Place', places: 13, home: ['G', 2], away: ['H', 2] }, // #41
+  { id: 'C15', label: '15th/16th Place', places: 15, home: ['G', 3], away: ['H', 3] }, // #42
 ]
 
 function hasResult(m) {
@@ -37,9 +61,33 @@ export function orderedResults(matches) {
     .filter(hasResult)
 }
 
+const pairKey = (x, y) => (x < y ? `${x}|${y}` : `${y}|${x}`)
+
+// ── One pool table from a list of {home,away,h,a} over a set of codes ────────
+function poolPlacement(codes, played, tb) {
+  const rows = new Map(codes.map(c => [c, { code: c, pts: 0, w: 0, gd: 0, gf: 0, tb: tb.get(c) ?? 0 }]))
+  for (const m of played) {
+    const rh = rows.get(m.home), ra = rows.get(m.away)
+    if (!rh || !ra) continue
+    rh.gf += m.h; rh.gd += m.h - m.a
+    ra.gf += m.a; ra.gd += m.a - m.h
+    if (m.h > m.a) { rh.pts += 3; rh.w++ }
+    else if (m.h < m.a) { ra.pts += 3; ra.w++ }
+    else { rh.pts++; ra.pts++ }
+  }
+  return [...rows.values()]
+    .sort((x, y) => y.pts - x.pts || y.w - x.w || y.gd - x.gd || y.gf - x.gf || x.tb - y.tb)
+    .map(r => r.code)
+}
+
 /**
  * Simulate the tournament from the current (or truncated) state.
- * Returns per-team reach probabilities: { qf, sf, final, bronze, gold, champion }.
+ * Returns per-team reach probabilities:
+ *   top8    — into a championship pool (E/F): the last-eight, title-contention half
+ *   sf      — into the semi-finals (top two of E or F)
+ *   final   — into the gold-medal match
+ *   bronze  — won the bronze medal
+ *   champion— won the gold medal
  * `truncateAfter`: only the first N chronological results count (worm history).
  */
 export function simulateTournament(teams, matches, opts = {}) {
@@ -48,6 +96,7 @@ export function simulateTournament(teams, matches, opts = {}) {
   const rng = mulberry32(seed)
 
   const ratings = new Map(teams.map(t => [t.code, teamRating(t)]))
+  const rating = c => ratings.get(c) ?? 1400
   const known = orderedResults(matches)
   const counted = opts.truncateAfter != null ? known.slice(0, opts.truncateAfter) : known
   const countedIds = new Set(counted.map(m => m.id))
@@ -60,177 +109,195 @@ export function simulateTournament(teams, matches, opts = {}) {
   }
 
   const poolFixtures = matches.filter(m => m.phase === 'pool' && m.home !== 'TBD')
-  const koFixtures = new Map(matches.filter(m => m.phase !== 'pool').map(m => [m.id, m]))
 
-  const counts = new Map(teams.map(t => [t.code, { qf: 0, sf: 0, final: 0, bronze: 0, gold: 0, champion: 0 }]))
+  // Real, completed non-pool results, indexed by team pair. This honors any
+  // played Stage-2 / knockout / classification match without needing to know
+  // its dynamic id — the pairing itself is the key.
+  const realScore = new Map()   // pair -> { [code]: goals }
+  const realWinner = new Map()  // pair -> winning code (shootout-aware)
+  for (const m of matches) {
+    if (m.phase === 'pool' || !hasResult(m) || !countedIds.has(m.id)) continue
+    if (m.home === 'TBD' || m.away === 'TBD') continue
+    realScore.set(pairKey(m.home, m.away), { [m.home]: m.score.home, [m.away]: m.score.away })
+    const w = realKnockoutWinner(m)
+    if (w) realWinner.set(pairKey(m.home, m.away), w)
+  }
 
-  // Pre-derive fixed pool results once
+  const counts = new Map(teams.map(t => [t.code, { top8: 0, sf: 0, final: 0, bronze: 0, champion: 0 }]))
+
+  // Pre-derive fixed pool results once (outside the run loop)
   const fixedPool = poolFixtures
-    .filter(m => countedIds.has(m.id))
+    .filter(m => countedIds.has(m.id) && hasResult(m))
     .map(m => ({ home: m.home, away: m.away, h: m.score.home, a: m.score.away }))
   const openPool = poolFixtures.filter(m => !countedIds.has(m.id))
     .map(m => {
-      const { lambdaH, lambdaA } = goalRates(ratings.get(m.home) ?? 1400, ratings.get(m.away) ?? 1400)
+      const { lambdaH, lambdaA } = goalRates(rating(m.home), rating(m.away))
       return { home: m.home, away: m.away, lambdaH, lambdaA }
     })
 
-  const simMatch = (codeH, codeA, knockout) => {
-    const { lambdaH, lambdaA } = goalRates(ratings.get(codeH) ?? 1400, ratings.get(codeA) ?? 1400)
-    const h = samplePoisson(lambdaH, rng)
-    const a = samplePoisson(lambdaA, rng)
-    if (!knockout || h !== a) return { h, a, winner: h > a ? codeH : h < a ? codeA : null }
-    const edge = 0.5 + Math.max(-0.06, Math.min(0.06,
-      ((ratings.get(codeH) ?? 1400) - (ratings.get(codeA) ?? 1400)) / MODEL_PARAMS.shootoutSlope))
-    return { h, a, winner: rng() < edge ? codeH : codeA }
+  // A match between two known teams: real score if played, else sampled goals.
+  const playMatch = (codeH, codeA) => {
+    const real = realScore.get(pairKey(codeH, codeA))
+    if (real) return { home: codeH, away: codeA, h: real[codeH], a: real[codeA] }
+    const { lambdaH, lambdaA } = goalRates(rating(codeH), rating(codeA))
+    return { home: codeH, away: codeA, h: samplePoisson(lambdaH, rng), a: samplePoisson(lambdaA, rng) }
   }
 
-  const resolveKO = (id, codeH, codeA) => {
-    const real = koFixtures.get(id)
-    if (real && countedIds.has(id) && real.home !== 'TBD') {
-      const w = realKnockoutWinner(real)
-      if (w) return w
-    }
-    return simMatch(codeH, codeA, true).winner
+  // A knockout tie: real winner if played, else sample regulation + shootout.
+  const resolveKO = (codeH, codeA) => {
+    const real = realWinner.get(pairKey(codeH, codeA))
+    if (real) return real
+    const { lambdaH, lambdaA } = goalRates(rating(codeH), rating(codeA))
+    const h = samplePoisson(lambdaH, rng), a = samplePoisson(lambdaA, rng)
+    if (h !== a) return h > a ? codeH : codeA
+    const edge = 0.5 + Math.max(-0.06, Math.min(0.06, (rating(codeH) - rating(codeA)) / MODEL_PARAMS.shootoutSlope))
+    return rng() < edge ? codeH : codeA
   }
 
   for (let run = 0; run < runs; run++) {
-    // Pool stage
-    const rows = new Map()
-    const rowFor = code => {
-      let r = rows.get(code)
-      if (!r) { r = { code, pts: 0, w: 0, gd: 0, gf: 0, tb: 0 }; rows.set(code, r) }
-      return r
-    }
-    const apply = (home, away, h, a) => {
-      const rh = rowFor(home), ra = rowFor(away)
-      rh.gf += h; rh.gd += h - a
-      ra.gf += a; ra.gd += a - h
-      if (h > a) { rh.pts += 3; rh.w++ }
-      else if (h < a) { ra.pts += 3; ra.w++ }
-      else { rh.pts++; ra.pts++ }
-    }
-    for (const m of fixedPool) apply(m.home, m.away, m.h, m.a)
-    for (const m of openPool) apply(m.home, m.away, samplePoisson(m.lambdaH, rng), samplePoisson(m.lambdaA, rng))
+    // Tie-break keys: one draw per team, in fixed order, reused across every
+    // pool table this run so the RNG stream never depends on sort internals.
+    const tb = new Map()
+    for (const [, codes] of poolTeams) for (const c of codes) tb.set(c, rng())
 
-    // Drawing the tie-break key up front — one per team, in a fixed order —
-    // instead of calling rng() from inside the sort comparator. A comparator
-    // that consumes randomness makes the RNG stream depend on the JS engine's
-    // sort internals, so the same seed produced different numbers in Node and
-    // in Chromium. Keys drawn here give a total, algorithm-independent order.
-    for (const [, codes] of poolTeams) for (const c of codes) rowFor(c).tb = rng()
+    // ── Stage 1: pools A–D ──────────────────────────────────────────────────
+    const stage1 = [...fixedPool]
+    for (const m of openPool) stage1.push({ home: m.home, away: m.away, h: samplePoisson(m.lambdaH, rng), a: samplePoisson(m.lambdaA, rng) })
+    const stage1By = new Map()
+    for (const m of stage1) stage1By.set(pairKey(m.home, m.away), m)
 
-    const placed = new Map()
+    const place1 = new Map() // pool letter -> [1st,2nd,3rd,4th] codes
     for (const [pool, codes] of poolTeams) {
-      placed.set(pool, [...codes]
-        .map(c => rowFor(c))
-        .sort((x, y) => y.pts - x.pts || y.w - x.w || y.gd - x.gd || y.gf - x.gf || x.tb - y.tb)
-        .map(r => r.code))
+      place1.set(pool, poolPlacement(codes, stage1.filter(m => codes.includes(m.home) && codes.includes(m.away)), tb))
     }
 
-    // Knockouts — real teams in real fixtures override projections
-    const qfWinners = []
-    for (const slot of QF_SLOTS) {
-      const real = koFixtures.get(slot.id)
-      const codeH = real && real.home !== 'TBD' ? real.home : placed.get(slot.home.pool)[slot.home.place]
-      const codeA = real && real.away !== 'TBD' ? real.away : placed.get(slot.away.pool)[slot.away.place]
-      counts.get(codeH).qf++; counts.get(codeA).qf++
-      qfWinners.push(resolveKO(slot.id, codeH, codeA))
+    // ── Stage 2: pools E/F/G/H, carrying same-pool head-to-head forward ─────
+    const place2 = new Map()
+    const members2 = new Map()
+    for (const [s2, slots] of Object.entries(STAGE2)) {
+      const codes = slots.map(([p, i]) => place1.get(p)[i])
+      members2.set(s2, codes)
+      // carried-forward results: the two Stage-1 pairings whose teams share a pool
+      const played = []
+      for (let i = 0; i < codes.length; i++) {
+        for (let j = i + 1; j < codes.length; j++) {
+          const carried = stage1By.get(pairKey(codes[i], codes[j]))
+          if (carried) played.push(carried)
+          else played.push(playMatch(codes[i], codes[j]))
+        }
+      }
+      place2.set(s2, poolPlacement(codes, played, tb))
     }
 
-    const sfPairs = [[qfWinners[0], qfWinners[2]], [qfWinners[1], qfWinners[3]]]
-    const finalists = [], bronzists = []
-    sfPairs.forEach(([codeH, codeA], i) => {
-      counts.get(codeH).sf++; counts.get(codeA).sf++
-      const w = resolveKO(`SF${i + 1}`, codeH, codeA)
-      finalists.push(w)
-      bronzists.push(w === codeH ? codeA : codeH)
-    })
+    const at = (pool, place) => place2.get(pool)[place]
 
-    counts.get(finalists[0]).final++; counts.get(finalists[1]).final++
-    const champ = resolveKO('GOLD', finalists[0], finalists[1])
-    counts.get(champ).champion++; counts.get(champ).gold++
-    const bronze = resolveKO('BRZ', bronzists[0], bronzists[1])
+    // Milestones: last-eight (into E/F) and semi-finalists (top two of E/F)
+    for (const p of CHAMPIONSHIP_POOLS) for (const c of members2.get(p)) counts.get(c).top8++
+
+    // ── Semis → medals ──────────────────────────────────────────────────────
+    const sfWinners = [], sfLosers = []
+    for (const s of SEMIS) {
+      const h = at(s.home[0], s.home[1]), a = at(s.away[0], s.away[1])
+      counts.get(h).sf++; counts.get(a).sf++
+      const w = resolveKO(h, a)
+      sfWinners.push(w); sfLosers.push(w === h ? a : h)
+    }
+    counts.get(sfWinners[0]).final++; counts.get(sfWinners[1]).final++
+    const champ = resolveKO(sfWinners[0], sfWinners[1])
+    counts.get(champ).champion++
+    const bronze = resolveKO(sfLosers[0], sfLosers[1])
     counts.get(bronze).bronze++
   }
 
   const out = new Map()
   for (const [code, c] of counts) {
     out.set(code, {
-      qf: c.qf / runs, sf: c.sf / runs, final: c.final / runs,
+      top8: c.top8 / runs, sf: c.sf / runs, final: c.final / runs,
       bronze: c.bronze / runs, champion: c.champion / runs,
     })
   }
   return { reach: out, runs, finishedCount: counted.length }
 }
 
-// The champion-probability progression that used to live here (a second,
-// independently-seeded Monte-Carlo run per step) is gone: it produced numbers
-// that disagreed with this file's own current-state simulation for the exact
-// same tournament state. Snapshots — including the current one — are now built
-// in one place, engine/probability.js.
-
-/** Current standings-driven QF projection (most likely bracket). */
+// ── Most-likely projected bracket (deterministic) for the Bracket view ───────
+// Probabilities come from the Monte Carlo above; this projects the single most
+// likely path — Stage-2 pools from current Stage-1 standings, ranked within
+// each pool by rating — and locks slots as real results arrive.
 export function projectBracket(teams, matches, standings) {
   const ratings = new Map(teams.map(t => [t.code, teamRating(t)]))
-  const byPool = new Map(standings.map(p => [p.id, p.standings.map(r => r.team)]))
+  const rating = c => ratings.get(c) ?? 1400
+  const byPool1 = new Map(standings.map(p => [p.id, p.standings.map(r => r.team)]))
   const koById = new Map(matches.filter(m => m.phase !== 'pool').map(m => [m.id, m]))
 
-  const poolDone = new Map()
+  const stage1Done = new Map()
   for (const p of standings) {
-    const poolMatches = matches.filter(m => m.phase === 'pool' && m.pool === p.id)
-    poolDone.set(p.id, poolMatches.length > 0 && poolMatches.every(hasResult))
+    const pm = matches.filter(m => m.phase === 'pool' && m.pool === p.id)
+    stage1Done.set(p.id, pm.length > 0 && pm.every(hasResult))
   }
+  const allStage1Done = ['A', 'B', 'C', 'D'].every(p => stage1Done.get(p))
+
+  // Projected Stage-2 pools from current Stage-1 order (provisional until pools finish)
+  const stage2 = {}
+  for (const [s2, slots] of Object.entries(STAGE2)) {
+    stage2[s2] = {
+      id: s2,
+      championship: CHAMPIONSHIP_POOLS.includes(s2),
+      locked: allStage1Done,
+      teams: slots.map(([p, i]) => byPool1.get(p)?.[i] ?? null),
+    }
+  }
+  // Within each projected pool, rank by rating for the most-likely finish
+  const place2 = {}
+  for (const [s2, pool] of Object.entries(stage2)) {
+    place2[s2] = [...pool.teams].filter(Boolean).sort((a, b) => rating(b) - rating(a))
+  }
+  const at = (pool, place) => place2[pool]?.[place] ?? null
 
   const ties = []
-  const winners = {}
-  const losers = {}
+  const winners = {}, losers = {}
 
-  const makeTie = (id, label, codeH, codeA, provisional) => {
+  const makeTie = (id, label, group, codeH, codeA, provisional) => {
     const real = koById.get(id)
     const home = real && real.home !== 'TBD' ? real.home : codeH
     const away = real && real.away !== 'TBD' ? real.away : codeA
     const played = real ? hasResult(real) : false
-    let pHomeAdvance = null
-    let winner = null
+    let pHomeAdvance = null, winner = null
     if (played) {
       winner = realKnockoutWinner(real)
-      pHomeAdvance = winner === home ? 1 : 0
     } else if (home && away) {
-      pHomeAdvance = matchProbabilitiesKO(ratings.get(home), ratings.get(away))
+      pHomeAdvance = matchProbabilitiesKO(rating(home), rating(away))
     }
     const tie = {
-      id, label, home, away, played, winner,
+      id, label, group, home, away, played, winner,
       loser: winner ? (winner === home ? away : home) : null,
       locked: !provisional,
       pHomeAdvance,
-      predicted: pHomeAdvance != null ? (pHomeAdvance >= 0.5 ? home : away) : null,
+      predicted: pHomeAdvance != null ? (pHomeAdvance >= 0.5 ? home : away) : winner,
       match: real ?? null,
     }
-    if (tie.predicted) winners[id] = winner ?? tie.predicted
-    if (winner) losers[id] = tie.loser
+    if (winner) { winners[id] = winner; losers[id] = tie.loser }
+    else if (tie.predicted) winners[id] = tie.predicted
     ties.push(tie)
     return tie
   }
 
-  for (const slot of QF_SLOTS) {
-    const real = koById.get(slot.id)
-    const fromReal = real && real.home !== 'TBD'
-    const provisional = !fromReal && !(poolDone.get(slot.home.pool) && poolDone.get(slot.away.pool))
-    makeTie(slot.id, real?.label ?? slot.id,
-      byPool.get(slot.home.pool)?.[slot.home.place],
-      byPool.get(slot.away.pool)?.[slot.away.place],
-      provisional)
-  }
-
-  const qfLocked = QF_SLOTS.every(s => koById.get(s.id) ? hasResult(koById.get(s.id)) : false)
-  makeTie('SF1', koById.get('SF1')?.label ?? 'SF1', winners.QF1, winners.QF3, !qfLocked)
-  makeTie('SF2', koById.get('SF2')?.label ?? 'SF2', winners.QF2, winners.QF4, !qfLocked)
+  // Semi-finals
+  const koProvisional = !allStage1Done
+  makeTie('SF1', koById.get('SF1')?.label ?? 'Semi-Final', 'semi', at('E', 0), at('F', 1), koProvisional)
+  makeTie('SF2', koById.get('SF2')?.label ?? 'Semi-Final', 'semi', at('F', 0), at('E', 1), koProvisional)
 
   const sfLocked = ['SF1', 'SF2'].every(id => koById.get(id) ? hasResult(koById.get(id)) : false)
-  makeTie('BRZ', koById.get('BRZ')?.label ?? 'Bronze', losers.SF1 ?? predictedLoser(ties, 'SF1'), losers.SF2 ?? predictedLoser(ties, 'SF2'), !sfLocked)
-  makeTie('GOLD', koById.get('GOLD')?.label ?? 'Final', winners.SF1, winners.SF2, !sfLocked)
+  makeTie('BRZ', koById.get('BRZ')?.label ?? 'Bronze Medal Match', 'medal',
+    losers.SF1 ?? predictedLoser(ties, 'SF1'), losers.SF2 ?? predictedLoser(ties, 'SF2'), !sfLocked)
+  makeTie('GOLD', koById.get('GOLD')?.label ?? 'Gold Medal Match', 'medal', winners.SF1, winners.SF2, !sfLocked)
 
-  return { ties, byId: new Map(ties.map(t => [t.id, t])) }
+  // Classification 5–16 (independent of the medal path)
+  for (const c of CLASSIFICATION) {
+    makeTie(c.id, koById.get(c.id)?.label ?? c.label, 'classification',
+      at(c.home[0], c.home[1]), at(c.away[0], c.away[1]), koProvisional)
+  }
+
+  return { stage2, ties, byId: new Map(ties.map(t => [t.id, t])) }
 }
 
 function predictedLoser(ties, id) {

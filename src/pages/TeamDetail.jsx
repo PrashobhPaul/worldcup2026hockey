@@ -36,7 +36,7 @@ function OracleSnapshot({ team, teams, matches }) {
         </span>
       </div>
       <div className="mt-3 grid grid-cols-3 gap-2">
-        {[['QF', reach.qf], ['SF', reach.sf], ['Final', reach.final]].map(([k, v]) => (
+        {[['Last 8', reach.top8], ['Semis', reach.sf], ['Final', reach.final]].map(([k, v]) => (
           <div key={k} className="rounded-lg bg-pitch-950/50 p-2.5 text-center">
             <div className="font-mono text-[9px] uppercase tracking-widest text-pitch-400">{k}</div>
             <div className="mt-0.5 font-mono text-sm font-bold">{out ? '—' : `${Math.round(v * 100)}%`}</div>

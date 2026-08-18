@@ -81,7 +81,7 @@ export function StandingsTable({ standings, highlight = 2 }) {
         </tbody>
       </table>
       <div className="mt-2 flex items-center gap-1.5 text-[10px] text-pitch-400">
-        <span className="inline-block h-2 w-2 rounded-sm bg-live" /> Top 2 qualify for quarter-finals
+        <span className="inline-block h-2 w-2 rounded-sm bg-live" /> Top 2 into the Stage-2 championship pools (E/F)
       </div>
     </div>
   )

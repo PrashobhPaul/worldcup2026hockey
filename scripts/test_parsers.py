@@ -20,7 +20,7 @@ from update_data import (  # noqa: E402
     parse_tms_results, update_statuses, backfill_scores_from_tms,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
-    TMS_LINEUP_LINK,
+    slot_knockouts, stage1_placements, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -596,6 +596,55 @@ check('two same-surname teammates never cross-match',
       by2['Charlie Morrison'].get('world_rank') == 78
       and by2['Joseph Morrison'].get('world_rank') is None)
 check('a near-miss given name is not a match', by2['Hannes Müller'].get('world_rank') is None)
+
+print('\nTwo-stage bracket (real FIH 2026 format)')
+import json as _json
+import copy as _copy
+_fx = _json.load(open(os.path.join(os.path.dirname(__file__), '..', 'public', 'data', 'fixtures.json')))
+_m = _fx['matches']
+check('fixtures total 50 matches', len(_m) == 50, str(len(_m)))
+check('24 Stage-1 pool matches', sum(1 for x in _m if x['phase'] == 'pool') == 24)
+check('16 Stage-2 group matches', sum(1 for x in _m if x['phase'] == 'stage2') == 16)
+check('6 classification matches', sum(1 for x in _m if x['phase'] == 'classification') == 6)
+check('2 semis + 2 medals', sum(1 for x in _m if x['phase'] in ('semi-final', 'bronze-final', 'gold-final')) == 4)
+_nos = [x['matchNo'] for x in _m if x.get('matchNo')]
+check('knockout match numbers 25–50 unique', sorted(_nos) == list(range(25, 51)))
+# No stage-2 fixture pairs two teams from the same Stage-1 pool (those H2H carry
+# forward instead), and every Stage-2 pool has exactly four cross matches.
+check('every Stage-2 pool has 4 fixtures',
+      all(sum(1 for x in _m if x['phase'] == 'stage2' and x['pool'] == p) == 4 for p in 'EFGH'))
+
+# Full progression: complete every stage in turn and confirm the bracket fills
+# to a clean 1–16 with no TBD left and medals coming from the semi winners.
+_f = _copy.deepcopy(_fx)
+for x in _f['matches']:
+    if x['phase'] == 'pool':
+        x['status'] = 'completed'; x['score'] = {'home': 3, 'away': 1}
+slot_knockouts(_f)
+check('Stage 1 done ⇒ all Stage-2 fixtures slotted',
+      all(x['home'] != 'TBD' for x in _f['matches'] if x['phase'] == 'stage2'))
+_p1 = stage1_placements(_f)
+check('Stage-1 placements resolve all four pools',
+      _p1 is not None and all(len(_p1[p]) == 4 for p in 'ABCD'))
+_by = {x['id']: x for x in _f['matches']}
+_s2e1 = _by['S2E1']
+check('S2E1 pairs 1st Pool A vs 1st Pool D (no same-pool clash)',
+      {_s2e1['home'], _s2e1['away']} == {_p1['A'][0], _p1['D'][0]})
+for x in _f['matches']:
+    if x['phase'] == 'stage2':
+        x['status'] = 'completed'; x['score'] = {'home': 2, 'away': 1}
+slot_knockouts(_f)
+check('Stage 2 done ⇒ semis + classification slotted',
+      all(x['home'] != 'TBD' for x in _f['matches'] if x['phase'] in ('semi-final', 'classification')))
+for x in _f['matches']:
+    if x['phase'] == 'semi-final':
+        x['status'] = 'completed'; x['score'] = {'home': 3, 'away': 2}
+slot_knockouts(_f)
+_gold, _sf1, _sf2 = _by['GOLD'], _by['SF1'], _by['SF2']
+check('Gold final = the two semi winners',
+      {_gold['home'], _gold['away']} == {_sf1['home'], _sf2['home']})
+check('no TBD anywhere once every stage is complete',
+      all(x['home'] != 'TBD' for x in _f['matches']))
 
 print()
 if failures:
