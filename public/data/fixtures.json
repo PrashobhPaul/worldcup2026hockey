@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-18T16:34:56.494430+00:00",
+  "last_updated": "2026-08-18T17:24:51.720030+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -3126,7 +3126,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T14:31:22.986371+00:00",
+        "generated_at": "2026-08-18T17:24:51.711058+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3322,6 +3322,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "IRL_15",
+              "name": "Lee Cole",
+              "number": 29,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "IRL_21",
               "name": "Alistair Empey",
               "number": 49,
@@ -3331,19 +3340,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IRL_08",
-              "name": "Sean Murray",
-              "number": 17,
+              "playerId": "IRL_12",
+              "name": "Benjamin Walker",
+              "number": 24,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IRL_15",
-              "name": "Lee Cole",
-              "number": 29,
-              "line": "Defender",
+              "playerId": "IRL_17",
+              "name": "Sam Hyland",
+              "number": 36,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "IRL_08",
+              "name": "Sean Murray",
+              "number": 17,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -3361,16 +3379,7 @@
               "playerId": "IRL_20",
               "name": "John McKee",
               "number": 8,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "IRL_12",
-              "name": "Benjamin Walker",
-              "number": 24,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -3392,15 +3401,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "IRL_13",
-              "name": "Jonathan Lynch",
-              "number": 25,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -3412,9 +3412,9 @@
               "onAt": "13:55"
             },
             {
-              "playerId": "IRL_17",
-              "name": "Sam Hyland",
-              "number": 36,
+              "playerId": "IRL_13",
+              "name": "Jonathan Lynch",
+              "number": 25,
               "position": null,
               "onAt": "18:39"
             },
@@ -3611,7 +3611,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.488834+00:00",
+        "generated_at": "2026-08-18T17:24:51.711524+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3816,18 +3816,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "RSA_14",
-              "name": "Nicholas Spooner",
-              "number": 23,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "RSA_09",
-              "name": "Tevin Kok",
-              "number": 11,
+              "playerId": "RSA_20",
+              "name": "Kenton Melville",
+              "number": 47,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -3837,6 +3828,24 @@
               "playerId": "RSA_17",
               "name": "Samkelo Mvimbi",
               "number": 29,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "RSA_14",
+              "name": "Nicholas Spooner",
+              "number": 23,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "RSA_09",
+              "name": "Tevin Kok",
+              "number": 11,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -3855,15 +3864,6 @@
               "playerId": "RSA_05",
               "name": "Senzwesihle Ngubane",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "RSA_20",
-              "name": "Trevor de Lora",
-              "number": 28,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -3932,16 +3932,16 @@
               "onAt": "51:33"
             },
             {
-              "playerId": "RSA_15",
-              "name": "Damian Knott",
-              "number": 26,
+              "playerId": "RSA_12",
+              "name": "Viwe Mbata",
+              "number": 18,
               "position": null,
               "onAt": "24:25"
             },
             {
-              "playerId": "RSA_12",
-              "name": "Viwe Mbata",
-              "number": 18,
+              "playerId": "RSA_15",
+              "name": "Damian Knott",
+              "number": 26,
               "position": null,
               "onAt": "22:31"
             }
@@ -7454,15 +7454,75 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 10,
+          "team": "RSA",
+          "type": "yellow_card",
+          "player": "Samkelo Mvimbi"
+        },
+        {
+          "minute": 15,
+          "team": "RSA",
+          "type": "green_card",
+          "player": "Trevor de Lora"
+        },
+        {
+          "minute": 17,
+          "team": "IRL",
+          "type": "green_card",
+          "player": "John McKee"
+        },
+        {
+          "minute": 38,
+          "team": "RSA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Kenton Melville"
+        },
+        {
+          "minute": 43,
+          "team": "IRL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Benjamin Walker"
+        },
+        {
+          "minute": 49,
+          "team": "IRL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Lee Cole"
+        },
+        {
+          "minute": 56,
+          "team": "IRL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Lee Cole"
+        },
+        {
+          "minute": 60,
+          "team": "IRL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Hyland"
+        },
+        {
+          "minute": 60,
+          "team": "RSA",
+          "type": "green_card",
+          "player": "Dayaan Cassiem"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.491735+00:00",
+        "generated_at": "2026-08-18T17:24:51.715391+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7486,6 +7546,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "IRL_15",
+              "name": "Lee Cole",
+              "number": 29,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "IRL_21",
               "name": "Alistair Empey",
               "number": 49,
@@ -7495,19 +7564,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IRL_08",
-              "name": "Sean Murray",
-              "number": 17,
+              "playerId": "IRL_12",
+              "name": "Benjamin Walker",
+              "number": 24,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IRL_15",
-              "name": "Lee Cole",
-              "number": 29,
-              "line": "Defender",
+              "playerId": "IRL_17",
+              "name": "Sam Hyland",
+              "number": 36,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "IRL_08",
+              "name": "Sean Murray",
+              "number": 17,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7525,16 +7603,7 @@
               "playerId": "IRL_20",
               "name": "John McKee",
               "number": 8,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "IRL_12",
-              "name": "Benjamin Walker",
-              "number": 24,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7556,15 +7625,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "IRL_13",
-              "name": "Jonathan Lynch",
-              "number": 25,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -7576,9 +7636,9 @@
               "onAt": "17:11"
             },
             {
-              "playerId": "IRL_17",
-              "name": "Sam Hyland",
-              "number": 36,
+              "playerId": "IRL_13",
+              "name": "Jonathan Lynch",
+              "number": 25,
               "position": null,
               "onAt": "33:47"
             },
@@ -7653,18 +7713,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "RSA_14",
-              "name": "Nicholas Spooner",
-              "number": 23,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "RSA_09",
-              "name": "Tevin Kok",
-              "number": 11,
+              "playerId": "RSA_20",
+              "name": "Kenton Melville",
+              "number": 47,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -7674,6 +7725,24 @@
               "playerId": "RSA_17",
               "name": "Samkelo Mvimbi",
               "number": 29,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "RSA_14",
+              "name": "Nicholas Spooner",
+              "number": 23,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "RSA_09",
+              "name": "Tevin Kok",
+              "number": 11,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -7692,15 +7761,6 @@
               "playerId": "RSA_05",
               "name": "Senzwesihle Ngubane",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "RSA_20",
-              "name": "Trevor de Lora",
-              "number": 28,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -7769,16 +7829,16 @@
               "onAt": "16:19"
             },
             {
-              "playerId": "RSA_15",
-              "name": "Damian Knott",
-              "number": 26,
+              "playerId": "RSA_12",
+              "name": "Viwe Mbata",
+              "number": 18,
               "position": null,
               "onAt": "24:18"
             },
             {
-              "playerId": "RSA_12",
-              "name": "Viwe Mbata",
-              "number": 18,
+              "playerId": "RSA_15",
+              "name": "Damian Knott",
+              "number": 26,
               "position": null,
               "onAt": "21:19"
             }
@@ -7787,7 +7847,117 @@
           "coach": "Devon van der Merwe"
         }
       },
-      "tms_id": 22348
+      "tms_id": 22348,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 2,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 4,
+          "shots": 9,
+          "circle_entries": 29,
+          "penalty_corners": 2,
+          "possession": 65,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 4,
+          "circle_entries": 19,
+          "penalty_corners": 0,
+          "possession": 35,
+          "green_cards": 2,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! IRL vs RSA under way.",
+          "seq": 0
+        },
+        {
+          "minute": 10,
+          "team": "RSA",
+          "text": "Yellow Card for Samkelo Mvimbi (RSA) — 5-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "team": "RSA",
+          "text": "Green Card for Trevor de Lora (RSA) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: IRL 0-0 RSA.",
+          "seq": 3
+        },
+        {
+          "minute": 17,
+          "team": "IRL",
+          "text": "Green Card for John McKee (IRL) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: IRL 0-0 RSA.",
+          "seq": 5
+        },
+        {
+          "minute": 38,
+          "team": "RSA",
+          "text": "GOAL! Kenton Melville (RSA) scores from a field goal — IRL 0-1 RSA.",
+          "seq": 6
+        },
+        {
+          "minute": 43,
+          "team": "IRL",
+          "text": "GOAL! Benjamin Walker (IRL) scores from a field goal — IRL 1-1 RSA.",
+          "seq": 7
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: IRL 1-1 RSA.",
+          "seq": 8
+        },
+        {
+          "minute": 49,
+          "team": "IRL",
+          "text": "GOAL! Lee Cole (IRL) scores from a penalty corner — IRL 2-1 RSA.",
+          "seq": 9
+        },
+        {
+          "minute": 56,
+          "team": "IRL",
+          "text": "GOAL! Lee Cole (IRL) scores from a penalty corner — IRL 3-1 RSA.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "team": "IRL",
+          "text": "GOAL! Sam Hyland (IRL) scores from a field goal — IRL 4-1 RSA.",
+          "seq": 11
+        },
+        {
+          "minute": 60,
+          "team": "RSA",
+          "text": "Green Card for Dayaan Cassiem (RSA) — 2-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: IRL 4-1 RSA.",
+          "seq": 13
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "D5",
@@ -9968,7 +10138,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T14:31:22.993722+00:00",
+        "generated_at": "2026-08-18T17:24:51.718794+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10173,18 +10343,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "RSA_14",
-              "name": "Nicholas Spooner",
-              "number": 23,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "RSA_09",
-              "name": "Tevin Kok",
-              "number": 11,
+              "playerId": "RSA_20",
+              "name": "Kenton Melville",
+              "number": 47,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -10194,6 +10355,24 @@
               "playerId": "RSA_17",
               "name": "Samkelo Mvimbi",
               "number": 29,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "RSA_14",
+              "name": "Nicholas Spooner",
+              "number": 23,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "RSA_09",
+              "name": "Tevin Kok",
+              "number": 11,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -10212,15 +10391,6 @@
               "playerId": "RSA_05",
               "name": "Senzwesihle Ngubane",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "RSA_20",
-              "name": "Trevor de Lora",
-              "number": 28,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -10289,16 +10459,16 @@
               "onAt": "32:17"
             },
             {
-              "playerId": "RSA_15",
-              "name": "Damian Knott",
-              "number": 26,
+              "playerId": "RSA_12",
+              "name": "Viwe Mbata",
+              "number": 18,
               "position": null,
               "onAt": "27:32"
             },
             {
-              "playerId": "RSA_12",
-              "name": "Viwe Mbata",
-              "number": 18,
+              "playerId": "RSA_15",
+              "name": "Damian Knott",
+              "number": 26,
               "position": null,
               "onAt": "46:10"
             }
@@ -10327,7 +10497,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.494571+00:00",
+        "generated_at": "2026-08-18T17:24:51.719273+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10523,6 +10693,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "IRL_15",
+              "name": "Lee Cole",
+              "number": 29,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "IRL_21",
               "name": "Alistair Empey",
               "number": 49,
@@ -10532,19 +10711,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IRL_08",
-              "name": "Sean Murray",
-              "number": 17,
+              "playerId": "IRL_12",
+              "name": "Benjamin Walker",
+              "number": 24,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IRL_15",
-              "name": "Lee Cole",
-              "number": 29,
-              "line": "Defender",
+              "playerId": "IRL_17",
+              "name": "Sam Hyland",
+              "number": 36,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "IRL_08",
+              "name": "Sean Murray",
+              "number": 17,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10562,16 +10750,7 @@
               "playerId": "IRL_20",
               "name": "John McKee",
               "number": 8,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "IRL_12",
-              "name": "Benjamin Walker",
-              "number": 24,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10593,15 +10772,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "IRL_13",
-              "name": "Jonathan Lynch",
-              "number": 25,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -10613,9 +10783,9 @@
               "onAt": "21:52"
             },
             {
-              "playerId": "IRL_17",
-              "name": "Sam Hyland",
-              "number": 36,
+              "playerId": "IRL_13",
+              "name": "Jonathan Lynch",
+              "number": 25,
               "position": null,
               "onAt": "40:46"
             },
