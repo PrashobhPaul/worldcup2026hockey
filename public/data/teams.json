@@ -8,7 +8,7 @@
       "name": "Netherlands",
       "flag": "🇳🇱",
       "pool": "A",
-      "fih_rank": 2,
+      "fih_rank": 3,
       "host": true,
       "nickname": "Oranje",
       "color": "#FF6400",
@@ -121,7 +121,7 @@
       "contender_tier": "favourite",
       "win_prob": 16.9,
       "intro": "The Red Lions are the modern era's great overachievers: Olympic champions, world champions in 2018, and co-hosts here with a home crowd in Brussels for the knockout nights. Belgium have no World Cup title from before their golden generation and everything since. Alexander Hendrickx remains the most feared drag-flicker in the game, Vincent Vanasch one of its best goalkeepers, and Arthur de Sloover captains a side that treats structure as a weapon. Anything less than the medal rounds would count as failure.",
-      "fih_points": 3838.25
+      "fih_points": 3695.51
     },
     {
       "code": "FRA",
@@ -145,14 +145,14 @@
       "contender_tier": "challenger",
       "win_prob": 2.1,
       "intro": "Les Bleus are the story of the last decade in European hockey — from qualification afterthought to a side nobody wants in their pool. France build around Victor Charlet, whose corner routines can win a match on their own, and a counter-attack that punishes a single lost midfield duel. Drawn with Belgium and Germany in Pool B, they will need one upset; on their evidence of recent years, that is not a fanciful ask.",
-      "fih_points": 2795.7
+      "fih_points": 2782.21
     },
     {
       "code": "GER",
       "name": "Germany",
       "flag": "🇩🇪",
       "pool": "B",
-      "fih_rank": 5,
+      "fih_rank": 4,
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
@@ -169,7 +169,7 @@
       "contender_tier": "contender",
       "win_prob": 9.3,
       "intro": "Four world titles, the most of any nation here, and a habit of arriving at tournaments in better shape than the rankings suggest. Germany's last World Cup came in 2006, but the intervening years have produced a stream of finals and a culture that reloads rather than rebuilds. Niklas Wellen and Christopher Rühr give them scoring from open play as well as set pieces. Pool B alongside Belgium is the toughest first-round draw in the tournament.",
-      "fih_points": 3410.78
+      "fih_points": 3553.53
     },
     {
       "code": "MAS",
@@ -193,14 +193,14 @@
       "contender_tier": "challenger",
       "win_prob": 2.6,
       "intro": "The Tigers arrive as Asia's most improved side and the team most likely to make the pool stage uncomfortable for somebody. Malaysia's hockey is played at pace, with Tengku Ahmad Tajuddin driving from midfield and Adrian Albert leading a squad that has closed the gap on the European sides in recent seasons. In Pool B with Belgium, Germany and France, they will need to take at least one scalp — and they have taken them before.",
-      "fih_points": 2447.43
+      "fih_points": 2460.91
     },
     {
       "code": "AUS",
       "name": "Australia",
       "flag": "🇦🇺",
       "pool": "C",
-      "fih_rank": 4,
+      "fih_rank": 5,
       "host": false,
       "nickname": "Kookaburras",
       "color": "#00843D",
@@ -216,7 +216,7 @@
       "last_title": 2010,
       "contender_tier": "favourite",
       "win_prob": 21.6,
-      "intro": "The Kookaburras arrive fourth in the world, a ranking that flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Aran Zalewski captains a squad with Blake Govers' flick and Tom Wickham's movement in front of goal. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided from the quarter-finals onward.",
+      "intro": "The Kookaburras arrive fifth in the world, a ranking that flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Aran Zalewski captains a squad with Blake Govers' flick and Tom Wickham's movement in front of goal. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided from the quarter-finals onward.",
       "fih_points": 3524.73
     },
     {
@@ -313,14 +313,14 @@
       "contender_tier": "dark_horse",
       "win_prob": 7.4,
       "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not the quarter-finals.",
-      "fih_points": 3253.17
+      "fih_points": 3187.79
     },
     {
       "code": "ENG",
       "name": "England",
       "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "pool": "D",
-      "fih_rank": 3,
+      "fih_rank": 2,
       "host": false,
       "nickname": "Three Lions",
       "color": "#CF142B",
@@ -337,7 +337,7 @@
       "contender_tier": "favourite",
       "win_prob": 8.1,
       "intro": "England have never won a World Cup, a fact that sits alongside a consistent presence in the last eight and a domestic system that keeps producing forwards. Sam Ward's finishing and Will Calnan's captaincy give them a spine, and their pressing game is among the most organised in Europe. Pool D pairs them with India in what may be the tie of the first round, with Pakistan and Wales offering no free points.",
-      "fih_points": 3599.34
+      "fih_points": 3664.73
     },
     {
       "code": "PAK",
@@ -361,7 +361,7 @@
       "contender_tier": "dark_horse",
       "win_prob": 3.1,
       "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Sufyan Khan leads a young squad in which Muhammad Umar Bhutta's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game.",
-      "fih_points": 2549.86
+      "fih_points": 2538.46
     },
     {
       "code": "WAL",
@@ -385,10 +385,10 @@
       "contender_tier": "outsider",
       "win_prob": 0.9,
       "intro": "The Dragons arrive ranked sixteenth of sixteen, at their second World Cup, and with nothing to lose in the most literal sense. Wales defend deep, break through Rupert Shipperley, and treat every corner won as a genuine event. Drawn with India, England and Pakistan in Pool D, they will be underdogs in all three matches — which, as Wales have shown before, is the situation in which they are hardest to beat.",
-      "fih_points": 2409.3
+      "fih_points": 2420.71
     }
   ],
   "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results.",
   "rankings_source": "https://www.fih.hockey/outdoor-hockey-rankings",
-  "rankings_updated_at": "2026-08-17T17:06:15.477379+00:00"
+  "rankings_updated_at": "2026-08-18T01:21:29.034011+00:00"
 }
