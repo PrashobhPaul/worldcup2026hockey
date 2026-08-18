@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-18T07:40:35.567716+00:00",
+  "last_updated": "2026-08-18T09:36:50.545801+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -2634,7 +2634,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.488110+00:00",
+        "generated_at": "2026-08-18T09:36:50.538728+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2823,6 +2823,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_10",
+              "name": "Dylan Thomas",
+              "number": 23,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_17",
               "name": "James Hickson",
               "number": 39,
@@ -2844,7 +2853,7 @@
               "playerId": "NZL_04",
               "name": "Charlie Morrison",
               "number": 8,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2871,7 +2880,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2880,15 +2889,6 @@
               "playerId": "NZL_06",
               "name": "Aidan Sarikaya",
               "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_10",
-              "name": "Dylan Thomas",
-              "number": 23,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -2955,16 +2955,16 @@
               "onAt": "38:30"
             },
             {
-              "playerId": "NZL_11",
-              "name": "Bradley Rothwell",
-              "number": 25,
+              "playerId": "NZL_14",
+              "name": "Ryan Parr",
+              "number": 35,
               "position": null,
               "onAt": "12:37"
             },
             {
-              "playerId": "NZL_14",
-              "name": "Ryan Parr",
-              "number": 35,
+              "playerId": "NZL_11",
+              "name": "Bradley Rothwell",
+              "number": 25,
               "position": null,
               "onAt": "46:43"
             }
@@ -6485,15 +6485,36 @@
       "time": "09:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 10,
+          "team": "JPN",
+          "type": "green_card",
+          "player": "Hyota Yamada"
+        },
+        {
+          "minute": 12,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Lane"
+        },
+        {
+          "minute": 46,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Dylan Thomas"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.491003+00:00",
+        "generated_at": "2026-08-18T09:36:50.541650+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6689,6 +6710,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_10",
+              "name": "Dylan Thomas",
+              "number": 23,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_17",
               "name": "James Hickson",
               "number": 39,
@@ -6710,7 +6740,7 @@
               "playerId": "NZL_04",
               "name": "Charlie Morrison",
               "number": 8,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6737,7 +6767,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6746,15 +6776,6 @@
               "playerId": "NZL_06",
               "name": "Aidan Sarikaya",
               "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_10",
-              "name": "Dylan Thomas",
-              "number": 23,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -6821,16 +6842,16 @@
               "onAt": "33:19"
             },
             {
-              "playerId": "NZL_11",
-              "name": "Bradley Rothwell",
-              "number": 25,
+              "playerId": "NZL_14",
+              "name": "Ryan Parr",
+              "number": 35,
               "position": null,
               "onAt": "38:12"
             },
             {
-              "playerId": "NZL_14",
-              "name": "Ryan Parr",
-              "number": 35,
+              "playerId": "NZL_11",
+              "name": "Bradley Rothwell",
+              "number": 25,
               "position": null,
               "onAt": "09:20"
             }
@@ -6839,7 +6860,81 @@
           "coach": "Greg Nicol"
         }
       },
-      "tms_id": 22346
+      "tms_id": 22346,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 0,
+          "shots": 6,
+          "circle_entries": 10,
+          "penalty_corners": 0,
+          "possession": 39,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 5,
+          "circle_entries": 25,
+          "penalty_corners": 0,
+          "possession": 61,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! JPN vs NZL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 10,
+          "team": "JPN",
+          "text": "Green Card for Hyota Yamada (JPN) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 12,
+          "team": "NZL",
+          "text": "GOAL! Sam Lane (NZL) scores from a field goal — JPN 0-1 NZL.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: JPN 0-1 NZL.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: JPN 0-1 NZL.",
+          "seq": 4
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: JPN 0-1 NZL.",
+          "seq": 5
+        },
+        {
+          "minute": 46,
+          "team": "NZL",
+          "text": "GOAL! Dylan Thomas (NZL) scores from a field goal — JPN 0-2 NZL.",
+          "seq": 6
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: JPN 0-2 NZL.",
+          "seq": 7
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "C3",
@@ -9372,7 +9467,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.493866+00:00",
+        "generated_at": "2026-08-18T09:36:50.544503+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9561,6 +9656,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_10",
+              "name": "Dylan Thomas",
+              "number": 23,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_17",
               "name": "James Hickson",
               "number": 39,
@@ -9582,7 +9686,7 @@
               "playerId": "NZL_04",
               "name": "Charlie Morrison",
               "number": 8,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9609,7 +9713,7 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9618,15 +9722,6 @@
               "playerId": "NZL_06",
               "name": "Aidan Sarikaya",
               "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_10",
-              "name": "Dylan Thomas",
-              "number": 23,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9693,16 +9788,16 @@
               "onAt": "48:44"
             },
             {
-              "playerId": "NZL_11",
-              "name": "Bradley Rothwell",
-              "number": 25,
+              "playerId": "NZL_14",
+              "name": "Ryan Parr",
+              "number": 35,
               "position": null,
               "onAt": "47:01"
             },
             {
-              "playerId": "NZL_14",
-              "name": "Ryan Parr",
-              "number": 35,
+              "playerId": "NZL_11",
+              "name": "Bradley Rothwell",
+              "number": 25,
               "position": null,
               "onAt": "30:10"
             }
