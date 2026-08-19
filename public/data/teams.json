@@ -8,7 +8,7 @@
       "name": "Netherlands",
       "flag": "🇳🇱",
       "pool": "A",
-      "fih_rank": 3,
+      "fih_rank": 2,
       "host": true,
       "nickname": "Oranje",
       "color": "#FF6400",
@@ -25,7 +25,7 @@
       "contender_tier": "favourite",
       "win_prob": 18.2,
       "intro": "Three-time world champions and the most decorated side never to stop rebuilding, the Netherlands arrive as hosts of half the tournament and as the team the draw was arranged around. Oranje's last world title came in 2004, an absence that sits uneasily with a nation that treats hockey as a birthright. Thierry Brinkman captains a squad built on relentless circle entries and a goalkeeper in Pirmin Blaak who has seen every kind of World Cup night. In Pool A they should have room to find rhythm early.",
-      "fih_points": 3625.43
+      "fih_points": 3690.82
     },
     {
       "code": "ARG",
@@ -49,14 +49,14 @@
       "contender_tier": "contender",
       "win_prob": 14.7,
       "intro": "Los Leones changed the sport's power map when they took Olympic gold in 2016, and they have never gone back to being anyone's outsiders. Two world titles sit in the cabinet, the most recent in 2010. Argentina's game is built on speed of thought — quick restarts, aggressive pressing, drag-flick threat from distance — and Lucas Martín Rossi leads a group that has grown up together. Pool A pits them against the hosts immediately, which is exactly the kind of opening night they enjoy.",
-      "fih_points": 3279.27
+      "fih_points": 3213.89
     },
     {
       "code": "NZL",
       "name": "New Zealand",
       "flag": "🇳🇿",
       "pool": "A",
-      "fih_rank": 11,
+      "fih_rank": 10,
       "host": false,
       "nickname": "Black Sticks",
       "color": "#000000",
@@ -73,14 +73,14 @@
       "contender_tier": "challenger",
       "win_prob": 3.8,
       "intro": "The Black Sticks come to Belgium and the Netherlands as the tournament's most familiar dark horses: never world champions, never comfortable to play against. Ranked outside the top ten, New Zealand's route out of Pool A runs through the Netherlands and Argentina, which means their tournament may be decided in the seventy minutes against Japan. Sam Lane's side counter well and defend the circle in numbers; if their penalty corner clicks early, the pool's arithmetic changes.",
-      "fih_points": 2724.39
+      "fih_points": 2791.69
     },
     {
       "code": "JPN",
       "name": "Japan",
       "flag": "🇯🇵",
       "pool": "A",
-      "fih_rank": 16,
+      "fih_rank": 17,
       "host": false,
       "nickname": "Samurai Japan",
       "color": "#BC002D",
@@ -97,7 +97,7 @@
       "contender_tier": "dark_horse",
       "win_prob": 1.4,
       "intro": "Samurai Japan qualified as Asian contenders and arrive with the lowest ranking in Pool A and none of the associated resignation. Japan's hockey is quick, structured and unusually disciplined at the back — a side that concedes late rarely and turns games into low-scoring tests of patience. Koji Kayukawa leads a squad that will look at a pool containing the Netherlands and Argentina and see two chances to be remembered.",
-      "fih_points": 2397.32
+      "fih_points": 2330.03
     },
     {
       "code": "BEL",
@@ -128,7 +128,7 @@
       "name": "France",
       "flag": "🇫🇷",
       "pool": "B",
-      "fih_rank": 9,
+      "fih_rank": 11,
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
@@ -152,7 +152,7 @@
       "name": "Germany",
       "flag": "🇩🇪",
       "pool": "B",
-      "fih_rank": 4,
+      "fih_rank": 5,
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
@@ -176,7 +176,7 @@
       "name": "Malaysia",
       "flag": "🇲🇾",
       "pool": "B",
-      "fih_rank": 14,
+      "fih_rank": 13,
       "host": false,
       "nickname": "Tigers",
       "color": "#CC0001",
@@ -200,7 +200,7 @@
       "name": "Australia",
       "flag": "🇦🇺",
       "pool": "C",
-      "fih_rank": 5,
+      "fih_rank": 4,
       "host": false,
       "nickname": "Kookaburras",
       "color": "#00843D",
@@ -217,7 +217,7 @@
       "contender_tier": "favourite",
       "win_prob": 21.6,
       "intro": "The Kookaburras arrive fifth in the world, a ranking that flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Aran Zalewski captains a squad with Blake Govers' flick and Tom Wickham's movement in front of goal. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided from the quarter-finals onward.",
-      "fih_points": 3524.73
+      "fih_points": 3604.41
     },
     {
       "code": "ESP",
@@ -241,14 +241,14 @@
       "contender_tier": "contender",
       "win_prob": 6.2,
       "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a quarter-final where their patience and set-piece accuracy can outlast a more expansive opponent.",
-      "fih_points": 3321.54
+      "fih_points": 3241.85
     },
     {
       "code": "IRL",
       "name": "Ireland",
       "flag": "🇮🇪",
       "pool": "C",
-      "fih_rank": 10,
+      "fih_rank": 9,
       "host": false,
       "nickname": "Green Machine",
       "color": "#169B62",
@@ -265,14 +265,14 @@
       "contender_tier": "dark_horse",
       "win_prob": 2.8,
       "intro": "The Green Machine reached this World Cup the hard way, and that has been Ireland's pattern for a decade: qualify against the odds, then make life miserable for someone better resourced. Conor Harte leads a squad with Shane O'Donoghue's experience and a defensive block that stays compact for the full seventy minutes. Pool C offers Spain and South Africa as realistic targets, and Ireland have made a habit of taking realistic targets.",
-      "fih_points": 2765.22
+      "fih_points": 2840.62
     },
     {
       "code": "RSA",
       "name": "South Africa",
       "flag": "🇿🇦",
       "pool": "C",
-      "fih_rank": 13,
+      "fih_rank": 14,
       "host": false,
       "nickname": "Amabhungane",
       "color": "#007A4D",
@@ -289,7 +289,7 @@
       "contender_tier": "outsider",
       "win_prob": 0.9,
       "intro": "Amabhungane arrive as Africa's representatives and the lowest-ranked side in Pool C, a position South Africa have turned into an identity. Austin Smith's experience anchors a squad that plays with more freedom than its ranking implies, and their tournament will hinge on the fixture against Ireland. South Africa have never got out of a World Cup pool; this is a group where the arithmetic at least allows the conversation.",
-      "fih_points": 2519.16
+      "fih_points": 2443.77
     },
     {
       "code": "IND",
@@ -320,7 +320,7 @@
       "name": "England",
       "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "pool": "D",
-      "fih_rank": 2,
+      "fih_rank": 3,
       "host": false,
       "nickname": "Three Lions",
       "color": "#CF142B",
@@ -390,5 +390,5 @@
   ],
   "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results.",
   "rankings_source": "https://www.fih.hockey/outdoor-hockey-rankings",
-  "rankings_updated_at": "2026-08-18T01:21:29.034011+00:00"
+  "rankings_updated_at": "2026-08-19T01:23:32.465121+00:00"
 }
