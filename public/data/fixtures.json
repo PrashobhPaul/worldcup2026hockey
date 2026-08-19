@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-19T10:31:54.863301+00:00",
+  "last_updated": "2026-08-19T12:41:47.294174+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -149,7 +149,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.486134+00:00",
+        "generated_at": "2026-08-19T12:41:47.285112+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -399,6 +399,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_14",
+              "name": "Liam Barker",
+              "number": 31,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_17",
               "name": "Daniel Kyriakides",
               "number": 3,
@@ -415,15 +424,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -435,58 +435,58 @@
               "onAt": "24:49"
             },
             {
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
+              "position": null,
+              "onAt": "23:50"
+            },
+            {
               "playerId": "WAL_02",
               "name": "Alf Dinnie",
               "number": 5,
               "position": null,
-              "onAt": "23:50"
+              "onAt": "36:32"
             },
             {
               "playerId": "WAL_08",
               "name": "Jolyon Morgan",
               "number": 20,
               "position": null,
-              "onAt": "36:32"
+              "onAt": "48:17"
             },
             {
               "playerId": "WAL_20",
               "name": "Gareth Griffiths",
               "number": 7,
               "position": null,
-              "onAt": "48:17"
+              "onAt": "26:07"
             },
             {
               "playerId": "WAL_09",
               "name": "Jack Pritchard",
               "number": 23,
               "position": null,
-              "onAt": "26:07"
+              "onAt": "48:33"
             },
             {
               "playerId": "WAL_07",
               "name": "Fred Newbold",
               "number": 17,
               "position": null,
-              "onAt": "48:33"
+              "onAt": "26:52"
             },
             {
               "playerId": "WAL_16",
               "name": "Nicholas Morgan",
               "number": 44,
               "position": null,
-              "onAt": "26:52"
+              "onAt": "15:54"
             },
             {
               "playerId": "WAL_12",
               "name": "Jonathan Fleck",
               "number": 29,
-              "position": null,
-              "onAt": "15:54"
-            },
-            {
-              "playerId": "WAL_14",
-              "name": "Liam Barker",
-              "number": 31,
               "position": null,
               "onAt": "49:52"
             }
@@ -650,7 +650,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.486610+00:00",
+        "generated_at": "2026-08-19T12:41:47.285577+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -683,18 +683,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_12",
-              "name": "Stuart Rushmere",
-              "number": 17,
+              "playerId": "ENG_09",
+              "name": "James Albery",
+              "number": 14,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_09",
-              "name": "James Albery",
-              "number": 14,
+              "playerId": "ENG_12",
+              "name": "Stuart Rushmere",
+              "number": 17,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -710,18 +710,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_07",
+              "name": "Jack Waller",
+              "number": 3,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_21",
-              "name": "Henry Croft",
-              "number": 9,
+              "playerId": "ENG_19",
+              "name": "Conor Williamson",
+              "number": 30,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -737,18 +737,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_10",
-              "name": "Phil Roper",
-              "number": 15,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_17",
-              "name": "James Gall",
-              "number": 26,
+              "playerId": "ENG_21",
+              "name": "Henry Croft",
+              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -764,51 +764,51 @@
               "onAt": "22:23"
             },
             {
-              "playerId": "ENG_07",
-              "name": "Jack Waller",
-              "number": 3,
+              "playerId": "ENG_10",
+              "name": "Phil Roper",
+              "number": 15,
               "position": null,
               "onAt": "20:51"
+            },
+            {
+              "playerId": "ENG_17",
+              "name": "James Gall",
+              "number": 26,
+              "position": null,
+              "onAt": "37:56"
             },
             {
               "playerId": "ENG_18",
               "name": "Liam Sanford",
               "number": 27,
               "position": null,
-              "onAt": "37:56"
+              "onAt": "28:39"
             },
             {
               "playerId": "ENG_08",
               "name": "Thomas Sorsby",
               "number": 5,
               "position": null,
-              "onAt": "28:39"
+              "onAt": "38:30"
             },
             {
               "playerId": "ENG_14",
               "name": "David Goodfield",
               "number": 19,
               "position": null,
-              "onAt": "38:30"
+              "onAt": "30:52"
             },
             {
               "playerId": "ENG_06",
               "name": "Nicholas Park",
               "number": 2,
               "position": null,
-              "onAt": "30:52"
+              "onAt": "41:51"
             },
             {
               "playerId": "ENG_13",
               "name": "Timothy Nurse",
               "number": 18,
-              "position": null,
-              "onAt": "41:51"
-            },
-            {
-              "playerId": "ENG_19",
-              "name": "Conor Williamson",
-              "number": 30,
               "position": null,
               "onAt": "45:21"
             },
@@ -4037,7 +4037,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.489194+00:00",
+        "generated_at": "2026-08-19T12:41:47.288170+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4070,18 +4070,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_12",
-              "name": "Stuart Rushmere",
-              "number": 17,
+              "playerId": "ENG_09",
+              "name": "James Albery",
+              "number": 14,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_09",
-              "name": "James Albery",
-              "number": 14,
+              "playerId": "ENG_12",
+              "name": "Stuart Rushmere",
+              "number": 17,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -4097,18 +4097,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_07",
+              "name": "Jack Waller",
+              "number": 3,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_21",
-              "name": "Henry Croft",
-              "number": 9,
+              "playerId": "ENG_19",
+              "name": "Conor Williamson",
+              "number": 30,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -4124,18 +4124,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_10",
-              "name": "Phil Roper",
-              "number": 15,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_17",
-              "name": "James Gall",
-              "number": 26,
+              "playerId": "ENG_21",
+              "name": "Henry Croft",
+              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -4151,51 +4151,51 @@
               "onAt": "31:58"
             },
             {
-              "playerId": "ENG_07",
-              "name": "Jack Waller",
-              "number": 3,
+              "playerId": "ENG_10",
+              "name": "Phil Roper",
+              "number": 15,
               "position": null,
               "onAt": "36:00"
+            },
+            {
+              "playerId": "ENG_17",
+              "name": "James Gall",
+              "number": 26,
+              "position": null,
+              "onAt": "46:32"
             },
             {
               "playerId": "ENG_18",
               "name": "Liam Sanford",
               "number": 27,
               "position": null,
-              "onAt": "46:32"
+              "onAt": "41:26"
             },
             {
               "playerId": "ENG_08",
               "name": "Thomas Sorsby",
               "number": 5,
               "position": null,
-              "onAt": "41:26"
+              "onAt": "21:22"
             },
             {
               "playerId": "ENG_14",
               "name": "David Goodfield",
               "number": 19,
               "position": null,
-              "onAt": "21:22"
+              "onAt": "09:13"
             },
             {
               "playerId": "ENG_06",
               "name": "Nicholas Park",
               "number": 2,
               "position": null,
-              "onAt": "09:13"
+              "onAt": "12:30"
             },
             {
               "playerId": "ENG_13",
               "name": "Timothy Nurse",
               "number": 18,
-              "position": null,
-              "onAt": "12:30"
-            },
-            {
-              "playerId": "ENG_19",
-              "name": "Conor Williamson",
-              "number": 30,
               "position": null,
               "onAt": "12:49"
             },
@@ -4610,7 +4610,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.489576+00:00",
+        "generated_at": "2026-08-19T12:41:47.288541+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4860,6 +4860,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_14",
+              "name": "Liam Barker",
+              "number": 31,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_17",
               "name": "Daniel Kyriakides",
               "number": 3,
@@ -4876,15 +4885,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -4896,58 +4896,58 @@
               "onAt": "37:40"
             },
             {
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
+              "position": null,
+              "onAt": "33:43"
+            },
+            {
               "playerId": "WAL_02",
               "name": "Alf Dinnie",
               "number": 5,
               "position": null,
-              "onAt": "33:43"
+              "onAt": "36:59"
             },
             {
               "playerId": "WAL_08",
               "name": "Jolyon Morgan",
               "number": 20,
               "position": null,
-              "onAt": "36:59"
+              "onAt": "08:11"
             },
             {
               "playerId": "WAL_20",
               "name": "Gareth Griffiths",
               "number": 7,
               "position": null,
-              "onAt": "08:11"
+              "onAt": "23:09"
             },
             {
               "playerId": "WAL_09",
               "name": "Jack Pritchard",
               "number": 23,
               "position": null,
-              "onAt": "23:09"
+              "onAt": "35:59"
             },
             {
               "playerId": "WAL_07",
               "name": "Fred Newbold",
               "number": 17,
               "position": null,
-              "onAt": "35:59"
+              "onAt": "15:24"
             },
             {
               "playerId": "WAL_16",
               "name": "Nicholas Morgan",
               "number": 44,
               "position": null,
-              "onAt": "15:24"
+              "onAt": "45:57"
             },
             {
               "playerId": "WAL_12",
               "name": "Jonathan Fleck",
               "number": 29,
-              "position": null,
-              "onAt": "45:57"
-            },
-            {
-              "playerId": "WAL_14",
-              "name": "Liam Barker",
-              "number": 31,
               "position": null,
               "onAt": "22:48"
             }
@@ -8076,15 +8076,105 @@
       "time": "12:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 8,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 11,
+          "team": "WAL",
+          "type": "green_card",
+          "player": "Benjamin Francis"
+        },
+        {
+          "minute": 13,
+          "team": "WAL",
+          "type": "yellow_card",
+          "player": "Liam Barker"
+        },
+        {
+          "minute": 17,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Jack Waller"
+        },
+        {
+          "minute": 18,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Nicholas Bandurak"
+        },
+        {
+          "minute": 27,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Conor Williamson"
+        },
+        {
+          "minute": 28,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "James Albery"
+        },
+        {
+          "minute": 30,
+          "team": "WAL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Gareth Furlong"
+        },
+        {
+          "minute": 34,
+          "team": "ENG",
+          "type": "yellow_card",
+          "player": "Samuel Hooper"
+        },
+        {
+          "minute": 39,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Zachary Wallace",
+          "assist": "Nicholas Bandurak"
+        },
+        {
+          "minute": 46,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PS",
+          "player": "Stuart Rushmere"
+        },
+        {
+          "minute": 48,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Hywel Jones"
+        },
+        {
+          "minute": 53,
+          "team": "ENG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Ward"
+        },
+        {
+          "minute": 56,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "James Albery"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.492072+00:00",
+        "generated_at": "2026-08-19T12:41:47.291077+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8117,18 +8207,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_12",
-              "name": "Stuart Rushmere",
-              "number": 17,
+              "playerId": "ENG_09",
+              "name": "James Albery",
+              "number": 14,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_09",
-              "name": "James Albery",
-              "number": 14,
+              "playerId": "ENG_12",
+              "name": "Stuart Rushmere",
+              "number": 17,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -8144,18 +8234,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_07",
+              "name": "Jack Waller",
+              "number": 3,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_21",
-              "name": "Henry Croft",
-              "number": 9,
+              "playerId": "ENG_19",
+              "name": "Conor Williamson",
+              "number": 30,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -8171,18 +8261,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_10",
-              "name": "Phil Roper",
-              "number": 15,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_17",
-              "name": "James Gall",
-              "number": 26,
+              "playerId": "ENG_21",
+              "name": "Henry Croft",
+              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -8198,51 +8288,51 @@
               "onAt": "32:09"
             },
             {
-              "playerId": "ENG_07",
-              "name": "Jack Waller",
-              "number": 3,
+              "playerId": "ENG_10",
+              "name": "Phil Roper",
+              "number": 15,
               "position": null,
               "onAt": "18:32"
+            },
+            {
+              "playerId": "ENG_17",
+              "name": "James Gall",
+              "number": 26,
+              "position": null,
+              "onAt": "48:19"
             },
             {
               "playerId": "ENG_18",
               "name": "Liam Sanford",
               "number": 27,
               "position": null,
-              "onAt": "48:19"
+              "onAt": "28:26"
             },
             {
               "playerId": "ENG_08",
               "name": "Thomas Sorsby",
               "number": 5,
               "position": null,
-              "onAt": "28:26"
+              "onAt": "19:46"
             },
             {
               "playerId": "ENG_14",
               "name": "David Goodfield",
               "number": 19,
               "position": null,
-              "onAt": "19:46"
+              "onAt": "13:53"
             },
             {
               "playerId": "ENG_06",
               "name": "Nicholas Park",
               "number": 2,
               "position": null,
-              "onAt": "13:53"
+              "onAt": "11:24"
             },
             {
               "playerId": "ENG_13",
               "name": "Timothy Nurse",
               "number": 18,
-              "position": null,
-              "onAt": "11:24"
-            },
-            {
-              "playerId": "ENG_19",
-              "name": "Conor Williamson",
-              "number": 30,
               "position": null,
               "onAt": "41:12"
             },
@@ -8334,6 +8424,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_14",
+              "name": "Liam Barker",
+              "number": 31,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_17",
               "name": "Daniel Kyriakides",
               "number": 3,
@@ -8350,15 +8449,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -8370,58 +8460,58 @@
               "onAt": "23:32"
             },
             {
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
+              "position": null,
+              "onAt": "39:12"
+            },
+            {
               "playerId": "WAL_02",
               "name": "Alf Dinnie",
               "number": 5,
               "position": null,
-              "onAt": "39:12"
+              "onAt": "39:31"
             },
             {
               "playerId": "WAL_08",
               "name": "Jolyon Morgan",
               "number": 20,
               "position": null,
-              "onAt": "39:31"
+              "onAt": "14:51"
             },
             {
               "playerId": "WAL_20",
               "name": "Gareth Griffiths",
               "number": 7,
               "position": null,
-              "onAt": "14:51"
+              "onAt": "40:37"
             },
             {
               "playerId": "WAL_09",
               "name": "Jack Pritchard",
               "number": 23,
               "position": null,
-              "onAt": "40:37"
+              "onAt": "28:44"
             },
             {
               "playerId": "WAL_07",
               "name": "Fred Newbold",
               "number": 17,
               "position": null,
-              "onAt": "28:44"
+              "onAt": "10:01"
             },
             {
               "playerId": "WAL_16",
               "name": "Nicholas Morgan",
               "number": 44,
               "position": null,
-              "onAt": "10:01"
+              "onAt": "42:48"
             },
             {
               "playerId": "WAL_12",
               "name": "Jonathan Fleck",
               "number": 29,
-              "position": null,
-              "onAt": "42:48"
-            },
-            {
-              "playerId": "WAL_14",
-              "name": "Liam Barker",
-              "number": 31,
               "position": null,
               "onAt": "12:28"
             }
@@ -8430,7 +8520,140 @@
           "coach": "Daniel Newcombe"
         }
       },
-      "tms_id": 22350
+      "tms_id": 22350,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 7,
+        "away": 3
+      },
+      "stats": {
+        "home": {
+          "goals": 8,
+          "shots": 14,
+          "circle_entries": 41,
+          "penalty_corners": 7,
+          "possession": 65,
+          "green_cards": 0,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 8,
+          "circle_entries": 19,
+          "penalty_corners": 3,
+          "possession": 35,
+          "green_cards": 1,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ENG vs WAL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 11,
+          "team": "WAL",
+          "text": "Green Card for Benjamin Francis (WAL) — 2-minute suspension.",
+          "seq": 1
+        },
+        {
+          "minute": 13,
+          "team": "WAL",
+          "text": "Yellow Card for Liam Barker (WAL) — 5-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ENG 0-0 WAL.",
+          "seq": 3
+        },
+        {
+          "minute": 17,
+          "team": "ENG",
+          "text": "GOAL! Jack Waller (ENG) scores from a penalty corner — ENG 1-0 WAL.",
+          "seq": 4
+        },
+        {
+          "minute": 18,
+          "team": "ENG",
+          "text": "GOAL! Nicholas Bandurak (ENG) scores from a penalty corner — ENG 2-0 WAL.",
+          "seq": 5
+        },
+        {
+          "minute": 27,
+          "team": "ENG",
+          "text": "GOAL! Conor Williamson (ENG) scores from a field goal — ENG 3-0 WAL.",
+          "seq": 6
+        },
+        {
+          "minute": 28,
+          "team": "ENG",
+          "text": "GOAL! James Albery (ENG) scores from a penalty corner — ENG 4-0 WAL.",
+          "seq": 7
+        },
+        {
+          "minute": 30,
+          "team": "WAL",
+          "text": "GOAL! Gareth Furlong (WAL) scores from a penalty corner — ENG 4-1 WAL.",
+          "seq": 8
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ENG 4-1 WAL.",
+          "seq": 9
+        },
+        {
+          "minute": 34,
+          "team": "ENG",
+          "text": "Yellow Card for Samuel Hooper (ENG) — 5-minute suspension.",
+          "seq": 10
+        },
+        {
+          "minute": 39,
+          "team": "ENG",
+          "text": "GOAL! Zachary Wallace (ENG) scores from a field goal — ENG 5-1 WAL.",
+          "seq": 11
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ENG 5-1 WAL.",
+          "seq": 12
+        },
+        {
+          "minute": 46,
+          "team": "ENG",
+          "text": "GOAL! Stuart Rushmere (ENG) scores from a penalty stroke — ENG 6-1 WAL.",
+          "seq": 13
+        },
+        {
+          "minute": 48,
+          "team": "WAL",
+          "text": "GOAL! Hywel Jones (WAL) scores from a field goal — ENG 6-2 WAL.",
+          "seq": 14
+        },
+        {
+          "minute": 53,
+          "team": "ENG",
+          "text": "GOAL! Sam Ward (ENG) scores from a field goal — ENG 7-2 WAL.",
+          "seq": 15
+        },
+        {
+          "minute": 56,
+          "team": "ENG",
+          "text": "GOAL! James Albery (ENG) scores from a penalty corner — ENG 8-2 WAL.",
+          "seq": 16
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ENG 8-2 WAL.",
+          "seq": 17
+        }
+      ],
+      "enrichment": "estimated"
     },
     {
       "id": "D6",
