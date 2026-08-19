@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-19T13:42:13.722597+00:00",
+  "last_updated": "2026-08-19T15:28:51.253538+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -149,7 +149,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T12:41:47.285112+00:00",
+        "generated_at": "2026-08-19T15:28:51.242053+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -191,9 +191,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -209,18 +209,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -236,18 +236,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_09",
-              "name": "Sumit",
-              "number": 17,
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -263,58 +263,58 @@
               "onAt": "37:04"
             },
             {
+              "playerId": "IND_09",
+              "name": "Sumit",
+              "number": 17,
+              "position": null,
+              "onAt": "08:53"
+            },
+            {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "08:53"
+              "onAt": "20:38"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
               "position": null,
-              "onAt": "20:38"
+              "onAt": "11:24"
             },
             {
               "playerId": "IND_15",
               "name": "Sukhjeet Singh",
               "number": 34,
               "position": null,
-              "onAt": "11:24"
+              "onAt": "17:55"
             },
             {
               "playerId": "IND_13",
               "name": "Jugraj Singh",
               "number": 31,
               "position": null,
-              "onAt": "17:55"
+              "onAt": "18:52"
             },
             {
               "playerId": "IND_20",
               "name": "Shilanand Lakra",
               "number": 99,
               "position": null,
-              "onAt": "18:52"
+              "onAt": "10:43"
             },
             {
               "playerId": "IND_19",
               "name": "Rajinder Singh",
               "number": 78,
               "position": null,
-              "onAt": "10:43"
+              "onAt": "50:51"
             },
             {
               "playerId": "IND_16",
               "name": "Yashdeep Siwach",
               "number": 47,
-              "position": null,
-              "onAt": "50:51"
-            },
-            {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
               "position": null,
               "onAt": "38:14"
             }
@@ -650,7 +650,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T12:41:47.285577+00:00",
+        "generated_at": "2026-08-19T15:28:51.242661+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -846,6 +846,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_07",
+              "name": "Hannan Shahid",
+              "number": 9,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_14",
               "name": "Rehman Abdul",
               "number": 18,
@@ -858,15 +867,6 @@
               "playerId": "PAK_15",
               "name": "Afraz",
               "number": 21,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_07",
-              "name": "Hannan Shahid",
-              "number": 9,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -4037,7 +4037,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T12:41:47.288170+00:00",
+        "generated_at": "2026-08-19T15:28:51.245977+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4251,9 +4251,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -4269,18 +4269,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -4296,18 +4296,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_09",
-              "name": "Sumit",
-              "number": 17,
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -4323,58 +4323,58 @@
               "onAt": "25:30"
             },
             {
+              "playerId": "IND_09",
+              "name": "Sumit",
+              "number": 17,
+              "position": null,
+              "onAt": "50:57"
+            },
+            {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "50:57"
+              "onAt": "29:06"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
               "position": null,
-              "onAt": "29:06"
+              "onAt": "11:08"
             },
             {
               "playerId": "IND_15",
               "name": "Sukhjeet Singh",
               "number": 34,
               "position": null,
-              "onAt": "11:08"
+              "onAt": "23:17"
             },
             {
               "playerId": "IND_13",
               "name": "Jugraj Singh",
               "number": 31,
               "position": null,
-              "onAt": "23:17"
+              "onAt": "40:37"
             },
             {
               "playerId": "IND_20",
               "name": "Shilanand Lakra",
               "number": 99,
               "position": null,
-              "onAt": "40:37"
+              "onAt": "37:10"
             },
             {
               "playerId": "IND_19",
               "name": "Rajinder Singh",
               "number": 78,
               "position": null,
-              "onAt": "37:10"
+              "onAt": "30:21"
             },
             {
               "playerId": "IND_16",
               "name": "Yashdeep Siwach",
               "number": 47,
-              "position": null,
-              "onAt": "30:21"
-            },
-            {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
               "position": null,
               "onAt": "20:54"
             }
@@ -4610,7 +4610,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T12:41:47.288541+00:00",
+        "generated_at": "2026-08-19T15:28:51.246456+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4634,6 +4634,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_07",
+              "name": "Hannan Shahid",
+              "number": 9,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_14",
               "name": "Rehman Abdul",
               "number": 18,
@@ -4646,15 +4655,6 @@
               "playerId": "PAK_15",
               "name": "Afraz",
               "number": 21,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_07",
-              "name": "Hannan Shahid",
-              "number": 9,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -8665,15 +8665,102 @@
       "time": "15:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 5,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Harmanpreet Singh"
+        },
+        {
+          "minute": 9,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Muhammad Hammadudin"
+        },
+        {
+          "minute": 11,
+          "team": "IND",
+          "type": "goal",
+          "via": "FG",
+          "player": "Abhishek"
+        },
+        {
+          "minute": 21,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Harmanpreet Singh"
+        },
+        {
+          "minute": 22,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Hannan Shahid"
+        },
+        {
+          "minute": 24,
+          "team": "IND",
+          "type": "goal",
+          "via": "FG",
+          "player": "Abhishek"
+        },
+        {
+          "minute": 24,
+          "team": "PAK",
+          "type": "goal",
+          "via": "PC",
+          "player": "Sufyan Khan"
+        },
+        {
+          "minute": 30,
+          "team": "IND",
+          "type": "green_card",
+          "player": "Sukhjeet Singh"
+        },
+        {
+          "minute": 35,
+          "team": "IND",
+          "type": "goal",
+          "via": "PS",
+          "player": "Hardik Singh"
+        },
+        {
+          "minute": 37,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Zikriya Hayat"
+        },
+        {
+          "minute": 39,
+          "team": "IND",
+          "type": "green_card",
+          "player": "Rajinder Singh"
+        },
+        {
+          "minute": 46,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Hannan Shahid"
+        },
+        {
+          "minute": 56,
+          "team": "IND",
+          "type": "yellow_card",
+          "player": "Lalage Aditya Arjun"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.492438+00:00",
+        "generated_at": "2026-08-19T15:28:51.250135+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8715,9 +8802,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -8733,18 +8820,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -8760,18 +8847,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_09",
-              "name": "Sumit",
-              "number": 17,
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -8787,58 +8874,58 @@
               "onAt": "44:09"
             },
             {
+              "playerId": "IND_09",
+              "name": "Sumit",
+              "number": 17,
+              "position": null,
+              "onAt": "39:20"
+            },
+            {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "39:20"
+              "onAt": "17:58"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
               "position": null,
-              "onAt": "17:58"
+              "onAt": "41:04"
             },
             {
               "playerId": "IND_15",
               "name": "Sukhjeet Singh",
               "number": 34,
               "position": null,
-              "onAt": "41:04"
+              "onAt": "29:10"
             },
             {
               "playerId": "IND_13",
               "name": "Jugraj Singh",
               "number": 31,
               "position": null,
-              "onAt": "29:10"
+              "onAt": "10:35"
             },
             {
               "playerId": "IND_20",
               "name": "Shilanand Lakra",
               "number": 99,
               "position": null,
-              "onAt": "10:35"
+              "onAt": "48:46"
             },
             {
               "playerId": "IND_19",
               "name": "Rajinder Singh",
               "number": 78,
               "position": null,
-              "onAt": "48:46"
+              "onAt": "15:40"
             },
             {
               "playerId": "IND_16",
               "name": "Yashdeep Siwach",
               "number": 47,
-              "position": null,
-              "onAt": "15:40"
-            },
-            {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
               "position": null,
               "onAt": "38:38"
             }
@@ -8869,6 +8956,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "PAK_07",
+              "name": "Hannan Shahid",
+              "number": 9,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "PAK_14",
               "name": "Rehman Abdul",
               "number": 18,
@@ -8881,15 +8977,6 @@
               "playerId": "PAK_15",
               "name": "Afraz",
               "number": 21,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "PAK_07",
-              "name": "Hannan Shahid",
-              "number": 9,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9019,7 +9106,141 @@
           "coach": "Bob Veldhof"
         }
       },
-      "tms_id": 22351
+      "tms_id": 22351,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 2,
+        "away": 1
+      },
+      "stats": {
+        "home": {
+          "goals": 5,
+          "shots": 10,
+          "circle_entries": 28,
+          "penalty_corners": 2,
+          "possession": 61,
+          "green_cards": 2,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 6,
+          "circle_entries": 27,
+          "penalty_corners": 1,
+          "possession": 39,
+          "green_cards": 2,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! IND vs PAK under way.",
+          "seq": 0
+        },
+        {
+          "minute": 5,
+          "team": "IND",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 1-0 PAK.",
+          "seq": 1
+        },
+        {
+          "minute": 9,
+          "team": "PAK",
+          "text": "Green Card for Muhammad Hammadudin (PAK) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 11,
+          "team": "IND",
+          "text": "GOAL! Abhishek (IND) scores from a field goal — IND 2-0 PAK.",
+          "seq": 3
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: IND 2-0 PAK.",
+          "seq": 4
+        },
+        {
+          "minute": 21,
+          "team": "IND",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 3-0 PAK.",
+          "seq": 5
+        },
+        {
+          "minute": 22,
+          "team": "PAK",
+          "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — IND 3-1 PAK.",
+          "seq": 6
+        },
+        {
+          "minute": 24,
+          "team": "IND",
+          "text": "GOAL! Abhishek (IND) scores from a field goal — IND 4-1 PAK.",
+          "seq": 7
+        },
+        {
+          "minute": 24,
+          "team": "PAK",
+          "text": "GOAL! Sufyan Khan (PAK) scores from a penalty corner — IND 4-2 PAK.",
+          "seq": 8
+        },
+        {
+          "minute": 30,
+          "team": "IND",
+          "text": "Green Card for Sukhjeet Singh (IND) — 2-minute suspension.",
+          "seq": 9
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: IND 4-2 PAK.",
+          "seq": 10
+        },
+        {
+          "minute": 35,
+          "team": "IND",
+          "text": "GOAL! Hardik Singh (IND) scores from a penalty stroke — IND 5-2 PAK.",
+          "seq": 11
+        },
+        {
+          "minute": 37,
+          "team": "PAK",
+          "text": "Green Card for Zikriya Hayat (PAK) — 2-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 39,
+          "team": "IND",
+          "text": "Green Card for Rajinder Singh (IND) — 2-minute suspension.",
+          "seq": 13
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: IND 5-2 PAK.",
+          "seq": 14
+        },
+        {
+          "minute": 46,
+          "team": "PAK",
+          "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — IND 5-3 PAK.",
+          "seq": 15
+        },
+        {
+          "minute": 56,
+          "team": "IND",
+          "text": "Yellow Card for Lalage Aditya Arjun (IND) — 5-minute suspension.",
+          "seq": 16
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: IND 5-3 PAK.",
+          "seq": 17
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "B5",
@@ -9383,7 +9604,7 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
