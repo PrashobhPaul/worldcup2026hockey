@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-19T16:39:54.360229+00:00",
+  "last_updated": "2026-08-19T17:25:07.553913+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1175,7 +1175,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.487002+00:00",
+        "generated_at": "2026-08-19T17:25:07.543294+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1208,18 +1208,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -1235,18 +1235,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -1262,18 +1262,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -1289,23 +1289,23 @@
               "onAt": "35:09"
             },
             {
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
+              "position": null,
+              "onAt": "48:52"
+            },
+            {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "48:52"
+              "onAt": "08:24"
             },
             {
               "playerId": "GER_18",
               "name": "Moritz Ludwig",
               "number": 44,
-              "position": null,
-              "onAt": "08:24"
-            },
-            {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
               "position": null,
               "onAt": "46:58"
             },
@@ -1680,7 +1680,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.487371+00:00",
+        "generated_at": "2026-08-19T17:25:07.543789+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1862,6 +1862,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "FRA_19",
+              "name": "Louis Haertelmeyer",
+              "number": 95,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "FRA_14",
               "name": "Eliot Curty",
               "number": 18,
@@ -1874,15 +1883,6 @@
               "playerId": "FRA_08",
               "name": "Noé Jouin",
               "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "FRA_19",
-              "name": "Louis Haertelmeyer",
-              "number": 95,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -5142,7 +5142,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.489935+00:00",
+        "generated_at": "2026-08-19T17:25:07.547117+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5333,18 +5333,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -5360,18 +5360,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -5387,18 +5387,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -5414,23 +5414,23 @@
               "onAt": "18:13"
             },
             {
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
+              "position": null,
+              "onAt": "35:19"
+            },
+            {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "35:19"
+              "onAt": "17:13"
             },
             {
               "playerId": "GER_18",
               "name": "Moritz Ludwig",
               "number": 44,
-              "position": null,
-              "onAt": "17:13"
-            },
-            {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
               "position": null,
               "onAt": "26:11"
             },
@@ -5646,7 +5646,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.490280+00:00",
+        "generated_at": "2026-08-19T17:25:07.547584+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5670,6 +5670,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "FRA_19",
+              "name": "Louis Haertelmeyer",
+              "number": 95,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "FRA_14",
               "name": "Eliot Curty",
               "number": 18,
@@ -5682,15 +5691,6 @@
               "playerId": "FRA_08",
               "name": "Noé Jouin",
               "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "FRA_19",
-              "name": "Louis Haertelmeyer",
-              "number": 95,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9604,15 +9604,42 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 24,
+          "team": "FRA",
+          "type": "green_card",
+          "player": "Noé Jouin"
+        },
+        {
+          "minute": 43,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Justus Weigand"
+        },
+        {
+          "minute": 60,
+          "team": "FRA",
+          "type": "goal",
+          "via": "FG",
+          "player": "Louis Haertelmeyer"
+        },
+        {
+          "minute": 60,
+          "team": "GER",
+          "type": "yellow_card",
+          "player": "Benedikt Schwarzhaupt"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.493150+00:00",
+        "generated_at": "2026-08-19T17:25:07.551285+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9636,6 +9663,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "FRA_19",
+              "name": "Louis Haertelmeyer",
+              "number": 95,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "FRA_14",
               "name": "Eliot Curty",
               "number": 18,
@@ -9648,15 +9684,6 @@
               "playerId": "FRA_08",
               "name": "Noé Jouin",
               "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "FRA_19",
-              "name": "Louis Haertelmeyer",
-              "number": 95,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9817,18 +9844,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9844,18 +9871,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -9871,18 +9898,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9898,23 +9925,23 @@
               "onAt": "46:36"
             },
             {
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
+              "position": null,
+              "onAt": "21:23"
+            },
+            {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "21:23"
+              "onAt": "39:55"
             },
             {
               "playerId": "GER_18",
               "name": "Moritz Ludwig",
               "number": 44,
-              "position": null,
-              "onAt": "39:55"
-            },
-            {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
               "position": null,
               "onAt": "12:55"
             },
@@ -9951,7 +9978,87 @@
           "coach": "André Henning"
         }
       },
-      "tms_id": 22352
+      "tms_id": 22352,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 1,
+          "shots": 7,
+          "circle_entries": 17,
+          "penalty_corners": 0,
+          "possession": 46,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 7,
+          "circle_entries": 14,
+          "penalty_corners": 0,
+          "possession": 54,
+          "green_cards": 0,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! FRA vs GER under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: FRA 0-0 GER.",
+          "seq": 1
+        },
+        {
+          "minute": 24,
+          "team": "FRA",
+          "text": "Green Card for Noé Jouin (FRA) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: FRA 0-0 GER.",
+          "seq": 3
+        },
+        {
+          "minute": 43,
+          "team": "GER",
+          "text": "GOAL! Justus Weigand (GER) scores from a field goal — FRA 0-1 GER.",
+          "seq": 4
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: FRA 0-1 GER.",
+          "seq": 5
+        },
+        {
+          "minute": 60,
+          "team": "FRA",
+          "text": "GOAL! Louis Haertelmeyer (FRA) scores from a field goal — FRA 1-1 GER.",
+          "seq": 6
+        },
+        {
+          "minute": 60,
+          "team": "GER",
+          "text": "Yellow Card for Benedikt Schwarzhaupt (GER) — 5-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: FRA 1-1 GER.",
+          "seq": 8
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "A5",
