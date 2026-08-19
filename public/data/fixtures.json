@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-19T18:32:14.833964+00:00",
+  "last_updated": "2026-08-19T20:24:39.600626+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1175,7 +1175,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T17:25:07.543294+00:00",
+        "generated_at": "2026-08-19T20:24:39.589761+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1373,19 +1373,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "MAS_12",
-              "name": "Abu Kamal Azrai",
-              "number": 23,
+              "playerId": "MAS_22",
+              "name": "Akhimullah Anuar",
+              "number": 11,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "MAS_22",
-              "name": "Akhimullah Anuar",
-              "number": 11,
+              "playerId": "MAS_13",
+              "name": "Aiman Rozemi",
+              "number": 24,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "MAS_12",
+              "name": "Abu Kamal Azrai",
+              "number": 23,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -1412,15 +1421,6 @@
               "playerId": "MAS_21",
               "name": "Fitri Saari",
               "number": 7,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "MAS_13",
-              "name": "Aiman Rozemi",
-              "number": 24,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -1680,7 +1680,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T17:25:07.543789+00:00",
+        "generated_at": "2026-08-19T20:24:39.590256+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1704,15 +1704,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "BEL_12",
-              "name": "Roman Duvekot",
-              "number": 18,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "BEL_17",
               "name": "Tom Boon",
               "number": 27,
@@ -1722,9 +1713,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "BEL_16",
-              "name": "Victor Wegnez",
-              "number": 26,
+              "playerId": "BEL_12",
+              "name": "Roman Duvekot",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_07",
+              "name": "Thibeau Stockbroekx",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -1749,10 +1749,28 @@
               "goalkeeper": false
             },
             {
+              "playerId": "BEL_14",
+              "name": "Victor Foubert",
+              "number": 22,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_16",
+              "name": "Victor Wegnez",
+              "number": 26,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "BEL_19",
               "name": "Nicolas de Kerpel",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -1761,24 +1779,6 @@
               "playerId": "BEL_08",
               "name": "Maxime van Oost",
               "number": 9,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_07",
-              "name": "Thibeau Stockbroekx",
-              "number": 7,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_06",
-              "name": "Arno van Dessel",
-              "number": 5,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -1794,30 +1794,30 @@
               "onAt": "47:05"
             },
             {
+              "playerId": "BEL_06",
+              "name": "Arno van Dessel",
+              "number": 5,
+              "position": null,
+              "onAt": "13:47"
+            },
+            {
               "playerId": "BEL_09",
               "name": "Tommy Willems",
               "number": 11,
               "position": null,
-              "onAt": "13:47"
+              "onAt": "32:26"
             },
             {
               "playerId": "BEL_11",
               "name": "Guillaume Hellin",
               "number": 17,
               "position": null,
-              "onAt": "32:26"
+              "onAt": "31:55"
             },
             {
               "playerId": "BEL_20",
               "name": "Thomas Crols",
               "number": 37,
-              "position": null,
-              "onAt": "31:55"
-            },
-            {
-              "playerId": "BEL_14",
-              "name": "Victor Foubert",
-              "number": 22,
               "position": null,
               "onAt": "36:25"
             },
@@ -5142,7 +5142,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T17:25:07.547117+00:00",
+        "generated_at": "2026-08-19T20:24:39.593689+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5166,15 +5166,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "BEL_12",
-              "name": "Roman Duvekot",
-              "number": 18,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "BEL_17",
               "name": "Tom Boon",
               "number": 27,
@@ -5184,9 +5175,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "BEL_16",
-              "name": "Victor Wegnez",
-              "number": 26,
+              "playerId": "BEL_12",
+              "name": "Roman Duvekot",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_07",
+              "name": "Thibeau Stockbroekx",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -5211,10 +5211,28 @@
               "goalkeeper": false
             },
             {
+              "playerId": "BEL_14",
+              "name": "Victor Foubert",
+              "number": 22,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_16",
+              "name": "Victor Wegnez",
+              "number": 26,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "BEL_19",
               "name": "Nicolas de Kerpel",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -5223,24 +5241,6 @@
               "playerId": "BEL_08",
               "name": "Maxime van Oost",
               "number": 9,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_07",
-              "name": "Thibeau Stockbroekx",
-              "number": 7,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_06",
-              "name": "Arno van Dessel",
-              "number": 5,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -5256,30 +5256,30 @@
               "onAt": "29:46"
             },
             {
+              "playerId": "BEL_06",
+              "name": "Arno van Dessel",
+              "number": 5,
+              "position": null,
+              "onAt": "49:54"
+            },
+            {
               "playerId": "BEL_09",
               "name": "Tommy Willems",
               "number": 11,
               "position": null,
-              "onAt": "49:54"
+              "onAt": "49:53"
             },
             {
               "playerId": "BEL_11",
               "name": "Guillaume Hellin",
               "number": 17,
               "position": null,
-              "onAt": "49:53"
+              "onAt": "14:01"
             },
             {
               "playerId": "BEL_20",
               "name": "Thomas Crols",
               "number": 37,
-              "position": null,
-              "onAt": "14:01"
-            },
-            {
-              "playerId": "BEL_14",
-              "name": "Victor Foubert",
-              "number": 22,
               "position": null,
               "onAt": "28:58"
             },
@@ -5646,7 +5646,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T17:25:07.547584+00:00",
+        "generated_at": "2026-08-19T20:24:39.594167+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5851,19 +5851,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "MAS_12",
-              "name": "Abu Kamal Azrai",
-              "number": 23,
+              "playerId": "MAS_22",
+              "name": "Akhimullah Anuar",
+              "number": 11,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "MAS_22",
-              "name": "Akhimullah Anuar",
-              "number": 11,
+              "playerId": "MAS_13",
+              "name": "Aiman Rozemi",
+              "number": 24,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "MAS_12",
+              "name": "Abu Kamal Azrai",
+              "number": 23,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -5890,15 +5899,6 @@
               "playerId": "MAS_21",
               "name": "Fitri Saari",
               "number": 7,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "MAS_13",
-              "name": "Aiman Rozemi",
-              "number": 24,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9252,15 +9252,90 @@
       "time": "20:30",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 16,
+          "team": "BEL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tom Boon"
+        },
+        {
+          "minute": 19,
+          "team": "BEL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Victor Foubert"
+        },
+        {
+          "minute": 31,
+          "team": "MAS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Aiman Rozemi"
+        },
+        {
+          "minute": 35,
+          "team": "BEL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tom Boon"
+        },
+        {
+          "minute": 35,
+          "team": "BEL",
+          "type": "green_card",
+          "player": "Jack Vloeberghs"
+        },
+        {
+          "minute": 37,
+          "team": "MAS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Marhan Jalil"
+        },
+        {
+          "minute": 42,
+          "team": "BEL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Thibeau Stockbroekx"
+        },
+        {
+          "minute": 46,
+          "team": "BEL",
+          "type": "green_card",
+          "player": "Thibeau Stockbroekx"
+        },
+        {
+          "minute": 52,
+          "team": "BEL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tom Boon"
+        },
+        {
+          "minute": 52,
+          "team": "MAS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Akhimullah Anuar"
+        },
+        {
+          "minute": 52,
+          "team": "MAS",
+          "type": "green_card",
+          "player": "Aiman Rozemi"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T04:38:59.492800+00:00",
+        "generated_at": "2026-08-19T20:24:39.597529+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9284,15 +9359,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "BEL_12",
-              "name": "Roman Duvekot",
-              "number": 18,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "BEL_17",
               "name": "Tom Boon",
               "number": 27,
@@ -9302,9 +9368,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "BEL_16",
-              "name": "Victor Wegnez",
-              "number": 26,
+              "playerId": "BEL_12",
+              "name": "Roman Duvekot",
+              "number": 18,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_07",
+              "name": "Thibeau Stockbroekx",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9329,10 +9404,28 @@
               "goalkeeper": false
             },
             {
+              "playerId": "BEL_14",
+              "name": "Victor Foubert",
+              "number": 22,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "BEL_16",
+              "name": "Victor Wegnez",
+              "number": 26,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "BEL_19",
               "name": "Nicolas de Kerpel",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9341,24 +9434,6 @@
               "playerId": "BEL_08",
               "name": "Maxime van Oost",
               "number": 9,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_07",
-              "name": "Thibeau Stockbroekx",
-              "number": 7,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "BEL_06",
-              "name": "Arno van Dessel",
-              "number": 5,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9374,30 +9449,30 @@
               "onAt": "29:27"
             },
             {
+              "playerId": "BEL_06",
+              "name": "Arno van Dessel",
+              "number": 5,
+              "position": null,
+              "onAt": "11:42"
+            },
+            {
               "playerId": "BEL_09",
               "name": "Tommy Willems",
               "number": 11,
               "position": null,
-              "onAt": "11:42"
+              "onAt": "47:47"
             },
             {
               "playerId": "BEL_11",
               "name": "Guillaume Hellin",
               "number": 17,
               "position": null,
-              "onAt": "47:47"
+              "onAt": "23:18"
             },
             {
               "playerId": "BEL_20",
               "name": "Thomas Crols",
               "number": 37,
-              "position": null,
-              "onAt": "23:18"
-            },
-            {
-              "playerId": "BEL_14",
-              "name": "Victor Foubert",
-              "number": 22,
               "position": null,
               "onAt": "48:38"
             },
@@ -9451,19 +9526,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "MAS_12",
-              "name": "Abu Kamal Azrai",
-              "number": 23,
+              "playerId": "MAS_22",
+              "name": "Akhimullah Anuar",
+              "number": 11,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "MAS_22",
-              "name": "Akhimullah Anuar",
-              "number": 11,
+              "playerId": "MAS_13",
+              "name": "Aiman Rozemi",
+              "number": 24,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "MAS_12",
+              "name": "Abu Kamal Azrai",
+              "number": 23,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -9490,15 +9574,6 @@
               "playerId": "MAS_21",
               "name": "Fitri Saari",
               "number": 7,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "MAS_13",
-              "name": "Aiman Rozemi",
-              "number": 24,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9592,7 +9667,129 @@
           "coach": "Brendon Carolan"
         }
       },
-      "tms_id": 22353
+      "tms_id": 22353,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 2,
+        "away": 2
+      },
+      "stats": {
+        "home": {
+          "goals": 5,
+          "shots": 10,
+          "circle_entries": 33,
+          "penalty_corners": 2,
+          "possession": 55,
+          "green_cards": 2,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 10,
+          "circle_entries": 28,
+          "penalty_corners": 2,
+          "possession": 45,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! BEL vs MAS under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: BEL 0-0 MAS.",
+          "seq": 1
+        },
+        {
+          "minute": 16,
+          "team": "BEL",
+          "text": "GOAL! Tom Boon (BEL) scores from a field goal — BEL 1-0 MAS.",
+          "seq": 2
+        },
+        {
+          "minute": 19,
+          "team": "BEL",
+          "text": "GOAL! Victor Foubert (BEL) scores from a field goal — BEL 2-0 MAS.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: BEL 2-0 MAS.",
+          "seq": 4
+        },
+        {
+          "minute": 31,
+          "team": "MAS",
+          "text": "GOAL! Aiman Rozemi (MAS) scores from a penalty corner — BEL 2-1 MAS.",
+          "seq": 5
+        },
+        {
+          "minute": 35,
+          "team": "BEL",
+          "text": "GOAL! Tom Boon (BEL) scores from a penalty corner — BEL 3-1 MAS.",
+          "seq": 6
+        },
+        {
+          "minute": 35,
+          "team": "BEL",
+          "text": "Green Card for Jack Vloeberghs (BEL) — 2-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 37,
+          "team": "MAS",
+          "text": "GOAL! Marhan Jalil (MAS) scores from a penalty corner — BEL 3-2 MAS.",
+          "seq": 8
+        },
+        {
+          "minute": 42,
+          "team": "BEL",
+          "text": "GOAL! Thibeau Stockbroekx (BEL) scores from a field goal — BEL 4-2 MAS.",
+          "seq": 9
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: BEL 4-2 MAS.",
+          "seq": 10
+        },
+        {
+          "minute": 46,
+          "team": "BEL",
+          "text": "Green Card for Thibeau Stockbroekx (BEL) — 2-minute suspension.",
+          "seq": 11
+        },
+        {
+          "minute": 52,
+          "team": "BEL",
+          "text": "GOAL! Tom Boon (BEL) scores from a penalty corner — BEL 5-2 MAS.",
+          "seq": 12
+        },
+        {
+          "minute": 52,
+          "team": "MAS",
+          "text": "GOAL! Akhimullah Anuar (MAS) scores from a field goal — BEL 5-3 MAS.",
+          "seq": 13
+        },
+        {
+          "minute": 52,
+          "team": "MAS",
+          "text": "Green Card for Aiman Rozemi (MAS) — 2-minute suspension.",
+          "seq": 14
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: BEL 5-3 MAS.",
+          "seq": 15
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "B6",
