@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-20T12:43:46.502869+00:00",
+  "last_updated": "2026-08-20T13:43:58.788769+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -918,7 +918,7 @@
       "fih_star": false,
       "profile": "Named on the official FIH team list — 18 senior caps.",
       "dob": "23 Jun 2000",
-      "caps": 18,
+      "caps": 19,
       "matches_played": 3,
       "ai_rating": 81.0,
       "source": "fih-team-list",
