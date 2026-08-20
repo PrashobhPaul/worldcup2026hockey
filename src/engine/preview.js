@@ -7,12 +7,17 @@
 // converted, cards, scorers, when goals arrive, and any meeting the two sides
 // have already had here.
 //
+// Two sources, each stated in words wherever it is shown:
+//  • This tournament's ledger — goals, penalty corners, cards, scorers, timing.
+//  • The official TMS head-to-head table, which FIH vouches for from 2013 only
+//    (2012 and earlier are still being digitised). That is a record SINCE 2013
+//    and is never described as all-time, however much it looks like one.
+//
 // Honesty rules, carried from insights.js:
-//  • Only this tournament. We hold no career or all-time head-to-head, so we
-//    never claim one — a card with no supporting data is dropped, not padded.
-//  • Every stat states its scope in words, so "3 from 8" can never be read as
-//    an all-time record.
-//  • A card needs a real sample. One match is not "form"; those cards stay out.
+//  • A card needs a real sample. One match is not "form", three cards are not a
+//    discipline record — those cards are dropped, never padded.
+//  • Nothing is inferred beyond what the two sources say. A pair TMS has no
+//    table for simply gets no record card.
 
 const PLAYED = m => m.status === 'completed' && m.score?.home != null
 
@@ -58,6 +63,33 @@ export function teamLedger(code, matches, events) {
 }
 
 const pct = (n, d) => (d > 0 ? Math.round((n / d) * 100) : null)
+
+export const h2hKey = (a, b) => [a, b].sort().join('-')
+
+/**
+ * Record between two nations from the official TMS head-to-head table.
+ * Scoped to what TMS vouches for: its own footnote says the archive is accurate
+ * from 2013, with earlier matches still being digitised. So this is never an
+ * all-time record and is never described as one. Meetings from the tournament
+ * being played are excluded — those live in the ledger and have their own card.
+ */
+export function h2hRecord(meetings, home, away, since = 2013) {
+  const past = (meetings ?? []).filter(m => !m.current)
+  if (!past.length) return null
+  let hw = 0, aw = 0, d = 0, hg = 0, ag = 0
+  const form = []
+  for (const m of past) {
+    const forHome = m.home === home ? m.home_goals : m.away_goals
+    const forAway = m.home === home ? m.away_goals : m.home_goals
+    hg += forHome; ag += forAway
+    if (forHome > forAway) { hw++; form.push('W') }
+    else if (forAway > forHome) { aw++; form.push('L') }
+    else { d++; form.push('D') }
+  }
+  // Rows arrive newest-first from TMS; keep that order for the form strip.
+  return { meetings: past.length, since, homeWins: hw, awayWins: aw, draws: d,
+           homeGoals: hg, awayGoals: ag, form: form.slice(0, 5), last: past[0] }
+}
 const record = t => `${t.w}W-${t.d}D-${t.l}L`
 const nameOf = (team, code) => team?.name ?? code
 
@@ -66,7 +98,7 @@ const nameOf = (team, code) => team?.name ?? code
  * Returns [] when the tournament has not produced enough evidence yet — the UI
  * then falls back to the model line rather than showing invented colour.
  */
-export function buildPreview({ match, home, away, matches, events, pred }) {
+export function buildPreview({ match, home, away, matches, events, pred, h2h }) {
   if (!match || match.status === 'completed') return []
   const hCode = match.home, aCode = match.away
   if (!hCode || !aCode || hCode === 'TBD' || aCode === 'TBD') return []
@@ -77,6 +109,34 @@ export function buildPreview({ match, home, away, matches, events, pred }) {
 
   const hName = nameOf(home, hCode), aName = nameOf(away, aCode)
   const cards = []
+
+  // ── The record between them ──────────────────────────────────────────────
+  const rec = h2hRecord(h2h, hCode, aCode)
+  if (rec) {
+    const lead = rec.homeWins > rec.awayWins ? hName : rec.awayWins > rec.homeWins ? aName : null
+    const leadW = Math.max(rec.homeWins, rec.awayWins)
+    const trailW = Math.min(rec.homeWins, rec.awayWins)
+    const l = rec.last
+    const lastFor = l.home === hCode ? l.home_goals : l.away_goals
+    const lastAgainst = l.home === hCode ? l.away_goals : l.home_goals
+    const lastWinner = lastFor > lastAgainst ? hName : lastAgainst > lastFor ? aName : null
+    cards.push({
+      kind: 'record', label: 'The record', tone: 'brand',
+      stat: `${rec.homeWins}-${rec.draws}-${rec.awayWins}`,
+      statLabel: `${hName}–draws–${aName}, since ${rec.since}`,
+      headline: lead
+        ? `${lead} lead the head-to-head since ${rec.since}`
+        : `Nothing separates them since ${rec.since}`,
+      text: `In ${rec.meetings} meeting${rec.meetings > 1 ? 's' : ''} since ${rec.since}, ` +
+        (lead ? `${lead} hold a ${leadW}-${rec.draws}-${trailW} edge` : `they are level at ${leadW}-${rec.draws}-${trailW}`) +
+        `, ${rec.homeGoals}-${rec.awayGoals} on goals. Most recently, ` +
+        `${l.date.slice(0, 4)}: ${lastWinner ? `${lastWinner} won ` : 'they drew '}` +
+        `${Math.max(lastFor, lastAgainst)}-${Math.min(lastFor, lastAgainst)}` +
+        (l.competition ? ` in the ${l.competition.replace(/&#0?39;/g, "'")}` : '') + '. ' +
+        `FIH records go back to ${rec.since}; earlier meetings are still being digitised.`,
+      form: rec.form,
+    })
+  }
 
   // ── Already met here ─────────────────────────────────────────────────────
   // In Stage 2 this is the sharpest card on the deck: two sides out of the same
@@ -212,12 +272,21 @@ export function buildPreview({ match, home, away, matches, events, pred }) {
     const U = favCode === hCode ? A : H
 
     const why = []
+    const against = []
     if (F.w > U.w) why.push(`${favName} have won ${F.w} here to ${U.w}`)
     if (F.gf - F.ga > U.gf - U.ga) why.push(`a goal difference of ${F.gf - F.ga >= 0 ? '+' : ''}${F.gf - F.ga} against ${U.gf - U.ga >= 0 ? '+' : ''}${U.gf - U.ga}`)
     const fTop = F.topScorers[0]
     if (fTop && fTop.goals >= 2) why.push(`${fTop.name} carrying ${fTop.goals} goals`)
+    if (rec) {
+      const favWins = favCode === hCode ? rec.homeWins : rec.awayWins
+      const dogWins = favCode === hCode ? rec.awayWins : rec.homeWins
+      if (favWins > dogWins) {
+        why.push(`a ${favWins}-${rec.draws}-${dogWins} head-to-head edge since ${rec.since}`)
+      } else if (dogWins > favWins) {
+        against.unshift(`${dogName} lead the head-to-head ${dogWins}-${rec.draws}-${favWins} since ${rec.since}`)
+      }
+    }
 
-    const against = []
     const uConv = pct(U.pcGoals, U.pcWon), fConv = pct(F.pcGoals, F.pcWon)
     if (uConv != null && fConv != null && uConv > fConv && U.pcGoals >= 2) {
       against.push(`${dogName} have been the sharper side at a penalty corner (${U.pcGoals} from ${U.pcWon}, against ${F.pcGoals} from ${F.pcWon})`)

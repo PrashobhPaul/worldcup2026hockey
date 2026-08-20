@@ -7,7 +7,7 @@ import { useTeam, phaseTag, formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
 import { deriveClock } from '../engine/clock'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
-import { buildPreview } from '../engine/preview'
+import { buildPreview, h2hKey } from '../engine/preview'
 import { ArrowLeft } from 'lucide-react'
 import { EventIcon } from '../components/eventIcons'
 
@@ -203,6 +203,16 @@ function PreviewCard({ card }) {
       </div>
       <p className="mt-3 text-sm font-semibold leading-snug">{card.headline}</p>
       <p className="mt-1.5 text-xs leading-relaxed text-pitch-300">{card.text}</p>
+      {card.form?.length > 0 && (
+        <div className="mt-3 flex items-center gap-1.5">
+          <span className="mr-1 font-mono text-[9px] uppercase tracking-widest text-pitch-400">Last {card.form.length}</span>
+          {card.form.map((r, i) => (
+            <span key={i} className={`flex h-5 w-5 items-center justify-center rounded font-mono text-[10px] font-bold ${
+              r === 'W' ? 'bg-live/15 text-live' : r === 'L' ? 'bg-red-400/15 text-red-400' : 'bg-pitch-700 text-pitch-300'
+            }`}>{r}</span>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -224,6 +234,12 @@ export default function MatchDetailPage() {
   // Every event in the tournament — the preview deck reasons over all of them,
   // not just this fixture's.
   const allEvents = useLiveQuery(() => db.match_events.toArray(), [], [])
+  // The official meeting record for this pair, harvested from TMS.
+  const h2hRow = useLiveQuery(
+    () => (match?.home && match?.away && match.home !== 'TBD'
+      ? db.h2h.get(h2hKey(match.home, match.away)) : undefined),
+    [match?.home, match?.away],
+  )
   const home = useTeam(match?.home)
   const away = useTeam(match?.away)
 
@@ -253,7 +269,7 @@ export default function MatchDetailPage() {
   const byQuarter = { Q1: [], Q2: [], Q3: [], Q4: [] }
   for (const ev of annotated) byQuarter[quarterOf(ev.minute)]?.push(ev)
 
-  const preview = buildPreview({ match, home, away, matches: allMatches, events: allEvents, pred })
+  const preview = buildPreview({ match, home, away, matches: allMatches, events: allEvents, pred, h2h: h2hRow?.meetings })
 
   const homeForm = tournamentForm(allMatches, match.home).filter(f => f.id !== match.id)
   const awayForm = tournamentForm(allMatches, match.away).filter(f => f.id !== match.id)
