@@ -20,7 +20,7 @@ from update_data import (  # noqa: E402
     parse_tms_results, update_statuses, backfill_scores_from_tms,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
-    slot_knockouts, stage1_placements, normalize_captaincy, TMS_LINEUP_LINK,
+    slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -596,6 +596,52 @@ check('two same-surname teammates never cross-match',
       by2['Charlie Morrison'].get('world_rank') == 78
       and by2['Joseph Morrison'].get('world_rank') is None)
 check('a near-miss given name is not a match', by2['Hannes Müller'].get('world_rank') is None)
+
+print('\nHead-to-head table (TMS match page, verbatim from the live dump)')
+
+_H2H = ['Head to Head Matches', 'Senior Mens Outdoor', 'Competition', 'Details',
+        'Date/Time', 'Teams', 'Pitch', 'Status', 'Scoreline',
+        'FIH Hockey World Cup Belgium & Netherlands 2026 (M)', 'Senior Mens Outdoor',
+        '15 Aug 2026  13:00', 'IND v WAL (D)',
+        'WHSA - Pitch 1 - Wagener Hockey Stadium', 'Official', '3 - 1', 'Lineup',
+        "FIH Odisha Hockey Men's World Cup 2023 Bhubaneswar - Rourkela", 'Senior Mens Outdoor',
+        '19 Jan 2023  19:00', 'IND v WAL (Pool D)',
+        'KS - Pitch 1 - Bhubaneswar, India', 'Official', '4 - 2', 'Lineup',
+        # 2022 and 2018 rows carry no pitch line — the row must not be read by offset
+        'Commonwealth Games 2022 (M)', 'Senior Mens Outdoor', '4 Aug 2022  14:00',
+        'IND v WAL (Pool B)', 'Official', '4 - 1', 'Lineup',
+        'XXI Commonwealth Games (M)', 'Senior Mens Outdoor', '8 Apr 2018  19:30',
+        'IND v WAL (Pool B)', 'Official', '4 - 3', 'Lineup',
+        'XX Commonwealth Games 2014 (M)', 'Senior Mens Outdoor', '25 Jul 2014  09:00',
+        'IND v WAL (Pool A)', 'Glasgow National Hockey Centre', 'Official', '3 - 1', 'Lineup',
+        '*', 'Altius', 'rt',
+        "data is accurate for every match from 2013 until today's date. Historic data from 2012 "
+        'and earlier is currently in the process of being digitalised by', 'tech@fih.ch',
+        # everything past the footnote belongs to other sections
+        'Match Details', 'Competition', 'FIH Hockey World Cup Belgium & Netherlands 2026 (M)',
+        'Date/Time', '2026-08-15 13:00', 'Venue', 'Wagener Hockey Stadium']
+_rows = parse_h2h(_H2H, current_competition='FIH Hockey World Cup Belgium & Netherlands 2026 (M)')
+check('every meeting in the table is read', len(_rows) == 5, str(len(_rows)))
+check('a row with no pitch line still reads',
+      any(r['date'] == '2022-08-04' and (r['home_goals'], r['away_goals']) == (4, 1) for r in _rows))
+check('the match the page belongs to is marked as this tournament',
+      [r['current'] for r in _rows] == [True, False, False, False, False])
+check('dates are normalised', _rows[1]['date'] == '2023-01-19', _rows[1]['date'])
+check('the competition is captured',
+      _rows[2]['competition'] == 'Commonwealth Games 2022 (M)', str(_rows[2]['competition']))
+check('the footnote closes the table — Match Details is not a meeting',
+      not any(r['date'] == '2026-08-15' and r['competition'] == 'Venue' for r in _rows))
+# TMS vouches for 2013 onward only, so an older row must never be counted.
+check('a pre-2013 meeting is dropped, not counted',
+      len(parse_h2h(_H2H[:9] + ['Champions Trophy 2009 (M)', 'Senior Mens Outdoor',
+                                '1 Jun 2009  12:00', 'IND v WAL (Pool A)', 'Official',
+                                '9 - 0', 'Lineup'])) == 0)
+# An unplayed fixture in the table has no scoreline and must not become a result.
+check('a meeting with no scoreline is not invented',
+      len(parse_h2h(_H2H[:9] + ['Some Cup 2025 (M)', 'Senior Mens Outdoor',
+                                '1 Jun 2025  12:00', 'IND v WAL (Pool A)', 'Scheduled',
+                                'Lineup'])) == 0)
+check('a page with no head-to-head table yields nothing', parse_h2h(['Match Details']) == [])
 
 print('\nCaptaincy (exactly one per team, official list wins)')
 

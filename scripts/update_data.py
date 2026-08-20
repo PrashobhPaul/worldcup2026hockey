@@ -50,6 +50,14 @@ def load(name):
     with open(os.path.join(DATA_DIR, name)) as f:
         return json.load(f)
 
+def load_or(name, default):
+    """load(), but a file that does not exist yet starts from `default` — a new
+    data file must not break the first run that introduces it."""
+    try:
+        return load(name)
+    except FileNotFoundError:
+        return default
+
 def save(name, obj):
     with open(os.path.join(DATA_DIR, name), 'w') as f:
         json.dump(obj, f, indent=2, ensure_ascii=False)
@@ -171,6 +179,7 @@ TMS_SQUAD_PATHS = [
 ]
 # Discovered on the competition matches page, e.g. /matches/22334/lineups/8575
 TMS_LINEUP_LINK = re.compile(r'/matches/(\d+)/lineups/(\d+)')
+TMS_MATCH_LINK = re.compile(r'/matches/(\d+)(?![\d/])')
 
 def _tms_get(url, referer=None):
     headers = {
@@ -599,6 +608,17 @@ def discover_tms_lineup_links():
                 ids.append(tid)
     pairs = {k: v for k, v in found.items() if len(v) == 2}
     print(f'LINEUPS: {len(found)} TMS matches linked, {len(pairs)} with both team sheets.')
+    # Team-sheet links only exist once a match has line-ups, so an unplayed
+    # fixture is invisible to the pattern above — which kept the whole Stage-2
+    # half of the tournament out of reach. Every match has a plain /matches/{id}
+    # link on the same page; ids that turn out not to be ours are skipped by the
+    # pair lookup downstream.
+    for path in ('/matches', ''):
+        body, _c = _tms_get(TMS_BASE + path)
+        if not body:
+            continue
+        for mid in TMS_MATCH_LINK.findall(body.decode('utf-8', 'replace')):
+            found.setdefault(mid, [])
     return pairs
 
 # The per-match page's Details section labels the kickoff and venue outright:
@@ -677,7 +697,94 @@ def probe_match_report(tms_id):
         print(f'PROBE match page {tms_id}: no body ({pctype})')
 
 
-def sync_schedule_from_match_pages(fixtures, links):
+# ── Head-to-head history ──────────────────────────────────────────────────
+# Every TMS match page ends with a "Head to Head Matches" table: one row per
+# previous meeting between the two nations. The probe dump (IND v WAL) shows a
+# row as a run of lines with an optional pitch:
+#
+#   FIH Odisha Hockey Men's World Cup 2023 Bhubaneswar - Rourkela   <- competition
+#   Senior Mens Outdoor                                             <- category
+#   19 Jan 2023  19:00                                              <- date/time
+#   IND v WAL (Pool D)                                              <- teams
+#   KS - Pitch 1 - Bhubaneswar, India                               <- pitch (may be absent)
+#   Official                                                        <- status
+#   4 - 2                                                           <- scoreline
+#   Lineup
+#
+# The pitch line is missing on some rows, so the row is anchored on the teams
+# line rather than counted off a fixed offset. The table also lists the match
+# the page belongs to, which is not history — it carries the current
+# competition's name and is marked so callers can drop it.
+#
+# TMS states its own limit in a footnote on that page: accurate from 2013, with
+# 2012 and earlier still being digitised. So this is a record SINCE 2013, and it
+# is labelled that way everywhere it is shown — never as "all-time".
+# The name TMS gives this competition, used to mark rows in the head-to-head
+# table that belong to the tournament being played rather than to history.
+TMS_COMPETITION = 'FIH Hockey World Cup Belgium & Netherlands 2026 (M)'
+H2H_SINCE = 2013
+H2H_TEAMS = re.compile(r'^([A-Z]{3})\s+v\s+([A-Z]{3})\s*\(')
+H2H_DATE = re.compile(r'^(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})\s+\d{1,2}:\d{2}$')
+H2H_SCORE = re.compile(r'^(\d{1,2})\s*-\s*(\d{1,2})$')
+_MON = {m: i + 1 for i, m in enumerate(
+    ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])}
+
+def parse_h2h(lines, current_competition=None):
+    """[{competition, date, home, away, home_goals, away_goals, current}] from a
+    TMS match page, or [] when the page carries no head-to-head table."""
+    try:
+        start = next(i for i, ln in enumerate(lines)
+                     if ln.strip() == 'Head to Head Matches')
+    except StopIteration:
+        return []
+    rows = []
+    for i in range(start, len(lines)):
+        ln = lines[i].strip()
+        if ln.startswith('data is accurate for every match'):
+            break            # the footnote closes the table
+        m = H2H_TEAMS.match(ln)
+        if not m:
+            continue
+        home, away = m.group(1), m.group(2)
+        # Date sits immediately above the teams line; competition two above the
+        # category line. Walk back rather than assume a fixed offset.
+        date = comp = None
+        for j in range(i - 1, max(start - 1, i - 5), -1):
+            d = H2H_DATE.match(lines[j].strip())
+            if d:
+                date = f'{d.group(3)}-{_MON.get(d.group(2), 0):02d}-{int(d.group(1)):02d}'
+                for k in range(j - 1, max(start - 1, j - 4), -1):
+                    cand = lines[k].strip()
+                    if cand and cand != 'Senior Mens Outdoor':
+                        comp = cand
+                        break
+                break
+        if not date:
+            continue
+        # Scoreline is the first "N - M" after the teams line, before the next row.
+        score = None
+        for j in range(i + 1, min(len(lines), i + 6)):
+            nxt = lines[j].strip()
+            if H2H_TEAMS.match(nxt):
+                break
+            sc = H2H_SCORE.match(nxt)
+            if sc:
+                score = (int(sc.group(1)), int(sc.group(2)))
+                break
+        if not score:
+            continue          # an unplayed or void fixture carries no scoreline
+        if int(date[:4]) < H2H_SINCE:
+            continue          # outside the window TMS vouches for
+        rows.append({
+            'competition': comp, 'date': date,
+            'home': home, 'away': away,
+            'home_goals': score[0], 'away_goals': score[1],
+            'current': bool(current_competition and comp == current_competition),
+        })
+    return rows
+
+
+def sync_schedule_from_match_pages(fixtures, links, h2h_out=None):
     """
     Correct kickoff date, time and venue against each TMS match page.
 
@@ -699,13 +806,21 @@ def sync_schedule_from_match_pages(fixtures, links):
         body, _ = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
         if not body:
             continue
-        info = parse_match_page(_tms_lines(body))
+        page_lines = _tms_lines(body)
+        info = parse_match_page(page_lines)
         if not info:
             print(f'SCHEDULE: match page {mid} did not parse — skipped.')
             continue
         m = by_pair.get(frozenset(info['pair']))
         if not m:
             continue
+        # The same page carries the pair's meeting history. Harvest it here
+        # rather than refetching: it is the only official record we have of how
+        # these two have played each other, and the preview has nothing else.
+        if h2h_out is not None:
+            rows = parse_h2h(page_lines, current_competition=TMS_COMPETITION)
+            if rows:
+                h2h_out['-'.join(sorted(info['pair']))] = rows
         if m.get('tms_id') != int(mid):
             m['tms_id'] = int(mid)
             changed = True
@@ -2186,7 +2301,19 @@ def main():
     # The official schedule before the clock speaks: statuses are computed
     # from kickoff times, and the per-match pages are the authority on those.
     links = discover_tms_lineup_links()
-    changed |= sync_schedule_from_match_pages(fixtures, links)
+    # Head-to-head history is harvested from the same pages the schedule sync
+    # reads. A pair keeps whatever we last saw: TMS only serves the table on a
+    # match page, so a pair drops out of reach once its match is complete and
+    # the page stops being refetched.
+    h2h_doc = load_or('h2h.json', {'source': 'fih-tms', 'since': H2H_SINCE, 'pairs': {}})
+    harvested = {}
+    changed |= sync_schedule_from_match_pages(fixtures, links, h2h_out=harvested)
+    if harvested:
+        h2h_doc['pairs'].update(harvested)
+        h2h_doc['since'] = H2H_SINCE
+        h2h_doc['updated_at'] = now_utc().isoformat()
+        save('h2h.json', h2h_doc)
+        print(f'H2H: {len(harvested)} pairs refreshed, {len(h2h_doc["pairs"])} on file.')
     changed |= update_statuses(fixtures)
 
     # The matches page carries every final score by team-code pair — the
