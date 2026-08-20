@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-20T10:33:52.607135+00:00",
+  "last_updated": "2026-08-20T10:59:03.059853+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -3119,7 +3119,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:24:51.711058+00:00",
+        "generated_at": "2026-08-20T10:59:03.050988+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3137,6 +3137,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_12",
+              "name": "Ky Willott",
+              "number": 20,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -3164,7 +3173,7 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -3188,15 +3197,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_21",
-              "name": "Lachlan Sharp",
-              "number": 1,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "AUS_03",
               "name": "Blake Govers",
               "number": 13,
@@ -3206,18 +3206,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_06",
-              "name": "Nathan Ephraums",
-              "number": 7,
+              "playerId": "AUS_21",
+              "name": "Lachlan Sharp",
+              "number": 1,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_12",
-              "name": "Ky Willott",
-              "number": 20,
+              "playerId": "AUS_06",
+              "name": "Nathan Ephraums",
+              "number": 7,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -3604,7 +3604,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:24:51.711524+00:00",
+        "generated_at": "2026-08-20T10:59:03.051478+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3897,16 +3897,16 @@
               "onAt": "13:06"
             },
             {
-              "playerId": "RSA_10",
-              "name": "Carlon Mentoor",
-              "number": 15,
+              "playerId": "RSA_19",
+              "name": "Ayakha Mthalane",
+              "number": 32,
               "position": null,
               "onAt": "11:04"
             },
             {
-              "playerId": "RSA_19",
-              "name": "Ayakha Mthalane",
-              "number": 32,
+              "playerId": "RSA_10",
+              "name": "Carlon Mentoor",
+              "number": 15,
               "position": null,
               "onAt": "19:41"
             },
@@ -7105,7 +7105,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T14:31:22.990074+00:00",
+        "generated_at": "2026-08-20T10:59:03.054868+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7123,6 +7123,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_12",
+              "name": "Ky Willott",
+              "number": 20,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -7150,7 +7159,7 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7174,15 +7183,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_21",
-              "name": "Lachlan Sharp",
-              "number": 1,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "AUS_03",
               "name": "Blake Govers",
               "number": 13,
@@ -7192,18 +7192,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_06",
-              "name": "Nathan Ephraums",
-              "number": 7,
+              "playerId": "AUS_21",
+              "name": "Lachlan Sharp",
+              "number": 1,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_12",
-              "name": "Ky Willott",
-              "number": 20,
+              "playerId": "AUS_06",
+              "name": "Nathan Ephraums",
+              "number": 7,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -7629,7 +7629,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:24:51.715391+00:00",
+        "generated_at": "2026-08-20T10:59:03.055369+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7908,16 +7908,16 @@
               "onAt": "17:35"
             },
             {
-              "playerId": "RSA_10",
-              "name": "Carlon Mentoor",
-              "number": 15,
+              "playerId": "RSA_19",
+              "name": "Ayakha Mthalane",
+              "number": 32,
               "position": null,
               "onAt": "14:55"
             },
             {
-              "playerId": "RSA_19",
-              "name": "Ayakha Mthalane",
-              "number": 32,
+              "playerId": "RSA_10",
+              "name": "Carlon Mentoor",
+              "number": 15,
               "position": null,
               "onAt": "44:44"
             },
@@ -10978,15 +10978,74 @@
       "time": "11:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 4,
+          "team": "RSA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Mustaphaa Cassiem"
+        },
+        {
+          "minute": 6,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Jeremy Hayward"
+        },
+        {
+          "minute": 7,
+          "team": "RSA",
+          "type": "yellow_card",
+          "player": "Kenton Melville"
+        },
+        {
+          "minute": 35,
+          "team": "RSA",
+          "type": "green_card",
+          "player": "Hans Neethling"
+        },
+        {
+          "minute": 36,
+          "team": "RSA",
+          "type": "yellow_card",
+          "player": "Mustaphaa Cassiem"
+        },
+        {
+          "minute": 38,
+          "team": "AUS",
+          "type": "goal",
+          "via": "PC",
+          "player": "Joel Rintala"
+        },
+        {
+          "minute": 40,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Craig Marais"
+        },
+        {
+          "minute": 43,
+          "team": "AUS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Ky Willott"
+        },
+        {
+          "minute": 44,
+          "team": "RSA",
+          "type": "goal",
+          "via": "PC",
+          "player": "Mustaphaa Cassiem"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:24:51.718794+00:00",
+        "generated_at": "2026-08-20T10:59:03.058683+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -11004,6 +11063,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_12",
+              "name": "Ky Willott",
+              "number": 20,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -11031,7 +11099,7 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -11055,15 +11123,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_21",
-              "name": "Lachlan Sharp",
-              "number": 1,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "AUS_03",
               "name": "Blake Govers",
               "number": 13,
@@ -11073,18 +11132,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_06",
-              "name": "Nathan Ephraums",
-              "number": 7,
+              "playerId": "AUS_21",
+              "name": "Lachlan Sharp",
+              "number": 1,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "AUS_12",
-              "name": "Ky Willott",
-              "number": 20,
+              "playerId": "AUS_06",
+              "name": "Nathan Ephraums",
+              "number": 7,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -11279,16 +11338,16 @@
               "onAt": "46:41"
             },
             {
-              "playerId": "RSA_10",
-              "name": "Carlon Mentoor",
-              "number": 15,
+              "playerId": "RSA_19",
+              "name": "Ayakha Mthalane",
+              "number": 32,
               "position": null,
               "onAt": "17:44"
             },
             {
-              "playerId": "RSA_19",
-              "name": "Ayakha Mthalane",
-              "number": 32,
+              "playerId": "RSA_10",
+              "name": "Carlon Mentoor",
+              "number": 15,
               "position": null,
               "onAt": "20:09"
             },
@@ -11325,7 +11384,117 @@
           "coach": "Devon van der Merwe"
         }
       },
-      "tms_id": 22354
+      "tms_id": 22354,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 2
+      },
+      "stats": {
+        "home": {
+          "goals": 2,
+          "shots": 10,
+          "circle_entries": 23,
+          "penalty_corners": 1,
+          "possession": 52,
+          "green_cards": 2,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 5,
+          "circle_entries": 22,
+          "penalty_corners": 2,
+          "possession": 48,
+          "green_cards": 1,
+          "yellow_cards": 2,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! AUS vs RSA under way.",
+          "seq": 0
+        },
+        {
+          "minute": 4,
+          "team": "RSA",
+          "text": "GOAL! Mustaphaa Cassiem (RSA) scores from a penalty corner — AUS 0-1 RSA.",
+          "seq": 1
+        },
+        {
+          "minute": 6,
+          "team": "AUS",
+          "text": "Green Card for Jeremy Hayward (AUS) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 7,
+          "team": "RSA",
+          "text": "Yellow Card for Kenton Melville (RSA) — 5-minute suspension.",
+          "seq": 3
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: AUS 0-1 RSA.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: AUS 0-1 RSA.",
+          "seq": 5
+        },
+        {
+          "minute": 35,
+          "team": "RSA",
+          "text": "Green Card for Hans Neethling (RSA) — 2-minute suspension.",
+          "seq": 6
+        },
+        {
+          "minute": 36,
+          "team": "RSA",
+          "text": "Yellow Card for Mustaphaa Cassiem (RSA) — 5-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 38,
+          "team": "AUS",
+          "text": "GOAL! Joel Rintala (AUS) scores from a penalty corner — AUS 1-1 RSA.",
+          "seq": 8
+        },
+        {
+          "minute": 40,
+          "team": "AUS",
+          "text": "Green Card for Craig Marais (AUS) — 2-minute suspension.",
+          "seq": 9
+        },
+        {
+          "minute": 43,
+          "team": "AUS",
+          "text": "GOAL! Ky Willott (AUS) scores from a field goal — AUS 2-1 RSA.",
+          "seq": 10
+        },
+        {
+          "minute": 44,
+          "team": "RSA",
+          "text": "GOAL! Mustaphaa Cassiem (RSA) scores from a penalty corner — AUS 2-2 RSA.",
+          "seq": 11
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: AUS 2-2 RSA.",
+          "seq": 12
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: AUS 2-2 RSA.",
+          "seq": 13
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "C6",
