@@ -662,6 +662,19 @@ def probe_match_report(tms_id):
                 print(f"  W| top={w['top']:.0f} x0={w['x0']:.0f} {w['text'][:22]}")
         except Exception as e:
             print(f'PROBE coords {tms_id} failed: {e}')
+    # The match page carries a head-to-head block — past meetings between these
+    # two nations, with dates and scores. The schedule reader deliberately skips
+    # it (a past date must never be mistaken for this match's kickoff), but it is
+    # the one official source we have for all-time record. Dump it whole so the
+    # H2H parser is written against the real layout rather than a guess.
+    page, pctype = _tms_get(f'{TMS_HOST}/matches/{tms_id}', referer=TMS_BASE + '/matches')
+    if page:
+        plines = _tms_lines(page)
+        print(f'PROBE match page {tms_id}: {len(plines)} lines ({pctype})')
+        for i, ln in enumerate(plines):
+            print(f'  P|{i:4} {ln[:150]}')
+    else:
+        print(f'PROBE match page {tms_id}: no body ({pctype})')
 
 
 def sync_schedule_from_match_pages(fixtures, links):
