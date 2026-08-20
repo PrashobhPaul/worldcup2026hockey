@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-20T16:32:34.191882+00:00",
+  "last_updated": "2026-08-20T17:26:59.812972+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -3604,7 +3604,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T10:59:03.051478+00:00",
+        "generated_at": "2026-08-20T17:26:59.804744+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3619,6 +3619,15 @@
               "goalkeeper": true
             },
             {
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ESP_08",
               "name": "José Basterra",
               "number": 10,
@@ -3628,9 +3637,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_16",
+              "name": "Nicolas Alvarez",
+              "number": 28,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -3646,21 +3655,21 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_04",
-              "name": "Alejandro Alonso",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "ESP_01",
               "name": "Marc Miralles",
               "number": 14,
               "line": "Midfielder",
               "position": "Midfielder",
               "captain": true,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ESP_04",
+              "name": "Alejandro Alonso",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
               "goalkeeper": false
             },
             {
@@ -3676,7 +3685,7 @@
               "playerId": "ESP_06",
               "name": "Xavier Gispert",
               "number": 6,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -3698,15 +3707,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ESP_12",
-              "name": "Pepe Cunill",
-              "number": 17,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -3718,37 +3718,37 @@
               "onAt": "50:57"
             },
             {
+              "playerId": "ESP_12",
+              "name": "Pepe Cunill",
+              "number": 17,
+              "position": null,
+              "onAt": "31:06"
+            },
+            {
               "playerId": "ESP_19",
               "name": "Borja Lacalle",
               "number": 9,
               "position": null,
-              "onAt": "31:06"
+              "onAt": "09:02"
             },
             {
               "playerId": "ESP_15",
               "name": "Bruno Font",
               "number": 26,
               "position": null,
-              "onAt": "09:02"
+              "onAt": "49:35"
             },
             {
               "playerId": "ESP_22",
               "name": "Rafael Vilallonga",
               "number": 7,
               "position": null,
-              "onAt": "49:35"
+              "onAt": "13:23"
             },
             {
               "playerId": "ESP_14",
               "name": "Marc Vizcaino",
               "number": 23,
-              "position": null,
-              "onAt": "13:23"
-            },
-            {
-              "playerId": "ESP_16",
-              "name": "Nicolas Alvarez",
-              "number": 28,
               "position": null,
               "onAt": "42:25"
             },
@@ -7105,7 +7105,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T10:59:03.054868+00:00",
+        "generated_at": "2026-08-20T17:26:59.808149+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7292,6 +7292,15 @@
               "goalkeeper": true
             },
             {
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ESP_08",
               "name": "José Basterra",
               "number": 10,
@@ -7301,9 +7310,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_16",
+              "name": "Nicolas Alvarez",
+              "number": 28,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -7319,21 +7328,21 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_04",
-              "name": "Alejandro Alonso",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "ESP_01",
               "name": "Marc Miralles",
               "number": 14,
               "line": "Midfielder",
               "position": "Midfielder",
               "captain": true,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ESP_04",
+              "name": "Alejandro Alonso",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
               "goalkeeper": false
             },
             {
@@ -7349,7 +7358,7 @@
               "playerId": "ESP_06",
               "name": "Xavier Gispert",
               "number": 6,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7371,15 +7380,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ESP_12",
-              "name": "Pepe Cunill",
-              "number": 17,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -7391,37 +7391,37 @@
               "onAt": "43:07"
             },
             {
+              "playerId": "ESP_12",
+              "name": "Pepe Cunill",
+              "number": 17,
+              "position": null,
+              "onAt": "38:16"
+            },
+            {
               "playerId": "ESP_19",
               "name": "Borja Lacalle",
               "number": 9,
               "position": null,
-              "onAt": "38:16"
+              "onAt": "21:40"
             },
             {
               "playerId": "ESP_15",
               "name": "Bruno Font",
               "number": 26,
               "position": null,
-              "onAt": "21:40"
+              "onAt": "14:25"
             },
             {
               "playerId": "ESP_22",
               "name": "Rafael Vilallonga",
               "number": 7,
               "position": null,
-              "onAt": "14:25"
+              "onAt": "24:24"
             },
             {
               "playerId": "ESP_14",
               "name": "Marc Vizcaino",
               "number": 23,
-              "position": null,
-              "onAt": "24:24"
-            },
-            {
-              "playerId": "ESP_16",
-              "name": "Nicolas Alvarez",
-              "number": 28,
               "position": null,
               "onAt": "12:02"
             },
@@ -11715,15 +11715,56 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 9,
+          "team": "ESP",
+          "type": "goal",
+          "via": "FG",
+          "player": "Nicolas Alvarez"
+        },
+        {
+          "minute": 19,
+          "team": "IRL",
+          "type": "goal",
+          "via": "PS",
+          "player": "Lee Cole"
+        },
+        {
+          "minute": 42,
+          "team": "ESP",
+          "type": "green_card",
+          "player": "Marc Recasens"
+        },
+        {
+          "minute": 47,
+          "team": "ESP",
+          "type": "goal",
+          "via": "PC",
+          "player": "Marc Reyne"
+        },
+        {
+          "minute": 53,
+          "team": "ESP",
+          "type": "goal",
+          "via": "FG",
+          "player": "Marc Reyne"
+        },
+        {
+          "minute": 60,
+          "team": "IRL",
+          "type": "yellow_card",
+          "player": "Lee Cole"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:24:51.719273+00:00",
+        "generated_at": "2026-08-20T17:26:59.812385+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -11738,6 +11779,15 @@
               "goalkeeper": true
             },
             {
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "ESP_08",
               "name": "José Basterra",
               "number": 10,
@@ -11747,9 +11797,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_16",
+              "name": "Nicolas Alvarez",
+              "number": 28,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -11765,21 +11815,21 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_04",
-              "name": "Alejandro Alonso",
-              "number": 2,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "ESP_01",
               "name": "Marc Miralles",
               "number": 14,
               "line": "Midfielder",
               "position": "Midfielder",
               "captain": true,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ESP_04",
+              "name": "Alejandro Alonso",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
               "goalkeeper": false
             },
             {
@@ -11795,7 +11845,7 @@
               "playerId": "ESP_06",
               "name": "Xavier Gispert",
               "number": 6,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -11817,15 +11867,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ESP_12",
-              "name": "Pepe Cunill",
-              "number": 17,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -11837,37 +11878,37 @@
               "onAt": "14:21"
             },
             {
+              "playerId": "ESP_12",
+              "name": "Pepe Cunill",
+              "number": 17,
+              "position": null,
+              "onAt": "36:51"
+            },
+            {
               "playerId": "ESP_19",
               "name": "Borja Lacalle",
               "number": 9,
               "position": null,
-              "onAt": "36:51"
+              "onAt": "08:43"
             },
             {
               "playerId": "ESP_15",
               "name": "Bruno Font",
               "number": 26,
               "position": null,
-              "onAt": "08:43"
+              "onAt": "11:03"
             },
             {
               "playerId": "ESP_22",
               "name": "Rafael Vilallonga",
               "number": 7,
               "position": null,
-              "onAt": "11:03"
+              "onAt": "14:34"
             },
             {
               "playerId": "ESP_14",
               "name": "Marc Vizcaino",
               "number": 23,
-              "position": null,
-              "onAt": "14:34"
-            },
-            {
-              "playerId": "ESP_16",
-              "name": "Nicolas Alvarez",
-              "number": 28,
               "position": null,
               "onAt": "09:01"
             },
@@ -12055,7 +12096,99 @@
           "coach": "Mark Tumilty"
         }
       },
-      "tms_id": 22356
+      "tms_id": 22356,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 11,
+          "circle_entries": 26,
+          "penalty_corners": 1,
+          "possession": 54,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 9,
+          "circle_entries": 14,
+          "penalty_corners": 0,
+          "possession": 46,
+          "green_cards": 0,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ESP vs IRL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 9,
+          "team": "ESP",
+          "text": "GOAL! Nicolas Alvarez (ESP) scores from a field goal — ESP 1-0 IRL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ESP 1-0 IRL.",
+          "seq": 2
+        },
+        {
+          "minute": 19,
+          "team": "IRL",
+          "text": "GOAL! Lee Cole (IRL) scores from a penalty stroke — ESP 1-1 IRL.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ESP 1-1 IRL.",
+          "seq": 4
+        },
+        {
+          "minute": 42,
+          "team": "ESP",
+          "text": "Green Card for Marc Recasens (ESP) — 2-minute suspension.",
+          "seq": 5
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ESP 1-1 IRL.",
+          "seq": 6
+        },
+        {
+          "minute": 47,
+          "team": "ESP",
+          "text": "GOAL! Marc Reyne (ESP) scores from a penalty corner — ESP 2-1 IRL.",
+          "seq": 7
+        },
+        {
+          "minute": 53,
+          "team": "ESP",
+          "text": "GOAL! Marc Reyne (ESP) scores from a field goal — ESP 3-1 IRL.",
+          "seq": 8
+        },
+        {
+          "minute": 60,
+          "team": "IRL",
+          "text": "Yellow Card for Lee Cole (IRL) — 5-minute suspension.",
+          "seq": 9
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ESP 3-1 IRL.",
+          "seq": 10
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2E1",
