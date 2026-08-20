@@ -32,7 +32,7 @@
       "name": "Argentina",
       "flag": "🇦🇷",
       "pool": "A",
-      "fih_rank": 7,
+      "fih_rank": 8,
       "host": false,
       "nickname": "Los Leones",
       "color": "#75AADB",
@@ -56,7 +56,7 @@
       "name": "New Zealand",
       "flag": "🇳🇿",
       "pool": "A",
-      "fih_rank": 10,
+      "fih_rank": 11,
       "host": false,
       "nickname": "Black Sticks",
       "color": "#000000",
@@ -128,7 +128,7 @@
       "name": "France",
       "flag": "🇫🇷",
       "pool": "B",
-      "fih_rank": 11,
+      "fih_rank": 10,
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
@@ -145,7 +145,7 @@
       "contender_tier": "challenger",
       "win_prob": 2.1,
       "intro": "Les Bleus are the story of the last decade in European hockey — from qualification afterthought to a side nobody wants in their pool. France build around Victor Charlet, whose corner routines can win a match on their own, and a counter-attack that punishes a single lost midfield duel. Drawn with Belgium and Germany in Pool B, they will need one upset; on their evidence of recent years, that is not a fanciful ask.",
-      "fih_points": 2782.21
+      "fih_points": 2799.93
     },
     {
       "code": "GER",
@@ -169,7 +169,7 @@
       "contender_tier": "contender",
       "win_prob": 9.3,
       "intro": "Four world titles, the most of any nation here, and a habit of arriving at tournaments in better shape than the rankings suggest. Germany's last World Cup came in 2006, but the intervening years have produced a stream of finals and a culture that reloads rather than rebuilds. Niklas Wellen and Christopher Rühr give them scoring from open play as well as set pieces. Pool B alongside Belgium is the toughest first-round draw in the tournament.",
-      "fih_points": 3553.53
+      "fih_points": 3535.82
     },
     {
       "code": "MAS",
@@ -296,7 +296,7 @@
       "name": "India",
       "flag": "🇮🇳",
       "pool": "D",
-      "fih_rank": 8,
+      "fih_rank": 7,
       "host": false,
       "nickname": "Men in Blue",
       "color": "#FF9933",
@@ -313,7 +313,7 @@
       "contender_tier": "dark_horse",
       "win_prob": 7.4,
       "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not the quarter-finals.",
-      "fih_points": 3187.79
+      "fih_points": 3222.86
     },
     {
       "code": "ENG",
@@ -361,7 +361,7 @@
       "contender_tier": "dark_horse",
       "win_prob": 3.1,
       "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Sufyan Khan leads a young squad in which Muhammad Umar Bhutta's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game.",
-      "fih_points": 2538.46
+      "fih_points": 2503.39
     },
     {
       "code": "WAL",
@@ -390,5 +390,5 @@
   ],
   "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results.",
   "rankings_source": "https://www.fih.hockey/outdoor-hockey-rankings",
-  "rankings_updated_at": "2026-08-19T01:23:32.465121+00:00"
+  "rankings_updated_at": "2026-08-20T01:22:08.255784+00:00"
 }
