@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-20T17:57:21.196966+00:00",
+  "last_updated": "2026-08-20T21:30:54.557900+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -16333,10 +16333,10 @@
       "slotLabel": "3rd Pool B vs 4th Pool C",
       "matchNo": 36,
       "provisional": true,
-      "date": "2026-08-24",
-      "time": "17:00",
+      "date": "2026-08-21",
+      "time": "11:00",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "scheduled",
       "score": {
         "home": null,
@@ -16683,7 +16683,8 @@
           "team": "RSA",
           "coach": "Devon van der Merwe"
         }
-      }
+      },
+      "tms_id": 22358
     },
     {
       "id": "S2E4",
@@ -17785,10 +17786,10 @@
       "slotLabel": "4th Pool B vs 3rd Pool C",
       "matchNo": 40,
       "provisional": true,
-      "date": "2026-08-25",
-      "time": "17:00",
+      "date": "2026-08-21",
+      "time": "14:00",
       "timezone": "CET",
-      "venue": "AMV",
+      "venue": "BRU",
       "status": "scheduled",
       "score": {
         "home": null,
@@ -18128,7 +18129,8 @@
           "team": "IRL",
           "coach": "Mark Tumilty"
         }
-      }
+      },
+      "tms_id": 22359
     },
     {
       "id": "C13",
