@@ -1866,9 +1866,17 @@ STAGE2 = {
     'G': [('A', 2), ('A', 3), ('D', 2), ('D', 3)],
     'H': [('B', 2), ('B', 3), ('C', 2), ('C', 3)],
 }
-# Each Stage-2 pool plays the four cross matches (slot-index pairs), in the same
-# order the fixtures were seeded: ids S2{pool}{1..4}.
-S2_MATCHUPS = {1: (0, 2), 2: (1, 3), 3: (0, 3), 4: (1, 2)}
+# Each Stage-2 pool plays the four cross matches — every team meets the two who
+# came through the *other* Stage-1 pool, while the head-to-head against the side
+# from their own pool carries forward. (home slot, away slot) per fixture, ids
+# S2{pool}{1..4}. Read off the official FIH schedule, match by match, rather
+# than assumed: Pool F's last two rounds are ordered differently from E/G/H.
+S2_MATCHUPS = {
+    'E': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #31 #32 #39 #40
+    'F': {1: (2, 1), 2: (0, 3), 3: (0, 2), 4: (3, 1)},   # #27 #28 #35 #36
+    'G': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #29 #30 #37 #38
+    'H': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #25 #26 #33 #34
+}
 # Classification / semis over Stage-2 placements: id -> (poolH, placeH, poolA, placeA)
 CLASS_SLOTS = {
     'C13': ('G', 2, 'H', 2), 'C15': ('G', 3, 'H', 3), 'C11': ('G', 1, 'H', 1),
@@ -1936,7 +1944,7 @@ def slot_knockouts(fixtures):
             if m['phase'] != 'stage2' or m['home'] != 'TBD':
                 continue
             pl, n = m['pool'], int(m['id'][-1])
-            i, j = S2_MATCHUPS[n]
+            i, j = S2_MATCHUPS[pl][n]
             (ph, hi), (pa, ai) = STAGE2[pl][i], STAGE2[pl][j]
             m['home'], m['away'] = place1[ph][hi], place1[pa][ai]
             changed = True

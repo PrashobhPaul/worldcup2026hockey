@@ -653,6 +653,64 @@ check('24 Stage-1 pool matches', sum(1 for x in _m if x['phase'] == 'pool') == 2
 check('16 Stage-2 group matches', sum(1 for x in _m if x['phase'] == 'stage2') == 16)
 check('6 classification matches', sum(1 for x in _m if x['phase'] == 'classification') == 6)
 check('2 semis + 2 medals', sum(1 for x in _m if x['phase'] in ('semi-final', 'bronze-final', 'gold-final')) == 4)
+# The official schedule, read off the FIH app match by match. Pinned here so a
+# future edit cannot quietly renumber or reschedule the knockout stage: every
+# one of these 26 was wrong when the seeded guess was first checked against it.
+_OFFICIAL = {
+    25: ('H', 'FRA', 'RSA', '2026-08-21', '11:00', 'BRU'),
+    26: ('H', 'IRL', 'MAS', '2026-08-21', '14:00', 'BRU'),
+    28: ('F', 'GER', 'ESP', '2026-08-21', '17:00', 'BRU'),
+    27: ('F', 'AUS', 'BEL', '2026-08-21', '20:30', 'BRU'),
+    29: ('G', 'NZL', 'WAL', '2026-08-22', '10:00', 'AMV'),
+    30: ('G', 'PAK', 'JPN', '2026-08-22', '13:00', 'AMV'),
+    31: ('E', 'NED', 'IND', '2026-08-22', '16:00', 'AMV'),
+    32: ('E', 'ENG', 'ARG', '2026-08-22', '19:00', 'AMV'),
+    33: ('H', 'MAS', 'RSA', '2026-08-23', '11:30', 'BRU'),
+    34: ('H', 'FRA', 'IRL', '2026-08-23', '14:30', 'BRU'),
+    35: ('F', 'GER', 'AUS', '2026-08-23', '17:30', 'BRU'),
+    36: ('F', 'ESP', 'BEL', '2026-08-23', '20:30', 'BRU'),
+    37: ('G', 'JPN', 'WAL', '2026-08-24', '09:30', 'AMV'),
+    38: ('G', 'NZL', 'PAK', '2026-08-24', '12:30', 'AMV'),
+    39: ('E', 'ARG', 'IND', '2026-08-24', '14:45', 'AMV'),
+    40: ('E', 'NED', 'ENG', '2026-08-24', '18:00', 'AMV'),
+}
+_BY_NO = {x['matchNo']: x for x in _m if x.get('matchNo')}
+_off_bad = [no for no, exp in _OFFICIAL.items()
+            if (_BY_NO[no]['pool'], _BY_NO[no]['home'], _BY_NO[no]['away'],
+                _BY_NO[no]['date'], _BY_NO[no]['time'], _BY_NO[no]['venue']) != exp]
+check('every Stage-2 fixture matches the official schedule', not _off_bad, f'wrong: {_off_bad}')
+
+_SCHEDULE = {41: ('2026-08-28', '09:30', 'AMV'), 42: ('2026-08-28', '11:00', 'BRU'),
+             43: ('2026-08-28', '12:30', 'AMV'), 44: ('2026-08-28', '14:00', 'BRU'),
+             45: ('2026-08-28', '15:00', 'AMV'), 46: ('2026-08-28', '17:00', 'BRU'),
+             47: ('2026-08-28', '18:00', 'AMV'), 48: ('2026-08-28', '20:30', 'BRU'),
+             49: ('2026-08-30', '14:00', 'BRU'), 50: ('2026-08-30', '16:30', 'BRU')}
+_sch_bad = [no for no, exp in _SCHEDULE.items()
+            if (_BY_NO[no]['date'], _BY_NO[no]['time'], _BY_NO[no]['venue']) != exp]
+check('classification, semis and medals sit on the official slots', not _sch_bad, f'wrong: {_sch_bad}')
+
+# Match numbers must follow the running order within each day: the tournament is
+# read by number, so a fixture drifting to another slot is a visible error.
+_days = {}
+for x in _m:
+    if x.get('matchNo'):
+        _days.setdefault(x['date'], []).append(x)
+_order_bad = []
+for _day, _day_fx in _days.items():
+    if sorted(_day_fx, key=lambda x: x['time']) != sorted(_day_fx, key=lambda x: (x['time'], x['matchNo'])):
+        _order_bad.append(_day)
+check('no two fixtures share a slot out of order', not _order_bad, f'{_order_bad}')
+
+# Nobody meets a side from their own Stage-1 pool in Stage 2 — that result is
+# carried forward instead, which is the whole point of the crossover.
+_s1 = {}
+for x in _m:
+    if x['phase'] == 'pool':
+        _s1[x['home']] = x['pool']; _s1[x['away']] = x['pool']
+_clash = [x['matchNo'] for x in _m if x['phase'] == 'stage2'
+          and x['home'] != 'TBD' and _s1.get(x['home']) == _s1.get(x['away'])]
+check('no Stage-2 fixture repeats a Stage-1 meeting', not _clash, f'{_clash}')
+
 _nos = [x['matchNo'] for x in _m if x.get('matchNo')]
 check('knockout match numbers 25–50 unique', sorted(_nos) == list(range(25, 51)))
 # No stage-2 fixture pairs two teams from the same Stage-1 pool (those H2H carry
@@ -681,8 +739,11 @@ check('Stage-1 placements resolve all four pools',
       _p1 is not None and all(len(_p1[p]) == 4 for p in 'ABCD'))
 _by = {x['id']: x for x in _f['matches']}
 _s2e1 = _by['S2E1']
-check('S2E1 pairs 1st Pool A vs 1st Pool D (no same-pool clash)',
-      {_s2e1['home'], _s2e1['away']} == {_p1['A'][0], _p1['D'][0]})
+# Official mapping (#31): 1st Pool A meets 2nd Pool D — a crossover, never two
+# teams out of the same Stage-1 pool.
+check('S2E1 pairs 1st Pool A vs 2nd Pool D per the official schedule',
+      (_s2e1['home'], _s2e1['away']) == (_p1['A'][0], _p1['D'][1]),
+      f"got {_s2e1['home']} v {_s2e1['away']}")
 for x in _f['matches']:
     if x['phase'] == 'stage2':
         x['status'] = 'completed'; x['score'] = {'home': 2, 'away': 1}
