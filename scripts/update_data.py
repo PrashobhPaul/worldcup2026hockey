@@ -838,6 +838,69 @@ def reconcile_team_lists(players_doc, squads):
                 changed = True
             keep.append(p)
         players_doc['players'] = keep
+    changed |= normalize_captaincy(players_doc, squads)
+    return changed
+
+def normalize_captaincy(players_doc, squads):
+    """Exactly one captain per team, with the official team list as authority.
+
+    is_captain was only ever reconciled for players found ON the team list, so a
+    seeded captain the list does not carry kept his flag for good — Argentina
+    ended up showing Rossi (seeded) alongside Casella (official), and the match
+    line-up drew two "C" badges. Whenever the official list marks a captain for a
+    team, that player is the captain and every other flag on that team is
+    cleared. A team the list says nothing about keeps whatever it had, still
+    capped at one. Nothing here invents a captain: if no source names one, the
+    team simply has none.
+    """
+    changed = False
+    by_team = {}
+    for p in players_doc['players']:
+        by_team.setdefault(p['team'], []).append(p)
+
+    for code, roster in sorted(squads.items()):
+        listed_caps = {e['name'].lower() for e in roster if e.get('is_captain')}
+        squad = by_team.get(code, [])
+        listed_names = {e['name'].lower() for e in roster}
+        if not listed_caps:
+            # The list names a squad but marks no captain. Anyone we carry as
+            # captain who is not in that squad is not at this tournament — a
+            # leftover from the pre-tournament seed. Clear him rather than show
+            # a captain who cannot take the field; do not invent a replacement.
+            for p in squad:
+                if p.get('is_captain') and p['name'].lower() not in listed_names:
+                    print(f"SQUADS: {code} captain {p['name']} is not on the official "
+                          f"team list — clearing the flag.")
+                    p['is_captain'] = False
+                    changed = True
+            continue
+        official = [p for p in squad if p['name'].lower() in listed_caps]
+        if len(official) > 1:
+            # The list itself names more than one — never guess which is the
+            # real captain. Keep the first as the official sheet orders them,
+            # and say so loudly rather than silently picking.
+            order = [e['name'].lower() for e in roster]
+            official.sort(key=lambda p: order.index(p['name'].lower()))
+            print(f"SQUADS: {code} team list marks {len(official)} captains "
+                  f"({', '.join(p['name'] for p in official)}) — keeping the first listed.")
+        skipper = official[0] if official else None
+        for p in squad:
+            want = p is skipper
+            if bool(p.get('is_captain')) != want:
+                if want:
+                    print(f"SQUADS: {code} captain is {p['name']} (official team list).")
+                else:
+                    print(f"SQUADS: {code} clearing stale captain flag on {p['name']}.")
+                p['is_captain'] = want
+                changed = True
+
+    # Whatever the source, no team may carry two captains.
+    for code, squad in sorted(by_team.items()):
+        caps = [p for p in squad if p.get('is_captain')]
+        for p in caps[1:]:
+            print(f"SQUADS: {code} dropping duplicate captain flag on {p['name']}.")
+            p['is_captain'] = False
+            changed = True
     return changed
 
 def merge_squads(players_doc, squads, teams):

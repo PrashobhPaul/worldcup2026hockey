@@ -20,7 +20,7 @@ from update_data import (  # noqa: E402
     parse_tms_results, update_statuses, backfill_scores_from_tms,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
-    slot_knockouts, stage1_placements, TMS_LINEUP_LINK,
+    slot_knockouts, stage1_placements, normalize_captaincy, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -597,6 +597,52 @@ check('two same-surname teammates never cross-match',
       and by2['Joseph Morrison'].get('world_rank') is None)
 check('a near-miss given name is not a match', by2['Hannes Müller'].get('world_rank') is None)
 
+print('\nCaptaincy (exactly one per team, official list wins)')
+
+def _cap_doc(players):
+    return {'players': [dict(team=t, name=n, is_captain=c, source=s) for t, n, c, s in players]}
+
+# Argentina's real shape before the fix: a seeded captain the official list does
+# not carry, plus the captain the list does mark. Two "C" badges in the line-up.
+doc = _cap_doc([
+    ('ARG', 'Lucas Martín Rossi', True, None),
+    ('ARG', 'Maico Casella', True, 'fih-team-list'),
+    ('ARG', 'Matias Rey', False, 'fih-team-list'),
+])
+squads = {'ARG': [{'name': 'Maico Casella', 'is_captain': True},
+                  {'name': 'Matias Rey', 'is_captain': False}]}
+normalize_captaincy(doc, squads)
+caps = [p['name'] for p in doc['players'] if p['is_captain']]
+check('the officially-listed captain is the only captain', caps == ['Maico Casella'], str(caps))
+
+# The list marks no captain but does name a squad. A seeded captain missing from
+# that squad is not at the tournament — clear him rather than badge a player who
+# cannot take the field. No replacement is invented.
+doc = _cap_doc([('AUS', 'Aran Zalewski', True, None), ('AUS', 'Tim Brand', False, 'fih-team-list')])
+normalize_captaincy(doc, {'AUS': [{'name': 'Tim Brand', 'is_captain': False}]})
+check('a captain absent from the official squad is cleared',
+      [p['name'] for p in doc['players'] if p['is_captain']] == [])
+
+# But a captain who IS in the squad keeps the armband when the list marks nobody.
+doc = _cap_doc([('NED', 'Thierry Brinkman', True, None)])
+normalize_captaincy(doc, {'NED': [{'name': 'Thierry Brinkman', 'is_captain': False}]})
+check('a squad captain survives a list that marks no captain',
+      [p['name'] for p in doc['players'] if p['is_captain']] == ['Thierry Brinkman'])
+
+# When the list itself marks two, keep the first it lists rather than guessing.
+doc = _cap_doc([('WAL', 'Benjamin Francis', True, 'fih-team-list'),
+                ('WAL', 'Jacob Draper', True, 'fih-team-list')])
+normalize_captaincy(doc, {'WAL': [{'name': 'Jacob Draper', 'is_captain': True},
+                                  {'name': 'Benjamin Francis', 'is_captain': True}]})
+check('two officially-marked captains resolve to the first listed',
+      [p['name'] for p in doc['players'] if p['is_captain']] == ['Jacob Draper'])
+
+# Backstop: no team may ever carry two captains, whatever the sources said.
+doc = _cap_doc([('IRL', 'Conor Harte', True, None), ('IRL', 'Kyle Marshall', True, None)])
+normalize_captaincy(doc, {})
+check('no team can end up with two captains',
+      sum(1 for p in doc['players'] if p['is_captain']) == 1)
+
 print('\nTwo-stage bracket (real FIH 2026 format)')
 import json as _json
 import copy as _copy
@@ -617,9 +663,16 @@ check('every Stage-2 pool has 4 fixtures',
 # Full progression: complete every stage in turn and confirm the bracket fills
 # to a clean 1–16 with no TBD left and medals coming from the semi winners.
 _f = _copy.deepcopy(_fx)
+# Drive the bracket from a clean slate: reset every knockout slot to TBD so this
+# exercises the slotting logic itself, not however far the real tournament has
+# progressed. (Once Stage 1 finished for real, the seeded fixtures arrived
+# already slotted and the synthetic pool scores below were silently ignored.)
 for x in _f['matches']:
     if x['phase'] == 'pool':
         x['status'] = 'completed'; x['score'] = {'home': 3, 'away': 1}
+    else:
+        x['home'] = x['away'] = 'TBD'
+        x['status'] = 'scheduled'; x['score'] = {'home': None, 'away': None}
 slot_knockouts(_f)
 check('Stage 1 done ⇒ all Stage-2 fixtures slotted',
       all(x['home'] != 'TBD' for x in _f['matches'] if x['phase'] == 'stage2'))

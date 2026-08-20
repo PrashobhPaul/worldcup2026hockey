@@ -36,7 +36,7 @@
       "host": false,
       "nickname": "Los Leones",
       "color": "#75AADB",
-      "captain": "Lucas Martín Rossi",
+      "captain": "Maico Casella",
       "coach": "Lucas Rey",
       "key_players": [
         "Agustín Bugallo",
@@ -84,7 +84,7 @@
       "host": false,
       "nickname": "Samurai Japan",
       "color": "#BC002D",
-      "captain": "Koji Kayukawa",
+      "captain": "Raiki Fujishima",
       "coach": "Yoshihiro Anai",
       "key_players": [
         "Kosuke Yamada",
@@ -108,7 +108,7 @@
       "host": true,
       "nickname": "Red Lions",
       "color": "#EF3340",
-      "captain": "Arthur de Sloover",
+      "captain": "Arthur van Doren",
       "coach": "Shane McLeod",
       "key_players": [
         "Alexander Hendrickx",
@@ -132,7 +132,7 @@
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
-      "captain": "Victor Charlet",
+      "captain": "François Goyet",
       "coach": "John-John Dohmen",
       "key_players": [
         "Victor Charlet",
@@ -156,7 +156,7 @@
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
-      "captain": "Niklas Wellen",
+      "captain": "Tom Grambusch",
       "coach": "André Henning",
       "key_players": [
         "Niklas Wellen",
@@ -180,7 +180,7 @@
       "host": false,
       "nickname": "Tigers",
       "color": "#CC0001",
-      "captain": "Adrian Albert",
+      "captain": "Marhan Jalil",
       "coach": "Brendon Carolan",
       "key_players": [
         "Tengku Ahmad Tajuddin",
@@ -204,7 +204,7 @@
       "host": false,
       "nickname": "Kookaburras",
       "color": "#00843D",
-      "captain": "Aran Zalewski",
+      "captain": null,
       "coach": "Mark Hager",
       "key_players": [
         "Tom Wickham",
@@ -216,7 +216,7 @@
       "last_title": 2010,
       "contender_tier": "favourite",
       "win_prob": 21.6,
-      "intro": "The Kookaburras arrive fifth in the world, a ranking that flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Aran Zalewski captains a squad with Blake Govers' flick and Tom Wickham's movement in front of goal. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided from the quarter-finals onward.",
+      "intro": "The Kookaburras are a fixture at the top of the world rankings, and the position flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Blake Govers' flick and Tom Wickham's movement lead the scoring threat. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided once the crossover stage begins.",
       "fih_points": 3604.41
     },
     {
@@ -240,7 +240,7 @@
       "last_title": 1998,
       "contender_tier": "contender",
       "win_prob": 6.2,
-      "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a quarter-final where their patience and set-piece accuracy can outlast a more expansive opponent.",
+      "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a Stage-2 draw where their patience and set-piece accuracy can outlast a more expansive opponent.",
       "fih_points": 3241.85
     },
     {
@@ -252,7 +252,7 @@
       "host": false,
       "nickname": "Green Machine",
       "color": "#169B62",
-      "captain": "Conor Harte",
+      "captain": "Kyle Marshall",
       "coach": "Mark Tumilty",
       "key_players": [
         "Shane O'Donoghue",
@@ -276,7 +276,7 @@
       "host": false,
       "nickname": "Amabhungane",
       "color": "#007A4D",
-      "captain": "Jethro Eustice",
+      "captain": "Dayaan Cassiem",
       "coach": "Devon van der Merwe",
       "key_players": [
         "Austin Smith",
@@ -312,7 +312,7 @@
       "last_title": 1975,
       "contender_tier": "dark_horse",
       "win_prob": 7.4,
-      "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not the quarter-finals.",
+      "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not merely the crossover round.",
       "fih_points": 3222.86
     },
     {
@@ -324,7 +324,7 @@
       "host": false,
       "nickname": "Three Lions",
       "color": "#CF142B",
-      "captain": "Will Calnan",
+      "captain": "Zachary Wallace",
       "coach": "Zak Jones",
       "key_players": [
         "Sam Ward",
@@ -348,7 +348,7 @@
       "host": false,
       "nickname": "Green Shirts",
       "color": "#01411C",
-      "captain": "Sufyan Khan",
+      "captain": "Abu Mahmood",
       "coach": "Bob Veldhof",
       "key_players": [
         "Arshad Liaquat",
@@ -372,7 +372,7 @@
       "host": false,
       "nickname": "Dragons",
       "color": "#C8102E",
-      "captain": "Gareth Furlong",
+      "captain": "Benjamin Francis",
       "coach": "Daniel Newcombe",
       "key_players": [
         "Rupert Shipperley",
