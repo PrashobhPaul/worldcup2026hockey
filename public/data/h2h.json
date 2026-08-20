@@ -1,0 +1,146 @@
+{
+  "source": "fih-tms",
+  "since": 2013,
+  "pairs": {
+    "FRA-RSA": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
+        "date": "2026-06-20",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
+        "date": "2026-06-11",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 4,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-16",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 4,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2024 Olympic Games (M)",
+        "date": "2024-08-02",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Poland 2023-24",
+        "date": "2024-06-08",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "FIH Odisha Hockey Men&#039;s World Cup 2023 Bhubaneswar - Rourkela",
+        "date": "2023-01-16",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2022",
+        "date": "2022-11-29",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-02-20",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-02-15",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 4,
+        "away_goals": 1,
+        "current": false
+      }
+    ],
+    "IRL-MAS": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2022",
+        "date": "2022-12-03",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 3,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2019 4 Nations Invitational Tournament (M)",
+        "date": "2019-08-02",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2018 Sultan Azlan Shah Cup",
+        "date": "2018-03-03",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 1,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Fintro Hockey World League Semi-Final Antwerp (Men)",
+        "date": "2015-07-05",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 4,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Fintro Hockey World League Semi-Final Antwerp (Men)",
+        "date": "2015-06-25",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 2,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Champions Challenge 1 2014 (M)",
+        "date": "2014-05-04",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 2,
+        "away_goals": 4,
+        "current": false
+      }
+    ]
+  },
+  "updated_at": "2026-08-20T21:14:29.087873+00:00"
+}

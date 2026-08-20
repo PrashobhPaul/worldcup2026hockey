@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-20T21:08:53.756846+00:00",
+  "last_updated": "2026-08-20T21:14:43.577930+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -12697,7 +12697,8 @@
           "team": "RSA",
           "coach": "Devon van der Merwe"
         }
-      }
+      },
+      "tms_id": 22358
     },
     {
       "id": "S2H2",
@@ -13053,7 +13054,8 @@
           "team": "MAS",
           "coach": "Brendon Carolan"
         }
-      }
+      },
+      "tms_id": 22359
     },
     {
       "id": "S2F1",
