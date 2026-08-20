@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-20T21:14:43.577930+00:00",
+  "last_updated": "2026-08-20T21:30:54.557900+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -120,7 +120,7 @@
       "profile": "Kookaburras captain. World-class link-up midfielder.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 61.0,
+      "ai_rating": 62.0,
       "on_team_list": false
     },
     {
@@ -358,7 +358,7 @@
       "profile": "Los Leones captain. Tenacious and experienced.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 58.0,
+      "ai_rating": 59.0,
       "on_team_list": false
     },
     {
@@ -415,7 +415,7 @@
       "profile": "Germany's captain and solid defensive anchor.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 69.7,
+      "ai_rating": 70.7,
       "on_team_list": false
     },
     {
@@ -672,7 +672,7 @@
       "profile": "Green Machine captain. Experienced defender.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 61.3,
+      "ai_rating": 62.3,
       "on_team_list": false
     },
     {
@@ -691,7 +691,7 @@
       "profile": "Malaysia's skipper. Hard-working midfield dynamo.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 58.0,
+      "ai_rating": 59.0,
       "on_team_list": false
     },
     {
@@ -729,7 +729,7 @@
       "profile": "South Africa's captain. Dogged and determined.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 58.0,
+      "ai_rating": 59.0,
       "on_team_list": false
     },
     {
@@ -769,7 +769,7 @@
       "profile": "Samurai Japan's captain. Engine of Japan's midfield.",
       "green_cards": 0,
       "matches_played": 3,
-      "ai_rating": 58.0,
+      "ai_rating": 59.0,
       "on_team_list": false
     },
     {
@@ -6000,7 +6000,7 @@
       "yellow_cards": 0,
       "red_cards": 0,
       "green_cards": 2,
-      "is_captain": false,
+      "is_captain": true,
       "fih_star": false,
       "profile": "Named on the official FIH team list — 127 senior caps.",
       "dob": "20 Mar 1996",
@@ -7210,7 +7210,7 @@
       "yellow_cards": 0,
       "red_cards": 0,
       "green_cards": 0,
-      "is_captain": true,
+      "is_captain": false,
       "fih_star": false,
       "profile": "Named on the official FIH team list — 163 senior caps.",
       "dob": "24 Jul 1998",
