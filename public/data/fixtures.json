@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-20T10:59:03.059853+00:00",
+  "last_updated": "2026-08-20T12:43:46.502869+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -2128,7 +2128,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:54:31.225833+00:00",
+        "generated_at": "2026-08-20T12:43:46.493112+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2161,64 +2161,37 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_12",
-              "name": "Matias Andreotti",
-              "number": 20,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_16",
-              "name": "Nicolas Cicileo",
-              "number": 26,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "ARG_13",
               "name": "Tomas Domene",
               "number": 21,
-              "line": "Forward",
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_19",
-              "name": "Thomas Habif",
-              "number": 29,
-              "line": "Forward",
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_17",
+              "name": "Tadeo Marcucci",
+              "number": 27,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2227,6 +2200,33 @@
               "playerId": "ARG_06",
               "name": "Nicolas Keenan",
               "number": 7,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_12",
+              "name": "Matias Andreotti",
+              "number": 20,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -2242,23 +2242,23 @@
               "onAt": "42:08"
             },
             {
-              "playerId": "ARG_21",
-              "name": "Martin Ferreiro",
-              "number": 32,
+              "playerId": "ARG_16",
+              "name": "Nicolas Cicileo",
+              "number": 26,
               "position": null,
               "onAt": "19:55"
             },
             {
-              "playerId": "ARG_17",
-              "name": "Tadeo Marcucci",
-              "number": 27,
+              "playerId": "ARG_19",
+              "name": "Thomas Habif",
+              "number": 29,
               "position": null,
               "onAt": "25:46"
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_21",
+              "name": "Martin Ferreiro",
+              "number": 32,
               "position": null,
               "onAt": "11:58"
             },
@@ -2634,7 +2634,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:54:31.226298+00:00",
+        "generated_at": "2026-08-20T12:43:46.493583+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2816,6 +2816,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_09",
+              "name": "Kane Russell",
+              "number": 21,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
@@ -2834,15 +2843,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "NZL_04",
               "name": "Charlie Morrison",
               "number": 8,
@@ -2852,9 +2852,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_09",
-              "name": "Kane Russell",
-              "number": 21,
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -6169,7 +6169,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:54:31.229496+00:00",
+        "generated_at": "2026-08-20T12:43:46.496942+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6202,64 +6202,37 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_12",
-              "name": "Matias Andreotti",
-              "number": 20,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_16",
-              "name": "Nicolas Cicileo",
-              "number": 26,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "ARG_13",
               "name": "Tomas Domene",
               "number": 21,
-              "line": "Forward",
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_19",
-              "name": "Thomas Habif",
-              "number": 29,
-              "line": "Forward",
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_17",
+              "name": "Tadeo Marcucci",
+              "number": 27,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6268,6 +6241,33 @@
               "playerId": "ARG_06",
               "name": "Nicolas Keenan",
               "number": 7,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_12",
+              "name": "Matias Andreotti",
+              "number": 20,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -6283,23 +6283,23 @@
               "onAt": "21:31"
             },
             {
-              "playerId": "ARG_21",
-              "name": "Martin Ferreiro",
-              "number": 32,
+              "playerId": "ARG_16",
+              "name": "Nicolas Cicileo",
+              "number": 26,
               "position": null,
               "onAt": "37:03"
             },
             {
-              "playerId": "ARG_17",
-              "name": "Tadeo Marcucci",
-              "number": 27,
+              "playerId": "ARG_19",
+              "name": "Thomas Habif",
+              "number": 29,
               "position": null,
               "onAt": "47:18"
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_21",
+              "name": "Martin Ferreiro",
+              "number": 32,
               "position": null,
               "onAt": "43:30"
             },
@@ -6621,7 +6621,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T09:36:50.541650+00:00",
+        "generated_at": "2026-08-20T12:43:46.497415+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6817,6 +6817,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_09",
+              "name": "Kane Russell",
+              "number": 21,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
@@ -6835,15 +6844,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "NZL_04",
               "name": "Charlie Morrison",
               "number": 8,
@@ -6853,9 +6853,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_09",
-              "name": "Kane Russell",
-              "number": 21,
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -10619,15 +10619,96 @@
       "time": "12:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 7,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 13,
+          "team": "NZL",
+          "type": "goal",
+          "via": "PS",
+          "player": "Kane Russell"
+        },
+        {
+          "minute": 22,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PS",
+          "player": "Tomas Domene"
+        },
+        {
+          "minute": 27,
+          "team": "NZL",
+          "type": "green_card",
+          "player": "Scott Boyde"
+        },
+        {
+          "minute": 36,
+          "team": "ARG",
+          "type": "green_card",
+          "player": "Thomas Habif"
+        },
+        {
+          "minute": 39,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Bautista Capurro"
+        },
+        {
+          "minute": 43,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tomas Domene"
+        },
+        {
+          "minute": 48,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tadeo Marcucci"
+        },
+        {
+          "minute": 52,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Nicolas Keenan"
+        },
+        {
+          "minute": 55,
+          "team": "NZL",
+          "type": "yellow_card",
+          "player": "Charlie Morrison"
+        },
+        {
+          "minute": 57,
+          "team": "ARG",
+          "type": "yellow_card",
+          "player": "Maico Casella"
+        },
+        {
+          "minute": 58,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Bautista Capurro"
+        },
+        {
+          "minute": 60,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tomas Domene"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-18T17:54:31.233610+00:00",
+        "generated_at": "2026-08-20T12:43:46.501223+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10660,64 +10741,37 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_12",
-              "name": "Matias Andreotti",
-              "number": 20,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_16",
-              "name": "Nicolas Cicileo",
-              "number": 26,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "ARG_13",
               "name": "Tomas Domene",
               "number": 21,
-              "line": "Forward",
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_19",
-              "name": "Thomas Habif",
-              "number": 29,
-              "line": "Forward",
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_17",
+              "name": "Tadeo Marcucci",
+              "number": 27,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10726,6 +10780,33 @@
               "playerId": "ARG_06",
               "name": "Nicolas Keenan",
               "number": 7,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_12",
+              "name": "Matias Andreotti",
+              "number": 20,
+              "line": "Forward",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -10741,23 +10822,23 @@
               "onAt": "08:22"
             },
             {
-              "playerId": "ARG_21",
-              "name": "Martin Ferreiro",
-              "number": 32,
+              "playerId": "ARG_16",
+              "name": "Nicolas Cicileo",
+              "number": 26,
               "position": null,
               "onAt": "18:22"
             },
             {
-              "playerId": "ARG_17",
-              "name": "Tadeo Marcucci",
-              "number": 27,
+              "playerId": "ARG_19",
+              "name": "Thomas Habif",
+              "number": 29,
               "position": null,
               "onAt": "11:42"
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_21",
+              "name": "Martin Ferreiro",
+              "number": 32,
               "position": null,
               "onAt": "23:24"
             },
@@ -10816,6 +10897,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_09",
+              "name": "Kane Russell",
+              "number": 21,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_10",
               "name": "Dylan Thomas",
               "number": 23,
@@ -10834,15 +10924,6 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_19",
-              "name": "Tim Neild",
-              "number": 41,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "NZL_04",
               "name": "Charlie Morrison",
               "number": 8,
@@ -10852,9 +10933,9 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_09",
-              "name": "Kane Russell",
-              "number": 21,
+              "playerId": "NZL_19",
+              "name": "Tim Neild",
+              "number": 41,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -10966,7 +11047,135 @@
           "coach": "Greg Nicol"
         }
       },
-      "tms_id": 22355
+      "tms_id": 22355,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 2,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 7,
+          "shots": 14,
+          "circle_entries": 38,
+          "penalty_corners": 2,
+          "possession": 65,
+          "green_cards": 1,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 7,
+          "circle_entries": 20,
+          "penalty_corners": 0,
+          "possession": 35,
+          "green_cards": 1,
+          "yellow_cards": 1,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! ARG vs NZL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 13,
+          "team": "NZL",
+          "text": "GOAL! Kane Russell (NZL) scores from a penalty stroke — ARG 0-1 NZL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ARG 0-1 NZL.",
+          "seq": 2
+        },
+        {
+          "minute": 22,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a penalty stroke — ARG 1-1 NZL.",
+          "seq": 3
+        },
+        {
+          "minute": 27,
+          "team": "NZL",
+          "text": "Green Card for Scott Boyde (NZL) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ARG 1-1 NZL.",
+          "seq": 5
+        },
+        {
+          "minute": 36,
+          "team": "ARG",
+          "text": "Green Card for Thomas Habif (ARG) — 2-minute suspension.",
+          "seq": 6
+        },
+        {
+          "minute": 39,
+          "team": "ARG",
+          "text": "GOAL! Bautista Capurro (ARG) scores from a field goal — ARG 2-1 NZL.",
+          "seq": 7
+        },
+        {
+          "minute": 43,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a penalty corner — ARG 3-1 NZL.",
+          "seq": 8
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ARG 3-1 NZL.",
+          "seq": 9
+        },
+        {
+          "minute": 48,
+          "team": "ARG",
+          "text": "GOAL! Tadeo Marcucci (ARG) scores from a penalty corner — ARG 4-1 NZL.",
+          "seq": 10
+        },
+        {
+          "minute": 52,
+          "team": "ARG",
+          "text": "GOAL! Nicolas Keenan (ARG) scores from a field goal — ARG 5-1 NZL.",
+          "seq": 11
+        },
+        {
+          "minute": 55,
+          "team": "NZL",
+          "text": "Yellow Card for Charlie Morrison (NZL) — 5-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 57,
+          "team": "ARG",
+          "text": "Yellow Card for Maico Casella (ARG) — 5-minute suspension.",
+          "seq": 13
+        },
+        {
+          "minute": 58,
+          "team": "ARG",
+          "text": "GOAL! Bautista Capurro (ARG) scores from a field goal — ARG 6-1 NZL.",
+          "seq": 14
+        },
+        {
+          "minute": 60,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a field goal — ARG 7-1 NZL.",
+          "seq": 15
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ARG 7-1 NZL.",
+          "seq": 16
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "C5",
