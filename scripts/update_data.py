@@ -1878,9 +1878,12 @@ S2_MATCHUPS = {
     'H': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #25 #26 #33 #34
 }
 # Classification / semis over Stage-2 placements: id -> (poolH, placeH, poolA, placeA)
+# Ids are POS<n>, not C<n>: the pool-stage fixtures already own C1-C6, so a
+# classification match called "C5" collided with Pool C's fifth match and
+# shadowed a played result wherever matches are keyed by id.
 CLASS_SLOTS = {
-    'C13': ('G', 2, 'H', 2), 'C15': ('G', 3, 'H', 3), 'C11': ('G', 1, 'H', 1),
-    'C9': ('G', 0, 'H', 0), 'C5': ('E', 2, 'F', 2), 'C7': ('E', 3, 'F', 3),
+    'POS13': ('G', 2, 'H', 2), 'POS15': ('G', 3, 'H', 3), 'POS11': ('G', 1, 'H', 1),
+    'POS9': ('G', 0, 'H', 0), 'POS5': ('E', 2, 'F', 2), 'POS7': ('E', 3, 'F', 3),
 }
 SEMI_SLOTS = {'SF1': ('E', 0, 'F', 1), 'SF2': ('F', 0, 'E', 1)}
 
@@ -2045,7 +2048,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now):
         if hr is None or ar is None:
             continue
         ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
-        if m['phase'] != 'pool':
+        if m['phase'] in ('semi-final', 'bronze-final', 'gold-final', 'classification'):
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
             conf = round(max(adv_h, 1 - adv_h), 3)
