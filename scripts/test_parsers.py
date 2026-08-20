@@ -20,7 +20,8 @@ from update_data import (  # noqa: E402
     parse_tms_results, update_statuses, backfill_scores_from_tms,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
-    slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h, TMS_LINEUP_LINK,
+    slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h,
+    team_form, form_delta, h2h_delta, effective_points, FORM_CAP, H2H_CAP, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -596,6 +597,55 @@ check('two same-surname teammates never cross-match',
       by2['Charlie Morrison'].get('world_rank') == 78
       and by2['Joseph Morrison'].get('world_rank') is None)
 check('a near-miss given name is not a match', by2['Hannes Müller'].get('world_rank') is None)
+
+print('\nModel weighting: this tournament first, ranking always, history least')
+
+def _fx(rows):
+    return {'matches': [{'id': f'M{i}', 'phase': 'pool', 'status': 'completed',
+                         'home': h, 'away': a, 'score': {'home': hg, 'away': ag}}
+                        for i, (h, a, hg, ag) in enumerate(rows)]}
+
+# Three wins and a big goal difference must lift a team; three losses must sink one.
+_won = _fx([('AAA', 'X1', 4, 0), ('AAA', 'X2', 3, 1), ('AAA', 'X3', 5, 1)])
+_lost = _fx([('BBB', 'X1', 0, 4), ('BBB', 'X2', 1, 3), ('BBB', 'X3', 1, 5)])
+_fw, _fl = form_delta(team_form('AAA', _won)), form_delta(team_form('BBB', _lost))
+check('winning here raises a team', _fw > 100, f'{_fw:.1f}')
+check('losing here lowers a team', _fl < -100, f'{_fl:.1f}')
+check('form is bounded', abs(_fw) <= FORM_CAP and abs(_fl) <= FORM_CAP)
+check('an unplayed team gets no form adjustment', form_delta(team_form('ZZZ', _won)) == 0)
+
+# One match must not speak with the authority of three.
+_one = _fx([('AAA', 'X1', 4, 0)])
+check('a single match counts for less than a full campaign',
+      0 < form_delta(team_form('AAA', _one)) < _fw,
+      f"{form_delta(team_form('AAA', _one)):.1f} vs {_fw:.1f}")
+
+# The head-to-head term is real — so citing it as a reason is honest — but it is
+# deliberately the smallest input, and always smaller than form.
+_meet = [{'home': 'AAA', 'away': 'BBB', 'home_goals': 3, 'away_goals': 1, 'current': False},
+         {'home': 'BBB', 'away': 'AAA', 'home_goals': 0, 'away_goals': 2, 'current': False},
+         {'home': 'AAA', 'away': 'BBB', 'home_goals': 4, 'away_goals': 2, 'current': False},
+         {'home': 'AAA', 'away': 'BBB', 'home_goals': 1, 'away_goals': 0, 'current': False}]
+_hd = h2h_delta(_meet, 'AAA', 'BBB')
+check('a dominant head-to-head record moves the model', _hd > 0, f'{_hd:.1f}')
+check('head-to-head is bounded', abs(_hd) <= H2H_CAP, f'{_hd:.1f}')
+check('head-to-head can never outweigh this tournament', abs(_hd) < abs(_fw),
+      f'h2h {_hd:.1f} vs form {_fw:.1f}')
+check('the fixture being predicted is not counted as its own history',
+      h2h_delta([{'home': 'AAA', 'away': 'BBB', 'home_goals': 9, 'away_goals': 0,
+                  'current': True}], 'AAA', 'BBB') == 0)
+check('no meetings means no adjustment', h2h_delta([], 'AAA', 'BBB') == 0)
+
+# Ranking remains the base: a huge ranking gap is not overturned by either term.
+_top, _bottom = 3695.0, 2330.0
+_eff_bottom = effective_points('AAA', 'BBB', _bottom, _won, {'AAA-BBB': _meet})
+_eff_top = effective_points('BBB', 'AAA', _top, _lost, {'AAA-BBB': _meet})
+check('form and history together cannot overturn a 1,365-point ranking gap',
+      _eff_top > _eff_bottom, f'{_eff_top:.0f} vs {_eff_bottom:.0f}')
+# ...but a modest ranking gap can be overturned by a big swing in current form.
+check('current form can overturn a narrow ranking gap',
+      effective_points('AAA', 'BBB', 2800.0, _won, None)
+      > effective_points('BBB', 'AAA', 2900.0, _lost, None))
 
 print('\nHead-to-head table (TMS match page, verbatim from the live dump)')
 

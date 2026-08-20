@@ -16,6 +16,34 @@ export const MODEL_PARAMS = {
   rngSeed: 20260815,
 }
 
+// How a side is playing in THIS tournament, as a rating adjustment.
+//
+// Mirrors form_delta() in scripts/update_data.py — same weights, same cap, same
+// sample-size ramp — so the published pick and the simulation never disagree
+// about what a team's week is worth. The pipeline writes the aggregates onto
+// each team (`form`), rather than either side recomputing them, so there is one
+// set of numbers to be wrong about.
+//
+// Expressed in FIH ranking points there, rating points here: the official table
+// spans ~91 ranking points per place and this model uses `rankSlope` per place,
+// so the two scales convert by that ratio.
+const FORM = {
+  ppmWeight: 60, gdWeight: 35, cap: 250, fullSample: 3,
+  // ranking points -> rating points
+  toRating: MODEL_PARAMS.rankSlope / 91,
+}
+
+export function formDelta(team) {
+  const f = team?.form
+  const n = f?.played ?? 0
+  if (!n) return 0
+  const ppm = ((f.wins ?? 0) * 3 + (f.draws ?? 0)) / n
+  const gdpm = Math.max(-3, Math.min(3, ((f.gf ?? 0) - (f.ga ?? 0)) / n))
+  const raw = FORM.ppmWeight * (ppm - 1.5) + FORM.gdWeight * gdpm
+  const capped = Math.max(-FORM.cap, Math.min(FORM.cap, raw))
+  return capped * (Math.min(n, FORM.fullSample) / FORM.fullSample) * FORM.toRating
+}
+
 export function teamRating(team) {
   if (!team) return MODEL_PARAMS.ratingBase - MODEL_PARAMS.rankSlope * 12
   const rank = team.fihRank ?? team.fih_rank ?? 12
@@ -24,6 +52,8 @@ export function teamRating(team) {
     - MODEL_PARAMS.rankSlope * rank
     + MODEL_PARAMS.winProbSlope * winProb
     + (team.host ? MODEL_PARAMS.hostBoost : 0)
+    // Current ranking sets the base; this tournament moves it, bounded.
+    + formDelta(team)
 }
 
 function poissonPmf(lambda, max) {

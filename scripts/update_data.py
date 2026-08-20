@@ -2120,6 +2120,90 @@ def points_from_rank(rank):
     observed 2026 table spans ~3838 (#1) to ~2397 (#16), ~96 points a place."""
     return 3850 - 96 * (rank - 1)
 
+# ── What moves a prediction, and by how much ──────────────────────────────
+# Deliberate weight order, because the model must not be steered by the most
+# colourful number on the page:
+#
+#   1. Current FIH ranking points — the base. Spans ~1,365 points across the 16
+#      teams here, so it dominates by construction.
+#   2. This tournament — bounded at ±FORM_CAP (~2.7 ranking places). What a side
+#      is doing here outranks anything older, but cannot invent a contender out
+#      of a team losing every week.
+#   3. The head-to-head record — bounded at ±H2H_CAP (~0.9 places). Real, so
+#      that citing it as a reason is honest, but deliberately the smallest term:
+#      a 2018 result says less about tonight than this week's hockey does.
+#
+# Form and H2H both scale with sample size, so one match never speaks with the
+# authority of three.
+FORM_PPM_WEIGHT = 60.0    # ranking points per point-per-match above 1.5
+FORM_GD_WEIGHT = 35.0     # ranking points per goal of average goal difference
+FORM_CAP = 250.0
+FORM_FULL_SAMPLE = 3      # matches before this tournament's form counts in full
+H2H_WEIGHT = 40.0         # ranking points per win of head-to-head margin
+H2H_CAP = 80.0
+H2H_FULL_SAMPLE = 4
+
+def _clamp(v, lo, hi):
+    return max(lo, min(hi, v))
+
+def team_form(code, fixtures):
+    """{played, wins, draws, losses, gf, ga} for one team in this tournament."""
+    f = {'played': 0, 'wins': 0, 'draws': 0, 'losses': 0, 'gf': 0, 'ga': 0}
+    for m in fixtures['matches']:
+        if not has_score(m) or m['status'] != 'completed':
+            continue
+        if code not in (m['home'], m['away']):
+            continue
+        side = 'home' if m['home'] == code else 'away'
+        opp = 'away' if side == 'home' else 'home'
+        gf, ga = m['score'][side], m['score'][opp]
+        f['played'] += 1
+        f['gf'] += gf
+        f['ga'] += ga
+        if gf > ga: f['wins'] += 1
+        elif gf < ga: f['losses'] += 1
+        else: f['draws'] += 1
+    return f
+
+def form_delta(form):
+    """Ranking-point adjustment for how a team is playing in this tournament."""
+    n = form.get('played', 0)
+    if not n:
+        return 0.0
+    ppm = (form['wins'] * 3 + form['draws']) / n
+    gdpm = _clamp((form['gf'] - form['ga']) / n, -3.0, 3.0)
+    raw = FORM_PPM_WEIGHT * (ppm - 1.5) + FORM_GD_WEIGHT * gdpm
+    confidence = min(n, FORM_FULL_SAMPLE) / FORM_FULL_SAMPLE
+    return _clamp(raw, -FORM_CAP, FORM_CAP) * confidence
+
+def h2h_delta(meetings, code, opponent):
+    """Ranking-point adjustment from the official record between two nations.
+
+    Deliberately the smallest term in the model. Meetings from the tournament
+    being played are excluded — those are already counted, in full, as form.
+    """
+    past = [m for m in (meetings or []) if not m.get('current')]
+    if not past:
+        return 0.0
+    wins = losses = 0
+    for m in past:
+        mine = m['home_goals'] if m['home'] == code else m['away_goals']
+        theirs = m['home_goals'] if m['home'] == opponent else m['away_goals']
+        if mine > theirs: wins += 1
+        elif mine < theirs: losses += 1
+    n = len(past)
+    margin = (wins - losses) / n          # -1 … 1
+    confidence = min(n, H2H_FULL_SAMPLE) / H2H_FULL_SAMPLE
+    return _clamp(H2H_WEIGHT * margin * n ** 0.5, -H2H_CAP, H2H_CAP) * confidence
+
+def effective_points(code, opponent, base_points, fixtures, h2h_pairs=None):
+    """Ranking points adjusted for this tournament, then lightly for history."""
+    pts = base_points + form_delta(team_form(code, fixtures))
+    if h2h_pairs:
+        key = '-'.join(sorted((code, opponent)))
+        pts += h2h_delta(h2h_pairs.get(key), code, opponent)
+    return pts
+
 def predict(home_pts, away_pts):
     """(p_home, p_draw, p_away) from official FIH ranking points.
 
@@ -2139,7 +2223,7 @@ def predict(home_pts, away_pts):
     p_away = (1 - p_draw) * (1 - e)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
-def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now):
+def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs=None):
     """
     Publish a visible correction for a pick whose match has not started but
     whose inputs were wrong when it was written.
@@ -2175,7 +2259,9 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now):
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
-        ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
+        ph, pd, pa = predict(
+            effective_points(m['home'], m['away'], points_of[m['home']], fixtures, h2h_pairs),
+            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs))
         if m['phase'] in ('semi-final', 'bronze-final', 'gold-final', 'classification'):
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
@@ -2227,7 +2313,7 @@ def fix_venues(fixtures):
             changed = True
     return changed
 
-def generate_predictions(fixtures, teams, predictions):
+def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
     """
     Every fixture with both teams known carries an engine pick — including
     matches that finished before the pipeline existed. The model is
@@ -2243,7 +2329,7 @@ def generate_predictions(fixtures, teams, predictions):
     changed = False
     now = now_utc()
 
-    changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now)
+    changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':
@@ -2259,7 +2345,9 @@ def generate_predictions(fixtures, teams, predictions):
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
-        ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
+        ph, pd, pa = predict(
+            effective_points(m['home'], m['away'], points_of[m['home']], fixtures, h2h_pairs),
+            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs))
         if knockout:
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
@@ -2349,7 +2437,15 @@ def main():
     changed |= update_player_stats(fixtures, players)
     changed |= slot_knockouts(fixtures)
     changed |= build_lineups(fixtures, players, teams)
-    changed |= generate_predictions(fixtures, teams, predictions)
+    # The browser-side strength model must weight this tournament exactly as the
+    # published picks do, so the aggregates live on the team rather than being
+    # recomputed twice from different code.
+    for t in teams['teams']:
+        f = team_form(t['code'], fixtures)
+        if t.get('form') != f:
+            t['form'] = f
+            changed = True
+    changed |= generate_predictions(fixtures, teams, predictions, h2h_doc.get('pairs'))
 
     stamp = now_utc().isoformat()
     if players_changed:
