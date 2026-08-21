@@ -5,6 +5,7 @@
   "start": "2026-08-15",
   "end": "2026-08-30",
   "last_updated": "2026-08-21T14:36:27.694649+00:00",
+  "last_updated": "2026-08-21T15:37:02.879130+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1176,6 +1177,7 @@
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-21T14:36:27.673680+00:00",
+        "generated_at": "2026-08-21T14:33:54.318272+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1499,6 +1501,13 @@
               "playerId": "MAS_19",
               "name": "Aminuddin Mohd Zain",
               "number": 32,
+              "position": null,
+              "onAt": "34:39"
+            },
+            {
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "34:39"
             },
@@ -5647,6 +5656,7 @@
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-21T14:36:27.677819+00:00",
+        "generated_at": "2026-08-21T14:33:54.321496+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5977,6 +5987,13 @@
               "playerId": "MAS_19",
               "name": "Aminuddin Mohd Zain",
               "number": 32,
+              "position": null,
+              "onAt": "16:55"
+            },
+            {
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "16:55"
             },
@@ -9324,6 +9341,7 @@
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-21T14:36:27.680998+00:00",
+        "generated_at": "2026-08-21T14:33:54.323971+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9640,6 +9658,13 @@
               "playerId": "MAS_19",
               "name": "Aminuddin Mohd Zain",
               "number": 32,
+              "position": null,
+              "onAt": "42:09"
+            },
+            {
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "42:09"
             },
@@ -12941,6 +12966,7 @@
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-21T14:36:27.684144+00:00",
+        "generated_at": "2026-08-21T14:33:54.326402+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -13257,6 +13283,13 @@
               "playerId": "MAS_19",
               "name": "Aminuddin Mohd Zain",
               "number": 32,
+              "position": null,
+              "onAt": "19:33"
+            },
+            {
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "19:33"
             },
@@ -13774,7 +13807,7 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
@@ -15610,6 +15643,7 @@
       "lineups": {
         "source": "estimated",
         "generated_at": "2026-08-21T14:36:27.687336+00:00",
+        "generated_at": "2026-08-21T14:33:54.328849+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -15768,6 +15802,13 @@
               "playerId": "MAS_19",
               "name": "Aminuddin Mohd Zain",
               "number": 32,
+              "position": null,
+              "onAt": "18:22"
+            },
+            {
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "18:22"
             },
