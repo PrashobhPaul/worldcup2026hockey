@@ -280,11 +280,13 @@ export default function MatchDetailPage() {
   // Match Center pills (the Cricbuzz pattern): one sticky row that jumps to a
   // section instead of a scroll hunt. Built from the match's state, so a pill
   // never points at a section that is not on the page.
+  // Listed in the page's own render order, so tapping pills left-to-right
+  // always moves down the page — a row that jumps backwards reads as broken.
   const pills = [
     pred?.status === 'ready' && { id: 'sec-pick', label: '🎯 Pick' },
     preview.length > 0 && { id: 'sec-preview', label: 'Preview' },
-    (done || live) && (events?.length ?? 0) > 0 && { id: 'sec-timeline', label: 'Timeline' },
     { id: 'sec-form', label: 'Form' },
+    (done || live) && (events?.length ?? 0) > 0 && { id: 'sec-timeline', label: 'Timeline' },
     { id: 'sec-lineups', label: 'Line-ups' },
     (done || live) && { id: 'sec-stats', label: 'Stats' },
     story && { id: 'sec-story', label: 'Story' },
@@ -353,7 +355,7 @@ export default function MatchDetailPage() {
         <div className="no-scrollbar sticky top-14 z-30 -mx-4 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl">
           {pills.map(pill => (
             <button key={pill.id} onClick={() => jumpTo(pill.id)}
-              className="min-h-[36px] shrink-0 rounded-md border border-white/5 bg-pitch-800 px-3.5 text-xs font-semibold text-pitch-300 transition-colors hover:border-brand/30 hover:text-brand">
+              className="min-h-[44px] shrink-0 rounded-md border border-white/5 bg-pitch-800 px-3.5 text-xs font-semibold text-pitch-300 transition-colors hover:border-brand/30 hover:text-brand">
               {pill.label}
             </button>
           ))}

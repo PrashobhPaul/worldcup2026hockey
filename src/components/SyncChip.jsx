@@ -29,15 +29,22 @@ export default function SyncChip() {
   }, [])
 
   const busy = status.state === 'syncing' || status.state === 'starting'
+  const trouble = status.state === 'error' || status.state === 'offline'
+  // Tooltips never fire on touch, so a failed sync must be visible in the chip
+  // itself, and the aria-label must carry what the chip exists to say.
+  const label = trouble
+    ? `Data sync failed${status.error ? ` — ${status.error}` : ''}. Tap to retry.`
+    : `Data version ${status.version ?? 'unknown'}, synced ${age(status.at)} ago. Tap to refresh.`
   return (
     <button onClick={() => syncData({ force: true })} disabled={busy}
-      title={status.error ?? 'Data snapshot version and last sync — tap to refresh'}
-      aria-label="Refresh tournament data"
+      title={label} aria-label={label}
       className="flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-md border border-white/5 bg-pitch-800 px-2 font-mono text-[10px] text-pitch-300 transition-colors hover:border-brand/25">
       <span className={`inline-block h-1.5 w-1.5 rounded-full ${DOT[status.state] ?? 'bg-pitch-500'}`} />
       <span>{status.version != null ? `v${status.version}` : 'sync'}</span>
       <span className="text-pitch-400">·</span>
-      <span className="text-pitch-400">{busy ? '…' : age(status.at)}</span>
+      <span className={trouble ? 'font-bold text-red-400' : 'text-pitch-400'}>
+        {busy ? '…' : trouble ? 'retry' : age(status.at)}
+      </span>
     </button>
   )
 }

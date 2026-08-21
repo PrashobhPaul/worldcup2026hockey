@@ -156,12 +156,11 @@ function NextMatchCard({ match, teams }) {
 function FavouriteStrip({ teams, matches }) {
   const favourite = useFavourite()
   const bundle = useOracleBundle(teams, matches)
-  if (favourite === undefined) return null
   if (favourite === null) {
     return (
       <Link to="/teams"
         className="flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-dashed border-white/10 bg-pitch-900/40 px-4 py-3 text-xs text-pitch-400 transition-colors hover:border-brand/30 hover:text-pitch-300">
-        <span className="text-brand">★</span> Follow your team — tap the star on any team, and Home leads with them
+        <span className="text-brand">★</span> Follow your team — open any team and tap Follow, and Home leads with them
       </Link>
     )
   }
@@ -190,8 +189,9 @@ function FavouriteStrip({ teams, matches }) {
         <Link to={`/teams/${favourite}`} className="flex min-w-0 items-center gap-2.5">
           <span className="text-3xl">{team.flag}</span>
           <div className="min-w-0">
-            <div className="truncate text-sm font-bold">
-              {team.name} <span className="text-brand">★</span>
+            <div className="flex min-w-0 items-center gap-1.5 text-sm font-bold">
+              <span className="truncate">{team.name}</span>
+              <span className="shrink-0 rounded bg-brand/10 px-1.5 py-0.5 font-mono text-[9px] font-bold text-brand">FOLLOWING</span>
             </div>
             <div className="font-mono text-[10px] text-pitch-400">
               {out ? 'Out of title contention' : entry ? `${formatProbability(entry.champion)} champion` : '…'}

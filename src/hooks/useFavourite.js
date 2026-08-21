@@ -1,26 +1,42 @@
 // Hockey.AI — the one team this reader follows.
 //
-// Stored locally in Dexie (user_state), because the app has no backend and
-// needs none for this: personalization is a property of the device, not of an
-// account. One team, not a list — "your team" is a singular in sport.
-import { useLiveQuery } from 'dexie-react-hooks'
-import { db } from '../db'
+// Stored in localStorage, deliberately NOT in Dexie: the 'hockeyai' database
+// is a cache of public JSON whose recovery paths (a corrupt-store rebuild,
+// the banner's "Reset app data") delete it without hesitation, and that is
+// only safe because it holds no user-authored data. The favourite is the one
+// thing the reader authors, so it lives outside the blast radius. One team,
+// not a list — "your team" is a singular in sport.
+import { useSyncExternalStore } from 'react'
 
-const KEY = 'favourite-team'
+const KEY = 'hockeyai:favourite-team'
+const listeners = new Set()
+const emit = () => listeners.forEach(fn => fn())
 
-/** undefined while loading, null when unset, else a team code ("IND"). */
-export function useFavourite() {
-  // get() resolves to undefined for a missing key — indistinguishable from
-  // useLiveQuery's still-loading undefined. toArray() resolves to [], which
-  // is how "asked and answered: none" stays distinct from "still asking".
-  const rows = useLiveQuery(() => db.user_state.where('id').equals(KEY).toArray(), [])
-  if (rows === undefined) return undefined
-  return rows[0]?.team ?? null
+if (typeof window !== 'undefined') {
+  // Another tab changing the favourite updates this one too.
+  window.addEventListener('storage', e => { if (e.key === KEY) emit() })
 }
 
-/** Star the team; starring the current favourite un-stars it. */
-export async function toggleFavourite(code) {
-  const row = await db.user_state.get(KEY)
-  if (row?.team === code) await db.user_state.delete(KEY)
-  else await db.user_state.put({ id: KEY, team: code, setAt: Date.now() })
+function subscribe(fn) {
+  listeners.add(fn)
+  return () => listeners.delete(fn)
+}
+
+function read() {
+  try { return localStorage.getItem(KEY) } catch { return null }
+}
+
+/** null when unset, else a team code ("IND"). Reactive across components. */
+export function useFavourite() {
+  return useSyncExternalStore(subscribe, read, () => null)
+}
+
+/** Follow the team; following the current favourite unfollows it. Synchronous
+ *  read-modify-write, so a double-tap nets out instead of losing a toggle. */
+export function toggleFavourite(code) {
+  try {
+    if (localStorage.getItem(KEY) === code) localStorage.removeItem(KEY)
+    else localStorage.setItem(KEY, code)
+  } catch { /* storage unavailable (private mode) — following just won't stick */ }
+  emit()
 }

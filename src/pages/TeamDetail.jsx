@@ -127,6 +127,9 @@ export default function TeamDetailPage() {
             <p className="font-mono text-xs text-pitch-300">{team.nickname} · FIH #{team.fihRank} · Pool {team.pool}{team.host ? ' · Host' : ''}</p>
             <TitleOdds team={team} teams={teams} matches={allMatches} />
           </div>
+        </div>
+        {/* Its own row: sharing the title row crushed long team names on phones. */}
+        <div className="mt-3">
           <FollowButton team={team} />
         </div>
         {team.intro && (

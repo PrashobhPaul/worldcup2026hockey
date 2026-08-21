@@ -44,26 +44,42 @@ await p.goto(ORIGIN + '/teams', { waitUntil: 'domcontentloaded' })
 await p.waitForTimeout(1200)
 body = (await p.locator('body').innerText()).replace(/\s+/g, ' ')
 check('Teams shows the Teams/Players segmented control', /Players/.test(body))
-await p.locator('button[aria-label="Follow India"]').click()
-await p.waitForTimeout(600)
-check('star toggles to pressed', await p.locator('button[aria-label="Unfollow India"]').count() === 1)
+// Following happens on the team page's proper button (no star-in-link on cards).
+await p.goto(ORIGIN + '/teams/IND', { waitUntil: 'domcontentloaded' })
+await p.waitForTimeout(1500)
+await p.locator('button', { hasText: 'Follow' }).first().click()
+await p.waitForTimeout(500)
+check('follow button flips to Following',
+  await p.locator('button', { hasText: 'Following' }).count() === 1)
+await p.goto(ORIGIN + '/teams', { waitUntil: 'domcontentloaded' })
+await p.waitForTimeout(1200)
+check('the followed team card carries the brand ring',
+  await p.locator('a[href="/teams/IND"].ring-1').count() === 1)
 await p.goto(ORIGIN + '/', { waitUntil: 'domcontentloaded' })
 // The favourite strip waits on the Monte-Carlo bundle — wait for it, not a timer.
-const strip = await p.waitForSelector('text=India', { timeout: 20000 }).then(() => true).catch(() => false)
+const strip = await p.waitForSelector('text=FOLLOWING', { timeout: 20000 }).then(() => true).catch(() => false)
 body = (await p.locator('body').innerText()).replace(/\s+/g, ' ')
-check('Home leads with the followed team', strip && /India ★/.test(body), body.slice(0, 300))
+check('Home leads with the followed team', strip && /India FOLLOWING/.test(body), body.slice(0, 300))
 check('strip shows champion probability or elimination', /(champion|Out of title contention)/.test(body))
-check('the invitation is gone once following', !/Follow your team — tap the star/.test(body))
+check('the invitation is gone once following', !/Follow your team — open any team/.test(body))
 
 // ── Folded siblings keep the parent tab lit ────────────────────────────────
+// Alias-lit tabs use data-active (styling) without claiming aria-current —
+// on /players the *page* is SiblingNav's Players link, not the Teams tab.
 await p.goto(ORIGIN + '/players', { waitUntil: 'domcontentloaded' })
 await p.waitForTimeout(1000)
-let lit = await p.locator('nav.fixed a[aria-current="page"]').innerText()
+let lit = await p.locator('nav.fixed a[data-active]').innerText()
 check('on /players the Teams tab is lit', lit.trim().toUpperCase() === 'TEAMS', lit)
+check('the lit alias tab does not claim aria-current',
+  await p.locator('nav.fixed a[aria-current="page"]').count() === 0)
 await p.goto(ORIGIN + '/ai-lab', { waitUntil: 'domcontentloaded' })
 await p.waitForTimeout(1000)
-lit = await p.locator('nav.fixed a[aria-current="page"]').innerText()
+lit = await p.locator('nav.fixed a[data-active]').innerText()
 check('on /ai-lab the Oracle tab is lit', lit.trim().toUpperCase() === 'ORACLE', lit)
+await p.goto(ORIGIN + '/matches', { waitUntil: 'domcontentloaded' })
+await p.waitForTimeout(800)
+check('a true route match still claims aria-current',
+  (await p.locator('nav.fixed a[aria-current="page"]').innerText()).trim().toUpperCase() === 'MATCHES')
 
 // ── Match Center pills ─────────────────────────────────────────────────────
 await p.goto(ORIGIN + '/matches/D1', { waitUntil: 'domcontentloaded' })
@@ -72,6 +88,11 @@ const pillTexts = await p.locator('div.sticky button').allInnerTexts()
 check('completed match shows Match Center pills',
   pillTexts.some(t => /Timeline/.test(t)) && pillTexts.some(t => /Stats/.test(t)) && pillTexts.some(t => /Story/.test(t)),
   pillTexts.join(','))
+check('pill order follows the page (Form before Timeline)',
+  pillTexts.findIndex(t => /Form/.test(t)) < pillTexts.findIndex(t => /Timeline/.test(t)),
+  pillTexts.join(','))
+const pillBox = await p.locator('div.sticky button').first().boundingBox()
+check('pills are ≥44px tall', pillBox.height >= 44, String(pillBox.height))
 const before = await p.evaluate(() => window.scrollY)
 await p.locator('div.sticky button', { hasText: 'Story' }).click()
 await p.waitForTimeout(900)

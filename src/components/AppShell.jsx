@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { NavLink, Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
@@ -60,10 +61,21 @@ export default function AppShell() {
     return hit && (best < 0 || tab.to.length > MOBILE_TABS[best].to.length) ? i : best
   }, -1)
 
+  // The 5-tab model only exists below md; a touch-screen laptop showing all
+  // seven tabs must not swipe through a five-tab cycle it cannot see.
+  const [isPhone, setIsPhone] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const onChange = e => setIsPhone(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
   useSwipeTabs({
     count: MOBILE_TABS.length,
     index: active,
-    enabled: active >= 0,
+    enabled: active >= 0 && isPhone,
     priority: SWIPE_PRIORITY.shell,
     onChange: i => navigate(MOBILE_TABS[i].to),
   })
@@ -76,7 +88,7 @@ export default function AppShell() {
           <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="Hockey.AI — home">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-8 w-8 rounded-lg" />
             <img src={`${import.meta.env.BASE_URL}hockeyai_name.png`} alt="Hockey.AI"
-              className="h-6 w-auto sm:h-7" />
+              className="hidden h-6 w-auto min-[380px]:block sm:h-7" />
           </Link>
           <div className="no-scrollbar hidden items-center gap-0.5 overflow-x-auto md:flex">
             {TABS.map(t => (
@@ -120,11 +132,15 @@ export default function AppShell() {
           {MOBILE_TABS.map((tab, i) => {
             const { to, short, icon: Icon } = tab
             const lit = active === i
+            const exact = tab.end ? pathname === '/' : pathname.startsWith(tab.to)
             // Plain Link, not NavLink: NavLink swallows a passed aria-current
             // and applies its own route match, which can never light Teams
-            // while the reader is on /players.
+            // while the reader is on /players. aria-current only on a true
+            // route match — the alias case lights up but does not claim to
+            // be the page (SiblingNav's link is the page).
             return (
-              <Link key={to} to={to} aria-current={lit ? 'page' : undefined}
+              <Link key={to} to={to} data-active={lit || undefined}
+                aria-current={exact && lit ? 'page' : undefined}
                 className={`flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-0.5 py-1 text-[10px] font-semibold uppercase tracking-wide transition-colors ${
                   lit ? 'text-brand' : 'text-pitch-400'
                 }`}>
