@@ -4,6 +4,15 @@
   "pairs": {
     "FRA-RSA": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-21",
+        "home": "FRA",
+        "away": "RSA",
+        "home_goals": 0,
+        "away_goals": 2,
+        "current": false
+      },
+      {
         "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
         "date": "2026-06-20",
         "home": "FRA",
@@ -497,5 +506,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-21T08:43:13.754438+00:00"
+  "updated_at": "2026-08-21T09:39:47.667859+00:00"
 }
