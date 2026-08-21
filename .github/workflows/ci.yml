@@ -38,5 +38,10 @@ jobs:
       - name: Match preview evidence
         run: npm run test:preview
 
+      # Six of sixteen carry a tag, and the quota must not drift: three
+      # favourites, two dark horses, one underdog, and never an eliminated team.
+      - name: Team tier assignment
+        run: npm run test:tiers
+
       - name: Build
         run: npm run build

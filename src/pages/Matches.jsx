@@ -48,14 +48,30 @@ const STATUS_TABS = [
   { id: 'live', label: '🔴 Live', status: 'live' },
   { id: 'upcoming', label: 'Upcoming', status: 'scheduled' },
 ]
-const POOL_TABS = ['all', 'A', 'B', 'C', 'D', 'knockout']
+
+// The competition has three acts, and that is the only cut the fixture list
+// needs — Stage 1 pools A–D, the Stage 2 crossover pools E–H, then the matches
+// that decide a placing. Pool-by-pool chips belonged to a one-stage format;
+// they split 24 fixtures six ways and had nothing to say about the other 26.
+const KNOCKOUT_PHASES = new Set(['classification', 'semi-final', 'bronze-final', 'gold-final'])
+const STAGE_TABS = [
+  { id: 'stage1', label: 'Stage 1', match: m => m.phase === 'pool' },
+  { id: 'stage2', label: 'Stage 2', match: m => m.phase === 'stage2' },
+  { id: 'knockouts', label: 'Knockouts', match: m => KNOCKOUT_PHASES.has(m.phase) },
+]
 const DEFAULT_TAB = 'results'
+
+/** Which act a fixture belongs to, or null if a new phase ever slips through. */
+const stageOf = m => STAGE_TABS.find(s => s.match(m))?.id ?? null
 
 export default function MatchesPage() {
   const [params, setParams] = useSearchParams()
   const initialTab = STATUS_TABS.some(t => t.id === params.get('tab')) ? params.get('tab') : DEFAULT_TAB
   const [tab, setTab] = useState(initialTab)
-  const [pool, setPool] = useState(params.get('pool') || 'all')
+  // null = follow the tab. An explicit chip pins a stage until the reader
+  // changes status tab, at which point we go back to following.
+  const [stage, setStage] = useState(
+    STAGE_TABS.some(s => s.id === params.get('stage')) ? params.get('stage') : null)
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
 
   const loading = matches === undefined
@@ -68,16 +84,26 @@ export default function MatchesPage() {
   }
 
   const activeStatus = (STATUS_TABS.find(t => t.id === tab) ?? STATUS_TABS[0]).status
-  const filtered = all.filter(m => {
-    const statusOk = m.status === activeStatus
-    const poolOk = pool === 'all' ? true : pool === 'knockout' ? m.phase !== 'pool' : m.pool === pool
-    return statusOk && poolOk
-  })
+  const inStatus = all.filter(m => m.status === activeStatus)
+
+  // With no "All" chip a stage is always selected, so the one we select for the
+  // reader has to be the one they came to see: the act the tab's first-listed
+  // match belongs to. Results and Live read newest-first, so that is the latest
+  // act with a result; Upcoming reads soonest-first, so it is the next act to
+  // be played. Falls back to Stage 1 only when the tab is empty.
+  const lead = inStatus.reduce((best, m) => {
+    if (!best) return m
+    const ka = m.kickoffUtc ?? 0, kb = best.kickoffUtc ?? 0
+    return activeStatus === 'scheduled' ? (ka < kb ? m : best) : (ka > kb ? m : best)
+  }, null)
+  const activeStage = stage ?? (lead ? stageOf(lead) : null) ?? STAGE_TABS[0].id
+  const stageMatch = (STAGE_TABS.find(s => s.id === activeStage) ?? STAGE_TABS[0]).match
+  const filtered = inStatus.filter(stageMatch)
 
   useSwipeTabs({
     count: STATUS_TABS.length,
     index: Math.max(0, STATUS_TABS.findIndex(t => (t.id ?? t) === tab)),
-    onChange: i => setFilter('tab', STATUS_TABS[i].id ?? STATUS_TABS[i], setTab),
+    onChange: i => selectTab(STATUS_TABS[i].id),
   })
 
   // Within a day, Results/Live read newest-first (latest match on top, scroll
@@ -100,11 +126,22 @@ export default function MatchesPage() {
     return fa ? ka - kb : kb - ka
   })
 
-  const setFilter = (key, value, setter) => {
-    setter(value)
+  const writeParams = mutate => {
     const next = new URLSearchParams(params)
-    value === 'all' ? next.delete(key) : next.set(key, value)
+    mutate(next)
     setParams(next, { replace: true })
+  }
+
+  // Changing act is explicit and sticky; changing status starts following
+  // again, so Upcoming never opens on an act that has already been played.
+  const selectStage = id => {
+    setStage(id)
+    writeParams(next => next.set('stage', id))
+  }
+  const selectTab = id => {
+    setTab(id)
+    setStage(null)
+    writeParams(next => { next.set('tab', id); next.delete('stage') })
   }
 
   return (
@@ -118,7 +155,7 @@ export default function MatchesPage() {
 
       <div className="sticky top-14 z-30 -mx-4 mb-3 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl no-scrollbar" role="tablist">
         {STATUS_TABS.map(t => (
-          <button key={t.id} onClick={() => setFilter('tab', t.id, setTab)}
+          <button key={t.id} onClick={() => selectTab(t.id)}
             className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition-colors ${
               tab === t.id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
             }`}>
@@ -128,12 +165,12 @@ export default function MatchesPage() {
       </div>
 
       <div className="mb-5 flex flex-wrap gap-1.5">
-        {POOL_TABS.map(p => (
-          <button key={p} onClick={() => setFilter('pool', p, setPool)}
-            className={`rounded-md border px-3 py-1 font-mono text-xs font-semibold capitalize transition-colors ${
-              pool === p ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
+        {STAGE_TABS.map(s => (
+          <button key={s.id} onClick={() => selectStage(s.id)}
+            className={`rounded-md border px-3 py-1 font-mono text-xs font-semibold transition-colors ${
+              activeStage === s.id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
             }`}>
-            {p === 'all' ? 'All Pools' : p === 'knockout' ? 'Knockouts' : `Pool ${p}`}
+            {s.label} <span className="ml-1 text-[10px] opacity-70">{inStatus.filter(s.match).length}</span>
           </button>
         ))}
       </div>
@@ -145,7 +182,7 @@ export default function MatchesPage() {
         <div className="space-y-2.5">
           {Object.keys(byDate).length === 0 && (
             <div className="rounded-xl border border-white/5 bg-pitch-800 p-5 text-sm text-pitch-400">
-              No matches match this filter.
+              No {(STATUS_TABS.find(t => t.id === tab) ?? STATUS_TABS[0]).label.replace('🔴 ', '').toLowerCase()} matches in this stage.
             </div>
           )}
           {orderedDates.map(date => (

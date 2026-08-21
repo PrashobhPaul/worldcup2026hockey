@@ -17,16 +17,20 @@ export function SectionHead({ title, sub, to, toLabel = 'View all →' }) {
   )
 }
 
+// Only three labels exist, and only six teams carry one — see engine/tiers.js.
+// A tag on every crest labels nothing, and "outsider" beside a team is a
+// judgement we have no need to publish.
 const TIERS = {
   favourite:  { label: '⭐ Favourite',  cls: 'bg-brand/15 text-brand' },
-  contender:  { label: '🔥 Contender',  cls: 'bg-sky-400/10 text-sky-400' },
-  dark_horse: { label: '🐎 Dark Horse', cls: 'bg-violet-400/10 text-violet-400' },
-  challenger: { label: 'Challenger',    cls: 'bg-pitch-700 text-pitch-300' },
-  outsider:   { label: 'Outsider',      cls: 'bg-pitch-700 text-pitch-400' },
+  dark_horse: { label: '♞ Dark Horse',  cls: 'bg-violet-400/10 text-violet-400' },
+  underdog:   { label: '⚡ Underdog',   cls: 'bg-amber-400/10 text-amber-400' },
+  out:        { label: 'Eliminated',    cls: 'bg-pitch-700 text-pitch-400' },
 }
 
+/** Renders nothing when a team has not earned a label. */
 export function TierBadge({ tier }) {
-  const t = TIERS[tier] || TIERS.outsider
+  const t = TIERS[tier]
+  if (!t) return null
   return (
     <span className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${t.cls}`}>
       {t.label}
@@ -93,7 +97,7 @@ export function StandingsTable({ standings, highlight = 2 }) {
  * probability of its own. `lead` is the leader's probability, used only to
  * scale the bar.
  */
-export function WinProbBar({ team, entry, lead, out }) {
+export function WinProbBar({ team, entry, lead, out, tierOf }) {
   const champion = entry?.champion ?? 0
   const width = lead > 0 ? Math.max(champion > 0 ? 2 : 0, (champion / lead) * 100) : 0
   return (
@@ -103,7 +107,7 @@ export function WinProbBar({ team, entry, lead, out }) {
       <div className="min-w-0 flex-1">
         <div className={`truncate text-sm font-bold ${out ? 'line-through' : ''}`}>{team.name}</div>
         <div className="font-mono text-[10px] text-pitch-400">FIH #{team.fihRank} · Pool {team.pool}</div>
-        <TierBadge tier={out ? 'outsider' : entry?.classification} />
+        <TierBadge tier={out ? 'out' : tierOf?.(entry?.teamId)} />
       </div>
       <div className="w-28 shrink-0 sm:w-40">
         <div className="h-1.5 overflow-hidden rounded-full bg-pitch-600">

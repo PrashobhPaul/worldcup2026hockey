@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test:probability": "node scripts/verify_probability.mjs",
     "test:parsers": "python3 scripts/test_parsers.py",
-    "test:preview": "node scripts/test_preview.mjs"
+    "test:preview": "node scripts/test_preview.mjs",
+    "test:tiers": "node scripts/test_tiers.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.8",

@@ -75,7 +75,7 @@ function TitleOdds({ team, teams, matches }) {
   const out = bundle?.eliminationAt.has(team.code)
   return (
     <div className="mt-2 flex items-center gap-2">
-      <TierBadge tier={out ? 'outsider' : entry?.classification} />
+      <TierBadge tier={out ? 'out' : bundle?.tierOf(team.code)} />
       <span className="rounded bg-brand/10 px-2 py-0.5 font-mono text-[10px] font-bold text-brand">
         {entry ? formatProbability(out ? 0 : entry.champion) : '…'} title prob
       </span>

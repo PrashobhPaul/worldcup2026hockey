@@ -12,6 +12,7 @@ import { useMemo } from 'react'
 import { projectBracket, orderedResults } from './simulate.js'
 import { buildSnapshotSeries, toPercent, describeSnapshot } from './probability.js'
 import { computeStandings } from './standings.js'
+import { assignTiers } from './tiers.js'
 
 let _cache = { key: null, value: null }
 
@@ -49,9 +50,20 @@ export function computeOracleBundle(teams, matches) {
     }
   }
 
+  // Who has earned a label. Derived from the same snapshot every surface
+  // reads, so the badge on the Teams grid can never disagree with the one on
+  // the team page.
+  const tiers = assignTiers({
+    teams,
+    championOf: code => current.championOf(code),
+    isOut: code => eliminationAt.has(code),
+  })
+
   const value = {
     snapshots,
     current,
+    tiers,
+    tierOf: code => tiers.get(code) ?? null,
     /** Historical lookup — `snapshotAt(8)` is the "after match #8" state. */
     snapshotAt: k => snapshots[Math.max(0, Math.min(snapshots.length - 1, k))],
     standings,
