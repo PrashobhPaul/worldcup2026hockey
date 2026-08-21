@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-21T14:21:42.004308+00:00",
+  "last_updated": "2026-08-21T14:30:09.845305+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -13200,7 +13200,12 @@
           "coach": "Brendon Carolan"
         }
       },
-      "tms_id": 22359
+      "tms_id": 22359,
+      "score_seen": {
+        "home": 7,
+        "away": 4,
+        "at": "2026-08-21T14:30:06.367183+00:00"
+      }
     },
     {
       "id": "S2F1",
