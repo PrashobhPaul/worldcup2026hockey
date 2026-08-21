@@ -146,6 +146,12 @@
       "source": "ai"
     },
     {
+      "matchId": "S2F1",
+      "story": "Australia remain the only unbeaten side in Pool F after an evening in Brussels that finished all square and could barely have been closer — circle entries twenty-one apiece, Australia edging possession fifty-two per cent to forty-eight and shots nine to six. Tom Craig gave the Kookaburras the lead in the 24th from open play, finishing the best move of a first half they controlled without ever dominating.\n\nBelgium's reply came from the set piece: Tom Boon converted a penalty corner in the 38th, early in the third quarter, in a match that never produced a card and never quite lost its balance. Australia's nine shots to six were the greater volume, but neither side could find a second goal, and two of the tournament's heavyweights settled for a point apiece.\n\nThe point suits Australia far more. With the win over Spain carried forward from Stage 1 they top Pool F on four points, unbeaten across four matches this tournament; Belgium, carrying the one-goal defeat to Germany, hold a single point from their two counted results with only the Spain fixture left to change it. Even a win there leaves the world's number-one side needing results elsewhere — a semi-final place is no longer in Belgium's own hands.",
+      "generatedAt": "2026-08-21T20:51:21.535701+00:00",
+      "source": "ai"
+    },
+    {
       "matchId": "S2F2",
       "story": "Spain beat a previously unbeaten Germany by finding two moments in a match of almost perfect equilibrium — possession fifty-one per cent to forty-nine, shots seven to six, circle entries twenty-one to twenty. Justus Weigand gave Germany the lead from open play in the 26th, reward for the sharper pressing of the first half, and it lasted four minutes: José Basterra levelled from a penalty stroke in the 30th, on the stroke of half-time.\n\nThe winner came in the 50th — Basterra again, this time from open play, a brace that contains Spain's entire output. No goal came from a penalty corner at either end, and the discipline matched the scoreline's restraint: not a single card in the match. Germany kept pushing after falling behind, but their twenty circle entries produced only six shots all game, and the equaliser never came.\n\nThe result reshapes Pool F. Spain carry a narrow defeat to Australia forward from Stage 1, and beating Germany puts them level on three points in a pool nobody has yet escaped from — even Belgium, pointless so far, still have six to play for. Germany's unbeaten run ends at four matches, and the pattern beneath it is worth noting: five of their eight tournament goals came in one afternoon against Malaysia, and in their three matches against everyone else they have scored exactly once per game. The finishing, not the defence, is what the rest of Stage 2 will examine.",
       "generatedAt": "2026-08-21T18:20:27.376404+00:00",
@@ -162,13 +168,6 @@
       "story": "Ireland won the highest-scoring match of this World Cup so far, and they had effectively won it by half-time. Jonathan Lynch opened in the 8th from open play and added a penalty-corner goal in the 12th; Matthew Nelson made it three in the 19th, and when Lynch completed his hat-trick in the 24th — his first three goals of the tournament, all inside twenty-four minutes — Ireland led by four against opponents who had barely settled.\n\nMalaysia's response came almost entirely from the short corner: Azimuddin Kamaruddin in the 29th, Amirul Azahar in the 36th and Abu Kamal Azrai in the 41st, three penalty-corner goals that kept them in touching distance without ever threatening parity. Ireland's answer to the second of them was immediate — John McKee converted a corner of their own in the 37th and Nelson struck again in the 39th, so Azrai's goal only trimmed the third-quarter score to 6-3. Benjamin Walker's field goal in the 54th settled the afternoon, and Faizal Saari's reply in the 55th, Malaysia's only goal from open play, fixed the final margin at 7-4.\n\nEleven goals, and the shape of them tells the story of both campaigns. Ireland scored five from open play through three different scorers — the running, carried threat that Malaysia's pool opponents also found, with Malaysia now on twenty conceded across four matches. Malaysia's three corner goals confirm that their set piece travels; nothing else did. For Ireland, who left Pool C with a four-one win over South Africa and two two-goal defeats, this is the day their finishing finally caught up with their chances, and Lynch — scoreless in the pool — leaves it with a hat-trick completed inside the first half.",
       "generatedAt": "2026-08-21T14:39:40.618310+00:00",
       "source": "ai"
-    },
-    {
-      "matchId": "S2F1",
-      "story": "Australia and Belgium shared a 1-1 draw at the Royal Leopold Club in Brussels, in a Pool F tie of the FIH Hockey World Cup 2026. Australia came in ranked 4th in the world, Belgium 1st.\n\nAustralia scored through Tom Craig (24'); Belgium through Tom Boon (38', penalty corner). The opener came in Q2 and the final goal in Q3.\n\nAustralia won 0 penalty corners to Belgium's 1.",
-      "generatedAt": "2026-08-21T20:24:00.732378+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
     }
   ]
 }

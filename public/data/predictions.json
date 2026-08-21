@@ -1873,8 +1873,11 @@
       "p_away_win": 0.393,
       "pick": "AWAY",
       "pick_confidence": 0.393,
-      "reason": "FIH #1 BEL favoured over #4 AUS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T04:40:56.159227+00:00"
+      "reason": "Belgium scored eight goals in three pool matches — three past France, five past Malaysia — and their only defeat was by a single goal to Germany. Australia took seven points from Pool C unbeaten, but two of those matches brought one goal or fewer and they dropped points to the pool's lowest seed. Between the tournament's most productive attack and its steadiest points-gatherer, the hosts' extra cutting edge tips a very close call — with a draw the likeliest single alternative.",
+      "publishedAt": "2026-08-21T04:40:56.159227+00:00",
+      "reason_original": "FIH #1 BEL favoured over #4 AUS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-21T20:51:21.535701+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G1:r4",
