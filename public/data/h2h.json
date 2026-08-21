@@ -9,7 +9,7 @@
         "home": "FRA",
         "away": "RSA",
         "home_goals": 1,
-        "away_goals": 2,
+        "away_goals": 3,
         "current": false
       },
       {
@@ -506,5 +506,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-21T10:32:59.871252+00:00"
+  "updated_at": "2026-08-21T10:58:30.913242+00:00"
 }
