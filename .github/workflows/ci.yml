@@ -38,6 +38,11 @@ jobs:
       - name: Match preview evidence
         run: npm run test:preview
 
+      # The Cup tab and the Oracle bracket must project one tournament, not
+      # two: the pool table on screen IS the ordering the semi-final slots use.
+      - name: Bracket projection
+        run: npm run test:bracket
+
       # Six of sixteen carry a tag, and the quota must not drift: three
       # favourites, two dark horses, one underdog, and never an eliminated team.
       - name: Team tier assignment

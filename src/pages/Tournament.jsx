@@ -350,22 +350,37 @@ function BracketView({ bundle, byCode, matches }) {
                 <h3 className="font-display text-sm font-semibold">
                   Pool {pool.id} {pool.championship && <span className="font-mono text-[9px] text-brand">· championship</span>}
                 </h3>
-                <span className="font-mono text-[9px] text-pitch-400">{pool.locked ? '● set' : '○ projected'}</span>
+                {/* Two different things can be provisional: who is IN the pool,
+                    and where they finish. Say which. */}
+                <span className="font-mono text-[9px] text-pitch-400">
+                  {!pool.locked ? '○ line-up projected' : pool.complete ? '● final' : '● set · table projected'}
+                </span>
               </div>
               <ol className="space-y-1">
-                {pool.teams.map((code, i) => {
-                  const t = code ? byCode.get(code) : null
+                {(pool.table?.length ? pool.table : pool.teams.map(code => ({ code }))).map((row, i) => {
+                  const t = row.code ? byCode.get(row.code) : null
                   const advances = pool.championship && i < 2
                   return (
                     <li key={i} className="flex items-center gap-2 text-sm">
                       <span className={`w-4 text-center font-mono text-[10px] ${advances ? 'text-brand' : 'text-pitch-400'}`}>{i + 1}</span>
                       <span>{t?.flag ?? '❓'}</span>
                       <span className={`flex-1 truncate ${advances ? 'font-semibold' : 'text-pitch-300'}`}>{t?.name ?? 'TBD'}</span>
+                      {row.pts != null && (
+                        <span className="font-mono text-[10px] text-pitch-400">
+                          {row.pending ? row.pts.toFixed(1) : row.pts}
+                        </span>
+                      )}
                       {advances && <span className="font-mono text-[9px] text-brand">→ SF</span>}
                     </li>
                   )
                 })}
               </ol>
+              {pool.table?.some(r => r.pending > 0) && (
+                <p className="mt-2 font-mono text-[9px] leading-relaxed text-pitch-400">
+                  Points include expected returns from the {pool.table.reduce((n, r) => n + r.pending, 0) / 2} match
+                  {pool.table.reduce((n, r) => n + r.pending, 0) / 2 === 1 ? '' : 'es'} still to play.
+                </p>
+              )}
             </div>
           ))}
         </div>

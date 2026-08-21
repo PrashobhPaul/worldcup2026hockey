@@ -30,13 +30,16 @@ const SEMIS = [
   { id: 'SF2', home: ['F', 0], away: ['E', 1] }, // #48: 1st F v 2nd E
 ]
 // Classification matches read straight from Stage-2 placements.
+// Ids match the fixture ids exactly (POS*, not C*) — a tie whose id does not
+// exist in the schedule can never bind to its real fixture, so it would show
+// no date or venue and would never lock when the match is played.
 const CLASSIFICATION = [
-  { id: 'C5', label: '5th/6th Place', places: 5, home: ['E', 2], away: ['F', 2] },   // #45
-  { id: 'C7', label: '7th/8th Place', places: 7, home: ['E', 3], away: ['F', 3] },   // #46
-  { id: 'C9', label: '9th/10th Place', places: 9, home: ['G', 0], away: ['H', 0] },  // #44
-  { id: 'C11', label: '11th/12th Place', places: 11, home: ['G', 1], away: ['H', 1] }, // #43
-  { id: 'C13', label: '13th/14th Place', places: 13, home: ['G', 2], away: ['H', 2] }, // #41
-  { id: 'C15', label: '15th/16th Place', places: 15, home: ['G', 3], away: ['H', 3] }, // #42
+  { id: 'POS5', label: '5th/6th Place', places: 5, home: ['E', 2], away: ['F', 2] },   // #45
+  { id: 'POS7', label: '7th/8th Place', places: 7, home: ['E', 3], away: ['F', 3] },   // #46
+  { id: 'POS9', label: '9th/10th Place', places: 9, home: ['G', 0], away: ['H', 0] },  // #44
+  { id: 'POS11', label: '11th/12th Place', places: 11, home: ['G', 1], away: ['H', 1] }, // #43
+  { id: 'POS13', label: '13th/14th Place', places: 13, home: ['G', 2], away: ['H', 2] }, // #41
+  { id: 'POS15', label: '15th/16th Place', places: 15, home: ['G', 3], away: ['H', 3] }, // #42
 ]
 
 function hasResult(m) {
@@ -219,10 +222,60 @@ export function simulateTournament(teams, matches, opts = {}) {
   return { reach: out, runs, finishedCount: counted.length }
 }
 
+// ── Projected Stage-2 table ─────────────────────────────────────────────────
+// A Stage-2 pool of four plays six pairings: the two carried forward from
+// Stage 1 (the teams that shared a Stage-1 pool) and the four cross fixtures.
+// Real results are used wherever they exist; each remaining pairing
+// contributes its EXPECTED points and goals from the strength model, so the
+// order degrades smoothly from projection to fact instead of flipping.
+//
+// This is the single ordering the bracket uses. Ranking the pool by rating
+// alone — as this used to — produced a table on screen that disagreed with the
+// semi-final slots drawn beneath it.
+function projectPoolTable(codes, matches, rating) {
+  const rows = new Map(codes.map(c => [c, {
+    code: c, pts: 0, w: 0, gf: 0, ga: 0, gd: 0, played: 0, pending: 0,
+  }]))
+  const decided = new Set()
+
+  for (const m of matches) {
+    if (!hasResult(m)) continue
+    if (m.phase !== 'pool' && m.phase !== 'stage2') continue
+    const rh = rows.get(m.home), ra = rows.get(m.away)
+    if (!rh || !ra) continue
+    decided.add(pairKey(m.home, m.away))
+    rh.played++; ra.played++
+    rh.gf += m.score.home; rh.ga += m.score.away
+    ra.gf += m.score.away; ra.ga += m.score.home
+    if (m.score.home > m.score.away) { rh.pts += 3; rh.w++ }
+    else if (m.score.home < m.score.away) { ra.pts += 3; ra.w++ }
+    else { rh.pts++; ra.pts++ }
+  }
+
+  for (let i = 0; i < codes.length; i++) {
+    for (let j = i + 1; j < codes.length; j++) {
+      const x = codes[i], y = codes[j]
+      if (decided.has(pairKey(x, y))) continue
+      const rx = rows.get(x), ry = rows.get(y)
+      const p = matchProbabilities(rating(x), rating(y))
+      rx.pending++; ry.pending++
+      rx.pts += 3 * p.home + p.draw; rx.w += p.home
+      ry.pts += 3 * p.away + p.draw; ry.w += p.away
+      rx.gf += p.lambdaH; rx.ga += p.lambdaA
+      ry.gf += p.lambdaA; ry.ga += p.lambdaH
+    }
+  }
+
+  for (const r of rows.values()) r.gd = r.gf - r.ga
+  return [...rows.values()].sort((a, b) =>
+    b.pts - a.pts || b.w - a.w || b.gd - a.gd || b.gf - a.gf ||
+    rating(b.code) - rating(a.code) || a.code.localeCompare(b.code))
+}
+
 // ── Most-likely projected bracket (deterministic) for the Bracket view ───────
 // Probabilities come from the Monte Carlo above; this projects the single most
-// likely path — Stage-2 pools from current Stage-1 standings, ranked within
-// each pool by rating — and locks slots as real results arrive.
+// likely path — Stage-2 pools from current Stage-1 standings, each ranked by
+// the projected table above — and locks slots as real results arrive.
 export function projectBracket(teams, matches, standings) {
   const ratings = new Map(teams.map(t => [t.code, teamRating(t)]))
   const rating = c => ratings.get(c) ?? 1400
@@ -246,21 +299,31 @@ export function projectBracket(teams, matches, standings) {
       teams: slots.map(([p, i]) => byPool1.get(p)?.[i] ?? null),
     }
   }
-  // Within each projected pool, rank by rating for the most-likely finish
-  const place2 = {}
-  for (const [s2, pool] of Object.entries(stage2)) {
-    place2[s2] = [...pool.teams].filter(Boolean).sort((a, b) => rating(b) - rating(a))
+  // One table per Stage-2 pool, and it is the ONLY ordering used below — the
+  // card the reader sees and the semi-final slots are the same list.
+  for (const pool of Object.values(stage2)) {
+    const codes = pool.teams.filter(Boolean)
+    pool.entrants = pool.teams          // seeding order (1st A, 2nd A, 1st D, …)
+    pool.table = codes.length ? projectPoolTable(codes, matches, rating) : []
+    pool.complete = pool.table.length > 0 && pool.table.every(r => r.pending === 0)
+    if (pool.table.length) pool.teams = pool.table.map(r => r.code)
   }
-  const at = (pool, place) => place2[pool]?.[place] ?? null
+  const at = (pool, place) => stage2[pool]?.teams?.[place] ?? null
 
   const ties = []
   const winners = {}, losers = {}
 
-  const makeTie = (id, label, group, codeH, codeA, provisional) => {
+  const makeTie = (id, label, group, codeH, codeA) => {
     const real = koById.get(id)
     const home = real && real.home !== 'TBD' ? real.home : codeH
     const away = real && real.away !== 'TBD' ? real.away : codeA
     const played = real ? hasResult(real) : false
+    // Settled means the fixture itself names both teams — not merely that
+    // Stage 1 finished. Stage 2 decides who plays these ties, so calling a
+    // semi-final "locked" the moment the pools were drawn was a false claim
+    // about a pairing the engine had guessed.
+    const provisional = !played &&
+      !(real && real.home !== 'TBD' && real.away !== 'TBD')
     let pHomeAdvance = null, winner = null
     if (played) {
       winner = realKnockoutWinner(real)
@@ -282,19 +345,17 @@ export function projectBracket(teams, matches, standings) {
   }
 
   // Semi-finals
-  const koProvisional = !allStage1Done
-  makeTie('SF1', koById.get('SF1')?.label ?? 'Semi-Final', 'semi', at('E', 0), at('F', 1), koProvisional)
-  makeTie('SF2', koById.get('SF2')?.label ?? 'Semi-Final', 'semi', at('F', 0), at('E', 1), koProvisional)
+  makeTie('SF1', koById.get('SF1')?.label ?? 'Semi-Final', 'semi', at('E', 0), at('F', 1))
+  makeTie('SF2', koById.get('SF2')?.label ?? 'Semi-Final', 'semi', at('F', 0), at('E', 1))
 
-  const sfLocked = ['SF1', 'SF2'].every(id => koById.get(id) ? hasResult(koById.get(id)) : false)
   makeTie('BRZ', koById.get('BRZ')?.label ?? 'Bronze Medal Match', 'medal',
-    losers.SF1 ?? predictedLoser(ties, 'SF1'), losers.SF2 ?? predictedLoser(ties, 'SF2'), !sfLocked)
-  makeTie('GOLD', koById.get('GOLD')?.label ?? 'Gold Medal Match', 'medal', winners.SF1, winners.SF2, !sfLocked)
+    losers.SF1 ?? predictedLoser(ties, 'SF1'), losers.SF2 ?? predictedLoser(ties, 'SF2'))
+  makeTie('GOLD', koById.get('GOLD')?.label ?? 'Gold Medal Match', 'medal', winners.SF1, winners.SF2)
 
   // Classification 5–16 (independent of the medal path)
   for (const c of CLASSIFICATION) {
     makeTie(c.id, koById.get(c.id)?.label ?? c.label, 'classification',
-      at(c.home[0], c.home[1]), at(c.away[0], c.away[1]), koProvisional)
+      at(c.home[0], c.home[1]), at(c.away[0], c.away[1]))
   }
 
   return { stage2, ties, byId: new Map(ties.map(t => [t.id, t])) }
