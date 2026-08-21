@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-21T14:38:29.834805+00:00",
+  "last_updated": "2026-08-21T15:31:03.181279+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -13429,7 +13429,7 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
