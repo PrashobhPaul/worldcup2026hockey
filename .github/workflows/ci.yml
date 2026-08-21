@@ -38,6 +38,12 @@ jobs:
       - name: Match preview evidence
         run: npm run test:preview
 
+      # Published data must never change without the stamp changing with it:
+      # an installed app that holds the old stamp would never refetch, and the
+      # reader would sit on stale briefs with nothing wrong on the server.
+      - name: Data fingerprint
+        run: python3 scripts/data_fingerprint.py --check
+
       # Briefs must be true to the match record — every scorer named, every
       # goal minute cited — and a pick's rationale must argue from this
       # tournament rather than from a ranking gap or from hindsight.

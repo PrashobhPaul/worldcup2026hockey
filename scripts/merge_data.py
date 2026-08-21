@@ -164,6 +164,7 @@ def merge_version(ours, theirs):
     base = theirs or ours or {}
     base['version'] = v
     return base, f'version -> {v}'
+    # (the fingerprint is restamped after all files are written — see main)
 
 
 HANDLERS = {
@@ -243,6 +244,16 @@ def main():
         p = os.path.join(DATA, name)
         if os.path.exists(p):
             json.load(open(p))          # refuse to stage anything unparseable
+
+    # A merge produces content neither side published on its own, so the stamp
+    # has to describe the result — otherwise a client holding the surviving
+    # version number never learns the content moved underneath it.
+    from data_fingerprint import stamp as stamp_fingerprint
+    print(f'  ok fingerprint restamped ({stamp_fingerprint()})')
+    version_path = os.path.join(DATA, 'data-version.json')
+    if version_path not in files and os.path.exists(version_path):
+        files = files + [version_path]
+
     subprocess.run(['git', 'add'] + files, check=True)
     print('Staged. Review, then commit the merge.')
     return 0

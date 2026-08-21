@@ -131,7 +131,13 @@ async function _sync(force) {
       const h2hRows = Object.entries(h2hDoc.pairs || {})
         .map(([pair, meetings]) => ({ pair, meetings, since: h2hDoc.since ?? null }))
       if (h2hRows.length) await db.h2h.bulkPut(h2hRows)
-      await db.meta.put({ id: 'data', version: remote.version, updatedAt: remote.updated_at, syncedAt: Date.now() })
+      await db.meta.put({
+        id: 'data',
+        version: remote.version,
+        fingerprint: remote.fingerprint ?? null,
+        updatedAt: remote.updated_at,
+        syncedAt: Date.now(),
+      })
     })
 
   setStatus({ state: 'synced', version: remote.version, empty: false, error: null })

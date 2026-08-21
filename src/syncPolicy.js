@@ -20,5 +20,12 @@ export function needsResync({ force = false, empty = false, localMeta = null, re
   if (empty) return { resync: true, reason: 'empty-store' }
   if (!localMeta || typeof localMeta.version !== 'number') return { resync: true, reason: 'never-synced' }
   if (localMeta.version < remote.version) return { resync: true, reason: 'stale' }
+  // The counter can stay put while the content moves: it is written by both the
+  // pipeline and any branch that regenerates the data, and a merge keeps one
+  // side's number alongside BOTH sides' content. The fingerprint is derived
+  // from the published bytes, so it cannot be stale while they are not.
+  if (remote.fingerprint && localMeta.fingerprint !== remote.fingerprint) {
+    return { resync: true, reason: 'content-changed' }
+  }
   return { resync: false, reason: 'fresh' }
 }
