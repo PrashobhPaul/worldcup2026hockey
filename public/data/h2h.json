@@ -100,8 +100,8 @@
         "date": "2026-08-21",
         "home": "IRL",
         "away": "MAS",
-        "home_goals": 3,
-        "away_goals": 0,
+        "home_goals": 7,
+        "away_goals": 4,
         "current": false
       },
       {
@@ -513,7 +513,1453 @@
         "away_goals": 3,
         "current": false
       }
+    ],
+    "NZL-WAL": [
+      {
+        "competition": "Commonwealth Games 2022 (M)",
+        "date": "2022-08-07",
+        "home": "NZL",
+        "away": "WAL",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      }
+    ],
+    "JPN-PAK": [
+      {
+        "competition": "FIH Hockey World Cup 2026 Qualifiers, Ismailia (M)",
+        "date": "2026-03-06",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 4,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-16",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hero Asian Champions Trophy Moqi China 2024",
+        "date": "2024-09-11",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "30th Sultan Azlan Shah Cup 2024 (M)",
+        "date": "2024-05-07",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Asian Games Hangzhou 2022 Men&#039;s Hockey Competition",
+        "date": "2023-10-02",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Hero Asian Champions Trophy Chennai 2023",
+        "date": "2023-08-06",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 3,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2022",
+        "date": "2022-12-03",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2022 Sultan Azlan Shah Cup",
+        "date": "2022-11-09",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 5,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2022 Sultan Azlan Shah Cup",
+        "date": "2022-11-04",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hero Asia Cup 2022",
+        "date": "2022-05-26",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Hero Asian Champions Trophy Dhaka 2021",
+        "date": "2021-12-14",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 0,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "Men&#039;s Hero Asian Champions Trophy 2018",
+        "date": "2018-10-24",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2018 Asian Games (M)",
+        "date": "2018-08-30",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 0,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2018 Oman Triangular Series",
+        "date": "2018-02-20",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2018 Oman Triangular Series",
+        "date": "2018-02-18",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2018 Oman Triangular Series",
+        "date": "2018-02-15",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2017 Melbourne 4 Nations (M)",
+        "date": "2017-11-12",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2017 Melbourne 4 Nations (M)",
+        "date": "2017-11-09",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Hero Men&#039;s Asia Cup 2017",
+        "date": "2017-10-13",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2016 Men&#039;s Asian Champions Trophy",
+        "date": "2016-10-25",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 4,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Sultan Azlan Shah Cup 2016",
+        "date": "2016-04-15",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 4,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2013 Men&#039;s Asian Champions Trophy",
+        "date": "2013-11-10",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2013 Men&#039;s Asian Champions Trophy",
+        "date": "2013-11-08",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2013 Asia Cup - Men",
+        "date": "2013-08-24",
+        "home": "PAK",
+        "away": "JPN",
+        "home_goals": 7,
+        "away_goals": 0,
+        "current": false
+      }
+    ],
+    "IND-NED": [
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-06-21",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-06-14",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-09",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-07",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2023 4 Nations Men&#039;s Invitational Tournament (Barcelona)",
+        "date": "2023-07-30",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2023 4 Nations Men&#039;s Invitational Tournament (Barcelona)",
+        "date": "2023-07-26",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-06-10",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-06-07",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 4,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-06-19",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2020-21 FIH Hockey Pro League (M)",
+        "date": "2020-01-18",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "Odisha Hockey Men&#039;s World Cup Bhubaneswar 2018",
+        "date": "2018-12-13",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey Champions Trophy Breda 2018",
+        "date": "2018-06-30",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey World League Semi-Final (Men)",
+        "date": "2017-06-20",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2016 Olympic Games (Men)",
+        "date": "2016-08-11",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey World League Final 2015 (Men)",
+        "date": "2015-11-30",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Hero Champions Trophy 2014 (M)",
+        "date": "2014-12-09",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World League Semi-Final - Men",
+        "date": "2013-06-15",
+        "home": "NED",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 0,
+        "current": false
+      }
+    ],
+    "ARG-ENG": [
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-06-13",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 5,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2024-12-13",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2024-12-10",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-02-20",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-02-19",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 0,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Odisha Hockey Men&#039;s World Cup Bhubaneswar 2018",
+        "date": "2018-12-12",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2018 Sultan Azlan Shah Cup",
+        "date": "2018-03-07",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-07",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey World League Semi-Final (Men)",
+        "date": "2017-06-18",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 3,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Hero Champions Trophy 2014 (M)",
+        "date": "2014-12-13",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World Cup 2014 (M)",
+        "date": "2014-06-15",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 0,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "4 Nations Invitational Tournament (M)",
+        "date": "2014-04-25",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hockey World League Semi-Final - Men",
+        "date": "2013-07-06",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      }
+    ],
+    "MAS-RSA": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-20",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 4,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "FIH Odisha Hockey Men&#039;s World Cup 2023 Bhubaneswar - Rourkela",
+        "date": "2023-01-26",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 3,
+        "away_goals": 6,
+        "current": false
+      },
+      {
+        "competition": "2022 Sultan Azlan Shah Cup",
+        "date": "2022-11-04",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 7,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World Cup 2014 (M)",
+        "date": "2014-06-12",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 6,
+        "current": false
+      },
+      {
+        "competition": "Sultan Azlan Shah Cup 2014",
+        "date": "2014-03-13",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hockey World League Semi-Final - Men",
+        "date": "2013-06-30",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 6,
+        "away_goals": 4,
+        "current": false
+      }
+    ],
+    "FRA-IRL": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
+        "date": "2026-06-13",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 2,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey World Cup 2026 Qualifiers, Santiago (M)",
+        "date": "2026-03-08",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2022",
+        "date": "2022-11-28",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "EuroHockey Championship Qualifier B 2022 Men",
+        "date": "2022-08-25",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 4,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "FIH Men&#039;s Series Finals Le Touquet-Paris Plage 2019",
+        "date": "2019-06-23",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "real FOUR NATIONS CUP Men",
+        "date": "2018-07-29",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Unibet EuroHockey Championships 2015 (M)",
+        "date": "2015-08-22",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 3,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World League Semi-Final - Men",
+        "date": "2013-06-22",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 4,
+        "away_goals": 6,
+        "current": false
+      }
+    ],
+    "AUS-GER": [
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-02-15",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-02-12",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 0,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-25",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 5,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-24",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2023-24 FIH Hockey Pro League (M)",
+        "date": "2024-06-11",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-03-14",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-03-11",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 1,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "FIH Odisha Hockey Men&#039;s World Cup 2023 Bhubaneswar - Rourkela",
+        "date": "2023-01-27",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 4,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2020 Olympic Games (Men)",
+        "date": "2021-08-03",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2019 FIH Hockey Pro League (M)",
+        "date": "2019-06-16",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2019 FIH Hockey Pro League (M)",
+        "date": "2019-02-10",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 2,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-09",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 0,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-02",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey Champions Trophy 2016",
+        "date": "2016-06-13",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 3,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey World League Final 2015 (Men)",
+        "date": "2015-12-02",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 1,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Hero Champions Trophy 2014 (M)",
+        "date": "2014-12-13",
+        "home": "GER",
+        "away": "AUS",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      }
+    ],
+    "BEL-ESP": [
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-06-21",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-06-16",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "EuroHockey Championship 2025 Men",
+        "date": "2025-08-12",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-18",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 3,
+        "away_goals": 6,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-17",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2024 Olympic Games (M)",
+        "date": "2024-08-04",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2023-24 FIH Hockey Pro League (M)",
+        "date": "2024-06-01",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "2023-24 FIH Hockey Pro League (M)",
+        "date": "2024-05-30",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Olympic Qualifiers 2024 Valencia (M)",
+        "date": "2024-01-21",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "EuroHockey Championship 2023 Men",
+        "date": "2023-08-21",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-07-03",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-06-30",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 7,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-05-21",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "2020 Olympic Games (Men)",
+        "date": "2021-08-01",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "EuroHockey Championship 2021 Men",
+        "date": "2021-06-05",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "2020-21 FIH Hockey Pro League (M)",
+        "date": "2021-02-06",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2020-21 FIH Hockey Pro League (M)",
+        "date": "2021-02-05",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Belfius EuroHockey Championship (Men) 2019",
+        "date": "2019-08-24",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "Belfius EuroHockey Championship (Men) 2019",
+        "date": "2019-08-16",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "2019 FIH Hockey Pro League (M)",
+        "date": "2019-04-10",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 3,
+        "away_goals": 7,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-09",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-03",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "Rabo EuroHockey Championship 2017 (M)",
+        "date": "2017-08-23",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2016 Olympic Games (Men)",
+        "date": "2016-08-11",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Unibet EuroHockey Championships 2015 (M)",
+        "date": "2015-08-27",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Ergo Masters - Hamburg - 2015: (Men)",
+        "date": "2015-08-01",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World Cup 2014 (M)",
+        "date": "2014-06-07",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "TriFinance EuroHockey Championships Men",
+        "date": "2013-08-21",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World League Semi-Final - Men",
+        "date": "2013-06-17",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      }
+    ],
+    "JPN-WAL": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-20",
+        "home": "JPN",
+        "away": "WAL",
+        "home_goals": 4,
+        "away_goals": 6,
+        "current": false
+      }
+    ],
+    "NZL-PAK": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-21",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 6,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-18",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 4,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Poland 2023-24",
+        "date": "2024-06-08",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "30th Sultan Azlan Shah Cup 2024 (M)",
+        "date": "2024-05-10",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Olympic Qualifiers 2024 Oman (M)",
+        "date": "2024-01-21",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Commonwealth Games 2022 (M)",
+        "date": "2022-07-31",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 4,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2017 Melbourne 4 Nations (M)",
+        "date": "2017-11-11",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Sultan Azlan Shah Cup 2016",
+        "date": "2016-04-09",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 5,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Sultan Azlan Shah Cup 2013",
+        "date": "2013-03-09",
+        "home": "NZL",
+        "away": "PAK",
+        "home_goals": 3,
+        "away_goals": 4,
+        "current": false
+      }
+    ],
+    "ARG-IND": [
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-02-15",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 4,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2025-26 FIH Hockey Pro League (M)",
+        "date": "2026-02-12",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 8,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-12",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-11",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 4,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2024 Olympic Games (M)",
+        "date": "2024-07-29",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2023-24 FIH Hockey Pro League (M)",
+        "date": "2024-05-26",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 4,
+        "away_goals": 5,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-06-11",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2022-23 FIH Hockey Pro League (M)",
+        "date": "2023-06-08",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 0,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-03-20",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "2020 Olympic Games (Men)",
+        "date": "2021-07-29",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2020-21 FIH Hockey Pro League (M)",
+        "date": "2021-04-11",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 0,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey Champions Trophy Breda 2018",
+        "date": "2018-06-24",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2018 Sultan Azlan Shah Cup",
+        "date": "2018-03-03",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-08",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2016 Olympic Games (Men)",
+        "date": "2016-08-09",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "2016 6 Nations Invitational (Valencia) : (M)",
+        "date": "2016-07-02",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey World League Final 2015 (Men)",
+        "date": "2015-11-27",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 3,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "Hero Champions Trophy 2014 (M)",
+        "date": "2014-12-07",
+        "home": "ARG",
+        "away": "IND",
+        "home_goals": 4,
+        "away_goals": 2,
+        "current": false
+      }
+    ],
+    "ENG-NED": [
+      {
+        "competition": "2024-25 FIH Hockey Pro League (M)",
+        "date": "2025-06-17",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "EuroHockey Championship 2023 Men",
+        "date": "2023-08-27",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2023 4 Nations Men&#039;s Invitational Tournament (Barcelona)",
+        "date": "2023-07-25",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-06-05",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 6,
+        "away_goals": 3,
+        "current": false
+      },
+      {
+        "competition": "2021-22 FIH Hockey Pro League (M)",
+        "date": "2022-06-04",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 3,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "2018 4 Nations Mens Tournament Valencia (M)",
+        "date": "2018-10-30",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Odisha Men&#039;s Hockey World League Final Bhubaneswar 2017",
+        "date": "2017-12-08",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 1,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "Rabo EuroHockey Championship 2017 (M)",
+        "date": "2017-08-25",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "4 Nations Commemorative Tournament (M)",
+        "date": "2017-08-06",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 9,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Hero Hockey World League Semi-Final (Men)",
+        "date": "2017-06-24",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 2,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "Unibet EuroHockey Championships 2015 (M)",
+        "date": "2015-08-23",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 2,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World Cup 2014 (M)",
+        "date": "2014-06-13",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 1,
+        "away_goals": 0,
+        "current": false
+      },
+      {
+        "competition": "4 Nations Invitational Tournament (M)",
+        "date": "2014-05-15",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 3,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "TriFinance EuroHockey Championships Men",
+        "date": "2013-08-25",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 3,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "TriFinance EuroHockey Championships Men",
+        "date": "2013-08-19",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "4 Nations Tournament (Men) Hamburg, Germany",
+        "date": "2013-07-25",
+        "home": "NED",
+        "away": "ENG",
+        "home_goals": 6,
+        "away_goals": 1,
+        "current": false
+      }
     ]
   },
-  "updated_at": "2026-08-21T12:53:02.432534+00:00"
+  "updated_at": "2026-08-21T14:21:27.450272+00:00"
 }

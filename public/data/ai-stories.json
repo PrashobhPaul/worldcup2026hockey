@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T17:57:21.345269+00:00",
+  "updated_at": "2026-08-21T14:21:42.140415+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -144,6 +144,13 @@
       "story": "The most goals either of these sides has scored in a World Cup meeting, and the fixture lived up to everything it usually promises. India led 4-2 at half-time in a first half that produced six goals, then closed the match out with the control that has been missing from their tournament so far.\n\nHarmanpreet Singh converted in the 5th and again in the 21st — India's only two penalty corners of the match, both scored. Abhishek added field goals in the 11th and the 24th. Pakistan refused to fold: Hannan Shahid in the 22nd, Sufyan Khan from a corner in the 24th, and Shahid again in the 46th. Hardik Singh's penalty stroke in the 35th proved the decisive fifth.\n\nTwo corners, two goals is perfect conversion and a marked change from the eight-for-one against England. India's open-play scoring — two from Abhishek — is the more meaningful development, because it answers the criticism that has followed them through the pool. Pakistan scored three times against a top-eight defence and still lost; their defending of the counter, not their attack, is what ends their pool campaign.",
       "generatedAt": "2026-08-21T07:10:02.651433+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "S2H1",
+      "story": "South Africa beat France 3-1 at the Royal Leopold Club in Brussels, in a Pool H tie of the FIH Hockey World Cup 2026. France came in ranked 9th in the world, South Africa 13th.\n\nFrance scored through Victor Charlet (30', penalty corner); South Africa through Mustaphaa Cassiem (17', penalty corner), Mustaphaa Cassiem (19', penalty corner) and Dayaan Cassiem (60'). The opener came in Q2 and the final goal in Q4.\n\nFrance won 1 penalty corner to South Africa's 2. 3 cards were shown.",
+      "generatedAt": "2026-08-21T14:21:42.140393+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }
