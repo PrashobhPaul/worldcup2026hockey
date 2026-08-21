@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-21T16:38:21.285653+00:00",
+  "last_updated": "2026-08-21T17:27:13.631582+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1175,7 +1175,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.590038+00:00",
+        "generated_at": "2026-08-21T17:27:13.611819+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1199,18 +1199,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_15",
-              "name": "Jakob Brilla",
-              "number": 34,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_15",
+              "name": "Jakob Brilla",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -3604,7 +3604,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T17:26:59.804744+00:00",
+        "generated_at": "2026-08-21T17:27:13.614278+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3619,18 +3619,18 @@
               "goalkeeper": true
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_08",
+              "name": "José Basterra",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_08",
-              "name": "José Basterra",
-              "number": 10,
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -5142,7 +5142,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T20:24:39.593689+00:00",
+        "generated_at": "2026-08-21T17:27:13.615747+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5324,18 +5324,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_15",
-              "name": "Jakob Brilla",
-              "number": 34,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_15",
+              "name": "Jakob Brilla",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -7105,7 +7105,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T17:26:59.808149+00:00",
+        "generated_at": "2026-08-21T17:27:13.617652+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7292,18 +7292,18 @@
               "goalkeeper": true
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_08",
+              "name": "José Basterra",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_08",
-              "name": "José Basterra",
-              "number": 10,
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -9824,7 +9824,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T17:25:07.551285+00:00",
+        "generated_at": "2026-08-21T17:27:13.620037+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10020,18 +10020,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_15",
-              "name": "Jakob Brilla",
-              "number": 34,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_15",
+              "name": "Jakob Brilla",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -11898,7 +11898,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.598207+00:00",
+        "generated_at": "2026-08-21T17:27:13.622008+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -11913,18 +11913,18 @@
               "goalkeeper": true
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_08",
+              "name": "José Basterra",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_08",
-              "name": "José Basterra",
-              "number": 10,
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -13774,15 +13774,37 @@
       "time": "17:00",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 26,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Justus Weigand"
+        },
+        {
+          "minute": 30,
+          "team": "ESP",
+          "type": "goal",
+          "via": "PS",
+          "player": "José Basterra"
+        },
+        {
+          "minute": 50,
+          "team": "ESP",
+          "type": "goal",
+          "via": "FG",
+          "player": "José Basterra"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.753169+00:00",
+        "generated_at": "2026-08-21T17:27:13.623953+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -13806,18 +13828,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_15",
-              "name": "Jakob Brilla",
-              "number": 34,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_15",
+              "name": "Jakob Brilla",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -13962,18 +13984,18 @@
               "goalkeeper": true
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_08",
+              "name": "José Basterra",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_08",
-              "name": "José Basterra",
-              "number": 10,
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -14121,7 +14143,81 @@
           "coach": "Max Caldas"
         }
       },
-      "tms_id": 22360
+      "tms_id": 22360,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 1,
+          "shots": 6,
+          "circle_entries": 20,
+          "penalty_corners": 0,
+          "possession": 49,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 7,
+          "circle_entries": 21,
+          "penalty_corners": 0,
+          "possession": 51,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! GER vs ESP under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: GER 0-0 ESP.",
+          "seq": 1
+        },
+        {
+          "minute": 26,
+          "team": "GER",
+          "text": "GOAL! Justus Weigand (GER) scores from a field goal — GER 1-0 ESP.",
+          "seq": 2
+        },
+        {
+          "minute": 30,
+          "team": "ESP",
+          "text": "GOAL! José Basterra (ESP) scores from a penalty stroke — GER 1-1 ESP.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: GER 1-1 ESP.",
+          "seq": 4
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: GER 1-1 ESP.",
+          "seq": 5
+        },
+        {
+          "minute": 50,
+          "team": "ESP",
+          "text": "GOAL! José Basterra (ESP) scores from a field goal — GER 1-2 ESP.",
+          "seq": 6
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: GER 1-2 ESP.",
+          "seq": 7
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2G1",
@@ -16330,7 +16426,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.754973+00:00",
+        "generated_at": "2026-08-21T17:27:13.627467+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -16354,18 +16450,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_15",
-              "name": "Jakob Brilla",
-              "number": 34,
+              "playerId": "GER_09",
+              "name": "Justus Weigand",
+              "number": 19,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_09",
-              "name": "Justus Weigand",
-              "number": 19,
+              "playerId": "GER_15",
+              "name": "Jakob Brilla",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -16694,7 +16790,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.755247+00:00",
+        "generated_at": "2026-08-21T17:27:13.627942+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -16709,18 +16805,18 @@
               "goalkeeper": true
             },
             {
-              "playerId": "ESP_09",
-              "name": "Marc Reyne",
-              "number": 12,
+              "playerId": "ESP_08",
+              "name": "José Basterra",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ESP_08",
-              "name": "José Basterra",
-              "number": 10,
+              "playerId": "ESP_09",
+              "name": "Marc Reyne",
+              "number": 12,
               "line": "Defender",
               "position": null,
               "captain": false,

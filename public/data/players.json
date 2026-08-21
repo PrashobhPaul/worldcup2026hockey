@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-21T16:38:21.285653+00:00",
+  "last_updated": "2026-08-21T17:27:13.631582+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -414,8 +414,8 @@
       "fih_star": false,
       "profile": "Germany's captain and solid defensive anchor.",
       "green_cards": 0,
-      "matches_played": 3,
-      "ai_rating": 65.7,
+      "matches_played": 4,
+      "ai_rating": 68.0,
       "on_team_list": false
     },
     {
@@ -433,8 +433,8 @@
       "fih_star": true,
       "profile": "Germany's top goal scorer. International class forward.",
       "green_cards": 0,
-      "matches_played": 3,
-      "ai_rating": 62.5,
+      "matches_played": 4,
+      "ai_rating": 66.0,
       "on_team_list": true,
       "dob": "19 Dec 1993",
       "caps": 214
@@ -454,8 +454,8 @@
       "fih_star": false,
       "profile": "Midfield workhorse for Die Mannschaft.",
       "green_cards": 0,
-      "matches_played": 3,
-      "ai_rating": 55.6,
+      "matches_played": 4,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -534,8 +534,8 @@
       "fih_star": false,
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 1,
-      "matches_played": 3,
-      "ai_rating": 56.5,
+      "matches_played": 4,
+      "ai_rating": 59.0,
       "on_team_list": true,
       "dob": "14 Nov 1997",
       "caps": 152
@@ -555,8 +555,8 @@
       "fih_star": false,
       "profile": "Pace and power forward. Spain's goal threat.",
       "green_cards": 0,
-      "matches_played": 3,
-      "ai_rating": 53.9,
+      "matches_played": 4,
+      "ai_rating": 56.0,
       "on_team_list": false
     },
     {
@@ -574,8 +574,8 @@
       "fih_star": false,
       "profile": "Creative playmaker. Scored in multiple major tournaments.",
       "green_cards": 0,
-      "matches_played": 3,
-      "ai_rating": 55.6,
+      "matches_played": 4,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -2305,8 +2305,8 @@
       "profile": "Named on the official FIH team list — 10 senior caps.",
       "dob": "18 Dec 2006",
       "caps": 12,
-      "matches_played": 3,
-      "ai_rating": 59.9,
+      "matches_played": 4,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2327,7 +2327,7 @@
       "profile": "Named on the official FIH team list — 101 senior caps.",
       "dob": "17 Sep 1999",
       "caps": 104,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2349,7 +2349,7 @@
       "profile": "Named on the official FIH team list — 151 senior caps.",
       "dob": "4 Aug 1995",
       "caps": 153,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2360,7 +2360,7 @@
       "team": "GER",
       "position": "Squad",
       "number": 19,
-      "goals": 2,
+      "goals": 3,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -2371,8 +2371,8 @@
       "profile": "Named on the official FIH team list — 88 senior caps.",
       "dob": "20 Apr 2000",
       "caps": 91,
-      "matches_played": 3,
-      "ai_rating": 65.1,
+      "matches_played": 4,
+      "ai_rating": 75.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2393,7 +2393,7 @@
       "profile": "Named on the official FIH team list — 47 senior caps.",
       "dob": "19 Apr 2003",
       "caps": 50,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2415,7 +2415,7 @@
       "profile": "Named on the official FIH team list — 41 senior caps.",
       "dob": "3 Dec 2001",
       "caps": 44,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2437,7 +2437,7 @@
       "profile": "Named on the official FIH team list — 94 senior caps.",
       "dob": "18 May 2000",
       "caps": 97,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2459,7 +2459,7 @@
       "profile": "Named on the official FIH team list — 94 senior caps.",
       "dob": "23 Oct 1997",
       "caps": 96,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2481,8 +2481,8 @@
       "profile": "Named on the official FIH team list — 17 senior caps.",
       "dob": "4 Nov 2003",
       "caps": 20,
-      "matches_played": 3,
-      "ai_rating": 68.6,
+      "matches_played": 4,
+      "ai_rating": 73.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2503,7 +2503,7 @@
       "profile": "Named on the official FIH team list — 42 senior caps.",
       "dob": "6 Oct 2002",
       "caps": 45,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -2525,8 +2525,8 @@
       "profile": "Named on the official FIH team list — 11 senior caps.",
       "dob": "2 Nov 2002",
       "caps": 12,
-      "matches_played": 3,
-      "ai_rating": 80.7,
+      "matches_played": 4,
+      "ai_rating": 84.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2547,7 +2547,7 @@
       "profile": "Named on the official FIH team list — 80 senior caps.",
       "dob": "14 Sep 2001",
       "caps": 82,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5477,7 +5477,7 @@
       "profile": "Named on the official FIH team list — 139 senior caps.",
       "dob": "14 Feb 1999",
       "caps": 142,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5499,7 +5499,7 @@
       "profile": "Named on the official FIH team list — 108 senior caps.",
       "dob": "7 Aug 2000",
       "caps": 111,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5521,7 +5521,7 @@
       "profile": "Named on the official FIH team list — 117 senior caps.",
       "dob": "1 Apr 1999",
       "caps": 120,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5543,7 +5543,7 @@
       "profile": "Named on the official FIH team list — 133 senior caps.",
       "dob": "13 Sep 1999",
       "caps": 136,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5554,7 +5554,7 @@
       "team": "ESP",
       "position": "Squad",
       "number": 10,
-      "goals": 2,
+      "goals": 4,
       "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
@@ -5565,8 +5565,8 @@
       "profile": "Named on the official FIH team list — 109 senior caps.",
       "dob": "3 Jan 1997",
       "caps": 112,
-      "matches_played": 3,
-      "ai_rating": 65.1,
+      "matches_played": 4,
+      "ai_rating": 81.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5587,8 +5587,8 @@
       "profile": "Named on the official FIH team list — 101 senior caps.",
       "dob": "18 May 1999",
       "caps": 104,
-      "matches_played": 3,
-      "ai_rating": 72.0,
+      "matches_played": 4,
+      "ai_rating": 77.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5609,8 +5609,8 @@
       "profile": "Named on the official FIH team list — 78 senior caps.",
       "dob": "15 Nov 2000",
       "caps": 81,
-      "matches_played": 3,
-      "ai_rating": 74.6,
+      "matches_played": 4,
+      "ai_rating": 80.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5631,8 +5631,8 @@
       "profile": "Named on the official FIH team list — 32 senior caps.",
       "dob": "16 Feb 1998",
       "caps": 32,
-      "matches_played": 3,
-      "ai_rating": 74.6,
+      "matches_played": 4,
+      "ai_rating": 80.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5653,7 +5653,7 @@
       "profile": "Named on the official FIH team list — 102 senior caps.",
       "dob": "9 Jul 2001",
       "caps": 105,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5675,7 +5675,7 @@
       "profile": "Named on the official FIH team list — 37 senior caps.",
       "dob": "22 Apr 2003",
       "caps": 40,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5697,7 +5697,7 @@
       "profile": "Named on the official FIH team list — 49 senior caps.",
       "dob": "30 Apr 1999",
       "caps": 52,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5719,7 +5719,7 @@
       "profile": "Named on the official FIH team list — 64 senior caps.",
       "dob": "15 Nov 2004",
       "caps": 67,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5741,8 +5741,8 @@
       "profile": "Named on the official FIH team list — 39 senior caps.",
       "dob": "4 Jan 2003",
       "caps": 41,
-      "matches_played": 3,
-      "ai_rating": 59.9,
+      "matches_played": 4,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5763,7 +5763,7 @@
       "profile": "Named on the official FIH team list — 14 senior caps.",
       "dob": "26 Feb 2003",
       "caps": 16,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -5785,7 +5785,7 @@
       "profile": "Named on the official FIH team list — 21 senior caps.",
       "dob": "7 Nov 1998",
       "caps": 23,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -6203,7 +6203,7 @@
       "profile": "Named on the official FIH team list — 147 senior caps.",
       "dob": "7 Jan 1997",
       "caps": 150,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -6225,7 +6225,7 @@
       "profile": "Named on the official FIH team list — 30 senior caps.",
       "dob": "17 Apr 2004",
       "caps": 33,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -6819,7 +6819,7 @@
       "profile": "Named on the official FIH team list — 55 senior caps.",
       "dob": "2 Dec 1999",
       "caps": 56,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -6841,8 +6841,8 @@
       "profile": "Named on the official FIH team list — 64 senior caps.",
       "dob": "14 Jan 2001",
       "caps": 67,
-      "matches_played": 3,
-      "ai_rating": 53.0,
+      "matches_played": 4,
+      "ai_rating": 55.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6863,8 +6863,8 @@
       "profile": "Named on the official FIH team list — 92 senior caps.",
       "dob": "21 Jun 1996",
       "caps": 95,
-      "matches_played": 3,
-      "ai_rating": 59.9,
+      "matches_played": 4,
+      "ai_rating": 63.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6885,8 +6885,8 @@
       "profile": "Named on the official FIH team list — 59 senior caps.",
       "dob": "8 Nov 2002",
       "caps": 62,
-      "matches_played": 3,
-      "ai_rating": 80.7,
+      "matches_played": 4,
+      "ai_rating": 84.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -7127,7 +7127,7 @@
       "profile": "Named on the official FIH team list — 88 senior caps.",
       "dob": "21 May 2001",
       "caps": 91,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -7149,7 +7149,7 @@
       "profile": "Named on the official FIH team list — 102 senior caps.",
       "dob": "13 Sep 2000",
       "caps": 105,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -7171,7 +7171,7 @@
       "profile": "Named on the official FIH team list — 216 senior caps.",
       "dob": "18 Aug 1991",
       "caps": 218,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -7369,7 +7369,7 @@
       "profile": "Named on the official FIH team list — 114 senior caps.",
       "dob": "7 Jul 1998",
       "caps": 117,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
@@ -7457,7 +7457,7 @@
       "profile": "Named on the official FIH team list — 63 senior caps.",
       "dob": "28 Nov 2001",
       "caps": 64,
-      "matches_played": 3,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
