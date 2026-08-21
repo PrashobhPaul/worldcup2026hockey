@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-21T13:48:59.993116+00:00",
+  "last_updated": "2026-08-21T14:33:54.332460+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1175,7 +1175,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T20:24:39.589761+00:00",
+        "generated_at": "2026-08-21T14:33:54.318272+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1496,16 +1496,16 @@
               "onAt": "15:46"
             },
             {
-              "playerId": "MAS_20",
-              "name": "Andywalfian Jeffrynus",
-              "number": 35,
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "34:39"
             },
             {
-              "playerId": "MAS_18",
-              "name": "Azimuddin Kamaruddin",
-              "number": 31,
+              "playerId": "MAS_20",
+              "name": "Andywalfian Jeffrynus",
+              "number": 35,
               "position": null,
               "onAt": "46:13"
             }
@@ -5646,7 +5646,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T20:24:39.594167+00:00",
+        "generated_at": "2026-08-21T14:33:54.321496+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5974,16 +5974,16 @@
               "onAt": "26:28"
             },
             {
-              "playerId": "MAS_20",
-              "name": "Andywalfian Jeffrynus",
-              "number": 35,
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "16:55"
             },
             {
-              "playerId": "MAS_18",
-              "name": "Azimuddin Kamaruddin",
-              "number": 31,
+              "playerId": "MAS_20",
+              "name": "Andywalfian Jeffrynus",
+              "number": 35,
               "position": null,
               "onAt": "39:04"
             }
@@ -9335,7 +9335,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T20:24:39.597529+00:00",
+        "generated_at": "2026-08-21T14:33:54.323971+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -9649,16 +9649,16 @@
               "onAt": "09:46"
             },
             {
-              "playerId": "MAS_20",
-              "name": "Andywalfian Jeffrynus",
-              "number": 35,
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "42:09"
             },
             {
-              "playerId": "MAS_18",
-              "name": "Azimuddin Kamaruddin",
-              "number": 31,
+              "playerId": "MAS_20",
+              "name": "Andywalfian Jeffrynus",
+              "number": 35,
               "position": null,
               "onAt": "46:37"
             }
@@ -12723,7 +12723,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.752655+00:00",
+        "generated_at": "2026-08-21T14:33:54.326402+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -13037,16 +13037,16 @@
               "onAt": "24:24"
             },
             {
-              "playerId": "MAS_20",
-              "name": "Andywalfian Jeffrynus",
-              "number": 35,
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "19:33"
             },
             {
-              "playerId": "MAS_18",
-              "name": "Azimuddin Kamaruddin",
-              "number": 31,
+              "playerId": "MAS_20",
+              "name": "Andywalfian Jeffrynus",
+              "number": 35,
               "position": null,
               "onAt": "37:56"
             }
@@ -15264,7 +15264,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.754470+00:00",
+        "generated_at": "2026-08-21T14:33:54.328849+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -15420,16 +15420,16 @@
               "onAt": "19:56"
             },
             {
-              "playerId": "MAS_20",
-              "name": "Andywalfian Jeffrynus",
-              "number": 35,
+              "playerId": "MAS_18",
+              "name": "Azimuddin Kamaruddin",
+              "number": 31,
               "position": null,
               "onAt": "18:22"
             },
             {
-              "playerId": "MAS_18",
-              "name": "Azimuddin Kamaruddin",
-              "number": 31,
+              "playerId": "MAS_20",
+              "name": "Andywalfian Jeffrynus",
+              "number": 35,
               "position": null,
               "onAt": "34:41"
             }
