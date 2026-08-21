@@ -4,6 +4,7 @@ import { db } from '../db'
 import { oracleRecord } from '../engine/prediction'
 import { Home, CalendarDays, Users, UserRound, Trophy, Target, FlaskConical } from 'lucide-react'
 import InstallPrompt from './InstallPrompt'
+import DataBanner from './DataBanner'
 import { useSwipeTabs, SWIPE_PRIORITY } from './useSwipeTabs'
 
 // One tab list, used by the desktop bar and the mobile bar alike — the app has
@@ -76,6 +77,10 @@ export default function AppShell() {
           <OracleChip />
         </nav>
       </header>
+
+      {/* Speaks only when the local cache is empty or the database is blocked —
+          the states that would otherwise render as tab after empty tab. */}
+      <DataBanner />
 
       <main className="mx-auto max-w-5xl px-4 py-5">
         <Outlet />

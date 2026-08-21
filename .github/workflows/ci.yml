@@ -38,6 +38,12 @@ jobs:
       - name: Match preview evidence
         run: npm run test:preview
 
+      # An empty local database must never be mistaken for an up-to-date one:
+      # that is what rendered a shell full of empty tabs with nothing to explain
+      # it. scripts/smoke_recovery.mjs covers the same ground in a real browser.
+      - name: Sync policy
+        run: npm run test:sync
+
       # The Cup tab and the Oracle bracket must project one tournament, not
       # two: the pool table on screen IS the ordering the semi-final slots use.
       - name: Bracket projection

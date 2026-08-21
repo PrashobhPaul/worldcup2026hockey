@@ -11,7 +11,9 @@
     "test:parsers": "python3 scripts/test_parsers.py",
     "test:preview": "node scripts/test_preview.mjs",
     "test:tiers": "node scripts/test_tiers.mjs",
-    "test:bracket": "node scripts/test_bracket.mjs"
+    "test:bracket": "node scripts/test_bracket.mjs",
+    "test:sync": "node scripts/test_sync_policy.mjs",
+    "smoke:recovery": "node scripts/smoke_recovery.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.8",
