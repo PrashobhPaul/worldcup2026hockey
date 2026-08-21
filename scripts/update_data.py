@@ -1674,14 +1674,20 @@ def pick_scorer(rng, players, code, via, picked=None):
 #   ENG 14 23 FG 0 - 1   ->  England, 14', shirt 23, field goal
 # Cards live in a two-team table above it; those are read by coordinate, below.
 
-GOAL_LINE = re.compile(r'^([A-Z]{3})\s+(\d{1,3})\s+(\d{1,2})\s+(FG|PC|PS)\s+\d+\s*-\s*\d+\s*$')
+GOAL_LINE = re.compile(r'\b([A-Z]{3})\s+(\d{1,3})\s+(\d{1,2})\s+(FG|PC|PS)\s+\d{1,2}\s*-\s*\d{1,2}')
 
 def parse_match_report_goals(lines):
-    """[{team, minute, shirt, via}] from the report's scoring section."""
+    """[{team, minute, shirt, via}] from the report's scoring section.
+
+    A busy scoresheet wraps into side-by-side columns, so one text line can
+    carry two goal entries — IRL 7-4 MAS printed eleven goals across eight
+    lines, and an anchored per-line match read only the left column (3-2).
+    Every entry on the line is read; the team-code sanity check stays with
+    the callers, which reject any goal not credited to one of the two sides.
+    """
     out = []
     for ln in lines:
-        m = GOAL_LINE.match(ln.strip())
-        if m:
+        for m in GOAL_LINE.finditer(ln.strip()):
             out.append({'team': m.group(1), 'minute': int(m.group(2)),
                         'shirt': int(m.group(3)), 'via': m.group(4)})
     return out

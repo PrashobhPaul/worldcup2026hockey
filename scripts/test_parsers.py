@@ -628,6 +628,29 @@ check('a penalty stroke is read', any(g['via'] == 'PS' for g in pak_wal))
 check('the score orientation in the line is ignored',
       sum(g['team'] == 'PAK' for g in pak_wal) == 3 and sum(g['team'] == 'WAL' for g in pak_wal) == 3)
 
+# Verbatim from the live IRL v MAS report (probe run 22359): eleven goals wrap
+# into side-by-side columns, so three lines carry TWO entries each. The old
+# anchored per-line match read only the left column and tallied 3-2 of 7-4.
+irl_mas = parse_match_report_goals([
+    'Team Minute Number Action Score Team Minute Number Action Score Team Minute Number Action Score',
+    'IRL 8 25 FG 1 - 0 MAS 41 23 PC 6 - 3',
+    'IRL 12 25 PC 2 - 0 IRL 54 24 FG 7 - 3',
+    'IRL 19 9 FG 3 - 0 MAS 55 10 FG 7 - 4',
+    'IRL 24 25 FG 4 - 0',
+    'MAS 29 31 PC 4 - 1',
+    'MAS 36 29 PC 4 - 2',
+    'IRL 37 8 PC 5 - 2',
+    'IRL 39 9 FG 6 - 2',
+    'FG - Field Goal, PC - Penalty Corner, PS - Penalty Stroke',
+])
+check('a two-column scoresheet yields every goal', len(irl_mas) == 11, str(len(irl_mas)))
+check('the two-column tally reconstructs 7-4',
+      sum(g['team'] == 'IRL' for g in irl_mas) == 7 and sum(g['team'] == 'MAS' for g in irl_mas) == 4)
+check('the right-column entries carry their own minutes',
+      {(g['minute'], g['team']) for g in irl_mas} >= {(41, 'MAS'), (54, 'IRL'), (55, 'MAS')})
+check('two-column header and legend rows still yield nothing',
+      all(g['team'] in ('IRL', 'MAS') for g in irl_mas))
+
 print('\nMatch model calibration (v2, points-based)')
 
 ph, pd, pa = predict(3000, 3000)
