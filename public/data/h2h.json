@@ -100,7 +100,7 @@
         "date": "2026-08-21",
         "home": "IRL",
         "away": "MAS",
-        "home_goals": 2,
+        "home_goals": 3,
         "away_goals": 0,
         "current": false
       },
@@ -515,5 +515,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-21T12:41:57.833631+00:00"
+  "updated_at": "2026-08-21T12:53:02.432534+00:00"
 }
