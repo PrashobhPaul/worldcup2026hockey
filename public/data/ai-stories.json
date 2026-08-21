@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T14:21:42.140415+00:00",
+  "updated_at": "2026-08-21T14:36:27.872700+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -150,6 +150,13 @@
       "story": "South Africa opened Stage 2 in Brussels with the result their pool campaign never quite produced: a first win of the tournament, and it was effectively built inside twenty minutes. Mustaphaa Cassiem converted penalty corners in the 17th and the 19th — South Africa's only two corners of the match — and a French side that had come through Pool B unbeaten against Germany and Malaysia found itself two down before it had won a corner of its own.\n\nVictor Charlet's reply in the 30th kept France alive, converting their single corner of the match on the stroke of half-time, and the game France wanted was set up: one goal in it, half the match to play, and twenty-one circle entries to South Africa's twenty saying the territory was theirs to use. It never became more than territory. South Africa defended the margin through the third and fourth quarters — the green cards shown to Senzwesihle Ngubane in the 13th and Amaury Bellenger in the 17th were the only interruptions of a hard first half — and Dayaan Cassiem's field goal in the 60th, moments before Samkelo Mvimbi's late yellow, closed it out.\n\nThe arithmetic is simple: three penalty corners in the match, three goals, perfect conversion at both ends, and the side that won one more corner won the game. Nor was it against the run of play — South Africa held sixty-one per cent of possession and out-shot France six to four. France's twenty-one circle entries produced only four shots, and that gap between territory and threat, rather than any defensive failure, is what cost them a match they were favoured to win.",
       "generatedAt": "2026-08-21T14:28:18.849149+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "S2H2",
+      "story": "Ireland ran out convincing winners over Malaysia 7-4 at the Royal Leopold Club in Brussels, in a Pool H tie of the FIH Hockey World Cup 2026. Ireland came in ranked 10th in the world, Malaysia 14th.\n\nIreland scored through Jonathan Lynch (8'), Jonathan Lynch (12', penalty corner), Matthew Nelson (19'), Jonathan Lynch (24'), John McKee (37', penalty corner), Matthew Nelson (39') and Benjamin Walker (54'); Malaysia through Azimuddin Kamaruddin (29', penalty corner), Amirul Azahar (36', penalty corner), Abu Kamal Azrai (41', penalty corner) and Faizal Saari (55'). The opener came in Q1 and the final goal in Q4.\n\nIreland won 2 penalty corners to Malaysia's 3. 1 card was shown.",
+      "generatedAt": "2026-08-21T14:36:27.872647+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }

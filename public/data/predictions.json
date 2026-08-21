@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-21T14:32:38.599137+00:00",
+  "updated_at": "2026-08-21T14:36:27.694649+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -2181,7 +2181,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.35,
       "reason": "FIH #13 RSA favoured over #14 MAS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-21T14:36:27.693401+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:S2F4:r5",
@@ -2223,7 +2226,38 @@
       "pick": "AWAY",
       "pick_confidence": 0.374,
       "reason": "FIH #9 IRL favoured over #10 FRA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-21T14:36:27.693401+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
+    },
+    {
+      "id": "oracle-v1:S2H3:r6",
+      "matchId": "S2H3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2H3:r5",
+      "p_home_win": 0.311,
+      "p_draw": 0.329,
+      "p_away_win": 0.36,
+      "pick": "AWAY",
+      "pick_confidence": 0.36,
+      "reason": "FIH #13 RSA favoured over #14 MAS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-21T14:36:27.693401+00:00"
+    },
+    {
+      "id": "oracle-v1:S2H4:r6",
+      "matchId": "S2H4",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2H4:r5",
+      "p_home_win": 0.26,
+      "p_draw": 0.322,
+      "p_away_win": 0.419,
+      "pick": "AWAY",
+      "pick_confidence": 0.419,
+      "reason": "FIH #9 IRL favoured over #10 FRA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-21T14:36:27.693401+00:00"
     }
   ]
 }
