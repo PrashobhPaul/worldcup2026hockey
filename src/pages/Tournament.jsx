@@ -9,7 +9,6 @@ import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
 import { StandingsTable, Skeleton, WinProbBar } from '../components/shared'
-import { formatDate } from '../components/MatchCard'
 import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
 import iconAssists from '../assets/boards/icon-top-assists.png'
 import iconAttacking from '../assets/boards/icon-most-attacking.png'
@@ -17,11 +16,13 @@ import iconDefense from '../assets/boards/icon-strongest-defense.png'
 import iconStandings from '../assets/boards/icon-standings.png'
 import iconPerformers from '../assets/boards/icon-attack-defense.png'
 
+// The bracket is NOT here on purpose: the Oracle owns the one bracket view
+// (semis, medals, advance odds), and a second copy under the Cup confused
+// readers about which one to trust. /tournament?tab=bracket redirects there.
 const VIEWS = [
-  { id: 'standings', label: 'Pool Standings' },
+  { id: 'standings', label: 'Standings' },
   { id: 'stats', label: 'Stats' },
   { id: 'best', label: "Tournament's Best" },
-  { id: 'bracket', label: 'Bracket' },
   { id: 'awards', label: 'Awards' },
 ]
 
@@ -295,56 +296,18 @@ function WinProbabilityView({ bundle, byCode }) {
   )
 }
 
-function BracketView({ bundle, byCode, matches }) {
-  const koById = new Map(matches.filter(m => m.phase !== 'pool').map(m => [m.id, m]))
+function Stage2Pools({ bundle, byCode }) {
   const stage2 = bundle.bracket.stage2 ?? {}
-  const groups = [
-    ['Semi-Finals', bundle.bracket.ties.filter(t => t.group === 'semi')],
-    ['Medal Matches', bundle.bracket.ties.filter(t => t.group === 'medal')],
-    ['Classification · 5th–16th', bundle.bracket.ties.filter(t => t.group === 'classification')],
-  ]
-
-  const TieRow = ({ tie }) => {
-    const m = koById.get(tie.id)
-    const h = byCode.get(tie.home), a = byCode.get(tie.away)
-    const pH = tie.pHomeAdvance
-    return (
-      <div className="flex flex-wrap items-center gap-2.5 rounded-lg border border-white/5 bg-pitch-800 px-3.5 py-2.5 text-sm">
-        <span className={`font-medium ${tie.predicted === tie.home ? 'font-bold' : ''}`}>
-          {h ? `${h.flag} ${h.name}` : (tie.home ? tie.home : '❓ TBD')}
-        </span>
-        {pH != null && tie.home && !tie.played && (
-          <span className="font-mono text-[10px] text-brand">{Math.round(pH * 100)}%</span>
-        )}
-        <span className="font-mono text-xs text-pitch-400">vs</span>
-        <span className={`font-medium ${tie.predicted === tie.away ? 'font-bold' : ''}`}>
-          {a ? `${a.flag} ${a.name}` : (tie.away ? tie.away : 'TBD')}
-        </span>
-        {pH != null && tie.away && !tie.played && (
-          <span className="font-mono text-[10px] text-brand">{Math.round((1 - pH) * 100)}%</span>
-        )}
-        {tie.played && tie.winner && (
-          <span className="font-mono text-[10px] font-bold text-live">→ {tie.winner}</span>
-        )}
-        <span className="ml-auto font-mono text-[10px] text-pitch-400">
-          {!tie.locked && '○ projected · '}
-          {m && <>{m.label?.split('—')[0].trim()} · {formatDate(m.date)} · {m.venue === 'AMV' ? 'Amstelveen' : 'Brussels'}</>}
-        </span>
-      </div>
-    )
-  }
-
+  if (!Object.keys(stage2).length) return null
   return (
-    <div className="space-y-6">
-      {/* Stage 2 — the group phase that replaces the quarter-finals */}
-      <div>
-        <h2 className="mb-1 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Stage 2 · Group Phase</h2>
-        <p className="mb-2.5 font-mono text-[10px] text-pitch-400">
-          Pools A–D reshuffle into four Stage-2 pools; head-to-head between teams from the same
-          Stage-1 pool carries forward. The top two of <b className="text-brand">Pools E &amp; F</b> reach the semi-finals.
-        </p>
-        <div className="grid gap-2.5 sm:grid-cols-2">
-          {Object.values(stage2).map(pool => (
+    <div>
+      <h2 className="mb-1 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Stage 2 · Group Phase</h2>
+      <p className="mb-2.5 font-mono text-[10px] text-pitch-400">
+        Pools A–D reshuffle into four Stage-2 pools; head-to-head between teams from the same
+        Stage-1 pool carries forward. The top two of <b className="text-brand">Pools E &amp; F</b> reach the semi-finals.
+      </p>
+      <div className="grid gap-2.5 sm:grid-cols-2">
+        {Object.values(stage2).map(pool => (
             <div key={pool.id} className={`rounded-xl border bg-pitch-800 p-3.5 ${pool.championship ? 'border-brand/25' : 'border-white/5'}`}>
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="font-display text-sm font-semibold">
@@ -383,20 +346,10 @@ function BracketView({ bundle, byCode, matches }) {
               )}
             </div>
           ))}
-        </div>
       </div>
-
-      {groups.map(([label, ties]) => ties.length > 0 && (
-        <div key={label}>
-          <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">{label}</h2>
-          <div className="space-y-2">
-            {ties.map(tie => <TieRow key={tie.id} tie={tie} />)}
-          </div>
-        </div>
-      ))}
-      <p className="font-mono text-[11px] text-pitch-400">
-        Slots marked ○ are engine projections from current standings — they lock as each stage completes.
-        Full candidate math on the <Link to="/prediction-race" className="text-brand hover:underline">Oracle bracket</Link>.
+      <p className="mt-2 font-mono text-[11px] text-pitch-400">
+        Semi-finals, medal matches and advance odds live on the{' '}
+        <Link to="/prediction-race?tab=bracket" className="text-brand hover:underline">Oracle bracket</Link> — one bracket, one home.
       </p>
     </div>
   )
@@ -436,6 +389,8 @@ export default function TournamentPage() {
   const loading = teams === undefined || matches === undefined
   const standings = computeStandings(teams ?? [], matches ?? [])
   const byCode = new Map((teams ?? []).map(t => [t.code, t]))
+  const poolMatchList = (matches ?? []).filter(m => m.phase === 'pool')
+  const stage2Underway = poolMatchList.length > 0 && poolMatchList.every(m => m.status === 'completed')
 
   return (
     <div>
@@ -445,7 +400,7 @@ export default function TournamentPage() {
             className="h-8 w-8 shrink-0 rounded-md object-contain" />
           Tournament
         </h1>
-        <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and bracket — computed live from completed matches</p>
+        <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and awards — computed live from completed matches</p>
       </div>
 
       <div className="no-scrollbar sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
@@ -460,34 +415,40 @@ export default function TournamentPage() {
       </div>
 
       {requested === 'probability' && <Navigate to="/prediction-race?tab=odds" replace />}
+      {requested === 'bracket' && <Navigate to="/prediction-race?tab=bracket" replace />}
 
       {loading ? <Skeleton h={500} /> : (
         <>
           {view === 'standings' && (
-            <div className="space-y-5">
-              {standings.map(pool => {
-                const poolMatches = (matches ?? []).filter(m => m.pool === pool.id && m.phase === 'pool')
-                const played = poolMatches.filter(m => m.status === 'completed' && m.score?.home != null).length
-                return (
-                  <div key={pool.id} className="rounded-xl border border-white/5 bg-pitch-800 p-4">
-                    <div className="mb-3 flex items-baseline justify-between">
-                      <h2 className="font-display text-base font-semibold">Pool {pool.id}</h2>
-                      <span className="font-mono text-[10px] text-pitch-400">{played}/{poolMatches.length} played</span>
-                    </div>
-                    <StandingsTable standings={pool.standings} />
-                  </div>
-                )
-              })}
+            <div className="space-y-6">
+              {/* Once Stage 2 begins, its tables lead — the Stage 1 letters are history. */}
+              {bundle && <Stage2Pools bundle={bundle} byCode={byCode} />}
+              <div>
+                {stage2Underway && (
+                  <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Stage 1 · Final Tables</h2>
+                )}
+                <div className="space-y-5">
+                  {standings.map(pool => {
+                    const poolMatches = (matches ?? []).filter(m => m.pool === pool.id && m.phase === 'pool')
+                    const played = poolMatches.filter(m => m.status === 'completed' && m.score?.home != null).length
+                    return (
+                      <div key={pool.id} className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+                        <div className="mb-3 flex items-baseline justify-between">
+                          <h2 className="font-display text-base font-semibold">Pool {pool.id}</h2>
+                          <span className="font-mono text-[10px] text-pitch-400">{played}/{poolMatches.length} played</span>
+                        </div>
+                        <StandingsTable standings={pool.standings} />
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
           )}
 
           {view === 'stats' && <StatsView teams={teams} matches={matches} byCode={byCode} />}
 
           {view === 'best' && <BestXISpace players={players} byCode={byCode} xi={xi} setXi={setXi} />}
-
-          {view === 'bracket' && (bundle
-            ? <BracketView bundle={bundle} byCode={byCode} matches={matches} />
-            : <Skeleton h={400} />)}
 
           {view === 'awards' && <AwardsView />}
         </>
