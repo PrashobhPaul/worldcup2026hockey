@@ -31,10 +31,18 @@ STORIES = {
 Victor Charlet's reply in the 30th kept France alive, converting their single corner of the match on the stroke of half-time, and the game France wanted was set up: one goal in it, half the match to play, and twenty-one circle entries to South Africa's twenty saying the territory was theirs to use. It never became more than territory. South Africa defended the margin through the third and fourth quarters — the green cards shown to Senzwesihle Ngubane in the 13th and Amaury Bellenger in the 17th were the only interruptions of a hard first half — and Dayaan Cassiem's field goal in the 60th, moments before Samkelo Mvimbi's late yellow, closed it out.
 
 The arithmetic is simple: three penalty corners in the match, three goals, perfect conversion at both ends, and the side that won one more corner won the game. Nor was it against the run of play — South Africa held sixty-one per cent of possession and out-shot France six to four. France's twenty-one circle entries produced only four shots, and that gap between territory and threat, rather than any defensive failure, is what cost them a match they were favoured to win.""",
+
+    'S2H2': """Ireland won the highest-scoring match of this World Cup so far, and they had effectively won it by half-time. Jonathan Lynch opened in the 8th from open play and added a penalty-corner goal in the 12th; Matthew Nelson made it three in the 19th, and when Lynch completed his hat-trick in the 24th — his first three goals of the tournament, all inside twenty-four minutes — Ireland led by four against opponents who had barely settled.
+
+Malaysia's response came almost entirely from the short corner: Azimuddin Kamaruddin in the 29th, Amirul Azahar in the 36th and Abu Kamal Azrai in the 41st, three penalty-corner goals that kept them in touching distance without ever threatening parity. Ireland's answer to the second of them was immediate — John McKee converted a corner of their own in the 37th and Nelson struck again in the 39th, so Azrai's goal only trimmed the third-quarter score to 6-3. Benjamin Walker's field goal in the 54th settled the afternoon, and Faizal Saari's reply in the 55th, Malaysia's only goal from open play, fixed the final margin at 7-4.
+
+Eleven goals, and the shape of them tells the story of both campaigns. Ireland scored five from open play through three different scorers — the running, carried threat that Malaysia's pool opponents also found, with Malaysia now on twenty conceded across four matches. Malaysia's three corner goals confirm that their set piece travels; nothing else did. For Ireland, who left Pool C with a four-one win over South Africa and two two-goal defeats, this is the day their finishing finally caught up with their chances, and Lynch — scoreless in the pool — leaves it with a hat-trick completed inside the first half.""",
 }
 
 REASONS = {
     'S2H1': "France left Pool B unbeaten against Germany and Malaysia and lost to Belgium by a single goal, conceding seven in three matches against far stronger opposition than South Africa met. South Africa bring one point from three into Stage 2, with nine conceded in the pool — seven of them to Spain and Ireland — and the Cassiem set-piece threat as their clearest route to goal. The steadier pool evidence favours France.",
+
+    'S2H2': "Ireland took three points from Pool C, losing by two to both Australia and Spain either side of a three-goal win over South Africa. Malaysia left Pool B with one point and thirteen conceded in three matches — though seven scored, including three against Belgium, show a genuine attacking threat. Expect goals at both ends; a Malaysian defence conceding more than four a match is the softer one, and that margin favours Ireland.",
 }
 
 
