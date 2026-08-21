@@ -5,6 +5,8 @@ import { Skeleton, TierBadge } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { useSwipeTabs } from '../components/useSwipeTabs'
+import SiblingNav from '../components/SiblingNav'
+import { useFavourite, toggleFavourite } from '../hooks/useFavourite'
 
 // Five cuts. All and Alive are the two ways to read the whole field; the three
 // tags below them are earned, not seeded — engine/tiers.js re-derives them from
@@ -42,6 +44,8 @@ export default function TeamsPage() {
     onChange: i => setFilter(FILTERS[i].id),
   })
 
+  const favourite = useFavourite()
+
   if (teams === undefined) return <Skeleton h={500} />
 
   // One lookup per team, shared by the chip counts, the grid filter and the
@@ -55,9 +59,13 @@ export default function TeamsPage() {
 
   return (
     <div>
+      <SiblingNav items={[
+        { to: '/teams', label: '🌍 Teams', end: true },
+        { to: '/players', label: '👤 Players' },
+      ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🌍 Teams</h1>
-        <p className="mt-1 text-xs text-pitch-400">16 nations · 4 pools · FIH World Rankings</p>
+        <p className="mt-1 text-xs text-pitch-400">16 nations · 4 pools · FIH World Rankings · ★ marks your team</p>
       </div>
 
       <div className="no-scrollbar sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
@@ -94,6 +102,16 @@ export default function TeamsPage() {
                     className={`relative overflow-hidden rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand/25 ${out ? 'opacity-60' : ''}`}>
                     <div className="absolute inset-x-0 top-0 h-0.5 opacity-80" style={{ background: t.color }} />
                     <span className="absolute right-2.5 top-2.5 rounded bg-brand/10 px-1.5 py-0.5 font-mono text-[10px] text-brand">#{t.fihRank}</span>
+                    {/* Inside a Link, so the tap must not navigate. */}
+                    <button
+                      onClick={e => { e.preventDefault(); e.stopPropagation(); toggleFavourite(t.code) }}
+                      aria-label={favourite === t.code ? `Unfollow ${t.name}` : `Follow ${t.name}`}
+                      aria-pressed={favourite === t.code}
+                      className={`absolute left-1 top-1 rounded-lg p-2.5 text-base leading-none transition-colors ${
+                        favourite === t.code ? 'text-brand' : 'text-pitch-500 hover:text-pitch-300'
+                      }`}>
+                      {favourite === t.code ? '★' : '☆'}
+                    </button>
                     <div className="mb-1.5 text-4xl">{t.flag}</div>
                     <div className={`text-sm font-bold ${out ? 'line-through' : ''}`}>{t.name}</div>
                     <div className="font-mono text-[10px] text-pitch-400">{t.nickname}</div>

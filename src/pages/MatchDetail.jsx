@@ -277,6 +277,20 @@ export default function MatchDetailPage() {
     m.id !== match.id && m.status === 'completed' && m.score?.home != null &&
     ((m.home === match.home && m.away === match.away) || (m.home === match.away && m.away === match.home)))
 
+  // Match Center pills (the Cricbuzz pattern): one sticky row that jumps to a
+  // section instead of a scroll hunt. Built from the match's state, so a pill
+  // never points at a section that is not on the page.
+  const pills = [
+    pred?.status === 'ready' && { id: 'sec-pick', label: '🎯 Pick' },
+    preview.length > 0 && { id: 'sec-preview', label: 'Preview' },
+    (done || live) && (events?.length ?? 0) > 0 && { id: 'sec-timeline', label: 'Timeline' },
+    { id: 'sec-form', label: 'Form' },
+    { id: 'sec-lineups', label: 'Line-ups' },
+    (done || live) && { id: 'sec-stats', label: 'Stats' },
+    story && { id: 'sec-story', label: 'Story' },
+  ].filter(Boolean)
+  const jumpTo = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -334,9 +348,21 @@ export default function MatchDetailPage() {
         )}
       </div>
 
+      {/* Match Center pills */}
+      {pills.length > 1 && (
+        <div className="no-scrollbar sticky top-14 z-30 -mx-4 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl">
+          {pills.map(pill => (
+            <button key={pill.id} onClick={() => jumpTo(pill.id)}
+              className="min-h-[36px] shrink-0 rounded-md border border-white/5 bg-pitch-800 px-3.5 text-xs font-semibold text-pitch-300 transition-colors hover:border-brand/30 hover:text-brand">
+              {pill.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Oracle panel */}
       {pred?.status === 'ready' && (
-        <div className="rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
+        <div id="sec-pick" className="scroll-mt-28 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
           <div className="mb-2 flex items-center justify-between">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">🎯 Oracle Pick</span>
             {grade === 'correct' && <span className="rounded bg-live/10 px-2 py-0.5 font-mono text-[10px] font-bold text-live">CORRECT ✓</span>}
@@ -367,7 +393,7 @@ export default function MatchDetailPage() {
 
       {/* Preview: what this tournament's own record says about the fixture */}
       {preview.length > 0 && (
-        <div>
+        <div id="sec-preview" className="scroll-mt-28">
           <h3 className="mb-2.5 flex items-baseline justify-between font-display text-sm font-semibold">
             Match preview
             <span className="font-mono text-[10px] font-normal text-pitch-400">from this World Cup only</span>
@@ -379,7 +405,7 @@ export default function MatchDetailPage() {
       )}
 
       {/* Tournament form */}
-      <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <div id="sec-form" className="scroll-mt-28 rounded-xl border border-white/5 bg-pitch-800 p-4">
         <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
           Recent form <span className="font-mono text-[10px] font-normal text-pitch-400">this tournament</span>
         </h3>
@@ -411,7 +437,7 @@ export default function MatchDetailPage() {
 
       {/* Quarter timeline */}
       {(done || live) && (events?.length ?? 0) > 0 && (
-        <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+        <div id="sec-timeline" className="scroll-mt-28 rounded-xl border border-white/5 bg-pitch-800 p-4">
           <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
             Match Timeline
             <span className="font-mono text-[10px] font-normal text-pitch-400">
@@ -437,17 +463,23 @@ export default function MatchDetailPage() {
       )}
 
       {/* Line-ups */}
-      <LineupSheet match={match} events={events ?? []} home={home} away={away} />
+      <div id="sec-lineups" className="scroll-mt-28">
+        <LineupSheet match={match} events={events ?? []} home={home} away={away} />
+      </div>
 
       {/* Match stats */}
-      {(done || live) && <MatchStatsPanel match={match} live={live} />}
+      {(done || live) && (
+        <div id="sec-stats" className="scroll-mt-28">
+          <MatchStatsPanel match={match} live={live} />
+        </div>
+      )}
 
       {/* Running commentary */}
       {(done || live) && <CommentaryFeed match={match} home={home} away={away} />}
 
       {/* AI story */}
       {story && (
-        <div className="rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
+        <div id="sec-story" className="scroll-mt-28 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
           <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-brand">🧠 AI Match Story</div>
           <p className="whitespace-pre-line text-sm leading-relaxed text-pitch-300">{story.story}</p>
           {/* When it was written is worth knowing. HOW it was written — which

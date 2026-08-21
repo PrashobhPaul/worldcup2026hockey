@@ -11,6 +11,7 @@ import {
   deriveComeback, buildInsights, buildDrivers, buildMatchDNA,
 } from '../engine/insights'
 import { formatDate, phaseTag } from '../components/MatchCard'
+import SiblingNav from '../components/SiblingNav'
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ReferenceLine, ResponsiveContainer,
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
@@ -487,6 +488,10 @@ export default function AILabPage() {
 
   return (
     <div>
+      <SiblingNav items={[
+        { to: '/prediction-race', label: '🎯 Oracle' },
+        { to: '/ai-lab', label: '🧠 AI Lab' },
+      ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🧠 AI Lab</h1>
         <p className="mt-1 text-xs text-pitch-400">

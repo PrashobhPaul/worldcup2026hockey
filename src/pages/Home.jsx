@@ -8,6 +8,7 @@ import { derivePrediction } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
+import { useFavourite } from '../hooks/useFavourite'
 import { FlaskConical, Trophy, Award, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
 
 // Hero quick-access tiles — same four destinations as Soccer.AI's hero card
@@ -148,6 +149,83 @@ function NextMatchCard({ match, teams }) {
   )
 }
 
+// The personalized band at the top of Home: your team's state at a glance —
+// live now / next up, last-five form, champion probability — with everything a
+// link out to its canonical page. When no team is followed yet, one dashed
+// invitation and nothing else; when the reader has chosen, Home leads with it.
+function FavouriteStrip({ teams, matches }) {
+  const favourite = useFavourite()
+  const bundle = useOracleBundle(teams, matches)
+  if (favourite === undefined) return null
+  if (favourite === null) {
+    return (
+      <Link to="/teams"
+        className="flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-dashed border-white/10 bg-pitch-900/40 px-4 py-3 text-xs text-pitch-400 transition-colors hover:border-brand/30 hover:text-pitch-300">
+        <span className="text-brand">★</span> Follow your team — tap the star on any team, and Home leads with them
+      </Link>
+    )
+  }
+  const team = teams.find(t => t.code === favourite)
+  if (!team) return null
+
+  const mine = matches.filter(m => m.home === favourite || m.away === favourite)
+  const liveNow = mine.find(m => m.status === 'live')
+  const nextUp = mine.find(m => m.status === 'scheduled' && m.home !== 'TBD' && m.away !== 'TBD')
+  const played = mine.filter(m => m.status === 'completed' && m.score?.home != null)
+  const form = played.slice(-5).map(m => {
+    const gf = m.home === favourite ? m.score.home : m.score.away
+    const ga = m.home === favourite ? m.score.away : m.score.home
+    return gf > ga ? 'W' : gf === ga ? 'D' : 'L'
+  })
+  const entry = bundle?.current.get(favourite)
+  const out = bundle?.eliminationAt.has(favourite)
+  const spotlight = liveNow ?? nextUp
+  const opponent = spotlight
+    ? (spotlight.home === favourite ? spotlight.away : spotlight.home)
+    : null
+
+  return (
+    <section className="rounded-2xl border border-brand/20 bg-gradient-to-br from-pitch-800 to-pitch-900 p-4">
+      <div className="flex items-center gap-3">
+        <Link to={`/teams/${favourite}`} className="flex min-w-0 items-center gap-2.5">
+          <span className="text-3xl">{team.flag}</span>
+          <div className="min-w-0">
+            <div className="truncate text-sm font-bold">
+              {team.name} <span className="text-brand">★</span>
+            </div>
+            <div className="font-mono text-[10px] text-pitch-400">
+              {out ? 'Out of title contention' : entry ? `${formatProbability(entry.champion)} champion` : '…'}
+            </div>
+          </div>
+        </Link>
+        <div className="ml-auto flex items-center gap-1">
+          {form.map((r, i) => (
+            <span key={i} className={`flex h-5 w-5 items-center justify-center rounded font-mono text-[10px] font-bold ${
+              r === 'W' ? 'bg-live/15 text-live' : r === 'D' ? 'bg-pitch-700 text-pitch-300' : 'bg-red-400/10 text-red-400'
+            }`}>{r}</span>
+          ))}
+        </div>
+      </div>
+      {spotlight && (
+        <Link to={`/matches/${spotlight.id}`}
+          className="mt-3 flex min-h-[44px] items-center justify-between rounded-xl border border-white/5 bg-pitch-950/50 px-3.5 py-2.5 transition-colors hover:border-brand/25">
+          <span className="flex items-center gap-2 text-xs font-semibold">
+            {liveNow
+              ? <span className="flex items-center gap-1.5 text-live"><span className="live-dot" /> LIVE</span>
+              : <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">Next</span>}
+            <span>vs {teams.find(t => t.code === opponent)?.name ?? opponent}</span>
+          </span>
+          <span className="font-mono text-[10px] text-pitch-400">
+            {liveNow
+              ? `${spotlight.score?.home ?? 0}–${spotlight.score?.away ?? 0}`
+              : `${formatDate(spotlight.date)} · ${spotlight.time} CET`}
+          </span>
+        </Link>
+      )}
+    </section>
+  )
+}
+
 function TrendingTeams({ teams, matches }) {
   const bundle = useOracleBundle(teams, matches)
   const cards = useMemo(() => {
@@ -217,6 +295,8 @@ export default function HomePage() {
   return (
     <div className="space-y-8">
       <HeroCard liveNow={liveNow} />
+
+      {!loading && <FavouriteStrip teams={teams} matches={matches} />}
 
       {loading ? <Skeleton h={220} /> : liveNow ? (
         <section>

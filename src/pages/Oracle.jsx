@@ -8,6 +8,7 @@ import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
 import { formatDate, phaseTag } from '../components/MatchCard'
+import SiblingNav from '../components/SiblingNav'
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ReferenceLine, ResponsiveContainer,
 } from 'recharts'
@@ -379,6 +380,10 @@ export default function OraclePage() {
 
   return (
     <div>
+      <SiblingNav items={[
+        { to: '/prediction-race', label: '🎯 Oracle' },
+        { to: '/ai-lab', label: '🧠 AI Lab' },
+      ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
         <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
