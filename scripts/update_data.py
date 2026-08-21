@@ -1580,11 +1580,20 @@ def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None):
 
         tally = report_tally(m)
         if tally is not None and tally != (sh, sa):
-            # e.g. a knockout page score folding a shootout into regulation —
-            # that disagreement needs eyes, not a coin-flip.
-            print(f"BACKFILL SKIP {m['id']}: page says {sh}-{sa} but the match report "
-                  f"tallies {tally[0]}-{tally[1]} — needs manual entry, not a guess.")
-            continue
+            # Stage 2 is pool format — no shootouts — so the page score IS the
+            # regulation score and a report mismatch can only be the report
+            # parser under-reading a busy scoresheet (IRL 7-4 MAS tallied 3-2;
+            # D5 has the same shortfall). The report may confirm, never veto:
+            # fall through to the two-run stability witness. In the knockout
+            # rounds a shootout CAN be folded into a page score, so there the
+            # disagreement needs eyes, not a coin-flip.
+            if m['phase'] != 'stage2':
+                print(f"BACKFILL SKIP {m['id']}: page says {sh}-{sa} but the match report "
+                      f"tallies {tally[0]}-{tally[1]} — needs manual entry, not a guess.")
+                continue
+            print(f"BACKFILL NOTE {m['id']}: report tallies {tally[0]}-{tally[1]} vs page "
+                  f"{sh}-{sa} — report parse incomplete; waiting on page stability instead.")
+            tally = None
 
         confirmed_by = None
         if tally == (sh, sa) and (sh or sa):    # an empty report parse could fake a 0-0

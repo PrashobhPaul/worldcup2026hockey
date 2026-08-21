@@ -482,10 +482,29 @@ backfill_stage_scores(f, {('RSA', 'FRA'): (3, 1)}, now=past_window, report_tally
 check('a reversed page pair is oriented to our fixture',
       f['matches'][0]['score'] == {'home': 1, 'away': 3})
 
-f = stage_fx()
+# The live-run finding: IRL 7-4 MAS on the page, but the report parser only
+# tallied 3-2 of eleven goals. Stage 2 has no shootouts, so a report mismatch
+# there is a parse shortfall — it must not veto the stability witness.
+f = stage_fx(id='S2H2', home='IRL', away='MAS')
+page74 = {('IRL', 'MAS'): (7, 4)}
+backfill_stage_scores(f, page74, now=past_window, report_tally=lambda m: (3, 2))
+s = f['matches'][0]
+check('stage2: an under-read report falls back to the sighting, no fast-track',
+      s['score'] is None and s['score_seen']['home'] == 7)
+backfill_stage_scores(f, page74, now=next_run, report_tally=lambda m: (3, 2))
+check('stage2: page stability then lands the score despite the short report',
+      s['score'] == {'home': 7, 'away': 4} and s['status'] == 'completed')
+
+# In the knockout rounds a shootout CAN be folded into a page score, so a
+# disagreeing report blocks the write outright there.
+f = stage_fx(id='POS5', phase='classification', pool=None)
 backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 2))
-check('a report disagreeing with the page blocks the write entirely',
-      f['matches'][0]['score'] is None and 'score_seen' not in f['matches'][0])
+s = f['matches'][0]
+check('knockouts: a report disagreeing with the page blocks the write entirely',
+      s['score'] is None and 'score_seen' not in s)
+backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
+check('knockouts: a report agreeing with the page confirms first run',
+      s['score'] == {'home': 1, 'away': 3})
 
 f = stage_fx()
 backfill_stage_scores(f, {('FRA', 'RSA'): (0, 0)}, now=past_window, report_tally=lambda m: (0, 0))
