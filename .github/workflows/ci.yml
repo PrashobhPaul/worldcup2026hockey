@@ -61,6 +61,12 @@ jobs:
       - name: Bracket projection
         run: npm run test:bracket
 
+      # A match past push-back is live with an estimated quarter, and past its
+      # window it is full-time awaiting the official score — never a Q1 that
+      # lasts all day, never an invented 0-0, never a mid-match score frozen in.
+      - name: Live clock honesty
+        run: npm run test:clock
+
       # Six of sixteen carry a tag, and the quota must not drift: three
       # favourites, two dark horses, one underdog, and never an eliminated team.
       - name: Team tier assignment

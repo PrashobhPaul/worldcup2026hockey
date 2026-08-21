@@ -11,6 +11,10 @@ export const PHASES = {
 
 const PHASE_ORDER = { NS: 0, Q1: 1, QB1: 2, Q2: 3, HT: 4, Q3: 5, QB3: 6, Q4: 7, SO: 8, FT: 9 }
 
+// Same window the data pipeline uses (MATCH_DURATION_MIN): push-back to the
+// point where any hockey match is over, breaks and stoppages included.
+export const MATCH_WINDOW_MIN = 105
+
 export function isPlayingPhase(p) {
   return p === 'Q1' || p === 'Q2' || p === 'Q3' || p === 'Q4'
 }
@@ -51,41 +55,82 @@ function minuteFromAnchor(phase, anchorMs, nowMs) {
   return { totalMinute: cfg.cap + over, display: `${cfg.cap}+${over}'`, clamped: true }
 }
 
+function ftState(match) {
+  const hasSO = match.shootout && match.shootout.home !== match.shootout.away
+  return { phase: 'FT', minute: 60, display: hasSO ? 'FT (SO)' : 'FT', kind: hasSO ? 'FT_SO' : 'FT' }
+}
+
+// The FIH match-day script, in wall-clock minutes from push-back:
+// Q1 0–15, 2' break, Q2 17–32, 10' half-time, Q3 42–57, 2' break, Q4 from 59.
+// [phase, wallFrom, wallTo, gameMinuteAtWallFrom] — null base = a break.
+const EST_SEGMENTS = [
+  ['Q1',  0,  15, 0],
+  ['QB1', 15, 17, null],
+  ['Q2',  17, 32, 15],
+  ['HT',  32, 42, null],
+  ['Q3',  42, 57, 30],
+  ['QB3', 57, 59, null],
+  ['Q4',  59, MATCH_WINDOW_MIN, 45],
+]
+
+function estimateFromKickoff(elapsedMin) {
+  for (const [phase, from, to, base] of EST_SEGMENTS) {
+    if (elapsedMin >= to) continue
+    if (base == null) {
+      if (phase === 'HT') return { phase, minute: 30, display: 'HT', kind: 'HT', estimated: true }
+      const minute = phase === 'QB1' ? 15 : 45
+      return { phase, minute, display: phase === 'QB1' ? 'End Q1' : 'End Q3', kind: 'BREAK', estimated: true }
+    }
+    // Q4 runs long in wall time (stoppages, referrals) — the game minute caps at 60.
+    const minute = Math.min(60, Math.floor(base + (elapsedMin - from)))
+    return { phase, minute, display: `~${minute}'`, kind: 'EST', estimated: true }
+  }
+  return { phase: 'FT', minute: 60, display: 'FT', kind: 'FT_WAIT', estimated: true }
+}
+
 // Main clock state derivation (Soccer.AI: w())
 export function deriveClock(match, nowMs = Date.now()) {
   if (!match) return { phase: 'NS', minute: null, display: '–', kind: 'PRE' }
 
-  let phase = match.livePhase
-    ? normalizePhase(match.livePhase, match.liveMinute)
-    : match.status === 'completed' ? 'FT'
-    : match.status === 'live' ? 'Q1'
-    : 'NS'
+  if (match.status === 'completed') return ftState(match)
 
-  if (phase === 'NS' && match.status !== 'completed' && typeof match.kickoffUtc === 'number' && nowMs >= match.kickoffUtc && match.status === 'live') {
-    phase = 'Q1'
-  }
-
-  if (phase === 'NS')  return { phase, minute: null, display: '–', kind: 'PRE' }
-  if (phase === 'QB1') return { phase, minute: 15, display: 'End Q1', kind: 'BREAK' }
-  if (phase === 'HT')  return { phase, minute: 30, display: 'HT', kind: 'HT' }
-  if (phase === 'QB3') return { phase, minute: 45, display: 'End Q3', kind: 'BREAK' }
-  if (phase === 'SO')  return { phase, minute: null, display: 'SO', kind: 'SO' }
-  if (phase === 'FT') {
-    const hasSO = match.shootout && match.shootout.home !== match.shootout.away
-    return { phase, minute: 60, display: hasSO ? 'FT (SO)' : 'FT', kind: hasSO ? 'FT_SO' : 'FT' }
-  }
-
-  // Playing quarter — derive from anchor
-  const anchor = match[PHASES[phase].anchorKey]
-  if (anchor == null) {
-    // No anchor: fall back to provider minute if present
-    if (match.liveMinute != null) {
-      return { phase, minute: match.liveMinute, display: `${match.liveMinute}'`, kind: 'LIVE' }
+  // A provider phase, when we have one, always outranks the estimate.
+  if (match.livePhase) {
+    const phase = normalizePhase(match.livePhase, match.liveMinute)
+    if (phase === 'QB1') return { phase, minute: 15, display: 'End Q1', kind: 'BREAK' }
+    if (phase === 'HT')  return { phase, minute: 30, display: 'HT', kind: 'HT' }
+    if (phase === 'QB3') return { phase, minute: 45, display: 'End Q3', kind: 'BREAK' }
+    if (phase === 'SO')  return { phase, minute: null, display: 'SO', kind: 'SO' }
+    if (phase === 'FT')  return ftState(match)
+    if (isPlayingPhase(phase)) {
+      const anchor = match[PHASES[phase].anchorKey]
+      if (anchor != null) {
+        const clock = minuteFromAnchor(phase, anchor, nowMs)
+        return { phase, minute: clock.totalMinute, display: clock.display, kind: 'LIVE' }
+      }
+      if (match.liveMinute != null) {
+        return { phase, minute: match.liveMinute, display: `${match.liveMinute}'`, kind: 'LIVE' }
+      }
+      return { phase, minute: null, display: phase, kind: 'RAW' }
     }
-    return { phase, minute: null, display: phase, kind: 'RAW' }
   }
-  const clock = minuteFromAnchor(phase, anchor, nowMs)
-  return { phase, minute: clock.totalMinute, display: clock.display, kind: 'LIVE' }
+
+  // No provider clock at all — but the push-back time is known, so the
+  // schedule estimates the quarter. Shown with a ~ so it never reads as an
+  // official clock, and past the window it says FT and waits for the score
+  // instead of pretending Q1 forever.
+  const ko = typeof match.kickoffUtc === 'number' ? match.kickoffUtc : null
+  const underway = match.status === 'live' || (ko != null && nowMs >= ko)
+  if (!underway) return { phase: 'NS', minute: null, display: '–', kind: 'PRE' }
+  if (ko == null || nowMs < ko) return { phase: 'Q1', minute: null, display: 'LIVE', kind: 'RAW' }
+  return estimateFromKickoff((nowMs - ko) / 60000)
+}
+
+// True while the match is actually in progress (estimated or provider-fed).
+// FT_WAIT is not live: the game is over, only the official score is missing.
+export function isLiveClock(clock) {
+  return clock.kind === 'LIVE' || clock.kind === 'EST' || clock.kind === 'BREAK'
+      || clock.kind === 'HT' || clock.kind === 'SO' || clock.kind === 'RAW'
 }
 
 export function phaseLabel(phase) {

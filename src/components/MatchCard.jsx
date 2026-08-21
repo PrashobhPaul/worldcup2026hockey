@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
-import { deriveClock } from '../engine/clock'
+import { deriveClock, isLiveClock } from '../engine/clock'
+import { useClockTick } from '../hooks/useClockTick'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
 
 export function useTeam(code) {
@@ -27,13 +28,16 @@ export function formatDate(dateStr) {
   })
 }
 
-function StatusBadge({ match, clock }) {
-  if (match.status === 'live') {
+function StatusBadge({ match, clock, live, waiting }) {
+  if (live) {
     return (
       <span className="inline-flex items-center gap-1.5 rounded border border-live/30 bg-live/10 px-2 py-0.5 font-mono text-[11px] font-bold text-live">
         <span className="live-dot" /> {clock.display}
       </span>
     )
+  }
+  if (waiting) {
+    return <span className="rounded bg-pitch-700 px-2 py-0.5 font-mono text-[11px] font-bold text-pitch-300">FT · score soon</span>
   }
   if (match.status === 'completed') {
     return <span className="rounded bg-pitch-700 px-2 py-0.5 font-mono text-[11px] font-bold text-pitch-300">{clock.display}</span>
@@ -97,10 +101,15 @@ function TeamSide({ team, code, align, isWinner }) {
 export default function MatchCard({ match, compact = false }) {
   const home = useTeam(match.home)
   const away = useTeam(match.away)
+  useClockTick(match)
   const clock = deriveClock(match)
   const isTBD = match.home === 'TBD' || match.away === 'TBD'
   const done = match.status === 'completed'
-  const live = match.status === 'live'
+  // The clock, not the stored status, decides what the card shows: a match
+  // past push-back is live even if the data cron hasn't flipped it yet, and a
+  // match past its window is over ("FT · score soon"), never stuck on Q1.
+  const waiting = !done && clock.kind === 'FT_WAIT'
+  const live = !done && !waiting && isLiveClock(clock)
   const res = done ? resultDisplay(match, home, away) : null
   const winner = done && res ? (res.homeReg > res.awayReg ? 'H' : res.awayReg > res.homeReg ? 'A' : (res.homeSO != null ? (res.homeSO > res.awaySO ? 'H' : 'A') : 'D')) : null
 
@@ -116,7 +125,7 @@ export default function MatchCard({ match, compact = false }) {
         <span className="rounded bg-brand/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand">
           {phaseTag(match)}
         </span>
-        <StatusBadge match={match} clock={clock} />
+        <StatusBadge match={match} clock={clock} live={live} waiting={waiting} />
         <span className="font-mono text-[10px] text-pitch-400">
           {formatDate(match.date)} · {match.venue === 'AMV' ? 'Amstelveen' : 'Brussels'}
         </span>
@@ -126,13 +135,13 @@ export default function MatchCard({ match, compact = false }) {
         <TeamSide team={home} code={isTBD ? ((match.slotLabel ?? match.label)?.split(' vs ')[0]?.trim() || 'TBD') : match.home}
           align="left" isWinner={winner === 'H'} />
         <div className="flex min-w-[72px] flex-col items-center">
-          {done || live ? (
+          {done || live || waiting ? (
             <div className="font-mono text-2xl font-bold tracking-wider">
-              {/* A live match genuinely starts at 0; a finished one with no
-                  score on file must say "we don't know", never invent 0-0. */}
-              <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? (live ? 0 : '–')}</span>
+              {/* No live score feed exists mid-match, so a dash is the only
+                  honest display — never an invented 0-0. */}
+              <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? '–'}</span>
               <span className="mx-1 text-pitch-400">–</span>
-              <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? (live ? 0 : '–')}</span>
+              <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? '–'}</span>
             </div>
           ) : (
             <div className="font-mono text-sm text-pitch-300">{match.time}</div>

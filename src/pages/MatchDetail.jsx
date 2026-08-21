@@ -5,7 +5,8 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { useTeam, phaseTag, formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
-import { deriveClock } from '../engine/clock'
+import { deriveClock, isLiveClock, phaseLabel } from '../engine/clock'
+import { useClockTick } from '../hooks/useClockTick'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
 import { buildPreview, h2hKey } from '../engine/preview'
 import { ArrowLeft } from 'lucide-react'
@@ -137,7 +138,7 @@ function AlsoLiveStrip({ currentId }) {
         <Link key={m.id} to={`/matches/${m.id}`}
           className="flex shrink-0 items-center gap-2 rounded-lg border border-live/30 bg-pitch-800 px-3 py-1.5 font-mono text-xs">
           <span className="live-dot" />
-          <span className="font-bold">{m.home} {m.score?.home ?? 0}–{m.score?.away ?? 0} {m.away}</span>
+          <span className="font-bold">{m.home} {m.score?.home ?? '–'}–{m.score?.away ?? '–'} {m.away}</span>
         </Link>
       ))}
     </div>
@@ -242,6 +243,7 @@ export default function MatchDetailPage() {
   )
   const home = useTeam(match?.home)
   const away = useTeam(match?.away)
+  useClockTick(match)
 
   if (match === undefined) return <Skeleton h={400} />
   if (!match) return (
@@ -251,8 +253,13 @@ export default function MatchDetailPage() {
   )
 
   const clock = deriveClock(match)
-  const live = match.status === 'live'
   const done = match.status === 'completed'
+  // The clock decides what the header shows: past push-back is live even
+  // before the data cron flips the status, and past the match window it is
+  // full-time awaiting the official score — never a Q1 that lasts all day.
+  const waiting = !done && clock.kind === 'FT_WAIT'
+  const live = !done && !waiting && isLiveClock(clock)
+  const hasScore = match.score?.home != null && match.score?.away != null
   const res = done ? resultDisplay(match, home, away) : null
   const pred = prediction ? derivePrediction({ match, row: prediction }) : null
   const grade = prediction ? gradePrediction(match, prediction) : null
@@ -276,6 +283,22 @@ export default function MatchDetailPage() {
   const h2h = allMatches.filter(m =>
     m.id !== match.id && m.status === 'completed' && m.score?.home != null &&
     ((m.home === match.home && m.away === match.away) || (m.home === match.away && m.away === match.home)))
+
+  // Match Center pills (the Cricbuzz pattern): one sticky row that jumps to a
+  // section instead of a scroll hunt. Built from the match's state, so a pill
+  // never points at a section that is not on the page.
+  // Listed in the page's own render order, so tapping pills left-to-right
+  // always moves down the page — a row that jumps backwards reads as broken.
+  const pills = [
+    pred?.status === 'ready' && { id: 'sec-pick', label: '🎯 Pick' },
+    preview.length > 0 && { id: 'sec-preview', label: 'Preview' },
+    { id: 'sec-form', label: 'Form' },
+    (done || live) && (events?.length ?? 0) > 0 && { id: 'sec-timeline', label: 'Timeline' },
+    { id: 'sec-lineups', label: 'Line-ups' },
+    (done || live) && { id: 'sec-stats', label: 'Stats' },
+    story && { id: 'sec-story', label: 'Story' },
+  ].filter(Boolean)
+  const jumpTo = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
   return (
     <div className="space-y-5">
@@ -305,15 +328,18 @@ export default function MatchDetailPage() {
             <span className="font-mono text-[10px] text-pitch-400">FIH #{home?.fihRank ?? '—'}</span>
           </Link>
           <div className="flex flex-col items-center">
-            {(done || live) ? (
+            {(done || live || waiting) ? (
               <>
                 <div className={`font-mono text-4xl font-bold tracking-widest ${live ? 'text-live' : ''}`}>
-                  {match.score?.home ?? (live ? 0 : '–')}–{match.score?.away ?? (live ? 0 : '–')}
+                  {/* No live score feed exists mid-match — a dash is the only
+                      honest display, never an invented 0-0. */}
+                  {match.score?.home ?? '–'}–{match.score?.away ?? '–'}
                 </div>
                 <span className={`mt-1 rounded px-2 py-0.5 font-mono text-[11px] font-bold ${
                   live ? 'border border-live/30 bg-live/10 text-live' : 'bg-pitch-700 text-pitch-300'
                 }`}>
-                  {live && <span className="live-dot mr-1.5 inline-block" />}{clock.display}
+                  {live && <span className="live-dot mr-1.5 inline-block" />}
+                  {live && clock.estimated ? `${phaseLabel(clock.phase)} · ${clock.display}` : clock.display}
                 </span>
                 {res?.decisiveLine && <span className="mt-1 font-mono text-[11px] text-brand">{res.decisiveLine}</span>}
               </>
@@ -327,6 +353,13 @@ export default function MatchDetailPage() {
             <span className="font-mono text-[10px] text-pitch-400">FIH #{away?.fihRank ?? '—'}</span>
           </Link>
         </div>
+        {(live || waiting) && !hasScore && (
+          <p className="mt-4 border-t border-white/5 pt-3 text-center font-mono text-[11px] leading-relaxed text-pitch-400">
+            {waiting
+              ? 'Full-time — waiting for FIH to publish the official score. It lands here automatically.'
+              : 'Clock estimated from the official push-back time. FIH does not stream a live score — the final score lands here shortly after full-time.'}
+          </p>
+        )}
         {(done || live) && pc?.home != null && (
           <div className="mt-4 flex justify-center gap-6 border-t border-white/5 pt-3 font-mono text-xs text-pitch-300">
             <span>Penalty corners: <strong className="text-white">{pc.home}</strong> – <strong className="text-white">{pc.away}</strong></span>
@@ -334,9 +367,21 @@ export default function MatchDetailPage() {
         )}
       </div>
 
+      {/* Match Center pills */}
+      {pills.length > 1 && (
+        <div className="no-scrollbar sticky top-14 z-30 -mx-4 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl">
+          {pills.map(pill => (
+            <button key={pill.id} onClick={() => jumpTo(pill.id)}
+              className="min-h-[44px] shrink-0 rounded-md border border-white/5 bg-pitch-800 px-3.5 text-xs font-semibold text-pitch-300 transition-colors hover:border-brand/30 hover:text-brand">
+              {pill.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Oracle panel */}
       {pred?.status === 'ready' && (
-        <div className="rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
+        <div id="sec-pick" className="scroll-mt-28 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
           <div className="mb-2 flex items-center justify-between">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">🎯 Oracle Pick</span>
             {grade === 'correct' && <span className="rounded bg-live/10 px-2 py-0.5 font-mono text-[10px] font-bold text-live">CORRECT ✓</span>}
@@ -367,7 +412,7 @@ export default function MatchDetailPage() {
 
       {/* Preview: what this tournament's own record says about the fixture */}
       {preview.length > 0 && (
-        <div>
+        <div id="sec-preview" className="scroll-mt-28">
           <h3 className="mb-2.5 flex items-baseline justify-between font-display text-sm font-semibold">
             Match preview
             <span className="font-mono text-[10px] font-normal text-pitch-400">from this World Cup only</span>
@@ -379,7 +424,7 @@ export default function MatchDetailPage() {
       )}
 
       {/* Tournament form */}
-      <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <div id="sec-form" className="scroll-mt-28 rounded-xl border border-white/5 bg-pitch-800 p-4">
         <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
           Recent form <span className="font-mono text-[10px] font-normal text-pitch-400">this tournament</span>
         </h3>
@@ -411,7 +456,7 @@ export default function MatchDetailPage() {
 
       {/* Quarter timeline */}
       {(done || live) && (events?.length ?? 0) > 0 && (
-        <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+        <div id="sec-timeline" className="scroll-mt-28 rounded-xl border border-white/5 bg-pitch-800 p-4">
           <h3 className="mb-3 flex items-baseline justify-between font-display text-sm font-semibold">
             Match Timeline
             <span className="font-mono text-[10px] font-normal text-pitch-400">
@@ -437,17 +482,23 @@ export default function MatchDetailPage() {
       )}
 
       {/* Line-ups */}
-      <LineupSheet match={match} events={events ?? []} home={home} away={away} />
+      <div id="sec-lineups" className="scroll-mt-28">
+        <LineupSheet match={match} events={events ?? []} home={home} away={away} />
+      </div>
 
       {/* Match stats */}
-      {(done || live) && <MatchStatsPanel match={match} live={live} />}
+      {(done || live) && (
+        <div id="sec-stats" className="scroll-mt-28">
+          <MatchStatsPanel match={match} live={live} />
+        </div>
+      )}
 
       {/* Running commentary */}
       {(done || live) && <CommentaryFeed match={match} home={home} away={away} />}
 
       {/* AI story */}
       {story && (
-        <div className="rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
+        <div id="sec-story" className="scroll-mt-28 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
           <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-brand">🧠 AI Match Story</div>
           <p className="whitespace-pre-line text-sm leading-relaxed text-pitch-300">{story.story}</p>
           {/* When it was written is worth knowing. HOW it was written — which

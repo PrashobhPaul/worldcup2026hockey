@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { NavLink, Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
@@ -5,10 +6,14 @@ import { oracleRecord } from '../engine/prediction'
 import { Home, CalendarDays, Users, UserRound, Trophy, Target, FlaskConical } from 'lucide-react'
 import InstallPrompt from './InstallPrompt'
 import DataBanner from './DataBanner'
+import SyncChip from './SyncChip'
 import { useSwipeTabs, SWIPE_PRIORITY } from './useSwipeTabs'
 
-// One tab list, used by the desktop bar and the mobile bar alike — the app has
-// the same tabs, in the same order, on every device.
+// Desktop shows every route; the phone shows five. Premium sports apps
+// (FotMob, ESPN) hold the bottom bar at five labelled icons because seven
+// crushes the touch targets — so Players folds under Teams and AI Lab under
+// Oracle, each still one visible tap away via a segmented control on the page
+// itself, and the bar highlights the parent while you are on the sibling.
 const TABS = [
   { to: '/', label: 'Home', short: 'Home', icon: Home, end: true },
   { to: '/matches', label: 'Matches', short: 'Matches', icon: CalendarDays },
@@ -18,6 +23,13 @@ const TABS = [
   { to: '/prediction-race', label: 'Oracle', short: 'Oracle', icon: Target },
   { to: '/ai-lab', label: 'AI Lab', short: 'AI Lab', icon: FlaskConical },
 ]
+const MOBILE_TABS = [
+  { to: '/', short: 'Home', icon: Home, end: true },
+  { to: '/matches', short: 'Matches', icon: CalendarDays },
+  { to: '/teams', short: 'Teams', icon: Users, alsoMatches: ['/players'] },
+  { to: '/tournament', short: 'Cup', icon: Trophy },
+  { to: '/prediction-race', short: 'Oracle', icon: Target, alsoMatches: ['/ai-lab'] },
+]
 
 function OracleChip() {
   const matches = useLiveQuery(() => db.matches.toArray(), [], [])
@@ -25,7 +37,7 @@ function OracleChip() {
   const rec = oracleRecord(matches ?? [], predictions ?? [])
   return (
     <Link to="/prediction-race"
-      className="ml-auto flex shrink-0 items-center gap-1.5 rounded-md border border-brand/20 bg-brand/10 px-2.5 py-1 font-mono text-xs text-brand">
+      className="flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-md border border-brand/20 bg-brand/10 px-2.5 font-mono text-xs text-brand">
       <span>🏑</span>
       <span>{rec.correct}/{rec.graded || '—'}</span>
       <span className="text-pitch-300">·</span>
@@ -39,18 +51,33 @@ export default function AppShell() {
   const navigate = useNavigate()
 
   // Which tab is showing — deepest matching prefix wins so /teams/NED counts
-  // as Teams. Detail pages that belong to no tab return -1 and don't swipe.
-  const active = TABS.reduce((best, tab, i) => {
-    const hit = tab.end ? pathname === '/' : pathname.startsWith(tab.to)
-    return hit && (best < 0 || tab.to.length > TABS[best].to.length) ? i : best
+  // as Teams, and a folded sibling (/players, /ai-lab) lights its parent.
+  // Detail pages that belong to no tab return -1 and don't swipe.
+  const tabMatches = (tab, path) =>
+    (tab.end ? path === '/' : path.startsWith(tab.to)) ||
+    (tab.alsoMatches ?? []).some(alias => path.startsWith(alias))
+  const active = MOBILE_TABS.reduce((best, tab, i) => {
+    const hit = tabMatches(tab, pathname)
+    return hit && (best < 0 || tab.to.length > MOBILE_TABS[best].to.length) ? i : best
   }, -1)
 
+  // The 5-tab model only exists below md; a touch-screen laptop showing all
+  // seven tabs must not swipe through a five-tab cycle it cannot see.
+  const [isPhone, setIsPhone] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const onChange = e => setIsPhone(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
   useSwipeTabs({
-    count: TABS.length,
+    count: MOBILE_TABS.length,
     index: active,
-    enabled: active >= 0,
+    enabled: active >= 0 && isPhone,
     priority: SWIPE_PRIORITY.shell,
-    onChange: i => navigate(TABS[i].to),
+    onChange: i => navigate(MOBILE_TABS[i].to),
   })
 
   return (
@@ -61,7 +88,7 @@ export default function AppShell() {
           <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="Hockey.AI — home">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-8 w-8 rounded-lg" />
             <img src={`${import.meta.env.BASE_URL}hockeyai_name.png`} alt="Hockey.AI"
-              className="h-6 w-auto sm:h-7" />
+              className="hidden h-6 w-auto min-[380px]:block sm:h-7" />
           </Link>
           <div className="no-scrollbar hidden items-center gap-0.5 overflow-x-auto md:flex">
             {TABS.map(t => (
@@ -74,7 +101,10 @@ export default function AppShell() {
               </NavLink>
             ))}
           </div>
-          <OracleChip />
+          <div className="ml-auto flex shrink-0 items-center gap-1.5">
+            <SyncChip />
+            <OracleChip />
+          </div>
         </nav>
       </header>
 
@@ -95,19 +125,30 @@ export default function AppShell() {
         {' · '}<Link to="/trust" className="text-brand hover:underline">Trust &amp; Privacy</Link>
       </footer>
 
-      {/* Bottom nav (mobile) — same seven tabs as the desktop bar */}
+      {/* Bottom nav (mobile) — five items, ≥44px targets. The parent stays
+          lit on folded siblings via `active`, which NavLink alone can't do. */}
       <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-white/5 bg-pitch-950/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden">
-        <div className="flex py-1.5">
-          {TABS.map(({ to, short, icon: Icon, end }) => (
-            <NavLink key={to} to={to} end={end}
-              className={({ isActive }) =>
-                `flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-lg px-0.5 py-1 text-[9px] font-semibold uppercase tracking-wide transition-colors ${
-                  isActive ? 'text-brand' : 'text-pitch-400'
+        <div className="flex py-1">
+          {MOBILE_TABS.map((tab, i) => {
+            const { to, short, icon: Icon } = tab
+            const lit = active === i
+            const exact = tab.end ? pathname === '/' : pathname.startsWith(tab.to)
+            // Plain Link, not NavLink: NavLink swallows a passed aria-current
+            // and applies its own route match, which can never light Teams
+            // while the reader is on /players. aria-current only on a true
+            // route match — the alias case lights up but does not claim to
+            // be the page (SiblingNav's link is the page).
+            return (
+              <Link key={to} to={to} data-active={lit || undefined}
+                aria-current={exact && lit ? 'page' : undefined}
+                className={`flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-0.5 py-1 text-[10px] font-semibold uppercase tracking-wide transition-colors ${
+                  lit ? 'text-brand' : 'text-pitch-400'
                 }`}>
-              <Icon size={19} strokeWidth={2.2} />
-              <span className="w-full truncate text-center">{short}</span>
-            </NavLink>
-          ))}
+                <Icon size={21} strokeWidth={2.2} />
+                <span className="w-full truncate text-center">{short}</span>
+              </Link>
+            )
+          })}
         </div>
       </nav>
     </div>

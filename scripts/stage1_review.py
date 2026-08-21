@@ -134,11 +134,11 @@ Matias Andreotti's yellow card in the 27th changed it. The Netherlands scored tw
 
 One corner each, one converted each, so the set piece is not the story here — the discipline is. Argentina had beaten Japan without conceding and were level with the hosts until a card they did not need. The Netherlands, meanwhile, have now scored eight goals in two matches and taken both from behind or from level, which is the mark of a side that trusts its second half.""",
 
-    'D5': """England scored four goals in twelve minutes and finished with eight, the highest total of the pool stage. Wales, who had drawn with Pakistan and defended competently against India, were dismantled by a set-piece routine they had no answer to and could not stop conceding.
+    'D5': """England put eight past Wales — the highest single-team total of the pool stage — and did most of it by movement rather than routine. Sam Ward opened from open play in the 2nd, Will Calnan scored in the 13th and again in the 20th, the same minute Daniel Kyriakides was shown a green card, and Thomas Sorsby made it four in the 22nd. Four goals by the 22nd minute, every one of them a field goal, against a Welsh side that had drawn with Pakistan and stayed within two of India.
 
-Jack Waller and Nicholas Bandurak converted corners in the 17th and 18th, Conor Williamson scored from open play in the 27th, and James Albery struck from another corner in the 28th — four goals in a second quarter Wales began with a green and a yellow card already shown against them. Gareth Furlong replied from a corner in the 30th. After the break: Zachary Wallace in the 39th, a Stuart Rushmere stroke in the 46th, Hywel Jones's consolation in the 48th, Sam Ward in the 53rd and Albery's second in the 56th.
+Zachary Wallace continued the pattern in the 41st before the corners finally told: Samuel Hooper converted in the 48th and Henry Croft in the 51st from England's seven-corner haul, and Nicholas Bandurak's field goal in the 54th made it eight. Wales's response came late and came entirely through Gareth Furlong — a penalty stroke in the 58th and a corner goal in the 59th — after Kyriakides had compounded his green with a yellow in the 44th of a second half England controlled on sixty-five per cent of possession.
 
-Seven corners to three, four goals from set pieces, four from open play, seven different scorers. England leave the pool stage as the most balanced attacking side in the tournament — capable of beating a defence by routine or by movement, and equally happy to do either.""",
+The balance is the warning England leave the pool stage with: six of the eight from open play, only two from seven corners won, and seven different scorers, so this attack beats a defence by movement first and by routine second, and depends on no one name. Wales conceded more in one afternoon than in their other two pool matches combined, and Furlong's late double was the only answer they found.""",
 
     'D6': """The most goals either of these sides has scored in a World Cup meeting, and the fixture lived up to everything it usually promises. India led 4-2 at half-time in a first half that produced six goals, then closed the match out with the control that has been missing from their tournament so far.
 
@@ -253,8 +253,11 @@ def main():
     now = datetime.now(timezone.utc).isoformat()
 
     fixtures = load('fixtures.json')
+    # Stage 1 only: this review covers the 24 pool matches. Stage 2 onwards is
+    # stage2_review.py's ledger, one match at a time as results land.
     finished = [m for m in fixtures['matches']
-                if m['status'] == 'completed' and (m.get('score') or {}).get('home') is not None]
+                if m['status'] == 'completed' and m['phase'] == 'pool'
+                and (m.get('score') or {}).get('home') is not None]
     ids = {m['id'] for m in finished}
 
     missing = ids - set(STORIES)

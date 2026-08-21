@@ -5,6 +5,8 @@ import { Skeleton, TierBadge } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { useSwipeTabs } from '../components/useSwipeTabs'
+import SiblingNav from '../components/SiblingNav'
+import { useFavourite } from '../hooks/useFavourite'
 
 // Five cuts. All and Alive are the two ways to read the whole field; the three
 // tags below them are earned, not seeded — engine/tiers.js re-derives them from
@@ -42,6 +44,8 @@ export default function TeamsPage() {
     onChange: i => setFilter(FILTERS[i].id),
   })
 
+  const favourite = useFavourite()
+
   if (teams === undefined) return <Skeleton h={500} />
 
   // One lookup per team, shared by the chip counts, the grid filter and the
@@ -55,6 +59,10 @@ export default function TeamsPage() {
 
   return (
     <div>
+      <SiblingNav items={[
+        { to: '/teams', label: '🌍 Teams', end: true },
+        { to: '/players', label: '👤 Players' },
+      ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🌍 Teams</h1>
         <p className="mt-1 text-xs text-pitch-400">16 nations · 4 pools · FIH World Rankings</p>
@@ -91,7 +99,9 @@ export default function TeamsPage() {
                 const { out, tier } = ctxOf(t)
                 return (
                   <Link key={t.code} to={`/teams/${t.code}`}
-                    className={`relative overflow-hidden rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand/25 ${out ? 'opacity-60' : ''}`}>
+                    className={`relative overflow-hidden rounded-xl border bg-pitch-800 p-3.5 transition-all hover:-translate-y-0.5 hover:border-brand/25 ${
+                      favourite === t.code ? 'border-brand/40 ring-1 ring-brand/40' : 'border-white/5'
+                    } ${out ? 'opacity-60' : ''}`}>
                     <div className="absolute inset-x-0 top-0 h-0.5 opacity-80" style={{ background: t.color }} />
                     <span className="absolute right-2.5 top-2.5 rounded bg-brand/10 px-1.5 py-0.5 font-mono text-[10px] text-brand">#{t.fihRank}</span>
                     <div className="mb-1.5 text-4xl">{t.flag}</div>

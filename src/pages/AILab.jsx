@@ -11,6 +11,7 @@ import {
   deriveComeback, buildInsights, buildDrivers, buildMatchDNA,
 } from '../engine/insights'
 import { formatDate, phaseTag } from '../components/MatchCard'
+import SiblingNav from '../components/SiblingNav'
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ReferenceLine, ResponsiveContainer,
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
@@ -115,7 +116,8 @@ function LivePanel({ matches, teams, byCode, initialMatchId, onSelectMatch }) {
       <div className={`mb-4 flex items-center gap-2 rounded-lg border px-3 py-2 font-mono text-[11px] ${
         live ? 'border-live/30 bg-live/5 text-live' : 'border-white/5 bg-pitch-800 text-pitch-400'
       }`}>
-        {live ? <><span className="live-dot" /> Live · {tele.clock.display}</>
+        {live ? <><span className="live-dot" /> {tele.clock.kind === 'FT_WAIT'
+            ? 'Full-time · awaiting the official score' : `Live · ${tele.clock.display}`}</>
           : done ? <>No match live · showing a recent result</>
           : <>No match live · next push-back {formatDate(match.date)}, {match.time} CET</>}
       </div>
@@ -168,7 +170,8 @@ function LivePanel({ matches, teams, byCode, initialMatchId, onSelectMatch }) {
           <StatBlock label="AI Confidence" value={pred?.status === 'ready' ? `${pred.pickConfidencePct}%` : '—'} />
           <StatBlock label="Current State" value={
             done ? `FT · ${match.score?.home}-${match.score?.away}`
-              : live ? (tele.goalDiff === 0 ? 'Level' : `${(tele.goalDiff > 0 ? home : away)?.name} in control`)
+              : live ? (match.score?.home == null ? 'Awaiting score'
+                : tele.goalDiff === 0 ? 'Level' : `${(tele.goalDiff > 0 ? home : away)?.name} in control`)
               : 'Pre-match'} />
           <StatBlock label="Chaos Index" value={`${tele.chaos}%`}
             sub={tele.chaos >= 75 ? 'High' : tele.chaos >= 50 ? 'Elevated' : 'Calm'} />
@@ -487,6 +490,10 @@ export default function AILabPage() {
 
   return (
     <div>
+      <SiblingNav items={[
+        { to: '/prediction-race', label: '🎯 Oracle' },
+        { to: '/ai-lab', label: '🧠 AI Lab' },
+      ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🧠 AI Lab</h1>
         <p className="mt-1 text-xs text-pitch-400">

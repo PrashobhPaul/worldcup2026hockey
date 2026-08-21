@@ -3,6 +3,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { Link } from 'react-router-dom'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
+import SiblingNav from '../components/SiblingNav'
 
 const POSITIONS = ['all', 'Forward', 'Midfielder', 'Defender', 'Goalkeeper']
 
@@ -24,6 +25,10 @@ export default function PlayersPage() {
 
   return (
     <div>
+      <SiblingNav items={[
+        { to: '/teams', label: '🌍 Teams', end: true },
+        { to: '/players', label: '👤 Players' },
+      ]} />
       <div className="mb-5 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">👤 Players</h1>
         <p className="mt-1 text-xs text-pitch-400">{players.length} key players tracked · goals, assists, penalty corners, cards</p>

@@ -6,6 +6,7 @@ import { Skeleton, TierBadge } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability, toPercent } from '../engine/probability.js'
 import { ArrowLeft } from 'lucide-react'
+import { useFavourite, toggleFavourite } from '../hooks/useFavourite'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
 function OracleSnapshot({ team, teams, matches }) {
@@ -83,6 +84,23 @@ function TitleOdds({ team, teams, matches }) {
   )
 }
 
+/** Local, zero-backend: following drives the Home dashboard on this device. */
+function FollowButton({ team }) {
+  const favourite = useFavourite()
+  const following = favourite === team.code
+  return (
+    <button onClick={() => toggleFavourite(team.code)} aria-pressed={following}
+      className={`flex min-h-[44px] items-center gap-1.5 rounded-lg border px-3.5 text-xs font-semibold transition-colors ${
+        following
+          ? 'border-brand/40 bg-brand/10 text-brand'
+          : 'border-white/10 bg-pitch-800 text-pitch-300 hover:border-brand/25 hover:text-white'
+      }`}>
+      <span className="text-sm leading-none">{following ? '★' : '☆'}</span>
+      {following ? 'Following' : 'Follow'}
+    </button>
+  )
+}
+
 export default function TeamDetailPage() {
   const { teamCode } = useParams()
   const team = useLiveQuery(() => db.teams.get(teamCode), [teamCode])
@@ -104,11 +122,15 @@ export default function TeamDetailPage() {
         <div className="absolute inset-x-0 top-0 h-1" style={{ background: team.color }} />
         <div className="flex items-center gap-5">
           <span className="text-6xl">{team.flag}</span>
-          <div>
+          <div className="min-w-0 flex-1">
             <h1 className="font-display text-3xl font-bold tracking-tight">{team.name}</h1>
             <p className="font-mono text-xs text-pitch-300">{team.nickname} · FIH #{team.fihRank} · Pool {team.pool}{team.host ? ' · Host' : ''}</p>
             <TitleOdds team={team} teams={teams} matches={allMatches} />
           </div>
+        </div>
+        {/* Its own row: sharing the title row crushed long team names on phones. */}
+        <div className="mt-3">
+          <FollowButton team={team} />
         </div>
         {team.intro && (
           <div className="mt-4 rounded-xl border-l-2 border-l-brand/60 border-white/5 bg-pitch-950/40 p-4">

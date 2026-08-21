@@ -234,7 +234,11 @@ def main():
         version_doc['updated_at'] = stamp
         save('ai-stories.json', stories_doc)
         save('data-version.json', version_doc)
-        print(f"Data version bumped -> {version_doc['version']}")
+        # The fingerprint must move with the content, or installed apps that
+        # trust the stamp never refetch the new brief.
+        from data_fingerprint import stamp as stamp_fingerprint
+        print(f"Data version bumped -> {version_doc['version']} "
+              f"(fingerprint {stamp_fingerprint(version_doc)})")
     else:
         print('No new briefs.')
 
