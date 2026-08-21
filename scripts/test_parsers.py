@@ -18,6 +18,7 @@ from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
     parse_tms_results, update_statuses, backfill_scores_from_tms,
+    backfill_stage_scores,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
     slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h,
@@ -425,6 +426,89 @@ d4 = fixtures['matches'][2]
 check('a page score is applied once standings confirm, oriented to our fixture',
       d4['score'] == {'home': 3, 'away': 3} and d4['result_source'] == 'fih-tms-matches'
       and d4['status'] == 'completed')
+
+print('\nStage 2 / knockout score backfill (no pool table to witness)')
+
+# The reported failure: FRA v RSA (S2H1) and IRL v MAS (S2H2) finished hours
+# earlier but sat live and scoreless, because the only score-writing path
+# filtered phase == 'pool'.
+def stage_fx(**over):
+    base = {'id': 'S2H1', 'matchNo': 25, 'home': 'FRA', 'away': 'RSA',
+            'phase': 'stage2', 'pool': 'H', 'date': '2026-08-21', 'time': '11:00',
+            'status': 'live', 'score': None, 'tms_id': 4025}
+    base.update(over)
+    return {'matches': [base]}
+
+# 11:00 CEST kickoff: window (105') closes 12:45 CEST = 10:45 UTC.
+in_window = datetime(2026, 8, 21, 10, 0, tzinfo=timezone.utc)     # 12:00 CEST, Q4-ish
+past_window = datetime(2026, 8, 21, 11, 30, tzinfo=timezone.utc)  # 13:30 CEST
+next_run = datetime(2026, 8, 21, 12, 0, tzinfo=timezone.utc)
+page = {('FRA', 'RSA'): (1, 3)}
+no_report = lambda m: None
+
+f = stage_fx()
+backfill_stage_scores(f, page, now=in_window, report_tally=no_report)
+check('a page score inside the match window is never written (could be live)',
+      f['matches'][0]['score'] is None and 'score_seen' not in f['matches'][0])
+
+f = stage_fx()
+backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
+s = f['matches'][0]
+check('report tally matching the page score confirms on the first run',
+      s['score'] == {'home': 1, 'away': 3} and s['status'] == 'completed'
+      and s['result_source'] == 'fih-tms-matches')
+check('the pending sighting is cleared once written', 'score_seen' not in s)
+
+f = stage_fx()
+backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
+s = f['matches'][0]
+check('no report yet: the sighting is recorded, no score written',
+      s['score'] is None and s['score_seen']['home'] == 1 and s['score_seen']['away'] == 3)
+backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
+check('the same run window does not confirm its own sighting', s['score'] is None)
+backfill_stage_scores(f, page, now=next_run, report_tally=no_report)
+check('a second run with the same score 30 min later confirms it',
+      s['score'] == {'home': 1, 'away': 3} and s['status'] == 'completed')
+
+f = stage_fx()
+backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
+backfill_stage_scores(f, {('FRA', 'RSA'): (2, 3)}, now=next_run, report_tally=no_report)
+s = f['matches'][0]
+check('a score that moved between runs restarts the wait — it was live',
+      s['score'] is None and s['score_seen']['home'] == 2)
+
+f = stage_fx()
+backfill_stage_scores(f, {('RSA', 'FRA'): (3, 1)}, now=past_window, report_tally=lambda m: (1, 3))
+check('a reversed page pair is oriented to our fixture',
+      f['matches'][0]['score'] == {'home': 1, 'away': 3})
+
+f = stage_fx()
+backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 2))
+check('a report disagreeing with the page blocks the write entirely',
+      f['matches'][0]['score'] is None and 'score_seen' not in f['matches'][0])
+
+f = stage_fx()
+backfill_stage_scores(f, {('FRA', 'RSA'): (0, 0)}, now=past_window, report_tally=lambda m: (0, 0))
+s = f['matches'][0]
+check('an empty report tally never fast-tracks a 0-0 (parse-failure lookalike)',
+      s['score'] is None and s.get('score_seen', {}).get('home') == 0)
+backfill_stage_scores(f, {('FRA', 'RSA'): (0, 0)}, now=next_run, report_tally=lambda m: (0, 0))
+check('a stable 0-0 still lands via the two-run path',
+      s['score'] == {'home': 0, 'away': 0})
+
+f = stage_fx(phase='pool', pool='B')
+backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
+check('pool matches stay with the standings-witness path',
+      f['matches'][0]['score'] is None)
+
+f = stage_fx(home='TBD', away='TBD')
+backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
+check('an unslotted fixture is untouched', f['matches'][0]['score'] is None)
+
+f = stage_fx(score={'home': 4, 'away': 2}, status='completed')
+backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
+check('an existing (e.g. manual) score is never overwritten',
+      f['matches'][0]['score'] == {'home': 4, 'away': 2})
 
 print('\nOracle pick revision (erratum, never rewrite)')
 

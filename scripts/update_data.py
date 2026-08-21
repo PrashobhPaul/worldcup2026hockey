@@ -1514,6 +1514,106 @@ def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
         print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS standings deltas)")
     return changed
 
+# Minutes a matches-page score must sit unchanged before it is trusted as
+# final for a match with no standings table to witness it. One cron interval
+# apart is plenty: a final score does not move; a live one does.
+SCORE_CONFIRM_MIN = 20
+
+def _report_goal_tally(m):
+    """(home_goals, away_goals) from the official match report, or None.
+
+    TMS publishes the report once the match is over, so a report whose goal
+    lines tally to the page score is proof the page score is final."""
+    if not m.get('tms_id'):
+        return None
+    body, _ = _tms_get(f'{TMS_HOST}/matches/{m["tms_id"]}/reports/matchreport',
+                       referer=f'{TMS_HOST}/matches/{m["tms_id"]}')
+    if not body or not body.startswith(b'%PDF'):
+        return None
+    goals = parse_match_report_goals(_pdf_lines(body))
+    if not goals or {g['team'] for g in goals} - {m['home'], m['away']}:
+        return None
+    return (sum(1 for g in goals if g['team'] == m['home']),
+            sum(1 for g in goals if g['team'] == m['away']))
+
+def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None):
+    """Final scores for Stage 2, classification and knockout matches.
+
+    The pool backfill's witness is the standings table: a row only absorbs a
+    match once it is final. Later stages have no clean equivalent (Stage 2
+    tables carry Stage 1 results across, so their deltas are not one match's
+    score) — which is why the pool-only filter left FRA v RSA and IRL v MAS
+    sitting live and scoreless hours after full-time. Two witnesses replace
+    the table, either one sufficient:
+
+      1. The official match report is published and its goal lines tally to
+         exactly the page score. TMS posts the report after the final whistle,
+         so this confirms on the first run — no extra latency.
+      2. The same score sat on the matches page across two runs at least
+         SCORE_CONFIRM_MIN apart, with the match window over. A final score
+         does not change between runs; a live one moves on.
+
+    Until a witness confirms, the sighting is recorded on the fixture
+    (score_seen) and no score is written — we never guess, and a match
+    overrunning its window can never have a mid-match score frozen in.
+    """
+    if not page_results:
+        return False
+    now = now or now_utc()
+    if report_tally is None:
+        report_tally = _report_goal_tally
+    changed = False
+    for m in fixtures['matches']:
+        if m['phase'] == 'pool' or m['home'] == 'TBD' or has_score(m):
+            continue
+        try:
+            over = now >= kickoff(m) + timedelta(minutes=MATCH_DURATION_MIN)
+        except ValueError:
+            continue
+        if not over:
+            continue
+        page = page_results.get((m['home'], m['away'])) or (
+            page_results.get((m['away'], m['home'])) and page_results[(m['away'], m['home'])][::-1])
+        if not page:
+            continue
+        sh, sa = page
+
+        tally = report_tally(m)
+        if tally is not None and tally != (sh, sa):
+            # e.g. a knockout page score folding a shootout into regulation —
+            # that disagreement needs eyes, not a coin-flip.
+            print(f"BACKFILL SKIP {m['id']}: page says {sh}-{sa} but the match report "
+                  f"tallies {tally[0]}-{tally[1]} — needs manual entry, not a guess.")
+            continue
+
+        confirmed_by = None
+        if tally == (sh, sa) and (sh or sa):    # an empty report parse could fake a 0-0
+            confirmed_by = 'official match report'
+        else:
+            seen = m.get('score_seen')
+            if seen and seen.get('home') == sh and seen.get('away') == sa:
+                try:
+                    age = (now - datetime.fromisoformat(seen['at'])).total_seconds() / 60
+                except (KeyError, TypeError, ValueError):
+                    age = 0
+                if age >= SCORE_CONFIRM_MIN:
+                    confirmed_by = f'unchanged on the page for {int(age)} min'
+
+        if confirmed_by:
+            m['score'] = {'home': sh, 'away': sa}
+            m['result_source'] = 'fih-tms-matches'
+            m['status'] = 'completed'
+            m.pop('score_seen', None)
+            changed = True
+            print(f"BACKFILL: {m['id']} {m['home']} {sh}-{sa} {m['away']} "
+                  f"(TMS matches page, confirmed by {confirmed_by})")
+        elif (m.get('score_seen') or {}).get('home') != sh or (m.get('score_seen') or {}).get('away') != sa:
+            m['score_seen'] = {'home': sh, 'away': sa, 'at': now.isoformat()}
+            changed = True
+            print(f"PENDING: {m['id']} {m['home']} {sh}-{sa} {m['away']} sighted on the "
+                  f"matches page — waiting for the report or a confirming run.")
+    return changed
+
 # ------------------------------------------------ estimated enrichment
 GOAL_VIA_WEIGHTS = [('PC', 0.45), ('FG', 0.45), ('PS', 0.10)]
 
@@ -2429,6 +2529,10 @@ def main():
     if tms:
         print(f"TMS standings parsed: { {k: len(v) for k, v in tms.items()} }")
         changed |= backfill_scores_from_tms(fixtures, tms, page_results)
+    # Stage 2 and knockout matches have no pool table to witness them; their
+    # scores come from the matches page with their own confirmation rules —
+    # and must not be gated on the standings PDF parsing.
+    changed |= backfill_stage_scores(fixtures, page_results)
 
     # Real timeline from the TMS match report first; estimation only fills the
     # matches a report hasn't been published for yet.

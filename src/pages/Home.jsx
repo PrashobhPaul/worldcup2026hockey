@@ -217,7 +217,7 @@ function FavouriteStrip({ teams, matches }) {
           </span>
           <span className="font-mono text-[10px] text-pitch-400">
             {liveNow
-              ? `${spotlight.score?.home ?? 0}–${spotlight.score?.away ?? 0}`
+              ? `${spotlight.score?.home ?? '–'}–${spotlight.score?.away ?? '–'}`
               : `${formatDate(spotlight.date)} · ${spotlight.time} CET`}
           </span>
         </Link>
