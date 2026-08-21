@@ -38,6 +38,12 @@ jobs:
       - name: Match preview evidence
         run: npm run test:preview
 
+      # Briefs must be true to the match record — every scorer named, every
+      # goal minute cited — and a pick's rationale must argue from this
+      # tournament rather than from a ranking gap or from hindsight.
+      - name: Story and rationale facts
+        run: python3 scripts/test_story_facts.py
+
       # An empty local database must never be mistaken for an up-to-date one:
       # that is what rendered a shell full of empty tabs with nothing to explain
       # it. scripts/smoke_recovery.mjs covers the same ground in a real browser.
