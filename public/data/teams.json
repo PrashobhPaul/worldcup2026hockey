@@ -40,11 +40,11 @@
       "name": "Argentina",
       "flag": "🇦🇷",
       "pool": "A",
-      "fih_rank": 8,
+      "fih_rank": 7,
       "host": false,
       "nickname": "Los Leones",
       "color": "#75AADB",
-      "captain": "Maico Casella",
+      "captain": "Lucas Martín Rossi",
       "coach": "Lucas Rey",
       "key_players": [
         "Agustín Bugallo",
@@ -57,7 +57,7 @@
       "contender_tier": "contender",
       "win_prob": 14.7,
       "intro": "Los Leones changed the sport's power map when they took Olympic gold in 2016, and they have never gone back to being anyone's outsiders. Two world titles sit in the cabinet, the most recent in 2010. Argentina's game is built on speed of thought — quick restarts, aggressive pressing, drag-flick threat from distance — and Lucas Martín Rossi leads a group that has grown up together. Pool A pits them against the hosts immediately, which is exactly the kind of opening night they enjoy.",
-      "fih_points": 3213.89,
+      "fih_points": 3271.67,
       "form": {
         "played": 3,
         "wins": 2,
@@ -89,7 +89,7 @@
       "contender_tier": "challenger",
       "win_prob": 3.8,
       "intro": "The Black Sticks come to Belgium and the Netherlands as the tournament's most familiar dark horses: never world champions, never comfortable to play against. Ranked outside the top ten, New Zealand's route out of Pool A runs through the Netherlands and Argentina, which means their tournament may be decided in the seventy minutes against Japan. Sam Lane's side counter well and defend the circle in numbers; if their penalty corner clicks early, the pool's arithmetic changes.",
-      "fih_points": 2791.69,
+      "fih_points": 2733.91,
       "form": {
         "played": 3,
         "wins": 1,
@@ -108,7 +108,7 @@
       "host": false,
       "nickname": "Samurai Japan",
       "color": "#BC002D",
-      "captain": "Raiki Fujishima",
+      "captain": "Koji Kayukawa",
       "coach": "Yoshihiro Anai",
       "key_players": [
         "Kosuke Yamada",
@@ -140,7 +140,7 @@
       "host": true,
       "nickname": "Red Lions",
       "color": "#EF3340",
-      "captain": "Arthur van Doren",
+      "captain": "Arthur de Sloover",
       "coach": "Shane McLeod",
       "key_players": [
         "Alexander Hendrickx",
@@ -168,11 +168,11 @@
       "name": "France",
       "flag": "🇫🇷",
       "pool": "B",
-      "fih_rank": 10,
+      "fih_rank": 9,
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
-      "captain": "François Goyet",
+      "captain": "Victor Charlet",
       "coach": "John-John Dohmen",
       "key_players": [
         "Victor Charlet",
@@ -204,7 +204,7 @@
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
-      "captain": "Tom Grambusch",
+      "captain": "Niklas Wellen",
       "coach": "André Henning",
       "key_players": [
         "Niklas Wellen",
@@ -232,11 +232,11 @@
       "name": "Malaysia",
       "flag": "🇲🇾",
       "pool": "B",
-      "fih_rank": 13,
+      "fih_rank": 14,
       "host": false,
       "nickname": "Tigers",
       "color": "#CC0001",
-      "captain": "Marhan Jalil",
+      "captain": "Adrian Albert",
       "coach": "Brendon Carolan",
       "key_players": [
         "Tengku Ahmad Tajuddin",
@@ -268,7 +268,7 @@
       "host": false,
       "nickname": "Kookaburras",
       "color": "#00843D",
-      "captain": null,
+      "captain": "Aran Zalewski",
       "coach": "Mark Hager",
       "key_players": [
         "Tom Wickham",
@@ -281,7 +281,7 @@
       "contender_tier": "favourite",
       "win_prob": 21.6,
       "intro": "The Kookaburras are a fixture at the top of the world rankings, and the position flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Blake Govers' flick and Tom Wickham's movement lead the scoring threat. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided once the crossover stage begins.",
-      "fih_points": 3604.41,
+      "fih_points": 3584.41,
       "form": {
         "played": 3,
         "wins": 2,
@@ -313,7 +313,7 @@
       "contender_tier": "contender",
       "win_prob": 6.2,
       "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a Stage-2 draw where their patience and set-piece accuracy can outlast a more expansive opponent.",
-      "fih_points": 3241.85,
+      "fih_points": 3301.73,
       "form": {
         "played": 3,
         "wins": 2,
@@ -328,11 +328,11 @@
       "name": "Ireland",
       "flag": "🇮🇪",
       "pool": "C",
-      "fih_rank": 9,
+      "fih_rank": 10,
       "host": false,
       "nickname": "Green Machine",
       "color": "#169B62",
-      "captain": "Kyle Marshall",
+      "captain": "Conor Harte",
       "coach": "Mark Tumilty",
       "key_players": [
         "Shane O'Donoghue",
@@ -345,7 +345,7 @@
       "contender_tier": "dark_horse",
       "win_prob": 2.8,
       "intro": "The Green Machine reached this World Cup the hard way, and that has been Ireland's pattern for a decade: qualify against the odds, then make life miserable for someone better resourced. Conor Harte leads a squad with Shane O'Donoghue's experience and a defensive block that stays compact for the full seventy minutes. Pool C offers Spain and South Africa as realistic targets, and Ireland have made a habit of taking realistic targets.",
-      "fih_points": 2840.62,
+      "fih_points": 2780.74,
       "form": {
         "played": 3,
         "wins": 1,
@@ -360,11 +360,11 @@
       "name": "South Africa",
       "flag": "🇿🇦",
       "pool": "C",
-      "fih_rank": 14,
+      "fih_rank": 13,
       "host": false,
       "nickname": "Amabhungane",
       "color": "#007A4D",
-      "captain": "Dayaan Cassiem",
+      "captain": "Jethro Eustice",
       "coach": "Devon van der Merwe",
       "key_players": [
         "Austin Smith",
@@ -377,7 +377,7 @@
       "contender_tier": "outsider",
       "win_prob": 0.9,
       "intro": "Amabhungane arrive as Africa's representatives and the lowest-ranked side in Pool C, a position South Africa have turned into an identity. Austin Smith's experience anchors a squad that plays with more freedom than its ranking implies, and their tournament will hinge on the fixture against Ireland. South Africa have never got out of a World Cup pool; this is a group where the arithmetic at least allows the conversation.",
-      "fih_points": 2443.77,
+      "fih_points": 2463.77,
       "form": {
         "played": 3,
         "wins": 0,
@@ -392,7 +392,7 @@
       "name": "India",
       "flag": "🇮🇳",
       "pool": "D",
-      "fih_rank": 7,
+      "fih_rank": 8,
       "host": false,
       "nickname": "Men in Blue",
       "color": "#FF9933",
@@ -428,7 +428,7 @@
       "host": false,
       "nickname": "Three Lions",
       "color": "#CF142B",
-      "captain": "Zachary Wallace",
+      "captain": "Will Calnan",
       "coach": "Zak Jones",
       "key_players": [
         "Sam Ward",
@@ -460,7 +460,7 @@
       "host": false,
       "nickname": "Green Shirts",
       "color": "#01411C",
-      "captain": "Abu Mahmood",
+      "captain": "Sufyan Khan",
       "coach": "Bob Veldhof",
       "key_players": [
         "Arshad Liaquat",
@@ -492,7 +492,7 @@
       "host": false,
       "nickname": "Dragons",
       "color": "#C8102E",
-      "captain": "Benjamin Francis",
+      "captain": "Gareth Furlong",
       "coach": "Daniel Newcombe",
       "key_players": [
         "Rupert Shipperley",
@@ -518,5 +518,5 @@
   ],
   "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results.",
   "rankings_source": "https://www.fih.hockey/outdoor-hockey-rankings",
-  "rankings_updated_at": "2026-08-20T01:22:08.255784+00:00"
+  "rankings_updated_at": "2026-08-21T01:26:24.928159+00:00"
 }
