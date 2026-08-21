@@ -83,21 +83,28 @@ ok('with Stage 2 unplayed, no semi-final is presented as settled',
 
 // ── Real results outrank the projection ─────────────────────────────────────
 // Give Spain a 9-0 win over Germany — a real Stage-2 cross fixture, not the
-// carried Stage-1 pairing — and it must climb the table.
-const spainWins = fixtures.map(m =>
-  (m.phase === 'stage2' && m.pool === 'F' &&
-   [m.home, m.away].includes('ESP') && [m.home, m.away].includes('GER'))
+// carried Stage-1 pairing — and it must climb the table. The pairing is reset
+// to unplayed for the baseline first: once the real tournament plays it, a
+// diff against live data would show no points change and the check would rot.
+const isEspGer = m => m.phase === 'stage2' && m.pool === 'F' &&
+  [m.home, m.away].includes('ESP') && [m.home, m.away].includes('GER')
+const pairUnplayed = fixtures.map(m =>
+  isEspGer(m) ? { ...m, status: 'scheduled', score: null } : m)
+const b0 = project(pairUnplayed)
+const spainWins = pairUnplayed.map(m =>
+  isEspGer(m)
     ? { ...m, status: 'completed',
         score: m.home === 'ESP' ? { home: 9, away: 0 } : { home: 0, away: 9 } }
     : m)
 const bw = project(spainWins)
-const espBefore = F.table.find(r => r.code === 'ESP')
+const espBefore = b0.stage2.F.table.find(r => r.code === 'ESP')
 const espAfter = bw.stage2.F.table.find(r => r.code === 'ESP')
 const gerAfter = bw.stage2.F.table.find(r => r.code === 'GER')
 ok('a win banks real points in place of the projected ones',
    espAfter.pts > espBefore.pts && espAfter.gd > espBefore.gd,
    `${espBefore.pts.toFixed(2)}/${espBefore.gd.toFixed(2)} -> ${espAfter.pts.toFixed(2)}/${espAfter.gd.toFixed(2)}`)
-ok('the beaten side carries the defeat', gerAfter.gd < F.table.find(r => r.code === 'GER').gd)
+ok('the beaten side carries the defeat',
+   gerAfter.gd < b0.stage2.F.table.find(r => r.code === 'GER').gd)
 ok('the played pairing is no longer counted as pending', espAfter.played === 2 && espAfter.pending === 1)
 ok('the semi-final slots follow the table after a real result',
    bw.byId.get('SF2').home === bw.stage2.F.table[0].code &&
@@ -126,6 +133,53 @@ ok('a completed pool has whole-number points',
    bf.stage2.F.table.map(r => r.pts).join(','))
 ok('a completed pool has nothing pending',
    bf.stage2.F.table.every(r => r.pending === 0 && r.played === 3))
+
+// ── Real Stage-2 standings (the Cup tab's tables, matching FIH's own) ───────
+// Ground truth from the official standings page after 27 completed matches:
+// Pool H read IRL P2 6pts 11:5 — the 7-4 over Malaysia PLUS the carried 4-1
+// over South Africa from Stage 1. Carry-over is a fact of the format, not an
+// option, and these checks pin it with synthetic fixtures.
+console.log('\nReal Stage-2 standings (carry-over included)')
+const { computeStage2Standings } = await import('../src/engine/standings.js')
+const syn = [
+  // Stage 1: AAA & BBB shared a pool (carried), CCC & DDD shared another.
+  { id: 'P1', phase: 'pool', pool: 'X', home: 'AAA', away: 'BBB', status: 'completed', score: { home: 4, away: 1 } },
+  { id: 'P2', phase: 'pool', pool: 'Y', home: 'CCC', away: 'DDD', status: 'completed', score: { home: 2, away: 2 } },
+  // A Stage-1 match against a team OUTSIDE the Stage-2 pool must not count.
+  { id: 'P3', phase: 'pool', pool: 'X', home: 'AAA', away: 'ZZZ', status: 'completed', score: { home: 9, away: 0 } },
+  // Stage 2 pool Q: one cross fixture played, three to come.
+  { id: 'S1', phase: 'stage2', pool: 'Q', home: 'AAA', away: 'DDD', status: 'completed', score: { home: 7, away: 4 } },
+  { id: 'S2', phase: 'stage2', pool: 'Q', home: 'BBB', away: 'CCC', status: 'scheduled', score: null },
+  { id: 'S3', phase: 'stage2', pool: 'Q', home: 'AAA', away: 'CCC', status: 'scheduled', score: null },
+  { id: 'S4', phase: 'stage2', pool: 'Q', home: 'BBB', away: 'DDD', status: 'scheduled', score: null },
+]
+const [q] = computeStage2Standings(syn)
+const row = c => q.standings.find(r => r.team === c)
+ok('the carried Stage-1 result counts as played', row('AAA').played === 2 && row('BBB').played === 1)
+ok('the IRL shape reproduces: 2 wins, carried + cross goals summed',
+   row('AAA').w === 2 && row('AAA').pts === 6 && row('AAA').gf === 11 && row('AAA').ga === 5,
+   JSON.stringify(row('AAA')))
+ok('a carried draw scores one point', row('CCC').pts === 1 && row('CCC').d === 1)
+ok('a Stage-1 match against a non-member never leaks in', row('AAA').gf === 11)
+ok('cross-fixture progress is 1/4', q.crossPlayed === 1 && q.crossTotal === 4)
+ok('W/D/L splits are explicit', row('DDD').d === 1 && row('DDD').l === 1 && row('DDD').played === 2)
+
+// FIH tie-break: level on points, wins, GD and GF → the head-to-head decides.
+// The live case: ESP and GER both 3pts/1W/0GD/2GF, ESP beat GER — ESP ranks
+// higher even though GER sorts first alphabetically... (GER < ESP is false:
+// 'ESP' < 'GER' alphabetically). Use codes where alphabet and h2h disagree.
+// MMM and AAA end dead level — P2, W1 L1, GF3 GA3, 3pts — and MMM won their
+// meeting, so MMM ranks above AAA even though the alphabet says otherwise.
+const tie = [
+  { id: 'T1', phase: 'stage2', pool: 'R', home: 'MMM', away: 'AAA', status: 'completed', score: { home: 2, away: 1 } },
+  { id: 'T2', phase: 'stage2', pool: 'R', home: 'AAA', away: 'QQQ', status: 'completed', score: { home: 2, away: 1 } },
+  { id: 'T3', phase: 'stage2', pool: 'R', home: 'NNN', away: 'MMM', status: 'completed', score: { home: 2, away: 1 } },
+  { id: 'T4', phase: 'stage2', pool: 'R', home: 'MMM', away: 'QQQ', status: 'scheduled', score: null },
+]
+const [r2] = computeStage2Standings(tie)
+const orderR = r2.standings.map(r => r.team)
+ok('head-to-head outranks the alphabet on a dead-level tie',
+   orderR.indexOf('MMM') < orderR.indexOf('AAA'), orderR.join(','))
 
 console.log(fail ? `\n${fail} FAILED` : '\nAll bracket checks passed.')
 process.exit(fail ? 1 : 0)

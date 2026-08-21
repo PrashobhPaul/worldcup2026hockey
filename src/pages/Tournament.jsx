@@ -3,12 +3,10 @@ import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import Pitch from '../components/Pitch'
 import { db } from '../db'
-import { computeStandings } from '../engine/standings'
-import { useOracleBundle } from '../engine/oracleBundle'
+import { computeStandings, computeStage2Standings } from '../engine/standings'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
-import { formatProbability } from '../engine/probability.js'
-import { StandingsTable, Skeleton, WinProbBar } from '../components/shared'
+import { StandingsTable, Skeleton } from '../components/shared'
 import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
 import iconAssists from '../assets/boards/icon-top-assists.png'
 import iconAttacking from '../assets/boards/icon-most-attacking.png'
@@ -261,94 +259,39 @@ function StatsView({ teams, matches, byCode }) {
   )
 }
 
-// Win Probability reads the canonical current snapshot — the identical object
-// the Oracle race chart ends on. No simulation, sorting rule or rounding of
-// its own lives here.
-function WinProbabilityView({ bundle, byCode }) {
-  const snap = bundle.current
-  const lead = snap.probabilities[0]?.champion ?? 0
-
-  return (
-    <div className="space-y-2">
-      <div className="mb-3 rounded-xl border border-white/5 bg-pitch-800 p-3.5">
-        <p className="text-xs text-pitch-400">
-          All 16 teams ranked by AI tournament win probability — {snap.simulationCount.toLocaleString()} simulated
-          tournaments from the state after {snap.completedMatches} completed {snap.completedMatches === 1 ? 'match' : 'matches'}.
-        </p>
-        <p className="mt-1.5 font-mono text-[10px] text-pitch-400">
-          Snapshot <span className="text-pitch-300">{snap.snapshotId}</span> · model {snap.modelVersion} ·
-          the same snapshot powers the <Link to="/prediction-race" className="text-brand hover:underline">Oracle race</Link> endpoint,
-          odds table and bracket.
-        </p>
-      </div>
-      {snap.probabilities.map(entry => {
-        const team = byCode.get(entry.teamId)
-        if (!team) return null
-        return (
-          <WinProbBar key={entry.teamId} team={team} entry={entry} lead={lead} tierOf={bundle.tierOf}
-            out={bundle.eliminationAt.has(entry.teamId)} />
-        )
-      })}
-      <p className="pt-1 font-mono text-[10px] text-pitch-400">
-        Champion column sums to {formatProbability(snap.probabilities.reduce((s, p) => s + p.champion, 0), 0)} across all 16 teams.
-      </p>
-    </div>
-  )
-}
-
-function Stage2Pools({ bundle, byCode }) {
-  const stage2 = bundle.bracket.stage2 ?? {}
-  if (!Object.keys(stage2).length) return null
+// The REAL Stage-2 tables, as FIH publishes them: played cross fixtures plus
+// the carried Stage-1 result between the two teams that arrived from the same
+// pool. Facts only — the projected finish (with pending matches folded in)
+// lives on the Oracle bracket, so the two views never blur into each other.
+function Stage2Standings({ matches }) {
+  const tables = computeStage2Standings(matches ?? [])
+  if (!tables.length) return null
   return (
     <div>
       <h2 className="mb-1 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Stage 2 · Group Phase</h2>
       <p className="mb-2.5 font-mono text-[10px] text-pitch-400">
-        Pools A–D reshuffle into four Stage-2 pools; head-to-head between teams from the same
-        Stage-1 pool carries forward. The top two of <b className="text-brand">Pools E &amp; F</b> reach the semi-finals.
+        Teams that arrived from the same Stage-1 pool don&apos;t replay — that result is carried
+        forward and already counts below. The top two of <b className="text-brand">Pools E &amp; F</b> reach the semi-finals.
       </p>
-      <div className="grid gap-2.5 sm:grid-cols-2">
-        {Object.values(stage2).map(pool => (
-            <div key={pool.id} className={`rounded-xl border bg-pitch-800 p-3.5 ${pool.championship ? 'border-brand/25' : 'border-white/5'}`}>
-              <div className="mb-2 flex items-center justify-between">
-                <h3 className="font-display text-sm font-semibold">
-                  Pool {pool.id} {pool.championship && <span className="font-mono text-[9px] text-brand">· championship</span>}
-                </h3>
-                {/* Two different things can be provisional: who is IN the pool,
-                    and where they finish. Say which. */}
-                <span className="font-mono text-[9px] text-pitch-400">
-                  {!pool.locked ? '○ line-up projected' : pool.complete ? '● final' : '● set · table projected'}
-                </span>
-              </div>
-              <ol className="space-y-1">
-                {(pool.table?.length ? pool.table : pool.teams.map(code => ({ code }))).map((row, i) => {
-                  const t = row.code ? byCode.get(row.code) : null
-                  const advances = pool.championship && i < 2
-                  return (
-                    <li key={i} className="flex items-center gap-2 text-sm">
-                      <span className={`w-4 text-center font-mono text-[10px] ${advances ? 'text-brand' : 'text-pitch-400'}`}>{i + 1}</span>
-                      <span>{t?.flag ?? '❓'}</span>
-                      <span className={`flex-1 truncate ${advances ? 'font-semibold' : 'text-pitch-300'}`}>{t?.name ?? 'TBD'}</span>
-                      {row.pts != null && (
-                        <span className="font-mono text-[10px] text-pitch-400">
-                          {row.pending ? row.pts.toFixed(1) : row.pts}
-                        </span>
-                      )}
-                      {advances && <span className="font-mono text-[9px] text-brand">→ SF</span>}
-                    </li>
-                  )
-                })}
-              </ol>
-              {pool.table?.some(r => r.pending > 0) && (
-                <p className="mt-2 font-mono text-[9px] leading-relaxed text-pitch-400">
-                  Points include expected returns from the {pool.table.reduce((n, r) => n + r.pending, 0) / 2} match
-                  {pool.table.reduce((n, r) => n + r.pending, 0) / 2 === 1 ? '' : 'es'} still to play.
-                </p>
-              )}
+      <div className="space-y-5">
+        {tables.map(pool => (
+          <div key={pool.id} className={`rounded-xl border bg-pitch-800 p-4 ${'EF'.includes(pool.id) ? 'border-brand/25' : 'border-white/5'}`}>
+            <div className="mb-3 flex items-baseline justify-between">
+              <h3 className="font-display text-base font-semibold">
+                Pool {pool.id} {'EF'.includes(pool.id) && <span className="font-mono text-[9px] text-brand">· top two → semi-finals</span>}
+              </h3>
+              <span className="font-mono text-[10px] text-pitch-400">
+                {pool.crossPlayed}/{pool.crossTotal} played · carry-over included
+              </span>
             </div>
-          ))}
+            {/* The advance highlight only means something in the championship
+                pools — G and H play for classification, nobody "goes through". */}
+            <StandingsTable standings={pool.standings} highlight={'EF'.includes(pool.id) ? 2 : 0} />
+          </div>
+        ))}
       </div>
       <p className="mt-2 font-mono text-[11px] text-pitch-400">
-        Semi-finals, medal matches and advance odds live on the{' '}
+        Projected finishes, semi-finals and medal matches live on the{' '}
         <Link to="/prediction-race?tab=bracket" className="text-brand hover:underline">Oracle bracket</Link> — one bracket, one home.
       </p>
     </div>
@@ -365,7 +308,6 @@ export default function TournamentPage() {
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
   const players = useLiveQuery(() => db.players.toArray(), [], [])
-  const bundle = useOracleBundle(teams ?? [], matches ?? [])
 
   useSwipeTabs({
     count: VIEWS.length,
@@ -422,7 +364,7 @@ export default function TournamentPage() {
           {view === 'standings' && (
             <div className="space-y-6">
               {/* Once Stage 2 begins, its tables lead — the Stage 1 letters are history. */}
-              {bundle && <Stage2Pools bundle={bundle} byCode={byCode} />}
+              <Stage2Standings matches={matches} />
               <div>
                 {stage2Underway && (
                   <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Stage 1 · Final Tables</h2>
