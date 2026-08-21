@@ -20,6 +20,8 @@ here once instead of being re-derived by hand each time:
                     the pipeline has is kept rather than dropped.
   h2h.json          the union: each side may have harvested pairs the other has
                     not seen.
+  ai-stories.json   one brief per match; the branch's wording wins, except where
+                    the pipeline has upgraded an engine brief to a written story.
   data-version.json one past the higher of the two, so every client resyncs.
 
 Team form is recomputed from the merged fixtures at the end, so the model can
@@ -139,6 +141,24 @@ def merge_h2h(ours, theirs):
     return ours, f'{len(pairs)} pairs (union)'
 
 
+def merge_stories(ours, theirs):
+    """
+    One brief per match, keyed by matchId. The branch's copy wins on a clash —
+    it is the side that changes how a brief reads — except where the pipeline
+    has upgraded an engine brief into a written AI story, which is strictly
+    more than we have. Briefs the other side alone has are kept.
+    """
+    ours_by = {s['matchId']: s for s in ours.get('stories') or []}
+    merged = {s['matchId']: s for s in theirs.get('stories') or []}
+    for mid, row in ours_by.items():
+        theirs_row = merged.get(mid)
+        upgraded = (theirs_row or {}).get('source') == 'ai' and row.get('source') == 'engine'
+        if not upgraded:
+            merged[mid] = row
+    ours['stories'] = [merged[k] for k in sorted(merged)]
+    return ours, f'{len(merged)} briefs'
+
+
 def merge_version(ours, theirs):
     v = max((ours or {}).get('version', 0), (theirs or {}).get('version', 0)) + 1
     base = theirs or ours or {}
@@ -152,6 +172,7 @@ HANDLERS = {
     'players.json': merge_players,
     'predictions.json': merge_predictions,
     'h2h.json': merge_h2h,
+    'ai-stories.json': merge_stories,
     'data-version.json': merge_version,
 }
 INDENT = {'fixtures.json': 1}

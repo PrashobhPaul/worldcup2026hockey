@@ -439,13 +439,13 @@ function StoriesPanel({ matches, byCode }) {
                     <>
                       <p className="whitespace-pre-line text-sm leading-relaxed text-pitch-300">{s.story}</p>
                       <div className="mt-3 flex items-center justify-between border-t border-white/5 pt-2 font-mono text-[10px] text-pitch-400">
-                        <span>Generated {new Date(s.generatedAt).toLocaleString()} · {s.model}</span>
+                        <span>Updated {new Date(s.generatedAt).toLocaleString()}</span>
                         <Link to={`/matches/${m.id}`} className="text-brand hover:underline">Open match →</Link>
                       </div>
                     </>
                   ) : (
                     <p className="text-xs text-pitch-400">
-                      Story lands after the GitHub Actions AI pipeline runs for this match — pre-generated with Claude, cached as static JSON, zero runtime API calls.
+                      The story for this match isn’t ready yet — it lands shortly after full time.
                     </p>
                   )}
                 </div>
