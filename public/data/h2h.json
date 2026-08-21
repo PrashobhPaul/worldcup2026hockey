@@ -9,7 +9,7 @@
         "home": "FRA",
         "away": "RSA",
         "home_goals": 1,
-        "away_goals": 2,
+        "away_goals": 3,
         "current": false
       },
       {
@@ -95,6 +95,15 @@
       }
     ],
     "IRL-MAS": [
+      {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-21",
+        "home": "IRL",
+        "away": "MAS",
+        "home_goals": 3,
+        "away_goals": 0,
+        "current": false
+      },
       {
         "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2022",
         "date": "2022-12-03",
@@ -506,5 +515,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-21T10:32:59.871252+00:00"
+  "updated_at": "2026-08-21T12:53:02.432534+00:00"
 }
