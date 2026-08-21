@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-21T06:52:26.113586+00:00",
+  "last_updated": "2026-08-21T07:45:36.796655+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -13411,7 +13411,8 @@
           "team": "BEL",
           "coach": "Shane McLeod"
         }
-      }
+      },
+      "tms_id": 22361
     },
     {
       "id": "S2F2",
@@ -13774,7 +13775,8 @@
           "team": "ESP",
           "coach": "Max Caldas"
         }
-      }
+      },
+      "tms_id": 22360
     },
     {
       "id": "S2G1",
