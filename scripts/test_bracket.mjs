@@ -1,0 +1,131 @@
+// Bracket projection — the numbers on the Cup tab and the Oracle bracket come
+// from one object, and this is where that promise is enforced.
+//
+// The bug these checks exist for: the Stage-2 pool card showed the pool in
+// SEEDING order while the semi-finals below it were slotted from a DIFFERENT
+// ordering (by rating), so the same screen said both "Argentina finish 2nd in
+// Pool E, → SF" and "the semi-final is England v Belgium".
+import fs from 'node:fs'
+import { projectBracket } from '../src/engine/simulate.js'
+import { computeStandings } from '../src/engine/standings.js'
+
+let fail = 0
+const ok = (n, c, d = '') => { if (c) console.log('  ok  ', n); else { fail++; console.log('  FAIL', n, d) } }
+const read = p => JSON.parse(fs.readFileSync(new URL(`../public/data/${p}`, import.meta.url), 'utf8'))
+const listOf = raw => Array.isArray(raw) ? raw : (raw.fixtures ?? raw.matches ?? raw.teams)
+
+const teams = listOf(read('teams.json')).map(t => ({ ...t, fihRank: t.fih_rank, fihPoints: t.fih_points }))
+const fixtures = listOf(read('fixtures.json'))
+  .map(m => ({ ...m, kickoffUtc: m.kickoffUtc ?? Date.parse(`${m.date}T${m.time ?? '12:00'}:00Z`) }))
+
+const project = ms => projectBracket(teams, ms, computeStandings(teams, ms))
+const b = project(fixtures)
+const ids = new Set(fixtures.map(m => m.id))
+
+console.log('Bracket projection')
+
+// ── Every tie must be a real fixture ────────────────────────────────────────
+ok('every projected tie matches a fixture id in the schedule',
+   b.ties.every(t => ids.has(t.id)), b.ties.filter(t => !ids.has(t.id)).map(t => t.id).join(','))
+ok('the six classification ties are the POS* fixtures',
+   ['POS5', 'POS7', 'POS9', 'POS11', 'POS13', 'POS15'].every(id => b.byId.has(id)))
+ok('no tie invents a match number the schedule does not have',
+   b.ties.every(t => fixtures.find(m => m.id === t.id)?.matchNo != null))
+
+// ── One ordering, used everywhere ───────────────────────────────────────────
+const E = b.stage2.E, F = b.stage2.F
+ok('each Stage-2 pool publishes a table of its four teams',
+   Object.values(b.stage2).every(p => p.table.length === 4))
+ok('the listed pool order IS the table order',
+   Object.values(b.stage2).every(p => p.teams.join() === p.table.map(r => r.code).join()))
+const sf1 = b.byId.get('SF1'), sf2 = b.byId.get('SF2')
+ok('SF1 is 1st of Pool E v 2nd of Pool F — the same two the cards show',
+   sf1.home === E.table[0].code && sf1.away === F.table[1].code,
+   `${sf1.home} v ${sf1.away} vs table ${E.table[0].code}/${F.table[1].code}`)
+ok('SF2 is 1st of Pool F v 2nd of Pool E',
+   sf2.home === F.table[0].code && sf2.away === E.table[1].code,
+   `${sf2.home} v ${sf2.away} vs table ${F.table[0].code}/${E.table[1].code}`)
+ok('the four semi-finalists are exactly the teams marked → SF on the cards',
+   new Set([sf1.home, sf1.away, sf2.home, sf2.away]).size === 4 &&
+   [E.table[0], E.table[1], F.table[0], F.table[1]].every(r =>
+     [sf1.home, sf1.away, sf2.home, sf2.away].includes(r.code)))
+ok('5th/6th is 3rd E v 3rd F, 7th/8th is 4th E v 4th F',
+   b.byId.get('POS5').home === E.table[2].code && b.byId.get('POS5').away === F.table[2].code &&
+   b.byId.get('POS7').home === E.table[3].code && b.byId.get('POS7').away === F.table[3].code)
+ok('9th-16th are drawn from Pools G and H in table order',
+   ['POS9', 'POS11', 'POS13', 'POS15'].every((id, i) =>
+     b.byId.get(id).home === b.stage2.G.table[i].code &&
+     b.byId.get(id).away === b.stage2.H.table[i].code))
+
+// ── The table has to be a table, not a ranking ──────────────────────────────
+ok('the table is sorted by points, then wins, then goal difference',
+   Object.values(b.stage2).every(p => p.table.every((r, i) => {
+     const q = p.table[i - 1]
+     return !q || q.pts > r.pts || (q.pts === r.pts && (q.w > r.w || (q.w === r.w && q.gd >= r.gd)))
+   })))
+ok('a carried Stage-1 result is counted in the Stage-2 table',
+   Object.values(b.stage2).every(p => p.table.every(r => r.played >= 1)),
+   JSON.stringify(Object.values(b.stage2).map(p => p.table.map(r => r.played))))
+ok('each team has exactly three Stage-2 opponents (one carried, two to come)',
+   Object.values(b.stage2).every(p => p.table.every(r => r.played + r.pending === 3)))
+ok('no pool is called complete while matches are pending',
+   Object.values(b.stage2).every(p => p.complete === p.table.every(r => r.pending === 0)))
+
+// ── Locking is about the fixture, not about the calendar ────────────────────
+ok('a tie is locked only when its fixture names both teams, or it is played',
+   b.ties.every(t => {
+     const m = fixtures.find(x => x.id === t.id)
+     const named = m && m.home !== 'TBD' && m.away !== 'TBD'
+     return t.locked === Boolean(t.played || named)
+   }), b.ties.filter(t => t.locked).map(t => t.id).join(','))
+ok('with Stage 2 unplayed, no semi-final is presented as settled',
+   !sf1.locked && !sf2.locked)
+
+// ── Real results outrank the projection ─────────────────────────────────────
+// Give Spain a 9-0 win over Germany — a real Stage-2 cross fixture, not the
+// carried Stage-1 pairing — and it must climb the table.
+const spainWins = fixtures.map(m =>
+  (m.phase === 'stage2' && m.pool === 'F' &&
+   [m.home, m.away].includes('ESP') && [m.home, m.away].includes('GER'))
+    ? { ...m, status: 'completed',
+        score: m.home === 'ESP' ? { home: 9, away: 0 } : { home: 0, away: 9 } }
+    : m)
+const bw = project(spainWins)
+const espBefore = F.table.find(r => r.code === 'ESP')
+const espAfter = bw.stage2.F.table.find(r => r.code === 'ESP')
+const gerAfter = bw.stage2.F.table.find(r => r.code === 'GER')
+ok('a win banks real points in place of the projected ones',
+   espAfter.pts > espBefore.pts && espAfter.gd > espBefore.gd,
+   `${espBefore.pts.toFixed(2)}/${espBefore.gd.toFixed(2)} -> ${espAfter.pts.toFixed(2)}/${espAfter.gd.toFixed(2)}`)
+ok('the beaten side carries the defeat', gerAfter.gd < F.table.find(r => r.code === 'GER').gd)
+ok('the played pairing is no longer counted as pending', espAfter.played === 2 && espAfter.pending === 1)
+ok('the semi-final slots follow the table after a real result',
+   bw.byId.get('SF2').home === bw.stage2.F.table[0].code &&
+   bw.byId.get('SF1').away === bw.stage2.F.table[1].code)
+
+// Enough real wins must overturn the projection outright.
+const espSweeps = fixtures.map(m =>
+  (m.phase === 'stage2' && m.pool === 'F' && [m.home, m.away].includes('ESP'))
+    ? { ...m, status: 'completed',
+        score: m.home === 'ESP' ? { home: 9, away: 0 } : { home: 0, away: 9 } }
+    : m)
+const bs = project(espSweeps)
+ok('two real wins lift a projected last place above the teams it beat',
+   bs.stage2.F.table.findIndex(r => r.code === 'ESP') <
+   Math.min(bs.stage2.F.table.findIndex(r => r.code === 'BEL'),
+            bs.stage2.F.table.findIndex(r => r.code === 'GER')),
+   bs.stage2.F.table.map(r => `${r.code}:${r.pts.toFixed(1)}`).join(' '))
+
+// ── A finished pool must read as fact ───────────────────────────────────────
+const allF = fixtures.map(m => m.phase === 'stage2' && m.pool === 'F'
+  ? { ...m, status: 'completed', score: { home: 2, away: 1 } } : m)
+const bf = project(allF)
+ok('a completed pool is marked complete', bf.stage2.F.complete)
+ok('a completed pool has whole-number points',
+   bf.stage2.F.table.every(r => Number.isInteger(r.pts)),
+   bf.stage2.F.table.map(r => r.pts).join(','))
+ok('a completed pool has nothing pending',
+   bf.stage2.F.table.every(r => r.pending === 0 && r.played === 3))
+
+console.log(fail ? `\n${fail} FAILED` : '\nAll bracket checks passed.')
+process.exit(fail ? 1 : 0)
