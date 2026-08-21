@@ -62,12 +62,25 @@ def conflicted():
 
 
 def merge_fixtures(ours, theirs):
-    """Pipeline owns played pool matches; the branch owns the schedule."""
+    """Pipeline owns played pool matches; the branch owns the schedule.
+
+    One refinement: an official timeline outranks an estimated one whichever
+    side carries it. A branch whose CI ran a fixed report parser can hold the
+    official record for a match main's pipeline still has as estimated (D5
+    after the two-column fix) — taking the pipeline row wholesale would throw
+    the real scorers away.
+    """
     pool = {m['id']: m for m in theirs['matches'] if m.get('phase') == 'pool'}
     out, taken = [], 0
     for m in ours['matches']:
         if m.get('phase') == 'pool' and m['id'] in pool:
-            out.append(pool[m['id']]); taken += 1
+            theirs_row = pool[m['id']]
+            if (m.get('enrichment') == 'official'
+                    and theirs_row.get('enrichment') != 'official'
+                    and m.get('score') == theirs_row.get('score')):
+                out.append(m)
+            else:
+                out.append(theirs_row); taken += 1
         else:
             out.append(m)
     # A pool match the branch does not carry at all is still a real fixture.
