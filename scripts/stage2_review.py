@@ -37,12 +37,20 @@ The arithmetic is simple: three penalty corners in the match, three goals, perfe
 Malaysia's response came almost entirely from the short corner: Azimuddin Kamaruddin in the 29th, Amirul Azahar in the 36th and Abu Kamal Azrai in the 41st, three penalty-corner goals that kept them in touching distance without ever threatening parity. Ireland's answer to the second of them was immediate — John McKee converted a corner of their own in the 37th and Nelson struck again in the 39th, so Azrai's goal only trimmed the third-quarter score to 6-3. Benjamin Walker's field goal in the 54th settled the afternoon, and Faizal Saari's reply in the 55th, Malaysia's only goal from open play, fixed the final margin at 7-4.
 
 Eleven goals, and the shape of them tells the story of both campaigns. Ireland scored five from open play through three different scorers — the running, carried threat that Malaysia's pool opponents also found, with Malaysia now on twenty conceded across four matches. Malaysia's three corner goals confirm that their set piece travels; nothing else did. For Ireland, who left Pool C with a four-one win over South Africa and two two-goal defeats, this is the day their finishing finally caught up with their chances, and Lynch — scoreless in the pool — leaves it with a hat-trick completed inside the first half.""",
+
+    'S2F2': """Spain beat a previously unbeaten Germany by finding two moments in a match of almost perfect equilibrium — possession fifty-one per cent to forty-nine, shots seven to six, circle entries twenty-one to twenty. Justus Weigand gave Germany the lead from open play in the 26th, reward for the sharper pressing of the first half, and it lasted four minutes: José Basterra levelled from a penalty stroke in the 30th, on the stroke of half-time.
+
+The winner came in the 50th — Basterra again, this time from open play, a brace that contains Spain's entire output. No goal came from a penalty corner at either end, and the discipline matched the scoreline's restraint: not a single card in the match. Germany kept pushing after falling behind, but their twenty circle entries produced only six shots all game, and the equaliser never came.
+
+The result reshapes Pool F. Spain carry a narrow defeat to Australia forward from Stage 1, and beating Germany puts them level on three points in a pool nobody has yet escaped from — even Belgium, pointless so far, still have six to play for. Germany's unbeaten run ends at four matches, and the pattern beneath it is worth noting: five of their eight tournament goals came in one afternoon against Malaysia, and in their three matches against everyone else they have scored exactly once per game. The finishing, not the defence, is what the rest of Stage 2 will examine.""",
 }
 
 REASONS = {
     'S2H1': "France left Pool B unbeaten against Germany and Malaysia and lost to Belgium by a single goal, conceding seven in three matches against far stronger opposition than South Africa met. South Africa bring one point from three into Stage 2, with nine conceded in the pool — seven of them to Spain and Ireland — and the Cassiem set-piece threat as their clearest route to goal. The steadier pool evidence favours France.",
 
     'S2H2': "Ireland took three points from Pool C, losing by two to both Australia and Spain either side of a three-goal win over South Africa. Malaysia left Pool B with one point and thirteen conceded in three matches — though seven scored, including three against Belgium, show a genuine attacking threat. Expect goals at both ends; a Malaysian defence conceding more than four a match is the softer one, and that margin favours Ireland.",
+
+    'S2F2': "Germany came through Pool B unbeaten with seven scored and only two conceded in three matches, the win over Belgium built on exactly the kind of defending this fixture rewards. Spain won twice by 3-1 in Pool C either side of a single-goal loss to Australia, so both arrive in form — but Spain's chances have come at a goal-a-game cost, and in a match likely to be tight and low-scoring, the side that has defended better all tournament is favoured.",
 }
 
 

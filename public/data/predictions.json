@@ -2071,8 +2071,11 @@
       "p_away_win": 0.164,
       "pick": "HOME",
       "pick_confidence": 0.56,
-      "reason": "FIH #5 GER favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T07:45:36.795747+00:00"
+      "reason": "Germany came through Pool B unbeaten with seven scored and only two conceded in three matches, the win over Belgium built on exactly the kind of defending this fixture rewards. Spain won twice by 3-1 in Pool C either side of a single-goal loss to Australia, so both arrive in form — but Spain's chances have come at a goal-a-game cost, and in a match likely to be tight and low-scoring, the side that has defended better all tournament is favoured.",
+      "publishedAt": "2026-08-21T07:45:36.795747+00:00",
+      "reason_original": "FIH #5 GER favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-21T18:20:27.376404+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2E4:r3",
