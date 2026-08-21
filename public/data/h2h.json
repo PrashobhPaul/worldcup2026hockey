@@ -325,6 +325,15 @@
     ],
     "AUS-BEL": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-21",
+        "home": "AUS",
+        "away": "BEL",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-06-28",
         "home": "AUS",
@@ -1970,5 +1979,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-21T18:39:45.628677+00:00"
+  "updated_at": "2026-08-21T19:50:21.716530+00:00"
 }
