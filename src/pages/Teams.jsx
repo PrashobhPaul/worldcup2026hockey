@@ -55,7 +55,22 @@ export default function TeamsPage() {
     tier: bundle?.tierOf(t.code) ?? null,
   })
   const visible = teams.filter(t => filter.match(t, ctxOf(t)))
-  const pools = ['A', 'B', 'C', 'D']
+
+  // Group crests by where teams are playing NOW. Once Stage 2 begins, the
+  // crossover pools E–H replace the Stage 1 letters the teams arrived from —
+  // a reader mid-tournament should never be sorted by history.
+  const stagePool = new Map()
+  for (const m of matches) {
+    if (m.phase === 'stage2' && m.pool && m.home !== 'TBD') {
+      stagePool.set(m.home, m.pool)
+      stagePool.set(m.away, m.pool)
+    }
+  }
+  const inStage2 = stagePool.size > 0
+  const poolOf = t => (inStage2 && stagePool.get(t.code)) || t.pool
+  // Derived, not hardcoded: a team can never vanish from the grid because its
+  // pool letter wasn't on a list.
+  const pools = [...new Set(visible.map(poolOf))].sort()
 
   return (
     <div>
@@ -65,7 +80,10 @@ export default function TeamsPage() {
       ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🌍 Teams</h1>
-        <p className="mt-1 text-xs text-pitch-400">16 nations · 4 pools · FIH World Rankings</p>
+        <p className="mt-1 text-xs text-pitch-400">
+          {inStage2 ? '16 nations · Stage 2 crossover pools E–H · FIH World Rankings'
+                    : '16 nations · 4 pools · FIH World Rankings'}
+        </p>
       </div>
 
       <div className="no-scrollbar sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
@@ -89,11 +107,13 @@ export default function TeamsPage() {
       )}
 
       {pools.map(pool => {
-        const inPool = visible.filter(t => t.pool === pool).sort((a, b) => a.fihRank - b.fihRank)
+        const inPool = visible.filter(t => poolOf(t) === pool).sort((a, b) => a.fihRank - b.fihRank)
         if (!inPool.length) return null
         return (
           <section key={pool} className="mb-7">
-            <h2 className="mb-3 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Pool {pool}</h2>
+            <h2 className="mb-3 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">
+              {inStage2 && 'EFGH'.includes(pool) ? `Stage 2 · Pool ${pool}` : `Pool ${pool}`}
+            </h2>
             <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
               {inPool.map(t => {
                 const { out, tier } = ctxOf(t)
