@@ -27,8 +27,30 @@ ok('a malformed remote version is treated as no version',
    !needsResync({ empty: true, localMeta: { version: 84 }, remote: { version: 'x' } }).resync)
 ok('a malformed local stamp is not trusted',
    needsResync({ empty: false, localMeta: { version: null }, remote: R }).resync)
+// The counter can stand still while the content moves — a merge keeps one
+// side's data-version.json and both sides' data. That is what left published
+// briefs unreachable behind an unchanged version number.
+ok('a changed fingerprint under an unchanged version resyncs',
+   needsResync({ empty: false, localMeta: { version: 84, fingerprint: 'aaaa' },
+                 remote: { version: 84, fingerprint: 'bbbb' } }).resync)
+ok('and says the content changed',
+   needsResync({ empty: false, localMeta: { version: 84, fingerprint: 'aaaa' },
+                 remote: { version: 84, fingerprint: 'bbbb' } }).reason === 'content-changed')
+ok('a matching fingerprint does not refetch',
+   !needsResync({ empty: false, localMeta: { version: 84, fingerprint: 'aaaa' },
+                  remote: { version: 84, fingerprint: 'aaaa' } }).resync)
+ok('a server with no fingerprint still behaves as before',
+   !needsResync({ empty: false, localMeta: { version: 84, fingerprint: 'aaaa' },
+                  remote: { version: 84 } }).resync)
+ok('a client that has never seen a fingerprint picks one up',
+   needsResync({ empty: false, localMeta: { version: 84 },
+                 remote: { version: 84, fingerprint: 'bbbb' } }).resync)
+ok('a lower version still wins over a matching fingerprint',
+   needsResync({ empty: false, localMeta: { version: 83, fingerprint: 'aaaa' },
+                 remote: { version: 84, fingerprint: 'aaaa' } }).reason === 'stale')
+
 ok('every outcome carries a reason',
-   ['forced', 'no-remote-version', 'empty-store', 'never-synced', 'stale', 'fresh'].includes(
+   ['forced', 'no-remote-version', 'empty-store', 'never-synced', 'stale', 'content-changed', 'fresh'].includes(
      needsResync({ empty: false, localMeta: { version: 84 }, remote: R }).reason))
 
 console.log(fail ? `\n${fail} FAILED` : '\nAll sync-policy checks passed.')

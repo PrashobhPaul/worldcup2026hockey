@@ -315,6 +315,9 @@ def main():
     version['version'] = int(version.get('version', 0)) + 1
     version['updated_at'] = now
     save('data-version.json', version)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from data_fingerprint import stamp as stamp_fingerprint
+    stamp_fingerprint()
 
     print(f'{wrote} brief(s) rewritten, {revised} rationale(s) revised, '
           f"data-version -> {version['version']}")

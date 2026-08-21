@@ -2467,7 +2467,11 @@ def main():
         save('predictions.json', predictions)
         save('players.json', players)
         save('data-version.json', version_doc)
-        print(f"Data version bumped -> {version_doc['version']}")
+        # The counter can survive a merge that changed the content underneath
+        # it; the fingerprint cannot. Clients resync on either.
+        from data_fingerprint import stamp as stamp_fingerprint
+        print(f"Data version bumped -> {version_doc['version']} "
+              f"(fingerprint {stamp_fingerprint(version_doc)})")
     else:
         print('No changes.')
 
