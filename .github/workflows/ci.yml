@@ -32,5 +32,11 @@ jobs:
       - name: Tournament probability consistency
         run: npm run test:probability
 
+      # The preview deck asserts numbers about real teams, so its honesty rules
+      # are tested: no card without a real sample, and every claim scoped to
+      # this tournament — we hold no all-time record and must never imply one.
+      - name: Match preview evidence
+        run: npm run test:preview
+
       - name: Build
         run: npm run build

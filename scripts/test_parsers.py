@@ -20,7 +20,8 @@ from update_data import (  # noqa: E402
     parse_tms_results, update_statuses, backfill_scores_from_tms,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
-    slot_knockouts, stage1_placements, TMS_LINEUP_LINK,
+    slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h,
+    team_form, form_delta, h2h_delta, effective_points, FORM_CAP, H2H_CAP, TMS_LINEUP_LINK,
 )
 
 failures = []
@@ -597,6 +598,147 @@ check('two same-surname teammates never cross-match',
       and by2['Joseph Morrison'].get('world_rank') is None)
 check('a near-miss given name is not a match', by2['Hannes Müller'].get('world_rank') is None)
 
+print('\nModel weighting: this tournament first, ranking always, history least')
+
+def _fx(rows):
+    return {'matches': [{'id': f'M{i}', 'phase': 'pool', 'status': 'completed',
+                         'home': h, 'away': a, 'score': {'home': hg, 'away': ag}}
+                        for i, (h, a, hg, ag) in enumerate(rows)]}
+
+# Three wins and a big goal difference must lift a team; three losses must sink one.
+_won = _fx([('AAA', 'X1', 4, 0), ('AAA', 'X2', 3, 1), ('AAA', 'X3', 5, 1)])
+_lost = _fx([('BBB', 'X1', 0, 4), ('BBB', 'X2', 1, 3), ('BBB', 'X3', 1, 5)])
+_fw, _fl = form_delta(team_form('AAA', _won)), form_delta(team_form('BBB', _lost))
+check('winning here raises a team', _fw > 100, f'{_fw:.1f}')
+check('losing here lowers a team', _fl < -100, f'{_fl:.1f}')
+check('form is bounded', abs(_fw) <= FORM_CAP and abs(_fl) <= FORM_CAP)
+check('an unplayed team gets no form adjustment', form_delta(team_form('ZZZ', _won)) == 0)
+
+# One match must not speak with the authority of three.
+_one = _fx([('AAA', 'X1', 4, 0)])
+check('a single match counts for less than a full campaign',
+      0 < form_delta(team_form('AAA', _one)) < _fw,
+      f"{form_delta(team_form('AAA', _one)):.1f} vs {_fw:.1f}")
+
+# The head-to-head term is real — so citing it as a reason is honest — but it is
+# deliberately the smallest input, and always smaller than form.
+_meet = [{'home': 'AAA', 'away': 'BBB', 'home_goals': 3, 'away_goals': 1, 'current': False},
+         {'home': 'BBB', 'away': 'AAA', 'home_goals': 0, 'away_goals': 2, 'current': False},
+         {'home': 'AAA', 'away': 'BBB', 'home_goals': 4, 'away_goals': 2, 'current': False},
+         {'home': 'AAA', 'away': 'BBB', 'home_goals': 1, 'away_goals': 0, 'current': False}]
+_hd = h2h_delta(_meet, 'AAA', 'BBB')
+check('a dominant head-to-head record moves the model', _hd > 0, f'{_hd:.1f}')
+check('head-to-head is bounded', abs(_hd) <= H2H_CAP, f'{_hd:.1f}')
+check('head-to-head can never outweigh this tournament', abs(_hd) < abs(_fw),
+      f'h2h {_hd:.1f} vs form {_fw:.1f}')
+check('the fixture being predicted is not counted as its own history',
+      h2h_delta([{'home': 'AAA', 'away': 'BBB', 'home_goals': 9, 'away_goals': 0,
+                  'current': True}], 'AAA', 'BBB') == 0)
+check('no meetings means no adjustment', h2h_delta([], 'AAA', 'BBB') == 0)
+
+# Ranking remains the base: a huge ranking gap is not overturned by either term.
+_top, _bottom = 3695.0, 2330.0
+_eff_bottom = effective_points('AAA', 'BBB', _bottom, _won, {'AAA-BBB': _meet})
+_eff_top = effective_points('BBB', 'AAA', _top, _lost, {'AAA-BBB': _meet})
+check('form and history together cannot overturn a 1,365-point ranking gap',
+      _eff_top > _eff_bottom, f'{_eff_top:.0f} vs {_eff_bottom:.0f}')
+# ...but a modest ranking gap can be overturned by a big swing in current form.
+check('current form can overturn a narrow ranking gap',
+      effective_points('AAA', 'BBB', 2800.0, _won, None)
+      > effective_points('BBB', 'AAA', 2900.0, _lost, None))
+
+print('\nHead-to-head table (TMS match page, verbatim from the live dump)')
+
+_H2H = ['Head to Head Matches', 'Senior Mens Outdoor', 'Competition', 'Details',
+        'Date/Time', 'Teams', 'Pitch', 'Status', 'Scoreline',
+        'FIH Hockey World Cup Belgium & Netherlands 2026 (M)', 'Senior Mens Outdoor',
+        '15 Aug 2026  13:00', 'IND v WAL (D)',
+        'WHSA - Pitch 1 - Wagener Hockey Stadium', 'Official', '3 - 1', 'Lineup',
+        "FIH Odisha Hockey Men's World Cup 2023 Bhubaneswar - Rourkela", 'Senior Mens Outdoor',
+        '19 Jan 2023  19:00', 'IND v WAL (Pool D)',
+        'KS - Pitch 1 - Bhubaneswar, India', 'Official', '4 - 2', 'Lineup',
+        # 2022 and 2018 rows carry no pitch line — the row must not be read by offset
+        'Commonwealth Games 2022 (M)', 'Senior Mens Outdoor', '4 Aug 2022  14:00',
+        'IND v WAL (Pool B)', 'Official', '4 - 1', 'Lineup',
+        'XXI Commonwealth Games (M)', 'Senior Mens Outdoor', '8 Apr 2018  19:30',
+        'IND v WAL (Pool B)', 'Official', '4 - 3', 'Lineup',
+        'XX Commonwealth Games 2014 (M)', 'Senior Mens Outdoor', '25 Jul 2014  09:00',
+        'IND v WAL (Pool A)', 'Glasgow National Hockey Centre', 'Official', '3 - 1', 'Lineup',
+        '*', 'Altius', 'rt',
+        "data is accurate for every match from 2013 until today's date. Historic data from 2012 "
+        'and earlier is currently in the process of being digitalised by', 'tech@fih.ch',
+        # everything past the footnote belongs to other sections
+        'Match Details', 'Competition', 'FIH Hockey World Cup Belgium & Netherlands 2026 (M)',
+        'Date/Time', '2026-08-15 13:00', 'Venue', 'Wagener Hockey Stadium']
+_rows = parse_h2h(_H2H, current_competition='FIH Hockey World Cup Belgium & Netherlands 2026 (M)')
+check('every meeting in the table is read', len(_rows) == 5, str(len(_rows)))
+check('a row with no pitch line still reads',
+      any(r['date'] == '2022-08-04' and (r['home_goals'], r['away_goals']) == (4, 1) for r in _rows))
+check('the match the page belongs to is marked as this tournament',
+      [r['current'] for r in _rows] == [True, False, False, False, False])
+check('dates are normalised', _rows[1]['date'] == '2023-01-19', _rows[1]['date'])
+check('the competition is captured',
+      _rows[2]['competition'] == 'Commonwealth Games 2022 (M)', str(_rows[2]['competition']))
+check('the footnote closes the table — Match Details is not a meeting',
+      not any(r['date'] == '2026-08-15' and r['competition'] == 'Venue' for r in _rows))
+# TMS vouches for 2013 onward only, so an older row must never be counted.
+check('a pre-2013 meeting is dropped, not counted',
+      len(parse_h2h(_H2H[:9] + ['Champions Trophy 2009 (M)', 'Senior Mens Outdoor',
+                                '1 Jun 2009  12:00', 'IND v WAL (Pool A)', 'Official',
+                                '9 - 0', 'Lineup'])) == 0)
+# An unplayed fixture in the table has no scoreline and must not become a result.
+check('a meeting with no scoreline is not invented',
+      len(parse_h2h(_H2H[:9] + ['Some Cup 2025 (M)', 'Senior Mens Outdoor',
+                                '1 Jun 2025  12:00', 'IND v WAL (Pool A)', 'Scheduled',
+                                'Lineup'])) == 0)
+check('a page with no head-to-head table yields nothing', parse_h2h(['Match Details']) == [])
+
+print('\nCaptaincy (exactly one per team, official list wins)')
+
+def _cap_doc(players):
+    return {'players': [dict(team=t, name=n, is_captain=c, source=s) for t, n, c, s in players]}
+
+# Argentina's real shape before the fix: a seeded captain the official list does
+# not carry, plus the captain the list does mark. Two "C" badges in the line-up.
+doc = _cap_doc([
+    ('ARG', 'Lucas Martín Rossi', True, None),
+    ('ARG', 'Maico Casella', True, 'fih-team-list'),
+    ('ARG', 'Matias Rey', False, 'fih-team-list'),
+])
+squads = {'ARG': [{'name': 'Maico Casella', 'is_captain': True},
+                  {'name': 'Matias Rey', 'is_captain': False}]}
+normalize_captaincy(doc, squads)
+caps = [p['name'] for p in doc['players'] if p['is_captain']]
+check('the officially-listed captain is the only captain', caps == ['Maico Casella'], str(caps))
+
+# The list marks no captain but does name a squad. A seeded captain missing from
+# that squad is not at the tournament — clear him rather than badge a player who
+# cannot take the field. No replacement is invented.
+doc = _cap_doc([('AUS', 'Aran Zalewski', True, None), ('AUS', 'Tim Brand', False, 'fih-team-list')])
+normalize_captaincy(doc, {'AUS': [{'name': 'Tim Brand', 'is_captain': False}]})
+check('a captain absent from the official squad is cleared',
+      [p['name'] for p in doc['players'] if p['is_captain']] == [])
+
+# But a captain who IS in the squad keeps the armband when the list marks nobody.
+doc = _cap_doc([('NED', 'Thierry Brinkman', True, None)])
+normalize_captaincy(doc, {'NED': [{'name': 'Thierry Brinkman', 'is_captain': False}]})
+check('a squad captain survives a list that marks no captain',
+      [p['name'] for p in doc['players'] if p['is_captain']] == ['Thierry Brinkman'])
+
+# When the list itself marks two, keep the first it lists rather than guessing.
+doc = _cap_doc([('WAL', 'Benjamin Francis', True, 'fih-team-list'),
+                ('WAL', 'Jacob Draper', True, 'fih-team-list')])
+normalize_captaincy(doc, {'WAL': [{'name': 'Jacob Draper', 'is_captain': True},
+                                  {'name': 'Benjamin Francis', 'is_captain': True}]})
+check('two officially-marked captains resolve to the first listed',
+      [p['name'] for p in doc['players'] if p['is_captain']] == ['Jacob Draper'])
+
+# Backstop: no team may ever carry two captains, whatever the sources said.
+doc = _cap_doc([('IRL', 'Conor Harte', True, None), ('IRL', 'Kyle Marshall', True, None)])
+normalize_captaincy(doc, {})
+check('no team can end up with two captains',
+      sum(1 for p in doc['players'] if p['is_captain']) == 1)
+
 print('\nTwo-stage bracket (real FIH 2026 format)')
 import json as _json
 import copy as _copy
@@ -607,6 +749,64 @@ check('24 Stage-1 pool matches', sum(1 for x in _m if x['phase'] == 'pool') == 2
 check('16 Stage-2 group matches', sum(1 for x in _m if x['phase'] == 'stage2') == 16)
 check('6 classification matches', sum(1 for x in _m if x['phase'] == 'classification') == 6)
 check('2 semis + 2 medals', sum(1 for x in _m if x['phase'] in ('semi-final', 'bronze-final', 'gold-final')) == 4)
+# The official schedule, read off the FIH app match by match. Pinned here so a
+# future edit cannot quietly renumber or reschedule the knockout stage: every
+# one of these 26 was wrong when the seeded guess was first checked against it.
+_OFFICIAL = {
+    25: ('H', 'FRA', 'RSA', '2026-08-21', '11:00', 'BRU'),
+    26: ('H', 'IRL', 'MAS', '2026-08-21', '14:00', 'BRU'),
+    28: ('F', 'GER', 'ESP', '2026-08-21', '17:00', 'BRU'),
+    27: ('F', 'AUS', 'BEL', '2026-08-21', '20:30', 'BRU'),
+    29: ('G', 'NZL', 'WAL', '2026-08-22', '10:00', 'AMV'),
+    30: ('G', 'PAK', 'JPN', '2026-08-22', '13:00', 'AMV'),
+    31: ('E', 'NED', 'IND', '2026-08-22', '16:00', 'AMV'),
+    32: ('E', 'ENG', 'ARG', '2026-08-22', '19:00', 'AMV'),
+    33: ('H', 'MAS', 'RSA', '2026-08-23', '11:30', 'BRU'),
+    34: ('H', 'FRA', 'IRL', '2026-08-23', '14:30', 'BRU'),
+    35: ('F', 'GER', 'AUS', '2026-08-23', '17:30', 'BRU'),
+    36: ('F', 'ESP', 'BEL', '2026-08-23', '20:30', 'BRU'),
+    37: ('G', 'JPN', 'WAL', '2026-08-24', '09:30', 'AMV'),
+    38: ('G', 'NZL', 'PAK', '2026-08-24', '12:30', 'AMV'),
+    39: ('E', 'ARG', 'IND', '2026-08-24', '14:45', 'AMV'),
+    40: ('E', 'NED', 'ENG', '2026-08-24', '18:00', 'AMV'),
+}
+_BY_NO = {x['matchNo']: x for x in _m if x.get('matchNo')}
+_off_bad = [no for no, exp in _OFFICIAL.items()
+            if (_BY_NO[no]['pool'], _BY_NO[no]['home'], _BY_NO[no]['away'],
+                _BY_NO[no]['date'], _BY_NO[no]['time'], _BY_NO[no]['venue']) != exp]
+check('every Stage-2 fixture matches the official schedule', not _off_bad, f'wrong: {_off_bad}')
+
+_SCHEDULE = {41: ('2026-08-28', '09:30', 'AMV'), 42: ('2026-08-28', '11:00', 'BRU'),
+             43: ('2026-08-28', '12:30', 'AMV'), 44: ('2026-08-28', '14:00', 'BRU'),
+             45: ('2026-08-28', '15:00', 'AMV'), 46: ('2026-08-28', '17:00', 'BRU'),
+             47: ('2026-08-28', '18:00', 'AMV'), 48: ('2026-08-28', '20:30', 'BRU'),
+             49: ('2026-08-30', '14:00', 'BRU'), 50: ('2026-08-30', '16:30', 'BRU')}
+_sch_bad = [no for no, exp in _SCHEDULE.items()
+            if (_BY_NO[no]['date'], _BY_NO[no]['time'], _BY_NO[no]['venue']) != exp]
+check('classification, semis and medals sit on the official slots', not _sch_bad, f'wrong: {_sch_bad}')
+
+# Match numbers must follow the running order within each day: the tournament is
+# read by number, so a fixture drifting to another slot is a visible error.
+_days = {}
+for x in _m:
+    if x.get('matchNo'):
+        _days.setdefault(x['date'], []).append(x)
+_order_bad = []
+for _day, _day_fx in _days.items():
+    if sorted(_day_fx, key=lambda x: x['time']) != sorted(_day_fx, key=lambda x: (x['time'], x['matchNo'])):
+        _order_bad.append(_day)
+check('no two fixtures share a slot out of order', not _order_bad, f'{_order_bad}')
+
+# Nobody meets a side from their own Stage-1 pool in Stage 2 — that result is
+# carried forward instead, which is the whole point of the crossover.
+_s1 = {}
+for x in _m:
+    if x['phase'] == 'pool':
+        _s1[x['home']] = x['pool']; _s1[x['away']] = x['pool']
+_clash = [x['matchNo'] for x in _m if x['phase'] == 'stage2'
+          and x['home'] != 'TBD' and _s1.get(x['home']) == _s1.get(x['away'])]
+check('no Stage-2 fixture repeats a Stage-1 meeting', not _clash, f'{_clash}')
+
 _nos = [x['matchNo'] for x in _m if x.get('matchNo')]
 check('knockout match numbers 25–50 unique', sorted(_nos) == list(range(25, 51)))
 # No stage-2 fixture pairs two teams from the same Stage-1 pool (those H2H carry
@@ -617,9 +817,16 @@ check('every Stage-2 pool has 4 fixtures',
 # Full progression: complete every stage in turn and confirm the bracket fills
 # to a clean 1–16 with no TBD left and medals coming from the semi winners.
 _f = _copy.deepcopy(_fx)
+# Drive the bracket from a clean slate: reset every knockout slot to TBD so this
+# exercises the slotting logic itself, not however far the real tournament has
+# progressed. (Once Stage 1 finished for real, the seeded fixtures arrived
+# already slotted and the synthetic pool scores below were silently ignored.)
 for x in _f['matches']:
     if x['phase'] == 'pool':
         x['status'] = 'completed'; x['score'] = {'home': 3, 'away': 1}
+    else:
+        x['home'] = x['away'] = 'TBD'
+        x['status'] = 'scheduled'; x['score'] = {'home': None, 'away': None}
 slot_knockouts(_f)
 check('Stage 1 done ⇒ all Stage-2 fixtures slotted',
       all(x['home'] != 'TBD' for x in _f['matches'] if x['phase'] == 'stage2'))
@@ -628,8 +835,11 @@ check('Stage-1 placements resolve all four pools',
       _p1 is not None and all(len(_p1[p]) == 4 for p in 'ABCD'))
 _by = {x['id']: x for x in _f['matches']}
 _s2e1 = _by['S2E1']
-check('S2E1 pairs 1st Pool A vs 1st Pool D (no same-pool clash)',
-      {_s2e1['home'], _s2e1['away']} == {_p1['A'][0], _p1['D'][0]})
+# Official mapping (#31): 1st Pool A meets 2nd Pool D — a crossover, never two
+# teams out of the same Stage-1 pool.
+check('S2E1 pairs 1st Pool A vs 2nd Pool D per the official schedule',
+      (_s2e1['home'], _s2e1['away']) == (_p1['A'][0], _p1['D'][1]),
+      f"got {_s2e1['home']} v {_s2e1['away']}")
 for x in _f['matches']:
     if x['phase'] == 'stage2':
         x['status'] = 'completed'; x['score'] = {'home': 2, 'away': 1}

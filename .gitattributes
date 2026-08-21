@@ -1,0 +1,15 @@
+# The pipeline rewrites these every 30 minutes on main, and a branch that
+# changes the schedule, the schema or the model rewrites them too. Git sees two
+# whole-file rewrites and declares a conflict every single time — the same
+# conflict, with the same correct answer, over and over.
+#
+# `merge=hockeydata` hands them to scripts/merge_data.py, which knows which side
+# owns what: the pipeline owns played results, the branch owns the schedule and
+# the editorial fields. Enable it once per clone:
+#
+#   git config merge.hockeydata.name "Hockey.AI data merge"
+#   git config merge.hockeydata.driver "python3 scripts/merge_data.py --driver %O %A %B %P"
+#
+# Without that config git falls back to a normal conflict, and
+# `python3 scripts/merge_data.py` resolves it in one command after the fact.
+public/data/*.json merge=hockeydata

@@ -50,6 +50,14 @@ def load(name):
     with open(os.path.join(DATA_DIR, name)) as f:
         return json.load(f)
 
+def load_or(name, default):
+    """load(), but a file that does not exist yet starts from `default` — a new
+    data file must not break the first run that introduces it."""
+    try:
+        return load(name)
+    except FileNotFoundError:
+        return default
+
 def save(name, obj):
     with open(os.path.join(DATA_DIR, name), 'w') as f:
         json.dump(obj, f, indent=2, ensure_ascii=False)
@@ -171,6 +179,7 @@ TMS_SQUAD_PATHS = [
 ]
 # Discovered on the competition matches page, e.g. /matches/22334/lineups/8575
 TMS_LINEUP_LINK = re.compile(r'/matches/(\d+)/lineups/(\d+)')
+TMS_MATCH_LINK = re.compile(r'/matches/(\d+)(?![\d/])')
 
 def _tms_get(url, referer=None):
     headers = {
@@ -599,6 +608,17 @@ def discover_tms_lineup_links():
                 ids.append(tid)
     pairs = {k: v for k, v in found.items() if len(v) == 2}
     print(f'LINEUPS: {len(found)} TMS matches linked, {len(pairs)} with both team sheets.')
+    # Team-sheet links only exist once a match has line-ups, so an unplayed
+    # fixture is invisible to the pattern above — which kept the whole Stage-2
+    # half of the tournament out of reach. Every match has a plain /matches/{id}
+    # link on the same page; ids that turn out not to be ours are skipped by the
+    # pair lookup downstream.
+    for path in ('/matches', ''):
+        body, _c = _tms_get(TMS_BASE + path)
+        if not body:
+            continue
+        for mid in TMS_MATCH_LINK.findall(body.decode('utf-8', 'replace')):
+            found.setdefault(mid, [])
     return pairs
 
 # The per-match page's Details section labels the kickoff and venue outright:
@@ -662,9 +682,109 @@ def probe_match_report(tms_id):
                 print(f"  W| top={w['top']:.0f} x0={w['x0']:.0f} {w['text'][:22]}")
         except Exception as e:
             print(f'PROBE coords {tms_id} failed: {e}')
+    # The match page carries a head-to-head block — past meetings between these
+    # two nations, with dates and scores. The schedule reader deliberately skips
+    # it (a past date must never be mistaken for this match's kickoff), but it is
+    # the one official source we have for all-time record. Dump it whole so the
+    # H2H parser is written against the real layout rather than a guess.
+    page, pctype = _tms_get(f'{TMS_HOST}/matches/{tms_id}', referer=TMS_BASE + '/matches')
+    if page:
+        plines = _tms_lines(page)
+        print(f'PROBE match page {tms_id}: {len(plines)} lines ({pctype})')
+        for i, ln in enumerate(plines):
+            print(f'  P|{i:4} {ln[:150]}')
+    else:
+        print(f'PROBE match page {tms_id}: no body ({pctype})')
 
 
-def sync_schedule_from_match_pages(fixtures, links):
+# ── Head-to-head history ──────────────────────────────────────────────────
+# Every TMS match page ends with a "Head to Head Matches" table: one row per
+# previous meeting between the two nations. The probe dump (IND v WAL) shows a
+# row as a run of lines with an optional pitch:
+#
+#   FIH Odisha Hockey Men's World Cup 2023 Bhubaneswar - Rourkela   <- competition
+#   Senior Mens Outdoor                                             <- category
+#   19 Jan 2023  19:00                                              <- date/time
+#   IND v WAL (Pool D)                                              <- teams
+#   KS - Pitch 1 - Bhubaneswar, India                               <- pitch (may be absent)
+#   Official                                                        <- status
+#   4 - 2                                                           <- scoreline
+#   Lineup
+#
+# The pitch line is missing on some rows, so the row is anchored on the teams
+# line rather than counted off a fixed offset. The table also lists the match
+# the page belongs to, which is not history — it carries the current
+# competition's name and is marked so callers can drop it.
+#
+# TMS states its own limit in a footnote on that page: accurate from 2013, with
+# 2012 and earlier still being digitised. So this is a record SINCE 2013, and it
+# is labelled that way everywhere it is shown — never as "all-time".
+# The name TMS gives this competition, used to mark rows in the head-to-head
+# table that belong to the tournament being played rather than to history.
+TMS_COMPETITION = 'FIH Hockey World Cup Belgium & Netherlands 2026 (M)'
+H2H_SINCE = 2013
+H2H_TEAMS = re.compile(r'^([A-Z]{3})\s+v\s+([A-Z]{3})\s*\(')
+H2H_DATE = re.compile(r'^(\d{1,2})\s+([A-Za-z]{3})\s+(\d{4})\s+\d{1,2}:\d{2}$')
+H2H_SCORE = re.compile(r'^(\d{1,2})\s*-\s*(\d{1,2})$')
+_MON = {m: i + 1 for i, m in enumerate(
+    ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])}
+
+def parse_h2h(lines, current_competition=None):
+    """[{competition, date, home, away, home_goals, away_goals, current}] from a
+    TMS match page, or [] when the page carries no head-to-head table."""
+    try:
+        start = next(i for i, ln in enumerate(lines)
+                     if ln.strip() == 'Head to Head Matches')
+    except StopIteration:
+        return []
+    rows = []
+    for i in range(start, len(lines)):
+        ln = lines[i].strip()
+        if ln.startswith('data is accurate for every match'):
+            break            # the footnote closes the table
+        m = H2H_TEAMS.match(ln)
+        if not m:
+            continue
+        home, away = m.group(1), m.group(2)
+        # Date sits immediately above the teams line; competition two above the
+        # category line. Walk back rather than assume a fixed offset.
+        date = comp = None
+        for j in range(i - 1, max(start - 1, i - 5), -1):
+            d = H2H_DATE.match(lines[j].strip())
+            if d:
+                date = f'{d.group(3)}-{_MON.get(d.group(2), 0):02d}-{int(d.group(1)):02d}'
+                for k in range(j - 1, max(start - 1, j - 4), -1):
+                    cand = lines[k].strip()
+                    if cand and cand != 'Senior Mens Outdoor':
+                        comp = cand
+                        break
+                break
+        if not date:
+            continue
+        # Scoreline is the first "N - M" after the teams line, before the next row.
+        score = None
+        for j in range(i + 1, min(len(lines), i + 6)):
+            nxt = lines[j].strip()
+            if H2H_TEAMS.match(nxt):
+                break
+            sc = H2H_SCORE.match(nxt)
+            if sc:
+                score = (int(sc.group(1)), int(sc.group(2)))
+                break
+        if not score:
+            continue          # an unplayed or void fixture carries no scoreline
+        if int(date[:4]) < H2H_SINCE:
+            continue          # outside the window TMS vouches for
+        rows.append({
+            'competition': comp, 'date': date,
+            'home': home, 'away': away,
+            'home_goals': score[0], 'away_goals': score[1],
+            'current': bool(current_competition and comp == current_competition),
+        })
+    return rows
+
+
+def sync_schedule_from_match_pages(fixtures, links, h2h_out=None):
     """
     Correct kickoff date, time and venue against each TMS match page.
 
@@ -686,13 +806,21 @@ def sync_schedule_from_match_pages(fixtures, links):
         body, _ = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
         if not body:
             continue
-        info = parse_match_page(_tms_lines(body))
+        page_lines = _tms_lines(body)
+        info = parse_match_page(page_lines)
         if not info:
             print(f'SCHEDULE: match page {mid} did not parse — skipped.')
             continue
         m = by_pair.get(frozenset(info['pair']))
         if not m:
             continue
+        # The same page carries the pair's meeting history. Harvest it here
+        # rather than refetching: it is the only official record we have of how
+        # these two have played each other, and the preview has nothing else.
+        if h2h_out is not None:
+            rows = parse_h2h(page_lines, current_competition=TMS_COMPETITION)
+            if rows:
+                h2h_out['-'.join(sorted(info['pair']))] = rows
         if m.get('tms_id') != int(mid):
             m['tms_id'] = int(mid)
             changed = True
@@ -838,6 +966,69 @@ def reconcile_team_lists(players_doc, squads):
                 changed = True
             keep.append(p)
         players_doc['players'] = keep
+    changed |= normalize_captaincy(players_doc, squads)
+    return changed
+
+def normalize_captaincy(players_doc, squads):
+    """Exactly one captain per team, with the official team list as authority.
+
+    is_captain was only ever reconciled for players found ON the team list, so a
+    seeded captain the list does not carry kept his flag for good — Argentina
+    ended up showing Rossi (seeded) alongside Casella (official), and the match
+    line-up drew two "C" badges. Whenever the official list marks a captain for a
+    team, that player is the captain and every other flag on that team is
+    cleared. A team the list says nothing about keeps whatever it had, still
+    capped at one. Nothing here invents a captain: if no source names one, the
+    team simply has none.
+    """
+    changed = False
+    by_team = {}
+    for p in players_doc['players']:
+        by_team.setdefault(p['team'], []).append(p)
+
+    for code, roster in sorted(squads.items()):
+        listed_caps = {e['name'].lower() for e in roster if e.get('is_captain')}
+        squad = by_team.get(code, [])
+        listed_names = {e['name'].lower() for e in roster}
+        if not listed_caps:
+            # The list names a squad but marks no captain. Anyone we carry as
+            # captain who is not in that squad is not at this tournament — a
+            # leftover from the pre-tournament seed. Clear him rather than show
+            # a captain who cannot take the field; do not invent a replacement.
+            for p in squad:
+                if p.get('is_captain') and p['name'].lower() not in listed_names:
+                    print(f"SQUADS: {code} captain {p['name']} is not on the official "
+                          f"team list — clearing the flag.")
+                    p['is_captain'] = False
+                    changed = True
+            continue
+        official = [p for p in squad if p['name'].lower() in listed_caps]
+        if len(official) > 1:
+            # The list itself names more than one — never guess which is the
+            # real captain. Keep the first as the official sheet orders them,
+            # and say so loudly rather than silently picking.
+            order = [e['name'].lower() for e in roster]
+            official.sort(key=lambda p: order.index(p['name'].lower()))
+            print(f"SQUADS: {code} team list marks {len(official)} captains "
+                  f"({', '.join(p['name'] for p in official)}) — keeping the first listed.")
+        skipper = official[0] if official else None
+        for p in squad:
+            want = p is skipper
+            if bool(p.get('is_captain')) != want:
+                if want:
+                    print(f"SQUADS: {code} captain is {p['name']} (official team list).")
+                else:
+                    print(f"SQUADS: {code} clearing stale captain flag on {p['name']}.")
+                p['is_captain'] = want
+                changed = True
+
+    # Whatever the source, no team may carry two captains.
+    for code, squad in sorted(by_team.items()):
+        caps = [p for p in squad if p.get('is_captain')]
+        for p in caps[1:]:
+            print(f"SQUADS: {code} dropping duplicate captain flag on {p['name']}.")
+            p['is_captain'] = False
+            changed = True
     return changed
 
 def merge_squads(players_doc, squads, teams):
@@ -1803,13 +1994,24 @@ STAGE2 = {
     'G': [('A', 2), ('A', 3), ('D', 2), ('D', 3)],
     'H': [('B', 2), ('B', 3), ('C', 2), ('C', 3)],
 }
-# Each Stage-2 pool plays the four cross matches (slot-index pairs), in the same
-# order the fixtures were seeded: ids S2{pool}{1..4}.
-S2_MATCHUPS = {1: (0, 2), 2: (1, 3), 3: (0, 3), 4: (1, 2)}
+# Each Stage-2 pool plays the four cross matches — every team meets the two who
+# came through the *other* Stage-1 pool, while the head-to-head against the side
+# from their own pool carries forward. (home slot, away slot) per fixture, ids
+# S2{pool}{1..4}. Read off the official FIH schedule, match by match, rather
+# than assumed: Pool F's last two rounds are ordered differently from E/G/H.
+S2_MATCHUPS = {
+    'E': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #31 #32 #39 #40
+    'F': {1: (2, 1), 2: (0, 3), 3: (0, 2), 4: (3, 1)},   # #27 #28 #35 #36
+    'G': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #29 #30 #37 #38
+    'H': {1: (0, 3), 2: (2, 1), 3: (1, 3), 4: (0, 2)},   # #25 #26 #33 #34
+}
 # Classification / semis over Stage-2 placements: id -> (poolH, placeH, poolA, placeA)
+# Ids are POS<n>, not C<n>: the pool-stage fixtures already own C1-C6, so a
+# classification match called "C5" collided with Pool C's fifth match and
+# shadowed a played result wherever matches are keyed by id.
 CLASS_SLOTS = {
-    'C13': ('G', 2, 'H', 2), 'C15': ('G', 3, 'H', 3), 'C11': ('G', 1, 'H', 1),
-    'C9': ('G', 0, 'H', 0), 'C5': ('E', 2, 'F', 2), 'C7': ('E', 3, 'F', 3),
+    'POS13': ('G', 2, 'H', 2), 'POS15': ('G', 3, 'H', 3), 'POS11': ('G', 1, 'H', 1),
+    'POS9': ('G', 0, 'H', 0), 'POS5': ('E', 2, 'F', 2), 'POS7': ('E', 3, 'F', 3),
 }
 SEMI_SLOTS = {'SF1': ('E', 0, 'F', 1), 'SF2': ('F', 0, 'E', 1)}
 
@@ -1873,7 +2075,7 @@ def slot_knockouts(fixtures):
             if m['phase'] != 'stage2' or m['home'] != 'TBD':
                 continue
             pl, n = m['pool'], int(m['id'][-1])
-            i, j = S2_MATCHUPS[n]
+            i, j = S2_MATCHUPS[pl][n]
             (ph, hi), (pa, ai) = STAGE2[pl][i], STAGE2[pl][j]
             m['home'], m['away'] = place1[ph][hi], place1[pa][ai]
             changed = True
@@ -1918,6 +2120,90 @@ def points_from_rank(rank):
     observed 2026 table spans ~3838 (#1) to ~2397 (#16), ~96 points a place."""
     return 3850 - 96 * (rank - 1)
 
+# ── What moves a prediction, and by how much ──────────────────────────────
+# Deliberate weight order, because the model must not be steered by the most
+# colourful number on the page:
+#
+#   1. Current FIH ranking points — the base. Spans ~1,365 points across the 16
+#      teams here, so it dominates by construction.
+#   2. This tournament — bounded at ±FORM_CAP (~2.7 ranking places). What a side
+#      is doing here outranks anything older, but cannot invent a contender out
+#      of a team losing every week.
+#   3. The head-to-head record — bounded at ±H2H_CAP (~0.9 places). Real, so
+#      that citing it as a reason is honest, but deliberately the smallest term:
+#      a 2018 result says less about tonight than this week's hockey does.
+#
+# Form and H2H both scale with sample size, so one match never speaks with the
+# authority of three.
+FORM_PPM_WEIGHT = 60.0    # ranking points per point-per-match above 1.5
+FORM_GD_WEIGHT = 35.0     # ranking points per goal of average goal difference
+FORM_CAP = 250.0
+FORM_FULL_SAMPLE = 3      # matches before this tournament's form counts in full
+H2H_WEIGHT = 40.0         # ranking points per win of head-to-head margin
+H2H_CAP = 80.0
+H2H_FULL_SAMPLE = 4
+
+def _clamp(v, lo, hi):
+    return max(lo, min(hi, v))
+
+def team_form(code, fixtures):
+    """{played, wins, draws, losses, gf, ga} for one team in this tournament."""
+    f = {'played': 0, 'wins': 0, 'draws': 0, 'losses': 0, 'gf': 0, 'ga': 0}
+    for m in fixtures['matches']:
+        if not has_score(m) or m['status'] != 'completed':
+            continue
+        if code not in (m['home'], m['away']):
+            continue
+        side = 'home' if m['home'] == code else 'away'
+        opp = 'away' if side == 'home' else 'home'
+        gf, ga = m['score'][side], m['score'][opp]
+        f['played'] += 1
+        f['gf'] += gf
+        f['ga'] += ga
+        if gf > ga: f['wins'] += 1
+        elif gf < ga: f['losses'] += 1
+        else: f['draws'] += 1
+    return f
+
+def form_delta(form):
+    """Ranking-point adjustment for how a team is playing in this tournament."""
+    n = form.get('played', 0)
+    if not n:
+        return 0.0
+    ppm = (form['wins'] * 3 + form['draws']) / n
+    gdpm = _clamp((form['gf'] - form['ga']) / n, -3.0, 3.0)
+    raw = FORM_PPM_WEIGHT * (ppm - 1.5) + FORM_GD_WEIGHT * gdpm
+    confidence = min(n, FORM_FULL_SAMPLE) / FORM_FULL_SAMPLE
+    return _clamp(raw, -FORM_CAP, FORM_CAP) * confidence
+
+def h2h_delta(meetings, code, opponent):
+    """Ranking-point adjustment from the official record between two nations.
+
+    Deliberately the smallest term in the model. Meetings from the tournament
+    being played are excluded — those are already counted, in full, as form.
+    """
+    past = [m for m in (meetings or []) if not m.get('current')]
+    if not past:
+        return 0.0
+    wins = losses = 0
+    for m in past:
+        mine = m['home_goals'] if m['home'] == code else m['away_goals']
+        theirs = m['home_goals'] if m['home'] == opponent else m['away_goals']
+        if mine > theirs: wins += 1
+        elif mine < theirs: losses += 1
+    n = len(past)
+    margin = (wins - losses) / n          # -1 … 1
+    confidence = min(n, H2H_FULL_SAMPLE) / H2H_FULL_SAMPLE
+    return _clamp(H2H_WEIGHT * margin * n ** 0.5, -H2H_CAP, H2H_CAP) * confidence
+
+def effective_points(code, opponent, base_points, fixtures, h2h_pairs=None):
+    """Ranking points adjusted for this tournament, then lightly for history."""
+    pts = base_points + form_delta(team_form(code, fixtures))
+    if h2h_pairs:
+        key = '-'.join(sorted((code, opponent)))
+        pts += h2h_delta(h2h_pairs.get(key), code, opponent)
+    return pts
+
 def predict(home_pts, away_pts):
     """(p_home, p_draw, p_away) from official FIH ranking points.
 
@@ -1937,7 +2223,7 @@ def predict(home_pts, away_pts):
     p_away = (1 - p_draw) * (1 - e)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
-def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now):
+def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs=None):
     """
     Publish a visible correction for a pick whose match has not started but
     whose inputs were wrong when it was written.
@@ -1973,8 +2259,10 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now):
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
-        ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
-        if m['phase'] != 'pool':
+        ph, pd, pa = predict(
+            effective_points(m['home'], m['away'], points_of[m['home']], fixtures, h2h_pairs),
+            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs))
+        if m['phase'] in ('semi-final', 'bronze-final', 'gold-final', 'classification'):
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
             conf = round(max(adv_h, 1 - adv_h), 3)
@@ -2025,7 +2313,7 @@ def fix_venues(fixtures):
             changed = True
     return changed
 
-def generate_predictions(fixtures, teams, predictions):
+def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
     """
     Every fixture with both teams known carries an engine pick — including
     matches that finished before the pipeline existed. The model is
@@ -2041,7 +2329,7 @@ def generate_predictions(fixtures, teams, predictions):
     changed = False
     now = now_utc()
 
-    changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now)
+    changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':
@@ -2057,7 +2345,9 @@ def generate_predictions(fixtures, teams, predictions):
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
-        ph, pd, pa = predict(points_of[m['home']], points_of[m['away']])
+        ph, pd, pa = predict(
+            effective_points(m['home'], m['away'], points_of[m['home']], fixtures, h2h_pairs),
+            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs))
         if knockout:
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
@@ -2099,7 +2389,19 @@ def main():
     # The official schedule before the clock speaks: statuses are computed
     # from kickoff times, and the per-match pages are the authority on those.
     links = discover_tms_lineup_links()
-    changed |= sync_schedule_from_match_pages(fixtures, links)
+    # Head-to-head history is harvested from the same pages the schedule sync
+    # reads. A pair keeps whatever we last saw: TMS only serves the table on a
+    # match page, so a pair drops out of reach once its match is complete and
+    # the page stops being refetched.
+    h2h_doc = load_or('h2h.json', {'source': 'fih-tms', 'since': H2H_SINCE, 'pairs': {}})
+    harvested = {}
+    changed |= sync_schedule_from_match_pages(fixtures, links, h2h_out=harvested)
+    if harvested:
+        h2h_doc['pairs'].update(harvested)
+        h2h_doc['since'] = H2H_SINCE
+        h2h_doc['updated_at'] = now_utc().isoformat()
+        save('h2h.json', h2h_doc)
+        print(f'H2H: {len(harvested)} pairs refreshed, {len(h2h_doc["pairs"])} on file.')
     changed |= update_statuses(fixtures)
 
     # The matches page carries every final score by team-code pair — the
@@ -2135,7 +2437,15 @@ def main():
     changed |= update_player_stats(fixtures, players)
     changed |= slot_knockouts(fixtures)
     changed |= build_lineups(fixtures, players, teams)
-    changed |= generate_predictions(fixtures, teams, predictions)
+    # The browser-side strength model must weight this tournament exactly as the
+    # published picks do, so the aggregates live on the team rather than being
+    # recomputed twice from different code.
+    for t in teams['teams']:
+        f = team_form(t['code'], fixtures)
+        if t.get('form') != f:
+            t['form'] = f
+            changed = True
+    changed |= generate_predictions(fixtures, teams, predictions, h2h_doc.get('pairs'))
 
     stamp = now_utc().isoformat()
     if players_changed:

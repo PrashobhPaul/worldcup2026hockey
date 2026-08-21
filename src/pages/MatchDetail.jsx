@@ -7,6 +7,7 @@ import { useTeam, phaseTag, formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
 import { deriveClock } from '../engine/clock'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
+import { buildPreview, h2hKey } from '../engine/preview'
 import { ArrowLeft } from 'lucide-react'
 import { EventIcon } from '../components/eventIcons'
 
@@ -177,6 +178,45 @@ function FormRow({ name, form }) {
   )
 }
 
+// One evidence card. The number leads, because the number is the point — the
+// prose underneath says where it came from and what it means for this fixture.
+const CARD_TONE = {
+  brand: 'border-brand/25 text-brand',
+  warn: 'border-amber-400/25 text-amber-400',
+  pos: 'border-live/25 text-live',
+  neutral: 'border-white/10 text-pitch-300',
+}
+
+function PreviewCard({ card }) {
+  const tone = CARD_TONE[card.tone] ?? CARD_TONE.neutral
+  const [border, text] = tone.split(' ')
+  return (
+    <div className={`rounded-xl border ${border} bg-pitch-800 p-4`}>
+      <div className={`mb-3 font-mono text-[10px] font-bold uppercase tracking-widest ${text}`}>
+        {card.label}
+      </div>
+      <div className="flex items-baseline gap-3">
+        <span className={`font-mono text-3xl font-bold leading-none ${text}`}>{card.stat}</span>
+        <span className="font-mono text-[10px] uppercase leading-tight tracking-wide text-pitch-400">
+          {card.statLabel}
+        </span>
+      </div>
+      <p className="mt-3 text-sm font-semibold leading-snug">{card.headline}</p>
+      <p className="mt-1.5 text-xs leading-relaxed text-pitch-300">{card.text}</p>
+      {card.form?.length > 0 && (
+        <div className="mt-3 flex items-center gap-1.5">
+          <span className="mr-1 font-mono text-[9px] uppercase tracking-widest text-pitch-400">Last {card.form.length}</span>
+          {card.form.map((r, i) => (
+            <span key={i} className={`flex h-5 w-5 items-center justify-center rounded font-mono text-[10px] font-bold ${
+              r === 'W' ? 'bg-live/15 text-live' : r === 'L' ? 'bg-red-400/15 text-red-400' : 'bg-pitch-700 text-pitch-300'
+            }`}>{r}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function MatchDetailPage() {
   const { matchId } = useParams()
   const match = useLiveQuery(() => db.matches.get(matchId), [matchId])
@@ -191,6 +231,15 @@ export default function MatchDetailPage() {
   )
   const story = useLiveQuery(() => db.ai_stories.get(matchId), [matchId])
   const allMatches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
+  // Every event in the tournament — the preview deck reasons over all of them,
+  // not just this fixture's.
+  const allEvents = useLiveQuery(() => db.match_events.toArray(), [], [])
+  // The official meeting record for this pair, harvested from TMS.
+  const h2hRow = useLiveQuery(
+    () => (match?.home && match?.away && match.home !== 'TBD'
+      ? db.h2h.get(h2hKey(match.home, match.away)) : undefined),
+    [match?.home, match?.away],
+  )
   const home = useTeam(match?.home)
   const away = useTeam(match?.away)
 
@@ -220,6 +269,8 @@ export default function MatchDetailPage() {
   const byQuarter = { Q1: [], Q2: [], Q3: [], Q4: [] }
   for (const ev of annotated) byQuarter[quarterOf(ev.minute)]?.push(ev)
 
+  const preview = buildPreview({ match, home, away, matches: allMatches, events: allEvents, pred, h2h: h2hRow?.meetings })
+
   const homeForm = tournamentForm(allMatches, match.home).filter(f => f.id !== match.id)
   const awayForm = tournamentForm(allMatches, match.away).filter(f => f.id !== match.id)
   const h2h = allMatches.filter(m =>
@@ -244,7 +295,7 @@ export default function MatchDetailPage() {
         <div className="mb-4 flex items-center justify-center gap-2 text-center">
           <span className="rounded bg-brand/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand">{phaseTag(match)}</span>
           <span className="font-mono text-[10px] text-pitch-400">
-            {formatDate(match.date)} · {match.time} CET · {match.venue === 'AMV' ? 'Wagener Stadion, Amstelveen' : 'Royal Leopold Club, Brussels'}
+            {formatDate(match.date)} · {match.time} CET · {match.venue === 'AMV' ? 'Wagener Stadion, Amstelveen' : 'Belfius Hockey Arena, Belgium'}
           </span>
         </div>
         <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
@@ -310,6 +361,19 @@ export default function MatchDetailPage() {
                 {pred.isKnockout && <span className="text-brand">SO path {Math.round(pred.paths.shootout * 100)}%</span>}
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Preview: what this tournament's own record says about the fixture */}
+      {preview.length > 0 && (
+        <div>
+          <h3 className="mb-2.5 flex items-baseline justify-between font-display text-sm font-semibold">
+            Match preview
+            <span className="font-mono text-[10px] font-normal text-pitch-400">from this World Cup only</span>
+          </h3>
+          <div className="space-y-2.5">
+            {preview.map(c => <PreviewCard key={c.kind} card={c} />)}
           </div>
         </div>
       )}
