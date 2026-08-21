@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-21T19:51:41.647820+00:00",
+  "updated_at": "2026-08-21T20:24:00.588041+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -2283,7 +2283,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.473,
       "reason": "FIH #4 AUS favoured over #5 GER — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T17:27:13.630603+00:00"
+      "publishedAt": "2026-08-21T17:27:13.630603+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-21T20:24:00.587357+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
     },
     {
       "id": "oracle-v1:S2F4:r6",
@@ -2297,7 +2300,38 @@
       "pick": "AWAY",
       "pick_confidence": 0.72,
       "reason": "FIH #1 BEL favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T17:27:13.630603+00:00"
+      "publishedAt": "2026-08-21T17:27:13.630603+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-21T20:24:00.587357+00:00",
+      "superseded_reason": "Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model."
+    },
+    {
+      "id": "oracle-v1:S2F3:r7",
+      "matchId": "S2F3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2F3:r6",
+      "p_home_win": 0.235,
+      "p_draw": 0.314,
+      "p_away_win": 0.451,
+      "pick": "AWAY",
+      "pick_confidence": 0.451,
+      "reason": "FIH #4 AUS favoured over #5 GER — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-21T20:24:00.587357+00:00"
+    },
+    {
+      "id": "oracle-v1:S2F4:r7",
+      "matchId": "S2F4",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2F4:r6",
+      "p_home_win": 0.098,
+      "p_draw": 0.196,
+      "p_away_win": 0.707,
+      "pick": "AWAY",
+      "pick_confidence": 0.707,
+      "reason": "FIH #1 BEL favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-21T20:24:00.587357+00:00"
     }
   ]
 }

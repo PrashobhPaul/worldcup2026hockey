@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-21T19:51:41.647820+00:00",
+  "last_updated": "2026-08-21T20:24:00.588041+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -3119,7 +3119,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.591541+00:00",
+        "generated_at": "2026-08-21T20:24:00.575222+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -3137,6 +3137,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_05",
+              "name": "Tom Craig",
+              "number": 2,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -3164,7 +3173,7 @@
               "playerId": "AUS_20",
               "name": "Jeremy Hayward",
               "number": 32,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -3173,15 +3182,6 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_05",
-              "name": "Tom Craig",
-              "number": 2,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -7105,7 +7105,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T17:27:13.617652+00:00",
+        "generated_at": "2026-08-21T20:24:00.578115+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -7123,6 +7123,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_05",
+              "name": "Tom Craig",
+              "number": 2,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -7150,7 +7159,7 @@
               "playerId": "AUS_20",
               "name": "Jeremy Hayward",
               "number": 32,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -7159,15 +7168,6 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_05",
-              "name": "Tom Craig",
-              "number": 2,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -11388,7 +11388,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T10:59:03.058683+00:00",
+        "generated_at": "2026-08-21T20:24:00.580932+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -11406,6 +11406,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_05",
+              "name": "Tom Craig",
+              "number": 2,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -11433,7 +11442,7 @@
               "playerId": "AUS_20",
               "name": "Jeremy Hayward",
               "number": 32,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -11442,15 +11451,6 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_05",
-              "name": "Tom Craig",
-              "number": 2,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -13417,15 +13417,30 @@
       "time": "20:30",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 24,
+          "team": "AUS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tom Craig"
+        },
+        {
+          "minute": 38,
+          "team": "BEL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tom Boon"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.752901+00:00",
+        "generated_at": "2026-08-21T20:24:00.582297+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -13443,6 +13458,15 @@
               "playerId": "AUS_17",
               "name": "Joel Rintala",
               "number": 27,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "AUS_05",
+              "name": "Tom Craig",
+              "number": 2,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -13470,7 +13494,7 @@
               "playerId": "AUS_20",
               "name": "Jeremy Hayward",
               "number": 32,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -13479,15 +13503,6 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_05",
-              "name": "Tom Craig",
-              "number": 2,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -13757,7 +13772,75 @@
           "coach": "Shane McLeod"
         }
       },
-      "tms_id": 22361
+      "tms_id": 22361,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 1
+      },
+      "stats": {
+        "home": {
+          "goals": 1,
+          "shots": 9,
+          "circle_entries": 21,
+          "penalty_corners": 0,
+          "possession": 52,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 6,
+          "circle_entries": 21,
+          "penalty_corners": 1,
+          "possession": 48,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "Push-back! AUS vs BEL under way.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: AUS 0-0 BEL.",
+          "seq": 1
+        },
+        {
+          "minute": 24,
+          "team": "AUS",
+          "text": "GOAL! Tom Craig (AUS) scores from a field goal — AUS 1-0 BEL.",
+          "seq": 2
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: AUS 1-0 BEL.",
+          "seq": 3
+        },
+        {
+          "minute": 38,
+          "team": "BEL",
+          "text": "GOAL! Tom Boon (BEL) scores from a penalty corner — AUS 1-1 BEL.",
+          "seq": 4
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: AUS 1-1 BEL.",
+          "seq": 5
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: AUS 1-1 BEL.",
+          "seq": 6
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2F2",
@@ -16426,7 +16509,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T17:27:13.627467+00:00",
+        "generated_at": "2026-08-21T20:24:00.585077+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -16615,6 +16698,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "AUS_05",
+              "name": "Tom Craig",
+              "number": 2,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "AUS_12",
               "name": "Ky Willott",
               "number": 20,
@@ -16636,7 +16728,7 @@
               "playerId": "AUS_20",
               "name": "Jeremy Hayward",
               "number": 32,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -16645,15 +16737,6 @@
               "playerId": "AUS_23",
               "name": "Tim Howard",
               "number": 16,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "AUS_05",
-              "name": "Tom Craig",
-              "number": 2,
               "line": "Midfielder",
               "position": null,
               "captain": false,
