@@ -2,7 +2,8 @@
 // Soccer.AI pulls versioned snapshots via Cloudflare server functions.
 // Hockey.AI keeps the same versioned-sync UX but sources from static JSON
 // written by GitHub Actions (zero backend). data-version.json bumps -> full resync.
-import { db } from './db'
+import { db, openDb } from './db'
+import { needsResync } from './syncPolicy'
 
 const DATA_BASE = `${import.meta.env.BASE_URL}data`
 
@@ -14,26 +15,75 @@ async function fetchJSON(path) {
 
 let _syncPromise = null
 
+// What the last sync attempt did. The UI subscribes so an empty database can
+// say WHY it is empty instead of rendering blank tabs — the failure mode this
+// app shipped with: sync silently gave up, every page had nothing to draw, and
+// nothing on screen admitted it.
+let _status = { state: 'starting', error: null, version: null, empty: true, at: 0 }
+const listeners = new Set()
+
+export function getSyncStatus() { return _status }
+export function subscribeSync(fn) {
+  listeners.add(fn)
+  return () => listeners.delete(fn)
+}
+function setStatus(next) {
+  _status = { ..._status, ...next, at: Date.now() }
+  listeners.forEach(fn => fn(_status))
+}
+
+/** Is the cache actually populated? A version stamp is not evidence of rows. */
+async function storeIsEmpty() {
+  try {
+    const [teams, matches] = await Promise.all([db.teams.count(), db.matches.count()])
+    return teams === 0 || matches === 0
+  } catch {
+    return true
+  }
+}
+
 export function syncData({ force = false } = {}) {
   if (_syncPromise) return _syncPromise
-  _syncPromise = _sync(force).finally(() => { _syncPromise = null })
+  _syncPromise = _sync(force)
+    .catch(async err => {
+      // Never let a failed sync become an unhandled rejection and a blank app.
+      setStatus({ state: 'error', empty: await storeIsEmpty(), error: String(err?.message ?? err) })
+      return { status: 'error', error: err }
+    })
+    .finally(() => { _syncPromise = null })
   return _syncPromise
 }
 
 async function _sync(force) {
+  const opened = await openDb()
+  if (!opened.ok) {
+    setStatus({ state: 'error', error: 'The local database could not be opened.', empty: true })
+    return { status: 'db-error' }
+  }
+
   let remote
   try {
     remote = await fetchJSON('data-version.json')
   } catch (e) {
-    // Offline — Dexie already has the last snapshot. PWA keeps working.
+    // Offline. With a populated cache the PWA carries on as normal; with an
+    // empty one there is nothing to show, and the reader has to be told.
+    const empty = await storeIsEmpty()
+    setStatus({ state: empty ? 'error' : 'offline', empty, error: empty ? 'Could not reach the data feed.' : null })
     return { status: 'offline' }
   }
 
   const localMeta = await db.meta.get('data')
-  if (!force && localMeta && localMeta.version >= remote.version) {
-    return { status: 'fresh', version: localMeta.version }
+  // A version stamp equal to the server's is NOT proof the tables have rows —
+  // an evicted store, a rolled-back write or a half-finished upgrade all leave
+  // the stamp behind. Check the rows themselves (see syncPolicy.js).
+  const empty = await storeIsEmpty()
+  const decision = needsResync({ force, empty, localMeta, remote })
+  if (!decision.resync) {
+    setStatus({ state: 'fresh', version: localMeta?.version ?? null, empty: false, error: null })
+    return { status: 'fresh', version: localMeta?.version ?? null }
   }
 
+  setStatus({ state: 'syncing', error: null })
   const [teamsDoc, fixturesDoc, playersDoc, predictionsDoc, storiesDoc, h2hDoc] = await Promise.all([
     fetchJSON('teams.json'),
     fetchJSON('fixtures.json'),
@@ -84,6 +134,7 @@ async function _sync(force) {
       await db.meta.put({ id: 'data', version: remote.version, updatedAt: remote.updated_at, syncedAt: Date.now() })
     })
 
+  setStatus({ state: 'synced', version: remote.version, empty: false, error: null })
   return { status: 'synced', version: remote.version }
 }
 
@@ -91,6 +142,12 @@ async function _sync(force) {
 // the version check is one tiny JSON fetch, so live results land within a minute)
 export function startAutoSync(intervalMs = 60 * 1000) {
   syncData()
+  // A failed first sync leaves the app with nothing to draw, so retry sooner
+  // than the steady-state minute — and stop retrying fast once it lands.
+  let quick = setInterval(() => {
+    if (_status.state === 'error' || _status.empty) syncData({ force: true })
+    else { clearInterval(quick); quick = null }
+  }, 8000)
   const id = setInterval(() => syncData(), intervalMs)
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') syncData()

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './styles.css'
 import { startAutoSync } from './sync'
 import AppShell from './components/AppShell'
+import ErrorBoundary from './components/ErrorBoundary'
 import HomePage from './pages/Home'
 import MatchesPage from './pages/Matches'
 import MatchDetailPage from './pages/MatchDetail'
@@ -37,6 +38,40 @@ if ('serviceWorker' in navigator) {
   }).catch(() => {})
 }
 
+// A deploy replaces every hashed asset at once. An installed app holding a
+// half-updated precache can end up asking for a chunk that no longer exists —
+// the import fails, nothing renders, and no amount of reloading helps because
+// the stale shell is served from the cache each time. Clear the worker and its
+// caches, once per session, and reload into the current build.
+const RECOVERED = 'hockeyai:recovered-stale-build'
+const isLoadFailure = x => /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module|ChunkLoadError|Loading chunk .* failed/i
+  .test(String(x?.message ?? x ?? ''))
+
+async function recoverFromStaleBuild() {
+  if (sessionStorage.getItem(RECOVERED)) return   // one attempt — never a loop
+  sessionStorage.setItem(RECOVERED, String(Date.now()))
+  try {
+    const regs = (await navigator.serviceWorker?.getRegistrations?.()) ?? []
+    await Promise.all(regs.map(r => r.unregister()))
+    const keys = (await window.caches?.keys?.()) ?? []
+    await Promise.all(keys.map(k => caches.delete(k)))
+  } catch { /* nothing cached to clear */ }
+  window.location.reload()
+}
+
+window.addEventListener('error', e => {
+  if (isLoadFailure(e?.error ?? e?.message) || (e?.target?.tagName === 'SCRIPT' && e.target.src)) {
+    recoverFromStaleBuild()
+  }
+}, true)
+window.addEventListener('unhandledrejection', e => {
+  if (isLoadFailure(e?.reason)) recoverFromStaleBuild()
+})
+// The app got as far as running, so this session is not stuck on a stale build.
+window.addEventListener('load', () => {
+  setTimeout(() => sessionStorage.removeItem(RECOVERED), 5000)
+})
+
 // Honor Vite's base path (e.g. /worldcup2026hockey/ on GitHub Pages)
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
@@ -63,6 +98,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ErrorBoundary>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
   </React.StrictMode>,
 )

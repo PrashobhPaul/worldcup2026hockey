@@ -450,10 +450,11 @@ export default function MatchDetailPage() {
         <div className="rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
           <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-brand">🧠 AI Match Story</div>
           <p className="whitespace-pre-line text-sm leading-relaxed text-pitch-300">{story.story}</p>
+          {/* When it was written is worth knowing. HOW it was written — which
+              generator, which model, which pipeline stage — is our plumbing,
+              and means nothing to someone reading about the match. */}
           <div className="mt-3 border-t border-white/5 pt-2 font-mono text-[10px] text-pitch-400">
-            {story.source === 'engine'
-              ? 'Engine brief — composed directly from this match’s event ledger. Upgraded to a written AI story when the reporter runs.'
-              : 'AI match story'} · {new Date(story.generatedAt).toLocaleString()} · {story.model}
+            Updated {new Date(story.generatedAt).toLocaleString()}
           </div>
         </div>
       )}
