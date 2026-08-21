@@ -189,7 +189,7 @@ function TrendingTeams({ teams, matches }) {
               </span>
             </div>
             <div className="mt-1.5 flex items-center justify-between">
-              <TierBadge tier={out ? 'outsider' : entry?.classification} />
+              <TierBadge tier={out ? 'out' : bundle?.tierOf(entry?.teamId)} />
               <span className="font-mono text-[11px] text-brand">{formatProbability(entry?.champion ?? 0)} champion</span>
             </div>
           </Link>
@@ -231,7 +231,7 @@ export default function HomePage() {
 
       {!loading && lastTwo.length > 0 && (
         <section>
-          <SectionHead title="⚡ Latest Results" to="/matches?tab=completed" toLabel="All results →" />
+          <SectionHead title="⚡ Latest Results" to="/matches?tab=results" toLabel="All results →" />
           <div className="space-y-2.5">
             {lastTwo.map(m => <MatchCard key={m.id} match={m} />)}
           </div>

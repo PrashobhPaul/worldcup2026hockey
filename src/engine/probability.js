@@ -42,9 +42,11 @@ export const snapshotSeed = k => MODEL_PARAMS.rngSeed + k * 7919
 export const makeSnapshotId = k => `${TOURNAMENT_ID}@after-match-${k}`
 
 // ── Classification ────────────────────────────────────────────────────────
-// One rule set for the ⭐ Favourite / 🔥 Contender / 🐎 Dark Horse badges.
-// Driven by canonical champion probability, never by seed-file editorial
-// fields, so a team's badge and its percentage can never disagree.
+// A coarse band on the snapshot entry, purely descriptive: which slice of the
+// probability range a team sits in. It is NOT what the UI badges read — the
+// published ⭐ / ♞ / ⚡ tags are quota'd and earned, and live in engine/tiers.js.
+// Keep this out of the UI or two different definitions of "favourite" end up
+// on screen at once.
 const TIER_THRESHOLDS = [
   { id: 'favourite', min: 0.15 },
   { id: 'contender', min: 0.08 },

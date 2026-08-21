@@ -284,7 +284,7 @@ function WinProbabilityView({ bundle, byCode }) {
         const team = byCode.get(entry.teamId)
         if (!team) return null
         return (
-          <WinProbBar key={entry.teamId} team={team} entry={entry} lead={lead}
+          <WinProbBar key={entry.teamId} team={team} entry={entry} lead={lead} tierOf={bundle.tierOf}
             out={bundle.eliminationAt.has(entry.teamId)} />
         )
       })}
