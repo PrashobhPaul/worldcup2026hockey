@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-22T13:59:25.883012+00:00",
+  "last_updated": "2026-08-22T14:23:55.594904+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -15453,7 +15453,7 @@
       "time": "16:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
@@ -15793,7 +15793,12 @@
           "coach": "Craig Fulton"
         }
       },
-      "tms_id": 22364
+      "tms_id": 22364,
+      "live_score": {
+        "home": 0,
+        "away": 0,
+        "at": "2026-08-22T14:23:46.502822+00:00"
+      }
     },
     {
       "id": "S2E2",
