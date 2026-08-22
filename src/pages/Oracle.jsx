@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
-import { activePredictions, derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
+import { activePredictions, derivePrediction, gradePrediction } from '../engine/prediction'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
@@ -26,26 +26,67 @@ const SUBTITLES = {
   race: 'Champion-probability race · one simulation snapshot per completed match (0 → 32).',
   odds: 'Per-team stage odds · same engine snapshot as the race and bracket.',
   bracket: 'Live knockout bracket · pool standings drive every slot · engine predicts forward to the Gold Final.',
-  picks: 'Every pick published before push-back · graded publicly · no edits, no deletions.',
+  picks: 'Every pick published before the match starts · graded publicly · no edits, no deletions.',
 }
 
-function RecordHero({ matches, predictions }) {
-  const rec = oracleRecord(matches, predictions)
-  if (!rec.graded) return null
-  const backfills = predictions.filter(p => p.basis === 'model-backfill').length
+// The race leader, not the model's own report card — the header chip already
+// carries the accuracy record, so the hero answers the reader's actual
+// question: who is winning this thing, and on what form.
+function RaceLeader({ bundle, teams, matches }) {
+  if (!bundle) return null
+  const lead = bundle.current.probabilities[0]
+  const team = teams.find(t => t.code === lead?.teamId)
+  if (!team) return null
+  const byCode = new Map(teams.map(t => [t.code, t]))
+
+  const played = matches.filter(m =>
+    m.status === 'completed' && m.score?.home != null &&
+    (m.home === team.code || m.away === team.code))
+  const results = played.map(m => {
+    const homeSide = m.home === team.code
+    const gf = homeSide ? m.score.home : m.score.away
+    const ga = homeSide ? m.score.away : m.score.home
+    const opp = byCode.get(homeSide ? m.away : m.home)
+    return { id: m.id, gf, ga, opp, r: gf > ga ? 'W' : gf === ga ? 'D' : 'L' }
+  })
+  const w = results.filter(r => r.r === 'W').length
+  const d = results.filter(r => r.r === 'D').length
+  const l = results.filter(r => r.r === 'L').length
+  const gf = results.reduce((s, r) => s + r.gf, 0)
+  const ga = results.reduce((s, r) => s + r.ga, 0)
+  const n = results.length
+  const formLine = n === 0 ? 'No matches played yet.' :
+    `${l === 0 ? 'Unbeaten through' : `${w} win${w === 1 ? '' : 's'} in`} ${n} match${n === 1 ? '' : 'es'}` +
+    `${l === 0 ? ` (${w}W${d ? ` ${d}D` : ''})` : d || l ? ` (${d}D ${l}L)` : ''} · ${gf} scored, ${ga} conceded.`
+
   return (
-    <div className="mb-5 rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4">
+    <Link to={`/teams/${team.code}`}
+      className="mb-5 block rounded-xl border-l-2 border-l-brand border-white/5 bg-pitch-800 p-4 transition-colors hover:border-brand/25">
       <div className="flex items-baseline justify-between">
-        <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Oracle record</span>
-        <span className="font-mono text-[11px] text-pitch-300">{rec.correct} of {rec.graded} model picks correct</span>
+        <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Race leader</span>
+        <span className="font-mono text-[11px] text-pitch-300">after {bundle.current.completedMatches} completed matches</span>
       </div>
-      <div className="mt-1 font-mono text-4xl font-bold text-brand">{rec.accuracyPct}%</div>
-      <p className="mt-1.5 font-mono text-[10px] leading-relaxed text-pitch-400">
-        Every fixture carries an engine pick, graded against the final result. Picks are never edited or
-        deleted once written.
-        {backfills > 0 && ` ${backfills} picks are labeled engine backfills — the model is score-blind (world rankings only), so a backfilled pick is identical to its pre-match output.`}
-      </p>
-    </div>
+      <div className="mt-1.5 flex items-center gap-3">
+        <span className="text-4xl">{team.flag}</span>
+        <div className="min-w-0">
+          <div className="text-lg font-bold leading-tight">{team.name}</div>
+          <div className="font-mono text-[11px] text-pitch-400">{formLine}</div>
+        </div>
+        <span className="ml-auto font-mono text-3xl font-bold text-brand">{formatProbability(lead.champion)}</span>
+      </div>
+      {results.length > 0 && (
+        <div className="no-scrollbar mt-3 flex gap-1.5 overflow-x-auto">
+          {results.map(r => (
+            <span key={r.id}
+              className={`flex shrink-0 items-center gap-1 rounded-md px-2 py-1 font-mono text-[10px] font-bold ${
+                r.r === 'W' ? 'bg-live/15 text-live' : r.r === 'D' ? 'bg-pitch-700 text-pitch-300' : 'bg-red-400/10 text-red-400'
+              }`}>
+              {r.opp?.flag} {r.gf}–{r.ga}
+            </span>
+          ))}
+        </div>
+      )}
+    </Link>
   )
 }
 
@@ -122,7 +163,7 @@ function RaceTab({ bundle, teams }) {
         </div>
       )}
       <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-        X-axis: completed matches (0 at push-back of the tournament, 32 at the Gold Final).
+        X-axis: completed matches (0 at the start of the tournament, 32 at the Gold Final).
         Y-axis: model-estimated probability of lifting the trophy. Each finished result triggers a fresh Monte-Carlo run — {bundle.current.simulationCount.toLocaleString()} simulated tournaments per snapshot, seeded and reproducible. The right-hand end of every line is the same number the Tournament tab and Odds table show.
       </p>
     </div>
@@ -389,7 +430,7 @@ export default function OraclePage() {
         <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
       </div>
 
-      <RecordHero matches={matches} predictions={predictions} />
+      <RaceLeader bundle={bundle} teams={teams} matches={matches} />
 
       <div className="sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
         {TABS.map(t => (

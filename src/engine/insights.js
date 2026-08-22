@@ -201,7 +201,7 @@ function conditionalOutcome(diff, lH, lA) {
 /** Comeback card: threshold statement, no synthetic percentage. */
 export function deriveComeback({ match, tele, home, away }) {
   if (match.status !== 'live' && match.status !== 'completed') {
-    return { headline: 'Pre-match', detail: 'Comeback tracking starts at push-back.' }
+    return { headline: 'Pre-match', detail: 'Comeback tracking starts when the match does.' }
   }
   const { goalDiff, minute } = tele
   if (match.status === 'completed') {

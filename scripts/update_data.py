@@ -1948,7 +1948,7 @@ VIA_LABEL = {'PC': 'penalty corner', 'FG': 'field goal', 'PS': 'penalty stroke'}
 
 def build_commentary(m):
     """Deterministic beats from the event ledger — quarters, goals, cards, FT."""
-    beats = [{'minute': 0, 'text': f"Push-back! {m['home']} vs {m['away']} under way."}]
+    beats = [{'minute': 0, 'text': f"We're under way — {m['home']} vs {m['away']}."}]
     score = {'h': 0, 'a': 0}
     for e in sorted(m.get('events') or [], key=lambda x: x.get('minute', 0)):
         side = 'h' if e['team'] == m['home'] else 'a'
@@ -2396,7 +2396,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         p['superseded'] = True
         p['superseded_at'] = now.isoformat()
-        p['superseded_reason'] = 'Inputs corrected before push-back: official FIH ranking points and the v2 draw-aware model.'
+        p['superseded_reason'] = 'Inputs corrected pre-match: official FIH ranking points and the v2 draw-aware model.'
         predictions['predictions'].append({
             'id': f"oracle-v1:{mid}:r{rev}",
             'matchId': mid,
@@ -2406,7 +2406,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': pick, 'pick_confidence': conf,
             'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
-                       f"Elo with a full draw model. Revised before push-back; the original pick "
+                       f"Elo with a full draw model. Revised pre-match; the original pick "
                        f"stays in the ledger."),
             'publishedAt': now.isoformat(),
         })
@@ -2472,7 +2472,7 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
             conf = round(max(ph, pd, pa), 3)
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         stage_note = f" {m['phase'].replace('-', ' ').title()} slot decided by pool standings." if knockout else ''
-        basis_note = (' Published before push-back.' if pre_match else
+        basis_note = (' Published pre-match.' if pre_match else
                       ' Engine backfill — the model reads world rankings only (score-blind), so this pick is identical to its pre-match output.')
         predictions['predictions'].append({
             'id': f"oracle-v1:{m['id']}",

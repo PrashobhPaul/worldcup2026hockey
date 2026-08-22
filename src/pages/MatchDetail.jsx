@@ -11,6 +11,7 @@ import { derivePrediction, gradePrediction, resultDisplay } from '../engine/pred
 import { buildPreview, h2hKey } from '../engine/preview'
 import { ArrowLeft } from 'lucide-react'
 import { EventIcon } from '../components/eventIcons'
+import MatchIntelligence from '../components/MatchIntelligence'
 
 function EventRow({ ev, homeCode, homeFlag, awayFlag }) {
   const isHome = ev.team === homeCode
@@ -296,6 +297,7 @@ export default function MatchDetailPage() {
     (done || live) && (events?.length ?? 0) > 0 && { id: 'sec-timeline', label: 'Timeline' },
     { id: 'sec-lineups', label: 'Line-ups' },
     (done || live) && { id: 'sec-stats', label: 'Stats' },
+    { id: 'sec-intel', label: '🧠 Match Intelligence' },
     story && { id: 'sec-story', label: 'Story' },
   ].filter(Boolean)
   const jumpTo = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -306,9 +308,10 @@ export default function MatchDetailPage() {
         <Link to="/matches" className="inline-flex items-center gap-1.5 text-xs font-medium text-pitch-300 hover:text-brand">
           <ArrowLeft size={14} /> All matches
         </Link>
-        <Link to={`/ai-lab?match=${match.id}`} className="text-xs font-medium text-brand hover:underline">
-          🧠 AI Lab breakdown →
-        </Link>
+        <button onClick={() => document.getElementById('sec-intel')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          className="text-xs font-medium text-brand hover:underline">
+          🧠 Match Intelligence ↓
+        </button>
       </div>
 
       <AlsoLiveStrip currentId={match.id} />
@@ -357,7 +360,7 @@ export default function MatchDetailPage() {
           <p className="mt-4 border-t border-white/5 pt-3 text-center font-mono text-[11px] leading-relaxed text-pitch-400">
             {waiting
               ? 'Full-time — waiting for FIH to publish the official score. It lands here automatically.'
-              : 'Clock estimated from the official push-back time. FIH does not stream a live score — the final score lands here shortly after full-time.'}
+              : 'Clock estimated from the official start time. FIH does not stream a live score — the final score lands here shortly after full-time.'}
           </p>
         )}
         {(done || live) && pc?.home != null && (
@@ -492,6 +495,13 @@ export default function MatchDetailPage() {
           <MatchStatsPanel match={match} live={live} />
         </div>
       )}
+
+      {/* The same intelligence the AI Lab's live tab computes for this match,
+          living where the match lives — one component, two homes. */}
+      <div id="sec-intel" className="scroll-mt-28">
+        <MatchIntelligence match={match} matches={allMatches}
+          byCode={new Map([[match.home, home], [match.away, away]])} linkToMatch={false} />
+      </div>
 
       {/* Running commentary */}
       {(done || live) && <CommentaryFeed match={match} home={home} away={away} />}
