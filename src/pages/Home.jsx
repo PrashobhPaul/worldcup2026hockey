@@ -9,13 +9,15 @@ import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
 import { useFavourite } from '../hooks/useFavourite'
-import { FlaskConical, Trophy, Award, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
+import { FlaskConical, Trophy, BarChart3, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
 
-// Hero quick-access tiles — same four destinations as Soccer.AI's hero card
+// Hero quick-access tiles: the race and the lab up top, stats and the
+// simulation below. Championship Race lands on the Oracle's race graph;
+// Stats lands on the Cup's stat boards.
 const heroTiles = [
+  { to: '/prediction-race', icon: Trophy, title: 'Championship Race' },
   { to: '/ai-lab', icon: FlaskConical, title: 'AI Lab' },
-  { to: '/tournament?tab=best', icon: Trophy, title: "Tournament's Best" },
-  { to: '/tournament?tab=awards', icon: Award, title: 'Awards' },
+  { to: '/tournament?tab=stats', icon: BarChart3, title: 'Stats' },
   { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
 

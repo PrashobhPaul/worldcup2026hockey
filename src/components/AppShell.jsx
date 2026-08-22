@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { useLiveQuery } from 'dexie-react-hooks'
-import { db } from '../db'
-import { oracleRecord } from '../engine/prediction'
 import { Home, CalendarDays, Users, UserRound, Trophy, Target, FlaskConical } from 'lucide-react'
 import InstallPrompt from './InstallPrompt'
 import DataBanner from './DataBanner'
@@ -30,21 +27,6 @@ const MOBILE_TABS = [
   { to: '/tournament', short: 'Cup', icon: Trophy },
   { to: '/prediction-race', short: 'Oracle', icon: Target, alsoMatches: ['/ai-lab'] },
 ]
-
-function OracleChip() {
-  const matches = useLiveQuery(() => db.matches.toArray(), [], [])
-  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
-  const rec = oracleRecord(matches ?? [], predictions ?? [])
-  return (
-    <Link to="/prediction-race"
-      className="flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-md border border-brand/20 bg-brand/10 px-2.5 font-mono text-xs text-brand">
-      <span>🏑</span>
-      <span>{rec.correct}/{rec.graded || '—'}</span>
-      <span className="text-pitch-300">·</span>
-      <span>{rec.accuracyPct != null ? `${rec.accuracyPct}%` : '—'}</span>
-    </Link>
-  )
-}
 
 export default function AppShell() {
   const { pathname } = useLocation()
@@ -85,10 +67,12 @@ export default function AppShell() {
       {/* Top nav */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-pitch-950/90 backdrop-blur-xl">
         <nav className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
-          <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="Hockey.AI — home">
+          {/* Brand scales WITHIN the h-14 header: crest as-is, wordmark up a
+              step, gap tightened — the bar itself never grows. */}
+          <Link to="/" className="flex shrink-0 items-center gap-1.5" aria-label="Hockey.AI — home">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-8 w-8 rounded-lg" />
             <img src={`${import.meta.env.BASE_URL}hockeyai_name.png`} alt="Hockey.AI"
-              className="hidden h-8 w-auto min-[380px]:block sm:h-9" />
+              className="hidden h-10 w-auto min-[380px]:block sm:h-11" />
           </Link>
           <div className="no-scrollbar hidden items-center gap-0.5 overflow-x-auto md:flex">
             {TABS.map(t => (
@@ -101,9 +85,8 @@ export default function AppShell() {
               </NavLink>
             ))}
           </div>
-          <div className="ml-auto flex shrink-0 items-center gap-1.5">
+          <div className="ml-auto flex shrink-0 items-center">
             <SyncChip />
-            <OracleChip />
           </div>
         </nav>
       </header>
