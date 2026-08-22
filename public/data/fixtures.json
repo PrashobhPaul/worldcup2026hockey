@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-22T15:35:35.193172+00:00",
+  "last_updated": "2026-08-22T15:56:09.721694+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -2634,7 +2634,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.640302+00:00",
+        "generated_at": "2026-08-22T15:56:09.705042+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2676,18 +2676,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_23",
-              "name": "Koen Bijen",
-              "number": 9,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_23",
+              "name": "Koen Bijen",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -6169,7 +6169,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T04:40:56.145684+00:00",
+        "generated_at": "2026-08-22T15:56:09.708225+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6376,18 +6376,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_23",
-              "name": "Koen Bijen",
-              "number": 9,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_23",
+              "name": "Koen Bijen",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -10311,7 +10311,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.747476+00:00",
+        "generated_at": "2026-08-22T15:56:09.711862+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10525,18 +10525,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_23",
-              "name": "Koen Bijen",
-              "number": 9,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_23",
+              "name": "Koen Bijen",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -15453,15 +15453,56 @@
       "time": "16:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 41,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Duco Telgenkamp"
+        },
+        {
+          "minute": 42,
+          "team": "IND",
+          "type": "green_card",
+          "player": "Shilanand Lakra"
+        },
+        {
+          "minute": 51,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tjep Hoedemakers"
+        },
+        {
+          "minute": 51,
+          "team": "NED",
+          "type": "green_card",
+          "player": "Koen Bijen"
+        },
+        {
+          "minute": 52,
+          "team": "IND",
+          "type": "goal",
+          "via": "PC",
+          "player": "Harmanpreet Singh"
+        },
+        {
+          "minute": 55,
+          "team": "NED",
+          "type": "goal",
+          "via": "FG",
+          "player": "Thijs van Dam"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.753947+00:00",
+        "generated_at": "2026-08-22T15:56:09.716279+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -15503,18 +15544,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_23",
-              "name": "Koen Bijen",
-              "number": 9,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_23",
+              "name": "Koen Bijen",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -15794,11 +15835,98 @@
         }
       },
       "tms_id": 22364,
-      "live_score": {
-        "home": 3,
-        "away": 1,
-        "at": "2026-08-22T15:35:28.353521+00:00"
-      }
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 0,
+        "away": 1
+      },
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 7,
+          "circle_entries": 28,
+          "penalty_corners": 0,
+          "possession": 56,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 1,
+          "shots": 6,
+          "circle_entries": 18,
+          "penalty_corners": 1,
+          "possession": 44,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — NED vs IND.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: NED 0-0 IND.",
+          "seq": 1
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: NED 0-0 IND.",
+          "seq": 2
+        },
+        {
+          "minute": 41,
+          "team": "NED",
+          "text": "GOAL! Duco Telgenkamp (NED) scores from a field goal — NED 1-0 IND.",
+          "seq": 3
+        },
+        {
+          "minute": 42,
+          "team": "IND",
+          "text": "Green Card for Shilanand Lakra (IND) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: NED 1-0 IND.",
+          "seq": 5
+        },
+        {
+          "minute": 51,
+          "team": "NED",
+          "text": "GOAL! Tjep Hoedemakers (NED) scores from a field goal — NED 2-0 IND.",
+          "seq": 6
+        },
+        {
+          "minute": 51,
+          "team": "NED",
+          "text": "Green Card for Koen Bijen (NED) — 2-minute suspension.",
+          "seq": 7
+        },
+        {
+          "minute": 52,
+          "team": "IND",
+          "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — NED 2-1 IND.",
+          "seq": 8
+        },
+        {
+          "minute": 55,
+          "team": "NED",
+          "text": "GOAL! Thijs van Dam (NED) scores from a field goal — NED 3-1 IND.",
+          "seq": 9
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: NED 3-1 IND.",
+          "seq": 10
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2E2",
@@ -18735,7 +18863,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T14:36:27.692475+00:00",
+        "generated_at": "2026-08-22T15:56:09.720251+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -18777,18 +18905,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NED_23",
-              "name": "Koen Bijen",
-              "number": 9,
+              "playerId": "NED_21",
+              "name": "Thijs van Dam",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "NED_21",
-              "name": "Thijs van Dam",
-              "number": 7,
+              "playerId": "NED_23",
+              "name": "Koen Bijen",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
