@@ -101,6 +101,17 @@ async function _sync(force) {
   const empty = await storeIsEmpty()
   const decision = needsResync({ force, empty, localMeta, remote })
   if (!decision.resync) {
+    // The calibration stat must not depend on a full resync: a device that
+    // synced the current version under an older build would otherwise show
+    // the fallback number until the next version bump. It is a 200-byte
+    // fetch — keep it current on every check.
+    const cal = await fetchJSON('model-calibration.json').catch(() => null)
+    if (cal) {
+      const stored = await db.meta.get('calibration').catch(() => null)
+      if (!stored || stored.updated_at !== cal.updated_at) {
+        await db.meta.put({ id: 'calibration', ...cal }).catch(() => {})
+      }
+    }
     setStatus({ state: 'fresh', version: localMeta?.version ?? null, empty: false, error: null })
     return { status: 'fresh', version: localMeta?.version ?? null }
   }

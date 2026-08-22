@@ -43,6 +43,7 @@ jobs:
           if [ -n "$KS_B64" ]; then
             echo "$KS_B64" | base64 -d > android.keystore
             echo "KS_PASS=$KS_PASS" >> "$GITHUB_ENV"
+            echo "KS_STABLE=1" >> "$GITHUB_ENV"
             echo "Stable keystore from secrets."
           else
             KS_PASS="hockeyai-$(openssl rand -hex 8)"
@@ -93,6 +94,35 @@ jobs:
           APK=$(find . -name 'app-release-signed.apk' -o -name 'app-release.apk' | head -1)
           echo "APK=$APK" >> "$GITHUB_ENV"
           cp "$APK" HockeyAI.apk
+
+      # With a stable keystore, publish the Digital Asset Links file so the
+      # installed app verifies against the site and runs true full-screen
+      # (no browser chrome). Only meaningful with stable signing — an
+      # ephemeral fingerprint would break on every rebuild.
+      - name: Publish asset links (stable signing only)
+        if: ${{ env.KS_STABLE == '1' }}
+        run: |
+          FP=$(keytool -exportcert -keystore android.keystore -alias hockeyai \
+                -storepass "$KS_PASS" -rfc | openssl x509 -noout -fingerprint -sha256 \
+                | sed 's/.*=//')
+          mkdir -p public/.well-known
+          cat > public/.well-known/assetlinks.json <<EOF
+          [{
+            "relation": ["delegate_permission/common.handle_all_urls"],
+            "target": {
+              "namespace": "android_app",
+              "package_name": "com.prashobhpaul.hockeyai",
+              "sha256_cert_fingerprints": ["$FP"]
+            }
+          }]
+          EOF
+          if ! git diff --quiet -- public/.well-known/assetlinks.json; then
+            git config user.name "hockey-ai-bot"
+            git config user.email "actions@github.com"
+            git add public/.well-known/assetlinks.json
+            git commit -m "android: publish asset links for the app signing key"
+            git push origin HEAD:main
+          fi
 
       - name: Publish to rolling release
         env:
