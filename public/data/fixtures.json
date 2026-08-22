@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-22T16:48:09.832428+00:00",
+  "last_updated": "2026-08-22T17:19:20.913468+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -15943,7 +15943,7 @@
       "time": "19:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
@@ -16290,7 +16290,12 @@
           "coach": "Lucas Rey"
         }
       },
-      "tms_id": 22365
+      "tms_id": 22365,
+      "live_score": {
+        "home": 0,
+        "away": 0,
+        "at": "2026-08-22T17:19:08.151067+00:00"
+      }
     },
     {
       "id": "S2H3",

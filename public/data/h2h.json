@@ -945,6 +945,15 @@
     ],
     "ARG-ENG": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-22",
+        "home": "ENG",
+        "away": "ARG",
+        "home_goals": 0,
+        "away_goals": 0,
+        "current": false
+      },
+      {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-06-13",
         "home": "ENG",
@@ -2006,5 +2015,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-22T16:48:00.425749+00:00"
+  "updated_at": "2026-08-22T17:19:07.219239+00:00"
 }
