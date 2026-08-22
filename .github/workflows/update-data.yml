@@ -50,7 +50,16 @@ jobs:
       - name: Generate AI match stories
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/generate_ai_stories.py
+
+      # AI-authored pre-match rationales for upcoming picks; without a key the
+      # deterministic rationale the pipeline writes stands (see ai_provider.py).
+      - name: Generate AI pick rationales
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/generate_ai_rationales.py
 
       - name: Commit & push if changed
         id: commit

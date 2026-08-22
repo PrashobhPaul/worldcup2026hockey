@@ -1,0 +1,36 @@
+{
+  "comment": "Single source of model constants, shared by the data pipeline (Python) and the app engine (JavaScript). Edit here, never inline.",
+  "match_model": {
+    "slope": 500,
+    "draw_scale": 0.33,
+    "draw_width": 450,
+    "draw_floor": 0.05,
+    "draw_cap": 0.4,
+    "close_gap_points": 150,
+    "close_gap_draw_delta": 0.06
+  },
+  "form": {
+    "ppm_weight": 60.0,
+    "gd_weight": 35.0,
+    "cap": 250.0,
+    "full_sample": 3
+  },
+  "h2h": {
+    "weight": 40.0,
+    "cap": 80.0,
+    "full_sample": 4
+  },
+  "rating": {
+    "ratingBase": 1800,
+    "rankSlope": 28,
+    "winProbSlope": 6,
+    "hostBoost": 35,
+    "supremacyDivisor": 150,
+    "totalGoalsBase": 5.2,
+    "maxGoals": 10,
+    "shootoutSlope": 3000,
+    "nSims": 4000,
+    "rngSeed": 20260815,
+    "rankingPointsPerPlace": 91
+  }
+}

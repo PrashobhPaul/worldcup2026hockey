@@ -3,18 +3,12 @@
 // higher scoring (~5 goals/match), no extra time — level knockouts go straight
 // to a shootout. Fully deterministic: same inputs always give the same numbers.
 
-export const MODEL_PARAMS = {
-  ratingBase: 1800,
-  rankSlope: 28,        // rating points lost per FIH ranking place
-  winProbSlope: 6,      // rating points per % of pre-tournament title probability
-  hostBoost: 35,        // NED/BEL home-crowd bump
-  supremacyDivisor: 150, // rating gap -> expected goal difference
-  totalGoalsBase: 5.2,  // FIH World Cup average total goals
-  maxGoals: 10,         // Poisson matrix cap per side
-  shootoutSlope: 3000,  // rating gap -> shootout edge
-  nSims: 4000,
-  rngSeed: 20260815,
-}
+// Every constant lives in model/params.json — one file shared verbatim with
+// the data pipeline (scripts/update_data.py reads the same JSON), so the
+// published pick and the in-app simulation can never drift apart.
+import modelConfig from '../../model/params.json' with { type: 'json' }
+
+export const MODEL_PARAMS = modelConfig.rating
 
 // How a side is playing in THIS tournament, as a rating adjustment.
 //
@@ -28,9 +22,12 @@ export const MODEL_PARAMS = {
 // spans ~91 ranking points per place and this model uses `rankSlope` per place,
 // so the two scales convert by that ratio.
 const FORM = {
-  ppmWeight: 60, gdWeight: 35, cap: 250, fullSample: 3,
+  ppmWeight: modelConfig.form.ppm_weight,
+  gdWeight: modelConfig.form.gd_weight,
+  cap: modelConfig.form.cap,
+  fullSample: modelConfig.form.full_sample,
   // ranking points -> rating points
-  toRating: MODEL_PARAMS.rankSlope / 91,
+  toRating: MODEL_PARAMS.rankSlope / modelConfig.rating.rankingPointsPerPlace,
 }
 
 export function formDelta(team) {

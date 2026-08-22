@@ -2304,13 +2304,22 @@ def points_from_rank(rank):
 #
 # Form and H2H both scale with sample size, so one match never speaks with the
 # authority of three.
-FORM_PPM_WEIGHT = 60.0    # ranking points per point-per-match above 1.5
-FORM_GD_WEIGHT = 35.0     # ranking points per goal of average goal difference
-FORM_CAP = 250.0
-FORM_FULL_SAMPLE = 3      # matches before this tournament's form counts in full
-H2H_WEIGHT = 40.0         # ranking points per win of head-to-head margin
-H2H_CAP = 80.0
-H2H_FULL_SAMPLE = 4
+# All model constants live in model/params.json — one file, shared verbatim
+# with the app engine (src/engine/strength.js imports the same JSON), so the
+# published pick and the in-app simulation can never drift apart, and anyone
+# reading the repository finds every number in one documented place.
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       '..', 'model', 'params.json')) as _fh:
+    MODEL_CONFIG = json.load(_fh)
+
+FORM_PPM_WEIGHT = MODEL_CONFIG['form']['ppm_weight']
+FORM_GD_WEIGHT = MODEL_CONFIG['form']['gd_weight']
+FORM_CAP = MODEL_CONFIG['form']['cap']
+FORM_FULL_SAMPLE = MODEL_CONFIG['form']['full_sample']
+H2H_WEIGHT = MODEL_CONFIG['h2h']['weight']
+H2H_CAP = MODEL_CONFIG['h2h']['cap']
+H2H_FULL_SAMPLE = MODEL_CONFIG['h2h']['full_sample']
+MATCH_MODEL = MODEL_CONFIG['match_model']
 
 def _clamp(v, lo, hi):
     return max(lo, min(hi, v))
@@ -2373,32 +2382,41 @@ def effective_points(code, opponent, base_points, fixtures, h2h_pairs=None):
         pts += h2h_delta(h2h_pairs.get(key), code, opponent)
     return pts
 
-def predict(home_pts, away_pts):
+def predict(home_pts, away_pts, knockout=False):
     """(p_home, p_draw, p_away) from official FIH ranking points.
 
-    v3, backtested over the tournament's first 31 completed matches with
-    as-of-then inputs (each match scored using only the form and rankings
-    available before its push-back). Two v2 parameters moved monotonically
-    across the whole sensitivity sweep — signal, not a lucky grid point:
+    All constants live in model/params.json. Calibrated against the
+    tournament's own completed matches, scored as-of-then (only the form
+    and rankings available before each push-back) — the harness is
+    scripts/backtest_model.py, re-runnable at any time:
 
-      - the 0.92 confidence temper made every favourite under-confident;
-        removing it improved log-loss ~8%.
-      - the 700-point draw window put draw mass on medium ranking gaps,
-        where draws rarely happened; narrowing to 450 concentrates the
-        draw on true coin-flips and improved Brier ~5.5%.
+      - no confidence temper: the tempered v2 favourites were measurably
+        under-confident (log-loss improved ~8% on removal).
+      - the draw window (draw_width) concentrates draw probability on
+        genuinely close matchups rather than medium ranking gaps.
+      - near-equal sides (gap under close_gap_points, roughly two places)
+        carry an additional draw allowance (close_gap_draw_delta): group
+        hockey between neighbours in the rankings draws far more often
+        than a smooth curve admits, and the backtest confirms the bump
+        improves every scoring metric.
 
-    Accuracy held (23/31 as-of-then, level with the rank-favourite
-    baseline); the probabilities sharpened. Form/H2H weights and the
-    logistic slope were flat in the sweep and stay at v2 values.
+    Knockout rounds have no draws — level after sixty minutes goes to a
+    shootout — so a knockout prediction is a clean two-way split.
 
     v2 history, kept for the record: recalibrated after PAK v WAL when the
     rank-position Elo read near-equals as 75/25 and the match finished 3-3
     — ranking points, not positions, are the currency, and the draw is a
     full outcome, not a residue.
     """
+    mm = MATCH_MODEL
     dr = home_pts - away_pts
-    e = 1 / (1 + 10 ** (-dr / 500))
-    p_draw = max(0.05, 0.33 * math.exp(-(dr / 450) ** 2))
+    e = 1 / (1 + 10 ** (-dr / mm['slope']))
+    if knockout:
+        return round(e, 3), 0.0, round(1 - e, 3)
+    p_draw = mm['draw_scale'] * math.exp(-(dr / mm['draw_width']) ** 2)
+    if abs(dr) < mm['close_gap_points']:
+        p_draw += mm['close_gap_draw_delta']
+    p_draw = _clamp(p_draw, mm['draw_floor'], mm['draw_cap'])
     p_home = (1 - p_draw) * e
     p_away = (1 - p_draw) * (1 - e)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
@@ -2439,10 +2457,12 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
         hr, ar = rank_of.get(m['home']), rank_of.get(m['away'])
         if hr is None or ar is None:
             continue
+        knockout = m['phase'] in ('semi-final', 'bronze-final', 'gold-final', 'classification')
         ph, pd, pa = predict(
             effective_points(m['home'], m['away'], points_of[m['home']], fixtures, h2h_pairs),
-            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs))
-        if m['phase'] in ('semi-final', 'bronze-final', 'gold-final', 'classification'):
+            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs),
+            knockout=knockout)
+        if knockout:
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
             conf = round(max(adv_h, 1 - adv_h), 3)
@@ -2537,7 +2557,8 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
             continue
         ph, pd, pa = predict(
             effective_points(m['home'], m['away'], points_of[m['home']], fixtures, h2h_pairs),
-            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs))
+            effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs),
+            knockout=knockout)
         if knockout:
             adv_h = ph + pd / 2
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
