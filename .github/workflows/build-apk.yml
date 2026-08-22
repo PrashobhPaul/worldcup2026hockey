@@ -82,6 +82,10 @@ jobs:
           BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
           BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
         run: |
+          # Gradle's Android plugin refuses when ANDROID_HOME and
+          # ANDROID_SDK_ROOT disagree; point both at the shim.
+          export ANDROID_HOME="$HOME/bubblewrap-sdk"
+          export ANDROID_SDK_ROOT="$HOME/bubblewrap-sdk"
           bubblewrap doctor || true
           bubblewrap update --skipVersionUpgrade
           bubblewrap build --skipPwaValidation
