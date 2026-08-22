@@ -20,30 +20,43 @@ console.log('Pre-match')
 let c = deriveClock(m({ status: 'scheduled' }), min(-30))
 check('before push-back: not started', c.kind === 'PRE' && !isLiveClock(c))
 
-console.log('\nEstimated live clock (no provider feed)')
+console.log('\nEstimated live clock (no provider feed) — calibrated wall times')
+// A 15' playing quarter runs ~19 wall minutes (the game clock stops for
+// corners, goals, referrals); breaks ~3', half-time ~13'. The official Q3
+// start in NED v IND came 54 wall minutes after push-back — the clock must
+// not read eleven game-minutes ahead again.
 c = deriveClock(m(), min(0))
 check('push-back: Q1, ~0\'', c.phase === 'Q1' && c.minute === 0 && c.display === "~0'", JSON.stringify(c))
 check('estimate is flagged and live', c.estimated === true && c.kind === 'EST' && isLiveClock(c))
 
 c = deriveClock(m({ status: 'scheduled' }), min(5))
-check('past push-back while the feed still says scheduled: live Q1',
-  c.phase === 'Q1' && c.minute === 5 && isLiveClock(c), JSON.stringify(c))
+check('past push-back while the feed still says scheduled: live Q1, minute lags wall',
+  c.phase === 'Q1' && c.minute === 3 && isLiveClock(c), JSON.stringify(c))
 
 c = deriveClock(m(), min(16))
-check('16 wall minutes in: quarter break after Q1', c.phase === 'QB1' && c.display === 'End Q1', JSON.stringify(c))
+check('16 wall minutes in: still Q1 (stoppages), game minute 12',
+  c.phase === 'Q1' && c.minute === 12, JSON.stringify(c))
 c = deriveClock(m(), min(20))
-check('20 wall minutes in: Q2, game minute 18', c.phase === 'Q2' && c.minute === 18, JSON.stringify(c))
-c = deriveClock(m(), min(35))
-check('35 wall minutes in: half-time', c.phase === 'HT' && c.display === 'HT', JSON.stringify(c))
-c = deriveClock(m(), min(50))
-check('50 wall minutes in: Q3, game minute 38', c.phase === 'Q3' && c.minute === 38, JSON.stringify(c))
-c = deriveClock(m(), min(58))
-check('58 wall minutes in: quarter break after Q3', c.phase === 'QB3', JSON.stringify(c))
-c = deriveClock(m(), min(70))
-check('70 wall minutes in: Q4, game minute 56', c.phase === 'Q4' && c.minute === 56, JSON.stringify(c))
+check('20 wall minutes in: quarter break after Q1', c.phase === 'QB1' && c.display === 'End Q1', JSON.stringify(c))
+c = deriveClock(m(), min(30))
+check('30 wall minutes in: Q2, game minute 21', c.phase === 'Q2' && c.minute === 21, JSON.stringify(c))
+c = deriveClock(m(), min(45))
+check('45 wall minutes in: half-time', c.phase === 'HT' && c.display === 'HT', JSON.stringify(c))
+c = deriveClock(m(), min(54))
+check('54 wall minutes in: Q3 begins at game minute 30 (the NED v IND calibration point)',
+  c.phase === 'Q3' && c.minute === 30, JSON.stringify(c))
+c = deriveClock(m(), min(60))
+check('60 wall minutes in: Q3, game minute 34', c.phase === 'Q3' && c.minute === 34, JSON.stringify(c))
+c = deriveClock(m(), min(74))
+check('74 wall minutes in: quarter break after Q3', c.phase === 'QB3', JSON.stringify(c))
 c = deriveClock(m(), min(80))
+check('80 wall minutes in: Q4, game minute 48', c.phase === 'Q4' && c.minute === 48, JSON.stringify(c))
+c = deriveClock(m(), min(101))
 check('Q4 running long: game minute caps at 60, still live',
   c.phase === 'Q4' && c.minute === 60 && isLiveClock(c), JSON.stringify(c))
+c = deriveClock(m(), min(36))
+check('a quarter never shows more than its own 15 game minutes',
+  c.phase === 'Q2' && c.minute <= 30, JSON.stringify(c))
 
 console.log('\nWindow over, no score — the reported bug')
 c = deriveClock(m(), min(MATCH_WINDOW_MIN + 1))

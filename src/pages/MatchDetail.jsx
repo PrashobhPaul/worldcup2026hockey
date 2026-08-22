@@ -356,12 +356,12 @@ export default function MatchDetailPage() {
           </Link>
         </div>
         {(live || waiting) && (!hasScore || match.liveScoreAt) && (
-          <p className="mt-4 border-t border-white/5 pt-3 text-center font-mono text-[11px] leading-relaxed text-pitch-400">
+          <p className="mt-4 border-t border-white/5 pt-2.5 text-center font-mono text-[10px] leading-relaxed text-pitch-400 opacity-60">
             {waiting
-              ? 'Full-time — syncing the official score from FIH. It lands here automatically.'
+              ? 'Full-time · syncing the official result from FIH'
               : match.liveScoreAt
-                ? 'Live score · refreshes every few minutes — the official record is confirmed at full-time.'
-                : 'In progress — syncing with the official FIH feed. The score updates every few minutes; clock estimated from the official start time.'}
+                ? 'Live score · refreshes periodically · official result confirmed at full-time'
+                : 'In progress · syncing with FIH · clock estimated from the official start time'}
           </p>
         )}
         {(done || live) && pc?.home != null && (
