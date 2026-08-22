@@ -67,6 +67,12 @@ The sheet split almost evenly — possession fifty apiece, circle entries twenty
 The last twenty minutes delivered everything the first forty withheld. Tjep Hoedemakers doubled the lead from open play in the 51st — Koen Bijen was shown a green in the same minute — and India's reply was immediate: Harmanpreet Singh converted their first and only penalty corner of the match in the 52nd, and at 2-1 with eight minutes left the upset was alive. Thijs van Dam ended it in the 55th, a third Dutch field goal, and the margin held to the final whistle.
 
 The corner column is the story inside the story: the Netherlands won this match without earning a single penalty corner — all three goals carved from open play against a defence that never gave the set piece away — while India converted the game's only corner through Harmanpreet. The Dutch top Pool E on six points, four wins from four without dropping a point this tournament; India, carrying the two-goal defeat to England, are left needing to win out and hope the table breaks their way.""",
+
+    'S2E2': """England brought the tournament's most prolific attack and a perfect record to Amstelveen, and Argentina took both apart with the game England usually play. Sixty-one per cent of possession went to Los Leones, and after a scoreless first quarter and a half it was Tomas Domene who broke through — a penalty corner in the 26th, moments before Nicolas Keenan's green card briefly threatened the momentum.
+
+It never turned. Domene doubled the lead from open play in the 36th, and England's response arrived only in the 50th, Samuel Hooper converting their one penalty corner of the evening. At 2-1 with ten minutes left the comeback was live — until Domene settled it in the 58th from Argentina's second corner, completing a hat-trick that contains every Argentine goal of the night. Three penalty corners in the match, three goals: the perfect-conversion pattern of this second stage held once more.
+
+England's numbers tell the harder truth: twenty-two circle entries to twenty, and only five shots to show for them, against seven from an Argentine side that made possession count. The first English defeat of the tournament cracks Pool E wide open — the Netherlands top it on six points, Argentina and England sit level on three, and India are last on none, with Sunday's final round, Argentina against India and the Netherlands against England, deciding who joins the Dutch in the semi-finals.""",
 }
 
 REASONS = {
