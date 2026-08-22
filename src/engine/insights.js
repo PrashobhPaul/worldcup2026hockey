@@ -141,8 +141,12 @@ export function buildProbSeries({ match, events, pred }) {
     const redsH = reds.filter(r => r.team === match.home && r.minute <= m).length
     const redsA = reds.filter(r => r.team === match.away && r.minute <= m).length
     const remaining = Math.max(0, 60 - m) / 60
-    const lH = Math.max(0.05, ((totalGoals + supremacy) / 2) * Math.pow(0.75, redsH) * remaining)
-    const lA = Math.max(0.05, ((totalGoals - supremacy) / 2) * Math.pow(0.75, redsA) * remaining)
+    // The λ floor keeps a sliver of live uncertainty mid-match, but at 60'
+    // nothing remains: a match decided by one goal must end 100/0/0, not
+    // 95/5/0 with a phantom "Draw 5%" on the full-time chart.
+    const floor = remaining > 0 ? 0.05 : 0
+    const lH = Math.max(floor, ((totalGoals + supremacy) / 2) * Math.pow(0.75, redsH) * remaining)
+    const lA = Math.max(floor, ((totalGoals - supremacy) / 2) * Math.pow(0.75, redsA) * remaining)
     const p = conditionalOutcome(h - a, lH, lA)
     series.push({
       min: m,
@@ -243,7 +247,13 @@ export function buildInsights({ match, home, away, events, pred, tele }) {
       out.push(`Honours even at ${h}-${a} — a point apiece.`)
     }
     const pcGoals = goals.filter(g => g.via === 'PC')
-    if (pcGoals.length) out.push(`${pcGoals.length} of ${goals.length} goals came from penalty corners — set pieces decided this one.`)
+    if (pcGoals.length) {
+      // "Decided this one" is a claim, not a flourish — it needs the majority
+      // of the goals, or it reads wrong under a 7-2 with two corner goals.
+      out.push(pcGoals.length * 2 > goals.length
+        ? `${pcGoals.length} of ${goals.length} goals came from penalty corners — the set piece decided this one.`
+        : `${pcGoals.length} of ${goals.length} goals came from penalty corners — the rest were carved out in open play.`)
+    }
     const late = goals.filter(g => g.minute >= 45)
     if (late.length) out.push(`${late.length} fourth-quarter goal${late.length > 1 ? 's' : ''} — the match lived right to the end.`)
     if (pc?.home != null && Math.abs(pc.home - pc.away) >= 3) {
@@ -279,8 +289,10 @@ export function buildInsights({ match, home, away, events, pred, tele }) {
   return out.slice(0, 5)
 }
 
-/** Key drivers behind the Oracle pick — parsed from ranking + prediction. */
-export function buildDrivers({ match, home, away, pred }) {
+/** Key drivers behind the Oracle pick — ranking, tournament evidence, venue.
+ *  Every named player must have earned the claim in this tournament's event
+ *  feed; a seed-file name with no goals behind it is not a driver. */
+export function buildDrivers({ match, home, away, pred, allEvents = [] }) {
   if (pred?.status !== 'ready') return []
   const out = []
   const rankGap = (away?.fihRank ?? 8) - (home?.fihRank ?? 8)
@@ -290,24 +302,34 @@ export function buildDrivers({ match, home, away, pred }) {
     out.push({
       tone: 'pos',
       title: `${better?.name ?? '—'} ranked higher`,
-      text: `FIH #${better?.fihRank} vs #${worse?.fihRank} — a ${Math.abs(rankGap)}-place gap the model weighs heavily.`,
+      text: `FIH #${better?.fihRank} vs #${worse?.fihRank} — a ${Math.abs(rankGap)}-place gap in the world rankings.`,
     })
   }
+  const pickCode = pred.pick === 'HOME' ? match.home : pred.pick === 'AWAY' ? match.away : null
   const pickTeam = pred.pick === 'HOME' ? home : pred.pick === 'AWAY' ? away : null
-  if (pickTeam?.key_players?.length) {
-    out.push({
-      tone: 'pos',
-      title: 'Set-piece threat',
-      text: `${pickTeam.key_players[0]} is the premium drag-flick weapon in this fixture.`,
-    })
+  if (pickCode) {
+    const tally = {}
+    for (const e of allEvents) {
+      if (e.team === pickCode && e.type === 'goal' && e.via === 'PC' && e.player) {
+        tally[e.player] = (tally[e.player] ?? 0) + 1
+      }
+    }
+    const top = Object.entries(tally).sort((x, y) => y[1] - x[1])[0]
+    if (top) {
+      out.push({
+        tone: 'pos',
+        title: 'Set-piece threat',
+        text: `${top[0]} has ${top[1] === 1 ? 'a penalty-corner goal' : `${top[1]} penalty-corner goals`} this tournament — the sharpest corner threat ${pickTeam?.name ?? pickCode} bring to this fixture.`,
+      })
+    }
   }
-  // Seed-file tier — a pre-tournament model input, explicitly labelled as such.
+  // Seed-file tier — a pre-tournament input, explicitly labelled as such.
   // Live team classification comes from the canonical snapshot, never from here.
   if (home?.contender_tier && away?.contender_tier && home.contender_tier !== away.contender_tier) {
     out.push({
       tone: 'neutral',
       title: 'Seeding matchup',
-      text: `Pre-tournament seeding: ${(home.contender_tier ?? '').replace('_', ' ')} vs ${(away.contender_tier ?? '').replace('_', ' ')} — pedigree sits in the model prior, not in today's odds.`,
+      text: `Pre-tournament seeding: ${(home.contender_tier ?? '').replace('_', ' ')} vs ${(away.contender_tier ?? '').replace('_', ' ')} — pedigree from before a ball was pushed, not today's odds.`,
     })
   }
   if ((home?.host || away?.host)) {

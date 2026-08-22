@@ -84,7 +84,7 @@ export default function MatchIntelligence({ match, matches, byCode, linkToMatch 
   const probSeries = buildProbSeries({ match, events, pred })
   const comeback = deriveComeback({ match, tele, home, away })
   const insights = buildInsights({ match, home, away, events, pred, tele })
-  const drivers = buildDrivers({ match, home, away, pred })
+  const drivers = buildDrivers({ match, home, away, pred, allEvents })
   const dna = buildMatchDNA({ match, matches, allEvents })
   const live = match.status === 'live'
   const done = match.status === 'completed'

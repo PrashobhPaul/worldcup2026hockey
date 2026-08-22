@@ -2092,7 +2092,10 @@
       "pick": "HOME",
       "pick_confidence": 0.475,
       "reason": "FIH #2 NED favoured over #3 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2G2:r4",
@@ -2105,8 +2108,14 @@
       "p_away_win": 0.18,
       "pick": "HOME",
       "pick_confidence": 0.533,
-      "reason": "FIH #12 PAK favoured over #17 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "reason": "Pakistan left Pool D with a single point, but their attack travelled: seven scored in three matches against England, India and Wales, three of them in each of the last two. Japan's pool brought three defeats and one goal, with shut-outs conceded to Argentina and New Zealand. Both sides are winless — yet one has scored in every match this tournament and the other has barely scored at all, and that margin favours Pakistan.",
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "reason_original": "FIH #12 PAK favoured over #17 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T13:41:20.664725+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2G3:r4",
@@ -2120,7 +2129,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.432,
       "reason": "FIH #15 WAL favoured over #17 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T13:34:18.753580+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2E1:r5",
@@ -2133,8 +2145,14 @@
       "p_away_win": 0.061,
       "pick": "HOME",
       "pick_confidence": 0.832,
-      "reason": "FIH #2 NED favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "reason": "The Netherlands swept Pool A with three wins from three, twelve scored and three conceded — one of only two perfect records in the tournament. India took six points from Pool D, putting three past Wales and five past Pakistan, and their defeat to England came by two in a match they scored twice in. India's ten pool goals say they will create chances; the Dutch defence, breached once a game on average, says those chances stay scarce. The tournament's most complete side so far is favoured on the full sweep of the evidence.",
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "reason_original": "FIH #2 NED favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T13:41:20.664725+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2G1:r5",
@@ -2151,7 +2169,10 @@
       "publishedAt": "2026-08-21T14:21:42.003277+00:00",
       "reason_original": "FIH #11 NZL favoured over #15 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-22T10:30:45.605278+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2E2:r5",
@@ -2230,7 +2251,10 @@
       "pick": "HOME",
       "pick_confidence": 0.632,
       "reason": "FIH #11 NZL favoured over #12 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T13:34:18.753580+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2H4:r5",
@@ -2261,7 +2285,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.36,
       "reason": "FIH #13 RSA favoured over #14 MAS — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:36:27.693401+00:00"
+      "publishedAt": "2026-08-21T14:36:27.693401+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2H4:r6",
@@ -2275,7 +2302,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.419,
       "reason": "FIH #9 IRL favoured over #10 FRA — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:36:27.693401+00:00"
+      "publishedAt": "2026-08-21T14:36:27.693401+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2F3:r6",
@@ -2323,7 +2353,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.451,
       "reason": "FIH #4 AUS favoured over #5 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T20:24:00.587357+00:00"
+      "publishedAt": "2026-08-21T20:24:00.587357+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2F4:r7",
@@ -2337,7 +2370,10 @@
       "pick": "AWAY",
       "pick_confidence": 0.707,
       "reason": "FIH #1 BEL favoured over #6 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T20:24:00.587357+00:00"
+      "publishedAt": "2026-08-21T20:24:00.587357+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T01:21:41.196146+00:00",
+      "superseded_reason": "Ledger repair: a later revision was already published; this row should have been closed when it was."
     },
     {
       "id": "oracle-v1:S2E4:r4",
@@ -2364,8 +2400,11 @@
       "p_away_win": 0.18,
       "pick": "HOME",
       "pick_confidence": 0.533,
-      "reason": "FIH #13 PAK favoured over #17 JPN — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T01:21:41.196146+00:00"
+      "reason": "Pakistan left Pool D with a single point, but their attack travelled: seven scored in three matches against England, India and Wales, three of them in each of the last two. Japan's pool brought three defeats and one goal, with shut-outs conceded to Argentina and New Zealand. Both sides are winless — yet one has scored in every match this tournament and the other has barely scored at all, and that margin favours Pakistan.",
+      "publishedAt": "2026-08-22T01:21:41.196146+00:00",
+      "reason_original": "FIH #13 PAK favoured over #17 JPN — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T13:41:20.664725+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G3:r5",
@@ -2395,8 +2434,11 @@
       "p_away_win": 0.061,
       "pick": "HOME",
       "pick_confidence": 0.832,
-      "reason": "FIH #1 NED favoured over #8 IND — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T01:21:41.196146+00:00"
+      "reason": "The Netherlands swept Pool A with three wins from three, twelve scored and three conceded — one of only two perfect records in the tournament. India took six points from Pool D, putting three past Wales and five past Pakistan, and their defeat to England came by two in a match they scored twice in. India's ten pool goals say they will create chances; the Dutch defence, breached once a game on average, says those chances stay scarce. The tournament's most complete side so far is favoured on the full sweep of the evidence.",
+      "publishedAt": "2026-08-22T01:21:41.196146+00:00",
+      "reason_original": "FIH #1 NED favoured over #8 IND — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T13:41:20.664725+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G1:r6",

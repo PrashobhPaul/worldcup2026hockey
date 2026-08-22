@@ -77,6 +77,13 @@ jobs:
       - name: Live clock honesty
         run: npm run test:clock
 
+      # Every claim on the Match Intelligence panel — corner-goal counts,
+      # ranking gaps, named set-piece scorers, the full-time state of the
+      # win-probability chart — recomputed from the official event feed for
+      # every completed match. One active Oracle pick per fixture, never two.
+      - name: Match intelligence consistency
+        run: npm run test:intel
+
       # Six of sixteen carry a tag, and the quota must not drift: three
       # favourites, two dark horses, one underdog, and never an eliminated team.
       - name: Team tier assignment
