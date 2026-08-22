@@ -700,7 +700,7 @@ check('the right-column entries carry their own minutes',
 check('two-column header and legend rows still yield nothing',
       all(g['team'] in ('IRL', 'MAS') for g in irl_mas))
 
-print('\nMatch model calibration (v2, points-based)')
+print('\nMatch model calibration (v3, points-based, backtested)')
 
 ph, pd, pa = predict(3000, 3000)
 check('equal teams sit near thirds with a full draw', pd >= 0.30 and abs(ph - pa) < 0.01)
