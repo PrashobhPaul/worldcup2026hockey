@@ -538,7 +538,7 @@
         "date": "2026-08-22",
         "home": "NZL",
         "away": "WAL",
-        "home_goals": 6,
+        "home_goals": 7,
         "away_goals": 2,
         "current": false
       },
@@ -1988,5 +1988,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-22T09:29:35.106573+00:00"
+  "updated_at": "2026-08-22T10:20:45.932107+00:00"
 }

@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-22T09:29:45.875096+00:00",
+  "last_updated": "2026-08-22T10:20:56.657155+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -149,7 +149,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.589136+00:00",
+        "generated_at": "2026-08-22T10:20:56.637771+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -345,6 +345,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_08",
+              "name": "Jolyon Morgan",
+              "number": 20,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_05",
               "name": "Rhys Bradshaw",
               "number": 15,
@@ -363,20 +372,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_17",
-              "name": "Daniel Kyriakides",
-              "number": 3,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "WAL_01",
               "name": "Gareth Furlong",
               "number": 18,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_17",
+              "name": "Daniel Kyriakides",
+              "number": 3,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -393,7 +402,7 @@
               "playerId": "WAL_13",
               "name": "James Tyson",
               "number": 30,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -415,15 +424,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -435,16 +435,16 @@
               "onAt": "24:49"
             },
             {
-              "playerId": "WAL_02",
-              "name": "Alf Dinnie",
-              "number": 5,
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
               "position": null,
               "onAt": "23:50"
             },
             {
-              "playerId": "WAL_08",
-              "name": "Jolyon Morgan",
-              "number": 20,
+              "playerId": "WAL_02",
+              "name": "Alf Dinnie",
+              "number": 5,
               "position": null,
               "onAt": "36:32"
             },
@@ -2634,7 +2634,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T17:57:21.185621+00:00",
+        "generated_at": "2026-08-22T10:20:56.640302+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2816,6 +2816,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_17",
+              "name": "James Hickson",
+              "number": 39,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -2834,10 +2843,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_17",
-              "name": "James Hickson",
-              "number": 39,
-              "line": "Defender",
+              "playerId": "NZL_20",
+              "name": "Scott Boyde",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_12",
+              "name": "Finn Ward",
+              "number": 30,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2855,7 +2873,7 @@
               "playerId": "NZL_19",
               "name": "Tim Neild",
               "number": 41,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2864,7 +2882,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2873,24 +2891,6 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_06",
-              "name": "Aidan Sarikaya",
-              "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_20",
-              "name": "Scott Boyde",
-              "number": 2,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -2906,44 +2906,44 @@
               "onAt": "32:35"
             },
             {
+              "playerId": "NZL_06",
+              "name": "Aidan Sarikaya",
+              "number": 16,
+              "position": null,
+              "onAt": "18:38"
+            },
+            {
               "playerId": "NZL_08",
               "name": "Joseph Morrison",
               "number": 19,
               "position": null,
-              "onAt": "18:38"
+              "onAt": "32:29"
             },
             {
               "playerId": "NZL_15",
               "name": "Isaac Houlbrooke",
               "number": 37,
               "position": null,
-              "onAt": "32:29"
+              "onAt": "40:49"
             },
             {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "40:49"
+              "onAt": "11:02"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "11:02"
+              "onAt": "33:46"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
-              "position": null,
-              "onAt": "33:46"
-            },
-            {
-              "playerId": "NZL_12",
-              "name": "Finn Ward",
-              "number": 30,
               "position": null,
               "onAt": "38:30"
             },
@@ -4610,7 +4610,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.592643+00:00",
+        "generated_at": "2026-08-22T10:20:56.642159+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4806,6 +4806,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_08",
+              "name": "Jolyon Morgan",
+              "number": 20,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_05",
               "name": "Rhys Bradshaw",
               "number": 15,
@@ -4824,20 +4833,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_17",
-              "name": "Daniel Kyriakides",
-              "number": 3,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "WAL_01",
               "name": "Gareth Furlong",
               "number": 18,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_17",
+              "name": "Daniel Kyriakides",
+              "number": 3,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -4854,7 +4863,7 @@
               "playerId": "WAL_13",
               "name": "James Tyson",
               "number": 30,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -4876,15 +4885,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -4896,16 +4896,16 @@
               "onAt": "37:40"
             },
             {
-              "playerId": "WAL_02",
-              "name": "Alf Dinnie",
-              "number": 5,
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
               "position": null,
               "onAt": "33:43"
             },
             {
-              "playerId": "WAL_08",
-              "name": "Jolyon Morgan",
-              "number": 20,
+              "playerId": "WAL_02",
+              "name": "Alf Dinnie",
+              "number": 5,
               "position": null,
               "onAt": "36:59"
             },
@@ -6621,7 +6621,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T17:57:21.188598+00:00",
+        "generated_at": "2026-08-22T10:20:56.643949+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6817,6 +6817,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_17",
+              "name": "James Hickson",
+              "number": 39,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -6835,10 +6844,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_17",
-              "name": "James Hickson",
-              "number": 39,
-              "line": "Defender",
+              "playerId": "NZL_20",
+              "name": "Scott Boyde",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_12",
+              "name": "Finn Ward",
+              "number": 30,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6856,7 +6874,7 @@
               "playerId": "NZL_19",
               "name": "Tim Neild",
               "number": 41,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6865,7 +6883,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6874,24 +6892,6 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_06",
-              "name": "Aidan Sarikaya",
-              "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_20",
-              "name": "Scott Boyde",
-              "number": 2,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -6907,44 +6907,44 @@
               "onAt": "14:15"
             },
             {
+              "playerId": "NZL_06",
+              "name": "Aidan Sarikaya",
+              "number": 16,
+              "position": null,
+              "onAt": "11:42"
+            },
+            {
               "playerId": "NZL_08",
               "name": "Joseph Morrison",
               "number": 19,
               "position": null,
-              "onAt": "11:42"
+              "onAt": "48:28"
             },
             {
               "playerId": "NZL_15",
               "name": "Isaac Houlbrooke",
               "number": 37,
               "position": null,
-              "onAt": "48:28"
+              "onAt": "12:04"
             },
             {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "12:04"
+              "onAt": "42:58"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "42:58"
+              "onAt": "09:41"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
-              "position": null,
-              "onAt": "09:41"
-            },
-            {
-              "playerId": "NZL_12",
-              "name": "Finn Ward",
-              "number": 30,
               "position": null,
               "onAt": "33:19"
             },
@@ -8167,7 +8167,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T14:36:27.680060+00:00",
+        "generated_at": "2026-08-22T10:20:56.645294+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8363,6 +8363,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_08",
+              "name": "Jolyon Morgan",
+              "number": 20,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_05",
               "name": "Rhys Bradshaw",
               "number": 15,
@@ -8381,20 +8390,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_17",
-              "name": "Daniel Kyriakides",
-              "number": 3,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "WAL_01",
               "name": "Gareth Furlong",
               "number": 18,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_17",
+              "name": "Daniel Kyriakides",
+              "number": 3,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -8411,7 +8420,7 @@
               "playerId": "WAL_13",
               "name": "James Tyson",
               "number": 30,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -8433,15 +8442,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -8453,16 +8453,16 @@
               "onAt": "23:32"
             },
             {
-              "playerId": "WAL_02",
-              "name": "Alf Dinnie",
-              "number": 5,
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
               "position": null,
               "onAt": "39:12"
             },
             {
-              "playerId": "WAL_08",
-              "name": "Jolyon Morgan",
-              "number": 20,
+              "playerId": "WAL_02",
+              "name": "Alf Dinnie",
+              "number": 5,
               "position": null,
               "onAt": "39:31"
             },
@@ -10842,7 +10842,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T04:40:56.149978+00:00",
+        "generated_at": "2026-08-22T10:20:56.647550+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -11031,6 +11031,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_17",
+              "name": "James Hickson",
+              "number": 39,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -11049,10 +11058,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_17",
-              "name": "James Hickson",
-              "number": 39,
-              "line": "Defender",
+              "playerId": "NZL_20",
+              "name": "Scott Boyde",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_12",
+              "name": "Finn Ward",
+              "number": 30,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -11070,7 +11088,7 @@
               "playerId": "NZL_19",
               "name": "Tim Neild",
               "number": 41,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -11079,7 +11097,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -11088,24 +11106,6 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_06",
-              "name": "Aidan Sarikaya",
-              "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_20",
-              "name": "Scott Boyde",
-              "number": 2,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -11121,44 +11121,44 @@
               "onAt": "10:06"
             },
             {
+              "playerId": "NZL_06",
+              "name": "Aidan Sarikaya",
+              "number": 16,
+              "position": null,
+              "onAt": "22:32"
+            },
+            {
               "playerId": "NZL_08",
               "name": "Joseph Morrison",
               "number": 19,
               "position": null,
-              "onAt": "22:32"
+              "onAt": "46:31"
             },
             {
               "playerId": "NZL_15",
               "name": "Isaac Houlbrooke",
               "number": 37,
               "position": null,
-              "onAt": "46:31"
+              "onAt": "48:50"
             },
             {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "48:50"
+              "onAt": "17:57"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "17:57"
+              "onAt": "50:01"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
-              "position": null,
-              "onAt": "50:01"
-            },
-            {
-              "playerId": "NZL_12",
-              "name": "Finn Ward",
-              "number": 30,
               "position": null,
               "onAt": "48:44"
             },
@@ -14317,15 +14317,91 @@
       "time": "10:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 7,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 8,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Jolyon Morgan"
+        },
+        {
+          "minute": 22,
+          "team": "NZL",
+          "type": "goal",
+          "via": "PC",
+          "player": "James Hickson"
+        },
+        {
+          "minute": 22,
+          "team": "NZL",
+          "type": "green_card",
+          "player": "Scott Boyde"
+        },
+        {
+          "minute": 23,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Jolyon Morgan"
+        },
+        {
+          "minute": 25,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "James Hickson"
+        },
+        {
+          "minute": 32,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Scott Boyde"
+        },
+        {
+          "minute": 35,
+          "team": "NZL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Kane Russell"
+        },
+        {
+          "minute": 36,
+          "team": "NZL",
+          "type": "green_card",
+          "player": "Dane Lett"
+        },
+        {
+          "minute": 41,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Finn Ward"
+        },
+        {
+          "minute": 48,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Lane"
+        },
+        {
+          "minute": 56,
+          "team": "NZL",
+          "type": "goal",
+          "via": "FG",
+          "player": "James Hickson"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T14:36:27.685491+00:00",
+        "generated_at": "2026-08-22T10:20:56.650650+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -14349,6 +14425,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_17",
+              "name": "James Hickson",
+              "number": 39,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -14367,10 +14452,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_17",
-              "name": "James Hickson",
-              "number": 39,
-              "line": "Defender",
+              "playerId": "NZL_20",
+              "name": "Scott Boyde",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_12",
+              "name": "Finn Ward",
+              "number": 30,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -14388,7 +14482,7 @@
               "playerId": "NZL_19",
               "name": "Tim Neild",
               "number": 41,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -14397,7 +14491,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -14406,24 +14500,6 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_06",
-              "name": "Aidan Sarikaya",
-              "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_20",
-              "name": "Scott Boyde",
-              "number": 2,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -14439,44 +14515,44 @@
               "onAt": "37:55"
             },
             {
+              "playerId": "NZL_06",
+              "name": "Aidan Sarikaya",
+              "number": 16,
+              "position": null,
+              "onAt": "47:32"
+            },
+            {
               "playerId": "NZL_08",
               "name": "Joseph Morrison",
               "number": 19,
               "position": null,
-              "onAt": "47:32"
+              "onAt": "08:02"
             },
             {
               "playerId": "NZL_15",
               "name": "Isaac Houlbrooke",
               "number": 37,
               "position": null,
-              "onAt": "08:02"
+              "onAt": "29:28"
             },
             {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "29:28"
+              "onAt": "37:06"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "37:06"
+              "onAt": "21:27"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
-              "position": null,
-              "onAt": "21:27"
-            },
-            {
-              "playerId": "NZL_12",
-              "name": "Finn Ward",
-              "number": 30,
               "position": null,
               "onAt": "28:00"
             },
@@ -14521,6 +14597,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_08",
+              "name": "Jolyon Morgan",
+              "number": 20,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_05",
               "name": "Rhys Bradshaw",
               "number": 15,
@@ -14539,20 +14624,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_17",
-              "name": "Daniel Kyriakides",
-              "number": 3,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "WAL_01",
               "name": "Gareth Furlong",
               "number": 18,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_17",
+              "name": "Daniel Kyriakides",
+              "number": 3,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -14569,7 +14654,7 @@
               "playerId": "WAL_13",
               "name": "James Tyson",
               "number": 30,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -14591,15 +14676,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -14611,16 +14687,16 @@
               "onAt": "20:00"
             },
             {
-              "playerId": "WAL_02",
-              "name": "Alf Dinnie",
-              "number": 5,
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
               "position": null,
               "onAt": "49:29"
             },
             {
-              "playerId": "WAL_08",
-              "name": "Jolyon Morgan",
-              "number": 20,
+              "playerId": "WAL_02",
+              "name": "Alf Dinnie",
+              "number": 5,
               "position": null,
               "onAt": "47:24"
             },
@@ -14671,7 +14747,129 @@
           "coach": "Daniel Newcombe"
         }
       },
-      "tms_id": 22362
+      "tms_id": 22362,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 2,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 7,
+          "shots": 11,
+          "circle_entries": 40,
+          "penalty_corners": 2,
+          "possession": 65,
+          "green_cards": 2,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 6,
+          "circle_entries": 17,
+          "penalty_corners": 0,
+          "possession": 35,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — NZL vs WAL.",
+          "seq": 0
+        },
+        {
+          "minute": 8,
+          "team": "WAL",
+          "text": "GOAL! Jolyon Morgan (WAL) scores from a field goal — NZL 0-1 WAL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: NZL 0-1 WAL.",
+          "seq": 2
+        },
+        {
+          "minute": 22,
+          "team": "NZL",
+          "text": "GOAL! James Hickson (NZL) scores from a penalty corner — NZL 1-1 WAL.",
+          "seq": 3
+        },
+        {
+          "minute": 22,
+          "team": "NZL",
+          "text": "Green Card for Scott Boyde (NZL) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 23,
+          "team": "WAL",
+          "text": "GOAL! Jolyon Morgan (WAL) scores from a field goal — NZL 1-2 WAL.",
+          "seq": 5
+        },
+        {
+          "minute": 25,
+          "team": "NZL",
+          "text": "GOAL! James Hickson (NZL) scores from a field goal — NZL 2-2 WAL.",
+          "seq": 6
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: NZL 2-2 WAL.",
+          "seq": 7
+        },
+        {
+          "minute": 32,
+          "team": "NZL",
+          "text": "GOAL! Scott Boyde (NZL) scores from a field goal — NZL 3-2 WAL.",
+          "seq": 8
+        },
+        {
+          "minute": 35,
+          "team": "NZL",
+          "text": "GOAL! Kane Russell (NZL) scores from a penalty corner — NZL 4-2 WAL.",
+          "seq": 9
+        },
+        {
+          "minute": 36,
+          "team": "NZL",
+          "text": "Green Card for Dane Lett (NZL) — 2-minute suspension.",
+          "seq": 10
+        },
+        {
+          "minute": 41,
+          "team": "NZL",
+          "text": "GOAL! Finn Ward (NZL) scores from a field goal — NZL 5-2 WAL.",
+          "seq": 11
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: NZL 5-2 WAL.",
+          "seq": 12
+        },
+        {
+          "minute": 48,
+          "team": "NZL",
+          "text": "GOAL! Sam Lane (NZL) scores from a field goal — NZL 6-2 WAL.",
+          "seq": 13
+        },
+        {
+          "minute": 56,
+          "team": "NZL",
+          "text": "GOAL! James Hickson (NZL) scores from a field goal — NZL 7-2 WAL.",
+          "seq": 14
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: NZL 7-2 WAL.",
+          "seq": 15
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2G2",
@@ -17230,7 +17428,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T14:36:27.690201+00:00",
+        "generated_at": "2026-08-22T10:20:56.654249+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -17426,6 +17624,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "WAL_08",
+              "name": "Jolyon Morgan",
+              "number": 20,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "WAL_05",
               "name": "Rhys Bradshaw",
               "number": 15,
@@ -17444,20 +17651,20 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_17",
-              "name": "Daniel Kyriakides",
-              "number": 3,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "WAL_01",
               "name": "Gareth Furlong",
               "number": 18,
               "line": "Midfielder",
               "position": "Midfielder",
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "WAL_17",
+              "name": "Daniel Kyriakides",
+              "number": 3,
+              "line": "Midfielder",
+              "position": null,
               "captain": false,
               "goalkeeper": false
             },
@@ -17474,7 +17681,7 @@
               "playerId": "WAL_13",
               "name": "James Tyson",
               "number": 30,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -17496,15 +17703,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "WAL_03",
-              "name": "Rhodri Furlong",
-              "number": 10,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -17516,16 +17714,16 @@
               "onAt": "36:40"
             },
             {
-              "playerId": "WAL_02",
-              "name": "Alf Dinnie",
-              "number": 5,
+              "playerId": "WAL_03",
+              "name": "Rhodri Furlong",
+              "number": 10,
               "position": null,
               "onAt": "44:04"
             },
             {
-              "playerId": "WAL_08",
-              "name": "Jolyon Morgan",
-              "number": 20,
+              "playerId": "WAL_02",
+              "name": "Alf Dinnie",
+              "number": 5,
               "position": null,
               "onAt": "10:32"
             },
@@ -17601,7 +17799,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.755764+00:00",
+        "generated_at": "2026-08-22T10:20:56.654691+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -17625,6 +17823,15 @@
               "goalkeeper": false
             },
             {
+              "playerId": "NZL_17",
+              "name": "James Hickson",
+              "number": 39,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "NZL_09",
               "name": "Kane Russell",
               "number": 21,
@@ -17643,10 +17850,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "NZL_17",
-              "name": "James Hickson",
-              "number": 39,
-              "line": "Defender",
+              "playerId": "NZL_20",
+              "name": "Scott Boyde",
+              "number": 2,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "NZL_12",
+              "name": "Finn Ward",
+              "number": 30,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -17664,7 +17880,7 @@
               "playerId": "NZL_19",
               "name": "Tim Neild",
               "number": 41,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -17673,7 +17889,7 @@
               "playerId": "NZL_07",
               "name": "Nic Woods",
               "number": 17,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -17682,24 +17898,6 @@
               "playerId": "NZL_03",
               "name": "Dane Lett",
               "number": 4,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_06",
-              "name": "Aidan Sarikaya",
-              "number": 16,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "NZL_20",
-              "name": "Scott Boyde",
-              "number": 2,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -17715,44 +17913,44 @@
               "onAt": "41:37"
             },
             {
+              "playerId": "NZL_06",
+              "name": "Aidan Sarikaya",
+              "number": 16,
+              "position": null,
+              "onAt": "45:28"
+            },
+            {
               "playerId": "NZL_08",
               "name": "Joseph Morrison",
               "number": 19,
               "position": null,
-              "onAt": "45:28"
+              "onAt": "49:28"
             },
             {
               "playerId": "NZL_15",
               "name": "Isaac Houlbrooke",
               "number": 37,
               "position": null,
-              "onAt": "49:28"
+              "onAt": "37:21"
             },
             {
               "playerId": "NZL_05",
               "name": "Simon Yorston",
               "number": 13,
               "position": null,
-              "onAt": "37:21"
+              "onAt": "18:55"
             },
             {
               "playerId": "NZL_13",
               "name": "George Baker",
               "number": 32,
               "position": null,
-              "onAt": "18:55"
+              "onAt": "33:51"
             },
             {
               "playerId": "NZL_16",
               "name": "Benjamin Culhane",
               "number": 38,
-              "position": null,
-              "onAt": "33:51"
-            },
-            {
-              "playerId": "NZL_12",
-              "name": "Finn Ward",
-              "number": 30,
               "position": null,
               "onAt": "29:54"
             },
