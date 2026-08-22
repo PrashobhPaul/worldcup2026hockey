@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db'
+import { oracleRecord } from '../engine/prediction'
 
 function Section({ title, children }) {
   return (
@@ -6,6 +9,46 @@ function Section({ title, children }) {
       <h2 className="mb-2 font-display text-base font-semibold">{title}</h2>
       <div className="space-y-2 text-sm leading-relaxed text-pitch-300">{children}</div>
     </section>
+  )
+}
+
+// Two accuracy numbers exist and both are true. The published record grades
+// the picks as they actually went out — frozen forever, early misses
+// included. The calibration line replays the CURRENT model over the same
+// matches with as-of-then inputs, so improvements show up here first without
+// ever touching the ledger. Showing both, labelled, IS the transparency.
+function RecordVsModel() {
+  const matches = useLiveQuery(() => db.matches.toArray(), [], [])
+  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
+  const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
+  const rec = oracleRecord(matches, predictions)
+  if (!rec.graded && !calibration) return null
+  return (
+    <Section title="The record vs the model">
+      <div className="grid gap-2.5 sm:grid-cols-2">
+        <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
+          <div className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">Published record</div>
+          <div className="mt-1 font-mono text-2xl font-bold text-brand">
+            {rec.correct}/{rec.graded} <span className="text-sm font-normal">· {rec.accuracyPct}%</span>
+          </div>
+          <p className="mt-1 text-xs text-pitch-400">
+            Every pick graded exactly as it was published — never revised after push-back, early misses kept.
+          </p>
+        </div>
+        {calibration && (
+          <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">Current model, replayed</div>
+            <div className="mt-1 font-mono text-2xl font-bold">
+              {calibration.correct}/{calibration.matches} <span className="text-sm font-normal text-pitch-300">· {calibration.accuracy_pct}% · Brier {calibration.brier}</span>
+            </div>
+            <p className="mt-1 text-xs text-pitch-400">
+              Today&apos;s model re-run over the same matches using only what was known before each push-back.
+              Reproducible: <span className="font-mono">scripts/backtest_model.py</span>.
+            </p>
+          </div>
+        )}
+      </div>
+    </Section>
   )
 }
 
@@ -20,6 +63,8 @@ export default function TrustPage() {
           It is a plain-English summary, not an independent certification.
         </p>
       </div>
+
+      <RecordVsModel />
 
       <Section title="What this app does">
         <p>

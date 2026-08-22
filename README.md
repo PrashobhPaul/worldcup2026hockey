@@ -39,6 +39,8 @@ Hockey.AI is a web app that installs like a native one — no store, no sign-up,
 
 Once installed it keeps working on the underground, on a plane, and in a stadium with no signal — every match, table and prediction is stored on your device and refreshes itself the moment you're back online.
 
+There is deliberately **no APK to sideload**: the install above IS the app — same icon, same full screen, same offline behaviour — delivered straight from this repository with nothing to download from a third party. Follow a team on its page and tap the bell on Home to get start-of-match and full-time notifications while the app is open or in the background (a static app has no push server, so a fully closed app stays silent — by design, nothing can track you to wake you).
+
 ---
 
 ## What it does

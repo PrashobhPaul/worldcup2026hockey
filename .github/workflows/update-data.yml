@@ -61,6 +61,11 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/generate_ai_rationales.py
 
+      # Model calibration, replayed as-of-then over every completed match —
+      # published alongside the ledger record so the Trust page can show both.
+      - name: Publish model calibration
+        run: python scripts/backtest_model.py --publish
+
       - name: Commit & push if changed
         id: commit
         run: |
