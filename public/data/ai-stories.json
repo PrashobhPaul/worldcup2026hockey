@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T15:56:09.895886+00:00",
+  "updated_at": "2026-08-22T18:47:01.569486+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -186,6 +186,13 @@
       "story": "Ireland won the highest-scoring match of this World Cup so far, and they had effectively won it by half-time. Jonathan Lynch opened in the 8th from open play and added a penalty-corner goal in the 12th; Matthew Nelson made it three in the 19th, and when Lynch completed his hat-trick in the 24th — his first three goals of the tournament, all inside twenty-four minutes — Ireland led by four against opponents who had barely settled.\n\nMalaysia's response came almost entirely from the short corner: Azimuddin Kamaruddin in the 29th, Amirul Azahar in the 36th and Abu Kamal Azrai in the 41st, three penalty-corner goals that kept them in touching distance without ever threatening parity. Ireland's answer to the second of them was immediate — John McKee converted a corner of their own in the 37th and Nelson struck again in the 39th, so Azrai's goal only trimmed the third-quarter score to 6-3. Benjamin Walker's field goal in the 54th settled the afternoon, and Faizal Saari's reply in the 55th, Malaysia's only goal from open play, fixed the final margin at 7-4.\n\nEleven goals, and the shape of them tells the story of both campaigns. Ireland scored five from open play through three different scorers — the running, carried threat that Malaysia's pool opponents also found, with Malaysia now on twenty conceded across four matches. Malaysia's three corner goals confirm that their set piece travels; nothing else did. For Ireland, who left Pool C with a four-one win over South Africa and two two-goal defeats, this is the day their finishing finally caught up with their chances, and Lynch — scoreless in the pool — leaves it with a hat-trick completed inside the first half.",
       "generatedAt": "2026-08-21T14:39:40.618310+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "S2E2",
+      "story": "Argentina beat England 3-1 at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. England came in ranked 3rd in the world, Argentina 7th.\n\nEngland scored through Samuel Hooper (50', penalty corner); Argentina through Tomas Domene (26', penalty corner), Tomas Domene (36') and Tomas Domene (58', penalty corner). The opener came in Q2 and the final goal in Q4.\n\nEngland won 1 penalty corner to Argentina's 2. 1 card was shown.",
+      "generatedAt": "2026-08-22T18:47:01.569463+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }

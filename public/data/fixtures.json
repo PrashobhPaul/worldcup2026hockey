@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-22T18:34:34.533662+00:00",
+  "last_updated": "2026-08-22T18:47:01.400083+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -650,7 +650,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.741726+00:00",
+        "generated_at": "2026-08-22T18:47:01.380717+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -674,18 +674,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_16",
-              "name": "Nicholas Bandurak",
-              "number": 23,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_16",
+              "name": "Nicholas Bandurak",
+              "number": 23,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -4037,7 +4037,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.592266+00:00",
+        "generated_at": "2026-08-22T18:47:01.384088+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4061,18 +4061,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_16",
-              "name": "Nicholas Bandurak",
-              "number": 23,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_16",
+              "name": "Nicholas Bandurak",
+              "number": 23,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -8167,7 +8167,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.645294+00:00",
+        "generated_at": "2026-08-22T18:47:01.387871+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8191,18 +8191,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_16",
-              "name": "Nicholas Bandurak",
-              "number": 23,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_16",
+              "name": "Nicholas Bandurak",
+              "number": 23,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -15943,15 +15943,50 @@
       "time": "19:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 26,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tomas Domene"
+        },
+        {
+          "minute": 27,
+          "team": "ARG",
+          "type": "green_card",
+          "player": "Nicolas Keenan"
+        },
+        {
+          "minute": 36,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tomas Domene"
+        },
+        {
+          "minute": 50,
+          "team": "ENG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Samuel Hooper"
+        },
+        {
+          "minute": 58,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Tomas Domene"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T14:36:27.686878+00:00",
+        "generated_at": "2026-08-22T18:47:01.394891+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -15975,18 +16010,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_16",
-              "name": "Nicholas Bandurak",
-              "number": 23,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_16",
+              "name": "Nicholas Bandurak",
+              "number": 23,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -16291,11 +16326,92 @@
         }
       },
       "tms_id": 22365,
-      "live_score": {
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
         "home": 1,
-        "away": 2,
-        "at": "2026-08-22T18:34:22.727592+00:00"
-      }
+        "away": 2
+      },
+      "stats": {
+        "home": {
+          "goals": 1,
+          "shots": 5,
+          "circle_entries": 22,
+          "penalty_corners": 1,
+          "possession": 39,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 7,
+          "circle_entries": 20,
+          "penalty_corners": 2,
+          "possession": 61,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — ENG vs ARG.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ENG 0-0 ARG.",
+          "seq": 1
+        },
+        {
+          "minute": 26,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a penalty corner — ENG 0-1 ARG.",
+          "seq": 2
+        },
+        {
+          "minute": 27,
+          "team": "ARG",
+          "text": "Green Card for Nicolas Keenan (ARG) — 2-minute suspension.",
+          "seq": 3
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ENG 0-1 ARG.",
+          "seq": 4
+        },
+        {
+          "minute": 36,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a field goal — ENG 0-2 ARG.",
+          "seq": 5
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ENG 0-2 ARG.",
+          "seq": 6
+        },
+        {
+          "minute": 50,
+          "team": "ENG",
+          "text": "GOAL! Samuel Hooper (ENG) scores from a penalty corner — ENG 1-2 ARG.",
+          "seq": 7
+        },
+        {
+          "minute": 58,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a penalty corner — ENG 1-3 ARG.",
+          "seq": 8
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ENG 1-3 ARG.",
+          "seq": 9
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2H3",
@@ -18868,7 +18984,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T15:56:09.720251+00:00",
+        "generated_at": "2026-08-22T18:47:01.398623+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -19050,18 +19166,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_16",
-              "name": "Nicholas Bandurak",
-              "number": 23,
+              "playerId": "ENG_04",
+              "name": "Samuel Hooper",
+              "number": 33,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ENG_04",
-              "name": "Samuel Hooper",
-              "number": 33,
+              "playerId": "ENG_16",
+              "name": "Nicholas Bandurak",
+              "number": 23,
               "line": "Defender",
               "position": null,
               "captain": false,

@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-22T18:34:34.533662+00:00",
+  "updated_at": "2026-08-22T18:47:01.400083+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -2749,7 +2749,10 @@
       "pick": "HOME",
       "pick_confidence": 0.48,
       "reason": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T17:19:20.912621+00:00"
+      "publishedAt": "2026-08-22T17:19:20.912621+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T18:47:01.399357+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
     },
     {
       "id": "oracle-v1:S2E4:r6",
@@ -2763,7 +2766,38 @@
       "pick": "HOME",
       "pick_confidence": 0.498,
       "reason": "FIH #1 NED favoured over #3 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T17:19:20.912621+00:00"
+      "publishedAt": "2026-08-22T17:19:20.912621+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-22T18:47:01.399357+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
+    },
+    {
+      "id": "oracle-v1:S2E3:r7",
+      "matchId": "S2E3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2E3:r6",
+      "p_home_win": 0.493,
+      "p_draw": 0.285,
+      "p_away_win": 0.223,
+      "pick": "HOME",
+      "pick_confidence": 0.493,
+      "reason": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-22T18:47:01.399357+00:00"
+    },
+    {
+      "id": "oracle-v1:S2E4:r7",
+      "matchId": "S2E4",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2E4:r6",
+      "p_home_win": 0.574,
+      "p_draw": 0.243,
+      "p_away_win": 0.183,
+      "pick": "HOME",
+      "pick_confidence": 0.574,
+      "reason": "FIH #1 NED favoured over #3 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-22T18:47:01.399357+00:00"
     }
   ]
 }
