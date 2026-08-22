@@ -534,6 +534,15 @@
     ],
     "NZL-WAL": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-22",
+        "home": "NZL",
+        "away": "WAL",
+        "home_goals": 0,
+        "away_goals": 1,
+        "current": false
+      },
+      {
         "competition": "Commonwealth Games 2022 (M)",
         "date": "2022-08-07",
         "home": "NZL",
@@ -1979,5 +1988,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-22T07:34:11.582415+00:00"
+  "updated_at": "2026-08-22T08:33:23.069709+00:00"
 }
