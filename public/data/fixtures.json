@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-21T20:49:50.422701+00:00",
+ "last_updated": "2026-08-21T21:27:35.343017+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -99,7 +99,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — IND vs WAL.",
+     "text": "Push-back! IND vs WAL under way.",
      "seq": 0
     },
     {
@@ -587,7 +587,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ENG vs PAK.",
+     "text": "Push-back! ENG vs PAK under way.",
      "seq": 0
     },
     {
@@ -1100,7 +1100,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — GER vs MAS.",
+     "text": "Push-back! GER vs MAS under way.",
      "seq": 0
     },
     {
@@ -1611,7 +1611,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — BEL vs FRA.",
+     "text": "Push-back! BEL vs FRA under way.",
      "seq": 0
     },
     {
@@ -2083,7 +2083,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ARG vs JPN.",
+     "text": "Push-back! ARG vs JPN under way.",
      "seq": 0
     },
     {
@@ -2565,7 +2565,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — NED vs NZL.",
+     "text": "Push-back! NED vs NZL under way.",
      "seq": 0
     },
     {
@@ -3056,7 +3056,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — AUS vs IRL.",
+     "text": "Push-back! AUS vs IRL under way.",
      "seq": 0
     },
     {
@@ -3541,7 +3541,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ESP vs RSA.",
+     "text": "Push-back! ESP vs RSA under way.",
      "seq": 0
     },
     {
@@ -4413,7 +4413,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ENG vs IND.",
+     "text": "Push-back! ENG vs IND under way.",
      "seq": 0
     },
     {
@@ -4987,7 +4987,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — PAK vs WAL.",
+     "text": "Push-back! PAK vs WAL under way.",
      "seq": 0
     },
     {
@@ -5498,7 +5498,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — BEL vs GER.",
+     "text": "Push-back! BEL vs GER under way.",
      "seq": 0
     },
     {
@@ -6023,7 +6023,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — FRA vs MAS.",
+     "text": "Push-back! FRA vs MAS under way.",
      "seq": 0
     },
     {
@@ -6525,7 +6525,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ARG vs NED.",
+     "text": "Push-back! ARG vs NED under way.",
      "seq": 0
     },
     {
@@ -6998,7 +6998,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — JPN vs NZL.",
+     "text": "Push-back! JPN vs NZL under way.",
      "seq": 0
     },
     {
@@ -7482,7 +7482,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — AUS vs ESP.",
+     "text": "Push-back! AUS vs ESP under way.",
      "seq": 0
     },
     {
@@ -7985,7 +7985,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — IRL vs RSA.",
+     "text": "Push-back! IRL vs RSA under way.",
      "seq": 0
     },
     {
@@ -8544,7 +8544,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ENG vs WAL.",
+     "text": "Push-back! ENG vs WAL under way.",
      "seq": 0
     },
     {
@@ -9125,7 +9125,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — IND vs PAK.",
+     "text": "Push-back! IND vs PAK under way.",
      "seq": 0
     },
     {
@@ -9686,7 +9686,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — BEL vs MAS.",
+     "text": "Push-back! BEL vs MAS under way.",
      "seq": 0
     },
     {
@@ -10194,7 +10194,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — FRA vs GER.",
+     "text": "Push-back! FRA vs GER under way.",
      "seq": 0
     },
     {
@@ -10674,7 +10674,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — JPN vs NED.",
+     "text": "Push-back! JPN vs NED under way.",
      "seq": 0
     },
     {
@@ -11212,7 +11212,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ARG vs NZL.",
+     "text": "Push-back! ARG vs NZL under way.",
      "seq": 0
     },
     {
@@ -11758,7 +11758,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — AUS vs RSA.",
+     "text": "Push-back! AUS vs RSA under way.",
      "seq": 0
     },
     {
@@ -12261,7 +12261,7 @@
    "commentary": [
     {
      "minute": 0,
-     "text": "We're under way — ESP vs IRL.",
+     "text": "Push-back! ESP vs IRL under way.",
      "seq": 0
     },
     {

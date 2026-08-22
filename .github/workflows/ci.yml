@@ -41,8 +41,18 @@ jobs:
       # Published data must never change without the stamp changing with it:
       # an installed app that holds the old stamp would never refetch, and the
       # reader would sit on stale briefs with nothing wrong on the server.
+      #
+      # On pull requests this must check the PR HEAD, not GitHub's synthetic
+      # test merge: the data cron advances main every half hour, and the test
+      # merge mixes both sides' data files without restamping — a red that
+      # says nothing about the branch. On push events the merge result itself
+      # is checked, which is what caught the broken web-merge of PR #22.
       - name: Data fingerprint
-        run: python3 scripts/data_fingerprint.py --check
+        run: |
+          REF="${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
+          git fetch --depth=1 origin "$REF"
+          git worktree add /tmp/fp-check "$REF"
+          cd /tmp/fp-check && python3 scripts/data_fingerprint.py --check
 
       # Briefs must be true to the match record — every scorer named, every
       # goal minute cited — and a pick's rationale must argue from this
