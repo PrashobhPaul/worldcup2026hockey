@@ -4,12 +4,12 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { getSyncStatus, subscribeSync, syncData } from '../sync'
 
-// The top-right stats box: tournament progress with the refresh built in —
-// "28/50 ↻" — because the count is exactly the thing a refresh updates. The
-// status dot tells the sync truth at a glance (green fresh, amber offline,
-// red failed), the icon spins while a sync runs, and the full detail —
-// completed matches, data version, age, any error — rides the accessible
-// label. One tap anywhere on the box refreshes.
+// Top-right of the header, no box, two quiet rows:
+//   ● LIVE          — sync health as a light: green live, amber offline,
+//   28/50 ↻            red failed, pulsing while a sync runs
+// The count is tournament matches completed; the whole stack is one tap
+// target that refreshes, and the full detail (version, age, any error)
+// rides the accessible label.
 function age(at) {
   if (!at) return 'unknown'
   const s = Math.max(0, Math.floor((Date.now() - at) / 1000))
@@ -18,10 +18,13 @@ function age(at) {
   return `${Math.floor(s / 3600)}h ago`
 }
 
-const DOT = {
-  fresh: 'bg-live', synced: 'bg-live',
-  syncing: 'bg-brand animate-pulse', starting: 'bg-brand animate-pulse',
-  offline: 'bg-amber-400', error: 'bg-red-400',
+const STATE = {
+  fresh:    { dot: 'bg-live', text: 'text-live', word: 'LIVE' },
+  synced:   { dot: 'bg-live', text: 'text-live', word: 'LIVE' },
+  syncing:  { dot: 'bg-brand animate-pulse', text: 'text-brand', word: 'SYNCING' },
+  starting: { dot: 'bg-brand animate-pulse', text: 'text-brand', word: 'SYNCING' },
+  offline:  { dot: 'bg-amber-400', text: 'text-amber-400', word: 'OFFLINE' },
+  error:    { dot: 'bg-red-400', text: 'text-red-400', word: 'RETRY' },
 }
 
 export default function SyncChip() {
@@ -32,23 +35,24 @@ export default function SyncChip() {
   const done = matches.filter(m => m.status === 'completed' && m.score?.home != null).length
   const total = matches.length || 50
 
+  const s = STATE[status.state] ?? { dot: 'bg-pitch-500', text: 'text-pitch-400', word: 'SYNC' }
   const busy = status.state === 'syncing' || status.state === 'starting'
   const trouble = status.state === 'error' || status.state === 'offline'
-  // Tooltips never fire on touch, so a failed sync must be visible in the
-  // chip itself (red dot + red icon), and the aria-label carries the rest.
   const label = trouble
-    ? `Data sync failed${status.error ? ` — ${status.error}` : ''}. Tap to retry.`
+    ? `Data sync ${status.state}${status.error ? ` — ${status.error}` : ''}. ${done} of ${total} matches completed. Tap to retry.`
     : `${done} of ${total} matches completed. Refresh data — version ${status.version ?? 'unknown'}, synced ${age(status.at)}.`
   return (
     <button onClick={() => syncData({ force: true })} disabled={busy}
       title={label} aria-label={label}
-      className={`flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-md border px-2.5 font-mono text-xs transition-colors ${
-        trouble ? 'border-red-400/30 bg-red-400/10 text-red-400'
-                : 'border-brand/20 bg-brand/10 text-brand hover:border-brand/40'
-      }`}>
-      <span className={`inline-block h-1.5 w-1.5 rounded-full ${DOT[status.state] ?? 'bg-pitch-500'}`} />
-      <span>{done}/{total}</span>
-      <RefreshCw size={13} className={busy ? 'animate-spin' : undefined} />
+      className="flex min-h-[44px] shrink-0 flex-col items-end justify-center gap-0.5 px-1 font-mono">
+      <span className={`flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest ${s.text}`}>
+        <span className={`inline-block h-1.5 w-1.5 rounded-full ${s.dot}`} />
+        {s.word}
+      </span>
+      <span className="flex items-center gap-1 text-xs text-pitch-300">
+        {done}/{total}
+        <RefreshCw size={11} className={busy ? 'animate-spin' : undefined} />
+      </span>
     </button>
   )
 }
