@@ -404,7 +404,11 @@ export default function OraclePage() {
   const predictions = useLiveQuery(() => db.predictions.toArray(), [])
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const bundle = useOracleBundle(teams, matches)
-  const rec = oracleRecord(matches ?? [], predictions ?? [])
+  const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
+  const fallback = oracleRecord(matches ?? [], predictions ?? [])
+  const rec = calibration
+    ? { correct: calibration.correct, graded: calibration.matches, accuracyPct: calibration.accuracy_pct }
+    : fallback
 
   const setTab = (t) => {
     const next = new URLSearchParams(params)

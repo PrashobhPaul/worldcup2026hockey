@@ -116,6 +116,8 @@ async function _sync(force) {
     // before the pipeline has run, which must not break the sync.
     fetchJSON('h2h.json').catch(() => ({ pairs: {} })),
   ])
+  // Model calibration (as-of-then replay) — optional, shown on the Trust page.
+  const calibration = await fetchJSON('model-calibration.json').catch(() => null)
 
   const teams = (teamsDoc.teams || []).map(t => ({
     ...t,
@@ -169,9 +171,13 @@ async function _sync(force) {
         updatedAt: remote.updated_at,
         syncedAt: Date.now(),
       })
+      if (calibration) await db.meta.put({ id: 'calibration', ...calibration })
     })
 
   setStatus({ state: 'synced', version: remote.version, empty: false, error: null })
+  // Favourite-team alerts ride the sync: fresh data in, notifications out.
+  // Lazy import keeps the sync path free of any Notification-API coupling.
+  import('./notify.js').then(n => n.checkFavouriteAlerts()).catch(() => {})
   return { status: 'synced', version: remote.version }
 }
 

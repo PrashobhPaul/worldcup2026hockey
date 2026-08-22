@@ -12,7 +12,14 @@ window 700 -> 450 (Brier -5.5%), both monotone across their sweeps.
 Not a CI gate: the numbers move with every completed match. Run it to
 re-check calibration as the tournament grows:
 
-    python3 scripts/backtest_model.py
+    python3 scripts/backtest_model.py            # print only
+    python3 scripts/backtest_model.py --publish  # also write
+                                                 # public/data/model-calibration.json
+
+--publish keeps the app's Trust page honest about the difference between
+the PUBLISHED record (what the picks in the ledger actually scored — never
+rewritten) and what the CURRENT model scores when replayed over the same
+matches with as-of-then inputs. Two different numbers, both true, labelled.
 """
 import json
 import math
@@ -81,6 +88,39 @@ def main():
     print(f'  accuracy  {correct}/{n} = {correct / n:.0%}')
     print(f'  Brier     {brier / n:.4f}   (0.667 = uniform guessing)')
     print(f'  log-loss  {logloss / n:.4f}   (1.099 = uniform guessing)')
+
+    if '--publish' in sys.argv and n:
+        from datetime import datetime, timezone
+        out_path = os.path.join(DATA, 'model-calibration.json')
+        payload = {
+            'matches': n,
+            'correct': correct,
+            'accuracy_pct': round(100 * correct / n),
+            'brier': round(brier / n, 4),
+            'log_loss': round(logloss / n, 4),
+            'method': 'as-of-then replay: every completed match re-scored with only the form and rankings available before its own push-back',
+        }
+        try:
+            with open(out_path) as fh:
+                previous = {k: v for k, v in json.load(fh).items() if k != 'updated_at'}
+        except (OSError, ValueError):
+            previous = None
+        if payload != previous:
+            payload['updated_at'] = datetime.now(timezone.utc).isoformat()
+            with open(out_path, 'w') as fh:
+                json.dump(payload, fh, indent=2)
+                fh.write('\n')
+            version = load('data-version.json')
+            version['version'] = int(version.get('version', 0)) + 1
+            version['updated_at'] = payload['updated_at']
+            with open(os.path.join(DATA, 'data-version.json'), 'w') as fh:
+                json.dump(version, fh, indent=2, ensure_ascii=False)
+                fh.write('\n')
+            from data_fingerprint import stamp as stamp_fingerprint
+            stamp_fingerprint()
+            print(f'model-calibration.json updated, data-version -> {version["version"]}')
+        else:
+            print('model-calibration.json unchanged.')
     return 0
 
 

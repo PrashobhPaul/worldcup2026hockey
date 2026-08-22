@@ -11,7 +11,8 @@ import { SIM_ID } from '../content/sim'
 import { useFavourite } from '../hooks/useFavourite'
 import { useNowTick } from '../hooks/useNowTick'
 import { effectiveStatus } from '../engine/clock'
-import { FlaskConical, Trophy, BarChart3, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
+import { alertsSupported, alertsEnabled, enableAlerts, disableAlerts } from '../notify'
+import { FlaskConical, Trophy, BarChart3, Sparkles, ArrowUp, ArrowDown, Minus, Bell, BellOff } from 'lucide-react'
 
 // Hero quick-access tiles: the race and the lab up top, stats and the
 // simulation below. Championship Race lands on the Oracle's race graph;
@@ -153,6 +154,28 @@ function NextMatchCard({ match, teams }) {
   )
 }
 
+// Match alerts for the followed team — start-soon and full-time system
+// notifications, raised by the data sync while the app is open or its tab is
+// in the background. A static PWA has no push server, so a fully closed app
+// stays silent; the tooltip says exactly that.
+function AlertsBell() {
+  const [on, setOn] = useState(alertsEnabled())
+  const toggle = async () => {
+    if (on) { disableAlerts(); setOn(false) }
+    else setOn(await enableAlerts())
+  }
+  return (
+    <button onClick={toggle} aria-pressed={on}
+      title={on ? 'Match alerts on — start and full-time, while the app is open or in the background'
+                : 'Notify me when my team plays (works while the app is open or in the background)'}
+      className={`ml-1 flex h-6 w-6 items-center justify-center rounded-md border transition-colors ${
+        on ? 'border-brand/40 bg-brand/10 text-brand' : 'border-white/10 bg-pitch-800 text-pitch-400'
+      }`}>
+      {on ? <Bell size={12} /> : <BellOff size={12} />}
+    </button>
+  )
+}
+
 // The personalized band at the top of Home: your team's state at a glance —
 // live now / next up, last-five form, champion probability — with everything a
 // link out to its canonical page. When no team is followed yet, one dashed
@@ -208,6 +231,7 @@ function FavouriteStrip({ teams, matches }) {
               r === 'W' ? 'bg-live/15 text-live' : r === 'D' ? 'bg-pitch-700 text-pitch-300' : 'bg-red-400/10 text-red-400'
             }`}>{r}</span>
           ))}
+          {alertsSupported() && <AlertsBell />}
         </div>
       </div>
       {spotlight && (

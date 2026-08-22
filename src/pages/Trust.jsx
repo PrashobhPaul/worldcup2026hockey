@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db'
+import { oracleRecord } from '../engine/prediction'
 
 function Section({ title, children }) {
   return (
@@ -6,6 +9,36 @@ function Section({ title, children }) {
       <h2 className="mb-2 font-display text-base font-semibold">{title}</h2>
       <div className="space-y-2 text-sm leading-relaxed text-pitch-300">{children}</div>
     </section>
+  )
+}
+
+// The Oracle's accuracy, one number: the whole tournament scored under the
+// current model with as-of-then inputs (only what was known before each
+// push-back), recomputed by the pipeline after every completed match and
+// reproducible from the repository by anyone.
+function ModelAccuracy() {
+  const matches = useLiveQuery(() => db.matches.toArray(), [], [])
+  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
+  const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
+  const fallback = oracleRecord(matches, predictions)
+  const correct = calibration?.correct ?? fallback.correct
+  const total = calibration?.matches ?? fallback.graded
+  const pct = calibration?.accuracy_pct ?? fallback.accuracyPct
+  if (!total) return null
+  return (
+    <Section title="Oracle accuracy">
+      <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
+        <div className="mt-1 font-mono text-2xl font-bold text-brand">
+          {correct}/{total} <span className="text-sm font-normal">· {pct}% of matches called</span>
+          {calibration && <span className="text-sm font-normal text-pitch-300"> · Brier {calibration.brier}</span>}
+        </div>
+        <p className="mt-1 text-xs text-pitch-400">
+          Every completed match, scored with the model using only the information available before its
+          push-back. Recomputed after every result and reproducible from the open repository:
+          <span className="font-mono"> python3 scripts/backtest_model.py</span>.
+        </p>
+      </div>
+    </Section>
   )
 }
 
@@ -20,6 +53,8 @@ export default function TrustPage() {
           It is a plain-English summary, not an independent certification.
         </p>
       </div>
+
+      <ModelAccuracy />
 
       <Section title="What this app does">
         <p>
