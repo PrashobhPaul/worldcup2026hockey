@@ -1,0 +1,42 @@
+{
+  "packageId": "com.prashobhpaul.hockeyai",
+  "host": "prashobhpaul.github.io",
+  "name": "Hockey.AI",
+  "launcherName": "Hockey.AI",
+  "display": "standalone",
+  "themeColor": "#0b1736",
+  "themeColorDark": "#0b1736",
+  "navigationColor": "#0b1736",
+  "navigationColorDark": "#0b1736",
+  "navigationDividerColor": "#0b1736",
+  "navigationDividerColorDark": "#0b1736",
+  "backgroundColor": "#0b1736",
+  "enableNotifications": true,
+  "startUrl": "/worldcup2026hockey/",
+  "iconUrl": "https://prashobhpaul.github.io/worldcup2026hockey/icon-512.png",
+  "maskableIconUrl": "https://prashobhpaul.github.io/worldcup2026hockey/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "hockeyai"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://prashobhpaul.github.io/worldcup2026hockey/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://prashobhpaul.github.io/worldcup2026hockey/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": []
+}

@@ -1,0 +1,88 @@
+name: Build Android APK
+
+# Wraps the deployed PWA in a Trusted Web Activity via Bubblewrap and
+# publishes the APK to a rolling GitHub Release, so Android users can
+# sideload the app directly.
+#
+# Signing: if the ANDROID_KEYSTORE_B64 / ANDROID_KEYSTORE_PASSWORD secrets
+# are set, the APK is signed with that stable key (installs update in
+# place, and the fingerprint can be published in assetlinks.json for the
+# full-screen TWA experience). Without them a fresh key is generated per
+# build — the APK still installs, but each new build must be uninstalled
+# first, and Android shows the browser bar until asset links verify.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['twa-manifest.json', '.github/workflows/build-apk.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Prepare keystore
+        env:
+          KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > android.keystore
+            echo "KS_PASS=$KS_PASS" >> "$GITHUB_ENV"
+            echo "Stable keystore from secrets."
+          else
+            KS_PASS="hockeyai-$(openssl rand -hex 8)"
+            keytool -genkeypair -v -keystore android.keystore -alias hockeyai \
+              -keyalg RSA -keysize 2048 -validity 3650 \
+              -storepass "$KS_PASS" -keypass "$KS_PASS" \
+              -dname "CN=Hockey.AI, OU=App, O=Hockey.AI, L=NA, S=NA, C=IN"
+            echo "KS_PASS=$KS_PASS" >> "$GITHUB_ENV"
+            echo "Ephemeral keystore generated (set ANDROID_KEYSTORE_B64 / ANDROID_KEYSTORE_PASSWORD secrets for stable signing)."
+          fi
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Configure Bubblewrap paths
+        run: |
+          mkdir -p ~/.bubblewrap
+          cat > ~/.bubblewrap/config.json <<EOF
+          {"jdkPath": "$JAVA_HOME", "androidSdkPath": "$ANDROID_HOME"}
+          EOF
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+
+      - name: Build APK
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
+        run: |
+          bubblewrap update --skipVersionUpgrade || true
+          bubblewrap build --skipPwaValidation
+          ls -la ./*.apk || ls -la app/build/outputs/apk/release/ || true
+          APK=$(find . -name 'app-release-signed.apk' -o -name 'app-release.apk' | head -1)
+          echo "APK=$APK" >> "$GITHUB_ENV"
+          cp "$APK" HockeyAI.apk
+
+      - name: Publish to rolling release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete apk-latest --yes 2>/dev/null || true
+          git push --delete origin apk-latest 2>/dev/null || true
+          gh release create apk-latest HockeyAI.apk \
+            --title "Hockey.AI for Android" \
+            --notes "Sideloadable Android build of the Hockey.AI PWA (Trusted Web Activity). Download HockeyAI.apk, allow installs from your browser when prompted, and open. Same app, same offline storage, same live data — with the match-alert bell available from the Home screen once a team is followed."

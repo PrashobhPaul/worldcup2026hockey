@@ -8,12 +8,15 @@
 
 **Analyze. Predict. Experience.**
 
-16 nations · 32 matches · Belgium &amp; Netherlands · 15–30 August 2026
+16 nations · 50 matches · Belgium &amp; Netherlands · 15–30 August 2026
 
 <br>
 
 <a href="https://prashobhpaul.github.io/worldcup2026hockey/">
 <img src="https://img.shields.io/badge/▶%20Open%20Hockey.AI-Install%20as%20an%20app-ffb547?style=for-the-badge&labelColor=0b1736" alt="Open Hockey.AI">
+</a>
+<a href="https://github.com/PrashobhPaul/worldcup2026hockey/releases/latest">
+<img src="https://img.shields.io/badge/Android-Download%20APK-3ddc84?style=for-the-badge&labelColor=0b1736" alt="Download the Android APK">
 </a>
 
 <br><br>
@@ -39,7 +42,7 @@ Hockey.AI is a web app that installs like a native one — no store, no sign-up,
 
 Once installed it keeps working on the underground, on a plane, and in a stadium with no signal — every match, table and prediction is stored on your device and refreshes itself the moment you're back online.
 
-There is deliberately **no APK to sideload**: the install above IS the app — same icon, same full screen, same offline behaviour — delivered straight from this repository with nothing to download from a third party. Follow a team on its page and tap the bell on Home to get start-of-match and full-time notifications while the app is open or in the background (a static app has no push server, so a fully closed app stays silent — by design, nothing can track you to wake you).
+Prefer a classic install? The **[Android APK](https://github.com/PrashobhPaul/worldcup2026hockey/releases/latest)** wraps the very same app in a native shell (a Trusted Web Activity, built by this repository's own CI) — download `HockeyAI.apk`, allow the install when Android asks, done. Either way: follow a team on its page and tap the bell on Home to get start-of-match and full-time notifications while the app is open or in the background. A zero-backend app has no push server, so a fully closed app stays silent — by design, nothing can track you to wake you.
 
 ---
 
