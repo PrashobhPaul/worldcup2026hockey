@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T10:20:56.843283+00:00",
+  "updated_at": "2026-08-22T13:34:19.001851+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -174,6 +174,13 @@
       "story": "Ireland won the highest-scoring match of this World Cup so far, and they had effectively won it by half-time. Jonathan Lynch opened in the 8th from open play and added a penalty-corner goal in the 12th; Matthew Nelson made it three in the 19th, and when Lynch completed his hat-trick in the 24th — his first three goals of the tournament, all inside twenty-four minutes — Ireland led by four against opponents who had barely settled.\n\nMalaysia's response came almost entirely from the short corner: Azimuddin Kamaruddin in the 29th, Amirul Azahar in the 36th and Abu Kamal Azrai in the 41st, three penalty-corner goals that kept them in touching distance without ever threatening parity. Ireland's answer to the second of them was immediate — John McKee converted a corner of their own in the 37th and Nelson struck again in the 39th, so Azrai's goal only trimmed the third-quarter score to 6-3. Benjamin Walker's field goal in the 54th settled the afternoon, and Faizal Saari's reply in the 55th, Malaysia's only goal from open play, fixed the final margin at 7-4.\n\nEleven goals, and the shape of them tells the story of both campaigns. Ireland scored five from open play through three different scorers — the running, carried threat that Malaysia's pool opponents also found, with Malaysia now on twenty conceded across four matches. Malaysia's three corner goals confirm that their set piece travels; nothing else did. For Ireland, who left Pool C with a four-one win over South Africa and two two-goal defeats, this is the day their finishing finally caught up with their chances, and Lynch — scoreless in the pool — leaves it with a hat-trick completed inside the first half.",
       "generatedAt": "2026-08-21T14:39:40.618310+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "S2G2",
+      "story": "Pakistan edged Japan 4-3 at the Wagener Stadion in Amstelveen, in a Pool G tie of the FIH Hockey World Cup 2026. Pakistan came in ranked 13th in the world, Japan 17th.\n\nPakistan scored through Waheed Ashraf Rana (22'), Waheed Ashraf Rana (32', penalty corner), Muhammad Hammadudin (33') and Hannan Shahid (41'); Japan through Hyota Yamada (7', penalty corner), Kaito Tanaka (15') and Koji Yamasaki (36', penalty corner). The opener came in Q1 and the final goal in Q3.\n\nPakistan won 1 penalty corner to Japan's 2. 4 cards were shown.",
+      "generatedAt": "2026-08-22T13:34:19.001824+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }

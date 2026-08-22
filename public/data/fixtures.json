@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-22T12:43:46.813753+00:00",
+  "last_updated": "2026-08-22T13:34:18.754112+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -650,7 +650,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T16:32:41.589640+00:00",
+        "generated_at": "2026-08-22T13:34:18.741726+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -855,18 +855,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
+              "playerId": "PAK_22",
+              "name": "Waheed Ashraf Rana",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_15",
-              "name": "Afraz",
-              "number": 21,
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -882,18 +882,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_12",
-              "name": "Ammad Butt",
-              "number": 16,
+              "playerId": "PAK_15",
+              "name": "Afraz",
+              "number": 21,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_22",
-              "name": "Waheed Ashraf Rana",
-              "number": 8,
+              "playerId": "PAK_13",
+              "name": "Muhammad Hammadudin",
+              "number": 17,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -909,18 +909,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_21",
-              "name": "Arshad Liaqat",
-              "number": 11,
+              "playerId": "PAK_12",
+              "name": "Ammad Butt",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_06",
-              "name": "Moin Shakeel",
-              "number": 7,
+              "playerId": "PAK_21",
+              "name": "Arshad Liaqat",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -936,23 +936,23 @@
               "onAt": "46:00"
             },
             {
+              "playerId": "PAK_06",
+              "name": "Moin Shakeel",
+              "number": 7,
+              "position": null,
+              "onAt": "27:46"
+            },
+            {
               "playerId": "PAK_11",
               "name": "Ghazanfar Ali",
               "number": 15,
               "position": null,
-              "onAt": "27:46"
+              "onAt": "23:47"
             },
             {
               "playerId": "PAK_08",
               "name": "Zikriya Hayat",
               "number": 10,
-              "position": null,
-              "onAt": "23:47"
-            },
-            {
-              "playerId": "PAK_13",
-              "name": "Muhammad Hammadudin",
-              "number": 17,
               "position": null,
               "onAt": "19:02"
             },
@@ -2128,7 +2128,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T04:40:56.141826+00:00",
+        "generated_at": "2026-08-22T13:34:18.742717+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2317,46 +2317,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_11",
-              "name": "Manabu Yamashita",
-              "number": 13,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_05",
-              "name": "Seren Tanaka",
-              "number": 5,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
-              "line": "Midfielder",
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_20",
+              "name": "Hyota Yamada",
+              "number": 38,
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2365,7 +2338,43 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
               "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_11",
+              "name": "Manabu Yamashita",
+              "number": 13,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_05",
+              "name": "Seren Tanaka",
+              "number": 5,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2387,15 +2396,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_15",
-              "name": "Ryoma Ooka",
-              "number": 19,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -2407,58 +2407,58 @@
               "onAt": "10:54"
             },
             {
+              "playerId": "JPN_15",
+              "name": "Ryoma Ooka",
+              "number": 19,
+              "position": null,
+              "onAt": "19:53"
+            },
+            {
               "playerId": "JPN_04",
               "name": "Yamato Kawahara",
               "number": 4,
               "position": null,
-              "onAt": "19:53"
+              "onAt": "13:38"
             },
             {
               "playerId": "JPN_17",
               "name": "Yusuke Kawamura",
               "number": 23,
               "position": null,
-              "onAt": "13:38"
+              "onAt": "23:09"
             },
             {
               "playerId": "JPN_07",
               "name": "Taiki Takade",
               "number": 8,
               "position": null,
-              "onAt": "23:09"
+              "onAt": "50:59"
             },
             {
               "playerId": "JPN_13",
               "name": "Hiro Saito",
               "number": 16,
               "position": null,
-              "onAt": "50:59"
+              "onAt": "41:17"
             },
             {
               "playerId": "JPN_06",
               "name": "Naru Kimura",
               "number": 6,
               "position": null,
-              "onAt": "41:17"
+              "onAt": "25:32"
             },
             {
               "playerId": "JPN_14",
               "name": "Tsubasa Tanaka",
               "number": 18,
               "position": null,
-              "onAt": "25:32"
+              "onAt": "23:30"
             },
             {
               "playerId": "JPN_21",
               "name": "Jun Watanabe",
               "number": 7,
-              "position": null,
-              "onAt": "23:30"
-            },
-            {
-              "playerId": "JPN_20",
-              "name": "Hyota Yamada",
-              "number": 38,
               "position": null,
               "onAt": "19:50"
             }
@@ -4610,7 +4610,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.642159+00:00",
+        "generated_at": "2026-08-22T13:34:18.744187+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4643,18 +4643,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
+              "playerId": "PAK_22",
+              "name": "Waheed Ashraf Rana",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_15",
-              "name": "Afraz",
-              "number": 21,
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -4670,18 +4670,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_12",
-              "name": "Ammad Butt",
-              "number": 16,
+              "playerId": "PAK_15",
+              "name": "Afraz",
+              "number": 21,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_22",
-              "name": "Waheed Ashraf Rana",
-              "number": 8,
+              "playerId": "PAK_13",
+              "name": "Muhammad Hammadudin",
+              "number": 17,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -4697,18 +4697,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_21",
-              "name": "Arshad Liaqat",
-              "number": 11,
+              "playerId": "PAK_12",
+              "name": "Ammad Butt",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_06",
-              "name": "Moin Shakeel",
-              "number": 7,
+              "playerId": "PAK_21",
+              "name": "Arshad Liaqat",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -4724,23 +4724,23 @@
               "onAt": "38:50"
             },
             {
+              "playerId": "PAK_06",
+              "name": "Moin Shakeel",
+              "number": 7,
+              "position": null,
+              "onAt": "43:31"
+            },
+            {
               "playerId": "PAK_11",
               "name": "Ghazanfar Ali",
               "number": 15,
               "position": null,
-              "onAt": "43:31"
+              "onAt": "51:58"
             },
             {
               "playerId": "PAK_08",
               "name": "Zikriya Hayat",
               "number": 10,
-              "position": null,
-              "onAt": "51:58"
-            },
-            {
-              "playerId": "PAK_13",
-              "name": "Muhammad Hammadudin",
-              "number": 17,
               "position": null,
               "onAt": "08:02"
             },
@@ -6621,7 +6621,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.643949+00:00",
+        "generated_at": "2026-08-22T13:34:18.745379+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6645,46 +6645,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_11",
-              "name": "Manabu Yamashita",
-              "number": 13,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_05",
-              "name": "Seren Tanaka",
-              "number": 5,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
-              "line": "Midfielder",
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_20",
+              "name": "Hyota Yamada",
+              "number": 38,
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6693,7 +6666,43 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
               "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_11",
+              "name": "Manabu Yamashita",
+              "number": 13,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_05",
+              "name": "Seren Tanaka",
+              "number": 5,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6715,15 +6724,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_15",
-              "name": "Ryoma Ooka",
-              "number": 19,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -6735,58 +6735,58 @@
               "onAt": "28:26"
             },
             {
+              "playerId": "JPN_15",
+              "name": "Ryoma Ooka",
+              "number": 19,
+              "position": null,
+              "onAt": "21:06"
+            },
+            {
               "playerId": "JPN_04",
               "name": "Yamato Kawahara",
               "number": 4,
               "position": null,
-              "onAt": "21:06"
+              "onAt": "39:48"
             },
             {
               "playerId": "JPN_17",
               "name": "Yusuke Kawamura",
               "number": 23,
               "position": null,
-              "onAt": "39:48"
+              "onAt": "10:36"
             },
             {
               "playerId": "JPN_07",
               "name": "Taiki Takade",
               "number": 8,
               "position": null,
-              "onAt": "10:36"
+              "onAt": "32:40"
             },
             {
               "playerId": "JPN_13",
               "name": "Hiro Saito",
               "number": 16,
               "position": null,
-              "onAt": "32:40"
+              "onAt": "12:53"
             },
             {
               "playerId": "JPN_06",
               "name": "Naru Kimura",
               "number": 6,
               "position": null,
-              "onAt": "12:53"
+              "onAt": "34:51"
             },
             {
               "playerId": "JPN_14",
               "name": "Tsubasa Tanaka",
               "number": 18,
               "position": null,
-              "onAt": "34:51"
+              "onAt": "09:37"
             },
             {
               "playerId": "JPN_21",
               "name": "Jun Watanabe",
               "number": 7,
-              "position": null,
-              "onAt": "09:37"
-            },
-            {
-              "playerId": "JPN_20",
-              "name": "Hyota Yamada",
-              "number": 38,
               "position": null,
               "onAt": "40:58"
             }
@@ -8748,7 +8748,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-19T15:28:51.250135+00:00",
+        "generated_at": "2026-08-22T13:34:18.746577+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8953,18 +8953,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
+              "playerId": "PAK_22",
+              "name": "Waheed Ashraf Rana",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_15",
-              "name": "Afraz",
-              "number": 21,
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -8980,18 +8980,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_12",
-              "name": "Ammad Butt",
-              "number": 16,
+              "playerId": "PAK_15",
+              "name": "Afraz",
+              "number": 21,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_22",
-              "name": "Waheed Ashraf Rana",
-              "number": 8,
+              "playerId": "PAK_13",
+              "name": "Muhammad Hammadudin",
+              "number": 17,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -9007,18 +9007,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_21",
-              "name": "Arshad Liaqat",
-              "number": 11,
+              "playerId": "PAK_12",
+              "name": "Ammad Butt",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_06",
-              "name": "Moin Shakeel",
-              "number": 7,
+              "playerId": "PAK_21",
+              "name": "Arshad Liaqat",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -9034,23 +9034,23 @@
               "onAt": "19:39"
             },
             {
+              "playerId": "PAK_06",
+              "name": "Moin Shakeel",
+              "number": 7,
+              "position": null,
+              "onAt": "41:18"
+            },
+            {
               "playerId": "PAK_11",
               "name": "Ghazanfar Ali",
               "number": 15,
               "position": null,
-              "onAt": "41:18"
+              "onAt": "15:18"
             },
             {
               "playerId": "PAK_08",
               "name": "Zikriya Hayat",
               "number": 10,
-              "position": null,
-              "onAt": "15:18"
-            },
-            {
-              "playerId": "PAK_13",
-              "name": "Muhammad Hammadudin",
-              "number": 17,
               "position": null,
               "onAt": "24:39"
             },
@@ -10311,7 +10311,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T17:57:21.191088+00:00",
+        "generated_at": "2026-08-22T13:34:18.747476+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10335,46 +10335,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_11",
-              "name": "Manabu Yamashita",
-              "number": 13,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_05",
-              "name": "Seren Tanaka",
-              "number": 5,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
-              "line": "Midfielder",
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_20",
+              "name": "Hyota Yamada",
+              "number": 38,
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10383,7 +10356,43 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
               "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_11",
+              "name": "Manabu Yamashita",
+              "number": 13,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_05",
+              "name": "Seren Tanaka",
+              "number": 5,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10405,15 +10414,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_15",
-              "name": "Ryoma Ooka",
-              "number": 19,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -10425,58 +10425,58 @@
               "onAt": "34:23"
             },
             {
+              "playerId": "JPN_15",
+              "name": "Ryoma Ooka",
+              "number": 19,
+              "position": null,
+              "onAt": "27:57"
+            },
+            {
               "playerId": "JPN_04",
               "name": "Yamato Kawahara",
               "number": 4,
               "position": null,
-              "onAt": "27:57"
+              "onAt": "48:05"
             },
             {
               "playerId": "JPN_17",
               "name": "Yusuke Kawamura",
               "number": 23,
               "position": null,
-              "onAt": "48:05"
+              "onAt": "15:07"
             },
             {
               "playerId": "JPN_07",
               "name": "Taiki Takade",
               "number": 8,
               "position": null,
-              "onAt": "15:07"
+              "onAt": "49:35"
             },
             {
               "playerId": "JPN_13",
               "name": "Hiro Saito",
               "number": 16,
               "position": null,
-              "onAt": "49:35"
+              "onAt": "47:15"
             },
             {
               "playerId": "JPN_06",
               "name": "Naru Kimura",
               "number": 6,
               "position": null,
-              "onAt": "47:15"
+              "onAt": "38:01"
             },
             {
               "playerId": "JPN_14",
               "name": "Tsubasa Tanaka",
               "number": 18,
               "position": null,
-              "onAt": "38:01"
+              "onAt": "08:22"
             },
             {
               "playerId": "JPN_21",
               "name": "Jun Watanabe",
               "number": 7,
-              "position": null,
-              "onAt": "08:22"
-            },
-            {
-              "playerId": "JPN_20",
-              "name": "Hyota Yamada",
-              "number": 38,
               "position": null,
               "onAt": "37:55"
             }
@@ -14886,15 +14886,89 @@
       "time": "13:00",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 7,
+          "team": "JPN",
+          "type": "goal",
+          "via": "PC",
+          "player": "Hyota Yamada"
+        },
+        {
+          "minute": 15,
+          "team": "JPN",
+          "type": "goal",
+          "via": "FG",
+          "player": "Kaito Tanaka"
+        },
+        {
+          "minute": 19,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Muhammad Hammadudin"
+        },
+        {
+          "minute": 22,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Waheed Ashraf Rana"
+        },
+        {
+          "minute": 27,
+          "team": "JPN",
+          "type": "green_card",
+          "player": "Hyota Yamada"
+        },
+        {
+          "minute": 32,
+          "team": "PAK",
+          "type": "goal",
+          "via": "PC",
+          "player": "Waheed Ashraf Rana"
+        },
+        {
+          "minute": 33,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Muhammad Hammadudin"
+        },
+        {
+          "minute": 36,
+          "team": "JPN",
+          "type": "goal",
+          "via": "PC",
+          "player": "Koji Yamasaki"
+        },
+        {
+          "minute": 41,
+          "team": "PAK",
+          "type": "goal",
+          "via": "FG",
+          "player": "Hannan Shahid"
+        },
+        {
+          "minute": 44,
+          "team": "PAK",
+          "type": "yellow_card",
+          "player": "Muhammad Abdullah"
+        },
+        {
+          "minute": 53,
+          "team": "PAK",
+          "type": "green_card",
+          "player": "Sufyan Khan"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.753690+00:00",
+        "generated_at": "2026-08-22T13:34:18.750122+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -14927,18 +15001,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
+              "playerId": "PAK_22",
+              "name": "Waheed Ashraf Rana",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_15",
-              "name": "Afraz",
-              "number": 21,
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -14954,18 +15028,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_12",
-              "name": "Ammad Butt",
-              "number": 16,
+              "playerId": "PAK_15",
+              "name": "Afraz",
+              "number": 21,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_22",
-              "name": "Waheed Ashraf Rana",
-              "number": 8,
+              "playerId": "PAK_13",
+              "name": "Muhammad Hammadudin",
+              "number": 17,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -14981,18 +15055,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_21",
-              "name": "Arshad Liaqat",
-              "number": 11,
+              "playerId": "PAK_12",
+              "name": "Ammad Butt",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_06",
-              "name": "Moin Shakeel",
-              "number": 7,
+              "playerId": "PAK_21",
+              "name": "Arshad Liaqat",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -15008,23 +15082,23 @@
               "onAt": "28:52"
             },
             {
+              "playerId": "PAK_06",
+              "name": "Moin Shakeel",
+              "number": 7,
+              "position": null,
+              "onAt": "51:49"
+            },
+            {
               "playerId": "PAK_11",
               "name": "Ghazanfar Ali",
               "number": 15,
               "position": null,
-              "onAt": "51:49"
+              "onAt": "15:13"
             },
             {
               "playerId": "PAK_08",
               "name": "Zikriya Hayat",
               "number": 10,
-              "position": null,
-              "onAt": "15:13"
-            },
-            {
-              "playerId": "PAK_13",
-              "name": "Muhammad Hammadudin",
-              "number": 17,
               "position": null,
               "onAt": "19:21"
             },
@@ -15090,46 +15164,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_11",
-              "name": "Manabu Yamashita",
-              "number": 13,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_05",
-              "name": "Seren Tanaka",
-              "number": 5,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
-              "line": "Midfielder",
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_20",
+              "name": "Hyota Yamada",
+              "number": 38,
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -15138,7 +15185,43 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
               "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_11",
+              "name": "Manabu Yamashita",
+              "number": 13,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_05",
+              "name": "Seren Tanaka",
+              "number": 5,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -15160,15 +15243,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_15",
-              "name": "Ryoma Ooka",
-              "number": 19,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -15180,58 +15254,58 @@
               "onAt": "50:29"
             },
             {
+              "playerId": "JPN_15",
+              "name": "Ryoma Ooka",
+              "number": 19,
+              "position": null,
+              "onAt": "33:52"
+            },
+            {
               "playerId": "JPN_04",
               "name": "Yamato Kawahara",
               "number": 4,
               "position": null,
-              "onAt": "33:52"
+              "onAt": "33:51"
             },
             {
               "playerId": "JPN_17",
               "name": "Yusuke Kawamura",
               "number": 23,
               "position": null,
-              "onAt": "33:51"
+              "onAt": "28:24"
             },
             {
               "playerId": "JPN_07",
               "name": "Taiki Takade",
               "number": 8,
               "position": null,
-              "onAt": "28:24"
+              "onAt": "44:34"
             },
             {
               "playerId": "JPN_13",
               "name": "Hiro Saito",
               "number": 16,
               "position": null,
-              "onAt": "44:34"
+              "onAt": "22:58"
             },
             {
               "playerId": "JPN_06",
               "name": "Naru Kimura",
               "number": 6,
               "position": null,
-              "onAt": "22:58"
+              "onAt": "20:54"
             },
             {
               "playerId": "JPN_14",
               "name": "Tsubasa Tanaka",
               "number": 18,
               "position": null,
-              "onAt": "20:54"
+              "onAt": "36:53"
             },
             {
               "playerId": "JPN_21",
               "name": "Jun Watanabe",
               "number": 7,
-              "position": null,
-              "onAt": "36:53"
-            },
-            {
-              "playerId": "JPN_20",
-              "name": "Hyota Yamada",
-              "number": 38,
               "position": null,
               "onAt": "38:49"
             }
@@ -15240,7 +15314,129 @@
           "coach": "Yoshihiro Anai"
         }
       },
-      "tms_id": 22363
+      "tms_id": 22363,
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 2
+      },
+      "stats": {
+        "home": {
+          "goals": 4,
+          "shots": 12,
+          "circle_entries": 22,
+          "penalty_corners": 1,
+          "possession": 50,
+          "green_cards": 2,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 9,
+          "circle_entries": 24,
+          "penalty_corners": 2,
+          "possession": 50,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — PAK vs JPN.",
+          "seq": 0
+        },
+        {
+          "minute": 7,
+          "team": "JPN",
+          "text": "GOAL! Hyota Yamada (JPN) scores from a penalty corner — PAK 0-1 JPN.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "team": "JPN",
+          "text": "GOAL! Kaito Tanaka (JPN) scores from a field goal — PAK 0-2 JPN.",
+          "seq": 2
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: PAK 0-2 JPN.",
+          "seq": 3
+        },
+        {
+          "minute": 19,
+          "team": "PAK",
+          "text": "Green Card for Muhammad Hammadudin (PAK) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 22,
+          "team": "PAK",
+          "text": "GOAL! Waheed Ashraf Rana (PAK) scores from a field goal — PAK 1-2 JPN.",
+          "seq": 5
+        },
+        {
+          "minute": 27,
+          "team": "JPN",
+          "text": "Green Card for Hyota Yamada (JPN) — 2-minute suspension.",
+          "seq": 6
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: PAK 1-2 JPN.",
+          "seq": 7
+        },
+        {
+          "minute": 32,
+          "team": "PAK",
+          "text": "GOAL! Waheed Ashraf Rana (PAK) scores from a penalty corner — PAK 2-2 JPN.",
+          "seq": 8
+        },
+        {
+          "minute": 33,
+          "team": "PAK",
+          "text": "GOAL! Muhammad Hammadudin (PAK) scores from a field goal — PAK 3-2 JPN.",
+          "seq": 9
+        },
+        {
+          "minute": 36,
+          "team": "JPN",
+          "text": "GOAL! Koji Yamasaki (JPN) scores from a penalty corner — PAK 3-3 JPN.",
+          "seq": 10
+        },
+        {
+          "minute": 41,
+          "team": "PAK",
+          "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — PAK 4-3 JPN.",
+          "seq": 11
+        },
+        {
+          "minute": 44,
+          "team": "PAK",
+          "text": "Yellow Card for Muhammad Abdullah (PAK) — 5-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: PAK 4-3 JPN.",
+          "seq": 13
+        },
+        {
+          "minute": 53,
+          "team": "PAK",
+          "text": "Green Card for Sufyan Khan (PAK) — 2-minute suspension.",
+          "seq": 14
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: PAK 4-3 JPN.",
+          "seq": 15
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2E1",
@@ -17428,7 +17624,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.654249+00:00",
+        "generated_at": "2026-08-22T13:34:18.752213+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -17452,46 +17648,19 @@
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_11",
-              "name": "Manabu Yamashita",
-              "number": 13,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_05",
-              "name": "Seren Tanaka",
-              "number": 5,
-              "line": "Defender",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
-              "line": "Midfielder",
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_20",
+              "name": "Hyota Yamada",
+              "number": 38,
+              "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -17500,7 +17669,43 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
               "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_11",
+              "name": "Manabu Yamashita",
+              "number": 13,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_05",
+              "name": "Seren Tanaka",
+              "number": 5,
+              "line": "Midfielder",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -17522,15 +17727,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_15",
-              "name": "Ryoma Ooka",
-              "number": 19,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -17542,58 +17738,58 @@
               "onAt": "29:39"
             },
             {
+              "playerId": "JPN_15",
+              "name": "Ryoma Ooka",
+              "number": 19,
+              "position": null,
+              "onAt": "26:37"
+            },
+            {
               "playerId": "JPN_04",
               "name": "Yamato Kawahara",
               "number": 4,
               "position": null,
-              "onAt": "26:37"
+              "onAt": "45:11"
             },
             {
               "playerId": "JPN_17",
               "name": "Yusuke Kawamura",
               "number": 23,
               "position": null,
-              "onAt": "45:11"
+              "onAt": "11:40"
             },
             {
               "playerId": "JPN_07",
               "name": "Taiki Takade",
               "number": 8,
               "position": null,
-              "onAt": "11:40"
+              "onAt": "16:20"
             },
             {
               "playerId": "JPN_13",
               "name": "Hiro Saito",
               "number": 16,
               "position": null,
-              "onAt": "16:20"
+              "onAt": "09:00"
             },
             {
               "playerId": "JPN_06",
               "name": "Naru Kimura",
               "number": 6,
               "position": null,
-              "onAt": "09:00"
+              "onAt": "09:52"
             },
             {
               "playerId": "JPN_14",
               "name": "Tsubasa Tanaka",
               "number": 18,
               "position": null,
-              "onAt": "09:52"
+              "onAt": "17:36"
             },
             {
               "playerId": "JPN_21",
               "name": "Jun Watanabe",
               "number": 7,
-              "position": null,
-              "onAt": "17:36"
-            },
-            {
-              "playerId": "JPN_20",
-              "name": "Hyota Yamada",
-              "number": 38,
               "position": null,
               "onAt": "28:04"
             }
@@ -17799,7 +17995,7 @@
       "events": [],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.654691+00:00",
+        "generated_at": "2026-08-22T13:34:18.752518+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -18004,18 +18200,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_14",
-              "name": "Rehman Abdul",
-              "number": 18,
+              "playerId": "PAK_22",
+              "name": "Waheed Ashraf Rana",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_15",
-              "name": "Afraz",
-              "number": 21,
+              "playerId": "PAK_14",
+              "name": "Rehman Abdul",
+              "number": 18,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -18031,18 +18227,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_12",
-              "name": "Ammad Butt",
-              "number": 16,
+              "playerId": "PAK_15",
+              "name": "Afraz",
+              "number": 21,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_22",
-              "name": "Waheed Ashraf Rana",
-              "number": 8,
+              "playerId": "PAK_13",
+              "name": "Muhammad Hammadudin",
+              "number": 17,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -18058,18 +18254,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_21",
-              "name": "Arshad Liaqat",
-              "number": 11,
+              "playerId": "PAK_12",
+              "name": "Ammad Butt",
+              "number": 16,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "PAK_06",
-              "name": "Moin Shakeel",
-              "number": 7,
+              "playerId": "PAK_21",
+              "name": "Arshad Liaqat",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -18085,23 +18281,23 @@
               "onAt": "46:01"
             },
             {
+              "playerId": "PAK_06",
+              "name": "Moin Shakeel",
+              "number": 7,
+              "position": null,
+              "onAt": "12:06"
+            },
+            {
               "playerId": "PAK_11",
               "name": "Ghazanfar Ali",
               "number": 15,
               "position": null,
-              "onAt": "12:06"
+              "onAt": "45:18"
             },
             {
               "playerId": "PAK_08",
               "name": "Zikriya Hayat",
               "number": 10,
-              "position": null,
-              "onAt": "45:18"
-            },
-            {
-              "playerId": "PAK_13",
-              "name": "Muhammad Hammadudin",
-              "number": 17,
               "position": null,
               "onAt": "18:33"
             },
