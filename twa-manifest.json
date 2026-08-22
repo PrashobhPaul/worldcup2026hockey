@@ -13,8 +13,8 @@
   "backgroundColor": "#0b1736",
   "enableNotifications": true,
   "startUrl": "/worldcup2026hockey/",
-  "iconUrl": "https://prashobhpaul.github.io/worldcup2026hockey/icon-512.png",
-  "maskableIconUrl": "https://prashobhpaul.github.io/worldcup2026hockey/icon-maskable-512.png",
+  "iconUrl": "https://raw.githubusercontent.com/PrashobhPaul/worldcup2026hockey/main/public/icon-512.png",
+  "maskableIconUrl": "https://raw.githubusercontent.com/PrashobhPaul/worldcup2026hockey/main/public/icon-maskable-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "./android.keystore",

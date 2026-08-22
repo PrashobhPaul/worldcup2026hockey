@@ -63,6 +63,8 @@ jobs:
           cat > ~/.bubblewrap/config.json <<EOF
           {"jdkPath": "$JAVA_HOME", "androidSdkPath": "$ANDROID_HOME"}
           EOF
+          echo "ANDROID_HOME=$ANDROID_HOME"; ls "$ANDROID_HOME" || true; ls "$ANDROID_HOME/build-tools" || true
+          cat ~/.bubblewrap/config.json
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
 
       - name: Build APK
@@ -70,7 +72,8 @@ jobs:
           BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
           BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
         run: |
-          bubblewrap update --skipVersionUpgrade || true
+          bubblewrap doctor || true
+          bubblewrap update --skipVersionUpgrade
           bubblewrap build --skipPwaValidation
           ls -la ./*.apk || ls -la app/build/outputs/apk/release/ || true
           APK=$(find . -name 'app-release-signed.apk' -o -name 'app-release.apk' | head -1)
