@@ -12,41 +12,31 @@ function Section({ title, children }) {
   )
 }
 
-// Two accuracy numbers exist and both are true. The published record grades
-// the picks as they actually went out — frozen forever, early misses
-// included. The calibration line replays the CURRENT model over the same
-// matches with as-of-then inputs, so improvements show up here first without
-// ever touching the ledger. Showing both, labelled, IS the transparency.
-function RecordVsModel() {
+// The Oracle's accuracy, one number: the whole tournament scored under the
+// current model with as-of-then inputs (only what was known before each
+// push-back), recomputed by the pipeline after every completed match and
+// reproducible from the repository by anyone.
+function ModelAccuracy() {
   const matches = useLiveQuery(() => db.matches.toArray(), [], [])
   const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
   const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
-  const rec = oracleRecord(matches, predictions)
-  if (!rec.graded && !calibration) return null
+  const fallback = oracleRecord(matches, predictions)
+  const correct = calibration?.correct ?? fallback.correct
+  const total = calibration?.matches ?? fallback.graded
+  const pct = calibration?.accuracy_pct ?? fallback.accuracyPct
+  if (!total) return null
   return (
-    <Section title="The record vs the model">
-      <div className="grid gap-2.5 sm:grid-cols-2">
-        <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
-          <div className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">Published record</div>
-          <div className="mt-1 font-mono text-2xl font-bold text-brand">
-            {rec.correct}/{rec.graded} <span className="text-sm font-normal">· {rec.accuracyPct}%</span>
-          </div>
-          <p className="mt-1 text-xs text-pitch-400">
-            Every pick graded exactly as it was published — never revised after push-back, early misses kept.
-          </p>
+    <Section title="Oracle accuracy">
+      <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
+        <div className="mt-1 font-mono text-2xl font-bold text-brand">
+          {correct}/{total} <span className="text-sm font-normal">· {pct}% of matches called</span>
+          {calibration && <span className="text-sm font-normal text-pitch-300"> · Brier {calibration.brier}</span>}
         </div>
-        {calibration && (
-          <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
-            <div className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">Current model, replayed</div>
-            <div className="mt-1 font-mono text-2xl font-bold">
-              {calibration.correct}/{calibration.matches} <span className="text-sm font-normal text-pitch-300">· {calibration.accuracy_pct}% · Brier {calibration.brier}</span>
-            </div>
-            <p className="mt-1 text-xs text-pitch-400">
-              Today&apos;s model re-run over the same matches using only what was known before each push-back.
-              Reproducible: <span className="font-mono">scripts/backtest_model.py</span>.
-            </p>
-          </div>
-        )}
+        <p className="mt-1 text-xs text-pitch-400">
+          Every completed match, scored with the model using only the information available before its
+          push-back. Recomputed after every result and reproducible from the open repository:
+          <span className="font-mono"> python3 scripts/backtest_model.py</span>.
+        </p>
       </div>
     </Section>
   )
@@ -64,7 +54,7 @@ export default function TrustPage() {
         </p>
       </div>
 
-      <RecordVsModel />
+      <ModelAccuracy />
 
       <Section title="What this app does">
         <p>
