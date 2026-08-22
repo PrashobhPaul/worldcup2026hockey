@@ -55,6 +55,12 @@ The point suits Australia far more. With the win over Spain carried forward from
 The response was six unanswered goals in thirty-three minutes. Hickson levelled once more in the 25th from open play, Scott Boyde — shown a green card in the 22nd — turned the match properly in the 32nd, and Kane Russell's penalty corner in the 35th gave New Zealand a lead they never looked like surrendering. Finn Ward in the 41st, Sam Lane in the 48th and Hickson's third in the 56th completed the rout: a hat-trick opened by a corner and closed by two field goals, with five different New Zealand scorers behind it.
 
 The numbers underneath are lopsided in a way Pool A never let New Zealand show: sixty-five per cent of possession, eleven shots to six, forty circle entries to seventeen, and both penalty corners converted. With the two-goal win over Japan carried forward, the Black Sticks top Pool G on six points. For Wales the tournament's pattern hardens — twenty-one conceded across four matches now — and Morgan's brace was the only reward from a morning that began exactly the way they must have dreamed it.""",
+
+    'S2G2': """Japan led this match by two goals inside the opening quarter — one more than they had managed in their entire pool campaign — and still ended the afternoon with the tournament's familiar result. Hyota Yamada converted a penalty corner in the 7th and Kaito Tanaka finished from open play in the 15th, and a Pakistan side that had left Pool D without a win was chasing again.
+
+The chase is what Pakistan will remember. Waheed Ashraf Rana pulled one back from open play in the 22nd, levelled from Pakistan's only penalty corner of the match in the 32nd, and a minute later Muhammad Hammadudin — shown a green card back in the 19th — put them in front in the 33rd. Koji Yamasaki's corner dragged Japan level in the 36th, but Hannan Shahid's field goal in the 41st, the fourth goal of a breathless third quarter, stood as the winner. Pakistan defended the last quarter through Muhammad Abdullah's yellow card in the 44th and a late green for Sufyan Khan, and held.
+
+The sheet split almost evenly — possession fifty apiece, circle entries twenty-four to twenty-two in Japan's favour, shots twelve to nine to Pakistan — and the difference was ruthlessness at the set piece and in front of goal: three penalty corners in the match, three goals. It is Pakistan's first win of this World Cup, from an attack that has now scored three or more in three consecutive matches, and Rana's brace led it. Japan's record now reads four defeats from four — with three of their four tournament goals scored on the day it finally was not enough.""",
 }
 
 REASONS = {
@@ -67,6 +73,10 @@ REASONS = {
     'S2F1': "Belgium scored eight goals in three pool matches — three past France, five past Malaysia — and their only defeat was by a single goal to Germany. Australia took seven points from Pool C unbeaten, but two of those matches brought one goal or fewer and they dropped points to the pool's lowest seed. Between the tournament's most productive attack and its steadiest points-gatherer, the hosts' extra cutting edge tips a very close call — with a draw the likeliest single alternative.",
 
     'S2G1': "New Zealand's pool record reads worse than it was: both defeats came against top-seven opposition, and in their one match against a side outside that bracket they won 2-0 without conceding. Wales scored six in Pool D — three in one afternoon against Pakistan — but conceded fourteen, eight of them to England, and are yet to shut out anyone. Against the first non-elite attack of their tournament, New Zealand are favoured with something to spare.",
+
+    'S2G2': "Pakistan left Pool D with a single point, but their attack travelled: seven scored in three matches against England, India and Wales, three of them in each of the last two. Japan's pool brought three defeats and one goal, with shut-outs conceded to Argentina and New Zealand. Both sides are winless — yet one has scored in every match this tournament and the other has barely scored at all, and that margin favours Pakistan.",
+
+    'S2E1': "The Netherlands swept Pool A with three wins from three, twelve scored and three conceded — one of only two perfect records in the tournament. India took six points from Pool D, putting three past Wales and five past Pakistan, and their defeat to England came by two in a match they scored twice in. India's ten pool goals say they will create chances; the Dutch defence, breached once a game on average, says those chances stay scarce. The tournament's most complete side so far is favoured on the full sweep of the evidence.",
 }
 
 

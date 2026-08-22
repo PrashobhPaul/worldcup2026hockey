@@ -544,14 +544,21 @@ update_live_scores(f, {('RSA', 'FRA'): (3, 1)}, now=in_window)
 check('a reversed pair updates, oriented to our fixture',
       s['live_score'] == dict(s['live_score'], home=1, away=3))
 
-# Past the window the page score is possibly final — the live field must not
-# keep it; the witnessed backfill owns everything from here.
-update_live_scores(f, {('FRA', 'RSA'): (1, 3)}, now=past_window)
-check('past the window the live score is dropped, not frozen', 'live_score' not in s)
+# Past the window the last in-play score STAYS on the board through the
+# score-wait — the reader keeps "last updated 1-3" instead of a blank card
+# while the final is double-witnessed. No new value is taken (the witnessed
+# backfill owns the final), and completion clears the field.
+update_live_scores(f, {('FRA', 'RSA'): (2, 4)}, now=past_window)
+check('past the window the last live score is retained, not replaced',
+      s.get('live_score', {}).get('home') == 1 and s['live_score']['away'] == 3)
 
 f = stage_fx(date='2026-08-21', time='14:00')
 update_live_scores(f, {('FRA', 'RSA'): (1, 0)}, now=in_window)
 check('before push-back nothing is written', 'live_score' not in f['matches'][0])
+f['matches'][0]['live_score'] = {'home': 1, 'away': 0, 'at': '2026-08-21T09:30:00+00:00'}
+update_live_scores(f, {}, now=in_window)
+check('a live score on a not-yet-started fixture (moved schedule) is dropped',
+      'live_score' not in f['matches'][0])
 
 f = stage_fx()
 f['matches'][0]['live_score'] = {'home': 1, 'away': 1, 'at': '2026-08-21T09:30:00+00:00'}

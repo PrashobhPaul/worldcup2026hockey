@@ -1538,10 +1538,20 @@ def update_live_scores(fixtures, page_results, now=None):
         except ValueError:
             continue
         in_window = ko <= now < ko + timedelta(minutes=MATCH_DURATION_MIN)
-        if m['status'] == 'completed' or has_score(m) or not in_window:
-            # Outside the window (or already final) a lingering live_score is
-            # stale — the completion paths also clear it, this is the backstop.
+        if m['status'] == 'completed' or has_score(m):
+            # The confirmed final owns the fixture; the running score has done
+            # its job.
             if m.pop('live_score', None) is not None:
+                changed = True
+            continue
+        if not in_window:
+            # Past the window with no confirmed final yet, the last in-play
+            # score STAYS put — the reader keeps "last updated 4-3" on the
+            # board through the score-wait instead of a blank card while the
+            # final is double-witnessed. The completion paths clear it the
+            # moment the confirmed score lands. Before push-back, though, a
+            # live_score is nonsense (a moved schedule): drop it.
+            if now < ko and m.pop('live_score', None) is not None:
                 changed = True
             continue
         page = page_results.get((m['home'], m['away'])) or (
@@ -2439,7 +2449,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
         p['superseded'] = True
         p['superseded_at'] = now.isoformat()
         p['superseded_reason'] = 'Inputs corrected pre-match: official FIH ranking points and the v2 draw-aware model.'
-        predictions['predictions'].append({
+        new_row = {
             'id': f"oracle-v1:{mid}:r{rev}",
             'matchId': mid,
             'source': 'oracle-v1',
@@ -2451,7 +2461,17 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
                        f"Elo with a full draw model. Revised pre-match; the original pick "
                        f"stays in the ledger."),
             'publishedAt': now.isoformat(),
-        })
+        }
+        if p.get('reason_original'):
+            # An authored rationale (written from the tournament record, marked
+            # by reason_original) outlives a probability refresh: the template
+            # never overwrites prose.
+            new_row['reason'] = p['reason']
+            new_row['reason_original'] = p['reason_original']
+            for k in ('reason_revised_at', 'reason_revision'):
+                if p.get(k):
+                    new_row[k] = p[k]
+        predictions['predictions'].append(new_row)
         changed = True
         print(f"ORACLE REVISION: {mid} {p['pick']} -> {pick} (ranks corrected, match not started)")
     return changed

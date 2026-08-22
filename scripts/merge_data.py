@@ -138,13 +138,48 @@ def merge_players(ours, theirs):
 
 
 def merge_predictions(ours, theirs):
-    """Append-only ledger: the branch's picks win, but nothing is dropped."""
-    seen = {r['id'] for r in ours['predictions'] if 'id' in r}
+    """Append-only ledger: the branch's picks win, but nothing is dropped —
+    and the bookkeeping is one-way. When the pipeline publishes a revision it
+    marks the prior row superseded; a whole-file branch version of that prior
+    row must not resurrect it, or the ledger ends up with two active picks
+    for one match (exactly what happened to ten Stage 2 fixtures). So:
+    superseded on either side sticks, and if two active rows for one match
+    survive anyway, the newest published row keeps the ledger."""
+    theirs_by_id = {r['id']: r for r in theirs.get('predictions', []) if r.get('id')}
+    seen = set()
+    for r in ours['predictions']:
+        rid = r.get('id')
+        if not rid:
+            continue
+        seen.add(rid)
+        t = theirs_by_id.get(rid)
+        if t and t.get('superseded') and not r.get('superseded'):
+            r['superseded'] = True
+            r['superseded_at'] = t.get('superseded_at')
+            r['superseded_reason'] = t.get('superseded_reason')
     added = 0
-    for r in theirs.get('predictions', []):
-        if r.get('id') and r['id'] not in seen:
+    for rid, r in theirs_by_id.items():
+        if rid not in seen:
             ours['predictions'].append(r); added += 1
-    return ours, f'{len(ours["predictions"])} rows ({added} kept from the pipeline)'
+    by_match = {}
+    for r in ours['predictions']:
+        if not r.get('superseded'):
+            by_match.setdefault(r['matchId'], []).append(r)
+    closed = 0
+    for rows in by_match.values():
+        if len(rows) < 2:
+            continue
+        rows.sort(key=lambda r: r.get('publishedAt') or '')
+        for r in rows[:-1]:
+            r['superseded'] = True
+            r['superseded_at'] = rows[-1].get('publishedAt')
+            r['superseded_reason'] = ('Ledger repair: a later revision was already published; '
+                                      'this row should have been closed when it was.')
+            closed += 1
+    note = f'{len(ours["predictions"])} rows ({added} kept from the pipeline'
+    if closed:
+        note += f', {closed} stale active row(s) closed'
+    return ours, note + ')'
 
 
 def merge_h2h(ours, theirs):
