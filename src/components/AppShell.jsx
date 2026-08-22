@@ -67,9 +67,11 @@ export default function AppShell() {
       {/* Top nav */}
       <header className="sticky top-0 z-50 border-b border-white/5 bg-pitch-950/90 backdrop-blur-xl">
         <nav className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
-          {/* Brand scales WITHIN the h-14 header: crest as-is, wordmark up a
-              step, gap tightened — the bar itself never grows. */}
-          <Link to="/" className="flex shrink-0 items-center gap-1.5" aria-label="Hockey.AI — home">
+          {/* Brand scales WITHIN the h-14 header — the bar itself never grows.
+              The transform nudges crest + wordmark together by exactly 1%
+              without shifting the layout around them. */}
+          <Link to="/" className="flex shrink-0 items-center gap-1.5" aria-label="Hockey.AI — home"
+            style={{ transform: 'scale(1.01)', transformOrigin: 'left center' }}>
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-8 w-8 rounded-lg" />
             <img src={`${import.meta.env.BASE_URL}hockeyai_name.png`} alt="Hockey.AI"
               className="hidden h-10 w-auto min-[380px]:block sm:h-11" />
