@@ -49,6 +49,12 @@ The result reshapes Pool F. Spain carry a narrow defeat to Australia forward fro
 Belgium's reply came from the set piece: Tom Boon converted a penalty corner in the 38th, early in the third quarter, in a match that never produced a card and never quite lost its balance. Australia's nine shots to six were the greater volume, but neither side could find a second goal, and two of the tournament's heavyweights settled for a point apiece.
 
 The point suits Australia far more. With the win over Spain carried forward from Stage 1 they top Pool F on four points, unbeaten across four matches this tournament; Belgium, carrying the one-goal defeat to Germany, hold a single point from their two counted results with only the Spain fixture left to change it. Even a win there leaves the world's number-one side needing results elsewhere — a semi-final place is no longer in Belgium's own hands.""",
+
+    'S2G1': """Wales led this match twice and still lost it by five, which is the truest measure of what New Zealand did to them after the first quarter. Jolyon Morgan scored from open play in the 8th, and when James Hickson's penalty corner levelled it in the 22nd, Morgan answered within a minute — his second, in the 23rd, had Wales in front again.
+
+The response was six unanswered goals in thirty-three minutes. Hickson levelled once more in the 25th from open play, Scott Boyde — shown a green card in the 22nd — turned the match properly in the 32nd, and Kane Russell's penalty corner in the 35th gave New Zealand a lead they never looked like surrendering. Finn Ward in the 41st, Sam Lane in the 48th and Hickson's third in the 56th completed the rout: a hat-trick opened by a corner and closed by two field goals, with five different New Zealand scorers behind it.
+
+The numbers underneath are lopsided in a way Pool A never let New Zealand show: sixty-five per cent of possession, eleven shots to six, forty circle entries to seventeen, and both penalty corners converted. With the two-goal win over Japan carried forward, the Black Sticks top Pool G on six points. For Wales the tournament's pattern hardens — twenty-one conceded across four matches now — and Morgan's brace was the only reward from a morning that began exactly the way they must have dreamed it.""",
 }
 
 REASONS = {
@@ -59,6 +65,8 @@ REASONS = {
     'S2F2': "Germany came through Pool B unbeaten with seven scored and only two conceded in three matches, the win over Belgium built on exactly the kind of defending this fixture rewards. Spain won twice by 3-1 in Pool C either side of a single-goal loss to Australia, so both arrive in form — but Spain's chances have come at a goal-a-game cost, and in a match likely to be tight and low-scoring, the side that has defended better all tournament is favoured.",
 
     'S2F1': "Belgium scored eight goals in three pool matches — three past France, five past Malaysia — and their only defeat was by a single goal to Germany. Australia took seven points from Pool C unbeaten, but two of those matches brought one goal or fewer and they dropped points to the pool's lowest seed. Between the tournament's most productive attack and its steadiest points-gatherer, the hosts' extra cutting edge tips a very close call — with a draw the likeliest single alternative.",
+
+    'S2G1': "New Zealand's pool record reads worse than it was: both defeats came against top-seven opposition, and in their one match against a side outside that bracket they won 2-0 without conceding. Wales scored six in Pool D — three in one afternoon against Pakistan — but conceded fourteen, eight of them to England, and are yet to shut out anyone. Against the first non-elite attack of their tournament, New Zealand are favoured with something to spare.",
 }
 
 

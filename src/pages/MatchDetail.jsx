@@ -5,7 +5,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { useTeam, phaseTag, formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
-import { deriveClock, isLiveClock, phaseLabel } from '../engine/clock'
+import { deriveClock, effectiveStatus, isLiveClock, phaseLabel } from '../engine/clock'
 import { useClockTick } from '../hooks/useClockTick'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
 import { buildPreview, h2hKey } from '../engine/preview'
@@ -129,9 +129,8 @@ function quarterOf(minute) {
 }
 
 function AlsoLiveStrip({ currentId }) {
-  const live = useLiveQuery(
-    () => db.matches.where('status').equals('live').toArray(), [], [])
-  const others = live.filter(m => m.id !== currentId)
+  const all = useLiveQuery(() => db.matches.toArray(), [], [])
+  const others = all.filter(m => m.id !== currentId && effectiveStatus(m) === 'live')
   if (!others.length) return null
   return (
     <div className="no-scrollbar flex gap-2 overflow-x-auto">
@@ -139,7 +138,7 @@ function AlsoLiveStrip({ currentId }) {
         <Link key={m.id} to={`/matches/${m.id}`}
           className="flex shrink-0 items-center gap-2 rounded-lg border border-live/30 bg-pitch-800 px-3 py-1.5 font-mono text-xs">
           <span className="live-dot" />
-          <span className="font-bold">{m.home} {m.score?.home ?? '–'}–{m.score?.away ?? '–'} {m.away}</span>
+          <span className="font-bold">{m.home} {m.score?.home ?? 0}–{m.score?.away ?? 0} {m.away}</span>
         </Link>
       ))}
     </div>
@@ -334,9 +333,9 @@ export default function MatchDetailPage() {
             {(done || live || waiting) ? (
               <>
                 <div className={`font-mono text-4xl font-bold tracking-widest ${live ? 'text-live' : ''}`}>
-                  {/* No live score feed exists mid-match — a dash is the only
-                      honest display, never an invented 0-0. */}
-                  {match.score?.home ?? '–'}–{match.score?.away ?? '–'}
+                  {/* In play, the board holds the last value the feed confirmed
+                      — 0-0 from push-back until the first update lands. */}
+                  {match.score?.home ?? 0}–{match.score?.away ?? 0}
                 </div>
                 <span className={`mt-1 rounded px-2 py-0.5 font-mono text-[11px] font-bold ${
                   live ? 'border border-live/30 bg-live/10 text-live' : 'bg-pitch-700 text-pitch-300'
@@ -356,11 +355,13 @@ export default function MatchDetailPage() {
             <span className="font-mono text-[10px] text-pitch-400">FIH #{away?.fihRank ?? '—'}</span>
           </Link>
         </div>
-        {(live || waiting) && !hasScore && (
+        {(live || waiting) && (!hasScore || match.liveScoreAt) && (
           <p className="mt-4 border-t border-white/5 pt-3 text-center font-mono text-[11px] leading-relaxed text-pitch-400">
             {waiting
-              ? 'Full-time — waiting for FIH to publish the official score. It lands here automatically.'
-              : 'Clock estimated from the official start time. FIH does not stream a live score — the final score lands here shortly after full-time.'}
+              ? 'Full-time — syncing the official score from FIH. It lands here automatically.'
+              : match.liveScoreAt
+                ? 'Live score · refreshes every few minutes — the official record is confirmed at full-time.'
+                : 'In progress — syncing with the official FIH feed. The score updates every few minutes; clock estimated from the official start time.'}
           </p>
         )}
         {(done || live) && pc?.home != null && (

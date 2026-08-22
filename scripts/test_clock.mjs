@@ -1,7 +1,7 @@
 // Clock honesty: the schedule-estimated live clock and the FT-awaiting-score
 // state. Guards the exact reported failure — FRA v RSA and IRL v MAS sat on
 // "live · Q1" with a fabricated 0-0 for hours after full-time.
-import { deriveClock, isLiveClock, MATCH_WINDOW_MIN } from '../src/engine/clock.js'
+import { deriveClock, effectiveStatus, isLiveClock, MATCH_WINDOW_MIN } from '../src/engine/clock.js'
 
 let failed = 0
 const check = (name, cond, detail = '') => {
@@ -76,6 +76,19 @@ check('no match: pre-state', c.kind === 'PRE')
 c = deriveClock(m({ kickoffUtc: undefined }), min(10))
 check('live with no kickoff time: raw LIVE, no invented minute',
   c.kind === 'RAW' && c.minute === null, JSON.stringify(c))
+
+console.log('\nEffective status — what every list, count and badge agrees on')
+check('scheduled before push-back: scheduled',
+  effectiveStatus(m({ status: 'scheduled' }), min(-30)) === 'scheduled')
+check('scheduled but past push-back: live (the cron has not flipped it yet)',
+  effectiveStatus(m({ status: 'scheduled' }), min(5)) === 'live')
+check('past the window, still unconfirmed: stays live (score-wait), never vanishes',
+  effectiveStatus(m({ status: 'scheduled' }), min(MATCH_WINDOW_MIN + 10)) === 'live')
+check('stored live: live', effectiveStatus(m(), min(-60)) === 'live')
+check('completed outranks everything',
+  effectiveStatus(m({ status: 'completed', score: { home: 7, away: 2 } }), min(5)) === 'completed')
+check('no kickoff time, scheduled: scheduled',
+  effectiveStatus(m({ status: 'scheduled', kickoffUtc: undefined }), min(30)) === 'scheduled')
 
 console.log()
 if (failed) { console.log(`${failed} clock check(s) FAILED`); process.exit(1) }

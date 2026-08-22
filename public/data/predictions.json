@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-22T12:43:46.813753+00:00",
+  "updated_at": "2026-08-22T10:20:56.657155+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -2147,8 +2147,11 @@
       "p_away_win": 0.135,
       "pick": "HOME",
       "pick_confidence": 0.616,
-      "reason": "FIH #11 NZL favoured over #15 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "reason": "New Zealand's pool record reads worse than it was: both defeats came against top-seven opposition, and in their one match against a side outside that bracket they won 2-0 without conceding. Wales scored six in Pool D — three in one afternoon against Pakistan — but conceded fourteen, eight of them to England, and are yet to shut out anyone. Against the first non-elite attack of their tournament, New Zealand are favoured with something to spare.",
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "reason_original": "FIH #11 NZL favoured over #15 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T10:30:45.605278+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2E2:r5",
@@ -2406,8 +2409,11 @@
       "p_away_win": 0.135,
       "pick": "HOME",
       "pick_confidence": 0.616,
-      "reason": "FIH #10 NZL favoured over #14 WAL — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T01:21:41.196146+00:00"
+      "reason": "New Zealand's pool record reads worse than it was: both defeats came against top-seven opposition, and in their one match against a side outside that bracket they won 2-0 without conceding. Wales scored six in Pool D — three in one afternoon against Pakistan — but conceded fourteen, eight of them to England, and are yet to shut out anyone. Against the first non-elite attack of their tournament, New Zealand are favoured with something to spare.",
+      "publishedAt": "2026-08-22T01:21:41.196146+00:00",
+      "reason_original": "FIH #10 NZL favoured over #14 WAL — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T10:30:45.605278+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G4:r6",

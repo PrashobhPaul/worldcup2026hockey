@@ -1407,6 +1407,7 @@ def update_statuses(fixtures, now=None):
         if m['status'] == 'live' and now >= end:
             if has_score(m):
                 m['status'] = 'completed'
+                m.pop('live_score', None)
                 changed = True
                 print(f"COMPLETED: {m['id']} {m['home']} {m['score']['home']}-{m['score']['away']} {m['away']}")
             else:
@@ -1491,6 +1492,7 @@ def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
             m['score'] = {'home': sh, 'away': sa}
             m['result_source'] = 'fih-tms-matches'
             m['status'] = 'completed'
+            m.pop('live_score', None)
             changed = True
             print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS matches page)")
             continue
@@ -1510,8 +1512,47 @@ def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
         m['score'] = {'home': sh, 'away': sa}
         m['result_source'] = 'fih-tms'
         m['status'] = 'completed'
+        m.pop('live_score', None)
         changed = True
         print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS standings deltas)")
+    return changed
+
+# ── Live scores, mid-match ────────────────────────────────────────────────
+# The matches page shows the RUNNING score while a match is in play — the
+# very fact that makes it unsafe as a final-score source before the window
+# closes makes it a perfectly honest LIVE source inside it. The running
+# score goes to a separate live_score field, never to m['score']: the final
+# remains the province of the witnessed backfills, so a mid-match sighting
+# can never be frozen in as a result. Each pipeline run refreshes it, which
+# at match-hours cadence lands roughly once a quarter on the reader's app.
+def update_live_scores(fixtures, page_results, now=None):
+    if page_results is None:
+        return False
+    now = now or now_utc()
+    changed = False
+    for m in fixtures['matches']:
+        if m['home'] == 'TBD':
+            continue
+        try:
+            ko = kickoff(m)
+        except ValueError:
+            continue
+        in_window = ko <= now < ko + timedelta(minutes=MATCH_DURATION_MIN)
+        if m['status'] == 'completed' or has_score(m) or not in_window:
+            # Outside the window (or already final) a lingering live_score is
+            # stale — the completion paths also clear it, this is the backstop.
+            if m.pop('live_score', None) is not None:
+                changed = True
+            continue
+        page = page_results.get((m['home'], m['away'])) or (
+            page_results.get((m['away'], m['home'])) and page_results[(m['away'], m['home'])][::-1])
+        if not page:
+            continue
+        prev = m.get('live_score') or {}
+        if prev.get('home') != page[0] or prev.get('away') != page[1]:
+            m['live_score'] = {'home': page[0], 'away': page[1], 'at': now.isoformat()}
+            changed = True
+            print(f"LIVE SCORE: {m['id']} {m['home']} {page[0]}-{page[1]} {m['away']}")
     return changed
 
 # Minutes a matches-page score must sit unchanged before it is trusted as
@@ -1613,6 +1654,7 @@ def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None):
             m['result_source'] = 'fih-tms-matches'
             m['status'] = 'completed'
             m.pop('score_seen', None)
+            m.pop('live_score', None)
             changed = True
             print(f"BACKFILL: {m['id']} {m['home']} {sh}-{sa} {m['away']} "
                   f"(TMS matches page, confirmed by {confirmed_by})")
@@ -2525,6 +2567,8 @@ def main():
     page_results = parse_tms_results(_tms_lines(page_body)) if page_body else {}
     if page_results:
         print(f'RESULTS: matches page carries {len(page_results)} final scores.')
+    # Running scores for in-window matches — display-only, never a final.
+    changed |= update_live_scores(fixtures, page_results)
 
     # Official FIH world rankings — fetched here because CI has the egress
     # that local sandboxes don't. Feeds both the UI and the model prior.

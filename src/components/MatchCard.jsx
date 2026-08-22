@@ -137,11 +137,11 @@ export default function MatchCard({ match, compact = false }) {
         <div className="flex min-w-[72px] flex-col items-center">
           {done || live || waiting ? (
             <div className="font-mono text-2xl font-bold tracking-wider">
-              {/* No live score feed exists mid-match, so a dash is the only
-                  honest display — never an invented 0-0. */}
-              <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? '–'}</span>
+              {/* In play, the card shows the last value the feed confirmed —
+                  0-0 from push-back until the first update lands. */}
+              <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? 0}</span>
               <span className="mx-1 text-pitch-400">–</span>
-              <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? '–'}</span>
+              <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? 0}</span>
             </div>
           ) : (
             <div className="font-mono text-sm text-pitch-300">{match.time}</div>

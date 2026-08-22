@@ -133,6 +133,21 @@ export function isLiveClock(clock) {
       || clock.kind === 'HT' || clock.kind === 'SO' || clock.kind === 'RAW'
 }
 
+// Where a fixture belongs in the app RIGHT NOW — the clock's verdict, not the
+// stored status. The data cron flips scheduled→live on its own cadence, which
+// can lag push-back by many minutes; the reader's clock does not. A match past
+// push-back but without a confirmed result stays 'live' (including the
+// score-wait after the window closes) so it never vanishes from the live view
+// mid-afternoon, and every list, count and badge agrees on the same answer.
+export function effectiveStatus(match, nowMs = Date.now()) {
+  if (!match) return 'scheduled'
+  if (match.status === 'completed') return 'completed'
+  if (match.status === 'live') return 'live'
+  const ko = typeof match.kickoffUtc === 'number' ? match.kickoffUtc : null
+  if (ko != null && nowMs >= ko) return 'live'
+  return 'scheduled'
+}
+
 export function phaseLabel(phase) {
   switch (phase) {
     case 'NS': return 'Starts soon'
