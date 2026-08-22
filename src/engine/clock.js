@@ -135,7 +135,7 @@ export function isLiveClock(clock) {
 
 export function phaseLabel(phase) {
   switch (phase) {
-    case 'NS': return 'Push-back'
+    case 'NS': return 'Starts soon'
     case 'Q1': return '1st quarter'
     case 'QB1': return 'Quarter break'
     case 'Q2': return '2nd quarter'

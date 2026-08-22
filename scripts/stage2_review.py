@@ -43,6 +43,12 @@ Eleven goals, and the shape of them tells the story of both campaigns. Ireland s
 The winner came in the 50th — Basterra again, this time from open play, a brace that contains Spain's entire output. No goal came from a penalty corner at either end, and the discipline matched the scoreline's restraint: not a single card in the match. Germany kept pushing after falling behind, but their twenty circle entries produced only six shots all game, and the equaliser never came.
 
 The result reshapes Pool F. Spain carry a narrow defeat to Australia forward from Stage 1, and beating Germany puts them level on three points in a pool nobody has yet escaped from — even Belgium, pointless so far, still have six to play for. Germany's unbeaten run ends at four matches, and the pattern beneath it is worth noting: five of their eight tournament goals came in one afternoon against Malaysia, and in their three matches against everyone else they have scored exactly once per game. The finishing, not the defence, is what the rest of Stage 2 will examine.""",
+
+    'S2F1': """Australia remain the only unbeaten side in Pool F after an evening in Brussels that finished all square and could barely have been closer — circle entries twenty-one apiece, Australia edging possession fifty-two per cent to forty-eight and shots nine to six. Tom Craig gave the Kookaburras the lead in the 24th from open play, finishing the best move of a first half they controlled without ever dominating.
+
+Belgium's reply came from the set piece: Tom Boon converted a penalty corner in the 38th, early in the third quarter, in a match that never produced a card and never quite lost its balance. Australia's nine shots to six were the greater volume, but neither side could find a second goal, and two of the tournament's heavyweights settled for a point apiece.
+
+The point suits Australia far more. With the win over Spain carried forward from Stage 1 they top Pool F on four points, unbeaten across four matches this tournament; Belgium, carrying the one-goal defeat to Germany, hold a single point from their two counted results with only the Spain fixture left to change it. Even a win there leaves the world's number-one side needing results elsewhere — a semi-final place is no longer in Belgium's own hands.""",
 }
 
 REASONS = {
@@ -51,6 +57,8 @@ REASONS = {
     'S2H2': "Ireland took three points from Pool C, losing by two to both Australia and Spain either side of a three-goal win over South Africa. Malaysia left Pool B with one point and thirteen conceded in three matches — though seven scored, including three against Belgium, show a genuine attacking threat. Expect goals at both ends; a Malaysian defence conceding more than four a match is the softer one, and that margin favours Ireland.",
 
     'S2F2': "Germany came through Pool B unbeaten with seven scored and only two conceded in three matches, the win over Belgium built on exactly the kind of defending this fixture rewards. Spain won twice by 3-1 in Pool C either side of a single-goal loss to Australia, so both arrive in form — but Spain's chances have come at a goal-a-game cost, and in a match likely to be tight and low-scoring, the side that has defended better all tournament is favoured.",
+
+    'S2F1': "Belgium scored eight goals in three pool matches — three past France, five past Malaysia — and their only defeat was by a single goal to Germany. Australia took seven points from Pool C unbeaten, but two of those matches brought one goal or fewer and they dropped points to the pool's lowest seed. Between the tournament's most productive attack and its steadiest points-gatherer, the hosts' extra cutting edge tips a very close call — with a draw the likeliest single alternative.",
 }
 
 

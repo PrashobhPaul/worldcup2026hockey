@@ -53,7 +53,7 @@ function HallOfFame({ byCode }) {
           </span>
         </div>
         <p className="mt-2 text-xs leading-relaxed text-pitch-300">
-          Picks were locked before push-back of the tournament and are graded against the FIH's official
+          Picks were locked before the tournament began and are graded against the FIH's official
           awards, announced after the Gold Final on 30 August. No edits, no deletions — the git history is the ledger.
         </p>
       </div>

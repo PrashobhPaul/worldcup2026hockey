@@ -88,7 +88,7 @@ export default function AppShell() {
           <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="Hockey.AI — home">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" className="h-8 w-8 rounded-lg" />
             <img src={`${import.meta.env.BASE_URL}hockeyai_name.png`} alt="Hockey.AI"
-              className="hidden h-6 w-auto min-[380px]:block sm:h-7" />
+              className="hidden h-8 w-auto min-[380px]:block sm:h-9" />
           </Link>
           <div className="no-scrollbar hidden items-center gap-0.5 overflow-x-auto md:flex">
             {TABS.map(t => (

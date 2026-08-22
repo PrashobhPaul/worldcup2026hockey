@@ -35,7 +35,8 @@ check('bottom bar items are ≥44px tall', barBox.height >= 44, String(barBox.he
 
 // ── Sync chip in the header ────────────────────────────────────────────────
 const headerTxt = (await p.locator('header').innerText()).replace(/\s+/g, ' ')
-check('sync chip shows a version', /v\d+/.test(headerTxt), headerTxt)
+const refreshLabel = await p.locator('header button[aria-label*="Refresh data"], header button[aria-label*="sync failed"]').count()
+check('the quiet refresh button is in the header', refreshLabel === 1)
 
 // ── Favourite: invitation → star a team → Home leads with it ───────────────
 let body = (await p.locator('body').innerText()).replace(/\s+/g, ' ')

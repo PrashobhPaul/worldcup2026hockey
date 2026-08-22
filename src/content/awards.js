@@ -66,7 +66,7 @@ export const HOF_AWARDS = [
 ]
 
 export const AWARDS_DISCLAIMER =
-  'Award grading will reflect Oracle picks locked before push-back of the tournament, recorded in the ' +
+  'Award grading will reflect Oracle picks locked before the tournament began, recorded in the ' +
   'repository history. Official award winners per FIH, announced after the Gold Final on 30 August 2026.'
 
 // Player of the Tournament race — scoring weights (softmax over scores).

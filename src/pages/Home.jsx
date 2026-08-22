@@ -84,7 +84,7 @@ function Countdown({ kickoffUtc }) {
     return () => clearInterval(id)
   }, [])
   const ms = kickoffUtc - now
-  if (ms <= 0) return <span className="font-mono text-lg font-bold text-live">PUSHING BACK</span>
+  if (ms <= 0) return <span className="font-mono text-lg font-bold text-live">STARTING</span>
   const d = Math.floor(ms / 86400000)
   const h = Math.floor((ms % 86400000) / 3600000)
   const m = Math.floor((ms % 3600000) / 60000)
@@ -118,8 +118,8 @@ function NextMatchCard({ match, teams }) {
           <span className="font-mono text-[10px] text-pitch-400">FIH #{h?.fihRank ?? '—'}</span>
         </div>
         <div className="flex flex-col items-center gap-1">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">starts in</span>
           <Countdown kickoffUtc={match.kickoffUtc} />
-          <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">to push-back</span>
         </div>
         <div className="flex flex-col items-center gap-1 text-center">
           <span className="text-4xl">{a?.flag ?? '🏑'}</span>
@@ -226,6 +226,30 @@ function FavouriteStrip({ teams, matches }) {
   )
 }
 
+// Home shows a result as a scorecard, nothing more — scorers, corners and the
+// pick grade live on the match page a tap away.
+function ResultRow({ match, teams }) {
+  const byCode = new Map(teams.map(t => [t.code, t]))
+  const h = byCode.get(match.home), a = byCode.get(match.away)
+  const win = match.score.home > match.score.away ? 'H' : match.score.home < match.score.away ? 'A' : 'D'
+  return (
+    <Link to={`/matches/${match.id}`}
+      className="flex min-h-[48px] items-center gap-3 rounded-xl border border-white/5 bg-pitch-800 px-3.5 py-2.5 transition-colors hover:border-brand/25">
+      <span className="w-14 shrink-0 font-mono text-[9px] uppercase leading-tight text-pitch-400">{phaseTag(match)}</span>
+      <span className={`flex min-w-0 flex-1 items-center justify-end gap-1.5 text-sm ${win === 'H' ? 'font-bold' : 'text-pitch-300'}`}>
+        <span className="truncate">{h?.name ?? match.home}</span> <span>{h?.flag}</span>
+      </span>
+      <span className="shrink-0 rounded-md bg-pitch-950/60 px-2 py-1 font-mono text-sm font-bold tracking-wider">
+        {match.score.home}–{match.score.away}
+      </span>
+      <span className={`flex min-w-0 flex-1 items-center gap-1.5 text-sm ${win === 'A' ? 'font-bold' : 'text-pitch-300'}`}>
+        <span>{a?.flag}</span> <span className="truncate">{a?.name ?? match.away}</span>
+      </span>
+      <span className="shrink-0 rounded bg-pitch-700 px-1.5 py-0.5 font-mono text-[9px] font-bold text-pitch-300">FT</span>
+    </Link>
+  )
+}
+
 function TrendingTeams({ teams, matches }) {
   const bundle = useOracleBundle(teams, matches)
   const cards = useMemo(() => {
@@ -296,8 +320,7 @@ export default function HomePage() {
     <div className="space-y-8">
       <HeroCard liveNow={liveNow} />
 
-      {!loading && <FavouriteStrip teams={teams} matches={matches} />}
-
+      {/* What's happening now leads; the personalised strip follows it. */}
       {loading ? <Skeleton h={220} /> : liveNow ? (
         <section>
           <SectionHead title="🔴 Live Now" to="/matches?tab=live" toLabel="Match centre →" />
@@ -309,11 +332,13 @@ export default function HomePage() {
         <NextMatchCard match={nextUp} teams={teams ?? []} />
       ) : null}
 
+      {!loading && <FavouriteStrip teams={teams} matches={matches} />}
+
       {!loading && lastTwo.length > 0 && (
         <section>
           <SectionHead title="⚡ Latest Results" to="/matches?tab=results" toLabel="All results →" />
-          <div className="space-y-2.5">
-            {lastTwo.map(m => <MatchCard key={m.id} match={m} />)}
+          <div className="space-y-2">
+            {lastTwo.map(m => <ResultRow key={m.id} match={m} teams={teams ?? []} />)}
           </div>
         </section>
       )}

@@ -69,7 +69,7 @@ export default function TrustPage() {
 
       <Section title="Prediction integrity">
         <p>
-          Every Oracle pick is committed to the public repository before push-back, graded automatically after
+          Every Oracle pick is committed to the public repository before the match starts, graded automatically after
           full-time, and never edited or deleted. The git history is the audit trail.
         </p>
       </Section>
