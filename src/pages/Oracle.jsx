@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
-import { activePredictions, derivePrediction, gradePrediction } from '../engine/prediction'
+import { activePredictions, derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
@@ -404,6 +404,7 @@ export default function OraclePage() {
   const predictions = useLiveQuery(() => db.predictions.toArray(), [])
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const bundle = useOracleBundle(teams, matches)
+  const rec = oracleRecord(matches ?? [], predictions ?? [])
 
   const setTab = (t) => {
     const next = new URLSearchParams(params)
@@ -427,7 +428,12 @@ export default function OraclePage() {
       ]} />
       <div className="mb-4 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
-        <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
+        {/* The live record is the Oracle's transparency headline — every tab,
+            same one-line subtitle treatment as the Matches page. */}
+        <p className="mt-1 text-xs text-pitch-400">
+          {SUBTITLES[tab]}
+          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.accuracyPct}%</span>}
+        </p>
       </div>
 
       <RaceLeader bundle={bundle} teams={teams} matches={matches} />

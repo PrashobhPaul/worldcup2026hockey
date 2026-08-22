@@ -60,17 +60,23 @@ function ftState(match) {
   return { phase: 'FT', minute: 60, display: hasSO ? 'FT (SO)' : 'FT', kind: hasSO ? 'FT_SO' : 'FT' }
 }
 
-// The FIH match-day script, in wall-clock minutes from push-back:
-// Q1 0–15, 2' break, Q2 17–32, 10' half-time, Q3 42–57, 2' break, Q4 from 59.
+// The FIH match-day script in wall-clock minutes from push-back — calibrated
+// against the official app's quarter markers, not the nominal laws-of-the-game
+// times. The game clock stops for corners, goals, referrals and cards, so a
+// 15-minute quarter runs ~19 minutes of wall time, quarter breaks run ~3 and
+// half-time ~13 by the time the ball is back in play. (NED v IND: the
+// official third quarter began 54 wall minutes after push-back; the nominal
+// schedule predicted 42, and this clock read eleven game-minutes ahead.)
 // [phase, wallFrom, wallTo, gameMinuteAtWallFrom] — null base = a break.
+const PLAY_RATE = 15 / 19   // game minutes per wall minute inside a quarter
 const EST_SEGMENTS = [
-  ['Q1',  0,  15, 0],
-  ['QB1', 15, 17, null],
-  ['Q2',  17, 32, 15],
-  ['HT',  32, 42, null],
-  ['Q3',  42, 57, 30],
-  ['QB3', 57, 59, null],
-  ['Q4',  59, MATCH_WINDOW_MIN, 45],
+  ['Q1',  0,  19, 0],
+  ['QB1', 19, 22, null],
+  ['Q2',  22, 41, 15],
+  ['HT',  41, 54, null],
+  ['Q3',  54, 73, 30],
+  ['QB3', 73, 76, null],
+  ['Q4',  76, MATCH_WINDOW_MIN, 45],
 ]
 
 function estimateFromKickoff(elapsedMin) {
@@ -81,8 +87,10 @@ function estimateFromKickoff(elapsedMin) {
       const minute = phase === 'QB1' ? 15 : 45
       return { phase, minute, display: phase === 'QB1' ? 'End Q1' : 'End Q3', kind: 'BREAK', estimated: true }
     }
-    // Q4 runs long in wall time (stoppages, referrals) — the game minute caps at 60.
-    const minute = Math.min(60, Math.floor(base + (elapsedMin - from)))
+    // Game minutes accrue slower than wall minutes; a quarter never shows
+    // more than its own 15, and Q4 runs long in wall time with the game
+    // minute capped at 60.
+    const minute = Math.min(base + 15, Math.floor(base + (elapsedMin - from) * PLAY_RATE))
     return { phase, minute, display: `~${minute}'`, kind: 'EST', estimated: true }
   }
   return { phase: 'FT', minute: 60, display: 'FT', kind: 'FT_WAIT', estimated: true }
