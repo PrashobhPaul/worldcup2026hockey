@@ -559,7 +559,7 @@
         "home": "PAK",
         "away": "JPN",
         "home_goals": 0,
-        "away_goals": 0,
+        "away_goals": 1,
         "current": false
       },
       {
@@ -1997,5 +1997,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-22T11:19:04.999197+00:00"
+  "updated_at": "2026-08-22T11:23:50.870992+00:00"
 }
