@@ -18,7 +18,7 @@ from update_data import (  # noqa: E402
     parse_rankings_text, parse_squad_lines, parse_player_rows, normalize_fih_name,
     compose_lineup, seeded_rng, reconcile_team_lists, parse_team_staff,
     parse_tms_results, update_statuses, backfill_scores_from_tms,
-    backfill_stage_scores,
+    backfill_stage_scores, update_live_scores,
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
     slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h,
@@ -528,6 +528,36 @@ f = stage_fx(score={'home': 4, 'away': 2}, status='completed')
 backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
 check('an existing (e.g. manual) score is never overwritten',
       f['matches'][0]['score'] == {'home': 4, 'away': 2})
+
+print('\nLive scores mid-match (display-only, never a final)')
+
+# 11:00 CEST kickoff again: in-window at 12:00 CEST, window closes 12:45 CEST.
+f = stage_fx()
+update_live_scores(f, {('FRA', 'RSA'): (0, 2)}, now=in_window)
+s = f['matches'][0]
+check('an in-window page score lands as live_score',
+      s.get('live_score', {}).get('home') == 0 and s['live_score']['away'] == 2)
+check('the final score field is untouched', s['score'] is None and s['status'] == 'live')
+update_live_scores(f, {('FRA', 'RSA'): (0, 2)}, now=in_window)
+check('an unchanged sighting writes nothing new', s['live_score']['away'] == 2)
+update_live_scores(f, {('RSA', 'FRA'): (3, 1)}, now=in_window)
+check('a reversed pair updates, oriented to our fixture',
+      s['live_score'] == dict(s['live_score'], home=1, away=3))
+
+# Past the window the page score is possibly final — the live field must not
+# keep it; the witnessed backfill owns everything from here.
+update_live_scores(f, {('FRA', 'RSA'): (1, 3)}, now=past_window)
+check('past the window the live score is dropped, not frozen', 'live_score' not in s)
+
+f = stage_fx(date='2026-08-21', time='14:00')
+update_live_scores(f, {('FRA', 'RSA'): (1, 0)}, now=in_window)
+check('before push-back nothing is written', 'live_score' not in f['matches'][0])
+
+f = stage_fx()
+f['matches'][0]['live_score'] = {'home': 1, 'away': 1, 'at': '2026-08-21T09:30:00+00:00'}
+backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
+check('completion clears the live score alongside writing the final',
+      f['matches'][0]['score'] == {'home': 1, 'away': 3} and 'live_score' not in f['matches'][0])
 
 print('\nOracle pick revision (erratum, never rewrite)')
 

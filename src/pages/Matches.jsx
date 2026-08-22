@@ -8,19 +8,6 @@ import { Skeleton } from '../components/shared'
 import { oracleRecord } from '../engine/prediction'
 import { SIM_ID, SIM_MATCH } from '../content/sim'
 
-function OracleRecordStrip({ matches }) {
-  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
-  const rec = oracleRecord(matches, predictions)
-  if (!rec.graded) return null
-  return (
-    <Link to="/prediction-race"
-      className="mb-4 flex items-center justify-between rounded-lg border border-brand/20 bg-brand/5 px-3.5 py-2 font-mono text-[11px] transition-colors hover:border-brand/40">
-      <span className="text-pitch-300">🎯 AI pre-match picks</span>
-      <span className="font-bold text-brand">{rec.correct}/{rec.graded} correct · {rec.accuracyPct}%</span>
-    </Link>
-  )
-}
-
 function SimulationCard() {
   return (
     <div className="mb-4">
@@ -76,6 +63,10 @@ export default function MatchesPage() {
 
   const loading = matches === undefined
   const all = matches ?? []
+
+  // The model's public record rides the subtitle — one line, no extra strip.
+  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
+  const rec = oracleRecord(all, predictions)
 
   const counts = {
     results: all.filter(m => m.status === 'completed').length,
@@ -150,6 +141,7 @@ export default function MatchesPage() {
         <h1 className="font-display text-2xl font-bold tracking-tight">🏑 Matches</h1>
         <p className="mt-1 text-xs text-pitch-400">
           {counts.results} of {all.length} fixtures{counts.live > 0 && <span className="text-live"> · {counts.live} LIVE</span>}
+          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.accuracyPct}%</span>}
         </p>
       </div>
 
@@ -175,7 +167,6 @@ export default function MatchesPage() {
         ))}
       </div>
 
-      {tab === 'results' && !loading && <OracleRecordStrip matches={all} />}
       {tab === 'live' && <SimulationCard />}
 
       {loading ? <Skeleton h={400} /> : (

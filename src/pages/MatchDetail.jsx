@@ -356,11 +356,13 @@ export default function MatchDetailPage() {
             <span className="font-mono text-[10px] text-pitch-400">FIH #{away?.fihRank ?? '—'}</span>
           </Link>
         </div>
-        {(live || waiting) && !hasScore && (
+        {(live || waiting) && (!hasScore || match.liveScoreAt) && (
           <p className="mt-4 border-t border-white/5 pt-3 text-center font-mono text-[11px] leading-relaxed text-pitch-400">
             {waiting
               ? 'Full-time — waiting for FIH to publish the official score. It lands here automatically.'
-              : 'Clock estimated from the official start time. FIH does not stream a live score — the final score lands here shortly after full-time.'}
+              : match.liveScoreAt
+                ? 'Live score · refreshes every few minutes — the official record is confirmed at full-time.'
+                : 'Clock estimated from the official start time. The live score lands here with the first update, minutes after play begins.'}
           </p>
         )}
         {(done || live) && pc?.home != null && (

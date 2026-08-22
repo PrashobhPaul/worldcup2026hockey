@@ -105,6 +105,13 @@ async function _sync(force) {
   const matches = (fixturesDoc.matches || []).map(m => ({
     ...m,
     kickoffUtc: new Date(`${m.date}T${m.time}:00+02:00`).getTime(), // CET summer = +02:00
+    // A live match's running score (pipeline live_score) surfaces through the
+    // same score field every card and panel already reads. The final score
+    // always wins once written; liveScoreAt marks the provenance so the match
+    // page can say the number is live rather than full-time.
+    ...(m.status === 'live' && m.score?.home == null && m.live_score
+      ? { score: { home: m.live_score.home, away: m.live_score.away }, liveScoreAt: m.live_score.at }
+      : {}),
   }))
 
   const events = []

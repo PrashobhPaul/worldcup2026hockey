@@ -2,8 +2,11 @@ name: Update Hockey Data
 
 on:
   schedule:
-    # Every 30 min during CET match hours, Aug 15-30
-    - cron: '0,30 10-20 15-30 8 *'
+    # Every 15 min through CET match hours (first push-backs are 09:30 CET =
+    # 07:30 UTC; the old 10-20 UTC window missed the morning games entirely,
+    # which is why match 29 sat scoreless for two hours). At this cadence a
+    # live match's running score updates roughly once a quarter.
+    - cron: '*/15 6-20 15-30 8 *'
     # Hourly fallback rest of day
     - cron: '0 * * * *'
   workflow_dispatch:
