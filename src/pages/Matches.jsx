@@ -6,6 +6,8 @@ import { db } from '../db'
 import MatchCard, { formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
 import { oracleRecord } from '../engine/prediction'
+import { effectiveStatus } from '../engine/clock'
+import { useNowTick } from '../hooks/useNowTick'
 import { SIM_ID, SIM_MATCH } from '../content/sim'
 
 function SimulationCard() {
@@ -68,14 +70,20 @@ export default function MatchesPage() {
   const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
   const rec = oracleRecord(all, predictions)
 
+  // Membership follows the clock, not the stored status: a match past
+  // push-back sits under Live (with its running clock and 0-0) the moment it
+  // starts, even before the data cron flips it. The tick keeps that boundary
+  // moving while the page is open.
+  const nowTick = useNowTick()
+  const effOf = m => effectiveStatus(m, nowTick)
   const counts = {
-    results: all.filter(m => m.status === 'completed').length,
-    live: all.filter(m => m.status === 'live').length,
-    upcoming: all.filter(m => m.status === 'scheduled').length,
+    results: all.filter(m => effOf(m) === 'completed').length,
+    live: all.filter(m => effOf(m) === 'live').length,
+    upcoming: all.filter(m => effOf(m) === 'scheduled').length,
   }
 
   const activeStatus = (STATUS_TABS.find(t => t.id === tab) ?? STATUS_TABS[0]).status
-  const inStatus = all.filter(m => m.status === activeStatus)
+  const inStatus = all.filter(m => effOf(m) === activeStatus)
 
   // With no "All" chip a stage is always selected, so the one we select for the
   // reader has to be the one they came to see: the act the tab's first-listed
@@ -105,7 +113,7 @@ export default function MatchesPage() {
   const byDate = {}
   for (const m of filtered) (byDate[m.date] ??= []).push(m)
   const dayIsFuture = date =>
-    byDate[date].every(m => m.status === 'scheduled' && (m.kickoffUtc ?? 0) > now)
+    byDate[date].every(m => effOf(m) === 'scheduled' && (m.kickoffUtc ?? 0) > now)
   for (const [date, day] of Object.entries(byDate)) {
     const asc = dayIsFuture(date)
     day.sort((a, b) => asc ? a.kickoffUtc - b.kickoffUtc : b.kickoffUtc - a.kickoffUtc)

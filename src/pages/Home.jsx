@@ -9,6 +9,8 @@ import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
 import { useFavourite } from '../hooks/useFavourite'
+import { useNowTick } from '../hooks/useNowTick'
+import { effectiveStatus } from '../engine/clock'
 import { FlaskConical, Trophy, BarChart3, Sparkles, ArrowUp, ArrowDown, Minus } from 'lucide-react'
 
 // Hero quick-access tiles: the race and the lab up top, stats and the
@@ -170,8 +172,8 @@ function FavouriteStrip({ teams, matches }) {
   if (!team) return null
 
   const mine = matches.filter(m => m.home === favourite || m.away === favourite)
-  const liveNow = mine.find(m => m.status === 'live')
-  const nextUp = mine.find(m => m.status === 'scheduled' && m.home !== 'TBD' && m.away !== 'TBD')
+  const liveNow = mine.find(m => effectiveStatus(m) === 'live')
+  const nextUp = mine.find(m => effectiveStatus(m) === 'scheduled' && m.home !== 'TBD' && m.away !== 'TBD')
   const played = mine.filter(m => m.status === 'completed' && m.score?.home != null)
   const form = played.slice(-5).map(m => {
     const gf = m.home === favourite ? m.score.home : m.score.away
@@ -219,7 +221,7 @@ function FavouriteStrip({ teams, matches }) {
           </span>
           <span className="font-mono text-[10px] text-pitch-400">
             {liveNow
-              ? `${spotlight.score?.home ?? '–'}–${spotlight.score?.away ?? '–'}`
+              ? `${spotlight.score?.home ?? 0}–${spotlight.score?.away ?? 0}`
               : `${formatDate(spotlight.date)} · ${spotlight.time} CET`}
           </span>
         </Link>
@@ -310,9 +312,13 @@ export default function HomePage() {
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
 
   const loading = teams === undefined || matches === undefined
-  const live = (matches ?? []).filter(m => m.status === 'live')
+  // The clock decides what "now" looks like: a match past push-back leads the
+  // page as Live (running clock, 0-0 until the first feed update) even before
+  // the data cron flips its status. The tick moves the boundary while open.
+  const nowTick = useNowTick()
+  const live = (matches ?? []).filter(m => effectiveStatus(m, nowTick) === 'live')
   const liveNow = live.length > 0
-  const nextUp = (matches ?? []).find(m => m.status === 'scheduled' && m.home !== 'TBD')
+  const nextUp = (matches ?? []).find(m => effectiveStatus(m, nowTick) === 'scheduled' && m.home !== 'TBD')
   const lastTwo = (matches ?? [])
     .filter(m => m.status === 'completed' && m.score?.home != null)
     .slice(-2)

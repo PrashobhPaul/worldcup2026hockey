@@ -8,9 +8,20 @@ import { needsResync } from './syncPolicy'
 const DATA_BASE = `${import.meta.env.BASE_URL}data`
 
 async function fetchJSON(path) {
-  const r = await fetch(`${DATA_BASE}/${path}?t=${Date.now()}`)
-  if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`)
-  return r.json()
+  // A fetch with no timeout can hang forever on a flaky mobile connection —
+  // and because syncData() dedupes onto the in-flight promise, one hung fetch
+  // used to freeze sync for the life of the tab: the chip stuck on OFFLINE and
+  // the refresh tap returned the same dead promise. Abort makes every sync
+  // attempt settle, so retries and taps always get a fresh one.
+  const ctrl = new AbortController()
+  const timer = setTimeout(() => ctrl.abort(), 12000)
+  try {
+    const r = await fetch(`${DATA_BASE}/${path}?t=${Date.now()}`, { signal: ctrl.signal })
+    if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`)
+    return await r.json()
+  } finally {
+    clearTimeout(timer)
+  }
 }
 
 let _syncPromise = null
@@ -158,12 +169,15 @@ export function startAutoSync(intervalMs = 60 * 1000) {
   // A failed first sync leaves the app with nothing to draw, so retry sooner
   // than the steady-state minute — and stop retrying fast once it lands.
   let quick = setInterval(() => {
-    if (_status.state === 'error' || _status.empty) syncData({ force: true })
+    if (_status.state === 'error' || _status.state === 'offline' || _status.empty) syncData({ force: true })
     else { clearInterval(quick); quick = null }
   }, 8000)
   const id = setInterval(() => syncData(), intervalMs)
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') syncData()
   })
+  // The instant the network returns, resync — don't sit amber for up to a
+  // minute waiting for the next poll.
+  window.addEventListener('online', () => syncData({ force: true }))
   return () => clearInterval(id)
 }
