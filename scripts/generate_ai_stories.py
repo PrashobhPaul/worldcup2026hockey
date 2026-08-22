@@ -4,8 +4,9 @@ Hockey.AI — match briefs (GitHub Actions job).
 
 Every completed match carries a brief. Two tiers, in order of preference:
 
-  source "ai"     — written by Claude from the full event ledger. Requires the
-                    ANTHROPIC_API_KEY repository secret.
+  source "ai"     — written by the configured AI provider from the full
+                    event ledger (see scripts/ai_provider.py: set
+                    ANTHROPIC_API_KEY or OPENAI_API_KEY).
   source "engine" — deterministic brief composed here from the same ledger
                     (scorers, minutes, penalty corners, cards, ranks). Written
                     for every completed match that has no brief yet, so the app
@@ -16,11 +17,19 @@ available. An AI brief is never downgraded or rewritten.
 """
 import json
 import os
-import urllib.request
+import sys
 from datetime import datetime, timezone
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ai_provider  # noqa: E402
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'public', 'data')
-MODEL = 'claude-sonnet-4-6'
+
+STORY_SYSTEM = (
+    'You are the match reporter for Hockey.AI, covering the FIH Hockey World Cup 2026. '
+    'Write vivid, factual 3-paragraph match stories in the style of premium sports journalism. '
+    'Field hockey specifics matter: quarters (Q1-Q4), penalty corners (PC), drag flicks, '
+    'push-back, the shooting circle. Never invent events not provided. Plain text, no markdown.')
 
 VENUES = {'AMV': 'the Wagener Stadion in Amstelveen', 'BRU': 'the Royal Leopold Club in Brussels'}
 
@@ -31,30 +40,6 @@ def load(name):
 def save(name, obj):
     with open(os.path.join(DATA_DIR, name), 'w') as f:
         json.dump(obj, f, indent=2, ensure_ascii=False)
-
-def call_claude(api_key, prompt):
-    body = json.dumps({
-        'model': MODEL,
-        'max_tokens': 600,
-        'system': (
-            'You are the match reporter for Hockey.AI, covering the FIH Hockey World Cup 2026. '
-            'Write vivid, factual 3-paragraph match stories in the style of premium sports journalism. '
-            'Field hockey specifics matter: quarters (Q1-Q4), penalty corners (PC), drag flicks, '
-            'push-back, the shooting circle. Never invent events not provided. Plain text, no markdown.'
-        ),
-        'messages': [{'role': 'user', 'content': prompt}],
-    }).encode()
-    req = urllib.request.Request(
-        'https://api.anthropic.com/v1/messages',
-        data=body,
-        headers={
-            'Content-Type': 'application/json',
-            'x-api-key': api_key,
-            'anthropic-version': '2023-06-01',
-        },
-    )
-    resp = json.loads(urllib.request.urlopen(req, timeout=60).read())
-    return ''.join(b.get('text', '') for b in resp.get('content', []))
 
 # ── Deterministic brief ───────────────────────────────────────────────────
 
@@ -174,7 +159,7 @@ def build_prompt(m, teams):
     )
 
 def main():
-    api_key = os.environ.get('ANTHROPIC_API_KEY')
+    ai_name, _, ai_model = ai_provider.provider()
     fixtures = load('fixtures.json')
     stories_doc = load('ai-stories.json')
     teams = {t['code']: t for t in load('teams.json')['teams']}
@@ -202,21 +187,22 @@ def main():
         print(f"BRIEF (engine): {m['id']}")
 
     # Tier 1: upgrade engine briefs to AI stories when the key is present.
-    if not api_key:
-        print('ANTHROPIC_API_KEY not set — engine briefs only, no AI upgrade this run.')
+    if not ai_name:
+        print('No AI provider configured (ANTHROPIC_API_KEY / OPENAI_API_KEY) — '
+              'engine briefs only, no AI upgrade this run.')
     else:
         for m in finished:
             existing = by_id.get(m['id'])
             if existing and existing.get('source', 'ai') == 'ai':
                 continue  # already an AI story — never rewritten
             try:
-                story = call_claude(api_key, build_prompt(m, teams)).strip()
+                story = (ai_provider.complete(STORY_SYSTEM, build_prompt(m, teams)) or '').strip()
                 if not story:
                     continue
                 existing.update({
                     'story': story,
                     'generatedAt': datetime.now(timezone.utc).isoformat(),
-                    'model': MODEL,
+                    'model': ai_model,
                     'source': 'ai',
                 })
                 changed = True

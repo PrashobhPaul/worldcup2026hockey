@@ -61,6 +61,12 @@ The numbers underneath are lopsided in a way Pool A never let New Zealand show: 
 The chase is what Pakistan will remember. Waheed Ashraf Rana pulled one back from open play in the 22nd, levelled from Pakistan's only penalty corner of the match in the 32nd, and a minute later Muhammad Hammadudin — shown a green card back in the 19th — put them in front in the 33rd. Koji Yamasaki's corner dragged Japan level in the 36th, but Hannan Shahid's field goal in the 41st, the fourth goal of a breathless third quarter, stood as the winner. Pakistan defended the last quarter through Muhammad Abdullah's yellow card in the 44th and a late green for Sufyan Khan, and held.
 
 The sheet split almost evenly — possession fifty apiece, circle entries twenty-four to twenty-two in Japan's favour, shots twelve to nine to Pakistan — and the difference was ruthlessness at the set piece and in front of goal: three penalty corners in the match, three goals. It is Pakistan's first win of this World Cup, from an attack that has now scored three or more in three consecutive matches, and Rana's brace led it. Japan's record now reads four defeats from four — with three of their four tournament goals scored on the day it finally was not enough.""",
+
+    'S2E1': """For forty minutes India did to the world's number-one side what nobody in Pool A had managed: nothing happened. Three quarters came and went scoreless in Amstelveen, India absorbing fifty-six per cent Dutch possession and twenty-eight circle entries without conceding, and the Wagener crowd was still waiting when Duco Telgenkamp finally broke through from open play in the 41st, with Shilanand Lakra's green card following a minute later.
+
+The last twenty minutes delivered everything the first forty withheld. Tjep Hoedemakers doubled the lead from open play in the 51st — Koen Bijen was shown a green in the same minute — and India's reply was immediate: Harmanpreet Singh converted their first and only penalty corner of the match in the 52nd, and at 2-1 with eight minutes left the upset was alive. Thijs van Dam ended it in the 55th, a third Dutch field goal, and the margin held to the final whistle.
+
+The corner column is the story inside the story: the Netherlands won this match without earning a single penalty corner — all three goals carved from open play against a defence that never gave the set piece away — while India converted the game's only corner through Harmanpreet. The Dutch top Pool E on six points, four wins from four without dropping a point this tournament; India, carrying the two-goal defeat to England, are left needing to win out and hope the table breaks their way.""",
 }
 
 REASONS = {
@@ -77,6 +83,8 @@ REASONS = {
     'S2G2': "Pakistan left Pool D with a single point, but their attack travelled: seven scored in three matches against England, India and Wales, three of them in each of the last two. Japan's pool brought three defeats and one goal, with shut-outs conceded to Argentina and New Zealand. Both sides are winless — yet one has scored in every match this tournament and the other has barely scored at all, and that margin favours Pakistan.",
 
     'S2E1': "The Netherlands swept Pool A with three wins from three, twelve scored and three conceded — one of only two perfect records in the tournament. India took six points from Pool D, putting three past Wales and five past Pakistan, and their defeat to England came by two in a match they scored twice in. India's ten pool goals say they will create chances; the Dutch defence, breached once a game on average, says those chances stay scarce. The tournament's most complete side so far is favoured on the full sweep of the evidence.",
+
+    'S2E2': "England's pool was a procession: three wins from three, sixteen scored and five conceded, eight of them put past Wales in a single evening. Argentina's eleven pool goals — three past Japan, seven past New Zealand — trail only England and the Dutch, but their one meeting with a top-tier side ended in a two-goal defeat to the Netherlands, the same margin by which England beat India. Two of the tournament's three sharpest attacks meet; the one nobody has slowed yet is favoured.",
 }
 
 

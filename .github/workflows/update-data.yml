@@ -2,11 +2,13 @@ name: Update Hockey Data
 
 on:
   schedule:
-    # Every 15 min through CET match hours (first push-backs are 09:30 CET =
+    # Every 10 min through CET match hours (first push-backs are 09:30 CET =
     # 07:30 UTC; the old 10-20 UTC window missed the morning games entirely,
-    # which is why match 29 sat scoreless for two hours). At this cadence a
-    # live match's running score updates roughly once a quarter.
-    - cron: '*/15 6-20 15-30 8 *'
+    # which is why match 29 sat scoreless for two hours). At 15-minute cadence
+    # a goal could sit unseen for most of a quarter — NED v IND showed 1-0
+    # while the real score was 3-1; ten minutes keeps the running score within
+    # a few minutes of the pitch.
+    - cron: '*/10 6-20 15-30 8 *'
     # Hourly fallback rest of day
     - cron: '0 * * * *'
   workflow_dispatch:
@@ -48,7 +50,16 @@ jobs:
       - name: Generate AI match stories
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/generate_ai_stories.py
+
+      # AI-authored pre-match rationales for upcoming picks; without a key the
+      # deterministic rationale the pipeline writes stands (see ai_provider.py).
+      - name: Generate AI pick rationales
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/generate_ai_rationales.py
 
       - name: Commit & push if changed
         id: commit

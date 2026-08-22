@@ -140,6 +140,22 @@ for (const m of completed) {
   check(`${m.id}: comeback card closed at full-time`, cb.headline === 'Full-time', cb.headline)
 }
 
+// 8 — synthetic: a live match with a running score but no event feed yet
+// (events land at full-time) must not chart a 0-0. The reported bug: NED 3-1
+// IND at 60' rendered as "Draw 100%".
+{
+  const live = {
+    id: 'SYN-LIVE', home: 'AAA', away: 'BBB', status: 'live',
+    score: { home: 3, away: 1 }, kickoffUtc: Date.now() - 100 * 60000,
+  }
+  const pred = { status: 'ready', reg: { home: 0.5, draw: 0.3, away: 0.2 } }
+  const s = buildProbSeries({ match: live, events: [], pred })
+  check('live score without events: two honest points, never a 0-0 curve',
+    s.length === 2, JSON.stringify(s))
+  check('live score without events: the leader leads the chart, never Draw 100%',
+    s.length === 2 && s[1].home > s[1].draw && s[1].home > s[1].away, JSON.stringify(s[1]))
+}
+
 console.log(failed
   ? `${failed} intelligence-consistency check(s) FAILED across ${completed.length} completed matches`
   : `All intelligence-consistency checks passed across ${completed.length} completed matches (and the prediction ledger holds one active pick per fixture).`)

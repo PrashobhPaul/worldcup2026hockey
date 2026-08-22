@@ -74,13 +74,31 @@ All 16 squads with a pre-tournament introduction, a live title probability, and 
 
 ## Under the hood
 
-React + Vite, offline storage in IndexedDB, and a GitHub Actions pipeline that pulls official FIH results every 30 minutes, recomputes player ratings and predictions, and redeploys itself. There is no server and no database to pay for — the tournament data lives in this repository.
+React + Vite, offline storage in IndexedDB, and a GitHub Actions pipeline that pulls official FIH results through match days, recomputes player ratings and predictions, and redeploys itself. There is no server and no database to pay for — the tournament data lives in this repository.
+
+The system is **AI-first with a deterministic fallback**. Match briefs and pick rationales are written by a language model when one is configured; every number underneath them comes from the calibrated statistical engine, which also stands in on its own whenever no model is available. Code, data and configuration are kept apart:
+
+- `model/params.json` — every model constant, in one documented file, read verbatim by both the pipeline (Python) and the app engine (JavaScript) so the two can never drift.
+- `public/data/` — the published tournament data. Append-only where it matters: picks and probabilities are never rewritten, corrections arrive as new revision rows.
+- `scripts/backtest_model.py` — re-scores every completed match *as-of-then* (using only what was known before each push-back), so the calibration claims are reproducible on demand.
+
+### Bring your own AI
+
+Fork the repo, add one repository secret, and the AI tier switches on — no code changes:
+
+| Secret | Provider | Default model |
+| --- | --- | --- |
+| `ANTHROPIC_API_KEY` | Anthropic | `claude-sonnet-5` |
+| `OPENAI_API_KEY` | OpenAI | `gpt-4o` |
+
+Set `AI_MODEL` to pin a specific model id. Without a key, the deterministic engine composes the same content from the same event data — the app is complete either way. See `scripts/ai_provider.py`.
 
 ```bash
 npm install
 npm run dev               # local dev server
 npm run build             # production build
 npm run test:probability  # probability consistency suite
+python3 scripts/backtest_model.py  # model calibration, as-of-then
 ```
 
 ---

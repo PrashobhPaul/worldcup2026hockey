@@ -146,6 +146,12 @@
       "source": "ai"
     },
     {
+      "matchId": "S2E1",
+      "story": "For forty minutes India did to the world's number-one side what nobody in Pool A had managed: nothing happened. Three quarters came and went scoreless in Amstelveen, India absorbing fifty-six per cent Dutch possession and twenty-eight circle entries without conceding, and the Wagener crowd was still waiting when Duco Telgenkamp finally broke through from open play in the 41st, with Shilanand Lakra's green card following a minute later.\n\nThe last twenty minutes delivered everything the first forty withheld. Tjep Hoedemakers doubled the lead from open play in the 51st — Koen Bijen was shown a green in the same minute — and India's reply was immediate: Harmanpreet Singh converted their first and only penalty corner of the match in the 52nd, and at 2-1 with eight minutes left the upset was alive. Thijs van Dam ended it in the 55th, a third Dutch field goal, and the margin held to the final whistle.\n\nThe corner column is the story inside the story: the Netherlands won this match without earning a single penalty corner — all three goals carved from open play against a defence that never gave the set piece away — while India converted the game's only corner through Harmanpreet. The Dutch top Pool E on six points, four wins from four without dropping a point this tournament; India, carrying the two-goal defeat to England, are left needing to win out and hope the table breaks their way.",
+      "generatedAt": "2026-08-22T16:07:14.087682+00:00",
+      "source": "ai"
+    },
+    {
       "matchId": "S2F1",
       "story": "Australia remain the only unbeaten side in Pool F after an evening in Brussels that finished all square and could barely have been closer — circle entries twenty-one apiece, Australia edging possession fifty-two per cent to forty-eight and shots nine to six. Tom Craig gave the Kookaburras the lead in the 24th from open play, finishing the best move of a first half they controlled without ever dominating.\n\nBelgium's reply came from the set piece: Tom Boon converted a penalty corner in the 38th, early in the third quarter, in a match that never produced a card and never quite lost its balance. Australia's nine shots to six were the greater volume, but neither side could find a second goal, and two of the tournament's heavyweights settled for a point apiece.\n\nThe point suits Australia far more. With the win over Spain carried forward from Stage 1 they top Pool F on four points, unbeaten across four matches this tournament; Belgium, carrying the one-goal defeat to Germany, hold a single point from their two counted results with only the Spain fixture left to change it. Even a win there leaves the world's number-one side needing results elsewhere — a semi-final place is no longer in Belgium's own hands.",
       "generatedAt": "2026-08-21T20:51:21.535701+00:00",
@@ -180,13 +186,6 @@
       "story": "Ireland won the highest-scoring match of this World Cup so far, and they had effectively won it by half-time. Jonathan Lynch opened in the 8th from open play and added a penalty-corner goal in the 12th; Matthew Nelson made it three in the 19th, and when Lynch completed his hat-trick in the 24th — his first three goals of the tournament, all inside twenty-four minutes — Ireland led by four against opponents who had barely settled.\n\nMalaysia's response came almost entirely from the short corner: Azimuddin Kamaruddin in the 29th, Amirul Azahar in the 36th and Abu Kamal Azrai in the 41st, three penalty-corner goals that kept them in touching distance without ever threatening parity. Ireland's answer to the second of them was immediate — John McKee converted a corner of their own in the 37th and Nelson struck again in the 39th, so Azrai's goal only trimmed the third-quarter score to 6-3. Benjamin Walker's field goal in the 54th settled the afternoon, and Faizal Saari's reply in the 55th, Malaysia's only goal from open play, fixed the final margin at 7-4.\n\nEleven goals, and the shape of them tells the story of both campaigns. Ireland scored five from open play through three different scorers — the running, carried threat that Malaysia's pool opponents also found, with Malaysia now on twenty conceded across four matches. Malaysia's three corner goals confirm that their set piece travels; nothing else did. For Ireland, who left Pool C with a four-one win over South Africa and two two-goal defeats, this is the day their finishing finally caught up with their chances, and Lynch — scoreless in the pool — leaves it with a hat-trick completed inside the first half.",
       "generatedAt": "2026-08-21T14:39:40.618310+00:00",
       "source": "ai"
-    },
-    {
-      "matchId": "S2E1",
-      "story": "Netherlands beat India 3-1 at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. Netherlands came in ranked 1st in the world, India 8th.\n\nNetherlands scored through Duco Telgenkamp (41'), Tjep Hoedemakers (51') and Thijs van Dam (55'); India through Harmanpreet Singh (52', penalty corner). The opener came in Q3 and the final goal in Q4.\n\nNetherlands won 0 penalty corners to India's 1. 2 cards were shown.",
-      "generatedAt": "2026-08-22T15:56:09.895854+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
     }
   ]
 }

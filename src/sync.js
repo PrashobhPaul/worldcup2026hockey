@@ -25,6 +25,7 @@ async function fetchJSON(path) {
 }
 
 let _syncPromise = null
+let _versionFails = 0
 
 // What the last sync attempt did. The UI subscribes so an empty database can
 // say WHY it is empty instead of rendering blank tabs — the failure mode this
@@ -75,11 +76,21 @@ async function _sync(force) {
   let remote
   try {
     remote = await fetchJSON('data-version.json')
+    _versionFails = 0
   } catch (e) {
-    // Offline. With a populated cache the PWA carries on as normal; with an
-    // empty one there is nothing to show, and the reader has to be told.
+    _versionFails++
     const empty = await storeIsEmpty()
-    setStatus({ state: empty ? 'error' : 'offline', empty, error: empty ? 'Could not reach the data feed.' : null })
+    if (empty) {
+      // Nothing to show — the reader has to be told immediately.
+      setStatus({ state: 'error', empty, error: 'Could not reach the data feed.' })
+    } else if (_versionFails >= 2) {
+      // Two consecutive failures with a populated cache: genuinely offline.
+      setStatus({ state: 'offline', empty, error: null })
+    }
+    // A single failed check with a populated cache is NOT offline: the site
+    // redeploys after every data push (several times an hour on match days)
+    // and a request landing mid-swap can 404. The chip keeps its last good
+    // state; the next poll settles it either way.
     return { status: 'offline' }
   }
 

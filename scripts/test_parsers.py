@@ -524,6 +524,18 @@ f = stage_fx(home='TBD', away='TBD')
 backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
 check('an unslotted fixture is untouched', f['matches'][0]['score'] is None)
 
+# The stability window is two adjacent runs of the 10-minute match-hours
+# cron: one 10-minute gap is not yet a confirmation, twelve minutes is.
+f = stage_fx()
+backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
+backfill_stage_scores(f, page, now=datetime(2026, 8, 21, 11, 40, tzinfo=timezone.utc),
+                      report_tally=no_report)
+check('ten minutes of stability is not yet a confirmation', f['matches'][0]['score'] is None)
+backfill_stage_scores(f, page, now=datetime(2026, 8, 21, 11, 42, tzinfo=timezone.utc),
+                      report_tally=no_report)
+check('twelve minutes of stability confirms (two 10-minute runs apart)',
+      f['matches'][0]['score'] == {'home': 1, 'away': 3})
+
 f = stage_fx(score={'home': 4, 'away': 2}, status='completed')
 backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
 check('an existing (e.g. manual) score is never overwritten',
@@ -688,7 +700,7 @@ check('the right-column entries carry their own minutes',
 check('two-column header and legend rows still yield nothing',
       all(g['team'] in ('IRL', 'MAS') for g in irl_mas))
 
-print('\nMatch model calibration (v2, points-based)')
+print('\nMatch model calibration (v3, points-based, backtested)')
 
 ph, pd, pa = predict(3000, 3000)
 check('equal teams sit near thirds with a full draw', pd >= 0.30 and abs(ph - pa) < 0.01)
