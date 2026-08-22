@@ -77,6 +77,8 @@ REASONS = {
     'S2G2': "Pakistan left Pool D with a single point, but their attack travelled: seven scored in three matches against England, India and Wales, three of them in each of the last two. Japan's pool brought three defeats and one goal, with shut-outs conceded to Argentina and New Zealand. Both sides are winless — yet one has scored in every match this tournament and the other has barely scored at all, and that margin favours Pakistan.",
 
     'S2E1': "The Netherlands swept Pool A with three wins from three, twelve scored and three conceded — one of only two perfect records in the tournament. India took six points from Pool D, putting three past Wales and five past Pakistan, and their defeat to England came by two in a match they scored twice in. India's ten pool goals say they will create chances; the Dutch defence, breached once a game on average, says those chances stay scarce. The tournament's most complete side so far is favoured on the full sweep of the evidence.",
+
+    'S2E2': "England's pool was a procession: three wins from three, sixteen scored and five conceded, eight of them put past Wales in a single evening. Argentina's eleven pool goals — three past Japan, seven past New Zealand — trail only England and the Dutch, but their one meeting with a top-tier side ended in a two-goal defeat to the Netherlands, the same margin by which England beat India. Two of the tournament's three sharpest attacks meet; the one nobody has slowed yet is favoured.",
 }
 
 

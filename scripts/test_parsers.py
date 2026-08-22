@@ -524,6 +524,18 @@ f = stage_fx(home='TBD', away='TBD')
 backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
 check('an unslotted fixture is untouched', f['matches'][0]['score'] is None)
 
+# The stability window is two adjacent runs of the 10-minute match-hours
+# cron: one 10-minute gap is not yet a confirmation, twelve minutes is.
+f = stage_fx()
+backfill_stage_scores(f, page, now=past_window, report_tally=no_report)
+backfill_stage_scores(f, page, now=datetime(2026, 8, 21, 11, 40, tzinfo=timezone.utc),
+                      report_tally=no_report)
+check('ten minutes of stability is not yet a confirmation', f['matches'][0]['score'] is None)
+backfill_stage_scores(f, page, now=datetime(2026, 8, 21, 11, 42, tzinfo=timezone.utc),
+                      report_tally=no_report)
+check('twelve minutes of stability confirms (two 10-minute runs apart)',
+      f['matches'][0]['score'] == {'home': 1, 'away': 3})
+
 f = stage_fx(score={'home': 4, 'away': 2}, status='completed')
 backfill_stage_scores(f, page, now=past_window, report_tally=lambda m: (1, 3))
 check('an existing (e.g. manual) score is never overwritten',

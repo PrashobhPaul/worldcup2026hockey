@@ -2185,8 +2185,11 @@
       "p_away_win": 0.117,
       "pick": "HOME",
       "pick_confidence": 0.658,
-      "reason": "FIH #3 ENG favoured over #7 ARG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-21T14:21:42.003277+00:00"
+      "reason": "England's pool was a procession: three wins from three, sixteen scored and five conceded, eight of them put past Wales in a single evening. Argentina's eleven pool goals — three past Japan, seven past New Zealand — trail only England and the Dutch, but their one meeting with a top-tier side ended in a two-goal defeat to the Netherlands, the same margin by which England beat India. Two of the tournament's three sharpest attacks meet; the one nobody has slowed yet is favoured.",
+      "publishedAt": "2026-08-21T14:21:42.003277+00:00",
+      "reason_original": "FIH #3 ENG favoured over #7 ARG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-22T15:49:58.467531+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2F3:r5",

@@ -130,6 +130,24 @@ export function buildProbSeries({ match, events, pred }) {
   const supremacy = fitSupremacy(pred.reg)
   const totalGoals = 5.2
 
+  // Mid-match the running score is known but the per-goal minutes are not —
+  // the event feed lands at full-time. Charting the minute-by-minute curve
+  // from an empty feed narrates a 0-0 that is not happening (a live 3-1 at
+  // 60' rendered as "Draw 100%"). Two honest points instead: the published
+  // anchor, and the current state conditioned on the actual score.
+  const sh = match.score?.home ?? 0, sa = match.score?.away ?? 0
+  if (sh + sa > 0 && goals.length === 0) {
+    const remaining = Math.max(0, 60 - horizon) / 60
+    const floor = remaining > 0 ? 0.05 : 0
+    const lH = Math.max(floor, ((totalGoals + supremacy) / 2) * remaining)
+    const lA = Math.max(floor, ((totalGoals - supremacy) / 2) * remaining)
+    const p = conditionalOutcome(sh - sa, lH, lA)
+    return [
+      { min: 0, ...anchorPoint(pred) },
+      { min: horizon, home: Math.round(p.home * 100), draw: Math.round(p.draw * 100), away: Math.round(p.away * 100) },
+    ]
+  }
+
   const series = []
   for (let m = 0; m <= horizon; m++) {
     let h = 0, a = 0

@@ -1566,9 +1566,11 @@ def update_live_scores(fixtures, page_results, now=None):
     return changed
 
 # Minutes a matches-page score must sit unchanged before it is trusted as
-# final for a match with no standings table to witness it. One cron interval
-# apart is plenty: a final score does not move; a live one does.
-SCORE_CONFIRM_MIN = 20
+# final for a match with no standings table to witness it. Two adjacent runs
+# of the 10-minute match-hours cron are plenty: a final score does not move;
+# a live one does — and the match window has to be over before this path
+# even applies, so the page score being re-read here is already post-match.
+SCORE_CONFIRM_MIN = 12
 
 def _report_goal_tally(m):
     """(home_goals, away_goals) from the official match report, or None.
