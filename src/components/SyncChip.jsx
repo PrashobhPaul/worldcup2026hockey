@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import { RefreshCw } from 'lucide-react'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db'
 import { getSyncStatus, subscribeSync, syncData } from '../sync'
 
-// A quiet refresh button. The version counter used to live here, but a build
-// number means nothing to a reader — what they want is "make it current",
-// which is one tap. The status dot still tells the truth at a glance (green
-// fresh, amber offline, red failed), the icon spins while a sync runs, and
-// the full detail — version, age, any error — stays on the accessible label.
+// The top-right stats box: tournament progress with the refresh built in —
+// "28/50 ↻" — because the count is exactly the thing a refresh updates. The
+// status dot tells the sync truth at a glance (green fresh, amber offline,
+// red failed), the icon spins while a sync runs, and the full detail —
+// completed matches, data version, age, any error — rides the accessible
+// label. One tap anywhere on the box refreshes.
 function age(at) {
   if (!at) return 'unknown'
   const s = Math.max(0, Math.floor((Date.now() - at) / 1000))
@@ -25,21 +28,27 @@ export default function SyncChip() {
   const [status, setStatus] = useState(getSyncStatus)
   useEffect(() => subscribeSync(setStatus), [])
 
+  const matches = useLiveQuery(() => db.matches.toArray(), [], [])
+  const done = matches.filter(m => m.status === 'completed' && m.score?.home != null).length
+  const total = matches.length || 50
+
   const busy = status.state === 'syncing' || status.state === 'starting'
   const trouble = status.state === 'error' || status.state === 'offline'
   // Tooltips never fire on touch, so a failed sync must be visible in the
-  // button itself (red dot + red icon), and the aria-label carries the rest.
+  // chip itself (red dot + red icon), and the aria-label carries the rest.
   const label = trouble
     ? `Data sync failed${status.error ? ` — ${status.error}` : ''}. Tap to retry.`
-    : `Refresh data. Version ${status.version ?? 'unknown'}, synced ${age(status.at)}.`
+    : `${done} of ${total} matches completed. Refresh data — version ${status.version ?? 'unknown'}, synced ${age(status.at)}.`
   return (
     <button onClick={() => syncData({ force: true })} disabled={busy}
       title={label} aria-label={label}
-      className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors hover:bg-pitch-800 ${
-        trouble ? 'text-red-400' : 'text-pitch-400 hover:text-pitch-200'
+      className={`flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-md border px-2.5 font-mono text-xs transition-colors ${
+        trouble ? 'border-red-400/30 bg-red-400/10 text-red-400'
+                : 'border-brand/20 bg-brand/10 text-brand hover:border-brand/40'
       }`}>
-      <RefreshCw size={15} className={busy ? 'animate-spin' : undefined} />
-      <span className={`absolute right-1 top-1 inline-block h-1.5 w-1.5 rounded-full ${DOT[status.state] ?? 'bg-pitch-500'}`} />
+      <span className={`inline-block h-1.5 w-1.5 rounded-full ${DOT[status.state] ?? 'bg-pitch-500'}`} />
+      <span>{done}/{total}</span>
+      <RefreshCw size={13} className={busy ? 'animate-spin' : undefined} />
     </button>
   )
 }
