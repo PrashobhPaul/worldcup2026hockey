@@ -59,12 +59,22 @@ jobs:
 
       - name: Configure Bubblewrap paths
         run: |
+          # Bubblewrap validates androidSdkPath by looking for tools/ or bin/
+          # at its root (its own managed-download layout), while the runner's
+          # SDK uses the modern cmdline-tools/latest layout. A shim directory
+          # of symlinks satisfies both: bin/ from cmdline-tools, everything
+          # else from the real SDK.
+          SDK_SHIM="$HOME/bubblewrap-sdk"
+          mkdir -p "$SDK_SHIM"
+          ln -s "$ANDROID_HOME/cmdline-tools/latest/bin" "$SDK_SHIM/bin"
+          for d in build-tools platforms platform-tools licenses cmdline-tools tools; do
+            [ -e "$ANDROID_HOME/$d" ] && ln -s "$ANDROID_HOME/$d" "$SDK_SHIM/$d" || true
+          done
           mkdir -p ~/.bubblewrap
           cat > ~/.bubblewrap/config.json <<EOF
-          {"jdkPath": "$JAVA_HOME", "androidSdkPath": "$ANDROID_HOME"}
+          {"jdkPath": "$JAVA_HOME", "androidSdkPath": "$SDK_SHIM"}
           EOF
-          echo "ANDROID_HOME=$ANDROID_HOME"; ls "$ANDROID_HOME" || true; ls "$ANDROID_HOME/build-tools" || true
-          cat ~/.bubblewrap/config.json
+          ls -la "$SDK_SHIM"
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
 
       - name: Build APK
