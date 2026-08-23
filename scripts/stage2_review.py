@@ -91,6 +91,12 @@ The difference from Monday is the whole story for France: against South Africa, 
 Joel Rintala pulled Australia back to 3-2 from open play in the 30th, on the stroke of half-time, and the match Australia needed was there again. It lasted ten minutes: Hugo von Montgelas converted Germany's only penalty corner of the evening in the 40th, and from two goals up Germany managed the game home — fifty-eight per cent of possession, twelve shots to ten, twenty-six circle entries to twenty, with Müller's green card in the 50th the only late interruption.
 
 Australia's unbeaten tournament ends at the last hurdle of their Pool F programme, and the manner matters as much as the result: a side that had conceded four goals in four matches gave up four in one evening, three of them from open play. Germany finish their Stage 2 fixtures on six points at the top of the pool, the Spain defeat answered emphatically; Australia close on four and can only watch tonight's Spain-Belgium match decide what their total is worth.""",
+
+    'S2F4': """Belgium needed a win to keep their semi-final arithmetic alive, and for four minutes the evening obeyed: Arthur van Doren converted a penalty corner in the 4th, Belgium's first lead of Stage 2. What followed was forty-two minutes without a goal in a match that never opened up — possession fifty-one per cent to forty-nine for Spain, six shots to seven the other way, nineteen circle entries to sixteen.
+
+Marc Miralles levelled in the 46th from Spain's only penalty corner of the match, and the corner count finished perfect at both ends: two corners in the match, two goals. Guillaume Hellin's green card in the 58th was the only other entry in the book, and neither side found the winner that would have changed what the table now says.
+
+It says this: Germany top Pool F on six points, Australia and Spain finish level on four — Australia holding the win from their meeting in Stage 1 — and Belgium end bottom on two, without a win in Stage 2 for a side that arrived ranked first in the world. A draw with Australia, a draw with Spain and the carried defeat to Germany is a campaign of fine margins falling the wrong way; Spain, who took four points from the pool's two heavyweights, will feel the ones that fell their way were earned.""",
 }
 
 REASONS = {
