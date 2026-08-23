@@ -176,6 +176,13 @@
       "source": "ai"
     },
     {
+      "matchId": "S2F4",
+      "story": "Spain and Belgium shared a 1-1 draw at the Royal Leopold Club in Brussels, in a Pool F tie of the FIH Hockey World Cup 2026. Spain came in ranked 5th in the world, Belgium 2nd.\n\nSpain scored through Marc Miralles (46', penalty corner); Belgium through Arthur van Doren (4', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nSpain won 1 penalty corner to Belgium's 1. 1 card was shown.",
+      "generatedAt": "2026-08-23T20:26:56.511364+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
       "matchId": "S2G1",
       "story": "Wales led this match twice and still lost it by five, which is the truest measure of what New Zealand did to them after the first quarter. Jolyon Morgan scored from open play in the 8th, and when James Hickson's penalty corner levelled it in the 22nd, Morgan answered within a minute — his second, in the 23rd, had Wales in front again.\n\nThe response was six unanswered goals in thirty-three minutes. Hickson levelled once more in the 25th from open play, Scott Boyde — shown a green card in the 22nd — turned the match properly in the 32nd, and Kane Russell's penalty corner in the 35th gave New Zealand a lead they never looked like surrendering. Finn Ward in the 41st, Sam Lane in the 48th and Hickson's third in the 56th completed the rout: a hat-trick opened by a corner and closed by two field goals, with five different New Zealand scorers behind it.\n\nThe numbers underneath are lopsided in a way Pool A never let New Zealand show: sixty-five per cent of possession, eleven shots to six, forty circle entries to seventeen, and both penalty corners converted. With the two-goal win over Japan carried forward, the Black Sticks top Pool G on six points. For Wales the tournament's pattern hardens — twenty-one conceded across four matches now — and Morgan's brace was the only reward from a morning that began exactly the way they must have dreamed it.",
       "generatedAt": "2026-08-22T10:30:45.605278+00:00",

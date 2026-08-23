@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-23T20:00:10.693727+00:00",
+ "last_updated": "2026-08-23T20:33:28.412212+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -17958,12 +17958,33 @@
    "time": "20:30",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "live",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 1,
+    "away": 1
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 4,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Arthur van Doren"
+    },
+    {
+     "minute": 46,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PC",
+     "player": "Marc Miralles"
+    },
+    {
+     "minute": 58,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "Guillaume Hellin"
+    }
+   ],
    "lineups": {
     "source": "estimated",
     "generated_at": "2026-08-21T17:27:13.627942+00:00",
@@ -18299,11 +18320,80 @@
     }
    },
    "tms_id": 22369,
-   "live_score": {
+   "result_source": "fih-tms-matches",
+   "penalty_corners": {
     "home": 1,
-    "away": 1,
-    "at": "2026-08-23T19:59:59.253822+00:00"
-   }
+    "away": 1
+   },
+   "stats": {
+    "home": {
+     "goals": 1,
+     "shots": 6,
+     "circle_entries": 19,
+     "penalty_corners": 1,
+     "possession": 51,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0
+    },
+    "away": {
+     "goals": 1,
+     "shots": 7,
+     "circle_entries": 16,
+     "penalty_corners": 1,
+     "possession": 49,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — ESP vs BEL.",
+     "seq": 0
+    },
+    {
+     "minute": 4,
+     "team": "BEL",
+     "text": "GOAL! Arthur van Doren (BEL) scores from a penalty corner — ESP 0-1 BEL.",
+     "seq": 1
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: ESP 0-1 BEL.",
+     "seq": 2
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: ESP 0-1 BEL.",
+     "seq": 3
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: ESP 0-1 BEL.",
+     "seq": 4
+    },
+    {
+     "minute": 46,
+     "team": "ESP",
+     "text": "GOAL! Marc Miralles (ESP) scores from a penalty corner — ESP 1-1 BEL.",
+     "seq": 5
+    },
+    {
+     "minute": 58,
+     "team": "BEL",
+     "text": "Green Card for Guillaume Hellin (BEL) — 2-minute suspension.",
+     "seq": 6
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: ESP 1-1 BEL.",
+     "seq": 7
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "S2G3",
