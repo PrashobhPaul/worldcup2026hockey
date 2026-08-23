@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-23T15:25:23.346251+00:00",
+  "last_updated": "2026-08-23T15:47:53.020661+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -17463,7 +17463,7 @@
       "time": "17:30",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
@@ -17810,7 +17810,12 @@
           "coach": "Mark Hager"
         }
       },
-      "tms_id": 22368
+      "tms_id": 22368,
+      "live_score": {
+        "home": 0,
+        "away": 1,
+        "at": "2026-08-23T15:47:38.610569+00:00"
+      }
     },
     {
       "id": "S2F4",
