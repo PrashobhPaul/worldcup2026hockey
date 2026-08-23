@@ -1376,6 +1376,15 @@
     ],
     "BEL-ESP": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-23",
+        "home": "ESP",
+        "away": "BEL",
+        "home_goals": 0,
+        "away_goals": 1,
+        "current": false
+      },
+      {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-06-21",
         "home": "ESP",
@@ -2042,5 +2051,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-23T18:33:11.615132+00:00"
+  "updated_at": "2026-08-23T18:57:38.018389+00:00"
 }
