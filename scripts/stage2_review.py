@@ -85,6 +85,12 @@ The shape of the win is the story of South Africa's week. Against France it was 
 France's reply was immediate and familiar: Victor Charlet converted in the 42nd from France's only penalty corner of the afternoon — the second time in a week he has scored from his side's single corner of a match. From there the game tilted the way the territory always said it should, and Timothée Clément won it from open play in the 59th, France's tenth shot of a match in which they out-entered Ireland twenty-five to fourteen and held fifty-three per cent of possession.
 
 The difference from Monday is the whole story for France: against South Africa, twenty-one circle entries produced four shots and a defeat; here twenty-five produced ten and a win, the first of their Stage 2. Ireland made nine shots from only fourteen entries — the sharp conversion that brought eleven goals against Malaysia travelled — but one goal from it left another one-goal afternoon, and both of these sides now stand on a win and a defeat in Pool H, chasing a South African side with two from two.""",
+
+    'S2F3': """Everything Germany's tournament had lacked arrived in nine first-half minutes. Blake Govers had given Australia the lead from open play in the 3rd — Tim Brand's green card following sixty seconds later — and then the side that had scored exactly once per match against everyone but Malaysia produced three field goals in a burst: Hannes Müller in the 11th, Michel Struthoff in the 12th, Justus Warweg in the 19th, and a 0-1 was a 3-1 before the first quarter's shape had settled.
+
+Joel Rintala pulled Australia back to 3-2 from open play in the 30th, on the stroke of half-time, and the match Australia needed was there again. It lasted ten minutes: Hugo von Montgelas converted Germany's only penalty corner of the evening in the 40th, and from two goals up Germany managed the game home — fifty-eight per cent of possession, twelve shots to ten, twenty-six circle entries to twenty, with Müller's green card in the 50th the only late interruption.
+
+Australia's unbeaten tournament ends at the last hurdle of their Pool F programme, and the manner matters as much as the result: a side that had conceded four goals in four matches gave up four in one evening, three of them from open play. Germany finish their Stage 2 fixtures on six points at the top of the pool, the Spain defeat answered emphatically; Australia close on four and can only watch tonight's Spain-Belgium match decide what their total is worth.""",
 }
 
 REASONS = {

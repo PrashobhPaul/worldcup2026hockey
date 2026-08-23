@@ -171,10 +171,9 @@
     },
     {
       "matchId": "S2F3",
-      "story": "Germany beat Australia 4-2 at the Royal Leopold Club in Brussels, in a Pool F tie of the FIH Hockey World Cup 2026. Germany came in ranked 6th in the world, Australia 3rd.\n\nGermany scored through Hannes Müller (11'), Michel Struthoff (12'), Justus Warweg (19') and Hugo von Montgelas (40', penalty corner); Australia through Blake Govers (3') and Joel Rintala (30'). The opener came in Q1 and the final goal in Q3.\n\nGermany won 1 penalty corner to Australia's 0. 2 cards were shown.",
-      "generatedAt": "2026-08-23T17:23:05.147567+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
+      "story": "Everything Germany's tournament had lacked arrived in nine first-half minutes. Blake Govers had given Australia the lead from open play in the 3rd — Tim Brand's green card following sixty seconds later — and then the side that had scored exactly once per match against everyone but Malaysia produced three field goals in a burst: Hannes Müller in the 11th, Michel Struthoff in the 12th, Justus Warweg in the 19th, and a 0-1 was a 3-1 before the first quarter's shape had settled.\n\nJoel Rintala pulled Australia back to 3-2 from open play in the 30th, on the stroke of half-time, and the match Australia needed was there again. It lasted ten minutes: Hugo von Montgelas converted Germany's only penalty corner of the evening in the 40th, and from two goals up Germany managed the game home — fifty-eight per cent of possession, twelve shots to ten, twenty-six circle entries to twenty, with Müller's green card in the 50th the only late interruption.\n\nAustralia's unbeaten tournament ends at the last hurdle of their Pool F programme, and the manner matters as much as the result: a side that had conceded four goals in four matches gave up four in one evening, three of them from open play. Germany finish their Stage 2 fixtures on six points at the top of the pool, the Spain defeat answered emphatically; Australia close on four and can only watch tonight's Spain-Belgium match decide what their total is worth.",
+      "generatedAt": "2026-08-23T17:53:43.936643+00:00",
+      "source": "ai"
     },
     {
       "matchId": "S2G1",
