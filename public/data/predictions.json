@@ -2712,8 +2712,11 @@
       "p_away_win": 0.706,
       "pick": "AWAY",
       "pick_confidence": 0.706,
-      "reason": "FIH #2 BEL favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T17:19:20.912621+00:00"
+      "reason": "Both sides have already measured themselves against Australia, the pool's pacesetters: Belgium took a point off them, Spain lost without scoring. Belgium's eight goals across three pool matches remain the heavier attacking output either side brings, their only defeat all tournament is by a single goal to Germany, and the corner conversion against Australia showed the set piece has carried into Stage 2. Spain keep winning tight matches on fine margins, but with Belgium needing a win to stay in the semi-final conversation, the extra firepower tips a very close call.",
+      "publishedAt": "2026-08-22T17:19:20.912621+00:00",
+      "reason_original": "FIH #2 BEL favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T09:33:31.356792+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G3:r8",
@@ -2842,8 +2845,11 @@
       "p_away_win": 0.619,
       "pick": "AWAY",
       "pick_confidence": 0.619,
-      "reason": "FIH #3 AUS favoured over #6 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "reason": "Australia are the only side left in Pool F yet to lose a match this tournament — two wins and two draws around the pool's stingiest defence, four conceded in four. Germany's scoring has thinned since the five they put past Malaysia: one goal per match in the three games since, and Spain have just ended their unbeaten run. An attack producing once a game against the steadiest defence in the pool is the harder road; Australia are favoured to stay unbeaten.",
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "reason_original": "FIH #3 AUS favoured over #6 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T09:33:31.356792+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G3:r9",
@@ -2884,8 +2890,11 @@
       "p_away_win": 0.13,
       "pick": "HOME",
       "pick_confidence": 0.699,
-      "reason": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "reason": "Argentina's only defeat in four matches this tournament is to the Netherlands, and they arrive from beating England 3-1 on sixty-one per cent of possession and three penalty-corner goals. India's four matches split the other way: wins over Wales and Pakistan, defeats in both meetings with top-eight opposition, and eleven conceded overall — nearly three a match. Argentina's corner battery against the tournament's most breached top-eight defence favours Los Leones.",
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "reason_original": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T09:33:31.356792+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2E4:r8",
@@ -2898,8 +2907,11 @@
       "p_away_win": 0.101,
       "pick": "HOME",
       "pick_confidence": 0.772,
-      "reason": "FIH #1 NED favoured over #4 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "reason": "The Netherlands are the tournament's only side with four wins from four — fifteen scored, four conceded, and never a winning margin under two. England's sixteen pool goals came against Pakistan, India and Wales; against the first top-eight defence they met, the attack produced five shots from twenty-two circle entries and a single goal. The Dutch have already beaten Argentina and India by that same controlled pattern, and the pool's deepest defence is favoured over its streakiest attack.",
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "reason_original": "FIH #1 NED favoured over #4 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T09:33:31.356792+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     }
   ]
 }
