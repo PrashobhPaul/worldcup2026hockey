@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-23T10:27:06.223632+00:00",
+ "last_updated": "2026-08-23T11:23:38.795001+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -3604,7 +3604,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T17:27:13.614278+00:00",
+    "generated_at": "2026-08-23T11:19:32.213166+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -3809,10 +3809,37 @@
        "goalkeeper": false
       },
       {
+       "playerId": "RSA_14",
+       "name": "Nicholas Spooner",
+       "number": 23,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_13",
+       "name": "Luke Wynford",
+       "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "RSA_20",
        "name": "Kenton Melville",
        "number": 47,
-       "line": "Defender",
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_12",
+       "name": "Viwe Mbata",
+       "number": 18,
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -3821,15 +3848,6 @@
        "playerId": "RSA_17",
        "name": "Samkelo Mvimbi",
        "number": 29,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_14",
-       "name": "Nicholas Spooner",
-       "number": 23,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -3839,7 +3857,7 @@
        "playerId": "RSA_09",
        "name": "Tevin Kok",
        "number": 11,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -3848,7 +3866,7 @@
        "playerId": "RSA_03",
        "name": "Andrew Hobson",
        "number": 3,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -3857,24 +3875,6 @@
        "playerId": "RSA_05",
        "name": "Senzwesihle Ngubane",
        "number": 5,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_04",
-       "name": "Calvin Davis",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_13",
-       "name": "Luke Wynford",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -3890,44 +3890,44 @@
        "onAt": "24:01"
       },
       {
+       "playerId": "RSA_04",
+       "name": "Calvin Davis",
+       "number": 4,
+       "position": null,
+       "onAt": "13:06"
+      },
+      {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
        "position": null,
-       "onAt": "13:06"
+       "onAt": "11:04"
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
        "position": null,
-       "onAt": "11:04"
+       "onAt": "19:41"
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
        "position": null,
-       "onAt": "19:41"
+       "onAt": "21:52"
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
        "position": null,
-       "onAt": "21:52"
+       "onAt": "51:33"
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "51:33"
-      },
-      {
-       "playerId": "RSA_12",
-       "name": "Viwe Mbata",
-       "number": 18,
        "position": null,
        "onAt": "24:25"
       },
@@ -7629,7 +7629,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T16:32:41.594994+00:00",
+    "generated_at": "2026-08-23T11:19:32.216906+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -7820,10 +7820,37 @@
        "goalkeeper": false
       },
       {
+       "playerId": "RSA_14",
+       "name": "Nicholas Spooner",
+       "number": 23,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_13",
+       "name": "Luke Wynford",
+       "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "RSA_20",
        "name": "Kenton Melville",
        "number": 47,
-       "line": "Defender",
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_12",
+       "name": "Viwe Mbata",
+       "number": 18,
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -7832,15 +7859,6 @@
        "playerId": "RSA_17",
        "name": "Samkelo Mvimbi",
        "number": 29,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_14",
-       "name": "Nicholas Spooner",
-       "number": 23,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -7850,7 +7868,7 @@
        "playerId": "RSA_09",
        "name": "Tevin Kok",
        "number": 11,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -7859,7 +7877,7 @@
        "playerId": "RSA_03",
        "name": "Andrew Hobson",
        "number": 3,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -7868,24 +7886,6 @@
        "playerId": "RSA_05",
        "name": "Senzwesihle Ngubane",
        "number": 5,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_04",
-       "name": "Calvin Davis",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_13",
-       "name": "Luke Wynford",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -7901,44 +7901,44 @@
        "onAt": "38:40"
       },
       {
+       "playerId": "RSA_04",
+       "name": "Calvin Davis",
+       "number": 4,
+       "position": null,
+       "onAt": "17:35"
+      },
+      {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
        "position": null,
-       "onAt": "17:35"
+       "onAt": "14:55"
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
        "position": null,
-       "onAt": "14:55"
+       "onAt": "44:44"
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
        "position": null,
-       "onAt": "44:44"
+       "onAt": "51:24"
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
        "position": null,
-       "onAt": "51:24"
+       "onAt": "16:19"
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "16:19"
-      },
-      {
-       "playerId": "RSA_12",
-       "name": "Viwe Mbata",
-       "number": 18,
        "position": null,
        "onAt": "24:18"
       },
@@ -11388,7 +11388,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T20:24:00.580932+00:00",
+    "generated_at": "2026-08-23T11:19:32.220065+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -11593,10 +11593,37 @@
        "goalkeeper": false
       },
       {
+       "playerId": "RSA_14",
+       "name": "Nicholas Spooner",
+       "number": 23,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_13",
+       "name": "Luke Wynford",
+       "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "RSA_20",
        "name": "Kenton Melville",
        "number": 47,
-       "line": "Defender",
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_12",
+       "name": "Viwe Mbata",
+       "number": 18,
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -11605,15 +11632,6 @@
        "playerId": "RSA_17",
        "name": "Samkelo Mvimbi",
        "number": 29,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_14",
-       "name": "Nicholas Spooner",
-       "number": 23,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -11623,7 +11641,7 @@
        "playerId": "RSA_09",
        "name": "Tevin Kok",
        "number": 11,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -11632,7 +11650,7 @@
        "playerId": "RSA_03",
        "name": "Andrew Hobson",
        "number": 3,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -11641,24 +11659,6 @@
        "playerId": "RSA_05",
        "name": "Senzwesihle Ngubane",
        "number": 5,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_04",
-       "name": "Calvin Davis",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_13",
-       "name": "Luke Wynford",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -11674,44 +11674,44 @@
        "onAt": "19:41"
       },
       {
+       "playerId": "RSA_04",
+       "name": "Calvin Davis",
+       "number": 4,
+       "position": null,
+       "onAt": "46:41"
+      },
+      {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
        "position": null,
-       "onAt": "46:41"
+       "onAt": "17:44"
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
        "position": null,
-       "onAt": "17:44"
+       "onAt": "20:09"
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
        "position": null,
-       "onAt": "20:09"
+       "onAt": "20:05"
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
        "position": null,
-       "onAt": "20:05"
+       "onAt": "32:17"
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "32:17"
-      },
-      {
-       "playerId": "RSA_12",
-       "name": "Viwe Mbata",
-       "number": 18,
        "position": null,
        "onAt": "27:32"
       },
