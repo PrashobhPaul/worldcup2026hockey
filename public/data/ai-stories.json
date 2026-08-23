@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-23T14:26:51.008925+00:00",
+  "updated_at": "2026-08-23T17:23:05.147590+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -205,6 +205,13 @@
       "matchId": "S2H4",
       "story": "France edged Ireland 2-1 at the Royal Leopold Club in Brussels, in a Pool H tie of the FIH Hockey World Cup 2026. France came in ranked 11th in the world, Ireland 9th.\n\nFrance scored through Victor Charlet (42', penalty corner) and Timothée Clément (59'); Ireland through Jeremy Duncan (39'). The opener came in Q3 and the final goal in Q4.\n\nFrance won 1 penalty corner to Ireland's 0. 3 cards were shown.",
       "generatedAt": "2026-08-23T14:26:51.008892+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "S2F3",
+      "story": "Germany beat Australia 4-2 at the Royal Leopold Club in Brussels, in a Pool F tie of the FIH Hockey World Cup 2026. Germany came in ranked 6th in the world, Australia 3rd.\n\nGermany scored through Hannes Müller (11'), Michel Struthoff (12'), Justus Warweg (19') and Hugo von Montgelas (40', penalty corner); Australia through Blake Govers (3') and Joel Rintala (30'). The opener came in Q1 and the final goal in Q3.\n\nGermany won 1 penalty corner to Australia's 0. 2 cards were shown.",
+      "generatedAt": "2026-08-23T17:23:05.147567+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }

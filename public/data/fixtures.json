@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-23T17:01:13.728960+00:00",
+  "last_updated": "2026-08-23T17:23:04.980905+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -1175,7 +1175,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T17:27:13.611819+00:00",
+        "generated_at": "2026-08-23T17:23:04.962025+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -1217,36 +1217,36 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_04",
+              "name": "Justus Warweg",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_04",
-              "name": "Justus Warweg",
-              "number": 7,
+              "playerId": "GER_18",
+              "name": "Hugo von Montgelas",
+              "number": 22,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -1262,18 +1262,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_10",
+              "name": "Michel Struthoff",
+              "number": 21,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -1289,37 +1289,37 @@
               "onAt": "35:09"
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "position": null,
               "onAt": "48:52"
+            },
+            {
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
+              "position": null,
+              "onAt": "08:24"
+            },
+            {
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
+              "position": null,
+              "onAt": "46:58"
             },
             {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "08:24"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Moritz Ludwig",
-              "number": 44,
-              "position": null,
-              "onAt": "46:58"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Linus Müller",
-              "number": 5,
-              "position": null,
               "onAt": "43:29"
             },
             {
-              "playerId": "GER_10",
-              "name": "Michel Struthoff",
-              "number": 21,
+              "playerId": "GER_16",
+              "name": "Antheus Barry",
+              "number": 38,
               "position": null,
               "onAt": "28:43"
             },
@@ -1329,13 +1329,6 @@
               "number": 24,
               "position": null,
               "onAt": "27:18"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Hugo von Montgelas",
-              "number": 22,
-              "position": null,
-              "onAt": "39:47"
             }
           ],
           "team": "GER",
@@ -5142,7 +5135,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T17:27:13.615747+00:00",
+        "generated_at": "2026-08-23T17:23:04.965859+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -5342,36 +5335,36 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_04",
+              "name": "Justus Warweg",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_04",
-              "name": "Justus Warweg",
-              "number": 7,
+              "playerId": "GER_18",
+              "name": "Hugo von Montgelas",
+              "number": 22,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -5387,18 +5380,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_10",
+              "name": "Michel Struthoff",
+              "number": 21,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -5414,37 +5407,37 @@
               "onAt": "18:13"
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "position": null,
               "onAt": "35:19"
+            },
+            {
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
+              "position": null,
+              "onAt": "17:13"
+            },
+            {
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
+              "position": null,
+              "onAt": "26:11"
             },
             {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "17:13"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Moritz Ludwig",
-              "number": 44,
-              "position": null,
-              "onAt": "26:11"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Linus Müller",
-              "number": 5,
-              "position": null,
               "onAt": "29:50"
             },
             {
-              "playerId": "GER_10",
-              "name": "Michel Struthoff",
-              "number": 21,
+              "playerId": "GER_16",
+              "name": "Antheus Barry",
+              "number": 38,
               "position": null,
               "onAt": "43:46"
             },
@@ -5454,13 +5447,6 @@
               "number": 24,
               "position": null,
               "onAt": "21:28"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Hugo von Montgelas",
-              "number": 22,
-              "position": null,
-              "onAt": "23:52"
             }
           ],
           "team": "GER",
@@ -9824,7 +9810,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-23T14:26:50.821084+00:00",
+        "generated_at": "2026-08-23T17:23:04.970089+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10038,36 +10024,36 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_04",
+              "name": "Justus Warweg",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_04",
-              "name": "Justus Warweg",
-              "number": 7,
+              "playerId": "GER_18",
+              "name": "Hugo von Montgelas",
+              "number": 22,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -10083,18 +10069,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_10",
+              "name": "Michel Struthoff",
+              "number": 21,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -10110,37 +10096,37 @@
               "onAt": "46:36"
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "position": null,
               "onAt": "21:23"
+            },
+            {
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
+              "position": null,
+              "onAt": "39:55"
+            },
+            {
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
+              "position": null,
+              "onAt": "12:55"
             },
             {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "39:55"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Moritz Ludwig",
-              "number": 44,
-              "position": null,
-              "onAt": "12:55"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Linus Müller",
-              "number": 5,
-              "position": null,
               "onAt": "29:13"
             },
             {
-              "playerId": "GER_10",
-              "name": "Michel Struthoff",
-              "number": 21,
+              "playerId": "GER_16",
+              "name": "Antheus Barry",
+              "number": 38,
               "position": null,
               "onAt": "36:46"
             },
@@ -10150,13 +10136,6 @@
               "number": 24,
               "position": null,
               "onAt": "45:10"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Hugo von Montgelas",
-              "number": 22,
-              "position": null,
-              "onAt": "23:06"
             }
           ],
           "team": "GER",
@@ -13887,7 +13866,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T17:27:13.623953+00:00",
+        "generated_at": "2026-08-23T17:23:04.973842+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -13929,36 +13908,36 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_04",
+              "name": "Justus Warweg",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_04",
-              "name": "Justus Warweg",
-              "number": 7,
+              "playerId": "GER_18",
+              "name": "Hugo von Montgelas",
+              "number": 22,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -13974,18 +13953,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_10",
+              "name": "Michel Struthoff",
+              "number": 21,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -14001,37 +13980,37 @@
               "onAt": "16:27"
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "position": null,
               "onAt": "26:29"
+            },
+            {
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
+              "position": null,
+              "onAt": "17:18"
+            },
+            {
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
+              "position": null,
+              "onAt": "51:30"
             },
             {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "17:18"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Moritz Ludwig",
-              "number": 44,
-              "position": null,
-              "onAt": "51:30"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Linus Müller",
-              "number": 5,
-              "position": null,
               "onAt": "33:46"
             },
             {
-              "playerId": "GER_10",
-              "name": "Michel Struthoff",
-              "number": 21,
+              "playerId": "GER_16",
+              "name": "Antheus Barry",
+              "number": 38,
               "position": null,
               "onAt": "09:13"
             },
@@ -14041,13 +14020,6 @@
               "number": 24,
               "position": null,
               "onAt": "11:24"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Hugo von Montgelas",
-              "number": 22,
-              "position": null,
-              "onAt": "38:41"
             }
           ],
           "team": "GER",
@@ -17463,15 +17435,70 @@
       "time": "17:30",
       "timezone": "CET",
       "venue": "BRU",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 3,
+          "team": "AUS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Blake Govers"
+        },
+        {
+          "minute": 4,
+          "team": "AUS",
+          "type": "green_card",
+          "player": "Tim Brand"
+        },
+        {
+          "minute": 11,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Hannes Müller"
+        },
+        {
+          "minute": 12,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Michel Struthoff"
+        },
+        {
+          "minute": 19,
+          "team": "GER",
+          "type": "goal",
+          "via": "FG",
+          "player": "Justus Warweg"
+        },
+        {
+          "minute": 30,
+          "team": "AUS",
+          "type": "goal",
+          "via": "FG",
+          "player": "Joel Rintala"
+        },
+        {
+          "minute": 40,
+          "team": "GER",
+          "type": "goal",
+          "via": "PC",
+          "player": "Hugo von Montgelas"
+        },
+        {
+          "minute": 50,
+          "team": "GER",
+          "type": "green_card",
+          "player": "Hannes Müller"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-21T20:24:00.585077+00:00",
+        "generated_at": "2026-08-23T17:23:04.977258+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -17513,36 +17540,36 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_20",
-              "name": "Paul-Philipp Kaufmann",
-              "number": 13,
+              "playerId": "GER_04",
+              "name": "Justus Warweg",
+              "number": 7,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_04",
-              "name": "Justus Warweg",
-              "number": 7,
+              "playerId": "GER_18",
+              "name": "Hugo von Montgelas",
+              "number": 22,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_19",
-              "name": "Benedikt Schwarzhaupt",
-              "number": 8,
+              "playerId": "GER_13",
+              "name": "Hannes Müller",
+              "number": 25,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_16",
-              "name": "Johannes Große",
-              "number": 10,
+              "playerId": "GER_20",
+              "name": "Paul-Philipp Kaufmann",
+              "number": 13,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -17558,18 +17585,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "GER_22",
-              "name": "Thies Prinz",
-              "number": 11,
+              "playerId": "GER_10",
+              "name": "Michel Struthoff",
+              "number": 21,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "GER_07",
-              "name": "Teo Hinrichs",
-              "number": 14,
+              "playerId": "GER_19",
+              "name": "Benedikt Schwarzhaupt",
+              "number": 8,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -17585,37 +17612,37 @@
               "onAt": "29:48"
             },
             {
-              "playerId": "GER_13",
-              "name": "Hannes Müller",
-              "number": 25,
+              "playerId": "GER_16",
+              "name": "Johannes Große",
+              "number": 10,
               "position": null,
               "onAt": "51:03"
+            },
+            {
+              "playerId": "GER_22",
+              "name": "Thies Prinz",
+              "number": 11,
+              "position": null,
+              "onAt": "23:01"
+            },
+            {
+              "playerId": "GER_07",
+              "name": "Teo Hinrichs",
+              "number": 14,
+              "position": null,
+              "onAt": "17:28"
             },
             {
               "playerId": "GER_14",
               "name": "Malte Hellwig",
               "number": 29,
               "position": null,
-              "onAt": "23:01"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Moritz Ludwig",
-              "number": 44,
-              "position": null,
-              "onAt": "17:28"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Linus Müller",
-              "number": 5,
-              "position": null,
               "onAt": "16:04"
             },
             {
-              "playerId": "GER_10",
-              "name": "Michel Struthoff",
-              "number": 21,
+              "playerId": "GER_16",
+              "name": "Antheus Barry",
+              "number": 38,
               "position": null,
               "onAt": "37:42"
             },
@@ -17625,13 +17652,6 @@
               "number": 24,
               "position": null,
               "onAt": "40:29"
-            },
-            {
-              "playerId": "GER_18",
-              "name": "Hugo von Montgelas",
-              "number": 22,
-              "position": null,
-              "onAt": "28:18"
             }
           ],
           "team": "GER",
@@ -17811,11 +17831,110 @@
         }
       },
       "tms_id": 22368,
-      "live_score": {
-        "home": 4,
-        "away": 2,
-        "at": "2026-08-23T17:01:00.769831+00:00"
-      }
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 4,
+          "shots": 12,
+          "circle_entries": 26,
+          "penalty_corners": 1,
+          "possession": 58,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 10,
+          "circle_entries": 20,
+          "penalty_corners": 0,
+          "possession": 42,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — GER vs AUS.",
+          "seq": 0
+        },
+        {
+          "minute": 3,
+          "team": "AUS",
+          "text": "GOAL! Blake Govers (AUS) scores from a field goal — GER 0-1 AUS.",
+          "seq": 1
+        },
+        {
+          "minute": 4,
+          "team": "AUS",
+          "text": "Green Card for Tim Brand (AUS) — 2-minute suspension.",
+          "seq": 2
+        },
+        {
+          "minute": 11,
+          "team": "GER",
+          "text": "GOAL! Hannes Müller (GER) scores from a field goal — GER 1-1 AUS.",
+          "seq": 3
+        },
+        {
+          "minute": 12,
+          "team": "GER",
+          "text": "GOAL! Michel Struthoff (GER) scores from a field goal — GER 2-1 AUS.",
+          "seq": 4
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: GER 2-1 AUS.",
+          "seq": 5
+        },
+        {
+          "minute": 19,
+          "team": "GER",
+          "text": "GOAL! Justus Warweg (GER) scores from a field goal — GER 3-1 AUS.",
+          "seq": 6
+        },
+        {
+          "minute": 30,
+          "team": "AUS",
+          "text": "GOAL! Joel Rintala (AUS) scores from a field goal — GER 3-2 AUS.",
+          "seq": 7
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: GER 3-2 AUS.",
+          "seq": 8
+        },
+        {
+          "minute": 40,
+          "team": "GER",
+          "text": "GOAL! Hugo von Montgelas (GER) scores from a penalty corner — GER 4-2 AUS.",
+          "seq": 9
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: GER 4-2 AUS.",
+          "seq": 10
+        },
+        {
+          "minute": 50,
+          "team": "GER",
+          "text": "Green Card for Hannes Müller (GER) — 2-minute suspension.",
+          "seq": 11
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: GER 4-2 AUS.",
+          "seq": 12
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2F4",
