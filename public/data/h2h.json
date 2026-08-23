@@ -1138,6 +1138,15 @@
     ],
     "FRA-IRL": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-23",
+        "home": "FRA",
+        "away": "IRL",
+        "home_goals": 0,
+        "away_goals": 0,
+        "current": false
+      },
+      {
         "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
         "date": "2026-06-13",
         "home": "FRA",
@@ -2024,5 +2033,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-23T12:01:05.911290+00:00"
+  "updated_at": "2026-08-23T12:44:34.609783+00:00"
 }
