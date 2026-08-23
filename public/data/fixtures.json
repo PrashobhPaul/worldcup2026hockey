@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-23T09:36:09.132226+00:00",
+  "last_updated": "2026-08-23T09:57:26.423255+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -16775,7 +16775,12 @@
           "coach": "Devon van der Merwe"
         }
       },
-      "tms_id": 22366
+      "tms_id": 22366,
+      "live_score": {
+        "home": 1,
+        "away": 0,
+        "at": "2026-08-23T09:57:12.173496+00:00"
+      }
     },
     {
       "id": "S2H4",

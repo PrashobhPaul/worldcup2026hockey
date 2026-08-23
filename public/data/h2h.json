@@ -1073,6 +1073,15 @@
     ],
     "MAS-RSA": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-23",
+        "home": "MAS",
+        "away": "RSA",
+        "home_goals": 1,
+        "away_goals": 0,
+        "current": false
+      },
+      {
         "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
         "date": "2025-06-20",
         "home": "MAS",
@@ -2015,5 +2024,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-23T09:35:53.741373+00:00"
+  "updated_at": "2026-08-23T09:57:11.215642+00:00"
 }
