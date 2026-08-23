@@ -2681,8 +2681,11 @@
       "p_away_win": 0.646,
       "pick": "AWAY",
       "pick_confidence": 0.646,
-      "reason": "FIH #9 IRL favoured over #11 FRA — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-22T17:19:20.912621+00:00"
+      "reason": "Ireland arrive from the tournament's highest-scoring match, a 7-4 win built on a first-half Lynch hat-trick — the afternoon their finishing finally matched their chances. France are winless in four: two pool draws, a one-goal loss to Belgium, and a Stage 2 defeat to South Africa in which twenty-one circle entries produced only four shots. Between similar volumes of territory, Ireland's far sharper conversion favours them.",
+      "publishedAt": "2026-08-22T17:19:20.912621+00:00",
+      "reason_original": "FIH #9 IRL favoured over #11 FRA — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T14:58:14.028836+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2F3:r9",

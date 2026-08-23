@@ -79,6 +79,12 @@ England's numbers tell the harder truth: twenty-two circle entries to twenty, an
 South Africa took it away from them while barely keeping eleven on the pitch. All five cards of the match were theirs — green cards for Dayaan Cassiem inside two minutes, Calvin Davis in the 27th and Wynford in the 48th, yellows for Viwe Mbata in the 29th and Dayaan Cassiem in the 42nd — and yet each setback was answered with a goal. Nicholas Spooner levelled in the 28th, a minute after Davis went off; Mustaphaa Cassiem struck the winner in the 43rd, sixty seconds after his brother's yellow had left South Africa a man short.
 
 The shape of the win is the story of South Africa's week. Against France it was two converted corners; here they won no corner at all and scored three times from open play, out-shooting Malaysia ten to five from twenty-four circle entries. Back-to-back Stage 2 wins have followed a winless pool, with a Cassiem on the scoresheet in both. Malaysia's arithmetic is harsher: one point from five matches and twenty-three conceded — they have scored in every game this tournament, and no defence giving up more than four a match can make that count.""",
+
+    'S2H4': """For thirty-eight minutes Brussels watched two sides cancel each other out — the only interruptions the matching green cards shown to Mattéo Desgouillons and Jonathan Lynch in the 12th, and a third for Jeremy Duncan in the 20th. It was Duncan who broke the deadlock, scoring from open play in the 39th, and for three minutes Ireland held the match they had come for.
+
+France's reply was immediate and familiar: Victor Charlet converted in the 42nd from France's only penalty corner of the afternoon — the second time in a week he has scored from his side's single corner of a match. From there the game tilted the way the territory always said it should, and Timothée Clément won it from open play in the 59th, France's tenth shot of a match in which they out-entered Ireland twenty-five to fourteen and held fifty-three per cent of possession.
+
+The difference from Monday is the whole story for France: against South Africa, twenty-one circle entries produced four shots and a defeat; here twenty-five produced ten and a win, the first of their Stage 2. Ireland made nine shots from only fourteen entries — the sharp conversion that brought eleven goals against Malaysia travelled — but one goal from it left another one-goal afternoon, and both of these sides now stand on a win and a defeat in Pool H, chasing a South African side with two from two.""",
 }
 
 REASONS = {
@@ -111,6 +117,8 @@ REASONS = {
     'S2G3': "Both sides are winless, so the argument is comparative. Wales have scored in all four of their matches — eight goals, three of them against Pakistan — while Japan's four games have produced four, three in one afternoon against that same Pakistan side, whom Japan still lost to and Wales held. Wales concede heavily, but here they meet the one attack in the tournament that has barely fired; the sharper of two struggling sides is favoured.",
 
     'S2G4': "New Zealand's defeats have come only against the Netherlands and Argentina; outside the top eight they have won both matches by a combined nine goals to two, the Wales rout showing an attack that punishes soft defences. Pakistan's eleven goals in four matches say they will score, but they have conceded at least three in every game, and their only win came against a Japan side that had scored once all tournament before that afternoon. New Zealand's edge at both ends is favoured.",
+
+    'S2H4': "Ireland arrive from the tournament's highest-scoring match, a 7-4 win built on a first-half Lynch hat-trick — the afternoon their finishing finally matched their chances. France are winless in four: two pool draws, a one-goal loss to Belgium, and a Stage 2 defeat to South Africa in which twenty-one circle entries produced only four shots. Between similar volumes of territory, Ireland's far sharper conversion favours them.",
 }
 
 

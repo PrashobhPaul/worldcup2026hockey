@@ -201,10 +201,9 @@
     },
     {
       "matchId": "S2H4",
-      "story": "France edged Ireland 2-1 at the Royal Leopold Club in Brussels, in a Pool H tie of the FIH Hockey World Cup 2026. France came in ranked 11th in the world, Ireland 9th.\n\nFrance scored through Victor Charlet (42', penalty corner) and Timothée Clément (59'); Ireland through Jeremy Duncan (39'). The opener came in Q3 and the final goal in Q4.\n\nFrance won 1 penalty corner to Ireland's 0. 3 cards were shown.",
-      "generatedAt": "2026-08-23T14:26:51.008892+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
+      "story": "For thirty-eight minutes Brussels watched two sides cancel each other out — the only interruptions the matching green cards shown to Mattéo Desgouillons and Jonathan Lynch in the 12th, and a third for Jeremy Duncan in the 20th. It was Duncan who broke the deadlock, scoring from open play in the 39th, and for three minutes Ireland held the match they had come for.\n\nFrance's reply was immediate and familiar: Victor Charlet converted in the 42nd from France's only penalty corner of the afternoon — the second time in a week he has scored from his side's single corner of a match. From there the game tilted the way the territory always said it should, and Timothée Clément won it from open play in the 59th, France's tenth shot of a match in which they out-entered Ireland twenty-five to fourteen and held fifty-three per cent of possession.\n\nThe difference from Monday is the whole story for France: against South Africa, twenty-one circle entries produced four shots and a defeat; here twenty-five produced ten and a win, the first of their Stage 2. Ireland made nine shots from only fourteen entries — the sharp conversion that brought eleven goals against Malaysia travelled — but one goal from it left another one-goal afternoon, and both of these sides now stand on a win and a defeat in Pool H, chasing a South African side with two from two.",
+      "generatedAt": "2026-08-23T14:58:14.028836+00:00",
+      "source": "ai"
     }
   ]
 }
