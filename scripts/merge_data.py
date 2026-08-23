@@ -225,6 +225,15 @@ def merge_stories(ours, theirs):
     return ours, f'{len(merged)} briefs'
 
 
+def merge_calibration(ours, theirs):
+    """Derived from the merged ledger and fixtures, so no side is authoritative:
+    take the replay covering more matches (newer tournament state), then let
+    the post-merge backtest republish if the merged data says otherwise."""
+    pick = theirs if (theirs.get('matches', 0), theirs.get('updated_at', '')) >= \
+                     (ours.get('matches', 0), ours.get('updated_at', '')) else ours
+    return pick, f"{pick.get('correct')}/{pick.get('matches')} kept (recomputed post-merge)"
+
+
 def merge_version(ours, theirs):
     v = max((ours or {}).get('version', 0), (theirs or {}).get('version', 0)) + 1
     base = theirs or ours or {}
@@ -241,6 +250,7 @@ HANDLERS = {
     'h2h.json': merge_h2h,
     'ai-stories.json': merge_stories,
     'data-version.json': merge_version,
+    'model-calibration.json': merge_calibration,
 }
 INDENT = {'fixtures.json': 1}
 

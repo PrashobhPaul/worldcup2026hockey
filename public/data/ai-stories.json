@@ -198,6 +198,13 @@
       "story": "Twice Malaysia led this match, and twice a one-goal lead proved the wrong size against a South African side that finished with ten shots and every card in the book. Abu Kamal Azrai scored both — from open play in the 14th, then from Malaysia's only penalty corner of the match in the 22nd, restoring the lead five minutes after Luke Wynford's 17th-minute equaliser — and at 2-1 Malaysia held exactly the game they wanted.\n\nSouth Africa took it away from them while barely keeping eleven on the pitch. All five cards of the match were theirs — green cards for Dayaan Cassiem inside two minutes, Calvin Davis in the 27th and Wynford in the 48th, yellows for Viwe Mbata in the 29th and Dayaan Cassiem in the 42nd — and yet each setback was answered with a goal. Nicholas Spooner levelled in the 28th, a minute after Davis went off; Mustaphaa Cassiem struck the winner in the 43rd, sixty seconds after his brother's yellow had left South Africa a man short.\n\nThe shape of the win is the story of South Africa's week. Against France it was two converted corners; here they won no corner at all and scored three times from open play, out-shooting Malaysia ten to five from twenty-four circle entries. Back-to-back Stage 2 wins have followed a winless pool, with a Cassiem on the scoresheet in both. Malaysia's arithmetic is harsher: one point from five matches and twenty-three conceded — they have scored in every game this tournament, and no defence giving up more than four a match can make that count.",
       "generatedAt": "2026-08-23T11:44:09.002514+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "S2H4",
+      "story": "France edged Ireland 2-1 at the Royal Leopold Club in Brussels, in a Pool H tie of the FIH Hockey World Cup 2026. France came in ranked 11th in the world, Ireland 9th.\n\nFrance scored through Victor Charlet (42', penalty corner) and Timothée Clément (59'); Ireland through Jeremy Duncan (39'). The opener came in Q3 and the final goal in Q4.\n\nFrance won 1 penalty corner to Ireland's 0. 3 cards were shown.",
+      "generatedAt": "2026-08-23T14:26:51.008892+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }

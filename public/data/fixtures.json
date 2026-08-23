@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-23T13:59:40.426833+00:00",
+ "last_updated": "2026-08-23T14:31:53.740421+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -1680,7 +1680,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-19T20:24:39.590256+00:00",
+    "generated_at": "2026-08-23T14:26:50.813506+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -1880,10 +1880,19 @@
        "goalkeeper": false
       },
       {
+       "playerId": "FRA_17",
+       "name": "Timothée Clément",
+       "number": 28,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "FRA_08",
        "name": "Noé Jouin",
        "number": 11,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -1901,15 +1910,6 @@
        "playerId": "FRA_16",
        "name": "Amaury Bellenger",
        "number": 24,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_17",
-       "name": "Timothée Clément",
-       "number": 28,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -3119,7 +3119,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T20:24:00.575222+00:00",
+    "generated_at": "2026-08-23T14:26:50.814933+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -3369,6 +3369,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_17",
        "name": "Sam Hyland",
        "number": 36,
@@ -3381,15 +3390,6 @@
        "playerId": "IRL_08",
        "name": "Sean Murray",
        "number": 17,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -5646,7 +5646,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T16:32:41.593374+00:00",
+    "generated_at": "2026-08-23T14:26:50.817296+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -5688,10 +5688,19 @@
        "goalkeeper": false
       },
       {
+       "playerId": "FRA_17",
+       "name": "Timothée Clément",
+       "number": 28,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "FRA_08",
        "name": "Noé Jouin",
        "number": 11,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -5709,15 +5718,6 @@
        "playerId": "FRA_16",
        "name": "Amaury Bellenger",
        "number": 24,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_17",
-       "name": "Timothée Clément",
-       "number": 28,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -7629,7 +7629,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-23T11:19:32.216906+00:00",
+    "generated_at": "2026-08-23T14:26:50.819202+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -7707,6 +7707,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_17",
        "name": "Sam Hyland",
        "number": 36,
@@ -7719,15 +7728,6 @@
        "playerId": "IRL_08",
        "name": "Sean Murray",
        "number": 17,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -9824,7 +9824,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T17:27:13.620037+00:00",
+    "generated_at": "2026-08-23T14:26:50.821084+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -9866,10 +9866,19 @@
        "goalkeeper": false
       },
       {
+       "playerId": "FRA_17",
+       "name": "Timothée Clément",
+       "number": 28,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "FRA_08",
        "name": "Noé Jouin",
        "number": 11,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -9887,15 +9896,6 @@
        "playerId": "FRA_16",
        "name": "Amaury Bellenger",
        "number": 24,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_17",
-       "name": "Timothée Clément",
-       "number": 28,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -11898,7 +11898,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T17:27:13.622008+00:00",
+    "generated_at": "2026-08-23T14:26:50.822977+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -12148,6 +12148,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_17",
        "name": "Sam Hyland",
        "number": 36,
@@ -12160,15 +12169,6 @@
        "playerId": "IRL_08",
        "name": "Sean Murray",
        "number": 17,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -16974,15 +16974,55 @@
    "time": "14:30",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "live",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 2,
+    "away": 1
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 12,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "Mattéo Desgouillons"
+    },
+    {
+     "minute": 12,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "Jonathan Lynch"
+    },
+    {
+     "minute": 20,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "Jeremy Duncan"
+    },
+    {
+     "minute": 39,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Jeremy Duncan"
+    },
+    {
+     "minute": 42,
+     "team": "FRA",
+     "type": "goal",
+     "via": "PC",
+     "player": "Victor Charlet"
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "Timothée Clément"
+    }
+   ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T14:36:27.688012+00:00",
+    "generated_at": "2026-08-23T14:26:50.827647+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -17024,10 +17064,19 @@
        "goalkeeper": false
       },
       {
+       "playerId": "FRA_17",
+       "name": "Timothée Clément",
+       "number": 28,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "FRA_08",
        "name": "Noé Jouin",
        "number": 11,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -17045,15 +17094,6 @@
        "playerId": "FRA_16",
        "name": "Amaury Bellenger",
        "number": 24,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_17",
-       "name": "Timothée Clément",
-       "number": 28,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -17232,6 +17272,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_17",
        "name": "Sam Hyland",
        "number": 36,
@@ -17244,15 +17293,6 @@
        "playerId": "IRL_08",
        "name": "Sean Murray",
        "number": 17,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -17315,11 +17355,98 @@
     }
    },
    "tms_id": 22367,
-   "live_score": {
-    "home": 0,
-    "away": 0,
-    "at": "2026-08-23T12:44:35.642060+00:00"
-   }
+   "result_source": "fih-tms-matches",
+   "penalty_corners": {
+    "home": 1,
+    "away": 0
+   },
+   "stats": {
+    "home": {
+     "goals": 2,
+     "shots": 10,
+     "circle_entries": 25,
+     "penalty_corners": 1,
+     "possession": 53,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0
+    },
+    "away": {
+     "goals": 1,
+     "shots": 9,
+     "circle_entries": 14,
+     "penalty_corners": 0,
+     "possession": 47,
+     "green_cards": 2,
+     "yellow_cards": 0,
+     "red_cards": 0
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — FRA vs IRL.",
+     "seq": 0
+    },
+    {
+     "minute": 12,
+     "team": "FRA",
+     "text": "Green Card for Mattéo Desgouillons (FRA) — 2-minute suspension.",
+     "seq": 1
+    },
+    {
+     "minute": 12,
+     "team": "IRL",
+     "text": "Green Card for Jonathan Lynch (IRL) — 2-minute suspension.",
+     "seq": 2
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: FRA 0-0 IRL.",
+     "seq": 3
+    },
+    {
+     "minute": 20,
+     "team": "IRL",
+     "text": "Green Card for Jeremy Duncan (IRL) — 2-minute suspension.",
+     "seq": 4
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: FRA 0-0 IRL.",
+     "seq": 5
+    },
+    {
+     "minute": 39,
+     "team": "IRL",
+     "text": "GOAL! Jeremy Duncan (IRL) scores from a field goal — FRA 0-1 IRL.",
+     "seq": 6
+    },
+    {
+     "minute": 42,
+     "team": "FRA",
+     "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — FRA 1-1 IRL.",
+     "seq": 7
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: FRA 1-1 IRL.",
+     "seq": 8
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "text": "GOAL! Timothée Clément (FRA) scores from a field goal — FRA 2-1 IRL.",
+     "seq": 9
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: FRA 2-1 IRL.",
+     "seq": 10
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "S2F3",
