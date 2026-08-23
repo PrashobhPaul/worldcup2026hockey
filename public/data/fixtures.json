@@ -16428,15 +16428,81 @@
    "time": "11:30",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 2,
+    "away": 3
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 2,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "Dayaan Cassiem"
+    },
+    {
+     "minute": 14,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "Abu Kamal Azrai"
+    },
+    {
+     "minute": 17,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "Luke Wynford"
+    },
+    {
+     "minute": 22,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "Abu Kamal Azrai"
+    },
+    {
+     "minute": 27,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "Calvin Davis"
+    },
+    {
+     "minute": 28,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "Nicholas Spooner"
+    },
+    {
+     "minute": 29,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "Viwe Mbata"
+    },
+    {
+     "minute": 42,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "Dayaan Cassiem"
+    },
+    {
+     "minute": 43,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "Mustaphaa Cassiem"
+    },
+    {
+     "minute": 48,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "Luke Wynford"
+    }
+   ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-21T14:36:27.687336+00:00",
+    "generated_at": "2026-08-23T11:19:32.224578+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -16641,10 +16707,37 @@
        "goalkeeper": false
       },
       {
+       "playerId": "RSA_14",
+       "name": "Nicholas Spooner",
+       "number": 23,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_13",
+       "name": "Luke Wynford",
+       "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "RSA_20",
        "name": "Kenton Melville",
        "number": 47,
-       "line": "Defender",
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_12",
+       "name": "Viwe Mbata",
+       "number": 18,
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -16653,15 +16746,6 @@
        "playerId": "RSA_17",
        "name": "Samkelo Mvimbi",
        "number": 29,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_14",
-       "name": "Nicholas Spooner",
-       "number": 23,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -16671,7 +16755,7 @@
        "playerId": "RSA_09",
        "name": "Tevin Kok",
        "number": 11,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -16680,7 +16764,7 @@
        "playerId": "RSA_03",
        "name": "Andrew Hobson",
        "number": 3,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -16689,24 +16773,6 @@
        "playerId": "RSA_05",
        "name": "Senzwesihle Ngubane",
        "number": 5,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_04",
-       "name": "Calvin Davis",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_13",
-       "name": "Luke Wynford",
-       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -16722,44 +16788,44 @@
        "onAt": "13:43"
       },
       {
+       "playerId": "RSA_04",
+       "name": "Calvin Davis",
+       "number": 4,
+       "position": null,
+       "onAt": "49:16"
+      },
+      {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
        "position": null,
-       "onAt": "49:16"
+       "onAt": "15:44"
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
        "position": null,
-       "onAt": "15:44"
+       "onAt": "36:02"
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
        "position": null,
-       "onAt": "36:02"
+       "onAt": "25:43"
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
        "position": null,
-       "onAt": "25:43"
+       "onAt": "27:21"
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "27:21"
-      },
-      {
-       "playerId": "RSA_12",
-       "name": "Viwe Mbata",
-       "number": 18,
        "position": null,
        "onAt": "49:59"
       },
@@ -16775,7 +16841,123 @@
      "coach": "Devon van der Merwe"
     }
    },
-   "tms_id": 22366
+   "tms_id": 22366,
+   "result_source": "fih-tms-matches",
+   "penalty_corners": {
+    "home": 1,
+    "away": 0
+   },
+   "stats": {
+    "home": {
+     "goals": 2,
+     "shots": 5,
+     "circle_entries": 20,
+     "penalty_corners": 1,
+     "possession": 49,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0
+    },
+    "away": {
+     "goals": 3,
+     "shots": 10,
+     "circle_entries": 24,
+     "penalty_corners": 0,
+     "possession": 51,
+     "green_cards": 3,
+     "yellow_cards": 2,
+     "red_cards": 0
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — MAS vs RSA.",
+     "seq": 0
+    },
+    {
+     "minute": 2,
+     "team": "RSA",
+     "text": "Green Card for Dayaan Cassiem (RSA) — 2-minute suspension.",
+     "seq": 1
+    },
+    {
+     "minute": 14,
+     "team": "MAS",
+     "text": "GOAL! Abu Kamal Azrai (MAS) scores from a field goal — MAS 1-0 RSA.",
+     "seq": 2
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: MAS 1-0 RSA.",
+     "seq": 3
+    },
+    {
+     "minute": 17,
+     "team": "RSA",
+     "text": "GOAL! Luke Wynford (RSA) scores from a field goal — MAS 1-1 RSA.",
+     "seq": 4
+    },
+    {
+     "minute": 22,
+     "team": "MAS",
+     "text": "GOAL! Abu Kamal Azrai (MAS) scores from a penalty corner — MAS 2-1 RSA.",
+     "seq": 5
+    },
+    {
+     "minute": 27,
+     "team": "RSA",
+     "text": "Green Card for Calvin Davis (RSA) — 2-minute suspension.",
+     "seq": 6
+    },
+    {
+     "minute": 28,
+     "team": "RSA",
+     "text": "GOAL! Nicholas Spooner (RSA) scores from a field goal — MAS 2-2 RSA.",
+     "seq": 7
+    },
+    {
+     "minute": 29,
+     "team": "RSA",
+     "text": "Yellow Card for Viwe Mbata (RSA) — 5-minute suspension.",
+     "seq": 8
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: MAS 2-2 RSA.",
+     "seq": 9
+    },
+    {
+     "minute": 42,
+     "team": "RSA",
+     "text": "Yellow Card for Dayaan Cassiem (RSA) — 5-minute suspension.",
+     "seq": 10
+    },
+    {
+     "minute": 43,
+     "team": "RSA",
+     "text": "GOAL! Mustaphaa Cassiem (RSA) scores from a field goal — MAS 2-3 RSA.",
+     "seq": 11
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: MAS 2-3 RSA.",
+     "seq": 12
+    },
+    {
+     "minute": 48,
+     "team": "RSA",
+     "text": "Green Card for Luke Wynford (RSA) — 2-minute suspension.",
+     "seq": 13
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: MAS 2-3 RSA.",
+     "seq": 14
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "S2H4",

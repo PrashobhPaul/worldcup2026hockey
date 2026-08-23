@@ -2831,8 +2831,11 @@
       "p_away_win": 0.561,
       "pick": "AWAY",
       "pick_confidence": 0.561,
-      "reason": "FIH #12 RSA favoured over #14 MAS — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "reason": "South Africa arrive on the tournament's turnaround result — a first win, built against France on sixty-one per cent of possession — after a pool that ended with a draw against unbeaten Australia. Malaysia are winless in four with twenty conceded, and while the set piece keeps producing, three corner goals against Ireland still came inside a 7-4 defeat. Two sides moving in opposite directions; South Africa favoured.",
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "reason_original": "FIH #12 RSA favoured over #14 MAS — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T11:43:50.624380+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2F3:r10",

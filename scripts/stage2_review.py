@@ -72,7 +72,13 @@ The corner column is the story inside the story: the Netherlands won this match 
 
 It never turned. Domene doubled the lead from open play in the 36th, and England's response arrived only in the 50th, Samuel Hooper converting their one penalty corner of the evening. At 2-1 with ten minutes left the comeback was live — until Domene settled it in the 58th from Argentina's second corner, completing a hat-trick that contains every Argentine goal of the night. Three penalty corners in the match, three goals: the perfect-conversion pattern of this second stage held once more.
 
-England's numbers tell the harder truth: twenty-two circle entries to twenty, and only five shots to show for them, against seven from an Argentine side that made possession count. The first English defeat of the tournament cracks Pool E wide open — the Netherlands top it on six points, Argentina and England sit level on three, and India are last on none, with Sunday's final round, Argentina against India and the Netherlands against England, deciding who joins the Dutch in the semi-finals.""",
+England's numbers tell the harder truth: twenty-two circle entries to twenty, and only five shots to show for them, against seven from an Argentine side that made possession count. The first English defeat of the tournament cracks Pool E wide open — the Netherlands top it on six points, Argentina and England sit level on three, and India are last on none, with Monday's final round, Argentina against India and the Netherlands against England, deciding who joins the Dutch in the semi-finals.""",
+
+    'S2H3': """Twice Malaysia led this match, and twice a one-goal lead proved the wrong size against a South African side that finished with ten shots and every card in the book. Abu Kamal Azrai scored both — from open play in the 14th, then from Malaysia's only penalty corner of the match in the 22nd, restoring the lead five minutes after Luke Wynford's 17th-minute equaliser — and at 2-1 Malaysia held exactly the game they wanted.
+
+South Africa took it away from them while barely keeping eleven on the pitch. All five cards of the match were theirs — green cards for Dayaan Cassiem inside two minutes, Calvin Davis in the 27th and Wynford in the 48th, yellows for Viwe Mbata in the 29th and Dayaan Cassiem in the 42nd — and yet each setback was answered with a goal. Nicholas Spooner levelled in the 28th, a minute after Davis went off; Mustaphaa Cassiem struck the winner in the 43rd, sixty seconds after his brother's yellow had left South Africa a man short.
+
+The shape of the win is the story of South Africa's week. Against France it was two converted corners; here they won no corner at all and scored three times from open play, out-shooting Malaysia ten to five from twenty-four circle entries. Back-to-back Stage 2 wins have followed a winless pool, with a Cassiem on the scoresheet in both. Malaysia's arithmetic is harsher: one point from five matches and twenty-three conceded — they have scored in every game this tournament, and no defence giving up more than four a match can make that count.""",
 }
 
 REASONS = {
@@ -99,6 +105,8 @@ REASONS = {
     'S2E4': "The Netherlands are the tournament's only side with four wins from four — fifteen scored, four conceded, and never a winning margin under two. England's sixteen pool goals came against Pakistan, India and Wales; against the first top-eight defence they met, the attack produced five shots from twenty-two circle entries and a single goal. The Dutch have already beaten Argentina and India by that same controlled pattern, and the pool's deepest defence is favoured over its streakiest attack.",
 
     'S2F4': "Both sides have already measured themselves against Australia, the pool's pacesetters: Belgium took a point off them, Spain lost without scoring. Belgium's eight goals across three pool matches remain the heavier attacking output either side brings, their only defeat all tournament is by a single goal to Germany, and the corner conversion against Australia showed the set piece has carried into Stage 2. Spain keep winning tight matches on fine margins, but with Belgium needing a win to stay in the semi-final conversation, the extra firepower tips a very close call.",
+
+    'S2H3': "South Africa arrive on the tournament's turnaround result — a first win, built against France on sixty-one per cent of possession — after a pool that ended with a draw against unbeaten Australia. Malaysia are winless in four with twenty conceded, and while the set piece keeps producing, three corner goals against Ireland still came inside a 7-4 defeat. Two sides moving in opposite directions; South Africa favoured.",
 }
 
 
