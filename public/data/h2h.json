@@ -1078,7 +1078,7 @@
         "home": "MAS",
         "away": "RSA",
         "home_goals": 2,
-        "away_goals": 2,
+        "away_goals": 3,
         "current": false
       },
       {
@@ -2024,5 +2024,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-23T10:51:28.912535+00:00"
+  "updated_at": "2026-08-23T11:19:14.861377+00:00"
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T18:47:01.569486+00:00",
+  "updated_at": "2026-08-23T11:19:32.408172+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -191,6 +191,13 @@
       "matchId": "S2E2",
       "story": "Argentina beat England 3-1 at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. England came in ranked 3rd in the world, Argentina 7th.\n\nEngland scored through Samuel Hooper (50', penalty corner); Argentina through Tomas Domene (26', penalty corner), Tomas Domene (36') and Tomas Domene (58', penalty corner). The opener came in Q2 and the final goal in Q4.\n\nEngland won 1 penalty corner to Argentina's 2. 1 card was shown.",
       "generatedAt": "2026-08-22T18:47:01.569463+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "S2H3",
+      "story": "South Africa edged Malaysia 3-2 at the Royal Leopold Club in Brussels, in a Pool H tie of the FIH Hockey World Cup 2026. Malaysia came in ranked 14th in the world, South Africa 12th.\n\nMalaysia scored through Abu Kamal Azrai (14') and Abu Kamal Azrai (22', penalty corner); South Africa through Luke Wynford (17'), Nicholas Spooner (28') and Mustaphaa Cassiem (43'). The opener came in Q1 and the final goal in Q3.\n\nMalaysia won 1 penalty corner to South Africa's 0. 5 cards were shown.",
+      "generatedAt": "2026-08-23T11:19:32.408146+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }
