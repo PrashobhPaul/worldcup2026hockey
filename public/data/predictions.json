@@ -2865,8 +2865,11 @@
       "p_away_win": 0.396,
       "pick": "AWAY",
       "pick_confidence": 0.396,
-      "reason": "FIH #16 WAL favoured over #18 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "reason": "Both sides are winless, so the argument is comparative. Wales have scored in all four of their matches — eight goals, three of them against Pakistan — while Japan's four games have produced four, three in one afternoon against that same Pakistan side, whom Japan still lost to and Wales held. Wales concede heavily, but here they meet the one attack in the tournament that has barely fired; the sharper of two struggling sides is favoured.",
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "reason_original": "FIH #16 WAL favoured over #18 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T12:48:29.817737+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2G4:r10",
@@ -2879,8 +2882,11 @@
       "p_away_win": 0.111,
       "pick": "HOME",
       "pick_confidence": 0.749,
-      "reason": "FIH #10 NZL favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "reason": "New Zealand's defeats have come only against the Netherlands and Argentina; outside the top eight they have won both matches by a combined nine goals to two, the Wales rout showing an attack that punishes soft defences. Pakistan's eleven goals in four matches say they will score, but they have conceded at least three in every game, and their only win came against a Japan side that had scored once all tournament before that afternoon. New Zealand's edge at both ends is favoured.",
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "reason_original": "FIH #10 NZL favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-23T12:48:29.817737+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:S2E3:r8",

@@ -107,6 +107,10 @@ REASONS = {
     'S2F4': "Both sides have already measured themselves against Australia, the pool's pacesetters: Belgium took a point off them, Spain lost without scoring. Belgium's eight goals across three pool matches remain the heavier attacking output either side brings, their only defeat all tournament is by a single goal to Germany, and the corner conversion against Australia showed the set piece has carried into Stage 2. Spain keep winning tight matches on fine margins, but with Belgium needing a win to stay in the semi-final conversation, the extra firepower tips a very close call.",
 
     'S2H3': "South Africa arrive on the tournament's turnaround result — a first win, built against France on sixty-one per cent of possession — after a pool that ended with a draw against unbeaten Australia. Malaysia are winless in four with twenty conceded, and while the set piece keeps producing, three corner goals against Ireland still came inside a 7-4 defeat. Two sides moving in opposite directions; South Africa favoured.",
+
+    'S2G3': "Both sides are winless, so the argument is comparative. Wales have scored in all four of their matches — eight goals, three of them against Pakistan — while Japan's four games have produced four, three in one afternoon against that same Pakistan side, whom Japan still lost to and Wales held. Wales concede heavily, but here they meet the one attack in the tournament that has barely fired; the sharper of two struggling sides is favoured.",
+
+    'S2G4': "New Zealand's defeats have come only against the Netherlands and Argentina; outside the top eight they have won both matches by a combined nine goals to two, the Wales rout showing an attack that punishes soft defences. Pakistan's eleven goals in four matches say they will score, but they have conceded at least three in every game, and their only win came against a Japan side that had scored once all tournament before that afternoon. New Zealand's edge at both ends is favoured.",
 }
 
 
