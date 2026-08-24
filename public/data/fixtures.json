@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-23T20:33:28.412212+00:00",
+ "last_updated": "2026-08-24T13:54:16.081602+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -149,7 +149,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T10:20:56.637771+00:00",
+    "generated_at": "2026-08-24T09:45:21.607073+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -354,18 +354,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_05",
-       "name": "Rhys Bradshaw",
-       "number": 15,
+       "playerId": "WAL_06",
+       "name": "Sam Welsh",
+       "number": 16,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_06",
-       "name": "Sam Welsh",
-       "number": 16,
+       "playerId": "WAL_05",
+       "name": "Rhys Bradshaw",
+       "number": 15,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -650,7 +650,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T18:47:01.380717+00:00",
+    "generated_at": "2026-08-24T12:16:31.795382+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -864,9 +864,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_14",
-       "name": "Rehman Abdul",
-       "number": 18,
+       "playerId": "PAK_15",
+       "name": "Afraz",
+       "number": 21,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -882,9 +882,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_15",
-       "name": "Afraz",
-       "number": 21,
+       "playerId": "PAK_14",
+       "name": "Rehman Abdul",
+       "number": 18,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -2121,7 +2121,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T13:34:18.742717+00:00",
+    "generated_at": "2026-08-24T09:45:21.609180+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -2310,6 +2310,24 @@
        "goalkeeper": false
       },
       {
+       "playerId": "JPN_09",
+       "name": "Kazumasa Matsumoto",
+       "number": 11,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "JPN_03",
+       "name": "Shota Yamada",
+       "number": 2,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "JPN_02",
        "name": "Koji Yamasaki",
        "number": 1,
@@ -2322,7 +2340,7 @@
        "playerId": "JPN_20",
        "name": "Hyota Yamada",
        "number": 38,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -2331,15 +2349,15 @@
        "playerId": "JPN_16",
        "name": "Kaito Tanaka",
        "number": 22,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "JPN_09",
-       "name": "Kazumasa Matsumoto",
-       "number": 11,
+       "playerId": "JPN_08",
+       "name": "Kosei Kawabe",
+       "number": 9,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -2349,7 +2367,7 @@
        "playerId": "JPN_11",
        "name": "Manabu Yamashita",
        "number": 13,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -2358,24 +2376,6 @@
        "playerId": "JPN_05",
        "name": "Seren Tanaka",
        "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_03",
-       "name": "Shota Yamada",
-       "number": 2,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_08",
-       "name": "Kosei Kawabe",
-       "number": 9,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -2627,7 +2627,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T15:56:09.705042+00:00",
+    "generated_at": "2026-08-24T12:16:31.797318+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -2845,6 +2845,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_13",
+       "name": "George Baker",
+       "number": 32,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
@@ -2857,7 +2866,7 @@
        "playerId": "NZL_04",
        "name": "Charlie Morrison",
        "number": 8,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -2879,15 +2888,6 @@
        "position": null,
        "captain": false,
        "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_03",
-       "name": "Dane Lett",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       }
      ],
      "substitutes": [
@@ -2899,37 +2899,37 @@
        "onAt": "32:35"
       },
       {
+       "playerId": "NZL_03",
+       "name": "Dane Lett",
+       "number": 4,
+       "position": null,
+       "onAt": "18:38"
+      },
+      {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
        "position": null,
-       "onAt": "18:38"
+       "onAt": "32:29"
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
        "position": null,
-       "onAt": "32:29"
+       "onAt": "40:49"
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
        "position": null,
-       "onAt": "40:49"
+       "onAt": "11:02"
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "11:02"
-      },
-      {
-       "playerId": "NZL_13",
-       "name": "George Baker",
-       "number": 32,
        "position": null,
        "onAt": "33:46"
       },
@@ -4603,7 +4603,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T13:34:18.744187+00:00",
+    "generated_at": "2026-08-24T12:16:31.799483+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -4645,9 +4645,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_14",
-       "name": "Rehman Abdul",
-       "number": 18,
+       "playerId": "PAK_15",
+       "name": "Afraz",
+       "number": 21,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -4663,9 +4663,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_15",
-       "name": "Afraz",
-       "number": 21,
+       "playerId": "PAK_14",
+       "name": "Rehman Abdul",
+       "number": 18,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -4808,18 +4808,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_05",
-       "name": "Rhys Bradshaw",
-       "number": 15,
+       "playerId": "WAL_06",
+       "name": "Sam Welsh",
+       "number": 16,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_06",
-       "name": "Sam Welsh",
-       "number": 16,
+       "playerId": "WAL_05",
+       "name": "Rhys Bradshaw",
+       "number": 15,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -6607,7 +6607,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T13:34:18.745379+00:00",
+    "generated_at": "2026-08-24T12:16:31.801321+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -6631,6 +6631,24 @@
        "goalkeeper": false
       },
       {
+       "playerId": "JPN_09",
+       "name": "Kazumasa Matsumoto",
+       "number": 11,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "JPN_03",
+       "name": "Shota Yamada",
+       "number": 2,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "JPN_02",
        "name": "Koji Yamasaki",
        "number": 1,
@@ -6643,7 +6661,7 @@
        "playerId": "JPN_20",
        "name": "Hyota Yamada",
        "number": 38,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -6652,15 +6670,15 @@
        "playerId": "JPN_16",
        "name": "Kaito Tanaka",
        "number": 22,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "JPN_09",
-       "name": "Kazumasa Matsumoto",
-       "number": 11,
+       "playerId": "JPN_08",
+       "name": "Kosei Kawabe",
+       "number": 9,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -6670,7 +6688,7 @@
        "playerId": "JPN_11",
        "name": "Manabu Yamashita",
        "number": 13,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -6679,24 +6697,6 @@
        "playerId": "JPN_05",
        "name": "Seren Tanaka",
        "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_03",
-       "name": "Shota Yamada",
-       "number": 2,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_08",
-       "name": "Kosei Kawabe",
-       "number": 9,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -6839,6 +6839,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_13",
+       "name": "George Baker",
+       "number": 32,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
@@ -6851,7 +6860,7 @@
        "playerId": "NZL_04",
        "name": "Charlie Morrison",
        "number": 8,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -6873,15 +6882,6 @@
        "position": null,
        "captain": false,
        "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_03",
-       "name": "Dane Lett",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       }
      ],
      "substitutes": [
@@ -6893,37 +6893,37 @@
        "onAt": "14:15"
       },
       {
+       "playerId": "NZL_03",
+       "name": "Dane Lett",
+       "number": 4,
+       "position": null,
+       "onAt": "11:42"
+      },
+      {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
        "position": null,
-       "onAt": "11:42"
+       "onAt": "48:28"
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
        "position": null,
-       "onAt": "48:28"
+       "onAt": "12:04"
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
        "position": null,
-       "onAt": "12:04"
+       "onAt": "42:58"
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "42:58"
-      },
-      {
-       "playerId": "NZL_13",
-       "name": "George Baker",
-       "number": 32,
        "position": null,
        "onAt": "09:41"
       },
@@ -8153,7 +8153,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T18:47:01.387871+00:00",
+    "generated_at": "2026-08-24T09:45:21.614736+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -8358,18 +8358,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_05",
-       "name": "Rhys Bradshaw",
-       "number": 15,
+       "playerId": "WAL_06",
+       "name": "Sam Welsh",
+       "number": 16,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_06",
-       "name": "Sam Welsh",
-       "number": 16,
+       "playerId": "WAL_05",
+       "name": "Rhys Bradshaw",
+       "number": 15,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -8734,7 +8734,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T13:34:18.746577+00:00",
+    "generated_at": "2026-08-24T12:16:31.803164+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -8948,9 +8948,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_14",
-       "name": "Rehman Abdul",
-       "number": 18,
+       "playerId": "PAK_15",
+       "name": "Afraz",
+       "number": 21,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -8966,9 +8966,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_15",
-       "name": "Afraz",
-       "number": 21,
+       "playerId": "PAK_14",
+       "name": "Rehman Abdul",
+       "number": 18,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -10290,7 +10290,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T15:56:09.711862+00:00",
+    "generated_at": "2026-08-24T09:45:21.616579+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -10314,6 +10314,24 @@
        "goalkeeper": false
       },
       {
+       "playerId": "JPN_09",
+       "name": "Kazumasa Matsumoto",
+       "number": 11,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "JPN_03",
+       "name": "Shota Yamada",
+       "number": 2,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "JPN_02",
        "name": "Koji Yamasaki",
        "number": 1,
@@ -10326,7 +10344,7 @@
        "playerId": "JPN_20",
        "name": "Hyota Yamada",
        "number": 38,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -10335,15 +10353,15 @@
        "playerId": "JPN_16",
        "name": "Kaito Tanaka",
        "number": 22,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "JPN_09",
-       "name": "Kazumasa Matsumoto",
-       "number": 11,
+       "playerId": "JPN_08",
+       "name": "Kosei Kawabe",
+       "number": 9,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -10353,7 +10371,7 @@
        "playerId": "JPN_11",
        "name": "Manabu Yamashita",
        "number": 13,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -10362,24 +10380,6 @@
        "playerId": "JPN_05",
        "name": "Seren Tanaka",
        "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_03",
-       "name": "Shota Yamada",
-       "number": 2,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_08",
-       "name": "Kosei Kawabe",
-       "number": 9,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -10821,7 +10821,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T10:20:56.647550+00:00",
+    "generated_at": "2026-08-24T12:16:31.804994+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -11046,6 +11046,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_13",
+       "name": "George Baker",
+       "number": 32,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
@@ -11058,7 +11067,7 @@
        "playerId": "NZL_04",
        "name": "Charlie Morrison",
        "number": 8,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -11080,15 +11089,6 @@
        "position": null,
        "captain": false,
        "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_03",
-       "name": "Dane Lett",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       }
      ],
      "substitutes": [
@@ -11100,37 +11100,37 @@
        "onAt": "10:06"
       },
       {
+       "playerId": "NZL_03",
+       "name": "Dane Lett",
+       "number": 4,
+       "position": null,
+       "onAt": "22:32"
+      },
+      {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
        "position": null,
-       "onAt": "22:32"
+       "onAt": "46:31"
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
        "position": null,
-       "onAt": "46:31"
+       "onAt": "48:50"
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
        "position": null,
-       "onAt": "48:50"
+       "onAt": "17:57"
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "17:57"
-      },
-      {
-       "playerId": "NZL_13",
-       "name": "George Baker",
-       "number": 32,
        "position": null,
        "onAt": "50:01"
       },
@@ -18410,15 +18410,75 @@
    "time": "09:30",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 3,
+    "away": 2
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 15,
+     "team": "JPN",
+     "type": "goal",
+     "via": "PC",
+     "player": "Shota Yamada"
+    },
+    {
+     "minute": 28,
+     "team": "JPN",
+     "type": "goal",
+     "via": "FG",
+     "player": "Kosei Kawabe"
+    },
+    {
+     "minute": 28,
+     "team": "WAL",
+     "type": "green_card",
+     "player": "Rhodri Furlong"
+    },
+    {
+     "minute": 38,
+     "team": "JPN",
+     "type": "green_card",
+     "player": "Shota Yamada"
+    },
+    {
+     "minute": 49,
+     "team": "WAL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Jacob Draper"
+    },
+    {
+     "minute": 51,
+     "team": "JPN",
+     "type": "yellow_card",
+     "player": "Raiki Fujishima"
+    },
+    {
+     "minute": 58,
+     "team": "WAL",
+     "type": "green_card",
+     "player": "Dale Hutchinson"
+    },
+    {
+     "minute": 60,
+     "team": "JPN",
+     "type": "goal",
+     "via": "FG",
+     "player": "Kazumasa Matsumoto"
+    },
+    {
+     "minute": 60,
+     "team": "WAL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Sam Welsh"
+    }
+   ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T13:34:18.752213+00:00",
+    "generated_at": "2026-08-24T09:45:21.623825+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -18442,6 +18502,24 @@
        "goalkeeper": false
       },
       {
+       "playerId": "JPN_09",
+       "name": "Kazumasa Matsumoto",
+       "number": 11,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "JPN_03",
+       "name": "Shota Yamada",
+       "number": 2,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "JPN_02",
        "name": "Koji Yamasaki",
        "number": 1,
@@ -18454,7 +18532,7 @@
        "playerId": "JPN_20",
        "name": "Hyota Yamada",
        "number": 38,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -18463,15 +18541,15 @@
        "playerId": "JPN_16",
        "name": "Kaito Tanaka",
        "number": 22,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "JPN_09",
-       "name": "Kazumasa Matsumoto",
-       "number": 11,
+       "playerId": "JPN_08",
+       "name": "Kosei Kawabe",
+       "number": 9,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -18481,7 +18559,7 @@
        "playerId": "JPN_11",
        "name": "Manabu Yamashita",
        "number": 13,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -18490,24 +18568,6 @@
        "playerId": "JPN_05",
        "name": "Seren Tanaka",
        "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_03",
-       "name": "Shota Yamada",
-       "number": 2,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_08",
-       "name": "Kosei Kawabe",
-       "number": 9,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -18623,18 +18683,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_05",
-       "name": "Rhys Bradshaw",
-       "number": 15,
+       "playerId": "WAL_06",
+       "name": "Sam Welsh",
+       "number": 16,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_06",
-       "name": "Sam Welsh",
-       "number": 16,
+       "playerId": "WAL_05",
+       "name": "Rhys Bradshaw",
+       "number": 15,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -18764,7 +18824,117 @@
      "coach": "Daniel Newcombe"
     }
    },
-   "tms_id": 22370
+   "tms_id": 22370,
+   "result_source": "fih-tms-matches",
+   "penalty_corners": {
+    "home": 1,
+    "away": 1
+   },
+   "stats": {
+    "home": {
+     "goals": 3,
+     "shots": 8,
+     "circle_entries": 28,
+     "penalty_corners": 1,
+     "possession": 51,
+     "green_cards": 1,
+     "yellow_cards": 1,
+     "red_cards": 0
+    },
+    "away": {
+     "goals": 2,
+     "shots": 6,
+     "circle_entries": 16,
+     "penalty_corners": 1,
+     "possession": 49,
+     "green_cards": 2,
+     "yellow_cards": 0,
+     "red_cards": 0
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — JPN vs WAL.",
+     "seq": 0
+    },
+    {
+     "minute": 15,
+     "team": "JPN",
+     "text": "GOAL! Shota Yamada (JPN) scores from a penalty corner — JPN 1-0 WAL.",
+     "seq": 1
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: JPN 1-0 WAL.",
+     "seq": 2
+    },
+    {
+     "minute": 28,
+     "team": "JPN",
+     "text": "GOAL! Kosei Kawabe (JPN) scores from a field goal — JPN 2-0 WAL.",
+     "seq": 3
+    },
+    {
+     "minute": 28,
+     "team": "WAL",
+     "text": "Green Card for Rhodri Furlong (WAL) — 2-minute suspension.",
+     "seq": 4
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: JPN 2-0 WAL.",
+     "seq": 5
+    },
+    {
+     "minute": 38,
+     "team": "JPN",
+     "text": "Green Card for Shota Yamada (JPN) — 2-minute suspension.",
+     "seq": 6
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: JPN 2-0 WAL.",
+     "seq": 7
+    },
+    {
+     "minute": 49,
+     "team": "WAL",
+     "text": "GOAL! Jacob Draper (WAL) scores from a penalty corner — JPN 2-1 WAL.",
+     "seq": 8
+    },
+    {
+     "minute": 51,
+     "team": "JPN",
+     "text": "Yellow Card for Raiki Fujishima (JPN) — 5-minute suspension.",
+     "seq": 9
+    },
+    {
+     "minute": 58,
+     "team": "WAL",
+     "text": "Green Card for Dale Hutchinson (WAL) — 2-minute suspension.",
+     "seq": 10
+    },
+    {
+     "minute": 60,
+     "team": "JPN",
+     "text": "GOAL! Kazumasa Matsumoto (JPN) scores from a field goal — JPN 3-1 WAL.",
+     "seq": 11
+    },
+    {
+     "minute": 60,
+     "team": "WAL",
+     "text": "GOAL! Sam Welsh (WAL) scores from a field goal — JPN 3-2 WAL.",
+     "seq": 12
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: JPN 3-2 WAL.",
+     "seq": 13
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "S2G4",
@@ -18781,15 +18951,70 @@
    "time": "12:30",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 4,
+    "away": 2
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 1,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Dylan Thomas"
+    },
+    {
+     "minute": 16,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Scott Boyde"
+    },
+    {
+     "minute": 22,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "George Baker"
+    },
+    {
+     "minute": 33,
+     "team": "PAK",
+     "type": "goal",
+     "via": "PC",
+     "player": "Sufyan Khan"
+    },
+    {
+     "minute": 36,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "Benjamin Culhane"
+    },
+    {
+     "minute": 38,
+     "team": "PAK",
+     "type": "goal",
+     "via": "PC",
+     "player": "Afraz"
+    },
+    {
+     "minute": 49,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Kane Russell"
+    },
+    {
+     "minute": 51,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "Abdul Manan"
+    }
+   ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-22T13:34:18.752518+00:00",
+    "generated_at": "2026-08-24T12:16:31.812352+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -18849,6 +19074,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_13",
+       "name": "George Baker",
+       "number": 32,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
@@ -18861,7 +19095,7 @@
        "playerId": "NZL_04",
        "name": "Charlie Morrison",
        "number": 8,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -18883,15 +19117,6 @@
        "position": null,
        "captain": false,
        "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_03",
-       "name": "Dane Lett",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       }
      ],
      "substitutes": [
@@ -18903,37 +19128,37 @@
        "onAt": "41:37"
       },
       {
+       "playerId": "NZL_03",
+       "name": "Dane Lett",
+       "number": 4,
+       "position": null,
+       "onAt": "45:28"
+      },
+      {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
        "position": null,
-       "onAt": "45:28"
+       "onAt": "49:28"
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
        "position": null,
-       "onAt": "49:28"
+       "onAt": "37:21"
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
        "position": null,
-       "onAt": "37:21"
+       "onAt": "18:55"
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "18:55"
-      },
-      {
-       "playerId": "NZL_13",
-       "name": "George Baker",
-       "number": 32,
        "position": null,
        "onAt": "33:51"
       },
@@ -19003,9 +19228,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_14",
-       "name": "Rehman Abdul",
-       "number": 18,
+       "playerId": "PAK_15",
+       "name": "Afraz",
+       "number": 21,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -19021,9 +19246,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_15",
-       "name": "Afraz",
-       "number": 21,
+       "playerId": "PAK_14",
+       "name": "Rehman Abdul",
+       "number": 18,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -19135,7 +19360,111 @@
      "coach": "Bob Veldhof"
     }
    },
-   "tms_id": 22371
+   "tms_id": 22371,
+   "result_source": "fih-tms-matches",
+   "penalty_corners": {
+    "home": 1,
+    "away": 2
+   },
+   "stats": {
+    "home": {
+     "goals": 4,
+     "shots": 9,
+     "circle_entries": 29,
+     "penalty_corners": 1,
+     "possession": 55,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0
+    },
+    "away": {
+     "goals": 2,
+     "shots": 7,
+     "circle_entries": 16,
+     "penalty_corners": 2,
+     "possession": 45,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — NZL vs PAK.",
+     "seq": 0
+    },
+    {
+     "minute": 1,
+     "team": "NZL",
+     "text": "GOAL! Dylan Thomas (NZL) scores from a field goal — NZL 1-0 PAK.",
+     "seq": 1
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: NZL 1-0 PAK.",
+     "seq": 2
+    },
+    {
+     "minute": 16,
+     "team": "NZL",
+     "text": "GOAL! Scott Boyde (NZL) scores from a field goal — NZL 2-0 PAK.",
+     "seq": 3
+    },
+    {
+     "minute": 22,
+     "team": "NZL",
+     "text": "GOAL! George Baker (NZL) scores from a field goal — NZL 3-0 PAK.",
+     "seq": 4
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: NZL 3-0 PAK.",
+     "seq": 5
+    },
+    {
+     "minute": 33,
+     "team": "PAK",
+     "text": "GOAL! Sufyan Khan (PAK) scores from a penalty corner — NZL 3-1 PAK.",
+     "seq": 6
+    },
+    {
+     "minute": 36,
+     "team": "NZL",
+     "text": "Green Card for Benjamin Culhane (NZL) — 2-minute suspension.",
+     "seq": 7
+    },
+    {
+     "minute": 38,
+     "team": "PAK",
+     "text": "GOAL! Afraz (PAK) scores from a penalty corner — NZL 3-2 PAK.",
+     "seq": 8
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: NZL 3-2 PAK.",
+     "seq": 9
+    },
+    {
+     "minute": 49,
+     "team": "NZL",
+     "text": "GOAL! Kane Russell (NZL) scores from a penalty corner — NZL 4-2 PAK.",
+     "seq": 10
+    },
+    {
+     "minute": 51,
+     "team": "PAK",
+     "text": "Green Card for Abdul Manan (PAK) — 2-minute suspension.",
+     "seq": 11
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: NZL 4-2 PAK.",
+     "seq": 12
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "S2E3",
@@ -19152,7 +19481,7 @@
    "time": "14:45",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "live",
    "score": {
     "home": null,
     "away": null
@@ -19499,7 +19828,12 @@
      "coach": "Craig Fulton"
     }
    },
-   "tms_id": 22372
+   "tms_id": 22372,
+   "live_score": {
+    "home": 3,
+    "away": 1,
+    "at": "2026-08-24T13:54:04.768977+00:00"
+   }
   },
   {
    "id": "S2E4",
