@@ -1764,7 +1764,7 @@
         "date": "2026-08-24",
         "home": "ARG",
         "away": "IND",
-        "home_goals": 2,
+        "home_goals": 3,
         "away_goals": 1,
         "current": false
       },
@@ -2078,5 +2078,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-24T13:17:53.659965+00:00"
+  "updated_at": "2026-08-24T13:54:03.979430+00:00"
 }
