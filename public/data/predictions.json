@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-24T19:26:08.656968+00:00",
+  "updated_at": "2026-08-24T19:31:13.242726+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -3403,7 +3403,8 @@
       "pick": "AWAY",
       "pick_confidence": 0.963,
       "reason": "FIH #10 FRA favoured over #18 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-24T19:30:26.741172+00:00"
+      "publishedAt": "2026-08-24T19:30:26.741172+00:00",
+      "pick_team": "FRA"
     },
     {
       "id": "oracle-v1:POS15:r3",
@@ -3417,7 +3418,8 @@
       "pick": "AWAY",
       "pick_confidence": 0.65,
       "reason": "FIH #14 MAS favoured over #16 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-24T19:30:26.741172+00:00"
+      "publishedAt": "2026-08-24T19:30:26.741172+00:00",
+      "pick_team": "MAS"
     },
     {
       "id": "oracle-v1:POS11:r3",
@@ -3431,7 +3433,8 @@
       "pick": "AWAY",
       "pick_confidence": 0.574,
       "reason": "FIH #12 RSA favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-24T19:30:26.741172+00:00"
+      "publishedAt": "2026-08-24T19:30:26.741172+00:00",
+      "pick_team": "RSA"
     }
   ]
 }
