@@ -1,0 +1,294 @@
+{
+ "source": "per-match FIH live-ranking gap and convergence, from the model author's feature table (reference/router_input_36.json)",
+ "note": "The published ranking table is sampled once a day by the pipeline, but the FIH live table moves after every match. The parity-convergence rule keys off exactly that movement, so a daily sample blunts it: AUS v BEL reads a 111-point gap in our snapshots and 18.6 in the per-match series. These are the per-match values, all of them pre-push-back, so the rule sees the resolution it was designed for. Gap and convergence are absolute differences, so they do not depend on which side is listed home.",
+ "matches": {
+  "D1": {
+   "gap": 817.62,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "B1": {
+   "gap": 1125.78,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "D2": {
+   "gap": 939.36,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "B2": {
+   "gap": 887.24,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "C1": {
+   "gap": 746.7,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "C2": {
+   "gap": 852.39,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "A2": {
+   "gap": 941.43,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "A1": {
+   "gap": 1163.61,
+   "conv": -0.0,
+   "fav_mov": 0.0,
+   "h2h_margin": 0,
+   "und_gd": 0,
+   "fav_side": "HOME"
+  },
+  "D4": {
+   "gap": 246.2,
+   "conv": -12.17,
+   "fav_mov": -6.1,
+   "h2h_margin": 0,
+   "und_gd": -2,
+   "fav_side": "HOME"
+  },
+  "B4": {
+   "gap": 368.34,
+   "conv": 11.28,
+   "fav_mov": -11.3,
+   "h2h_margin": 0,
+   "und_gd": -4,
+   "fav_side": "HOME"
+  },
+  "D3": {
+   "gap": 343.6,
+   "conv": 12.17,
+   "fav_mov": 6.1,
+   "h2h_margin": 0,
+   "und_gd": 2,
+   "fav_side": "AWAY"
+  },
+  "B3": {
+   "gap": 152.36,
+   "conv": -11.28,
+   "fav_mov": 11.3,
+   "h2h_margin": 0,
+   "und_gd": 4,
+   "fav_side": "AWAY"
+  },
+  "A4": {
+   "gap": 549.37,
+   "conv": 5.86,
+   "fav_mov": -5.9,
+   "h2h_margin": 0,
+   "und_gd": -3,
+   "fav_side": "HOME"
+  },
+  "C3": {
+   "gap": 50.05,
+   "conv": -10.57,
+   "fav_mov": 25.3,
+   "h2h_margin": 0,
+   "und_gd": 2,
+   "fav_side": "AWAY"
+  },
+  "C4": {
+   "gap": 134.6,
+   "conv": 10.57,
+   "fav_mov": -25.3,
+   "h2h_margin": 0,
+   "und_gd": -2,
+   "fav_side": "HOME"
+  },
+  "A3": {
+   "gap": 338.91,
+   "conv": -5.86,
+   "fav_mov": 5.9,
+   "h2h_margin": 0,
+   "und_gd": 3,
+   "fav_side": "AWAY"
+  },
+  "D5": {
+   "gap": 1260.87,
+   "conv": -87.48,
+   "fav_mov": 71.7,
+   "h2h_margin": 0,
+   "und_gd": -2,
+   "fav_side": "HOME"
+  },
+  "D6": {
+   "gap": 544.71,
+   "conv": 38.88,
+   "fav_mov": -47.4,
+   "h2h_margin": 0,
+   "und_gd": -3,
+   "fav_side": "AWAY"
+  },
+  "B6": {
+   "gap": 876.36,
+   "conv": -130.2,
+   "fav_mov": 115.2,
+   "h2h_margin": 0,
+   "und_gd": -1,
+   "fav_side": "AWAY"
+  },
+  "B5": {
+   "gap": 1159.22,
+   "conv": 107.64,
+   "fav_mov": -104.0,
+   "h2h_margin": 0,
+   "und_gd": -4,
+   "fav_side": "HOME"
+  },
+  "C5": {
+   "gap": 1113.5,
+   "conv": -221.63,
+   "fav_mov": 120.3,
+   "h2h_margin": 0,
+   "und_gd": -5,
+   "fav_side": "HOME"
+  },
+  "A6": {
+   "gap": 503.06,
+   "conv": 105.32,
+   "fav_mov": -66.1,
+   "h2h_margin": 0,
+   "und_gd": -2,
+   "fav_side": "AWAY"
+  },
+  "C6": {
+   "gap": 565.78,
+   "conv": 141.44,
+   "fav_mov": -80.2,
+   "h2h_margin": 0,
+   "und_gd": 1,
+   "fav_side": "AWAY"
+  },
+  "A5": {
+   "gap": 1613.69,
+   "conv": -117.03,
+   "fav_mov": 72.0,
+   "h2h_margin": 0,
+   "und_gd": -5,
+   "fav_side": "HOME"
+  },
+  "S2H1": {
+   "gap": 283.19,
+   "conv": -83.97,
+   "fav_mov": -6.2,
+   "h2h_margin": 5,
+   "und_gd": -5,
+   "fav_side": "HOME"
+  },
+  "S2H2": {
+   "gap": 339.67,
+   "conv": -14.1,
+   "fav_mov": 17.8,
+   "h2h_margin": -2,
+   "und_gd": -6,
+   "fav_side": "HOME"
+  },
+  "S2F2": {
+   "gap": 236.27,
+   "conv": -143.28,
+   "fav_mov": 106.5,
+   "h2h_margin": -1,
+   "und_gd": 3,
+   "fav_side": "AWAY"
+  },
+  "S2F1": {
+   "gap": 18.56,
+   "conv": 176.03,
+   "fav_mov": 109.2,
+   "h2h_margin": 0,
+   "und_gd": 2,
+   "fav_side": "HOME"
+  },
+  "S2G1": {
+   "gap": 455.85,
+   "conv": -5.29,
+   "fav_mov": -10.5,
+   "h2h_margin": 1,
+   "und_gd": -8,
+   "fav_side": "HOME"
+  },
+  "S2G2": {
+   "gap": 329.71,
+   "conv": 8.99,
+   "fav_mov": -54.1,
+   "h2h_margin": 2,
+   "und_gd": -8,
+   "fav_side": "HOME"
+  },
+  "S2E1": {
+   "gap": 648.21,
+   "conv": -73.84,
+   "fav_mov": 72.0,
+   "h2h_margin": 7,
+   "und_gd": 2,
+   "fav_side": "HOME"
+  },
+  "S2E2": {
+   "gap": 202.57,
+   "conv": -88.12,
+   "fav_mov": 71.7,
+   "h2h_margin": -2,
+   "und_gd": 7,
+   "fav_side": "HOME"
+  },
+  "S2H3": {
+   "gap": 280.9,
+   "conv": -100.5,
+   "fav_mov": 38.2,
+   "h2h_margin": 2,
+   "und_gd": -9,
+   "fav_side": "AWAY"
+  },
+  "S2H4": {
+   "gap": 164.28,
+   "conv": -110.23,
+   "fav_mov": 83.8,
+   "h2h_margin": -1,
+   "und_gd": -3,
+   "fav_side": "AWAY"
+  },
+  "S2F3": {
+   "gap": 72.65,
+   "conv": -19.14,
+   "fav_mov": 109.0,
+   "h2h_margin": -5,
+   "und_gd": 4,
+   "fav_side": "AWAY"
+  },
+  "S2F4": {
+   "gap": 43.48,
+   "conv": 190.59,
+   "fav_mov": -103.8,
+   "h2h_margin": 19,
+   "und_gd": 4,
+   "fav_side": "HOME"
+  }
+ }
+}

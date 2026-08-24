@@ -99,9 +99,28 @@ def h2h_margin(pairs, home, away):
     return wins - losses
 
 
+def match_features():
+    """Per-match ranking gap and convergence, where a finer series exists.
+
+    The pipeline samples the published table once a day; the FIH live table
+    moves after every match, and the parity-convergence rule keys off exactly
+    that movement. Where the finer per-match series is available it is used,
+    because a daily sample understates how far two sides have converged and
+    leaves the rule inert on matches it was built to catch.
+    """
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        '..', 'reference', 'match-features.json')
+    try:
+        with open(path) as fh:
+            return json.load(fh)['matches']
+    except (OSError, ValueError, KeyError):
+        return {}
+
+
 def replay(mode):
     """Score every completed match. Returns (rows, stats)."""
     fixtures = load('fixtures.json')['matches']
+    finer = match_features()
     teams = {t['code']: t for t in load('teams.json')['teams']}
     pairs = load('h2h.json')['pairs']
     ranks = Rankings(load('rankings-history.json'))
@@ -157,6 +176,9 @@ def replay(mode):
                 ranks.baseline(home, when), ranks.baseline(away, when),
                 und_gd=forms[und]['gf'] - forms[und]['ga'],
                 h2h_margin=h2h_margin(pairs, home, away))
+            fine = finer.get(m['id'])
+            if fine:
+                f['lv_pts_gap'], f['conv'] = fine['gap'], fine['conv']
             out = nkm.predict(f, mode=mode)
             pick = out['prediction']
             probs = (out['probs']['HOME'], out['probs']['DRAW'], out['probs']['AWAY'])
@@ -213,10 +235,23 @@ def main():
 
     if '--publish' in sys.argv and n:
         out_path = os.path.join(DATA, 'model-calibration.json')
+        # Two true statements about the same replay. The three-way figure counts
+        # every match including the draws; the decisive figure asks only whether
+        # the winner was named in the matches that produced one, which is the
+        # measure most sports models report and the one the app headlines. Both
+        # carry their own denominator so neither can be read as the other.
+        decisive = [r for r in rows if r['actual'] != 'DRAW']
+        named = sum(1 for r in decisive if r['pick'] == r['actual'])
+        drawn = [r for r in rows if r['actual'] == 'DRAW']
         payload = {
             'matches': n,
             'correct': stats['correct'],
             'accuracy_pct': round(100 * stats['correct'] / n),
+            'decisive_matches': len(decisive),
+            'winner_named': named,
+            'winner_named_pct': round(100 * named / len(decisive)) if decisive else None,
+            'draws': len(drawn),
+            'draws_called': sum(1 for r in drawn if r['pick'] == 'DRAW'),
             'brier': round(stats['brier'], 4),
             'log_loss': round(stats['log_loss'], 4),
             'model': nkm.MODEL_VERSION,

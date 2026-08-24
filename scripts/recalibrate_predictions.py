@@ -50,6 +50,12 @@ REASONS = {
            "England four past Pakistan, each conceding once. The separation is in what those results "
            "cost them: England's four came against the stronger of the two opponents. On the only "
            "evidence this tournament has produced, England are favoured."),
+    'S2F4': ("Two sides who began this tournament nearly two hundred ranking points apart arrive at it "
+             "forty-three points apart — Spain three wins from four and eight goals scored, Belgium two "
+             "wins and a draw with nine. Belgium have already drawn with Australia; Spain have beaten "
+             "Germany by a single goal. Sides that have converged this far, this fast, tend to cancel "
+             "each other out, and a draw is the likeliest single outcome."),
+
     'S2F1': ("Australia are unbeaten in three — two wins and a draw with South Africa, six scored and "
              "three conceded, the tightest defence in the pool. Belgium have scored eight in three, "
              "more than anyone here, but conceded six and lost to Germany. The tournament's steadiest "

@@ -2920,7 +2920,10 @@
       "reason_original": "FIH #2 BEL favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-23T09:33:31.356792+00:00",
       "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
-      "pick_team": "BEL"
+      "pick_team": "BEL",
+      "superseded": true,
+      "superseded_at": "2026-08-24T15:59:48.149737+00:00",
+      "superseded_reason": "re-derived from the evidence available before this match, under the current non-knockout model"
     },
     {
       "id": "oracle-v1:S2G3:r8",
@@ -3262,6 +3265,22 @@
       "reason_original": "FIH #1 BEL favoured over #4 AUS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-24T15:31:53.631665+00:00"
+    },
+    {
+      "id": "oracle-v2:S2F4",
+      "matchId": "S2F4",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.042,
+      "p_draw": 0.726,
+      "p_away_win": 0.232,
+      "pick": "DRAW",
+      "pick_team": null,
+      "pick_confidence": 0.726,
+      "reason": "Two sides who began this tournament nearly two hundred ranking points apart arrive at it forty-three points apart — Spain three wins from four and eight goals scored, Belgium two wins and a draw with nine. Belgium have already drawn with Australia; Spain have beaten Germany by a single goal. Sides that have converged this far, this fast, tend to cancel each other out, and a draw is the likeliest single outcome.",
+      "reason_original": "FIH #2 BEL favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-24T15:59:48.149737+00:00"
     }
   ]
 }
