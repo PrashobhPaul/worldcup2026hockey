@@ -1652,8 +1652,8 @@
         "date": "2026-08-24",
         "home": "JPN",
         "away": "WAL",
-        "home_goals": 2,
-        "away_goals": 0,
+        "home_goals": 3,
+        "away_goals": 2,
         "current": false
       },
       {
@@ -2060,5 +2060,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-24T08:50:55.658599+00:00"
+  "updated_at": "2026-08-24T09:45:04.280157+00:00"
 }

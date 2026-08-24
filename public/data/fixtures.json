@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-24T08:51:08.820796+00:00",
+  "last_updated": "2026-08-24T09:45:21.626477+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -149,7 +149,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.637771+00:00",
+        "generated_at": "2026-08-24T09:45:21.607073+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -354,18 +354,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_05",
-              "name": "Rhys Bradshaw",
-              "number": 15,
+              "playerId": "WAL_06",
+              "name": "Sam Welsh",
+              "number": 16,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_06",
-              "name": "Sam Welsh",
-              "number": 16,
+              "playerId": "WAL_05",
+              "name": "Rhys Bradshaw",
+              "number": 15,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -2121,7 +2121,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.742717+00:00",
+        "generated_at": "2026-08-24T09:45:21.609180+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2310,6 +2310,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
@@ -2322,7 +2340,7 @@
               "playerId": "JPN_20",
               "name": "Hyota Yamada",
               "number": 38,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2331,15 +2349,15 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
+              "playerId": "JPN_08",
+              "name": "Kosei Kawabe",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -2349,7 +2367,7 @@
               "playerId": "JPN_11",
               "name": "Manabu Yamashita",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2358,24 +2376,6 @@
               "playerId": "JPN_05",
               "name": "Seren Tanaka",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_08",
-              "name": "Kosei Kawabe",
-              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -4603,7 +4603,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.744187+00:00",
+        "generated_at": "2026-08-24T09:45:21.611527+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4808,18 +4808,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_05",
-              "name": "Rhys Bradshaw",
-              "number": 15,
+              "playerId": "WAL_06",
+              "name": "Sam Welsh",
+              "number": 16,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_06",
-              "name": "Sam Welsh",
-              "number": 16,
+              "playerId": "WAL_05",
+              "name": "Rhys Bradshaw",
+              "number": 15,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -6607,7 +6607,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.745379+00:00",
+        "generated_at": "2026-08-24T09:45:21.613353+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6631,6 +6631,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
@@ -6643,7 +6661,7 @@
               "playerId": "JPN_20",
               "name": "Hyota Yamada",
               "number": 38,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6652,15 +6670,15 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
+              "playerId": "JPN_08",
+              "name": "Kosei Kawabe",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -6670,7 +6688,7 @@
               "playerId": "JPN_11",
               "name": "Manabu Yamashita",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6679,24 +6697,6 @@
               "playerId": "JPN_05",
               "name": "Seren Tanaka",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_08",
-              "name": "Kosei Kawabe",
-              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -8153,7 +8153,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T18:47:01.387871+00:00",
+        "generated_at": "2026-08-24T09:45:21.614736+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8358,18 +8358,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_05",
-              "name": "Rhys Bradshaw",
-              "number": 15,
+              "playerId": "WAL_06",
+              "name": "Sam Welsh",
+              "number": 16,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_06",
-              "name": "Sam Welsh",
-              "number": 16,
+              "playerId": "WAL_05",
+              "name": "Rhys Bradshaw",
+              "number": 15,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -10290,7 +10290,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T15:56:09.711862+00:00",
+        "generated_at": "2026-08-24T09:45:21.616579+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10314,6 +10314,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
@@ -10326,7 +10344,7 @@
               "playerId": "JPN_20",
               "name": "Hyota Yamada",
               "number": 38,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10335,15 +10353,15 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
+              "playerId": "JPN_08",
+              "name": "Kosei Kawabe",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -10353,7 +10371,7 @@
               "playerId": "JPN_11",
               "name": "Manabu Yamashita",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10362,24 +10380,6 @@
               "playerId": "JPN_05",
               "name": "Seren Tanaka",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_08",
-              "name": "Kosei Kawabe",
-              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -14373,7 +14373,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T10:20:56.650650+00:00",
+        "generated_at": "2026-08-24T09:45:21.620184+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -14578,18 +14578,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_05",
-              "name": "Rhys Bradshaw",
-              "number": 15,
+              "playerId": "WAL_06",
+              "name": "Sam Welsh",
+              "number": 16,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_06",
-              "name": "Sam Welsh",
-              "number": 16,
+              "playerId": "WAL_05",
+              "name": "Rhys Bradshaw",
+              "number": 15,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -14940,7 +14940,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.750122+00:00",
+        "generated_at": "2026-08-24T09:45:21.620657+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -15136,6 +15136,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
@@ -15148,7 +15166,7 @@
               "playerId": "JPN_20",
               "name": "Hyota Yamada",
               "number": 38,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -15157,15 +15175,15 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
+              "playerId": "JPN_08",
+              "name": "Kosei Kawabe",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -15175,7 +15193,7 @@
               "playerId": "JPN_11",
               "name": "Manabu Yamashita",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -15184,24 +15202,6 @@
               "playerId": "JPN_05",
               "name": "Seren Tanaka",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_08",
-              "name": "Kosei Kawabe",
-              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -18403,15 +18403,75 @@
       "time": "09:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 2
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 15,
+          "team": "JPN",
+          "type": "goal",
+          "via": "PC",
+          "player": "Shota Yamada"
+        },
+        {
+          "minute": 28,
+          "team": "JPN",
+          "type": "goal",
+          "via": "FG",
+          "player": "Kosei Kawabe"
+        },
+        {
+          "minute": 28,
+          "team": "WAL",
+          "type": "green_card",
+          "player": "Rhodri Furlong"
+        },
+        {
+          "minute": 38,
+          "team": "JPN",
+          "type": "green_card",
+          "player": "Shota Yamada"
+        },
+        {
+          "minute": 49,
+          "team": "WAL",
+          "type": "goal",
+          "via": "PC",
+          "player": "Jacob Draper"
+        },
+        {
+          "minute": 51,
+          "team": "JPN",
+          "type": "yellow_card",
+          "player": "Raiki Fujishima"
+        },
+        {
+          "minute": 58,
+          "team": "WAL",
+          "type": "green_card",
+          "player": "Dale Hutchinson"
+        },
+        {
+          "minute": 60,
+          "team": "JPN",
+          "type": "goal",
+          "via": "FG",
+          "player": "Kazumasa Matsumoto"
+        },
+        {
+          "minute": 60,
+          "team": "WAL",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sam Welsh"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T13:34:18.752213+00:00",
+        "generated_at": "2026-08-24T09:45:21.623825+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -18435,6 +18495,24 @@
               "goalkeeper": false
             },
             {
+              "playerId": "JPN_09",
+              "name": "Kazumasa Matsumoto",
+              "number": 11,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "JPN_03",
+              "name": "Shota Yamada",
+              "number": 2,
+              "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
               "playerId": "JPN_02",
               "name": "Koji Yamasaki",
               "number": 1,
@@ -18447,7 +18525,7 @@
               "playerId": "JPN_20",
               "name": "Hyota Yamada",
               "number": 38,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -18456,15 +18534,15 @@
               "playerId": "JPN_16",
               "name": "Kaito Tanaka",
               "number": 22,
-              "line": "Defender",
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "JPN_09",
-              "name": "Kazumasa Matsumoto",
-              "number": 11,
+              "playerId": "JPN_08",
+              "name": "Kosei Kawabe",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -18474,7 +18552,7 @@
               "playerId": "JPN_11",
               "name": "Manabu Yamashita",
               "number": 13,
-              "line": "Midfielder",
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -18483,24 +18561,6 @@
               "playerId": "JPN_05",
               "name": "Seren Tanaka",
               "number": 5,
-              "line": "Midfielder",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_03",
-              "name": "Shota Yamada",
-              "number": 2,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
-            },
-            {
-              "playerId": "JPN_08",
-              "name": "Kosei Kawabe",
-              "number": 9,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -18616,18 +18676,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_05",
-              "name": "Rhys Bradshaw",
-              "number": 15,
+              "playerId": "WAL_06",
+              "name": "Sam Welsh",
+              "number": 16,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "WAL_06",
-              "name": "Sam Welsh",
-              "number": 16,
+              "playerId": "WAL_05",
+              "name": "Rhys Bradshaw",
+              "number": 15,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -18758,11 +18818,116 @@
         }
       },
       "tms_id": 22370,
-      "live_score": {
-        "home": 2,
-        "away": 0,
-        "at": "2026-08-24T08:50:56.820155+00:00"
-      }
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 1
+      },
+      "stats": {
+        "home": {
+          "goals": 3,
+          "shots": 8,
+          "circle_entries": 28,
+          "penalty_corners": 1,
+          "possession": 51,
+          "green_cards": 1,
+          "yellow_cards": 1,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 2,
+          "shots": 6,
+          "circle_entries": 16,
+          "penalty_corners": 1,
+          "possession": 49,
+          "green_cards": 2,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — JPN vs WAL.",
+          "seq": 0
+        },
+        {
+          "minute": 15,
+          "team": "JPN",
+          "text": "GOAL! Shota Yamada (JPN) scores from a penalty corner — JPN 1-0 WAL.",
+          "seq": 1
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: JPN 1-0 WAL.",
+          "seq": 2
+        },
+        {
+          "minute": 28,
+          "team": "JPN",
+          "text": "GOAL! Kosei Kawabe (JPN) scores from a field goal — JPN 2-0 WAL.",
+          "seq": 3
+        },
+        {
+          "minute": 28,
+          "team": "WAL",
+          "text": "Green Card for Rhodri Furlong (WAL) — 2-minute suspension.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: JPN 2-0 WAL.",
+          "seq": 5
+        },
+        {
+          "minute": 38,
+          "team": "JPN",
+          "text": "Green Card for Shota Yamada (JPN) — 2-minute suspension.",
+          "seq": 6
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: JPN 2-0 WAL.",
+          "seq": 7
+        },
+        {
+          "minute": 49,
+          "team": "WAL",
+          "text": "GOAL! Jacob Draper (WAL) scores from a penalty corner — JPN 2-1 WAL.",
+          "seq": 8
+        },
+        {
+          "minute": 51,
+          "team": "JPN",
+          "text": "Yellow Card for Raiki Fujishima (JPN) — 5-minute suspension.",
+          "seq": 9
+        },
+        {
+          "minute": 58,
+          "team": "WAL",
+          "text": "Green Card for Dale Hutchinson (WAL) — 2-minute suspension.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "team": "JPN",
+          "text": "GOAL! Kazumasa Matsumoto (JPN) scores from a field goal — JPN 3-1 WAL.",
+          "seq": 11
+        },
+        {
+          "minute": 60,
+          "team": "WAL",
+          "text": "GOAL! Sam Welsh (WAL) scores from a field goal — JPN 3-2 WAL.",
+          "seq": 12
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: JPN 3-2 WAL.",
+          "seq": 13
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2G4",
