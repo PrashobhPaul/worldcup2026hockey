@@ -1874,8 +1874,8 @@
         "date": "2026-08-24",
         "home": "NED",
         "away": "ENG",
-        "home_goals": 1,
-        "away_goals": 1,
+        "home_goals": 2,
+        "away_goals": 2,
         "current": false
       },
       {
@@ -2024,5 +2024,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-24T17:00:04.732815+00:00"
+  "updated_at": "2026-08-24T17:33:22.529059+00:00"
 }
