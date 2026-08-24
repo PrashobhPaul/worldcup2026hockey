@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-24T10:39:43.798695+00:00",
+  "last_updated": "2026-08-24T11:02:22.223330+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -19298,7 +19298,12 @@
           "coach": "Bob Veldhof"
         }
       },
-      "tms_id": 22371
+      "tms_id": 22371,
+      "live_score": {
+        "home": 1,
+        "away": 0,
+        "at": "2026-08-24T11:02:08.014560+00:00"
+      }
     },
     {
       "id": "S2E3",
