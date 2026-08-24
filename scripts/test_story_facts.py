@@ -71,9 +71,11 @@ UNPUBLISHED = [
     # Corner ATTEMPTS are not in the FIH record; corner GOALS are. Everything
     # below is a way of counting the attempts.
     r'corners?\s+(?:won|earned)',
-    r'\b(?:won|earned)\b(?:(?!goal)[^.]){0,40}?\bcorners?\b(?![\s-]*goals?)',
+    r'\b(?:won|win|winning|earn(?:ed|ing))\b(?:(?!goal)[^.]){0,40}?\bcorners?\b(?![\s-]*goals?)',
     r'\bno (?:short |penalty[\s-])?corners?\b',
-    r'corner count',
+    r'\b(?:only|single|solitary|sole)\s+(?:short |penalty[\s-])?corners?\b(?![\s-]*goals?)',
+    r'(?:short|penalty)[\s-]corner (?:chances|opportunit|attempts?)',
+    r'corner (?:count|column|tally)',
     r'corners?\s+(?:were\s+)?level\b',
     NUM + r'[\s-]+(?:short |penalty[\s-])?corners?\b(?![\s-]*goals?)',
 ]
