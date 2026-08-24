@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-24T14:07:29.161737+00:00",
+  "last_updated": "2026-08-24T14:45:39.011610+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -149,7 +149,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-24T09:45:21.607073+00:00",
+        "generated_at": "2026-08-24T14:45:38.990692+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -182,18 +182,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_17",
-              "name": "Sanjay",
-              "number": 70,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_15",
+              "name": "Sukhjeet Singh",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -209,18 +209,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_17",
+              "name": "Sanjay",
+              "number": 70,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -236,18 +236,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -263,30 +263,30 @@
               "onAt": "37:04"
             },
             {
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
+              "position": null,
+              "onAt": "08:53"
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
               "position": null,
-              "onAt": "08:53"
+              "onAt": "20:38"
             },
             {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "20:38"
+              "onAt": "11:24"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
-              "position": null,
-              "onAt": "11:24"
-            },
-            {
-              "playerId": "IND_15",
-              "name": "Sukhjeet Singh",
-              "number": 34,
               "position": null,
               "onAt": "17:55"
             },
@@ -2121,7 +2121,7 @@
       "enrichment": "official",
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-24T09:45:21.609180+00:00",
+        "generated_at": "2026-08-24T14:45:38.992705+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -2154,19 +2154,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2190,10 +2199,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Midfielder",
+              "playerId": "ARG_11",
+              "name": "Joaquin Toscani",
+              "number": 16,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -2215,15 +2224,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -2235,37 +2235,37 @@
               "onAt": "42:08"
             },
             {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
+              "position": null,
+              "onAt": "19:55"
+            },
+            {
               "playerId": "ARG_16",
               "name": "Nicolas Cicileo",
               "number": 26,
               "position": null,
-              "onAt": "19:55"
+              "onAt": "25:46"
             },
             {
               "playerId": "ARG_19",
               "name": "Thomas Habif",
               "number": 29,
               "position": null,
-              "onAt": "25:46"
+              "onAt": "11:58"
             },
             {
               "playerId": "ARG_21",
               "name": "Martin Ferreiro",
               "number": 32,
               "position": null,
-              "onAt": "11:58"
+              "onAt": "20:28"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
-              "position": null,
-              "onAt": "20:28"
-            },
-            {
-              "playerId": "ARG_11",
-              "name": "Joaquin Toscani",
-              "number": 16,
               "position": null,
               "onAt": "12:57"
             },
@@ -4030,7 +4030,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T18:47:01.384088+00:00",
+        "generated_at": "2026-08-24T14:45:38.994528+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -4235,18 +4235,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_17",
-              "name": "Sanjay",
-              "number": 70,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_15",
+              "name": "Sukhjeet Singh",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -4262,18 +4262,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_17",
+              "name": "Sanjay",
+              "number": 70,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -4289,18 +4289,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -4316,30 +4316,30 @@
               "onAt": "25:30"
             },
             {
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
+              "position": null,
+              "onAt": "50:57"
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
               "position": null,
-              "onAt": "50:57"
+              "onAt": "29:06"
             },
             {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "29:06"
+              "onAt": "11:08"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
-              "position": null,
-              "onAt": "11:08"
-            },
-            {
-              "playerId": "IND_15",
-              "name": "Sukhjeet Singh",
-              "number": 34,
               "position": null,
               "onAt": "23:17"
             },
@@ -6155,7 +6155,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T15:56:09.708225+00:00",
+        "generated_at": "2026-08-24T14:45:38.996379+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -6188,19 +6188,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6224,10 +6233,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Midfielder",
+              "playerId": "ARG_11",
+              "name": "Joaquin Toscani",
+              "number": 16,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -6249,15 +6258,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -6269,37 +6269,37 @@
               "onAt": "21:31"
             },
             {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
+              "position": null,
+              "onAt": "37:03"
+            },
+            {
               "playerId": "ARG_16",
               "name": "Nicolas Cicileo",
               "number": 26,
               "position": null,
-              "onAt": "37:03"
+              "onAt": "47:18"
             },
             {
               "playerId": "ARG_19",
               "name": "Thomas Habif",
               "number": 29,
               "position": null,
-              "onAt": "47:18"
+              "onAt": "43:30"
             },
             {
               "playerId": "ARG_21",
               "name": "Martin Ferreiro",
               "number": 32,
               "position": null,
-              "onAt": "43:30"
+              "onAt": "17:22"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
-              "position": null,
-              "onAt": "17:22"
-            },
-            {
-              "playerId": "ARG_11",
-              "name": "Joaquin Toscani",
-              "number": 16,
               "position": null,
               "onAt": "32:59"
             },
@@ -8734,7 +8734,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-24T12:16:31.803164+00:00",
+        "generated_at": "2026-08-24T14:45:38.998644+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -8767,18 +8767,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_17",
-              "name": "Sanjay",
-              "number": 70,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_15",
+              "name": "Sukhjeet Singh",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -8794,18 +8794,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_17",
+              "name": "Sanjay",
+              "number": 70,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -8821,18 +8821,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -8848,30 +8848,30 @@
               "onAt": "44:09"
             },
             {
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
+              "position": null,
+              "onAt": "39:20"
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
               "position": null,
-              "onAt": "39:20"
+              "onAt": "17:58"
             },
             {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "17:58"
+              "onAt": "41:04"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
-              "position": null,
-              "onAt": "41:04"
-            },
-            {
-              "playerId": "IND_15",
-              "name": "Sukhjeet Singh",
-              "number": 34,
               "position": null,
               "onAt": "29:10"
             },
@@ -10821,7 +10821,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-24T12:16:31.804994+00:00",
+        "generated_at": "2026-08-24T14:45:39.000477+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -10854,19 +10854,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10890,10 +10899,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Midfielder",
+              "playerId": "ARG_11",
+              "name": "Joaquin Toscani",
+              "number": 16,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -10915,15 +10924,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -10935,37 +10935,37 @@
               "onAt": "08:22"
             },
             {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
+              "position": null,
+              "onAt": "18:22"
+            },
+            {
               "playerId": "ARG_16",
               "name": "Nicolas Cicileo",
               "number": 26,
               "position": null,
-              "onAt": "18:22"
+              "onAt": "11:42"
             },
             {
               "playerId": "ARG_19",
               "name": "Thomas Habif",
               "number": 29,
               "position": null,
-              "onAt": "11:42"
+              "onAt": "23:24"
             },
             {
               "playerId": "ARG_21",
               "name": "Martin Ferreiro",
               "number": 32,
               "position": null,
-              "onAt": "23:24"
+              "onAt": "31:29"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
-              "position": null,
-              "onAt": "31:29"
-            },
-            {
-              "playerId": "ARG_11",
-              "name": "Joaquin Toscani",
-              "number": 16,
               "position": null,
               "onAt": "38:24"
             },
@@ -15474,7 +15474,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T15:56:09.716279+00:00",
+        "generated_at": "2026-08-24T14:45:39.004518+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -15665,18 +15665,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_17",
-              "name": "Sanjay",
-              "number": 70,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_15",
+              "name": "Sukhjeet Singh",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -15692,18 +15692,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_17",
+              "name": "Sanjay",
+              "number": 70,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -15719,18 +15719,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -15746,30 +15746,30 @@
               "onAt": "32:06"
             },
             {
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
+              "position": null,
+              "onAt": "22:27"
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
               "position": null,
-              "onAt": "22:27"
+              "onAt": "42:45"
             },
             {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "42:45"
+              "onAt": "13:12"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
-              "position": null,
-              "onAt": "13:12"
-            },
-            {
-              "playerId": "IND_15",
-              "name": "Sukhjeet Singh",
-              "number": 34,
               "position": null,
               "onAt": "49:10"
             },
@@ -15958,7 +15958,7 @@
       ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-22T18:47:01.394891+00:00",
+        "generated_at": "2026-08-24T14:45:39.004971+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -16163,19 +16163,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -16199,10 +16208,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Midfielder",
+              "playerId": "ARG_11",
+              "name": "Joaquin Toscani",
+              "number": 16,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -16224,15 +16233,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -16244,37 +16244,37 @@
               "onAt": "50:16"
             },
             {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
+              "position": null,
+              "onAt": "14:56"
+            },
+            {
               "playerId": "ARG_16",
               "name": "Nicolas Cicileo",
               "number": 26,
               "position": null,
-              "onAt": "14:56"
+              "onAt": "48:25"
             },
             {
               "playerId": "ARG_19",
               "name": "Thomas Habif",
               "number": 29,
               "position": null,
-              "onAt": "48:25"
+              "onAt": "50:44"
             },
             {
               "playerId": "ARG_21",
               "name": "Martin Ferreiro",
               "number": 32,
               "position": null,
-              "onAt": "50:44"
+              "onAt": "28:02"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
-              "position": null,
-              "onAt": "28:02"
-            },
-            {
-              "playerId": "ARG_11",
-              "name": "Joaquin Toscani",
-              "number": 16,
               "position": null,
               "onAt": "29:46"
             },
@@ -19474,15 +19474,78 @@
       "time": "14:45",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "live",
+      "status": "completed",
       "score": {
-        "home": null,
-        "away": null
+        "home": 5,
+        "away": 3
       },
-      "events": [],
+      "events": [
+        {
+          "minute": 1,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Joaquin Toscani"
+        },
+        {
+          "minute": 6,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PC",
+          "player": "Nicolas della Torre"
+        },
+        {
+          "minute": 10,
+          "team": "IND",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sukhjeet Singh"
+        },
+        {
+          "minute": 33,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Tomas Domene"
+        },
+        {
+          "minute": 45,
+          "team": "ARG",
+          "type": "goal",
+          "via": "PS",
+          "player": "Tomas Domene"
+        },
+        {
+          "minute": 53,
+          "team": "ARG",
+          "type": "goal",
+          "via": "FG",
+          "player": "Lucas Toscani"
+        },
+        {
+          "minute": 58,
+          "team": "IND",
+          "type": "goal",
+          "via": "FG",
+          "player": "Sukhjeet Singh"
+        },
+        {
+          "minute": 60,
+          "team": "IND",
+          "type": "goal",
+          "via": "PS",
+          "player": "Hardik Singh"
+        },
+        {
+          "minute": 60,
+          "team": "ARG",
+          "type": "green_card",
+          "player": "Tomas Domene"
+        }
+      ],
       "lineups": {
         "source": "estimated",
-        "generated_at": "2026-08-20T21:08:53.756033+00:00",
+        "generated_at": "2026-08-24T14:45:39.008135+00:00",
         "home": {
           "formation": "4-3-3",
           "fromTeamList": true,
@@ -19515,19 +19578,28 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_20",
-              "name": "Bautista Capurro",
-              "number": 31,
+              "playerId": "ARG_22",
+              "name": "Nicolas della Torre",
+              "number": 10,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_22",
-              "name": "Nicolas della Torre",
-              "number": 10,
+              "playerId": "ARG_23",
+              "name": "Lucas Toscani",
+              "number": 11,
               "line": "Defender",
+              "position": null,
+              "captain": false,
+              "goalkeeper": false
+            },
+            {
+              "playerId": "ARG_20",
+              "name": "Bautista Capurro",
+              "number": 31,
+              "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -19551,10 +19623,10 @@
               "goalkeeper": false
             },
             {
-              "playerId": "ARG_23",
-              "name": "Lucas Toscani",
-              "number": 11,
-              "line": "Midfielder",
+              "playerId": "ARG_11",
+              "name": "Joaquin Toscani",
+              "number": 16,
+              "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
@@ -19576,15 +19648,6 @@
               "position": null,
               "captain": false,
               "goalkeeper": false
-            },
-            {
-              "playerId": "ARG_15",
-              "name": "Lucas Martinez",
-              "number": 23,
-              "line": "Forward",
-              "position": null,
-              "captain": false,
-              "goalkeeper": false
             }
           ],
           "substitutes": [
@@ -19596,37 +19659,37 @@
               "onAt": "27:45"
             },
             {
+              "playerId": "ARG_15",
+              "name": "Lucas Martinez",
+              "number": 23,
+              "position": null,
+              "onAt": "36:17"
+            },
+            {
               "playerId": "ARG_16",
               "name": "Nicolas Cicileo",
               "number": 26,
               "position": null,
-              "onAt": "36:17"
+              "onAt": "34:07"
             },
             {
               "playerId": "ARG_19",
               "name": "Thomas Habif",
               "number": 29,
               "position": null,
-              "onAt": "34:07"
+              "onAt": "37:21"
             },
             {
               "playerId": "ARG_21",
               "name": "Martin Ferreiro",
               "number": 32,
               "position": null,
-              "onAt": "37:21"
+              "onAt": "37:00"
             },
             {
               "playerId": "ARG_05",
               "name": "Facundo Zarate",
               "number": 5,
-              "position": null,
-              "onAt": "37:00"
-            },
-            {
-              "playerId": "ARG_11",
-              "name": "Joaquin Toscani",
-              "number": 16,
               "position": null,
               "onAt": "33:44"
             },
@@ -19680,18 +19743,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_17",
-              "name": "Sanjay",
-              "number": 70,
+              "playerId": "IND_07",
+              "name": "Hardik Singh",
+              "number": 8,
               "line": "Defender",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_07",
-              "name": "Hardik Singh",
-              "number": 8,
+              "playerId": "IND_15",
+              "name": "Sukhjeet Singh",
+              "number": 34,
               "line": "Defender",
               "position": null,
               "captain": false,
@@ -19707,18 +19770,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_08",
-              "name": "Dilpreet Singh",
-              "number": 9,
+              "playerId": "IND_17",
+              "name": "Sanjay",
+              "number": 70,
               "line": "Midfielder",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_11",
-              "name": "Lalage Aditya Arjun",
-              "number": 19,
+              "playerId": "IND_08",
+              "name": "Dilpreet Singh",
+              "number": 9,
               "line": "Midfielder",
               "position": null,
               "captain": false,
@@ -19734,18 +19797,18 @@
               "goalkeeper": false
             },
             {
-              "playerId": "IND_21",
-              "name": "Mandeep Singh",
-              "number": 11,
+              "playerId": "IND_11",
+              "name": "Lalage Aditya Arjun",
+              "number": 19,
               "line": "Forward",
               "position": null,
               "captain": false,
               "goalkeeper": false
             },
             {
-              "playerId": "IND_14",
-              "name": "Vivek Sagar Prasad",
-              "number": 32,
+              "playerId": "IND_21",
+              "name": "Mandeep Singh",
+              "number": 11,
               "line": "Forward",
               "position": null,
               "captain": false,
@@ -19761,30 +19824,30 @@
               "onAt": "49:24"
             },
             {
+              "playerId": "IND_14",
+              "name": "Vivek Sagar Prasad",
+              "number": 32,
+              "position": null,
+              "onAt": "19:47"
+            },
+            {
               "playerId": "IND_09",
               "name": "Sumit",
               "number": 17,
               "position": null,
-              "onAt": "19:47"
+              "onAt": "51:58"
             },
             {
               "playerId": "IND_06",
               "name": "Jarmanpreet Singh",
               "number": 4,
               "position": null,
-              "onAt": "51:58"
+              "onAt": "22:18"
             },
             {
               "playerId": "IND_10",
               "name": "Nilakanta Sharma",
               "number": 18,
-              "position": null,
-              "onAt": "22:18"
-            },
-            {
-              "playerId": "IND_15",
-              "name": "Sukhjeet Singh",
-              "number": 34,
               "position": null,
               "onAt": "45:51"
             },
@@ -19822,11 +19885,116 @@
         }
       },
       "tms_id": 22372,
-      "live_score": {
-        "home": 4,
-        "away": 1,
-        "at": "2026-08-24T14:07:17.509213+00:00"
-      }
+      "result_source": "fih-tms-matches",
+      "penalty_corners": {
+        "home": 1,
+        "away": 0
+      },
+      "stats": {
+        "home": {
+          "goals": 5,
+          "shots": 9,
+          "circle_entries": 31,
+          "penalty_corners": 1,
+          "possession": 54,
+          "green_cards": 1,
+          "yellow_cards": 0,
+          "red_cards": 0
+        },
+        "away": {
+          "goals": 3,
+          "shots": 10,
+          "circle_entries": 27,
+          "penalty_corners": 0,
+          "possession": 46,
+          "green_cards": 0,
+          "yellow_cards": 0,
+          "red_cards": 0
+        }
+      },
+      "commentary": [
+        {
+          "minute": 0,
+          "text": "We're under way — ARG vs IND.",
+          "seq": 0
+        },
+        {
+          "minute": 1,
+          "team": "ARG",
+          "text": "GOAL! Joaquin Toscani (ARG) scores from a field goal — ARG 1-0 IND.",
+          "seq": 1
+        },
+        {
+          "minute": 6,
+          "team": "ARG",
+          "text": "GOAL! Nicolas della Torre (ARG) scores from a penalty corner — ARG 2-0 IND.",
+          "seq": 2
+        },
+        {
+          "minute": 10,
+          "team": "IND",
+          "text": "GOAL! Sukhjeet Singh (IND) scores from a field goal — ARG 2-1 IND.",
+          "seq": 3
+        },
+        {
+          "minute": 15,
+          "text": "End of Q1: ARG 2-1 IND.",
+          "seq": 4
+        },
+        {
+          "minute": 30,
+          "text": "Half-time: ARG 2-1 IND.",
+          "seq": 5
+        },
+        {
+          "minute": 33,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a field goal — ARG 3-1 IND.",
+          "seq": 6
+        },
+        {
+          "minute": 45,
+          "team": "ARG",
+          "text": "GOAL! Tomas Domene (ARG) scores from a penalty stroke — ARG 4-1 IND.",
+          "seq": 7
+        },
+        {
+          "minute": 45,
+          "text": "End of Q3: ARG 4-1 IND.",
+          "seq": 8
+        },
+        {
+          "minute": 53,
+          "team": "ARG",
+          "text": "GOAL! Lucas Toscani (ARG) scores from a field goal — ARG 5-1 IND.",
+          "seq": 9
+        },
+        {
+          "minute": 58,
+          "team": "IND",
+          "text": "GOAL! Sukhjeet Singh (IND) scores from a field goal — ARG 5-2 IND.",
+          "seq": 10
+        },
+        {
+          "minute": 60,
+          "team": "IND",
+          "text": "GOAL! Hardik Singh (IND) scores from a penalty stroke — ARG 5-3 IND.",
+          "seq": 11
+        },
+        {
+          "minute": 60,
+          "team": "ARG",
+          "text": "Green Card for Tomas Domene (ARG) — 2-minute suspension.",
+          "seq": 12
+        },
+        {
+          "minute": 60,
+          "text": "Full-time: ARG 5-3 IND.",
+          "seq": 13
+        }
+      ],
+      "enrichment": "official",
+      "events_rev": 2
     },
     {
       "id": "S2E4",

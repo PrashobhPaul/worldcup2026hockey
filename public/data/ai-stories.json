@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T12:16:31.985669+00:00",
+  "updated_at": "2026-08-24T14:45:39.197164+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -233,6 +233,13 @@
       "matchId": "S2G4",
       "story": "New Zealand beat Pakistan 4-2 at the Wagener Stadion in Amstelveen, in a Pool G tie of the FIH Hockey World Cup 2026. New Zealand came in ranked 9th in the world, Pakistan 12th.\n\nNew Zealand scored through Dylan Thomas (1'), Scott Boyde (16'), George Baker (22') and Kane Russell (49', penalty corner); Pakistan through Sufyan Khan (33', penalty corner) and Afraz (38', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nNew Zealand won 1 penalty corner to Pakistan's 2. 2 cards were shown.",
       "generatedAt": "2026-08-24T12:16:31.985641+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "S2E3",
+      "story": "Argentina beat India 5-3 at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. Argentina came in ranked 7th in the world, India 8th.\n\nArgentina scored through Joaquin Toscani (1'), Nicolas della Torre (6', penalty corner), Tomas Domene (33'), Tomas Domene (45', penalty stroke) and Lucas Toscani (53'); India through Sukhjeet Singh (10'), Sukhjeet Singh (58') and Hardik Singh (60', penalty stroke). The opener came in Q1 and the final goal in Q4.\n\nArgentina won 1 penalty corner to India's 0. 1 card was shown.",
+      "generatedAt": "2026-08-24T14:45:39.197114+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }
