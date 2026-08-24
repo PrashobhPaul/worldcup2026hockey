@@ -1673,7 +1673,7 @@
         "home": "NZL",
         "away": "PAK",
         "home_goals": 3,
-        "away_goals": 0,
+        "away_goals": 1,
         "current": false
       },
       {
@@ -2069,5 +2069,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-24T11:33:39.574515+00:00"
+  "updated_at": "2026-08-24T11:40:32.376309+00:00"
 }
