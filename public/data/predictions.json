@@ -97,7 +97,10 @@
       "reason_revised_at": "2026-08-21T07:10:02.651433+00:00",
       "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
       "orientation_corrected": "home/away relabelled to the official FIH listing; the team predicted, its probability and publishedAt are unchanged",
-      "pick_team": "IND"
+      "pick_team": "IND",
+      "superseded": true,
+      "superseded_at": "2026-08-24T15:31:53.631665+00:00",
+      "superseded_reason": "re-derived from the evidence available before this match, under the current non-knockout model"
     },
     {
       "id": "oracle-v1:D4",
@@ -146,7 +149,10 @@
       "reason_original": "FIH #10 MAS favoured over #13 FRA — Elo model from world rankings, published before push-back.",
       "reason_revised_at": "2026-08-21T07:10:02.651433+00:00",
       "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
-      "pick_team": "MAS"
+      "pick_team": "MAS",
+      "superseded": true,
+      "superseded_at": "2026-08-24T15:31:53.631665+00:00",
+      "superseded_reason": "re-derived from the evidence available before this match, under the current non-knockout model"
     },
     {
       "id": "oracle-v1:A3",
@@ -2020,7 +2026,10 @@
       "reason_original": "FIH #1 BEL favoured over #4 AUS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-21T20:51:21.535701+00:00",
       "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
-      "pick_team": "BEL"
+      "pick_team": "BEL",
+      "superseded": true,
+      "superseded_at": "2026-08-24T15:31:53.631665+00:00",
+      "superseded_reason": "re-derived from the evidence available before this match, under the current non-knockout model"
     },
     {
       "id": "oracle-v1:S2G1:r4",
@@ -3205,6 +3214,54 @@
       "reason": "FIH #9 NZL favoured over #11 IRL — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
       "publishedAt": "2026-08-24T12:16:31.815364+00:00",
       "pick_team": "TBD"
+    },
+    {
+      "id": "oracle-v2:B4",
+      "matchId": "B4",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.706,
+      "p_draw": 0.167,
+      "p_away_win": 0.127,
+      "pick": "HOME",
+      "pick_team": "FRA",
+      "pick_confidence": 0.706,
+      "reason": "France opened with a two-goal defeat to Belgium, scoring twice against the side ranked first in the world; Malaysia opened by conceding five to Germany and scoring once. Both arrive without a point, but only one of them has shown it can score against a top-tier defence, and that difference favours France.",
+      "reason_original": "FIH #10 MAS favoured over #13 FRA — Elo model from world rankings, published before push-back.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-24T15:31:53.631665+00:00"
+    },
+    {
+      "id": "oracle-v2:D3",
+      "matchId": "D3",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.133,
+      "p_draw": 0.175,
+      "p_away_win": 0.692,
+      "pick": "AWAY",
+      "pick_team": "ENG",
+      "pick_confidence": 0.692,
+      "reason": "Both sides won their opening match, and the margins were similar — India three past Wales, England four past Pakistan, each conceding once. The separation is in what those results cost them: England's four came against the stronger of the two opponents. On the only evidence this tournament has produced, England are favoured.",
+      "reason_original": "FIH #5 IND favoured over #7 ENG — Elo model from world rankings, published before push-back.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-24T15:31:53.631665+00:00"
+    },
+    {
+      "id": "oracle-v2:S2F1",
+      "matchId": "S2F1",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.254,
+      "p_draw": 0.38,
+      "p_away_win": 0.366,
+      "pick": "DRAW",
+      "pick_team": null,
+      "pick_confidence": 0.38,
+      "reason": "Australia are unbeaten in three — two wins and a draw with South Africa, six scored and three conceded, the tightest defence in the pool. Belgium have scored eight in three, more than anyone here, but conceded six and lost to Germany. The tournament's steadiest defence against its most productive attack, with neither able to impose itself: a draw is the single likeliest outcome.",
+      "reason_original": "FIH #1 BEL favoured over #4 AUS — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-24T15:31:53.631665+00:00"
     }
   ]
 }
