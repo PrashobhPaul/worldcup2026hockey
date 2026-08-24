@@ -159,10 +159,9 @@
     },
     {
       "matchId": "S2E3",
-      "story": "Argentina beat India 5-3 at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. Argentina came in ranked 7th in the world, India 8th.\n\nArgentina scored through Joaquin Toscani (1'), Nicolas della Torre (6', penalty corner), Tomas Domene (33'), Tomas Domene (45', penalty stroke) and Lucas Toscani (53'); India through Sukhjeet Singh (10'), Sukhjeet Singh (58') and Hardik Singh (60', penalty stroke). The opener came in Q1 and the final goal in Q4.\n\nArgentina won 1 penalty corner to India's 0. 1 card was shown.",
-      "generatedAt": "2026-08-24T14:45:39.197114+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
+      "story": "Argentina needed six minutes to settle the question of who would join the Netherlands in the semi-finals, and the rest of the evening to survive the answer. Joaquin Toscani scored from open play in the 1st, Nicolas della Torre converted a short corner in the 6th, and India — who had to win to have any chance — were two down before they had touched the ball with purpose.\n\nSukhjeet Singh pulled one back from open play in the 10th and for twenty minutes it was a match again, until Tomas Domene took it away in the space of twelve second-half minutes: open play in the 33rd, then a penalty stroke in the 45th. Lucas Toscani made it five in the 53rd, and only then did India find the response their tournament had promised — Sukhjeet's second in the 58th and Hardik Singh's stroke in the 60th, two goals in the closing three minutes that arrived far too late.\n\nEight goals, five scorers, and a scoreline that flatters neither defence: Argentina have now scored twelve in three Stage 2 matches and conceded five. Domene's brace takes him to five for the tournament, all of them in the last two matches, and Los Leones go through in second place behind the Dutch. India leave with the record their pool form always risked — beaten in every match against top-eight opposition, and fourteen conceded across five games.",
+      "generatedAt": "2026-08-24T14:58:18.825271+00:00",
+      "source": "ai"
     },
     {
       "matchId": "S2F1",

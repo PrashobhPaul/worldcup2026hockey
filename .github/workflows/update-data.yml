@@ -63,6 +63,19 @@ jobs:
 
       # Model calibration, replayed as-of-then over every completed match —
       # published alongside the ledger record so the Trust page can show both.
+      # The pipeline rebuilds these files from its own sources every ten
+      # minutes, which would quietly undo the corrections made against the
+      # official FIH export — a wrong scoreline and eight reversed listings.
+      # Re-applying here keeps the published record agreeing with the match
+      # centre no matter how often the pipeline runs. It is idempotent.
+      - name: Reconcile against the official FIH record
+        run: python scripts/apply_official_matchdata.py
+
+      # The world-ranking table is live, so the replay needs the snapshot that
+      # stood before each match rather than today's. Refresh the series first.
+      - name: Refresh ranking history
+        run: python scripts/rankings_history.py
+
       - name: Publish model calibration
         run: python scripts/backtest_model.py --publish
 

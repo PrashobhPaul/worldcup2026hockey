@@ -116,7 +116,12 @@ def main():
     relabelled = 0
     if flipped:
         for p in predictions['predictions']:
-            if p['matchId'] not in flipped:
+            # Relabel each row exactly once. The fixture can arrive reversed
+            # again — the pipeline on main republishes these files every ten
+            # minutes and does not carry this correction until the branch
+            # lands — but the rows on this side keep the label they were given,
+            # and flipping them a second time would invert every pick.
+            if p['matchId'] not in flipped or p.get('orientation_corrected'):
                 continue
             relabelled += 1
             if check:
@@ -126,6 +131,14 @@ def main():
                 p['pick'] = 'AWAY' if p['pick'] == 'HOME' else 'HOME'
             p['orientation_corrected'] = ('home/away relabelled to the official FIH listing; '
                                           'the team predicted, its probability and publishedAt are unchanged')
+        # The pick is stored as HOME/AWAY, which only means something next to a
+        # fixture. Record the nation itself so the claim survives any later
+        # change of listing, and so a test can prove the two still agree.
+        matches = {m['id']: m for m in fixtures['matches']}
+        for p in predictions['predictions']:
+            m = matches.get(p['matchId'])
+            if m and p.get('pick') in ('HOME', 'AWAY'):
+                p['pick_team'] = m['home'] if p['pick'] == 'HOME' else m['away']
 
     print(f'orientation flipped: {len(flipped)} {flipped}')
     for mid, was, now in rescored:

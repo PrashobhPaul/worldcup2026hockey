@@ -36,6 +36,23 @@ for (const [mid, rows] of active) {
     rows.map(r => r.id).join(', '))
 }
 
+// 1b — a pick is stored as HOME/AWAY, which only means something beside a
+// fixture. When the two nations in a fixture were re-listed to match the
+// official record, the paired rows had to move with it; doing that twice
+// silently inverted twenty-nine picks and put Japan ahead of the Netherlands
+// at 91%. Every row also records the nation it named, so the two can be
+// compared, and any future re-listing that forgets a row fails here.
+for (const [mid, rows] of active) {
+  const m = fixtures.matches.find(x => x.id === mid)
+  if (!m || m.home === 'TBD') continue
+  for (const r of rows) {
+    if (!r.pick_team || (r.pick !== 'HOME' && r.pick !== 'AWAY')) continue
+    const side = r.pick === 'HOME' ? m.home : m.away
+    check(`${mid}: the pick still names ${r.pick_team}`, side === r.pick_team,
+      `pick=${r.pick} points at ${side}`)
+  }
+}
+
 const completed = fixtures.matches.filter(m => m.status === 'completed' && m.score?.home != null)
 const allEvents = fixtures.matches.flatMap(m => (m.events ?? []).map(e => ({ matchId: m.id, ...e })))
 
