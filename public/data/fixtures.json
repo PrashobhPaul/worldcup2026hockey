@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-24T15:43:40.472613+00:00",
+ "last_updated": "2026-08-24T16:18:03.434201+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -20151,7 +20151,7 @@
    "time": "18:00",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "live",
    "score": {
     "home": null,
     "away": null
@@ -20491,7 +20491,12 @@
      "coach": "Zak Jones"
     }
    },
-   "tms_id": 22373
+   "tms_id": 22373,
+   "live_score": {
+    "home": 0,
+    "away": 1,
+    "at": "2026-08-24T16:17:50.447005+00:00"
+   }
   },
   {
    "id": "POS13",
