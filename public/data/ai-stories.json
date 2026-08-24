@@ -158,6 +158,13 @@
       "source": "ai"
     },
     {
+      "matchId": "S2E3",
+      "story": "Argentina beat India 5-3 at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. Argentina came in ranked 7th in the world, India 8th.\n\nArgentina scored through Joaquin Toscani (1'), Nicolas della Torre (6', penalty corner), Tomas Domene (33'), Tomas Domene (45', penalty stroke) and Lucas Toscani (53'); India through Sukhjeet Singh (10'), Sukhjeet Singh (58') and Hardik Singh (60', penalty stroke). The opener came in Q1 and the final goal in Q4.\n\nArgentina won 1 penalty corner to India's 0. 1 card was shown.",
+      "generatedAt": "2026-08-24T14:45:39.197114+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
       "matchId": "S2F1",
       "story": "Australia remain the only unbeaten side in Pool F after an evening in Brussels that finished all square and could barely have been closer — a single goal apiece, one from open play and one from the set piece. Tom Craig gave the Kookaburras the lead in the 24th from open play, finishing the best move of a first half they controlled without ever dominating.\n\nBelgium's reply came from the set piece: Tom Boon converted a penalty corner in the 38th, early in the third quarter, in a match that never produced a card and never quite lost its balance. Neither side could find a second goal, and two of the tournament's heavyweights settled for a point apiece.\n\nThe point suits Australia far more. With the win over Spain carried forward from Stage 1 they top Pool F on four points, unbeaten across four matches this tournament; Belgium, carrying the one-goal defeat to Germany, hold a single point from their two counted results with only the Spain fixture left to change it. Even a win there leaves the world's number-one side needing results elsewhere — a semi-final place is no longer in Belgium's own hands.",
       "generatedAt": "2026-08-24T14:32:00.383938+00:00",
