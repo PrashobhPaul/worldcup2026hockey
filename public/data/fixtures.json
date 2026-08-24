@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-24T12:55:13.669929+00:00",
+  "last_updated": "2026-08-24T13:18:07.888868+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -19821,7 +19821,12 @@
           "coach": "Craig Fulton"
         }
       },
-      "tms_id": 22372
+      "tms_id": 22372,
+      "live_score": {
+        "home": 2,
+        "away": 1,
+        "at": "2026-08-24T13:17:54.725619+00:00"
+      }
     },
     {
       "id": "S2E4",
