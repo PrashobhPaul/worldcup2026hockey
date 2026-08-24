@@ -385,10 +385,7 @@ export function buildMatchDNA({ match, matches, allEvents }) {
         matchId: m.id, code,
         goals: m.score[side] ?? 0,
         conceded: m.score[opp] ?? 0,
-        shots: st?.shots ?? null,
-        circle: st?.circle_entries ?? null,
-        possession: st?.possession ?? null,
-        pc: st?.penalty_corners ?? m.penalty_corners?.[side] ?? null,
+        defence: -(m.score[opp] ?? 0),   // fewer conceded ranks higher on the chart
         pcGoals: teamEvents.filter(e => e.type === 'goal' && e.via === 'PC').length,
         fieldGoals: teamEvents.filter(e => e.type === 'goal' && e.via === 'FG').length,
         discipline: -cardPoints(evs, code),
@@ -405,13 +402,14 @@ export function buildMatchDNA({ match, matches, allEvents }) {
     return Math.round(((below + equal / 2) / arr.length) * 100)
   }
 
+  // Only what the FIH match record actually contains. Possession, shots and
+  // circle entries used to sit on this chart; FIH publishes none of them, so
+  // the numbers behind those axes were invented and the axes are gone.
   const axes = [
     { key: 'goals', label: 'Attack' },
-    { key: 'shots', label: 'Shots' },
-    { key: 'circle', label: 'Circle Entries' },
-    { key: 'possession', label: 'Control' },
-    { key: 'pc', label: 'PC Volume' },
-    { key: 'pcGoals', label: 'PC Conversion' },
+    { key: 'defence', label: 'Defence' },
+    { key: 'fieldGoals', label: 'Open Play' },
+    { key: 'pcGoals', label: 'Penalty Corners' },
     { key: 'discipline', label: 'Discipline' },
   ]
 

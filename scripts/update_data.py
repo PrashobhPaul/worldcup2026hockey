@@ -1914,17 +1914,25 @@ def apply_official_events(fixtures, players_doc):
 
 def estimate_enrichment(fixtures, players_doc):
     """
-    For completed matches with a real score but no timeline: generate seeded,
-    roster-aware events + PC counts + stats + commentary. Labeled 'estimated';
-    manual events always win and are never overwritten.
+    Derive stats and commentary for completed matches from the timeline the
+    match report gave us — and only from that.
+
+    This function used to invent one: for a match whose score was known but
+    whose report had not arrived, it drew scorers from the squad list, gave
+    them plausible minutes, and handed out cards on a coin flip. The output
+    was labelled 'estimated' in the data, but by the time it reached a match
+    page or a written brief it was indistinguishable from the real thing, and
+    the invented scorers were named players credited with goals they never
+    scored. A World Cup record is not a thing to guess at, so the guessing is
+    gone: a match with no official timeline simply has no timeline, the app
+    says as much, and the row is marked 'pending-report' until the real one
+    lands.
     """
-    players = players_doc['players']
     changed = False
     for m in fixtures['matches']:
         if m['status'] != 'completed' or not has_score(m):
             continue
         if m.get('events'):
-            # Manual/official timeline exists — only derive stats/commentary if absent
             if not m.get('stats'):
                 m['stats'] = derive_stats_from_events(m)
                 changed = True
@@ -1932,70 +1940,45 @@ def estimate_enrichment(fixtures, players_doc):
                 m['commentary'] = build_commentary(m)
                 changed = True
             continue
-
-        rng = seeded_rng(f"{m['id']}:{m['score']['home']}-{m['score']['away']}")
-        events = []
-        picked = {}
-        for side in ('home', 'away'):
-            code = m[side]
-            for _ in range(m['score'][side]):
-                via = pick_weighted(rng, GOAL_VIA_WEIGHTS)
-                minute = 2 + int(rng() * 58)
-                ev = {
-                    'minute': minute, 'team': code, 'type': 'goal', 'via': via,
-                    'player': pick_scorer(rng, players, code, via, picked),
-                }
-                if via == 'FG' and rng() < 0.6:
-                    assist = pick_scorer(rng, players, code, 'FG', None)
-                    if assist != ev['player']:
-                        ev['assist'] = assist
-                events.append(ev)
-        # Cards: green common, yellow occasional, red rare
-        for side in ('home', 'away'):
-            code = m[side]
-            if rng() < 0.55:
-                events.append({'minute': 5 + int(rng() * 54), 'team': code, 'type': 'green_card',
-                               'player': pick_scorer(rng, players, code, 'FG')})
-            if rng() < 0.30:
-                events.append({'minute': 10 + int(rng() * 49), 'team': code, 'type': 'yellow_card',
-                               'player': pick_scorer(rng, players, code, 'PC')})
-        events.sort(key=lambda e: e['minute'])
-        m['events'] = events
-
-        pc_goals = {s: sum(1 for e in events if e['team'] == m[s] and e['type'] == 'goal' and e['via'] == 'PC')
-                    for s in ('home', 'away')}
-        if not (m.get('penalty_corners') or {}).get('home'):
-            m['penalty_corners'] = {
-                'home': pc_goals['home'] + 2 + int(rng() * 5),
-                'away': pc_goals['away'] + 2 + int(rng() * 5),
-            }
-        m['stats'] = derive_stats_from_events(m, rng)
-        m['commentary'] = build_commentary(m)
-        m['enrichment'] = 'estimated'
-        changed = True
-        print(f"ENRICHED (estimated): {m['id']} — {len(events)} events, stats, commentary")
+        if m.get('enrichment') != 'pending-report':
+            m['enrichment'] = 'pending-report'
+            m.pop('penalty_corners', None)
+            m['stats'] = derive_stats_from_events(m)
+            changed = True
+            print(f"AWAITING REPORT: {m['id']} — score known, official timeline not published yet")
     return changed
 
+# Fields the FIH match centre does not publish. They were once filled with
+# seeded random volumes, which put invented possession and shot counts on the
+# match page and into written match briefs, under a match labelled "official".
+# Nothing here may be estimated: a number the source does not give is absent,
+# and the app says so rather than inventing one.
+UNPUBLISHED_STATS = ('shots', 'circle_entries', 'possession', 'penalty_corners')
+
+
 def derive_stats_from_events(m, rng=None):
-    """Per-side match stats. Real fields from events/PC; volumes seeded when estimating."""
-    rng = rng or seeded_rng(f"stats:{m['id']}")
+    """Per-side match stats, every one of them provable from the match record.
+
+    Goals, how each was scored, and cards come from the official timeline.
+    The volume statistics FIH does not publish are reported as None so the
+    match page can omit them honestly instead of showing a fabrication.
+    """
     s = {}
     gh, ga = m['score']['home'], m['score']['away']
-    pc = m.get('penalty_corners') or {}
-    lean = 50 + (gh - ga) * 4
-    poss_home = max(35, min(65, int(lean + (rng() - 0.5) * 8)))
-    for side, goals, opp_goals in (('home', gh, ga), ('away', ga, gh)):
+    for side, goals in (('home', gh), ('away', ga)):
         events = [e for e in (m.get('events') or []) if e.get('team') == m[side]]
+        def count(kind):
+            return sum(1 for e in events if e['type'] == kind)
         s[side] = {
             'goals': goals,
-            'shots': goals + 3 + int(rng() * 6),
-            'circle_entries': 10 + goals * 3 + int(rng() * 10),
-            'penalty_corners': pc.get(side),
-            'possession': poss_home if side == 'home' else 100 - poss_home,
-            'green_cards': sum(1 for e in events if e['type'] == 'green_card'),
-            'yellow_cards': sum(1 for e in events if e['type'] == 'yellow_card'),
-            'red_cards': sum(1 for e in events if e['type'] == 'red_card'),
+            'field_goals': sum(1 for e in events if e['type'] == 'goal' and e.get('via') == 'FG'),
+            'pc_goals': sum(1 for e in events if e['type'] == 'goal' and e.get('via') == 'PC'),
+            'ps_goals': sum(1 for e in events if e['type'] == 'goal' and e.get('via') == 'PS'),
+            'green_cards': count('green_card'),
+            'yellow_cards': count('yellow_card'),
+            'red_cards': count('red_card'),
         }
+        s[side].update({k: None for k in UNPUBLISHED_STATS})
     return s
 
 VIA_LABEL = {'PC': 'penalty corner', 'FG': 'field goal', 'PS': 'penalty stroke'}
@@ -2421,6 +2404,54 @@ def predict(home_pts, away_pts, knockout=False):
     p_away = (1 - p_draw) * (1 - e)
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
+import model_non_knockout as _nkm
+
+_FROZEN_RANKINGS = None
+
+
+def _frozen_rankings():
+    """The baseline table the convergence feature measures movement from."""
+    global _FROZEN_RANKINGS
+    if _FROZEN_RANKINGS is None:
+        try:
+            with open(os.path.join(DATA_DIR, 'rankings-history.json')) as fh:
+                _FROZEN_RANKINGS = json.load(fh).get('frozen') or {}
+        except (OSError, ValueError):
+            _FROZEN_RANKINGS = {}
+    return _FROZEN_RANKINGS
+
+
+def h2h_margin(h2h_pairs, home, away):
+    """Pre-tournament head-to-head: home wins minus home losses, as a count."""
+    key = '-'.join(sorted((home, away)))
+    past = [x for x in ((h2h_pairs or {}).get(key) or []) if not x.get('current')]
+    wins = losses = 0
+    for x in past:
+        hg = x['home_goals'] if x['home'] == home else x['away_goals']
+        ag = x['home_goals'] if x['home'] == away else x['away_goals']
+        if hg > ag:
+            wins += 1
+        elif hg < ag:
+            losses += 1
+    return wins - losses
+
+
+def non_knockout_pick(m, base_probs, points_of, fixtures, h2h_pairs):
+    """Run one drawable fixture through NON_KNOCKOUT_MODEL_V2."""
+    frozen = _frozen_rankings()
+    home, away = m['home'], m['away']
+    ph, _pd, pa = base_probs
+    underdog = away if ph >= pa else home
+    form = team_form(underdog, fixtures)
+    features = _nkm.build_features(
+        base_probs,
+        points_of.get(home), points_of.get(away),
+        frozen.get(home), frozen.get(away),
+        und_gd=form['gf'] - form['ga'],
+        h2h_margin=h2h_margin(h2h_pairs, home, away))
+    return _nkm.predict(features)
+
+
 def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs=None):
     """
     Publish a visible correction for a pick whose match has not started but
@@ -2467,7 +2498,12 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
             conf = round(max(adv_h, 1 - adv_h), 3)
         else:
-            pick = 'HOME' if ph >= max(pd, pa) else ('AWAY' if pa >= pd else 'DRAW')
+            # Pool and stage-2 matches can be drawn, so they go through the
+            # non-knockout model: the same ranking-points base, plus its one
+            # validated rule for sides that have converged to parity.
+            out = non_knockout_pick(m, (ph, pd, pa), points_of, fixtures, h2h_pairs)
+            pick = out['prediction']
+            ph, pd, pa = out['probs']['HOME'], out['probs']['DRAW'], out['probs']['AWAY']
             conf = round(max(ph, pd, pa), 3)
         # A pick is stale if its numbers no longer follow from the current
         # ranks — or if the ranks its reason asserts are simply not the ranks.
@@ -2564,7 +2600,12 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
             pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
             conf = round(max(adv_h, 1 - adv_h), 3)
         else:
-            pick = 'HOME' if ph >= max(pd, pa) else ('AWAY' if pa >= pd else 'DRAW')
+            # Pool and stage-2 matches can be drawn, so they go through the
+            # non-knockout model: the same ranking-points base, plus its one
+            # validated rule for sides that have converged to parity.
+            out = non_knockout_pick(m, (ph, pd, pa), points_of, fixtures, h2h_pairs)
+            pick = out['prediction']
+            ph, pd, pa = out['probs']['HOME'], out['probs']['DRAW'], out['probs']['AWAY']
             conf = round(max(ph, pd, pa), 3)
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         stage_note = f" {m['phase'].replace('-', ' ').title()} slot decided by pool standings." if knockout else ''

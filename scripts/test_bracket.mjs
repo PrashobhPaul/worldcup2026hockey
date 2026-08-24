@@ -105,7 +105,8 @@ ok('a win banks real points in place of the projected ones',
    `${espBefore.pts.toFixed(2)}/${espBefore.gd.toFixed(2)} -> ${espAfter.pts.toFixed(2)}/${espAfter.gd.toFixed(2)}`)
 ok('the beaten side carries the defeat',
    gerAfter.gd < b0.stage2.F.table.find(r => r.code === 'GER').gd)
-ok('the played pairing is no longer counted as pending', espAfter.played === 2 && espAfter.pending === 1)
+ok('the played pairing is no longer counted as pending',
+   espAfter.played === espBefore.played + 1 && espAfter.pending === espBefore.pending - 1)
 ok('the semi-final slots follow the table after a real result',
    bw.byId.get('SF2').home === bw.stage2.F.table[0].code &&
    bw.byId.get('SF1').away === bw.stage2.F.table[1].code)

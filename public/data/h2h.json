@@ -1073,15 +1073,6 @@
     ],
     "MAS-RSA": [
       {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-23",
-        "home": "MAS",
-        "away": "RSA",
-        "home_goals": 2,
-        "away_goals": 3,
-        "current": false
-      },
-      {
         "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
         "date": "2025-06-20",
         "home": "MAS",
@@ -1137,15 +1128,6 @@
       }
     ],
     "FRA-IRL": [
-      {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-23",
-        "home": "FRA",
-        "away": "IRL",
-        "home_goals": 2,
-        "away_goals": 1,
-        "current": false
-      },
       {
         "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
         "date": "2026-06-13",
@@ -1220,15 +1202,6 @@
       }
     ],
     "AUS-GER": [
-      {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-23",
-        "home": "GER",
-        "away": "AUS",
-        "home_goals": 4,
-        "away_goals": 2,
-        "current": false
-      },
       {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-02-15",
@@ -1375,15 +1348,6 @@
       }
     ],
     "BEL-ESP": [
-      {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-23",
-        "home": "ESP",
-        "away": "BEL",
-        "home_goals": 1,
-        "away_goals": 1,
-        "current": false
-      },
       {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-06-21",
@@ -1648,15 +1612,6 @@
     ],
     "JPN-WAL": [
       {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-24",
-        "home": "JPN",
-        "away": "WAL",
-        "home_goals": 3,
-        "away_goals": 2,
-        "current": false
-      },
-      {
         "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
         "date": "2025-06-20",
         "home": "JPN",
@@ -1667,15 +1622,6 @@
       }
     ],
     "NZL-PAK": [
-      {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-24",
-        "home": "NZL",
-        "away": "PAK",
-        "home_goals": 4,
-        "away_goals": 2,
-        "current": false
-      },
       {
         "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
         "date": "2025-06-21",
@@ -1759,15 +1705,6 @@
       }
     ],
     "ARG-IND": [
-      {
-        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
-        "date": "2026-08-24",
-        "home": "ARG",
-        "away": "IND",
-        "home_goals": 5,
-        "away_goals": 3,
-        "current": false
-      },
       {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-02-15",
@@ -2078,5 +2015,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-24T14:57:42.291331+00:00"
+  "updated_at": "2026-08-22T21:08:12.113550+00:00"
 }

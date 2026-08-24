@@ -62,7 +62,13 @@ def conflicted():
 
 
 def merge_fixtures(ours, theirs):
-    """Pipeline owns played pool matches; the branch owns the schedule.
+    """Pipeline owns played matches; the branch owns the schedule.
+
+    Ownership follows match state, not phase: the pipeline's row wins for any
+    match it has moved further along (completed beats in-play beats
+    scheduled), because a result must never be un-happened by a merge. When
+    both sides agree on the state, played matches stay with the pipeline and
+    unplayed ones with the branch, which owns the schedule and the ids.
 
     One refinement: an official timeline outranks an estimated one whichever
     side carries it. A branch whose CI ran a fixed report parser can hold the
@@ -70,29 +76,41 @@ def merge_fixtures(ours, theirs):
     after the two-column fix) — taking the pipeline row wholesale would throw
     the real scorers away.
     """
-    pool = {m['id']: m for m in theirs['matches'] if m.get('phase') == 'pool'}
+    def rank(m):
+        if m.get('status') == 'completed':
+            return 2
+        return 1 if m.get('live_score') or m.get('status') not in (None, 'scheduled') else 0
+
+    theirs_by = {m['id']: m for m in theirs['matches']}
     out, taken = [], 0
     for m in ours['matches']:
-        if m.get('phase') == 'pool' and m['id'] in pool:
-            theirs_row = pool[m['id']]
-            if (m.get('enrichment') == 'official'
-                    and theirs_row.get('enrichment') != 'official'
-                    and m.get('score') == theirs_row.get('score')):
-                out.append(m)
-            else:
-                out.append(theirs_row); taken += 1
-        else:
+        t = theirs_by.get(m['id'])
+        if t is None:
             out.append(m)
-    # A pool match the branch does not carry at all is still a real fixture.
+            continue
+        ours_wins = (rank(m) > rank(t)
+                     or (rank(m) == rank(t) and m.get('phase') != 'pool'))
+        # Official enrichment overrides the state rule when the score agrees.
+        if (t.get('enrichment') == 'official' and m.get('enrichment') != 'official'
+                and m.get('score') == t.get('score') and rank(t) >= rank(m)):
+            ours_wins = False
+        elif (m.get('enrichment') == 'official' and t.get('enrichment') != 'official'
+                and m.get('score') == t.get('score')):
+            ours_wins = True
+        if ours_wins:
+            out.append(m)
+        else:
+            out.append(t); taken += 1
+    # A match the branch does not carry at all is still a real fixture.
     known = {m['id'] for m in out}
-    for mid, m in pool.items():
+    for mid, t in theirs_by.items():
         if mid not in known:
-            out.append(m); taken += 1
+            out.append(t); taken += 1
     ours['matches'] = out
     for k in ('last_updated', 'source'):
         if k in theirs:
             ours[k] = theirs[k]
-    return ours, f'{len(out)} fixtures, {taken} pool rows from the pipeline'
+    return ours, f'{len(out)} fixtures, {taken} rows from the pipeline'
 
 
 # Fields the branch owns because they are editorial, not derived. Everything
@@ -207,6 +225,15 @@ def merge_stories(ours, theirs):
     return ours, f'{len(merged)} briefs'
 
 
+def merge_calibration(ours, theirs):
+    """Derived from the merged ledger and fixtures, so no side is authoritative:
+    take the replay covering more matches (newer tournament state), then let
+    the post-merge backtest republish if the merged data says otherwise."""
+    pick = theirs if (theirs.get('matches', 0), theirs.get('updated_at', '')) >= \
+                     (ours.get('matches', 0), ours.get('updated_at', '')) else ours
+    return pick, f"{pick.get('correct')}/{pick.get('matches')} kept (recomputed post-merge)"
+
+
 def merge_version(ours, theirs):
     v = max((ours or {}).get('version', 0), (theirs or {}).get('version', 0)) + 1
     base = theirs or ours or {}
@@ -223,6 +250,7 @@ HANDLERS = {
     'h2h.json': merge_h2h,
     'ai-stories.json': merge_stories,
     'data-version.json': merge_version,
+    'model-calibration.json': merge_calibration,
 }
 INDENT = {'fixtures.json': 1}
 
