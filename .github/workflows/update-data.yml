@@ -30,7 +30,13 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
+      # Full history: rankings_history.py recovers the world-ranking snapshot
+      # that stood before each match from the commit log, and a shallow clone
+      # collapses that series to a single entry.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -38,6 +44,30 @@ jobs:
 
       - name: Install dependencies
         run: pip install pdfplumber
+
+      # This job owns public/data/*.json, and it runs on main every ten
+      # minutes, so any branch open longer than one cycle diverges from it.
+      # .gitattributes already routes those files to scripts/merge_data.py,
+      # which knows the pipeline owns played results while the branch owns the
+      # schedule and the editorial fields — but a merge driver is per-clone git
+      # config, and GitHub's servers never configure one. That is why the same
+      # conflict, with the same correct answer, kept reappearing on every pull
+      # request. Configuring it here and taking main first makes this the clone
+      # that resolves it. On main the merge is already an ancestor, so this is
+      # a no-op.
+      - name: Take main's data before rebuilding it
+        run: |
+          git config merge.hockeydata.name "Hockey.AI data merge"
+          git config merge.hockeydata.driver "python3 scripts/merge_data.py --driver %O %A %B %P"
+          git config user.name "hockey-ai-bot"
+          git config user.email "actions@github.com"
+          git fetch origin main
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "Already contains main - nothing to merge."
+          else
+            git merge --no-edit origin/main
+            git push origin HEAD:${{ github.ref_name }}
+          fi
 
       - name: Update fixtures, statuses & Oracle picks
         env:
