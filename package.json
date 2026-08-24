@@ -17,6 +17,7 @@
     "test:intel": "node scripts/test_intel.mjs",
     "smoke:recovery": "node scripts/smoke_recovery.mjs",
     "test:stories": "python3 scripts/test_story_facts.py",
+    "test:model": "python3 scripts/test_non_knockout_model.py",
     "test:fingerprint": "python3 scripts/data_fingerprint.py --check",
     "smoke:mobile": "node scripts/smoke_mobile.mjs"
   },

@@ -1,9 +1,11 @@
 {
   "matches": 38,
-  "correct": 24,
-  "accuracy_pct": 63,
-  "brier": 0.4289,
-  "log_loss": 0.7412,
-  "method": "as-of-then replay: every completed match re-scored with only the form and rankings available before its own push-back",
-  "updated_at": "2026-08-24T12:16:32.172581+00:00"
+  "correct": 25,
+  "accuracy_pct": 66,
+  "brier": 0.4888,
+  "log_loss": 0.8405,
+  "model": "NON_KNOCKOUT_MODEL_V2",
+  "mode": "validated",
+  "method": "as-of-then replay: every completed match re-scored with only the form, head-to-head and world-ranking table that existed before its own push-back",
+  "updated_at": "2026-08-24T14:38:52.236707+00:00"
 }

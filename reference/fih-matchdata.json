@@ -1,0 +1,2947 @@
+{
+ "source": "FIH AltiusRT / TMS Match Centre — https://fih.altiusrt.com/matches/{fih_match_id}",
+ "exported": "2026-08-24",
+ "matches": 36,
+ "note": "Official record for matches 1-36. FIH does not publish possession, shots, circle penetrations, saves, or penalty-corner attempt counts; those fields are absent here because they do not exist in the source, and the app must not invent them. Player names are as printed by FIH.",
+ "data": {
+  "D1": {
+   "fih_match_id": "22334",
+   "source": "https://fih.altiusrt.com/matches/22334",
+   "home": "IND",
+   "away": "WAL",
+   "score": {
+    "home": 3,
+    "away": 1
+   },
+   "quarters": [
+    "2-0",
+    "0-0",
+    "1-0",
+    "0-1"
+   ],
+   "goal_methods": {
+    "field": "0-1",
+    "penalty_corner": "3-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: RAPAPORT Sean (RSA); Umpire: NEWMAN Zeke (AUS); Reserve Umpire: GOENTGEN Ben (GER); Video Umpire: EDWARDS Sean (ENG); Scoring Judge: RINALDINI Lorena (ARG); Timing Judge: LIŠKAUSKIENĖ Jolanta (LTU); Technical Officer: BURT Josh (AUS)",
+   "events": [
+    {
+     "minute": 8,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "Sanjay",
+     "shirt": "70"
+    },
+    {
+     "minute": 11,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "SINGH Harmanpreet",
+     "shirt": "13"
+    },
+    {
+     "minute": 43,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "SINGH Harmanpreet",
+     "shirt": "13"
+    },
+    {
+     "minute": 56,
+     "team": "WAL",
+     "type": "goal",
+     "via": "FG",
+     "player": "WELSH Sam",
+     "shirt": "16"
+    }
+   ]
+  },
+  "B1": {
+   "fih_match_id": "22335",
+   "source": "https://fih.altiusrt.com/matches/22335",
+   "home": "GER",
+   "away": "MAS",
+   "score": {
+    "home": 5,
+    "away": 1
+   },
+   "quarters": [
+    "3-0",
+    "0-0",
+    "1-1",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "4-0",
+    "penalty_corner": "1-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: KLENK Tyler (CAN); Umpire: YOU Hyosik (KOR); Reserve Umpire: NEUMANN Aleisha (AUS); Video Umpire: HARRISON Hannah (ENG); Scoring Judge: DELLA MATTIA Adrian (ARG); Timing Judge: NISHIZAWA Eddie (JPN); Technical Officer: TOMLINSON Jackie (NZL)",
+   "events": [
+    {
+     "minute": 3,
+     "team": "GER",
+     "type": "goal",
+     "via": "PC",
+     "player": "BRILLA Jakob",
+     "shirt": "34"
+    },
+    {
+     "minute": 4,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "RÜHR Christopher",
+     "shirt": "17"
+    },
+    {
+     "minute": 7,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "WEIGAND Justus",
+     "shirt": "19"
+    },
+    {
+     "minute": 13,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "SAARI Faizal",
+     "shirt": "10"
+    },
+    {
+     "minute": 39,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "AZRAI Abu Kamal",
+     "shirt": "23"
+    },
+    {
+     "minute": 44,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "WARWEG Justus",
+     "shirt": "7"
+    },
+    {
+     "minute": 52,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "KAUFMANN Paul-Philipp",
+     "shirt": "13"
+    },
+    {
+     "minute": 58,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "SUMANTRI Norsyafiq",
+     "shirt": "22"
+    }
+   ]
+  },
+  "D2": {
+   "fih_match_id": "22336",
+   "source": "https://fih.altiusrt.com/matches/22336",
+   "home": "ENG",
+   "away": "PAK",
+   "score": {
+    "home": 4,
+    "away": 1
+   },
+   "quarters": [
+    "1-0",
+    "1-0",
+    "1-0",
+    "1-1"
+   ],
+   "goal_methods": {
+    "field": "2-1",
+    "penalty_corner": "2-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: VAN'T HEK Jonas (NED); Umpire: HUBACH Darren (RSA); Reserve Umpire: ANBANANTHAN Rawi (MAS); Video Umpire: ROGERS Steve (AUS); Scoring Judge: STANDLEY Tammy (AUS); Timing Judge: BURT Josh (AUS); Technical Officer: COPPIETERS Benoit (BEL)",
+   "events": [
+    {
+     "minute": 12,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "RUSHMERE Stuart",
+     "shirt": "17"
+    },
+    {
+     "minute": 20,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "MAHMOOD Abu",
+     "shirt": "27"
+    },
+    {
+     "minute": 28,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "WARD Sam",
+     "shirt": "13"
+    },
+    {
+     "minute": 31,
+     "team": "ENG",
+     "type": "goal",
+     "via": "PC",
+     "player": "HOOPER Samuel",
+     "shirt": "33"
+    },
+    {
+     "minute": 47,
+     "team": "ENG",
+     "type": "goal",
+     "via": "PC",
+     "player": "ALBERY James",
+     "shirt": "14"
+    },
+    {
+     "minute": 50,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "AFRAZ",
+     "shirt": "21"
+    }
+   ]
+  },
+  "B2": {
+   "fih_match_id": "22337",
+   "source": "https://fih.altiusrt.com/matches/22337",
+   "home": "BEL",
+   "away": "FRA",
+   "score": {
+    "home": 3,
+    "away": 2
+   },
+   "quarters": [
+    "0-1",
+    "1-1",
+    "1-0",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "1-2",
+    "penalty_corner": "2-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: BARSTOW Dan (ENG); Umpire: OTTEN Michiel (NED); Reserve Umpire: TOMLINSON David (NZL); Video Umpire: VAN BUNGE Coen (NED); Scoring Judge: SCHWEDE Sonja (GER); Timing Judge: OTI-MENSAH Frank (GHA); Technical Officer: DECKENBROCK Christian (GER)",
+   "events": [
+    {
+     "minute": 3,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "CURTY Eliot",
+     "shirt": "18"
+    },
+    {
+     "minute": 11,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "ONANA Nelson",
+     "shirt": "30"
+    },
+    {
+     "minute": 17,
+     "team": "BEL",
+     "type": "goal",
+     "via": "FG",
+     "player": "ONANA Nelson",
+     "shirt": "30"
+    },
+    {
+     "minute": 18,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "VAAL Florent",
+     "shirt": "17"
+    },
+    {
+     "minute": 26,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "GOYET François",
+     "shirt": "16"
+    },
+    {
+     "minute": 44,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "DUVEKOT Roman",
+     "shirt": "18"
+    },
+    {
+     "minute": 56,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "HENDRICKX Alexander",
+     "shirt": "16"
+    }
+   ]
+  },
+  "C1": {
+   "fih_match_id": "22338",
+   "source": "https://fih.altiusrt.com/matches/22338",
+   "home": "AUS",
+   "away": "IRL",
+   "score": {
+    "home": 3,
+    "away": 1
+   },
+   "quarters": [
+    "1-0",
+    "2-0",
+    "0-0",
+    "0-1"
+   ],
+   "goal_methods": {
+    "field": "0-0",
+    "penalty_corner": "3-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: GREENFIELD Gareth (NZL); Umpire: WILLIAMS Rachel (ENG); Reserve Umpire: OTTEN Michiel (NED); Video Umpire: BARSTOW Dan (ENG); Scoring Judge: RINALDINI Lorena (ARG); Timing Judge: LIŠKAUSKIENĖ Jolanta (LTU); Technical Officer: BURT Josh (AUS)",
+   "events": [
+    {
+     "minute": 7,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PC",
+     "player": "RINTALA Joel",
+     "shirt": "27"
+    },
+    {
+     "minute": 17,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "BELTZ Joshua",
+     "shirt": "10"
+    },
+    {
+     "minute": 23,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PC",
+     "player": "RINTALA Joel",
+     "shirt": "27"
+    },
+    {
+     "minute": 27,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PC",
+     "player": "GOVERS Blake",
+     "shirt": "13"
+    },
+    {
+     "minute": 45,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "EMPEY Alistair",
+     "shirt": "49"
+    },
+    {
+     "minute": 54,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "EMPEY Alistair",
+     "shirt": "49"
+    }
+   ]
+  },
+  "C2": {
+   "fih_match_id": "22339",
+   "source": "https://fih.altiusrt.com/matches/22339",
+   "home": "ESP",
+   "away": "RSA",
+   "score": {
+    "home": 3,
+    "away": 1
+   },
+   "quarters": [
+    "2-0",
+    "1-0",
+    "0-1",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "3-0",
+    "penalty_corner": "0-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: LIM Hong-Zhen (SGP); Umpire: TOMLINSON David (NZL); Reserve Umpire: WILSON Sarah (SCO); Video Umpire: KLENK Tyler (CAN); Scoring Judge: TOMLINSON Jackie (NZL); Timing Judge: DELLA MATTIA Adrian (ARG); Technical Officer: NISHIZAWA Eddie (JPN)",
+   "events": [
+    {
+     "minute": 12,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "REYNE Marc",
+     "shirt": "12"
+    },
+    {
+     "minute": 13,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "BASTERRA José",
+     "shirt": "10"
+    },
+    {
+     "minute": 28,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "BASTERRA José",
+     "shirt": "10"
+    },
+    {
+     "minute": 45,
+     "team": "RSA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    },
+    {
+     "minute": 52,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "MELVILLE Kenton",
+     "shirt": "47"
+    },
+    {
+     "minute": 56,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    }
+   ]
+  },
+  "A2": {
+   "fih_match_id": "22340",
+   "source": "https://fih.altiusrt.com/matches/22340",
+   "home": "NED",
+   "away": "NZL",
+   "score": {
+    "home": 5,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "0-1",
+    "2-0",
+    "3-0"
+   ],
+   "goal_methods": {
+    "field": "3-1",
+    "penalty_corner": "2-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: DELFORGE Laurine (BEL); Umpire: ROGERS Steve (AUS); Reserve Umpire: HUBACH Darren (RSA); Video Umpire: RAPAPORT Sean (RSA); Scoring Judge: BURT Josh (AUS); Timing Judge: SAPARI Rilaini (SGP); Technical Officer: LIŠKAUSKIENĖ Jolanta (LTU)",
+   "events": [
+    {
+     "minute": 24,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "HICKSON James",
+     "shirt": "39"
+    },
+    {
+     "minute": 35,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "HOEDEMAKERS Tjep",
+     "shirt": "19"
+    },
+    {
+     "minute": 41,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "TELGENKAMP Duco",
+     "shirt": "51"
+    },
+    {
+     "minute": 46,
+     "team": "NED",
+     "type": "green_card",
+     "player": "MIDDENDORP Floris",
+     "shirt": "77"
+    },
+    {
+     "minute": 49,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "BRINKMAN Thierry",
+     "shirt": "8"
+    },
+    {
+     "minute": 50,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "HOEDEMAKERS Tjep",
+     "shirt": "19"
+    },
+    {
+     "minute": 52,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "BIJEN Koen",
+     "shirt": "9"
+    }
+   ]
+  },
+  "A1": {
+   "fih_match_id": "22341",
+   "source": "https://fih.altiusrt.com/matches/22341",
+   "home": "ARG",
+   "away": "JPN",
+   "score": {
+    "home": 3,
+    "away": 0
+   },
+   "quarters": [
+    "0-0",
+    "1-0",
+    "0-0",
+    "2-0"
+   ],
+   "goal_methods": {
+    "field": "3-0",
+    "penalty_corner": "0-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: EDWARDS Sean (ENG); Umpire: GOENTGEN Ben (GER); Reserve Umpire: VAN'T HEK Jonas (NED); Video Umpire: NEWMAN Zeke (AUS); Scoring Judge: LIŠKAUSKIENĖ Jolanta (LTU); Timing Judge: BURT Josh (AUS); Technical Officer: COPPIETERS Benoit (BEL)",
+   "events": [
+    {
+     "minute": 21,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "TOSCANI Lucas",
+     "shirt": "11"
+    },
+    {
+     "minute": 54,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "MENDEZ Lucio",
+     "shirt": "33"
+    },
+    {
+     "minute": 58,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "CASELLA Maico",
+     "shirt": "9"
+    }
+   ]
+  },
+  "D4": {
+   "fih_match_id": "22342",
+   "source": "https://fih.altiusrt.com/matches/22342",
+   "home": "PAK",
+   "away": "WAL",
+   "score": {
+    "home": 3,
+    "away": 3
+   },
+   "quarters": [
+    "1-0",
+    "0-2",
+    "0-0",
+    "2-1"
+   ],
+   "goal_methods": {
+    "field": "2-1",
+    "penalty_corner": "1-1",
+    "penalty_stroke": "0-1"
+   },
+   "officials": "Umpire: EDWARDS Sean (ENG); Umpire: ROGERS Steve (AUS); Reserve Umpire: HUBACH Darren (RSA); Video Umpire: RAPAPORT Sean (RSA); Scoring Judge: LIŠKAUSKIENĖ Jolanta (LTU); Timing Judge: STANDLEY Tammy (AUS); Technical Officer: BURT Josh (AUS)",
+   "events": [
+    {
+     "minute": 3,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "ABDUL Rehman",
+     "shirt": "18"
+    },
+    {
+     "minute": 9,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "KHAN Sufyan",
+     "shirt": "5"
+    },
+    {
+     "minute": 20,
+     "team": "WAL",
+     "type": "green_card",
+     "player": "TYSON James",
+     "shirt": "30"
+    },
+    {
+     "minute": 24,
+     "team": "PAK",
+     "type": "yellow_card",
+     "player": "KHAN Sufyan",
+     "shirt": "5"
+    },
+    {
+     "minute": 25,
+     "team": "WAL",
+     "type": "goal",
+     "via": "PC",
+     "player": "FURLONG Gareth",
+     "shirt": "18"
+    },
+    {
+     "minute": 26,
+     "team": "WAL",
+     "type": "goal",
+     "via": "FG",
+     "player": "BRADSHAW Rhys",
+     "shirt": "15"
+    },
+    {
+     "minute": 31,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "MAHMOOD Abu",
+     "shirt": "27"
+    },
+    {
+     "minute": 32,
+     "team": "WAL",
+     "type": "green_card",
+     "player": "FRANCIS Benjamin",
+     "shirt": "25"
+    },
+    {
+     "minute": 42,
+     "team": "WAL",
+     "type": "yellow_card",
+     "player": "TYSON James",
+     "shirt": "30"
+    },
+    {
+     "minute": 49,
+     "team": "PAK",
+     "type": "goal",
+     "via": "PC",
+     "player": "KHAN Sufyan",
+     "shirt": "5"
+    },
+    {
+     "minute": 51,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "SHAHID Hannan",
+     "shirt": "9"
+    },
+    {
+     "minute": 53,
+     "team": "WAL",
+     "type": "goal",
+     "via": "PS",
+     "player": "FURLONG Gareth",
+     "shirt": "18"
+    },
+    {
+     "minute": 59,
+     "team": "WAL",
+     "type": "yellow_card",
+     "player": "JONES Hywel",
+     "shirt": "24"
+    }
+   ]
+  },
+  "B4": {
+   "fih_match_id": "22343",
+   "source": "https://fih.altiusrt.com/matches/22343",
+   "home": "FRA",
+   "away": "MAS",
+   "score": {
+    "home": 3,
+    "away": 3
+   },
+   "quarters": [
+    "0-1",
+    "1-0",
+    "1-1",
+    "1-1"
+   ],
+   "goal_methods": {
+    "field": "2-2",
+    "penalty_corner": "1-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: LIM Hong-Zhen (SGP); Umpire: WILSON Sarah (SCO); Reserve Umpire: TOMLINSON David (NZL); Video Umpire: VENTER Wanri (RSA); Scoring Judge: DELLA MATTIA Adrian (ARG); Timing Judge: DECKENBROCK Christian (GER); Technical Officer: SCHWEDE Sonja (GER)",
+   "events": [
+    {
+     "minute": 5,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "SILVERIUS Shello",
+     "shirt": "15"
+    },
+    {
+     "minute": 17,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "ROZEMI Aiman",
+     "shirt": "24"
+    },
+    {
+     "minute": 19,
+     "team": "FRA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CHARLET Victor",
+     "shirt": "22"
+    },
+    {
+     "minute": 25,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "CURTY Eliot",
+     "shirt": "18"
+    },
+    {
+     "minute": 27,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "GOYET François",
+     "shirt": "16"
+    },
+    {
+     "minute": 30,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "SAARI Fitri",
+     "shirt": "7"
+    },
+    {
+     "minute": 37,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "HAERTELMEYER Louis",
+     "shirt": "95"
+    },
+    {
+     "minute": 45,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "SILVERIUS Shello",
+     "shirt": "15"
+    },
+    {
+     "minute": 57,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "ANUAR Akhimullah",
+     "shirt": "11"
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "JOUIN Noé",
+     "shirt": "11"
+    },
+    {
+     "minute": 59,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "SILVERIUS Shello",
+     "shirt": "15"
+    }
+   ]
+  },
+  "D3": {
+   "fih_match_id": "22344",
+   "source": "https://fih.altiusrt.com/matches/22344",
+   "home": "IND",
+   "away": "ENG",
+   "score": {
+    "home": 2,
+    "away": 4
+   },
+   "quarters": [
+    "0-1",
+    "2-0",
+    "0-2",
+    "0-1"
+   ],
+   "goal_methods": {
+    "field": "1-3",
+    "penalty_corner": "1-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "",
+   "events": [
+    {
+     "minute": 10,
+     "team": "IND",
+     "type": "green_card",
+     "player": "Sumit",
+     "shirt": "17"
+    },
+    {
+     "minute": 14,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "BANDURAK Nicholas",
+     "shirt": "23"
+    },
+    {
+     "minute": 17,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "SINGH Harmanpreet",
+     "shirt": "13"
+    },
+    {
+     "minute": 25,
+     "team": "IND",
+     "type": "goal",
+     "via": "FG",
+     "player": "SINGH Dilpreet",
+     "shirt": "9"
+    },
+    {
+     "minute": 39,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "RUSHMERE Stuart",
+     "shirt": "17"
+    },
+    {
+     "minute": 40,
+     "team": "ENG",
+     "type": "green_card",
+     "player": "WALLACE Zachary",
+     "shirt": "7"
+    },
+    {
+     "minute": 43,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "CROFT Henry",
+     "shirt": "9"
+    },
+    {
+     "minute": 45,
+     "team": "ENG",
+     "type": "green_card",
+     "player": "WILLIAMSON Conor",
+     "shirt": "30"
+    },
+    {
+     "minute": 51,
+     "team": "ENG",
+     "type": "green_card",
+     "player": "CROFT Henry",
+     "shirt": "9"
+    },
+    {
+     "minute": 53,
+     "team": "IND",
+     "type": "green_card",
+     "player": "SHARMA Nilakanta",
+     "shirt": "18"
+    },
+    {
+     "minute": 55,
+     "team": "ENG",
+     "type": "goal",
+     "via": "PC",
+     "player": "BANDURAK Nicholas",
+     "shirt": "23"
+    }
+   ]
+  },
+  "B3": {
+   "fih_match_id": "22345",
+   "source": "https://fih.altiusrt.com/matches/22345",
+   "home": "GER",
+   "away": "BEL",
+   "score": {
+    "home": 1,
+    "away": 0
+   },
+   "quarters": [
+    "0-0",
+    "0-0",
+    "1-0",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "0-0",
+    "penalty_corner": "1-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "",
+   "events": [
+    {
+     "minute": 7,
+     "team": "GER",
+     "type": "green_card",
+     "player": "WARWEG Justus",
+     "shirt": "7"
+    },
+    {
+     "minute": 11,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "FOUBERT Victor",
+     "shirt": "22"
+    },
+    {
+     "minute": 17,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "VAN DESSEL Arno",
+     "shirt": "5"
+    },
+    {
+     "minute": 39,
+     "team": "GER",
+     "type": "goal",
+     "via": "PC",
+     "player": "BRILLA Jakob",
+     "shirt": "34"
+    }
+   ]
+  },
+  "A4": {
+   "fih_match_id": "22346",
+   "source": "https://fih.altiusrt.com/matches/22346",
+   "home": "NZL",
+   "away": "JPN",
+   "score": {
+    "home": 2,
+    "away": 0
+   },
+   "quarters": [
+    "1-0",
+    "0-0",
+    "0-0",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "2-0",
+    "penalty_corner": "0-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: ANBANANTHAN Rawi (MAS); Umpire: GOENTGEN Ben (GER); Reserve Umpire: EDWARDS Sean (ENG); Video Umpire: VAN'T HEK Jonas (NED); Scoring Judge: RINALDINI Lorena (ARG); Timing Judge: BURT Josh (AUS); Technical Officer: SAPARI Rilaini (SGP)",
+   "events": [
+    {
+     "minute": 10,
+     "team": "JPN",
+     "type": "green_card",
+     "player": "YAMADA Hyota",
+     "shirt": "38"
+    },
+    {
+     "minute": 12,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "LANE Sam",
+     "shirt": "12"
+    },
+    {
+     "minute": 46,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "THOMAS Dylan",
+     "shirt": "23"
+    }
+   ]
+  },
+  "C3": {
+   "fih_match_id": "22347",
+   "source": "https://fih.altiusrt.com/matches/22347",
+   "home": "ESP",
+   "away": "AUS",
+   "score": {
+    "home": 0,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "0-0",
+    "0-0",
+    "0-1"
+   ],
+   "goal_methods": {
+    "field": "0-0",
+    "penalty_corner": "0-0",
+    "penalty_stroke": "0-1"
+   },
+   "officials": "Umpire: BARSTOW Dan (ENG); Umpire: KLENK Tyler (CAN); Reserve Umpire: LIM Hong-Zhen (SGP); Video Umpire: VAN BUNGE Coen (NED); Scoring Judge: SCHWEDE Sonja (GER); Timing Judge: TOMLINSON Jackie (NZL); Technical Officer: DECKENBROCK Christian (GER)",
+   "events": [
+    {
+     "minute": 3,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "BELTZ Hayden",
+     "shirt": "23"
+    },
+    {
+     "minute": 18,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "HOWARD Tim",
+     "shirt": "16"
+    },
+    {
+     "minute": 23,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "MARAIS Craig",
+     "shirt": "19"
+    },
+    {
+     "minute": 29,
+     "team": "ESP",
+     "type": "green_card",
+     "player": "MIRALLES Marc",
+     "shirt": "14"
+    },
+    {
+     "minute": 38,
+     "team": "ESP",
+     "type": "green_card",
+     "player": "RECASENS Marc",
+     "shirt": "8"
+    },
+    {
+     "minute": 47,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PS",
+     "player": "GOVERS Blake",
+     "shirt": "13"
+    },
+    {
+     "minute": 54,
+     "team": "AUS",
+     "type": "yellow_card",
+     "player": "BRAND Tim",
+     "shirt": "29"
+    }
+   ]
+  },
+  "C4": {
+   "fih_match_id": "22348",
+   "source": "https://fih.altiusrt.com/matches/22348",
+   "home": "IRL",
+   "away": "RSA",
+   "score": {
+    "home": 4,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "0-0",
+    "1-1",
+    "3-0"
+   ],
+   "goal_methods": {
+    "field": "2-1",
+    "penalty_corner": "2-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: OTTEN Michiel (NED); Umpire: YOU Hyosik (KOR); Reserve Umpire: NEUMANN Aleisha (AUS); Video Umpire: GREENFIELD Gareth (NZL); Scoring Judge: OTI-MENSAH Frank (GHA); Timing Judge: DELLA MATTIA Adrian (ARG); Technical Officer: NISHIZAWA Eddie (JPN)",
+   "events": [
+    {
+     "minute": 10,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "MVIMBI Samkelo",
+     "shirt": "29"
+    },
+    {
+     "minute": 15,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "de LORA Trevor",
+     "shirt": "28"
+    },
+    {
+     "minute": 17,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "McKEE John",
+     "shirt": "8"
+    },
+    {
+     "minute": 38,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "MELVILLE Kenton",
+     "shirt": "47"
+    },
+    {
+     "minute": 43,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "WALKER Benjamin",
+     "shirt": "24"
+    },
+    {
+     "minute": 49,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "COLE Lee",
+     "shirt": "29"
+    },
+    {
+     "minute": 56,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "COLE Lee",
+     "shirt": "29"
+    },
+    {
+     "minute": 60,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "HYLAND Sam",
+     "shirt": "36"
+    },
+    {
+     "minute": 60,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "CASSIEM Dayaan",
+     "shirt": "7"
+    }
+   ]
+  },
+  "A3": {
+   "fih_match_id": "22349",
+   "source": "https://fih.altiusrt.com/matches/22349",
+   "home": "ARG",
+   "away": "NED",
+   "score": {
+    "home": 1,
+    "away": 3
+   },
+   "quarters": [
+    "1-1",
+    "0-0",
+    "0-2",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "0-2",
+    "penalty_corner": "1-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: NEWMAN Zeke (AUS); Umpire: RAPAPORT Sean (RSA); Reserve Umpire: ROGERS Steve (AUS); Video Umpire: DELFORGE Laurine (BEL); Scoring Judge: SAPARI Rilaini (SGP); Timing Judge: LIŠKAUSKIENĖ Jolanta (LTU); Technical Officer: STANDLEY Tammy (AUS)",
+   "events": [
+    {
+     "minute": 7,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "BRINKMAN Thierry",
+     "shirt": "8"
+    },
+    {
+     "minute": 11,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "della TORRE Nicolas",
+     "shirt": "10"
+    },
+    {
+     "minute": 27,
+     "team": "ARG",
+     "type": "yellow_card",
+     "player": "ANDREOTTI Matias",
+     "shirt": "20"
+    },
+    {
+     "minute": 34,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "REYENGA Tijmen",
+     "shirt": "29"
+    },
+    {
+     "minute": 42,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "TELGENKAMP Duco",
+     "shirt": "51"
+    }
+   ]
+  },
+  "D5": {
+   "fih_match_id": "22350",
+   "source": "https://fih.altiusrt.com/matches/22350",
+   "home": "ENG",
+   "away": "WAL",
+   "score": {
+    "home": 8,
+    "away": 2
+   },
+   "quarters": [
+    "2-0",
+    "2-0",
+    "1-0",
+    "3-2"
+   ],
+   "goal_methods": {
+    "field": "6-0",
+    "penalty_corner": "2-1",
+    "penalty_stroke": "0-1"
+   },
+   "officials": "Umpire: NEWMAN Zeke (AUS); Umpire: ROGERS Steve (AUS); Reserve Umpire: ANBANANTHAN Rawi (MAS); Video Umpire: HUBACH Darren (RSA); Scoring Judge: COPPIETERS Benoit (BEL); Timing Judge: STANDLEY Tammy (AUS); Technical Officer: BURT Josh (AUS)",
+   "events": [
+    {
+     "minute": 2,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "WARD Sam",
+     "shirt": "13"
+    },
+    {
+     "minute": 13,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "CALNAN Will",
+     "shirt": "31"
+    },
+    {
+     "minute": 20,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "CALNAN Will",
+     "shirt": "31"
+    },
+    {
+     "minute": 20,
+     "team": "WAL",
+     "type": "green_card",
+     "player": "KYRIAKIDES Daniel",
+     "shirt": "3"
+    },
+    {
+     "minute": 22,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "SORSBY Thomas",
+     "shirt": "5"
+    },
+    {
+     "minute": 41,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "WALLACE Zachary",
+     "shirt": "7"
+    },
+    {
+     "minute": 44,
+     "team": "WAL",
+     "type": "yellow_card",
+     "player": "KYRIAKIDES Daniel",
+     "shirt": "3"
+    },
+    {
+     "minute": 48,
+     "team": "ENG",
+     "type": "goal",
+     "via": "PC",
+     "player": "HOOPER Samuel",
+     "shirt": "33"
+    },
+    {
+     "minute": 51,
+     "team": "ENG",
+     "type": "goal",
+     "via": "PC",
+     "player": "CROFT Henry",
+     "shirt": "9"
+    },
+    {
+     "minute": 54,
+     "team": "ENG",
+     "type": "goal",
+     "via": "FG",
+     "player": "BANDURAK Nicholas",
+     "shirt": "23"
+    },
+    {
+     "minute": 58,
+     "team": "WAL",
+     "type": "goal",
+     "via": "PS",
+     "player": "FURLONG Gareth",
+     "shirt": "18"
+    },
+    {
+     "minute": 59,
+     "team": "WAL",
+     "type": "goal",
+     "via": "PC",
+     "player": "FURLONG Gareth",
+     "shirt": "18"
+    }
+   ]
+  },
+  "D6": {
+   "fih_match_id": "22351",
+   "source": "https://fih.altiusrt.com/matches/22351",
+   "home": "PAK",
+   "away": "IND",
+   "score": {
+    "home": 3,
+    "away": 5
+   },
+   "quarters": [
+    "0-2",
+    "2-2",
+    "0-1",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "2-2",
+    "penalty_corner": "1-2",
+    "penalty_stroke": "0-1"
+   },
+   "officials": "Umpire: RAPAPORT Sean (RSA); Umpire: VAN'T HEK Jonas (NED); Reserve Umpire: EDWARDS Sean (ENG); Video Umpire: GOENTGEN Ben (GER); Scoring Judge: BURT Josh (AUS); Timing Judge: COPPIETERS Benoit (BEL); Technical Officer: STANDLEY Tammy (AUS)",
+   "events": [
+    {
+     "minute": 5,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "SINGH Harmanpreet",
+     "shirt": "13"
+    },
+    {
+     "minute": 9,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "HAMMADUDIN Muhammad",
+     "shirt": "17"
+    },
+    {
+     "minute": 11,
+     "team": "IND",
+     "type": "goal",
+     "via": "FG",
+     "player": "Abhishek",
+     "shirt": "5"
+    },
+    {
+     "minute": 21,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "SINGH Harmanpreet",
+     "shirt": "13"
+    },
+    {
+     "minute": 22,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "SHAHID Hannan",
+     "shirt": "9"
+    },
+    {
+     "minute": 24,
+     "team": "IND",
+     "type": "goal",
+     "via": "FG",
+     "player": "Abhishek",
+     "shirt": "5"
+    },
+    {
+     "minute": 24,
+     "team": "PAK",
+     "type": "goal",
+     "via": "PC",
+     "player": "KHAN Sufyan",
+     "shirt": "5"
+    },
+    {
+     "minute": 30,
+     "team": "IND",
+     "type": "green_card",
+     "player": "SINGH Sukhjeet",
+     "shirt": "34"
+    },
+    {
+     "minute": 35,
+     "team": "IND",
+     "type": "goal",
+     "via": "PS",
+     "player": "SINGH Hardik",
+     "shirt": "8"
+    },
+    {
+     "minute": 37,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "HAYAT Zikriya",
+     "shirt": "10"
+    },
+    {
+     "minute": 39,
+     "team": "IND",
+     "type": "green_card",
+     "player": "SINGH Rajinder",
+     "shirt": "78"
+    },
+    {
+     "minute": 46,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "SHAHID Hannan",
+     "shirt": "9"
+    },
+    {
+     "minute": 56,
+     "team": "IND",
+     "type": "yellow_card",
+     "player": "Lalage Aditya Arjun",
+     "shirt": "19"
+    }
+   ]
+  },
+  "B6": {
+   "fih_match_id": "22352",
+   "source": "https://fih.altiusrt.com/matches/22352",
+   "home": "FRA",
+   "away": "GER",
+   "score": {
+    "home": 1,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "0-0",
+    "0-1",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "1-1",
+    "penalty_corner": "0-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: GREENFIELD Gareth (NZL); Umpire: LIM Hong-Zhen (SGP); Reserve Umpire: BARSTOW Dan (ENG); Video Umpire: VENTER Wanri (RSA); Scoring Judge: OTI-MENSAH Frank (GHA); Timing Judge: NISHIZAWA Eddie (JPN); Technical Officer: DELLA MATTIA Adrian (ARG)",
+   "events": [
+    {
+     "minute": 24,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "JOUIN Noé",
+     "shirt": "11"
+    },
+    {
+     "minute": 43,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "WEIGAND Justus",
+     "shirt": "19"
+    },
+    {
+     "minute": 60,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "HAERTELMEYER Louis",
+     "shirt": "95"
+    },
+    {
+     "minute": 60,
+     "team": "GER",
+     "type": "yellow_card",
+     "player": "SCHWARZHAUPT Benedikt",
+     "shirt": "8"
+    }
+   ]
+  },
+  "B5": {
+   "fih_match_id": "22353",
+   "source": "https://fih.altiusrt.com/matches/22353",
+   "home": "BEL",
+   "away": "MAS",
+   "score": {
+    "home": 5,
+    "away": 3
+   },
+   "quarters": [
+    "0-0",
+    "2-0",
+    "2-2",
+    "1-1"
+   ],
+   "goal_methods": {
+    "field": "3-1",
+    "penalty_corner": "2-2",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: OTTEN Michiel (NED); Umpire: YOU Hyosik (KOR); Reserve Umpire: VAN BUNGE Coen (NED); Video Umpire: TOMLINSON David (NZL); Scoring Judge: DECKENBROCK Christian (GER); Timing Judge: TOMLINSON Jackie (NZL); Technical Officer: SCHWEDE Sonja (GER)",
+   "events": [
+    {
+     "minute": 17,
+     "team": "BEL",
+     "type": "goal",
+     "via": "FG",
+     "player": "BOON Tom",
+     "shirt": "27"
+    },
+    {
+     "minute": 20,
+     "team": "BEL",
+     "type": "goal",
+     "via": "FG",
+     "player": "BOON Tom",
+     "shirt": "27"
+    },
+    {
+     "minute": 32,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "ROZEMI Aiman",
+     "shirt": "24"
+    },
+    {
+     "minute": 36,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "BOON Tom",
+     "shirt": "27"
+    },
+    {
+     "minute": 36,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "VLOEBERGHS Jack",
+     "shirt": "32"
+    },
+    {
+     "minute": 37,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "JALIL Marhan",
+     "shirt": "6"
+    },
+    {
+     "minute": 43,
+     "team": "BEL",
+     "type": "goal",
+     "via": "FG",
+     "player": "STOCKBROEKX Thibeau",
+     "shirt": "7"
+    },
+    {
+     "minute": 47,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "STOCKBROEKX Thibeau",
+     "shirt": "7"
+    },
+    {
+     "minute": 53,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "BOON Tom",
+     "shirt": "27"
+    },
+    {
+     "minute": 53,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "ANUAR Akhimullah",
+     "shirt": "11"
+    },
+    {
+     "minute": 53,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "ROZEMI Aiman",
+     "shirt": "24"
+    }
+   ]
+  },
+  "C5": {
+   "fih_match_id": "22354",
+   "source": "https://fih.altiusrt.com/matches/22354",
+   "home": "AUS",
+   "away": "RSA",
+   "score": {
+    "home": 2,
+    "away": 2
+   },
+   "quarters": [
+    "0-1",
+    "0-0",
+    "2-1",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "1-0",
+    "penalty_corner": "1-2",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: BARSTOW Dan (ENG); Umpire: KLENK Tyler (CAN); Reserve Umpire: WILSON Sarah (SCO); Video Umpire: GREENFIELD Gareth (NZL); Scoring Judge: DELLA MATTIA Adrian (ARG); Timing Judge: TOMLINSON Jackie (NZL); Technical Officer: SCHWEDE Sonja (GER)",
+   "events": [
+    {
+     "minute": 4,
+     "team": "RSA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    },
+    {
+     "minute": 6,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "HAYWARD Jeremy",
+     "shirt": "32"
+    },
+    {
+     "minute": 7,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "MELVILLE Kenton",
+     "shirt": "47"
+    },
+    {
+     "minute": 35,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "NEETHLING Hans",
+     "shirt": "10"
+    },
+    {
+     "minute": 36,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    },
+    {
+     "minute": 38,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PC",
+     "player": "RINTALA Joel",
+     "shirt": "27"
+    },
+    {
+     "minute": 40,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "MARAIS Craig",
+     "shirt": "19"
+    },
+    {
+     "minute": 43,
+     "team": "AUS",
+     "type": "goal",
+     "via": "FG",
+     "player": "WILLOTT Ky",
+     "shirt": "20"
+    },
+    {
+     "minute": 44,
+     "team": "RSA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    }
+   ]
+  },
+  "A6": {
+   "fih_match_id": "22355",
+   "source": "https://fih.altiusrt.com/matches/22355",
+   "home": "NZL",
+   "away": "ARG",
+   "score": {
+    "home": 1,
+    "away": 7
+   },
+   "quarters": [
+    "1-0",
+    "0-1",
+    "0-2",
+    "0-4"
+   ],
+   "goal_methods": {
+    "field": "0-4",
+    "penalty_corner": "0-2",
+    "penalty_stroke": "1-1"
+   },
+   "officials": "",
+   "events": [
+    {
+     "minute": 13,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PS",
+     "player": "RUSSELL Kane",
+     "shirt": "21"
+    },
+    {
+     "minute": 22,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PS",
+     "player": "DOMENE Tomas",
+     "shirt": "21"
+    },
+    {
+     "minute": 27,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "BOYDE Scott",
+     "shirt": "2"
+    },
+    {
+     "minute": 36,
+     "team": "ARG",
+     "type": "green_card",
+     "player": "HABIF Thomas",
+     "shirt": "29"
+    },
+    {
+     "minute": 39,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "CAPURRO Bautista",
+     "shirt": "31"
+    },
+    {
+     "minute": 41,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "MORRISON Joseph",
+     "shirt": "19"
+    },
+    {
+     "minute": 43,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "DOMENE Tomas",
+     "shirt": "21"
+    },
+    {
+     "minute": 48,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "MARCUCCI Tadeo",
+     "shirt": "27"
+    },
+    {
+     "minute": 50,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "MORRISON Joseph",
+     "shirt": "19"
+    },
+    {
+     "minute": 52,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "KEENAN Nicolas",
+     "shirt": "7"
+    },
+    {
+     "minute": 55,
+     "team": "NZL",
+     "type": "yellow_card",
+     "player": "MORRISON Charlie",
+     "shirt": "8"
+    },
+    {
+     "minute": 57,
+     "team": "ARG",
+     "type": "yellow_card",
+     "player": "CASELLA Maico",
+     "shirt": "9"
+    },
+    {
+     "minute": 58,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "CAPURRO Bautista",
+     "shirt": "31"
+    },
+    {
+     "minute": 60,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "DOMENE Tomas",
+     "shirt": "21"
+    }
+   ]
+  },
+  "C6": {
+   "fih_match_id": "22356",
+   "source": "https://fih.altiusrt.com/matches/22356",
+   "home": "IRL",
+   "away": "ESP",
+   "score": {
+    "home": 1,
+    "away": 3
+   },
+   "quarters": [
+    "0-1",
+    "1-0",
+    "0-0",
+    "0-2"
+   ],
+   "goal_methods": {
+    "field": "0-2",
+    "penalty_corner": "0-1",
+    "penalty_stroke": "1-0"
+   },
+   "officials": "Umpire: VAN BUNGE Coen (NED); Umpire: YOU Hyosik (KOR); Reserve Umpire: TOMLINSON David (NZL); Video Umpire: ROBERTSON Kristy (AUS); Scoring Judge: TOMLINSON Jackie (NZL); Timing Judge: DECKENBROCK Christian (GER); Technical Officer: DELLA MATTIA Adrian (ARG)",
+   "events": [
+    {
+     "minute": 9,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "ALVAREZ Nicolas",
+     "shirt": "28"
+    },
+    {
+     "minute": 19,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PS",
+     "player": "COLE Lee",
+     "shirt": "29"
+    },
+    {
+     "minute": 42,
+     "team": "ESP",
+     "type": "green_card",
+     "player": "RECASENS Marc",
+     "shirt": "8"
+    },
+    {
+     "minute": 47,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PC",
+     "player": "REYNE Marc",
+     "shirt": "12"
+    },
+    {
+     "minute": 53,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "REYNE Marc",
+     "shirt": "12"
+    },
+    {
+     "minute": 60,
+     "team": "IRL",
+     "type": "yellow_card",
+     "player": "COLE Lee",
+     "shirt": "29"
+    }
+   ]
+  },
+  "A5": {
+   "fih_match_id": "22357",
+   "source": "https://fih.altiusrt.com/matches/22357",
+   "home": "NED",
+   "away": "JPN",
+   "score": {
+    "home": 4,
+    "away": 1
+   },
+   "quarters": [
+    "1-1",
+    "0-0",
+    "0-0",
+    "3-0"
+   ],
+   "goal_methods": {
+    "field": "1-1",
+    "penalty_corner": "2-0",
+    "penalty_stroke": "1-0"
+   },
+   "officials": "Umpire: GOENTGEN Ben (GER); Umpire: HUBACH Darren (RSA); Reserve Umpire: NEWMAN Zeke (AUS); Video Umpire: ANBANANTHAN Rawi (MAS); Scoring Judge: RINALDINI Lorena (ARG); Timing Judge: COPPIETERS Benoit (BEL); Technical Officer: LIŠKAUSKIENĖ Jolanta (LTU)",
+   "events": [
+    {
+     "minute": 2,
+     "team": "NED",
+     "type": "green_card",
+     "player": "REYENGA Tijmen",
+     "shirt": "29"
+    },
+    {
+     "minute": 8,
+     "team": "JPN",
+     "type": "goal",
+     "via": "FG",
+     "player": "MATSUMOTO Kazumasa",
+     "shirt": "11"
+    },
+    {
+     "minute": 12,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "van DAM Thijs",
+     "shirt": "7"
+    },
+    {
+     "minute": 47,
+     "team": "JPN",
+     "type": "green_card",
+     "player": "TAKADE Taiki",
+     "shirt": "8"
+    },
+    {
+     "minute": 50,
+     "team": "NED",
+     "type": "goal",
+     "via": "PS",
+     "player": "JANSSEN Jip",
+     "shirt": "2"
+    },
+    {
+     "minute": 55,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "REYENGA Tijmen",
+     "shirt": "29"
+    },
+    {
+     "minute": 56,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "REYENGA Tijmen",
+     "shirt": "29"
+    }
+   ]
+  },
+  "S2H1": {
+   "fih_match_id": "22358",
+   "source": "https://fih.altiusrt.com/matches/22358",
+   "home": "FRA",
+   "away": "RSA",
+   "score": {
+    "home": 1,
+    "away": 3
+   },
+   "quarters": [
+    "0-0",
+    "1-2",
+    "0-0",
+    "0-1"
+   ],
+   "goal_methods": {
+    "field": "0-1",
+    "penalty_corner": "1-2",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: GREENFIELD Gareth (NZL); Umpire: TOMLINSON David (NZL); Reserve Umpire: WILLIAMS Rachel (ENG); Video Umpire: PAZOS Victoria (PAR); Scoring Judge: DECKENBROCK Christian (GER); Timing Judge: NISHIZAWA Eddie (JPN); Technical Officer: DELLA MATTIA Adrian (ARG)",
+   "events": [
+    {
+     "minute": 13,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "NGUBANE Senzwesihle",
+     "shirt": "5"
+    },
+    {
+     "minute": 17,
+     "team": "RSA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    },
+    {
+     "minute": 17,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "BELLENGER Amaury",
+     "shirt": "24"
+    },
+    {
+     "minute": 19,
+     "team": "RSA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    },
+    {
+     "minute": 30,
+     "team": "FRA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CHARLET Victor",
+     "shirt": "22"
+    },
+    {
+     "minute": 60,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "CASSIEM Dayaan",
+     "shirt": "7"
+    },
+    {
+     "minute": 60,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "MVIMBI Samkelo",
+     "shirt": "29"
+    }
+   ]
+  },
+  "S2H2": {
+   "fih_match_id": "22359",
+   "source": "https://fih.altiusrt.com/matches/22359",
+   "home": "IRL",
+   "away": "MAS",
+   "score": {
+    "home": 7,
+    "away": 4
+   },
+   "quarters": [
+    "2-0",
+    "2-1",
+    "2-2",
+    "1-1"
+   ],
+   "goal_methods": {
+    "field": "5-1",
+    "penalty_corner": "2-3",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: KLENK Tyler (CAN); Umpire: LIM Hong-Zhen (SGP); Reserve Umpire: LIU Xiaoying (CHN); Video Umpire: VENTER Wanri (RSA); Scoring Judge: TOMLINSON Jackie (NZL); Timing Judge: OTI-MENSAH Frank (GHA); Technical Officer: SCHWEDE Sonja (GER)",
+   "events": [
+    {
+     "minute": 8,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "LYNCH Jonathan",
+     "shirt": "25"
+    },
+    {
+     "minute": 12,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "LYNCH Jonathan",
+     "shirt": "25"
+    },
+    {
+     "minute": 19,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "NELSON Matthew",
+     "shirt": "9"
+    },
+    {
+     "minute": 24,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "LYNCH Jonathan",
+     "shirt": "25"
+    },
+    {
+     "minute": 29,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "KAMARUDDIN Azimuddin",
+     "shirt": "31"
+    },
+    {
+     "minute": 34,
+     "team": "MAS",
+     "type": "green_card",
+     "player": "SUMANTRI Norsyafiq",
+     "shirt": "22"
+    },
+    {
+     "minute": 36,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "AZAHAR Amirul",
+     "shirt": "29"
+    },
+    {
+     "minute": 37,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "McKEE John",
+     "shirt": "8"
+    },
+    {
+     "minute": 39,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "NELSON Matthew",
+     "shirt": "9"
+    },
+    {
+     "minute": 41,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "AZRAI Abu Kamal",
+     "shirt": "23"
+    },
+    {
+     "minute": 54,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "WALKER Benjamin",
+     "shirt": "24"
+    },
+    {
+     "minute": 55,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "SAARI Faizal",
+     "shirt": "10"
+    }
+   ]
+  },
+  "S2F2": {
+   "fih_match_id": "22360",
+   "source": "https://fih.altiusrt.com/matches/22360",
+   "home": "GER",
+   "away": "ESP",
+   "score": {
+    "home": 1,
+    "away": 2
+   },
+   "quarters": [
+    "0-0",
+    "1-1",
+    "0-0",
+    "0-1"
+   ],
+   "goal_methods": {
+    "field": "1-1",
+    "penalty_corner": "0-0",
+    "penalty_stroke": "0-1"
+   },
+   "officials": "Umpire: BARSTOW Dan (ENG); Umpire: WILSON Sarah (SCO); Reserve Umpire: NEUMANN Aleisha (AUS); Video Umpire: ROBERTSON Kristy (AUS); Scoring Judge: DELLA MATTIA Adrian (ARG); Timing Judge: NISHIZAWA Eddie (JPN); Technical Officer: TOMLINSON Jackie (NZL)",
+   "events": [
+    {
+     "minute": 26,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "WEIGAND Justus",
+     "shirt": "19"
+    },
+    {
+     "minute": 30,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PS",
+     "player": "BASTERRA José",
+     "shirt": "10"
+    },
+    {
+     "minute": 50,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "BASTERRA José",
+     "shirt": "10"
+    }
+   ]
+  },
+  "S2F1": {
+   "fih_match_id": "22361",
+   "source": "https://fih.altiusrt.com/matches/22361",
+   "home": "AUS",
+   "away": "BEL",
+   "score": {
+    "home": 1,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "1-0",
+    "0-1",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "1-0",
+    "penalty_corner": "0-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: OTTEN Michiel (NED); Umpire: VAN BUNGE Coen (NED); Reserve Umpire: YOU Hyosik (KOR); Video Umpire: HARRISON Hannah (ENG); Scoring Judge: OTI-MENSAH Frank (GHA); Timing Judge: SCHWEDE Sonja (GER); Technical Officer: DECKENBROCK Christian (GER)",
+   "events": [
+    {
+     "minute": 24,
+     "team": "AUS",
+     "type": "goal",
+     "via": "FG",
+     "player": "CRAIG Tom",
+     "shirt": "2"
+    },
+    {
+     "minute": 38,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "BOON Tom",
+     "shirt": "27"
+    }
+   ]
+  },
+  "S2G1": {
+   "fih_match_id": "22362",
+   "source": "https://fih.altiusrt.com/matches/22362",
+   "home": "NZL",
+   "away": "WAL",
+   "score": {
+    "home": 7,
+    "away": 2
+   },
+   "quarters": [
+    "0-1",
+    "2-1",
+    "3-0",
+    "2-0"
+   ],
+   "goal_methods": {
+    "field": "5-2",
+    "penalty_corner": "2-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: HUBACH Darren (RSA); Umpire: NEWMAN Zeke (AUS); Reserve Umpire: SERGEANT Magali (BEL); Video Umpire: KEOGH Alison (IRL); Scoring Judge: SAPARI Rilaini (SGP); Timing Judge: STANDLEY Tammy (AUS); Technical Officer: COPPIETERS Benoit (BEL)",
+   "events": [
+    {
+     "minute": 8,
+     "team": "WAL",
+     "type": "goal",
+     "via": "FG",
+     "player": "MORGAN Jolyon",
+     "shirt": "20"
+    },
+    {
+     "minute": 22,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PC",
+     "player": "HICKSON James",
+     "shirt": "39"
+    },
+    {
+     "minute": 22,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "BOYDE Scott",
+     "shirt": "2"
+    },
+    {
+     "minute": 23,
+     "team": "WAL",
+     "type": "goal",
+     "via": "FG",
+     "player": "MORGAN Jolyon",
+     "shirt": "20"
+    },
+    {
+     "minute": 25,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "HICKSON James",
+     "shirt": "39"
+    },
+    {
+     "minute": 32,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "BOYDE Scott",
+     "shirt": "2"
+    },
+    {
+     "minute": 35,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PC",
+     "player": "RUSSELL Kane",
+     "shirt": "21"
+    },
+    {
+     "minute": 36,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "LETT Dane",
+     "shirt": "4"
+    },
+    {
+     "minute": 41,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "WARD Finn",
+     "shirt": "30"
+    },
+    {
+     "minute": 48,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "LANE Sam",
+     "shirt": "12"
+    },
+    {
+     "minute": 56,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "HICKSON James",
+     "shirt": "39"
+    }
+   ]
+  },
+  "S2G2": {
+   "fih_match_id": "22363",
+   "source": "https://fih.altiusrt.com/matches/22363",
+   "home": "PAK",
+   "away": "JPN",
+   "score": {
+    "home": 4,
+    "away": 3
+   },
+   "quarters": [
+    "0-2",
+    "1-0",
+    "3-1",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "3-1",
+    "penalty_corner": "1-2",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: ANBANANTHAN Rawi (MAS); Umpire: EDWARDS Sean (ENG); Reserve Umpire: KIM Yoon Seon (KOR); Video Umpire: DELFORGE Laurine (BEL); Scoring Judge: LIŠKAUSKIENĖ Jolanta (LTU); Timing Judge: RINALDINI Lorena (ARG); Technical Officer: STANDLEY Tammy (AUS)",
+   "events": [
+    {
+     "minute": 7,
+     "team": "JPN",
+     "type": "goal",
+     "via": "PC",
+     "player": "YAMADA Hyota",
+     "shirt": "38"
+    },
+    {
+     "minute": 15,
+     "team": "JPN",
+     "type": "goal",
+     "via": "FG",
+     "player": "TANAKA Kaito",
+     "shirt": "22"
+    },
+    {
+     "minute": 19,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "HAMMADUDIN Muhammad",
+     "shirt": "17"
+    },
+    {
+     "minute": 22,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "RANA Waheed Ashraf",
+     "shirt": "8"
+    },
+    {
+     "minute": 27,
+     "team": "JPN",
+     "type": "green_card",
+     "player": "YAMADA Hyota",
+     "shirt": "38"
+    },
+    {
+     "minute": 32,
+     "team": "PAK",
+     "type": "goal",
+     "via": "PC",
+     "player": "RANA Waheed Ashraf",
+     "shirt": "8"
+    },
+    {
+     "minute": 33,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "HAMMADUDIN Muhammad",
+     "shirt": "17"
+    },
+    {
+     "minute": 36,
+     "team": "JPN",
+     "type": "goal",
+     "via": "PC",
+     "player": "YAMASAKI Koji",
+     "shirt": "1"
+    },
+    {
+     "minute": 41,
+     "team": "PAK",
+     "type": "goal",
+     "via": "FG",
+     "player": "SHAHID Hannan",
+     "shirt": "9"
+    },
+    {
+     "minute": 44,
+     "team": "PAK",
+     "type": "yellow_card",
+     "player": "ABDULLAH Muhammad",
+     "shirt": "2"
+    },
+    {
+     "minute": 53,
+     "team": "PAK",
+     "type": "green_card",
+     "player": "KHAN Sufyan",
+     "shirt": "5"
+    }
+   ]
+  },
+  "S2E1": {
+   "fih_match_id": "22364",
+   "source": "https://fih.altiusrt.com/matches/22364",
+   "home": "NED",
+   "away": "IND",
+   "score": {
+    "home": 3,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "0-0",
+    "1-0",
+    "2-1"
+   ],
+   "goal_methods": {
+    "field": "3-0",
+    "penalty_corner": "0-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: GOENTGEN Ben (GER); Umpire: RAPAPORT Sean (RSA); Reserve Umpire: PRESENQUI Irene (ARG); Video Umpire: CHURCH Amber (NZL); Scoring Judge: SAPARI Rilaini (SGP); Timing Judge: BURT Josh (AUS); Technical Officer: RINALDINI Lorena (ARG)",
+   "events": [
+    {
+     "minute": 41,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "TELGENKAMP Duco",
+     "shirt": "51"
+    },
+    {
+     "minute": 42,
+     "team": "IND",
+     "type": "green_card",
+     "player": "LAKRA Shilanand",
+     "shirt": "99"
+    },
+    {
+     "minute": 51,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "HOEDEMAKERS Tjep",
+     "shirt": "19"
+    },
+    {
+     "minute": 51,
+     "team": "NED",
+     "type": "green_card",
+     "player": "BIJEN Koen",
+     "shirt": "9"
+    },
+    {
+     "minute": 52,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "SINGH Harmanpreet",
+     "shirt": "13"
+    },
+    {
+     "minute": 55,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "van DAM Thijs",
+     "shirt": "7"
+    }
+   ]
+  },
+  "S2E2": {
+   "fih_match_id": "22365",
+   "source": "https://fih.altiusrt.com/matches/22365",
+   "home": "ENG",
+   "away": "ARG",
+   "score": {
+    "home": 1,
+    "away": 3
+   },
+   "quarters": [
+    "0-0",
+    "0-1",
+    "0-1",
+    "1-1"
+   ],
+   "goal_methods": {
+    "field": "0-1",
+    "penalty_corner": "1-2",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: ROGERS Steve (AUS); Umpire: VAN'T HEK Jonas (NED); Reserve Umpire: ROSTRON Annelize (RSA); Video Umpire: McCLEAN Ayanna (TTO); Scoring Judge: COPPIETERS Benoit (BEL); Timing Judge: LIŠKAUSKIENĖ Jolanta (LTU); Technical Officer: BURT Josh (AUS)",
+   "events": [
+    {
+     "minute": 26,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "DOMENE Tomas",
+     "shirt": "21"
+    },
+    {
+     "minute": 27,
+     "team": "ARG",
+     "type": "green_card",
+     "player": "KEENAN Nicolas",
+     "shirt": "7"
+    },
+    {
+     "minute": 36,
+     "team": "ARG",
+     "type": "goal",
+     "via": "FG",
+     "player": "DOMENE Tomas",
+     "shirt": "21"
+    },
+    {
+     "minute": 49,
+     "team": "ENG",
+     "type": "goal",
+     "via": "PC",
+     "player": "HOOPER Samuel",
+     "shirt": "33"
+    },
+    {
+     "minute": 58,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "DOMENE Tomas",
+     "shirt": "21"
+    }
+   ]
+  },
+  "S2H3": {
+   "fih_match_id": "22366",
+   "source": "https://fih.altiusrt.com/matches/22366",
+   "home": "MAS",
+   "away": "RSA",
+   "score": {
+    "home": 3,
+    "away": 3
+   },
+   "quarters": [
+    "1-0",
+    "1-2",
+    "0-1",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "2-3",
+    "penalty_corner": "1-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: TOMLINSON David (NZL); Umpire: YOU Hyosik (KOR); Reserve Umpire: PAZOS Victoria (PAR); Video Umpire: LIU Xiaoying (CHN); Scoring Judge: TOMLINSON Jackie (NZL); Timing Judge: DELLA MATTIA Adrian (ARG); Technical Officer: NISHIZAWA Eddie (JPN)",
+   "events": [
+    {
+     "minute": 2,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "CASSIEM Dayaan",
+     "shirt": "7"
+    },
+    {
+     "minute": 14,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "AZRAI Abu Kamal",
+     "shirt": "23"
+    },
+    {
+     "minute": 17,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "WYNFORD Luke",
+     "shirt": "20"
+    },
+    {
+     "minute": 22,
+     "team": "MAS",
+     "type": "goal",
+     "via": "PC",
+     "player": "AZRAI Abu Kamal",
+     "shirt": "23"
+    },
+    {
+     "minute": 27,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "DAVIS Calvin",
+     "shirt": "4"
+    },
+    {
+     "minute": 28,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "SPOONER Nicholas",
+     "shirt": "23"
+    },
+    {
+     "minute": 29,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "MBATA Viwe",
+     "shirt": "18"
+    },
+    {
+     "minute": 42,
+     "team": "RSA",
+     "type": "yellow_card",
+     "player": "CASSIEM Dayaan",
+     "shirt": "7"
+    },
+    {
+     "minute": 43,
+     "team": "RSA",
+     "type": "goal",
+     "via": "FG",
+     "player": "CASSIEM Mustaphaa",
+     "shirt": "2"
+    },
+    {
+     "minute": 48,
+     "team": "RSA",
+     "type": "green_card",
+     "player": "WYNFORD Luke",
+     "shirt": "20"
+    },
+    {
+     "minute": 60,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "SAARI Faizal",
+     "shirt": "10"
+    }
+   ]
+  },
+  "S2H4": {
+   "fih_match_id": "22367",
+   "source": "https://fih.altiusrt.com/matches/22367",
+   "home": "FRA",
+   "away": "IRL",
+   "score": {
+    "home": 2,
+    "away": 1
+   },
+   "quarters": [
+    "0-0",
+    "0-0",
+    "1-1",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "1-1",
+    "penalty_corner": "1-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: KLENK Tyler (CAN); Umpire: LIM Hong-Zhen (SGP); Reserve Umpire: WILSON Sarah (SCO); Video Umpire: WILLIAMS Rachel (ENG); Scoring Judge: SCHWEDE Sonja (GER); Timing Judge: NISHIZAWA Eddie (JPN); Technical Officer: DECKENBROCK Christian (GER)",
+   "events": [
+    {
+     "minute": 12,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "LYNCH Jonathan",
+     "shirt": "25"
+    },
+    {
+     "minute": 12,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "DESGOUILLONS Mattéo",
+     "shirt": "3"
+    },
+    {
+     "minute": 20,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "DUNCAN Jeremy",
+     "shirt": "20"
+    },
+    {
+     "minute": 39,
+     "team": "IRL",
+     "type": "goal",
+     "via": "FG",
+     "player": "DUNCAN Jeremy",
+     "shirt": "20"
+    },
+    {
+     "minute": 42,
+     "team": "FRA",
+     "type": "goal",
+     "via": "PC",
+     "player": "CHARLET Victor",
+     "shirt": "22"
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "CLÉMENT Timothée",
+     "shirt": "28"
+    }
+   ]
+  },
+  "S2F3": {
+   "fih_match_id": "22368",
+   "source": "https://fih.altiusrt.com/matches/22368",
+   "home": "GER",
+   "away": "AUS",
+   "score": {
+    "home": 4,
+    "away": 2
+   },
+   "quarters": [
+    "2-1",
+    "1-1",
+    "1-0",
+    "0-0"
+   ],
+   "goal_methods": {
+    "field": "3-2",
+    "penalty_corner": "1-0",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: BARSTOW Dan (ENG); Umpire: OTTEN Michiel (NED); Reserve Umpire: VENTER Wanri (RSA); Video Umpire: HARRISON Hannah (ENG); Scoring Judge: OTI-MENSAH Frank (GHA); Timing Judge: TOMLINSON Jackie (NZL); Technical Officer: DELLA MATTIA Adrian (ARG)",
+   "events": [
+    {
+     "minute": 3,
+     "team": "AUS",
+     "type": "goal",
+     "via": "FG",
+     "player": "GOVERS Blake",
+     "shirt": "13"
+    },
+    {
+     "minute": 4,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "BRAND Tim",
+     "shirt": "29"
+    },
+    {
+     "minute": 11,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "MÜLLER Hannes",
+     "shirt": "25"
+    },
+    {
+     "minute": 12,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "STRUTHOFF Michel",
+     "shirt": "21"
+    },
+    {
+     "minute": 19,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "WARWEG Justus",
+     "shirt": "7"
+    },
+    {
+     "minute": 30,
+     "team": "AUS",
+     "type": "goal",
+     "via": "FG",
+     "player": "RINTALA Joel",
+     "shirt": "27"
+    },
+    {
+     "minute": 40,
+     "team": "GER",
+     "type": "goal",
+     "via": "PC",
+     "player": "von MONTGELAS Hugo",
+     "shirt": "22"
+    },
+    {
+     "minute": 50,
+     "team": "GER",
+     "type": "green_card",
+     "player": "MÜLLER Hannes",
+     "shirt": "25"
+    }
+   ]
+  },
+  "S2F4": {
+   "fih_match_id": "22369",
+   "source": "https://fih.altiusrt.com/matches/22369",
+   "home": "ESP",
+   "away": "BEL",
+   "score": {
+    "home": 1,
+    "away": 1
+   },
+   "quarters": [
+    "0-1",
+    "0-0",
+    "0-0",
+    "1-0"
+   ],
+   "goal_methods": {
+    "field": "0-0",
+    "penalty_corner": "1-1",
+    "penalty_stroke": "0-0"
+   },
+   "officials": "Umpire: GREENFIELD Gareth (NZL); Umpire: VAN BUNGE Coen (NED); Reserve Umpire: ROBERTSON Kristy (AUS); Video Umpire: NEUMANN Aleisha (AUS); Scoring Judge: DECKENBROCK Christian (GER); Timing Judge: OTI-MENSAH Frank (GHA); Technical Officer: SCHWEDE Sonja (GER)",
+   "events": [
+    {
+     "minute": 4,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "van DOREN Arthur",
+     "shirt": "4"
+    },
+    {
+     "minute": 46,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PC",
+     "player": "MIRALLES Marc",
+     "shirt": "14"
+    },
+    {
+     "minute": 58,
+     "team": "BEL",
+     "type": "green_card",
+     "player": "HELLIN Guillaume",
+     "shirt": "17"
+    }
+   ]
+  }
+ }
+}

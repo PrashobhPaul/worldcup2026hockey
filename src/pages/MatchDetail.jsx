@@ -73,15 +73,21 @@ function MatchStatsPanel({ match, live }) {
           {live ? 'Live · refreshes 60s' : 'Final'}{match.enrichment === 'official' ? ' · FIH' : match.enrichment === 'estimated' ? ' · est.' : ''}
         </span>
       </h3>
-      <StatBar label="Possession" home={s.home.possession} away={s.away.possession} asPercent />
-      <StatBar label="Shots" home={s.home.shots} away={s.away.shots} />
-      <StatBar label="Circle entries" home={s.home.circle_entries} away={s.away.circle_entries} />
-      <StatBar label="Penalty corners" home={s.home.penalty_corners} away={s.away.penalty_corners} />
+      <StatBar label="Goals" home={s.home.goals} away={s.away.goals} />
+      <StatBar label="From open play" home={s.home.field_goals} away={s.away.field_goals} />
+      <StatBar label="From penalty corners" home={s.home.pc_goals} away={s.away.pc_goals} />
+      {(s.home.ps_goals > 0 || s.away.ps_goals > 0) && (
+        <StatBar label="From penalty strokes" home={s.home.ps_goals} away={s.away.ps_goals} />
+      )}
       <div className="mt-3 flex justify-between border-t border-white/5 pt-2.5 font-mono text-[11px] text-pitch-300">
         <span>🟩 {s.home.green_cards} · 🟨 {s.home.yellow_cards} · 🟥 {s.home.red_cards}</span>
         <span className="text-[10px] uppercase tracking-wider text-pitch-400">Cards</span>
         <span>🟩 {s.away.green_cards} · 🟨 {s.away.yellow_cards} · 🟥 {s.away.red_cards}</span>
       </div>
+      <p className="mt-2.5 text-[10px] leading-relaxed text-pitch-400">
+        Every figure here comes from the FIH match record. Possession, shots and circle
+        entries are not part of it — FIH does not publish them, so neither do we.
+      </p>
     </div>
   )
 }

@@ -71,7 +71,7 @@ All 16 squads with a pre-tournament introduction, a live title probability, and 
 ## Why you can trust the numbers
 
 - **The engine shows its work.** Every probability names the snapshot it came from — how many matches are counted, which model version, how many simulations.
-- **It says when it doesn't know.** No fake 33/33/33 splits, no invented stats. Where data is estimated rather than official, it's labelled as estimated.
+- **It says when it doesn't know.** Every figure on a match page comes from the FIH match record: goals, how each was scored, and cards. FIH does not publish possession, shots, circle penetrations or penalty-corner counts, so the app does not show them and no brief may cite one — a rule the test suite enforces on every commit.
 - **Nothing is quietly rewritten.** Match results, predictions and awards are append-only; the git history is the audit trail.
 - **Your data stays yours.** No account, no analytics, no ad network. The app never sends anything about you anywhere.
 
@@ -85,7 +85,9 @@ The system is **AI-first with a deterministic fallback**. Match briefs and pick 
 
 - `model/params.json` — every model constant, in one documented file, read verbatim by both the pipeline (Python) and the app engine (JavaScript) so the two can never drift.
 - `public/data/` — the published tournament data. Append-only where it matters: picks and probabilities are never rewritten, corrections arrive as new revision rows.
-- `scripts/backtest_model.py` — re-scores every completed match *as-of-then* (using only what was known before each push-back), so the calibration claims are reproducible on demand.
+- `scripts/model_non_knockout.py` — the pick rule for the forty matches that can be drawn. The ranking-points base produces the probabilities; on top of it sits one rule, that two sides who have converged to within a hundred ranking points of each other are called a draw. A second, better-scoring mode exists and is never published: its switches were fitted to matches already played, and `scripts/test_non_knockout_model.py` fails the build if that mode is ever made the default.
+- `scripts/backtest_model.py` — re-scores every completed match *as-of-then*, using the world-ranking table that stood before each push-back rather than today's. The FIH table is live, so a finished match has already moved the points of both nations in it; replaying with current points would hand the model the answer.
+- `reference/` — the official FIH AltiusRT export the published record is reconciled against, every row carrying the match-centre URL it came from.
 
 ### Bring your own AI
 

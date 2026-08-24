@@ -88,15 +88,15 @@
       "last_title": null,
       "contender_tier": "challenger",
       "win_prob": 3.8,
-      "intro": "The Black Sticks come to Belgium and the Netherlands as the tournament's most familiar dark horses: never world champions, never comfortable to play against. Ranked tenth in the world, New Zealand's route out of Pool A runs through the Netherlands and Argentina, which means their tournament may be decided in the sixty minutes against Japan. Sam Lane's side counter well and defend the circle in numbers; if their penalty corner clicks early, the pool's arithmetic changes.",
+      "intro": "The Black Sticks come to Belgium and the Netherlands as the tournament's most familiar dark horses: never world champions, never comfortable to play against. New Zealand's route out of Pool A runs through the Netherlands and Argentina, which means their tournament may be decided in the sixty minutes against Japan. Sam Lane's side counter well and defend the circle in numbers; if their penalty corner clicks early, the pool's arithmetic changes.",
       "fih_points": 2802.59,
       "form": {
-        "played": 4,
-        "wins": 2,
+        "played": 5,
+        "wins": 3,
         "draws": 0,
         "losses": 2,
-        "gf": 11,
-        "ga": 14
+        "gf": 15,
+        "ga": 16
       }
     },
     {
@@ -123,12 +123,12 @@
       "intro": "Samurai Japan qualified as Asian contenders and arrive with the lowest ranking in Pool A and none of the associated resignation. Japan's hockey is quick, structured and unusually disciplined at the back — a side that concedes late rarely and turns games into low-scoring tests of patience. Koji Kayukawa leads a squad that will look at a pool containing the Netherlands and Argentina and see two chances to be remembered.",
       "fih_points": 2247.36,
       "form": {
-        "played": 4,
-        "wins": 0,
+        "played": 5,
+        "wins": 1,
         "draws": 0,
         "losses": 4,
-        "gf": 4,
-        "ga": 13
+        "gf": 7,
+        "ga": 15
       }
     },
     {
@@ -253,9 +253,9 @@
       "form": {
         "played": 5,
         "wins": 0,
-        "draws": 1,
-        "losses": 4,
-        "gf": 13,
+        "draws": 2,
+        "losses": 3,
+        "gf": 14,
         "ga": 23
       }
     },
@@ -380,11 +380,11 @@
       "fih_points": 2585.34,
       "form": {
         "played": 5,
-        "wins": 2,
-        "draws": 1,
+        "wins": 1,
+        "draws": 2,
         "losses": 2,
         "gf": 10,
-        "ga": 12
+        "ga": 13
       }
     },
     {
@@ -475,12 +475,12 @@
       "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Sufyan Khan leads a young squad in which Muhammad Umar Bhutta's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game.",
       "fih_points": 2586.06,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 1,
         "draws": 1,
-        "losses": 2,
-        "gf": 11,
-        "ga": 15
+        "losses": 3,
+        "gf": 13,
+        "ga": 19
       }
     },
     {
@@ -507,12 +507,12 @@
       "intro": "The Dragons arrive ranked sixteenth of sixteen, at their second World Cup, and with nothing to lose in the most literal sense. Wales defend deep, break through Rupert Shipperley, and treat every corner won as a genuine event. Drawn with India, England and Pakistan in Pool D, they will be underdogs in all three matches — which, as Wales have shown before, is the situation in which they are hardest to beat.",
       "fih_points": 2352.03,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 0,
         "draws": 1,
-        "losses": 3,
-        "gf": 8,
-        "ga": 21
+        "losses": 4,
+        "gf": 10,
+        "ga": 24
       }
     }
   ],

@@ -40,10 +40,6 @@
     "home": 3,
     "away": 1
    },
-   "penalty_corners": {
-    "home": 8,
-    "away": 2
-   },
    "events": [
     {
      "minute": 8,
@@ -77,29 +73,35 @@
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 7,
-     "circle_entries": 26,
-     "penalty_corners": 8,
-     "possession": 55,
+     "field_goals": 0,
+     "pc_goals": 3,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 9,
-     "circle_entries": 20,
-     "penalty_corners": 2,
-     "possession": 45,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! IND vs WAL under way.",
+     "text": "We're under way — IND vs WAL.",
      "seq": 0
     },
     {
@@ -497,7 +499,9 @@
    },
    "tms_id": 22334,
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22334",
+   "result_source": "https://fih.altiusrt.com/matches/22334"
   },
   {
    "id": "D2",
@@ -513,10 +517,6 @@
    "score": {
     "home": 4,
     "away": 1
-   },
-   "penalty_corners": {
-    "home": 8,
-    "away": 7
    },
    "events": [
     {
@@ -561,33 +561,39 @@
      "player": "Afraz"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22336",
    "stats": {
     "home": {
      "goals": 4,
-     "shots": 11,
-     "circle_entries": 31,
-     "penalty_corners": 8,
-     "possession": 62,
+     "field_goals": 2,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 17,
-     "penalty_corners": 7,
-     "possession": 38,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ENG vs PAK under way.",
+     "text": "We're under way — ENG vs PAK.",
      "seq": 0
     },
     {
@@ -997,7 +1003,8 @@
     }
    },
    "tms_id": 22336,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22336"
   },
   {
    "id": "B1",
@@ -1013,10 +1020,6 @@
    "score": {
     "home": 5,
     "away": 1
-   },
-   "penalty_corners": {
-    "home": 9,
-    "away": 5
    },
    "events": [
     {
@@ -1074,33 +1077,39 @@
      "player": "Norsyafiq Sumantri"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22335",
    "stats": {
     "home": {
      "goals": 5,
-     "shots": 11,
-     "circle_entries": 33,
-     "penalty_corners": 9,
-     "possession": 65,
+     "field_goals": 4,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 21,
-     "penalty_corners": 5,
-     "possession": 35,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! GER vs MAS under way.",
+     "text": "We're under way — GER vs MAS.",
      "seq": 0
     },
     {
@@ -1508,7 +1517,8 @@
     }
    },
    "tms_id": 22335,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22335"
   },
   {
    "id": "B2",
@@ -1524,10 +1534,6 @@
    "score": {
     "home": 3,
     "away": 2
-   },
-   "penalty_corners": {
-    "home": 8,
-    "away": 6
    },
    "events": [
     {
@@ -1578,33 +1584,39 @@
      "player": "Alexander Hendrickx"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22337",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 9,
-     "circle_entries": 26,
-     "penalty_corners": 8,
-     "possession": 57,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 10,
-     "circle_entries": 23,
-     "penalty_corners": 6,
-     "possession": 43,
+     "field_goals": 2,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! BEL vs FRA under way.",
+     "text": "We're under way — BEL vs FRA.",
      "seq": 0
     },
     {
@@ -2006,7 +2018,8 @@
     }
    },
    "tms_id": 22337,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22337"
   },
   {
    "id": "A1",
@@ -2022,10 +2035,6 @@
    "score": {
     "home": 3,
     "away": 0
-   },
-   "penalty_corners": {
-    "home": 5,
-    "away": 3
    },
    "events": [
     {
@@ -2050,33 +2059,39 @@
      "player": "Maico Casella"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22341",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 10,
-     "circle_entries": 23,
-     "penalty_corners": 5,
-     "possession": 65,
+     "field_goals": 3,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 0,
-     "shots": 3,
-     "circle_entries": 13,
-     "penalty_corners": 3,
-     "possession": 35,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ARG vs JPN under way.",
+     "text": "We're under way — ARG vs JPN.",
      "seq": 0
     },
     {
@@ -2461,7 +2476,8 @@
     }
    },
    "tms_id": 22341,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22341"
   },
   {
    "id": "A2",
@@ -2477,10 +2493,6 @@
    "score": {
     "home": 5,
     "away": 1
-   },
-   "penalty_corners": {
-    "home": 6,
-    "away": 3
    },
    "events": [
     {
@@ -2532,33 +2544,39 @@
      "player": "Koen Bijen"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22340",
    "stats": {
     "home": {
      "goals": 5,
-     "shots": 12,
-     "circle_entries": 27,
-     "penalty_corners": 6,
-     "possession": 65,
+     "field_goals": 3,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 4,
-     "circle_entries": 20,
-     "penalty_corners": 3,
-     "possession": 35,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! NED vs NZL under way.",
+     "text": "We're under way — NED vs NZL.",
      "seq": 0
     },
     {
@@ -2960,7 +2978,8 @@
     }
    },
    "tms_id": 22340,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22340"
   },
   {
    "id": "C1",
@@ -2976,10 +2995,6 @@
    "score": {
     "home": 3,
     "away": 1
-   },
-   "penalty_corners": {
-    "home": 5,
-    "away": 5
    },
    "events": [
     {
@@ -3023,33 +3038,39 @@
      "player": "Alistair Empey"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22338",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 11,
-     "circle_entries": 21,
-     "penalty_corners": 5,
-     "possession": 57,
+     "field_goals": 0,
+     "pc_goals": 3,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 17,
-     "penalty_corners": 5,
-     "possession": 43,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! AUS vs IRL under way.",
+     "text": "We're under way — AUS vs IRL.",
      "seq": 0
     },
     {
@@ -3445,7 +3466,8 @@
     }
    },
    "tms_id": 22338,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22338"
   },
   {
    "id": "C2",
@@ -3461,10 +3483,6 @@
    "score": {
     "home": 3,
     "away": 1
-   },
-   "penalty_corners": {
-    "home": 6,
-    "away": 6
    },
    "events": [
     {
@@ -3508,33 +3526,39 @@
      "player": "Mustaphaa Cassiem"
     }
    ],
-   "result_source": "fih-tms",
+   "result_source": "https://fih.altiusrt.com/matches/22339",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 11,
-     "circle_entries": 20,
-     "penalty_corners": 6,
-     "possession": 58,
+     "field_goals": 3,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 4,
-     "circle_entries": 17,
-     "penalty_corners": 6,
-     "possession": 42,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ESP vs RSA under way.",
+     "text": "We're under way — ESP vs RSA.",
      "seq": 0
     },
     {
@@ -3937,22 +3961,23 @@
     }
    },
    "tms_id": 22339,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22339"
   },
   {
    "id": "D3",
    "phase": "pool",
    "pool": "D",
-   "home": "ENG",
-   "away": "IND",
+   "home": "IND",
+   "away": "ENG",
    "date": "2026-08-17",
    "time": "15:00",
    "timezone": "CET",
    "venue": "AMV",
    "status": "completed",
    "score": {
-    "home": 4,
-    "away": 2
+    "home": 2,
+    "away": 4
    },
    "events": [
     {
@@ -4376,37 +4401,39 @@
      "coach": "Craig Fulton"
     }
    },
-   "result_source": "fih-tms",
-   "penalty_corners": {
-    "home": 7,
-    "away": 8
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22344",
    "stats": {
     "home": {
-     "goals": 4,
-     "shots": 8,
-     "circle_entries": 22,
-     "penalty_corners": 7,
-     "possession": 61,
-     "green_cards": 3,
-     "yellow_cards": 0,
-     "red_cards": 0
-    },
-    "away": {
      "goals": 2,
-     "shots": 9,
-     "circle_entries": 19,
-     "penalty_corners": 8,
-     "possession": 39,
+     "field_goals": 1,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 4,
+     "field_goals": 3,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 3,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ENG vs IND under way.",
+     "text": "We're under way — IND vs ENG.",
      "seq": 0
     },
     {
@@ -4418,35 +4445,35 @@
     {
      "minute": 14,
      "team": "ENG",
-     "text": "GOAL! Nicholas Bandurak (ENG) scores from a field goal — ENG 1-0 IND.",
+     "text": "GOAL! Nicholas Bandurak (ENG) scores from a field goal — IND 0-1 ENG.",
      "seq": 2
     },
     {
      "minute": 15,
-     "text": "End of Q1: ENG 1-0 IND.",
+     "text": "End of Q1: IND 0-1 ENG.",
      "seq": 3
     },
     {
      "minute": 17,
      "team": "IND",
-     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — ENG 1-1 IND.",
+     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 1-1 ENG.",
      "seq": 4
     },
     {
      "minute": 25,
      "team": "IND",
-     "text": "GOAL! Dilpreet Singh (IND) scores from a field goal — ENG 1-2 IND.",
+     "text": "GOAL! Dilpreet Singh (IND) scores from a field goal — IND 2-1 ENG.",
      "seq": 5
     },
     {
      "minute": 30,
-     "text": "Half-time: ENG 1-2 IND.",
+     "text": "Half-time: IND 2-1 ENG.",
      "seq": 6
     },
     {
      "minute": 39,
      "team": "ENG",
-     "text": "GOAL! Stuart Rushmere (ENG) scores from a field goal — ENG 2-2 IND.",
+     "text": "GOAL! Stuart Rushmere (ENG) scores from a field goal — IND 2-2 ENG.",
      "seq": 7
     },
     {
@@ -4458,7 +4485,7 @@
     {
      "minute": 43,
      "team": "ENG",
-     "text": "GOAL! Henry Croft (ENG) scores from a field goal — ENG 3-2 IND.",
+     "text": "GOAL! Henry Croft (ENG) scores from a field goal — IND 2-3 ENG.",
      "seq": 9
     },
     {
@@ -4469,7 +4496,7 @@
     },
     {
      "minute": 45,
-     "text": "End of Q3: ENG 3-2 IND.",
+     "text": "End of Q3: IND 2-3 ENG.",
      "seq": 11
     },
     {
@@ -4487,18 +4514,19 @@
     {
      "minute": 55,
      "team": "ENG",
-     "text": "GOAL! Nicholas Bandurak (ENG) scores from a penalty corner — ENG 4-2 IND.",
+     "text": "GOAL! Nicholas Bandurak (ENG) scores from a penalty corner — IND 2-4 ENG.",
      "seq": 14
     },
     {
      "minute": 60,
-     "text": "Full-time: ENG 4-2 IND.",
+     "text": "Full-time: IND 2-4 ENG.",
      "seq": 15
     }
    ],
    "enrichment": "official",
    "tms_id": 22344,
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22344"
   },
   {
    "id": "D4",
@@ -4950,37 +4978,39 @@
     }
    },
    "tms_id": 22342,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 4,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22342",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 7,
-     "circle_entries": 20,
-     "penalty_corners": 4,
-     "possession": 51,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 6,
-     "circle_entries": 22,
-     "penalty_corners": 2,
-     "possession": 49,
+     "field_goals": 1,
+     "pc_goals": 1,
+     "ps_goals": 1,
      "green_cards": 2,
      "yellow_cards": 2,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! PAK vs WAL under way.",
+     "text": "We're under way — PAK vs WAL.",
      "seq": 0
     },
     {
@@ -5083,22 +5113,23 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22342"
   },
   {
    "id": "B3",
    "phase": "pool",
    "pool": "B",
-   "home": "BEL",
-   "away": "GER",
+   "home": "GER",
+   "away": "BEL",
    "date": "2026-08-17",
    "time": "20:30",
    "timezone": "CET",
    "venue": "BRU",
    "status": "completed",
    "score": {
-    "home": 0,
-    "away": 1
+    "home": 1,
+    "away": 0
    },
    "events": [
     {
@@ -5108,13 +5139,13 @@
      "player": "Justus Warweg"
     },
     {
-     "minute": 10,
+     "minute": 11,
      "team": "BEL",
      "type": "green_card",
      "player": "Victor Foubert"
     },
     {
-     "minute": 16,
+     "minute": 17,
      "team": "BEL",
      "type": "green_card",
      "player": "Arno van Dessel"
@@ -5125,12 +5156,6 @@
      "type": "goal",
      "via": "PC",
      "player": "Jakob Brilla"
-    },
-    {
-     "minute": 58,
-     "team": "BEL",
-     "type": "green_card",
-     "player": "Alexander Hendrickx"
     }
    ],
    "lineups": {
@@ -5454,37 +5479,39 @@
     }
    },
    "tms_id": 22345,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 1
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22345",
    "stats": {
     "home": {
-     "goals": 0,
-     "shots": 4,
-     "circle_entries": 19,
-     "penalty_corners": 0,
-     "possession": 49,
-     "green_cards": 3,
-     "yellow_cards": 0,
-     "red_cards": 0
-    },
-    "away": {
      "goals": 1,
-     "shots": 8,
-     "circle_entries": 21,
-     "penalty_corners": 1,
-     "possession": 51,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 0,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 0,
+     "green_cards": 2,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! BEL vs GER under way.",
+     "text": "We're under way — GER vs BEL.",
      "seq": 0
     },
     {
@@ -5494,52 +5521,47 @@
      "seq": 1
     },
     {
-     "minute": 10,
+     "minute": 11,
      "team": "BEL",
      "text": "Green Card for Victor Foubert (BEL) — 2-minute suspension.",
      "seq": 2
     },
     {
      "minute": 15,
-     "text": "End of Q1: BEL 0-0 GER.",
+     "text": "End of Q1: GER 0-0 BEL.",
      "seq": 3
     },
     {
-     "minute": 16,
+     "minute": 17,
      "team": "BEL",
      "text": "Green Card for Arno van Dessel (BEL) — 2-minute suspension.",
      "seq": 4
     },
     {
      "minute": 30,
-     "text": "Half-time: BEL 0-0 GER.",
+     "text": "Half-time: GER 0-0 BEL.",
      "seq": 5
     },
     {
      "minute": 39,
      "team": "GER",
-     "text": "GOAL! Jakob Brilla (GER) scores from a penalty corner — BEL 0-1 GER.",
+     "text": "GOAL! Jakob Brilla (GER) scores from a penalty corner — GER 1-0 BEL.",
      "seq": 6
     },
     {
      "minute": 45,
-     "text": "End of Q3: BEL 0-1 GER.",
+     "text": "End of Q3: GER 1-0 BEL.",
      "seq": 7
     },
     {
-     "minute": 58,
-     "team": "BEL",
-     "text": "Green Card for Alexander Hendrickx (BEL) — 2-minute suspension.",
-     "seq": 8
-    },
-    {
      "minute": 60,
-     "text": "Full-time: BEL 0-1 GER.",
-     "seq": 9
+     "text": "Full-time: GER 1-0 BEL.",
+     "seq": 8
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22345"
   },
   {
    "id": "B4",
@@ -5979,37 +6001,39 @@
     }
    },
    "tms_id": 22343,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 8,
-    "away": 5
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22343",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 7,
-     "circle_entries": 19,
-     "penalty_corners": 8,
-     "possession": 52,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 11,
-     "circle_entries": 25,
-     "penalty_corners": 5,
-     "possession": 48,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 3,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! FRA vs MAS under way.",
+     "text": "We're under way — FRA vs MAS.",
      "seq": 0
     },
     {
@@ -6100,7 +6124,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22343"
   },
   {
    "id": "A3",
@@ -6481,37 +6506,39 @@
     }
    },
    "tms_id": 22349,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 1
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22349",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 8,
-     "circle_entries": 17,
-     "penalty_corners": 1,
-     "possession": 43,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 10,
-     "circle_entries": 23,
-     "penalty_corners": 1,
-     "possession": 57,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ARG vs NED under way.",
+     "text": "We're under way — ARG vs NED.",
      "seq": 0
     },
     {
@@ -6566,22 +6593,23 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22349"
   },
   {
    "id": "A4",
    "phase": "pool",
    "pool": "A",
-   "home": "JPN",
-   "away": "NZL",
+   "home": "NZL",
+   "away": "JPN",
    "date": "2026-08-18",
    "time": "09:30",
    "timezone": "CET",
    "venue": "AMV",
    "status": "completed",
    "score": {
-    "home": 0,
-    "away": 2
+    "home": 2,
+    "away": 0
    },
    "events": [
     {
@@ -6954,37 +6982,39 @@
     }
    },
    "tms_id": 22346,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22346",
    "stats": {
     "home": {
-     "goals": 0,
-     "shots": 6,
-     "circle_entries": 10,
-     "penalty_corners": 0,
-     "possession": 39,
-     "green_cards": 1,
-     "yellow_cards": 0,
-     "red_cards": 0
-    },
-    "away": {
      "goals": 2,
-     "shots": 5,
-     "circle_entries": 25,
-     "penalty_corners": 0,
-     "possession": 61,
+     "field_goals": 2,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 0,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! JPN vs NZL under way.",
+     "text": "We're under way — NZL vs JPN.",
      "seq": 0
     },
     {
@@ -6996,53 +7026,54 @@
     {
      "minute": 12,
      "team": "NZL",
-     "text": "GOAL! Sam Lane (NZL) scores from a field goal — JPN 0-1 NZL.",
+     "text": "GOAL! Sam Lane (NZL) scores from a field goal — NZL 1-0 JPN.",
      "seq": 2
     },
     {
      "minute": 15,
-     "text": "End of Q1: JPN 0-1 NZL.",
+     "text": "End of Q1: NZL 1-0 JPN.",
      "seq": 3
     },
     {
      "minute": 30,
-     "text": "Half-time: JPN 0-1 NZL.",
+     "text": "Half-time: NZL 1-0 JPN.",
      "seq": 4
     },
     {
      "minute": 45,
-     "text": "End of Q3: JPN 0-1 NZL.",
+     "text": "End of Q3: NZL 1-0 JPN.",
      "seq": 5
     },
     {
      "minute": 46,
      "team": "NZL",
-     "text": "GOAL! Dylan Thomas (NZL) scores from a field goal — JPN 0-2 NZL.",
+     "text": "GOAL! Dylan Thomas (NZL) scores from a field goal — NZL 2-0 JPN.",
      "seq": 6
     },
     {
      "minute": 60,
-     "text": "Full-time: JPN 0-2 NZL.",
+     "text": "Full-time: NZL 2-0 JPN.",
      "seq": 7
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22346"
   },
   {
    "id": "C3",
    "phase": "pool",
    "pool": "C",
-   "home": "AUS",
-   "away": "ESP",
+   "home": "ESP",
+   "away": "AUS",
    "date": "2026-08-18",
    "time": "14:00",
    "timezone": "CET",
    "venue": "BRU",
    "status": "completed",
    "score": {
-    "home": 1,
-    "away": 0
+    "home": 0,
+    "away": 1
    },
    "events": [
     {
@@ -7438,37 +7469,39 @@
     }
    },
    "tms_id": 22347,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22347",
    "stats": {
     "home": {
-     "goals": 1,
-     "shots": 4,
-     "circle_entries": 20,
-     "penalty_corners": 0,
-     "possession": 56,
-     "green_cards": 3,
-     "yellow_cards": 1,
-     "red_cards": 0
-    },
-    "away": {
      "goals": 0,
-     "shots": 8,
-     "circle_entries": 16,
-     "penalty_corners": 0,
-     "possession": 44,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 1,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 1,
+     "green_cards": 3,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! AUS vs ESP under way.",
+     "text": "We're under way — ESP vs AUS.",
      "seq": 0
     },
     {
@@ -7479,7 +7512,7 @@
     },
     {
      "minute": 15,
-     "text": "End of Q1: AUS 0-0 ESP.",
+     "text": "End of Q1: ESP 0-0 AUS.",
      "seq": 2
     },
     {
@@ -7502,7 +7535,7 @@
     },
     {
      "minute": 30,
-     "text": "Half-time: AUS 0-0 ESP.",
+     "text": "Half-time: ESP 0-0 AUS.",
      "seq": 6
     },
     {
@@ -7513,13 +7546,13 @@
     },
     {
      "minute": 45,
-     "text": "End of Q3: AUS 0-0 ESP.",
+     "text": "End of Q3: ESP 0-0 AUS.",
      "seq": 8
     },
     {
      "minute": 47,
      "team": "AUS",
-     "text": "GOAL! Blake Govers (AUS) scores from a penalty stroke — AUS 1-0 ESP.",
+     "text": "GOAL! Blake Govers (AUS) scores from a penalty stroke — ESP 0-1 AUS.",
      "seq": 9
     },
     {
@@ -7530,12 +7563,13 @@
     },
     {
      "minute": 60,
-     "text": "Full-time: AUS 1-0 ESP.",
+     "text": "Full-time: ESP 0-1 AUS.",
      "seq": 11
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22347"
   },
   {
    "id": "C4",
@@ -7941,37 +7975,39 @@
     }
    },
    "tms_id": 22348,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 2,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22348",
    "stats": {
     "home": {
      "goals": 4,
-     "shots": 9,
-     "circle_entries": 29,
-     "penalty_corners": 2,
-     "possession": 65,
+     "field_goals": 2,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 4,
-     "circle_entries": 19,
-     "penalty_corners": 0,
-     "possession": 35,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! IRL vs RSA under way.",
+     "text": "We're under way — IRL vs RSA.",
      "seq": 0
     },
     {
@@ -8050,7 +8086,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22348"
   },
   {
    "id": "D5",
@@ -8500,37 +8537,39 @@
     }
    },
    "tms_id": 22350,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 7,
-    "away": 3
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22350",
    "stats": {
     "home": {
      "goals": 8,
-     "shots": 11,
-     "circle_entries": 40,
-     "penalty_corners": 7,
-     "possession": 65,
+     "field_goals": 6,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 10,
-     "circle_entries": 24,
-     "penalty_corners": 3,
-     "possession": 35,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 1,
      "green_cards": 1,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ENG vs WAL under way.",
+     "text": "We're under way — ENG vs WAL.",
      "seq": 0
     },
     {
@@ -8627,22 +8666,23 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22350"
   },
   {
    "id": "D6",
    "phase": "pool",
    "pool": "D",
-   "home": "IND",
-   "away": "PAK",
+   "home": "PAK",
+   "away": "IND",
    "date": "2026-08-19",
    "time": "15:00",
    "timezone": "CET",
    "venue": "AMV",
    "status": "completed",
    "score": {
-    "home": 5,
-    "away": 3
+    "home": 3,
+    "away": 5
    },
    "events": [
     {
@@ -9081,43 +9121,45 @@
     }
    },
    "tms_id": 22351,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 2,
-    "away": 1
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22351",
    "stats": {
     "home": {
-     "goals": 5,
-     "shots": 10,
-     "circle_entries": 28,
-     "penalty_corners": 2,
-     "possession": 61,
-     "green_cards": 2,
-     "yellow_cards": 1,
-     "red_cards": 0
-    },
-    "away": {
      "goals": 3,
-     "shots": 6,
-     "circle_entries": 27,
-     "penalty_corners": 1,
-     "possession": 39,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 5,
+     "field_goals": 2,
+     "pc_goals": 2,
+     "ps_goals": 1,
+     "green_cards": 2,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! IND vs PAK under way.",
+     "text": "We're under way — PAK vs IND.",
      "seq": 0
     },
     {
      "minute": 5,
      "team": "IND",
-     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 1-0 PAK.",
+     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — PAK 0-1 IND.",
      "seq": 1
     },
     {
@@ -9129,36 +9171,36 @@
     {
      "minute": 11,
      "team": "IND",
-     "text": "GOAL! Abhishek (IND) scores from a field goal — IND 2-0 PAK.",
+     "text": "GOAL! Abhishek (IND) scores from a field goal — PAK 0-2 IND.",
      "seq": 3
     },
     {
      "minute": 15,
-     "text": "End of Q1: IND 2-0 PAK.",
+     "text": "End of Q1: PAK 0-2 IND.",
      "seq": 4
     },
     {
      "minute": 21,
      "team": "IND",
-     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 3-0 PAK.",
+     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — PAK 0-3 IND.",
      "seq": 5
     },
     {
      "minute": 22,
      "team": "PAK",
-     "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — IND 3-1 PAK.",
+     "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — PAK 1-3 IND.",
      "seq": 6
     },
     {
      "minute": 24,
      "team": "IND",
-     "text": "GOAL! Abhishek (IND) scores from a field goal — IND 4-1 PAK.",
+     "text": "GOAL! Abhishek (IND) scores from a field goal — PAK 1-4 IND.",
      "seq": 7
     },
     {
      "minute": 24,
      "team": "PAK",
-     "text": "GOAL! Sufyan Khan (PAK) scores from a penalty corner — IND 4-2 PAK.",
+     "text": "GOAL! Sufyan Khan (PAK) scores from a penalty corner — PAK 2-4 IND.",
      "seq": 8
     },
     {
@@ -9169,13 +9211,13 @@
     },
     {
      "minute": 30,
-     "text": "Half-time: IND 4-2 PAK.",
+     "text": "Half-time: PAK 2-4 IND.",
      "seq": 10
     },
     {
      "minute": 35,
      "team": "IND",
-     "text": "GOAL! Hardik Singh (IND) scores from a penalty stroke — IND 5-2 PAK.",
+     "text": "GOAL! Hardik Singh (IND) scores from a penalty stroke — PAK 2-5 IND.",
      "seq": 11
     },
     {
@@ -9192,13 +9234,13 @@
     },
     {
      "minute": 45,
-     "text": "End of Q3: IND 5-2 PAK.",
+     "text": "End of Q3: PAK 2-5 IND.",
      "seq": 14
     },
     {
      "minute": 46,
      "team": "PAK",
-     "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — IND 5-3 PAK.",
+     "text": "GOAL! Hannan Shahid (PAK) scores from a field goal — PAK 3-5 IND.",
      "seq": 15
     },
     {
@@ -9209,12 +9251,13 @@
     },
     {
      "minute": 60,
-     "text": "Full-time: IND 5-3 PAK.",
+     "text": "Full-time: PAK 3-5 IND.",
      "seq": 17
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22351"
   },
   {
    "id": "B5",
@@ -9233,35 +9276,35 @@
    },
    "events": [
     {
-     "minute": 16,
+     "minute": 17,
      "team": "BEL",
      "type": "goal",
      "via": "FG",
      "player": "Tom Boon"
     },
     {
-     "minute": 19,
+     "minute": 20,
      "team": "BEL",
      "type": "goal",
      "via": "FG",
-     "player": "Victor Foubert"
+     "player": "Tom Boon"
     },
     {
-     "minute": 31,
+     "minute": 32,
      "team": "MAS",
      "type": "goal",
      "via": "PC",
      "player": "Aiman Rozemi"
     },
     {
-     "minute": 35,
+     "minute": 36,
      "team": "BEL",
      "type": "goal",
      "via": "PC",
      "player": "Tom Boon"
     },
     {
-     "minute": 35,
+     "minute": 36,
      "team": "BEL",
      "type": "green_card",
      "player": "Jack Vloeberghs"
@@ -9274,34 +9317,34 @@
      "player": "Marhan Jalil"
     },
     {
-     "minute": 42,
+     "minute": 43,
      "team": "BEL",
      "type": "goal",
      "via": "FG",
      "player": "Thibeau Stockbroekx"
     },
     {
-     "minute": 46,
+     "minute": 47,
      "team": "BEL",
      "type": "green_card",
      "player": "Thibeau Stockbroekx"
     },
     {
-     "minute": 52,
+     "minute": 53,
      "team": "BEL",
      "type": "goal",
      "via": "PC",
      "player": "Tom Boon"
     },
     {
-     "minute": 52,
+     "minute": 53,
      "team": "MAS",
      "type": "goal",
      "via": "FG",
      "player": "Akhimullah Anuar"
     },
     {
-     "minute": 52,
+     "minute": 53,
      "team": "MAS",
      "type": "green_card",
      "player": "Aiman Rozemi"
@@ -9642,37 +9685,39 @@
     }
    },
    "tms_id": 22353,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 2,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22353",
    "stats": {
     "home": {
      "goals": 5,
-     "shots": 10,
-     "circle_entries": 33,
-     "penalty_corners": 2,
-     "possession": 55,
+     "field_goals": 3,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 10,
-     "circle_entries": 28,
-     "penalty_corners": 2,
-     "possession": 45,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! BEL vs MAS under way.",
+     "text": "We're under way — BEL vs MAS.",
      "seq": 0
     },
     {
@@ -9681,15 +9726,15 @@
      "seq": 1
     },
     {
-     "minute": 16,
+     "minute": 17,
      "team": "BEL",
      "text": "GOAL! Tom Boon (BEL) scores from a field goal — BEL 1-0 MAS.",
      "seq": 2
     },
     {
-     "minute": 19,
+     "minute": 20,
      "team": "BEL",
-     "text": "GOAL! Victor Foubert (BEL) scores from a field goal — BEL 2-0 MAS.",
+     "text": "GOAL! Tom Boon (BEL) scores from a field goal — BEL 2-0 MAS.",
      "seq": 3
     },
     {
@@ -9698,19 +9743,19 @@
      "seq": 4
     },
     {
-     "minute": 31,
+     "minute": 32,
      "team": "MAS",
      "text": "GOAL! Aiman Rozemi (MAS) scores from a penalty corner — BEL 2-1 MAS.",
      "seq": 5
     },
     {
-     "minute": 35,
+     "minute": 36,
      "team": "BEL",
      "text": "GOAL! Tom Boon (BEL) scores from a penalty corner — BEL 3-1 MAS.",
      "seq": 6
     },
     {
-     "minute": 35,
+     "minute": 36,
      "team": "BEL",
      "text": "Green Card for Jack Vloeberghs (BEL) — 2-minute suspension.",
      "seq": 7
@@ -9722,7 +9767,7 @@
      "seq": 8
     },
     {
-     "minute": 42,
+     "minute": 43,
      "team": "BEL",
      "text": "GOAL! Thibeau Stockbroekx (BEL) scores from a field goal — BEL 4-2 MAS.",
      "seq": 9
@@ -9733,25 +9778,25 @@
      "seq": 10
     },
     {
-     "minute": 46,
+     "minute": 47,
      "team": "BEL",
      "text": "Green Card for Thibeau Stockbroekx (BEL) — 2-minute suspension.",
      "seq": 11
     },
     {
-     "minute": 52,
+     "minute": 53,
      "team": "BEL",
      "text": "GOAL! Tom Boon (BEL) scores from a penalty corner — BEL 5-2 MAS.",
      "seq": 12
     },
     {
-     "minute": 52,
+     "minute": 53,
      "team": "MAS",
      "text": "GOAL! Akhimullah Anuar (MAS) scores from a field goal — BEL 5-3 MAS.",
      "seq": 13
     },
     {
-     "minute": 52,
+     "minute": 53,
      "team": "MAS",
      "text": "Green Card for Aiman Rozemi (MAS) — 2-minute suspension.",
      "seq": 14
@@ -9763,7 +9808,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22353"
   },
   {
    "id": "B6",
@@ -10143,37 +10189,39 @@
     }
    },
    "tms_id": 22352,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22352",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 7,
-     "circle_entries": 17,
-     "penalty_corners": 0,
-     "possession": 46,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 7,
-     "circle_entries": 14,
-     "penalty_corners": 0,
-     "possession": 54,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! FRA vs GER under way.",
+     "text": "We're under way — FRA vs GER.",
      "seq": 0
     },
     {
@@ -10222,22 +10270,23 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22352"
   },
   {
    "id": "A5",
    "phase": "pool",
    "pool": "A",
-   "home": "JPN",
-   "away": "NED",
+   "home": "NED",
+   "away": "JPN",
    "date": "2026-08-20",
    "time": "18:00",
    "timezone": "CET",
    "venue": "AMV",
    "status": "completed",
    "score": {
-    "home": 1,
-    "away": 4
+    "home": 4,
+    "away": 1
    },
    "events": [
     {
@@ -10623,37 +10672,39 @@
     }
    },
    "tms_id": 22357,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22357",
    "stats": {
     "home": {
-     "goals": 1,
-     "shots": 8,
-     "circle_entries": 14,
-     "penalty_corners": 0,
-     "possession": 35,
+     "goals": 4,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 1,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
-     "goals": 4,
-     "shots": 9,
-     "circle_entries": 26,
-     "penalty_corners": 2,
-     "possession": 65,
+     "goals": 1,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! JPN vs NED under way.",
+     "text": "We're under way — NED vs JPN.",
      "seq": 0
     },
     {
@@ -10665,28 +10716,28 @@
     {
      "minute": 8,
      "team": "JPN",
-     "text": "GOAL! Kazumasa Matsumoto (JPN) scores from a field goal — JPN 1-0 NED.",
+     "text": "GOAL! Kazumasa Matsumoto (JPN) scores from a field goal — NED 0-1 JPN.",
      "seq": 2
     },
     {
      "minute": 12,
      "team": "NED",
-     "text": "GOAL! Thijs van Dam (NED) scores from a field goal — JPN 1-1 NED.",
+     "text": "GOAL! Thijs van Dam (NED) scores from a field goal — NED 1-1 JPN.",
      "seq": 3
     },
     {
      "minute": 15,
-     "text": "End of Q1: JPN 1-1 NED.",
+     "text": "End of Q1: NED 1-1 JPN.",
      "seq": 4
     },
     {
      "minute": 30,
-     "text": "Half-time: JPN 1-1 NED.",
+     "text": "Half-time: NED 1-1 JPN.",
      "seq": 5
     },
     {
      "minute": 45,
-     "text": "End of Q3: JPN 1-1 NED.",
+     "text": "End of Q3: NED 1-1 JPN.",
      "seq": 6
     },
     {
@@ -10698,44 +10749,45 @@
     {
      "minute": 50,
      "team": "NED",
-     "text": "GOAL! Jip Janssen (NED) scores from a penalty stroke — JPN 1-2 NED.",
+     "text": "GOAL! Jip Janssen (NED) scores from a penalty stroke — NED 2-1 JPN.",
      "seq": 8
     },
     {
      "minute": 55,
      "team": "NED",
-     "text": "GOAL! Tijmen Reyenga (NED) scores from a penalty corner — JPN 1-3 NED.",
+     "text": "GOAL! Tijmen Reyenga (NED) scores from a penalty corner — NED 3-1 JPN.",
      "seq": 9
     },
     {
      "minute": 56,
      "team": "NED",
-     "text": "GOAL! Tijmen Reyenga (NED) scores from a penalty corner — JPN 1-4 NED.",
+     "text": "GOAL! Tijmen Reyenga (NED) scores from a penalty corner — NED 4-1 JPN.",
      "seq": 10
     },
     {
      "minute": 60,
-     "text": "Full-time: JPN 1-4 NED.",
+     "text": "Full-time: NED 4-1 JPN.",
      "seq": 11
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22357"
   },
   {
    "id": "A6",
    "phase": "pool",
    "pool": "A",
-   "home": "ARG",
-   "away": "NZL",
+   "home": "NZL",
+   "away": "ARG",
    "date": "2026-08-20",
    "time": "12:30",
    "timezone": "CET",
    "venue": "AMV",
    "status": "completed",
    "score": {
-    "home": 7,
-    "away": 1
+    "home": 1,
+    "away": 7
    },
    "events": [
     {
@@ -10772,6 +10824,12 @@
      "player": "Bautista Capurro"
     },
     {
+     "minute": 41,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "Joseph Morrison"
+    },
+    {
      "minute": 43,
      "team": "ARG",
      "type": "goal",
@@ -10784,6 +10842,12 @@
      "type": "goal",
      "via": "PC",
      "player": "Tadeo Marcucci"
+    },
+    {
+     "minute": 50,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "Joseph Morrison"
     },
     {
      "minute": 52,
@@ -11161,54 +11225,56 @@
     }
    },
    "tms_id": 22355,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 2,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22355",
    "stats": {
     "home": {
-     "goals": 7,
-     "shots": 14,
-     "circle_entries": 38,
-     "penalty_corners": 2,
-     "possession": 65,
-     "green_cards": 1,
+     "goals": 1,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 1,
+     "green_cards": 3,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
-     "goals": 1,
-     "shots": 7,
-     "circle_entries": 20,
-     "penalty_corners": 0,
-     "possession": 35,
+     "goals": 7,
+     "field_goals": 4,
+     "pc_goals": 2,
+     "ps_goals": 1,
      "green_cards": 1,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ARG vs NZL under way.",
+     "text": "We're under way — NZL vs ARG.",
      "seq": 0
     },
     {
      "minute": 13,
      "team": "NZL",
-     "text": "GOAL! Kane Russell (NZL) scores from a penalty stroke — ARG 0-1 NZL.",
+     "text": "GOAL! Kane Russell (NZL) scores from a penalty stroke — NZL 1-0 ARG.",
      "seq": 1
     },
     {
      "minute": 15,
-     "text": "End of Q1: ARG 0-1 NZL.",
+     "text": "End of Q1: NZL 1-0 ARG.",
      "seq": 2
     },
     {
      "minute": 22,
      "team": "ARG",
-     "text": "GOAL! Tomas Domene (ARG) scores from a penalty stroke — ARG 1-1 NZL.",
+     "text": "GOAL! Tomas Domene (ARG) scores from a penalty stroke — NZL 1-1 ARG.",
      "seq": 3
     },
     {
@@ -11219,7 +11285,7 @@
     },
     {
      "minute": 30,
-     "text": "Half-time: ARG 1-1 NZL.",
+     "text": "Half-time: NZL 1-1 ARG.",
      "seq": 5
     },
     {
@@ -11231,64 +11297,77 @@
     {
      "minute": 39,
      "team": "ARG",
-     "text": "GOAL! Bautista Capurro (ARG) scores from a field goal — ARG 2-1 NZL.",
+     "text": "GOAL! Bautista Capurro (ARG) scores from a field goal — NZL 1-2 ARG.",
      "seq": 7
+    },
+    {
+     "minute": 41,
+     "team": "NZL",
+     "text": "Green Card for Joseph Morrison (NZL) — 2-minute suspension.",
+     "seq": 8
     },
     {
      "minute": 43,
      "team": "ARG",
-     "text": "GOAL! Tomas Domene (ARG) scores from a penalty corner — ARG 3-1 NZL.",
-     "seq": 8
+     "text": "GOAL! Tomas Domene (ARG) scores from a penalty corner — NZL 1-3 ARG.",
+     "seq": 9
     },
     {
      "minute": 45,
-     "text": "End of Q3: ARG 3-1 NZL.",
-     "seq": 9
+     "text": "End of Q3: NZL 1-3 ARG.",
+     "seq": 10
     },
     {
      "minute": 48,
      "team": "ARG",
-     "text": "GOAL! Tadeo Marcucci (ARG) scores from a penalty corner — ARG 4-1 NZL.",
-     "seq": 10
+     "text": "GOAL! Tadeo Marcucci (ARG) scores from a penalty corner — NZL 1-4 ARG.",
+     "seq": 11
+    },
+    {
+     "minute": 50,
+     "team": "NZL",
+     "text": "Green Card for Joseph Morrison (NZL) — 2-minute suspension.",
+     "seq": 12
     },
     {
      "minute": 52,
      "team": "ARG",
-     "text": "GOAL! Nicolas Keenan (ARG) scores from a field goal — ARG 5-1 NZL.",
-     "seq": 11
+     "text": "GOAL! Nicolas Keenan (ARG) scores from a field goal — NZL 1-5 ARG.",
+     "seq": 13
     },
     {
      "minute": 55,
      "team": "NZL",
      "text": "Yellow Card for Charlie Morrison (NZL) — 5-minute suspension.",
-     "seq": 12
+     "seq": 14
     },
     {
      "minute": 57,
      "team": "ARG",
      "text": "Yellow Card for Maico Casella (ARG) — 5-minute suspension.",
-     "seq": 13
+     "seq": 15
     },
     {
      "minute": 58,
      "team": "ARG",
-     "text": "GOAL! Bautista Capurro (ARG) scores from a field goal — ARG 6-1 NZL.",
-     "seq": 14
+     "text": "GOAL! Bautista Capurro (ARG) scores from a field goal — NZL 1-6 ARG.",
+     "seq": 16
     },
     {
      "minute": 60,
      "team": "ARG",
-     "text": "GOAL! Tomas Domene (ARG) scores from a field goal — ARG 7-1 NZL.",
-     "seq": 15
+     "text": "GOAL! Tomas Domene (ARG) scores from a field goal — NZL 1-7 ARG.",
+     "seq": 17
     },
     {
      "minute": 60,
-     "text": "Full-time: ARG 7-1 NZL.",
-     "seq": 16
+     "text": "Full-time: NZL 1-7 ARG.",
+     "seq": 18
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22355"
   },
   {
    "id": "C5",
@@ -11707,37 +11786,39 @@
     }
    },
    "tms_id": 22354,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22354",
    "stats": {
     "home": {
      "goals": 2,
-     "shots": 10,
-     "circle_entries": 23,
-     "penalty_corners": 1,
-     "possession": 52,
+     "field_goals": 1,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 5,
-     "circle_entries": 22,
-     "penalty_corners": 2,
-     "possession": 48,
+     "field_goals": 0,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 2,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! AUS vs RSA under way.",
+     "text": "We're under way — AUS vs RSA.",
      "seq": 0
     },
     {
@@ -11816,22 +11897,23 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22354"
   },
   {
    "id": "C6",
    "phase": "pool",
    "pool": "C",
-   "home": "ESP",
-   "away": "IRL",
+   "home": "IRL",
+   "away": "ESP",
    "date": "2026-08-20",
    "time": "17:00",
    "timezone": "CET",
    "venue": "BRU",
    "status": "completed",
    "score": {
-    "home": 3,
-    "away": 1
+    "home": 1,
+    "away": 3
    },
    "events": [
     {
@@ -12210,59 +12292,61 @@
     }
    },
    "tms_id": 22356,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22356",
    "stats": {
     "home": {
-     "goals": 3,
-     "shots": 11,
-     "circle_entries": 26,
-     "penalty_corners": 1,
-     "possession": 54,
-     "green_cards": 1,
-     "yellow_cards": 0,
-     "red_cards": 0
-    },
-    "away": {
      "goals": 1,
-     "shots": 9,
-     "circle_entries": 14,
-     "penalty_corners": 0,
-     "possession": 46,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 1,
      "green_cards": 0,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 3,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
     {
      "minute": 0,
-     "text": "Push-back! ESP vs IRL under way.",
+     "text": "We're under way — IRL vs ESP.",
      "seq": 0
     },
     {
      "minute": 9,
      "team": "ESP",
-     "text": "GOAL! Nicolas Alvarez (ESP) scores from a field goal — ESP 1-0 IRL.",
+     "text": "GOAL! Nicolas Alvarez (ESP) scores from a field goal — IRL 0-1 ESP.",
      "seq": 1
     },
     {
      "minute": 15,
-     "text": "End of Q1: ESP 1-0 IRL.",
+     "text": "End of Q1: IRL 0-1 ESP.",
      "seq": 2
     },
     {
      "minute": 19,
      "team": "IRL",
-     "text": "GOAL! Lee Cole (IRL) scores from a penalty stroke — ESP 1-1 IRL.",
+     "text": "GOAL! Lee Cole (IRL) scores from a penalty stroke — IRL 1-1 ESP.",
      "seq": 3
     },
     {
      "minute": 30,
-     "text": "Half-time: ESP 1-1 IRL.",
+     "text": "Half-time: IRL 1-1 ESP.",
      "seq": 4
     },
     {
@@ -12273,19 +12357,19 @@
     },
     {
      "minute": 45,
-     "text": "End of Q3: ESP 1-1 IRL.",
+     "text": "End of Q3: IRL 1-1 ESP.",
      "seq": 6
     },
     {
      "minute": 47,
      "team": "ESP",
-     "text": "GOAL! Marc Reyne (ESP) scores from a penalty corner — ESP 2-1 IRL.",
+     "text": "GOAL! Marc Reyne (ESP) scores from a penalty corner — IRL 1-2 ESP.",
      "seq": 7
     },
     {
      "minute": 53,
      "team": "ESP",
-     "text": "GOAL! Marc Reyne (ESP) scores from a field goal — ESP 3-1 IRL.",
+     "text": "GOAL! Marc Reyne (ESP) scores from a field goal — IRL 1-3 ESP.",
      "seq": 8
     },
     {
@@ -12296,12 +12380,13 @@
     },
     {
      "minute": 60,
-     "text": "Full-time: ESP 3-1 IRL.",
+     "text": "Full-time: IRL 1-3 ESP.",
      "seq": 10
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22356"
   },
   {
    "id": "S2H1",
@@ -12713,31 +12798,33 @@
     }
    },
    "tms_id": 22358,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22358",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 4,
-     "circle_entries": 21,
-     "penalty_corners": 1,
-     "possession": 39,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 6,
-     "circle_entries": 20,
-     "penalty_corners": 2,
-     "possession": 61,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -12810,7 +12897,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22358"
   },
   {
    "id": "S2H2",
@@ -13252,31 +13340,33 @@
     }
    },
    "tms_id": 22359,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 2,
-    "away": 3
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22359",
    "stats": {
     "home": {
      "goals": 7,
-     "shots": 15,
-     "circle_entries": 32,
-     "penalty_corners": 2,
-     "possession": 63,
+     "field_goals": 5,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 4,
-     "shots": 11,
-     "circle_entries": 25,
-     "penalty_corners": 3,
-     "possession": 37,
+     "field_goals": 1,
+     "pc_goals": 3,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -13379,7 +13469,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22359"
   },
   {
    "id": "S2F1",
@@ -13752,31 +13843,33 @@
     }
    },
    "tms_id": 22361,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 1
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22361",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 9,
-     "circle_entries": 21,
-     "penalty_corners": 0,
-     "possession": 52,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 21,
-     "penalty_corners": 1,
-     "possession": 48,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -13819,7 +13912,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22361"
   },
   {
    "id": "S2F2",
@@ -14206,31 +14300,33 @@
     }
    },
    "tms_id": 22360,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22360",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 20,
-     "penalty_corners": 0,
-     "possession": 49,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 7,
-     "circle_entries": 21,
-     "penalty_corners": 0,
-     "possession": 51,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 1,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -14279,7 +14375,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22360"
   },
   {
    "id": "S2G1",
@@ -14727,31 +14824,33 @@
     }
    },
    "tms_id": 22362,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 2,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22362",
    "stats": {
     "home": {
      "goals": 7,
-     "shots": 11,
-     "circle_entries": 40,
-     "penalty_corners": 2,
-     "possession": 65,
+     "field_goals": 5,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 6,
-     "circle_entries": 17,
-     "penalty_corners": 0,
-     "possession": 35,
+     "field_goals": 2,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -14848,7 +14947,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22362"
   },
   {
    "id": "S2G2",
@@ -15294,31 +15394,33 @@
     }
    },
    "tms_id": 22363,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22363",
    "stats": {
     "home": {
      "goals": 4,
-     "shots": 12,
-     "circle_entries": 22,
-     "penalty_corners": 1,
-     "possession": 50,
+     "field_goals": 3,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 9,
-     "circle_entries": 24,
-     "penalty_corners": 2,
-     "possession": 50,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -15415,7 +15517,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22363"
   },
   {
    "id": "S2E1",
@@ -15814,31 +15917,33 @@
     }
    },
    "tms_id": 22364,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 0,
-    "away": 1
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22364",
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 7,
-     "circle_entries": 28,
-     "penalty_corners": 0,
-     "possession": 56,
+     "field_goals": 3,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 18,
-     "penalty_corners": 1,
-     "possession": 44,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -15905,7 +16010,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22364"
   },
   {
    "id": "S2E2",
@@ -15949,7 +16055,7 @@
      "player": "Tomas Domene"
     },
     {
-     "minute": 50,
+     "minute": 49,
      "team": "ENG",
      "type": "goal",
      "via": "PC",
@@ -16305,31 +16411,33 @@
     }
    },
    "tms_id": 22365,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 2
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22365",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 5,
-     "circle_entries": 22,
-     "penalty_corners": 1,
-     "possession": 39,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 7,
-     "circle_entries": 20,
-     "penalty_corners": 2,
-     "possession": 61,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -16372,7 +16480,7 @@
      "seq": 6
     },
     {
-     "minute": 50,
+     "minute": 49,
      "team": "ENG",
      "text": "GOAL! Samuel Hooper (ENG) scores from a penalty corner — ENG 1-2 ARG.",
      "seq": 7
@@ -16390,7 +16498,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22365"
   },
   {
    "id": "S2H3",
@@ -16409,7 +16518,7 @@
    "venue": "BRU",
    "status": "completed",
    "score": {
-    "home": 2,
+    "home": 3,
     "away": 3
    },
    "events": [
@@ -16477,6 +16586,13 @@
      "team": "RSA",
      "type": "green_card",
      "player": "Luke Wynford"
+    },
+    {
+     "minute": 60,
+     "team": "MAS",
+     "type": "goal",
+     "via": "FG",
+     "player": "Faizal Saari"
     }
    ],
    "lineups": {
@@ -16821,31 +16937,33 @@
     }
    },
    "tms_id": 22366,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22366",
    "stats": {
     "home": {
-     "goals": 2,
-     "shots": 5,
-     "circle_entries": 20,
-     "penalty_corners": 1,
-     "possession": 49,
+     "goals": 3,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 3,
-     "shots": 10,
-     "circle_entries": 24,
-     "penalty_corners": 0,
-     "possession": 51,
+     "field_goals": 3,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 3,
      "yellow_cards": 2,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -16931,12 +17049,19 @@
     },
     {
      "minute": 60,
-     "text": "Full-time: MAS 2-3 RSA.",
+     "team": "MAS",
+     "text": "GOAL! Faizal Saari (MAS) scores from a field goal — MAS 3-3 RSA.",
      "seq": 14
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: MAS 3-3 RSA.",
+     "seq": 15
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22366"
   },
   {
    "id": "S2H4",
@@ -16961,15 +17086,15 @@
    "events": [
     {
      "minute": 12,
-     "team": "FRA",
-     "type": "green_card",
-     "player": "Mattéo Desgouillons"
-    },
-    {
-     "minute": 12,
      "team": "IRL",
      "type": "green_card",
      "player": "Jonathan Lynch"
+    },
+    {
+     "minute": 12,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "Mattéo Desgouillons"
     },
     {
      "minute": 20,
@@ -17334,31 +17459,33 @@
     }
    },
    "tms_id": 22367,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22367",
    "stats": {
     "home": {
      "goals": 2,
-     "shots": 10,
-     "circle_entries": 25,
-     "penalty_corners": 1,
-     "possession": 53,
+     "field_goals": 1,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 9,
-     "circle_entries": 14,
-     "penalty_corners": 0,
-     "possession": 47,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -17369,14 +17496,14 @@
     },
     {
      "minute": 12,
-     "team": "FRA",
-     "text": "Green Card for Mattéo Desgouillons (FRA) — 2-minute suspension.",
+     "team": "IRL",
+     "text": "Green Card for Jonathan Lynch (IRL) — 2-minute suspension.",
      "seq": 1
     },
     {
      "minute": 12,
-     "team": "IRL",
-     "text": "Green Card for Jonathan Lynch (IRL) — 2-minute suspension.",
+     "team": "FRA",
+     "text": "Green Card for Mattéo Desgouillons (FRA) — 2-minute suspension.",
      "seq": 2
     },
     {
@@ -17425,7 +17552,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22367"
   },
   {
    "id": "S2F3",
@@ -17838,31 +17966,33 @@
     }
    },
    "tms_id": 22368,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 0
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22368",
    "stats": {
     "home": {
      "goals": 4,
-     "shots": 12,
-     "circle_entries": 26,
-     "penalty_corners": 1,
-     "possession": 58,
+     "field_goals": 3,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 10,
-     "circle_entries": 20,
-     "penalty_corners": 0,
-     "possession": 42,
+     "field_goals": 2,
+     "pc_goals": 0,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -17941,7 +18071,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22368"
   },
   {
    "id": "S2F4",
@@ -18320,31 +18451,33 @@
     }
    },
    "tms_id": 22369,
-   "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 1
-   },
+   "result_source": "https://fih.altiusrt.com/matches/22369",
    "stats": {
     "home": {
      "goals": 1,
-     "shots": 6,
-     "circle_entries": 19,
-     "penalty_corners": 1,
-     "possession": 51,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 0,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 1,
-     "shots": 7,
-     "circle_entries": 16,
-     "penalty_corners": 1,
-     "possession": 49,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -18393,7 +18526,8 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 2,
+   "fih_match_id": "22369"
   },
   {
    "id": "S2G3",
@@ -18826,30 +18960,32 @@
    },
    "tms_id": 22370,
    "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 1
-   },
    "stats": {
     "home": {
      "goals": 3,
-     "shots": 8,
-     "circle_entries": 28,
-     "penalty_corners": 1,
-     "possession": 51,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 1,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 6,
-     "circle_entries": 16,
-     "penalty_corners": 1,
-     "possession": 49,
+     "field_goals": 1,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 2,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [
@@ -19362,30 +19498,32 @@
    },
    "tms_id": 22371,
    "result_source": "fih-tms-matches",
-   "penalty_corners": {
-    "home": 1,
-    "away": 2
-   },
    "stats": {
     "home": {
      "goals": 4,
-     "shots": 9,
-     "circle_entries": 29,
-     "penalty_corners": 1,
-     "possession": 55,
+     "field_goals": 3,
+     "pc_goals": 1,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     },
     "away": {
      "goals": 2,
-     "shots": 7,
-     "circle_entries": 16,
-     "penalty_corners": 2,
-     "possession": 45,
+     "field_goals": 0,
+     "pc_goals": 2,
+     "ps_goals": 0,
      "green_cards": 1,
      "yellow_cards": 0,
-     "red_cards": 0
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
     }
    },
    "commentary": [

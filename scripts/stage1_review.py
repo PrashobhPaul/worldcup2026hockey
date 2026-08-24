@@ -48,7 +48,7 @@ The corner count — eight to two — is the honest measure of territory here. W
 
 Jakob Brilla converted a penalty corner in the 3rd minute, Christopher Rühr scored from open play in the 4th, and Justus Weigand made it three in the 7th. Malaysia recovered enough to take something from the third quarter, Abu Kamal Azrai converting a corner in the 39th, but Justus Warweg answered in the 44th and Paul-Philipp Kaufmann added a fifth in the 52nd.
 
-Nine penalty corners to five suggests a contest closer than 5-1, and in one narrow sense it was: Malaysia earned their chances. They converted one of five; Germany converted one of nine but scored four more from open play, which is the difference between a side that needs a set piece and a side that has one. Germany's opening burst, not their corner routine, is what should worry the rest of Pool B.""",
+Malaysia's corner goal suggests a contest closer than 5-1, and in one narrow sense it was: they created. They converted one of five; Germany converted one of nine but scored four more from open play, which is the difference between a side that needs a set piece and a side that has one. Germany's opening burst, not their corner routine, is what should worry the rest of Pool B.""",
 
     'D2': """England scored in all four quarters and beat Pakistan by three, and the scoreline flatters neither side. This was a controlled performance built on repeatable chances rather than a single decisive spell, which is the more durable way to win a pool match.
 
@@ -66,7 +66,7 @@ Belgium won eight corners to six and scored from the two that mattered; France w
 
 Joel Rintala converted in the 7th and again in the 23rd, and Blake Govers made it three from another corner in the 27th. Every Australian goal came from a set piece and all three arrived before half-time, which is how a match ends up decided by the interval. Alistair Empey converted for Ireland in the 54th, a late reply to a game already gone.
 
-Sixty per cent conversion from short corners is tournament-winning form and not sustainable, but the routine behind it is real: three different set-ups, two different finishers, no wasted opportunities in the first half. Ireland will look at parity in corners won and conclude they can live with the Kookaburras territorially. They cannot yet live with them in the circle.""",
+Every goal in the match came from a short corner — three Australian, one Irish — and the routine behind Australia's was the difference: two different finishers, three conversions, all of them inside the opening half-hour. Ireland will look at parity in corners won and conclude they can live with the Kookaburras territorially. They cannot yet live with them in the circle.""",
 
     'C2': """Spain took this match in the space of a minute. Marc Reyne scored in the 12th minute and José Basterra in the 13th, both from open play, and South Africa spent the remaining forty-seven minutes chasing a game that had turned while they were still settling into it.
 
@@ -112,7 +112,7 @@ Four green cards were shown, three of them Belgian, the last to Hendrickx in the
 
     'A4': """A match with no penalty corners at all, decided by two field goals thirty-four minutes apart. New Zealand's win over Japan was as plain as a World Cup result gets, and both sides will read something useful in it.
 
-Sam Lane scored in the 12th minute from open play and New Zealand led from there. Dylan Thomas doubled it in the 46th, again from open play, and the game closed out without either defence being asked a set-piece question. Not one short corner in sixty minutes is remarkable at this level and reflects two sides content to defend deep and deny circle entries.
+Sam Lane scored in the 12th minute from open play and New Zealand led from there. Dylan Thomas doubled it in the 46th, again from open play, and the game closed out without either defence being asked a set-piece question. Not one short-corner goal in sixty minutes is remarkable at this level, and reflects two sides content to defend deep and give the set piece nothing to work with.
 
 Japan have now played two matches without scoring and without earning a corner in this one, which is the harder of the two problems. New Zealand, beaten 5-1 in their opener, will take a clean sheet and a first win, achieved by playing within themselves. Neither performance suggests a side about to trouble the top of Pool A, but New Zealand's was the more complete.""",
 
@@ -136,7 +136,7 @@ One corner each, one converted each, so the set piece is not the story here — 
 
     'D5': """England put eight past Wales — the highest single-team total of the pool stage — and did most of it by movement rather than routine. Sam Ward opened from open play in the 2nd, Will Calnan scored in the 13th and again in the 20th, the same minute Daniel Kyriakides was shown a green card, and Thomas Sorsby made it four in the 22nd. Four goals by the 22nd minute, every one of them a field goal, against a Welsh side that had drawn with Pakistan and stayed within two of India.
 
-Zachary Wallace continued the pattern in the 41st before the corners finally told: Samuel Hooper converted in the 48th and Henry Croft in the 51st from England's seven-corner haul, and Nicholas Bandurak's field goal in the 54th made it eight. Wales's response came late and came entirely through Gareth Furlong — a penalty stroke in the 58th and a corner goal in the 59th — after Kyriakides had compounded his green with a yellow in the 44th of a second half England controlled on sixty-five per cent of possession.
+Zachary Wallace continued the pattern in the 41st before the corners finally told: Samuel Hooper converted in the 48th and Henry Croft in the 51st from England's seven-corner haul, and Nicholas Bandurak's field goal in the 54th made it eight. Wales's response came late and came entirely through Gareth Furlong — a penalty stroke in the 58th and a corner goal in the 59th — after Kyriakides had compounded his green with a yellow in the 44th of a second half England controlled from first minute to last.
 
 The balance is the warning England leave the pool stage with: six of the eight from open play, only two from seven corners won, and seven different scorers, so this attack beats a defence by movement first and by routine second, and depends on no one name. Wales conceded more in one afternoon than in their other two pool matches combined, and Furlong's late double was the only answer they found.""",
 
@@ -152,11 +152,11 @@ Justus Weigand's field goal in the 43rd looked like enough. Germany had allowed 
 
 A goalless corner count for both sides in a match between the fifth and ninth ranked teams in the world is a defensive achievement on both sides, but Germany will regard this as two points dropped. France, who have now taken draws from Malaysia and Germany after losing narrowly to Belgium, are the most awkward side in Pool B to play against and the least likely to beat you.""",
 
-    'B5': """Tom Boon scored three and Belgium needed all of them. Malaysia scored twice from their two penalty corners and added a third from open play, and a match Belgium were expected to control instead turned into the highest-scoring game of their pool campaign.
+    'B5': """Tom Boon scored four and Belgium needed all of them. Malaysia scored twice from short corners and added a third from open play, and a match Belgium were expected to control instead turned into the highest-scoring game of their pool campaign.
 
-Boon opened in the 16th and Victor Foubert made it two in the 19th, both from open play. Aiman Rozemi pulled one back from a corner in the 31st, Boon restored the two-goal lead from a corner in the 35th, and Marhan Jalil answered again in the 37th. Thibeau Stockbroekx scored in the 42nd, Boon completed his hat-trick from another corner in the 52nd, and Akhimullah Anuar replied within the same minute.
+Boon opened in the 17th and struck again in the 20th, both from open play. Aiman Rozemi pulled one back from a corner in the 32nd, Boon restored the two-goal lead from a corner in the 36th, and Marhan Jalil answered again in the 37th. Thibeau Stockbroekx scored in the 43rd, Boon completed his four from another corner in the 53rd, and Akhimullah Anuar replied within the same minute.
 
-Two corners for Malaysia, two goals — a hundred per cent conversion for the second time in this tournament. Belgium won two and scored two as well, which restores the set-piece rhythm that Germany had denied them entirely. The five goals will please them; conceding three to the lowest-ranked side in the pool, after failing to score against Germany, leaves a defensive question they carry into Stage 2.""",
+Two of Malaysia's three goals came from the short corner, the set-piece route that has carried their scoring all tournament. Belgium matched them with two short-corner goals of their own, restoring the set-piece rhythm Germany had denied them entirely. The five goals will please them; conceding three to the lowest-ranked side in the pool, after failing to score against Germany, leaves a defensive question they carry into Stage 2.""",
 
     'C5': """South Africa took a point from the side that had conceded once in two matches, and did it by scoring both of the penalty corners they won. Mustaphaa Cassiem converted in the 4th minute and again in the 44th, and Australia — two wins, four goals, one conceded coming in — could not find a third.
 
@@ -172,7 +172,7 @@ Both of Argentina's penalty corners were converted; New Zealand won none. Four o
 
     'C6': """Spain won this with two goals in six minutes from Marc Reyne, one from the only penalty corner either side earned all evening. Ireland, buoyed by four goals against South Africa, found a far more disciplined opponent and could not repeat the trick.
 
-Nicolas Alvarez put Spain ahead in the 9th from open play. Lee Cole levelled from a penalty stroke in the 19th and the match stayed level for twenty-eight minutes — a genuinely even contest through the middle two quarters, with neither side able to manufacture a circle entry that led anywhere. Then Reyne converted Spain's solitary corner in the 47th and added a field goal in the 53rd.
+Nicolas Alvarez put Spain ahead in the 9th from open play. Lee Cole levelled from a penalty stroke in the 19th and the match stayed level for twenty-eight minutes — a genuinely even contest through the middle two quarters, with neither side able to turn a spell of pressure into a goal. Then Reyne converted Spain's solitary corner in the 47th and added a field goal in the 53rd.
 
 One corner won, one scored, for the second time in this pool stage that a perfect set-piece return has decided a match. Ireland created nothing from short corners because they earned none, and against a Spanish defence that concedes very few, that leaves only open play and strokes. Spain finish the pool with two wins and a single-goal defeat to Australia, which is the profile of a side nobody wants in their Stage 2 group.""",
 
