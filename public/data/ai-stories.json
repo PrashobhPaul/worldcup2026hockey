@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T18:47:01.569486+00:00",
+  "updated_at": "2026-08-24T18:03:16.263540+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -234,6 +234,13 @@
       "story": "For thirty-eight minutes Brussels watched two sides cancel each other out — the only interruptions the matching green cards shown to Mattéo Desgouillons and Jonathan Lynch in the 12th, and a third for Jeremy Duncan in the 20th. It was Duncan who broke the deadlock, scoring from open play in the 39th, and for three minutes Ireland held the match they had come for.\n\nFrance's reply was immediate and familiar: Victor Charlet converted in the 42nd from France's only penalty corner of the afternoon — the second time in a week he has scored from his side's single corner of a match. From there the game tilted, and Timothée Clément won it from open play in the 59th — France's second goal of an afternoon in which they had not led at all.\n\nThe difference from Monday is the whole story for France: against South Africa the pressure produced one goal and a defeat; here it produced two and a win, the first of their Stage 2. Ireland, who had put seven past Malaysia three days earlier, managed one, and both of these sides now stand on a win and a defeat in Pool H, chasing a South African side with two from two.",
       "generatedAt": "2026-08-24T14:32:00.383938+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "S2E4",
+      "story": "Netherlands and England shared a 2-2 draw at the Wagener Stadion in Amstelveen, in a Pool E tie of the FIH Hockey World Cup 2026. Netherlands came in ranked 1st in the world, England 4th.\n\nNetherlands scored through Jip Janssen (30', penalty corner) and Thierry Brinkman (32'); England through Stuart Rushmere (6') and Henry Croft (48', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nNetherlands won 1 penalty corner to England's 1. 3 cards were shown.",
+      "generatedAt": "2026-08-24T18:03:16.263495+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }

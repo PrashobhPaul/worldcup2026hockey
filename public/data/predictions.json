@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-24T17:38:15.783408+00:00",
+  "updated_at": "2026-08-24T18:03:16.067096+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -3239,6 +3239,58 @@
       "pick_confidence": 0.537,
       "reason": "FIH #12 RSA favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "publishedAt": "2026-08-24T15:41:50.985175+00:00"
+    },
+    {
+      "id": "oracle-v1:POS5",
+      "matchId": "POS5",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "p_home_win": 0.643,
+      "p_draw": 0.0,
+      "p_away_win": 0.357,
+      "pick": "HOME",
+      "pick_confidence": 0.643,
+      "reason": "FIH #4 ENG favoured over #5 AUS — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
+      "publishedAt": "2026-08-24T18:03:16.066439+00:00"
+    },
+    {
+      "id": "oracle-v1:POS7",
+      "matchId": "POS7",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "p_home_win": 0.072,
+      "p_draw": 0.0,
+      "p_away_win": 0.928,
+      "pick": "AWAY",
+      "pick_confidence": 0.928,
+      "reason": "FIH #2 BEL favoured over #8 IND — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
+      "publishedAt": "2026-08-24T18:03:16.066439+00:00"
+    },
+    {
+      "id": "oracle-v1:SF1",
+      "matchId": "SF1",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "p_home_win": 0.858,
+      "p_draw": 0.0,
+      "p_away_win": 0.142,
+      "pick": "HOME",
+      "pick_confidence": 0.858,
+      "reason": "FIH #1 NED favoured over #6 ESP — Elo model from world rankings. Semi Final slot decided by pool standings. Published pre-match.",
+      "publishedAt": "2026-08-24T18:03:16.066439+00:00"
+    },
+    {
+      "id": "oracle-v1:SF2",
+      "matchId": "SF2",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "p_home_win": 0.569,
+      "p_draw": 0.0,
+      "p_away_win": 0.431,
+      "pick": "HOME",
+      "pick_confidence": 0.569,
+      "reason": "FIH #3 GER favoured over #7 ARG — Elo model from world rankings. Semi Final slot decided by pool standings. Published pre-match.",
+      "publishedAt": "2026-08-24T18:03:16.066439+00:00"
     }
   ]
 }
