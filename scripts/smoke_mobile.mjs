@@ -7,6 +7,7 @@
 // shell: the five-item bottom bar with folded siblings lighting their parent,
 // the sync chip, the favourite-team flow end to end, and the Match Center
 // pills in both played and upcoming states. Not in CI — CI has no browser.
+import { readFileSync } from 'node:fs'
 let chromium
 try { ({ chromium } = await import('playwright-core')) } catch {
   console.error('smoke_mobile needs playwright-core: npm i --no-save playwright-core')
@@ -15,6 +16,13 @@ try { ({ chromium } = await import('playwright-core')) } catch {
 const EXECUTABLE = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
 const ORIGIN = process.env.SMOKE_ORIGIN ?? 'http://localhost:4173'
 let failed = 0
+// Match ids are read from the fixtures rather than written down here: the
+// tournament moves, and a smoke test pinned to a fixture that has since been
+// played reports a failure that is only the calendar.
+const FIXTURES = JSON.parse(readFileSync(new URL('../public/data/fixtures.json', import.meta.url)))
+const firstWith = pred => (FIXTURES.matches.find(pred) ?? {}).id
+const PLAYED = firstWith(m => m.status === 'completed' && (m.score ?? {}).home !== null)
+const UPCOMING = firstWith(m => m.status === 'scheduled' && !/TBD/i.test(`${m.homeTeam} ${m.awayTeam}`))
 const check = (n, c, d = '') => { if (c) console.log('  ok  ', n); else { failed++; console.log('  FAIL', n, d) } }
 
 const b = await chromium.launch({ executablePath: EXECUTABLE, args: ['--no-sandbox'] })
@@ -83,7 +91,7 @@ check('a true route match still claims aria-current',
   (await p.locator('nav.fixed a[aria-current="page"]').innerText()).trim().toUpperCase() === 'MATCHES')
 
 // ── Match Center pills ─────────────────────────────────────────────────────
-await p.goto(ORIGIN + '/matches/D1', { waitUntil: 'domcontentloaded' })
+await p.goto(ORIGIN + `/matches/${PLAYED}`, { waitUntil: 'domcontentloaded' })
 await p.waitForTimeout(1500)
 const pillTexts = await p.locator('div.sticky button').allInnerTexts()
 check('completed match shows Match Center pills',
@@ -100,12 +108,18 @@ await p.waitForTimeout(900)
 const after = await p.evaluate(() => window.scrollY)
 check('tapping a pill scrolls to the section', after > before + 200, `${before} -> ${after}`)
 
-// Upcoming match: no Timeline/Stats pills, Preview present
-await p.goto(ORIGIN + '/matches/S2G3', { waitUntil: 'domcontentloaded' })
-await p.waitForTimeout(1400)
-const upPills = await p.locator('div.sticky button').allInnerTexts()
-check('upcoming match has no Timeline/Stats pill',
-  !upPills.some(t => /Timeline|Stats|Story/.test(t)), upPills.join(','))
+// Upcoming match: no Timeline/Stats pills, Preview present. Once every fixture
+// has been played there is nothing left to assert, so the check stands down
+// rather than failing on an empty tournament calendar.
+if (UPCOMING) {
+  await p.goto(ORIGIN + `/matches/${UPCOMING}`, { waitUntil: 'domcontentloaded' })
+  await p.waitForTimeout(1400)
+  const upPills = await p.locator('div.sticky button').allInnerTexts()
+  check('upcoming match has no Timeline/Stats pill',
+    !upPills.some(t => /Timeline|Stats|Story/.test(t)), `${UPCOMING}: ${upPills.join(',')}`)
+} else {
+  console.log('  --   no fixture left unplayed; upcoming-pill check skipped')
+}
 
 // ── Desktop: all seven tabs still in the top nav ───────────────────────────
 const d = await b.newContext({ serviceWorkers: 'block', viewport: { width: 1280, height: 900 } })
