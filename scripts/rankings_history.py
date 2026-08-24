@@ -71,6 +71,27 @@ def snapshots():
 
 def build():
     series = snapshots()
+    # The file must never shrink. CI checks the repository out shallow, so a
+    # run there sees almost no git history and would rewrite eight snapshots
+    # down to one — which silently collapses the whole ranking series and,
+    # with it, every convergence figure the model reads. Whatever we already
+    # hold is merged in, and the union is what gets written.
+    try:
+        with open(os.path.join(DATA, OUT)) as fh:
+            held = json.load(fh).get('snapshots') or []
+    except (OSError, ValueError):
+        held = []
+    by_at = {s['at']: s for s in held}
+    for s in series:
+        by_at[s['at']] = s
+    seen, series = set(), []
+    for at in sorted(by_at):
+        points = by_at[at]['points']
+        key = tuple(sorted(points.items()))
+        if key in seen:
+            continue                       # same table re-committed under a later stamp
+        seen.add(key)
+        series.append({'at': at, 'points': points})
     if not series:
         raise SystemExit('No ranking snapshot found in history.')
     return {

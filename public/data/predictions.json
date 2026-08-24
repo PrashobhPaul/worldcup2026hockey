@@ -3174,7 +3174,7 @@
       "pick_confidence": 0.941,
       "reason": "FIH #10 FRA favoured over #18 JPN — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
       "publishedAt": "2026-08-24T12:16:31.815364+00:00",
-      "pick_team": "TBD"
+      "pick_team": "FRA"
     },
     {
       "id": "oracle-v1:POS15",
@@ -3188,7 +3188,7 @@
       "pick_confidence": 0.592,
       "reason": "FIH #14 MAS favoured over #16 WAL — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
       "publishedAt": "2026-08-24T12:16:31.815364+00:00",
-      "pick_team": "TBD",
+      "pick_team": "MAS",
       "superseded": true,
       "superseded_at": "2026-08-24T15:41:50.985175+00:00",
       "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
@@ -3205,7 +3205,7 @@
       "pick_confidence": 0.572,
       "reason": "FIH #12 RSA favoured over #13 PAK — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
       "publishedAt": "2026-08-24T12:16:31.815364+00:00",
-      "pick_team": "TBD",
+      "pick_team": "RSA",
       "superseded": true,
       "superseded_at": "2026-08-24T15:41:50.985175+00:00",
       "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
@@ -3222,7 +3222,7 @@
       "pick_confidence": 0.607,
       "reason": "FIH #9 NZL favoured over #11 IRL — Elo model from world rankings. Classification slot decided by pool standings. Published pre-match.",
       "publishedAt": "2026-08-24T12:16:31.815364+00:00",
-      "pick_team": "TBD"
+      "pick_team": "NZL"
     },
     {
       "id": "oracle-v2:B4",
@@ -3300,7 +3300,8 @@
       "pick": "AWAY",
       "pick_confidence": 0.613,
       "reason": "FIH #14 MAS favoured over #16 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-24T15:41:50.985175+00:00"
+      "publishedAt": "2026-08-24T15:41:50.985175+00:00",
+      "pick_team": "MAS"
     },
     {
       "id": "oracle-v1:POS11:r2",
@@ -3314,7 +3315,8 @@
       "pick": "AWAY",
       "pick_confidence": 0.537,
       "reason": "FIH #12 RSA favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-24T15:41:50.985175+00:00"
+      "publishedAt": "2026-08-24T15:41:50.985175+00:00",
+      "pick_team": "RSA"
     }
   ]
 }

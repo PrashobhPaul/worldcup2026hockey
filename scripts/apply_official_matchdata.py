@@ -131,13 +131,19 @@ def main():
                 p['pick'] = 'AWAY' if p['pick'] == 'HOME' else 'HOME'
             p['orientation_corrected'] = ('home/away relabelled to the official FIH listing; '
                                           'the team predicted, its probability and publishedAt are unchanged')
-        # The pick is stored as HOME/AWAY, which only means something next to a
-        # fixture. Record the nation itself so the claim survives any later
-        # change of listing, and so a test can prove the two still agree.
+
+
+    # The pick is stored as HOME/AWAY, which only means something next to a
+    # fixture. Record the nation itself so the claim survives any later change
+    # of listing, and so a test can prove the two still agree. This runs every
+    # time, not only when something flipped: a knockout fixture is TBD when its
+    # pick is written and gets its two nations later, and the stamp has to
+    # follow.
+    if not check:
         matches = {m['id']: m for m in fixtures['matches']}
         for p in predictions['predictions']:
             m = matches.get(p['matchId'])
-            if m and p.get('pick') in ('HOME', 'AWAY'):
+            if m and m['home'] != 'TBD' and p.get('pick') in ('HOME', 'AWAY'):
                 p['pick_team'] = m['home'] if p['pick'] == 'HOME' else m['away']
 
     print(f'orientation flipped: {len(flipped)} {flipped}')
