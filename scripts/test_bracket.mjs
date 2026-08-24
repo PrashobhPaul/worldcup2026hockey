@@ -24,7 +24,7 @@ const ids = new Set(fixtures.map(m => m.id))
 
 console.log('Bracket projection')
 
-// ── Every tie must be a real fixture ────────────────────────────────────────
+// ── Every tie must be a real fixture ──────────────────────────────────────
 ok('every projected tie matches a fixture id in the schedule',
    b.ties.every(t => ids.has(t.id)), b.ties.filter(t => !ids.has(t.id)).map(t => t.id).join(','))
 ok('the six classification ties are the POS* fixtures',
@@ -32,7 +32,7 @@ ok('the six classification ties are the POS* fixtures',
 ok('no tie invents a match number the schedule does not have',
    b.ties.every(t => fixtures.find(m => m.id === t.id)?.matchNo != null))
 
-// ── One ordering, used everywhere ───────────────────────────────────────────
+// ── One ordering, used everywhere ─────────────────────────────────────────
 const E = b.stage2.E, F = b.stage2.F
 ok('each Stage-2 pool publishes a table of its four teams',
    Object.values(b.stage2).every(p => p.table.length === 4))
@@ -57,7 +57,7 @@ ok('9th-16th are drawn from Pools G and H in table order',
      b.byId.get(id).home === b.stage2.G.table[i].code &&
      b.byId.get(id).away === b.stage2.H.table[i].code))
 
-// ── The table has to be a table, not a ranking ──────────────────────────────
+// ── The table has to be a table, not a ranking ─────────────────────────────
 ok('the table is sorted by points, then wins, then goal difference',
    Object.values(b.stage2).every(p => p.table.every((r, i) => {
      const q = p.table[i - 1]
@@ -71,17 +71,27 @@ ok('each team has exactly three Stage-2 opponents (one carried, two to come)',
 ok('no pool is called complete while matches are pending',
    Object.values(b.stage2).every(p => p.complete === p.table.every(r => r.pending === 0)))
 
-// ── Locking is about the fixture, not about the calendar ────────────────────
+// ── Locking is about the fixture, not about the calendar ──────────────────────
 ok('a tie is locked only when its fixture names both teams, or it is played',
    b.ties.every(t => {
      const m = fixtures.find(x => x.id === t.id)
      const named = m && m.home !== 'TBD' && m.away !== 'TBD'
      return t.locked === Boolean(t.played || named)
    }), b.ties.filter(t => t.locked).map(t => t.id).join(','))
-ok('with Stage 2 unplayed, no semi-final is presented as settled',
-   !sf1.locked && !sf2.locked)
+// A semi-final is settled exactly when its fixture names both nations — never
+// because the calendar has moved on, and never while a slot still reads TBD.
+// (This used to assert the semis were simply unlocked, which was true only for
+// as long as Stage 2 was unfinished; once the pools resolved it failed on
+// correct behaviour.)
+for (const sf of [sf1, sf2]) {
+  const m = fixtures.find(x => x.id === sf.id)
+  const named = Boolean(m && m.home !== 'TBD' && m.away !== 'TBD')
+  ok(`${sf.id} is settled only once both nations are named`,
+     sf.locked === (named || Boolean(sf.played)),
+     `locked=${sf.locked} named=${named}`)
+}
 
-// ── Real results outrank the projection ─────────────────────────────────────
+// ── Real results outrank the projection ──────────────────────────────────
 // Give Spain a 9-0 win over Germany — a real Stage-2 cross fixture, not the
 // carried Stage-1 pairing — and it must climb the table. The pairing is reset
 // to unplayed for the baseline first: once the real tournament plays it, a
@@ -124,7 +134,7 @@ ok('two real wins lift a projected last place above the teams it beat',
             bs.stage2.F.table.findIndex(r => r.code === 'GER')),
    bs.stage2.F.table.map(r => `${r.code}:${r.pts.toFixed(1)}`).join(' '))
 
-// ── A finished pool must read as fact ───────────────────────────────────────
+// ── A finished pool must read as fact ───────────────────────────────────
 const allF = fixtures.map(m => m.phase === 'stage2' && m.pool === 'F'
   ? { ...m, status: 'completed', score: { home: 2, away: 1 } } : m)
 const bf = project(allF)

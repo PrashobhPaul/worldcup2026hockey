@@ -61,8 +61,16 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/generate_ai_rationales.py
 
-      # Model calibration, replayed as-of-then over every completed match —
-      # published alongside the ledger record so the Trust page can show both.
+      # Written match briefs and pre-match rationales live in the review
+      # scripts, which are the source of truth for that prose. Applying them
+      # here means a brief reaches the published data through the pipeline
+      # rather than only when someone runs the script by hand. Both are
+      # idempotent — they write only when the wording actually differs.
+      - name: Apply written match briefs
+        run: |
+          python scripts/stage1_review.py
+          python scripts/stage2_review.py
+
       # The pipeline rebuilds these files from its own sources every ten
       # minutes, which would quietly undo the corrections made against the
       # official FIH export — a wrong scoreline and eight reversed listings.
@@ -76,6 +84,8 @@ jobs:
       - name: Refresh ranking history
         run: python scripts/rankings_history.py
 
+      # Model calibration, replayed as-of-then over every completed match, so
+      # the figure the app headlines is reproducible from the repository.
       - name: Publish model calibration
         run: python scripts/backtest_model.py --publish
 
