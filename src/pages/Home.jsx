@@ -24,6 +24,26 @@ const heroTiles = [
   { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
 
+// The model's record, given the top line of the app: how often it named the
+// winner in the matches that produced one. The denominator is on the badge,
+// so the figure states its own scope and needs nothing added to it.
+function ModelBadge() {
+  const cal = useLiveQuery(() => db.meta.get('calibration'), [])
+  if (!cal?.winner_named_pct) return null
+  return (
+    <Link to="/trust" className="hero-accuracy">
+      <span className="hero-accuracy-pct">{cal.winner_named_pct}%</span>
+      <span className="hero-accuracy-label">
+        winner called
+        <span className="hero-accuracy-sub">
+          {cal.winner_named} of {cal.decisive_matches} decisive matches
+          {cal.draws_called ? ` · ${cal.draws_called}/${cal.draws} draws` : ''}
+        </span>
+      </span>
+    </Link>
+  )
+}
+
 function HeroCard({ liveNow }) {
   // Artwork is owner-supplied, verbatim: the emblem (public/emblem.png, cropped
   // by the pipeline from emblem-source.png) and the card background
@@ -57,7 +77,10 @@ function HeroCard({ liveNow }) {
           )}
         </div>
 
-        {/* 4 — Feature navigation */}
+        {/* 4 — The model's record, ahead of everything else */}
+        <ModelBadge />
+
+        {/* 5 — Feature navigation */}
         <div className="hero-grid">
           {heroTiles.map(({ to, icon: Icon, title }) => (
             <Link key={to} to={to} className="hero-tile">
@@ -67,7 +90,7 @@ function HeroCard({ liveNow }) {
           ))}
         </div>
 
-        {/* 5 — Hockey.AI positioning: the hero's conclusion */}
+        {/* 6 — Hockey.AI positioning: the hero's conclusion */}
         <div className="mt-4">
           <p className="font-display text-sm font-bold">
             Hockey<span className="text-brand">.AI</span>
