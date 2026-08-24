@@ -72,7 +72,7 @@
       "name": "New Zealand",
       "flag": "🇳🇿",
       "pool": "A",
-      "fih_rank": 10,
+      "fih_rank": 9,
       "host": false,
       "nickname": "Black Sticks",
       "color": "#000000",
@@ -153,14 +153,14 @@
       "contender_tier": "favourite",
       "win_prob": 16.9,
       "intro": "The Red Lions are the modern era's great overachievers: Olympic champions, world champions in 2018, and co-hosts here with a home crowd in Brussels for the knockout nights. Belgium have no World Cup title from before their golden generation and everything since. Alexander Hendrickx remains the most feared drag-flicker in the game, Vincent Vanasch one of its best goalkeepers, and Arthur de Sloover captains a side that treats structure as a weapon. Anything less than the medal rounds would count as failure.",
-      "fih_points": 3684.39,
+      "fih_points": 3671.8,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 2,
-        "draws": 1,
+        "draws": 2,
         "losses": 1,
-        "gf": 9,
-        "ga": 7
+        "gf": 10,
+        "ga": 8
       }
     },
     {
@@ -168,7 +168,7 @@
       "name": "France",
       "flag": "🇫🇷",
       "pool": "B",
-      "fih_rank": 11,
+      "fih_rank": 10,
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
@@ -185,14 +185,14 @@
       "contender_tier": "challenger",
       "win_prob": 2.1,
       "intro": "Les Bleus are the story of the last decade in European hockey — from qualification afterthought to a side nobody wants in their pool. France build around Victor Charlet, whose corner routines can win a match on their own, and a counter-attack that punishes a single lost midfield duel. Drawn with Belgium and Germany in Pool B, they will need one upset; on their evidence of recent years, that is not a fanciful ask.",
-      "fih_points": 2666.31,
+      "fih_points": 2784.56,
       "form": {
-        "played": 4,
-        "wins": 0,
+        "played": 5,
+        "wins": 1,
         "draws": 2,
         "losses": 2,
-        "gf": 7,
-        "ga": 10
+        "gf": 9,
+        "ga": 11
       }
     },
     {
@@ -200,7 +200,7 @@
       "name": "Germany",
       "flag": "🇩🇪",
       "pool": "B",
-      "fih_rank": 6,
+      "fih_rank": 3,
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
@@ -217,14 +217,14 @@
       "contender_tier": "contender",
       "win_prob": 9.3,
       "intro": "Four world titles, the most of any nation here, and a habit of arriving at tournaments in better shape than the rankings suggest. Germany's last World Cup came in 2006, but the intervening years have produced a stream of finals and a culture that reloads rather than rebuilds. Niklas Wellen and Christopher Rühr give them scoring from open play as well as set pieces. Pool B alongside Belgium is the toughest first-round draw in the tournament.",
-      "fih_points": 3412.41,
+      "fih_points": 3530.72,
       "form": {
-        "played": 4,
-        "wins": 2,
+        "played": 5,
+        "wins": 3,
         "draws": 1,
         "losses": 1,
-        "gf": 8,
-        "ga": 4
+        "gf": 12,
+        "ga": 6
       }
     },
     {
@@ -249,14 +249,14 @@
       "contender_tier": "challenger",
       "win_prob": 2.6,
       "intro": "The Tigers arrive as Asia's most improved side and the team most likely to make the pool stage uncomfortable for somebody. Malaysia's hockey is played at pace, with Tengku Ahmad Tajuddin driving from midfield and Adrian Albert leading a squad that has closed the gap on the European sides in recent seasons. In Pool B with Belgium, Germany and France, they will need to take at least one scalp — and they have taken them before.",
-      "fih_points": 2392.89,
+      "fih_points": 2404.94,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 0,
         "draws": 1,
-        "losses": 3,
-        "gf": 11,
-        "ga": 20
+        "losses": 4,
+        "gf": 13,
+        "ga": 23
       }
     },
     {
@@ -264,7 +264,7 @@
       "name": "Australia",
       "flag": "🇦🇺",
       "pool": "C",
-      "fih_rank": 3,
+      "fih_rank": 5,
       "host": false,
       "nickname": "Kookaburras",
       "color": "#00843D",
@@ -281,14 +281,14 @@
       "contender_tier": "favourite",
       "win_prob": 21.6,
       "intro": "The Kookaburras are a fixture at the top of the world rankings, and the position flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Blake Govers' flick and Tom Wickham's movement lead the scoring threat. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided once the crossover stage begins.",
-      "fih_points": 3595.52,
+      "fih_points": 3477.21,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 2,
         "draws": 2,
-        "losses": 0,
-        "gf": 7,
-        "ga": 4
+        "losses": 1,
+        "gf": 9,
+        "ga": 8
       }
     },
     {
@@ -296,7 +296,7 @@
       "name": "Spain",
       "flag": "🇪🇸",
       "pool": "C",
-      "fih_rank": 5,
+      "fih_rank": 6,
       "host": false,
       "nickname": "Los Redsticks",
       "color": "#AA151B",
@@ -313,14 +313,14 @@
       "contender_tier": "contender",
       "win_prob": 6.2,
       "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a Stage-2 draw where their patience and set-piece accuracy can outlast a more expansive opponent.",
-      "fih_points": 3425.14,
+      "fih_points": 3437.73,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 3,
-        "draws": 0,
+        "draws": 1,
         "losses": 1,
-        "gf": 8,
-        "ga": 4
+        "gf": 9,
+        "ga": 5
       }
     },
     {
@@ -328,7 +328,7 @@
       "name": "Ireland",
       "flag": "🇮🇪",
       "pool": "C",
-      "fih_rank": 9,
+      "fih_rank": 11,
       "host": false,
       "nickname": "Green Machine",
       "color": "#169B62",
@@ -345,14 +345,14 @@
       "contender_tier": "dark_horse",
       "win_prob": 2.8,
       "intro": "The Green Machine reached this World Cup the hard way, and that has been Ireland's pattern for a decade: qualify against the odds, then make life miserable for someone better resourced. Conor Harte leads a squad with Shane O'Donoghue's experience and a defensive block that stays compact for the full seventy minutes. Pool C offers Spain and South Africa as realistic targets, and Ireland have made a habit of taking realistic targets.",
-      "fih_points": 2848.76,
+      "fih_points": 2730.51,
       "form": {
-        "played": 4,
+        "played": 5,
         "wins": 2,
         "draws": 0,
-        "losses": 2,
-        "gf": 13,
-        "ga": 11
+        "losses": 3,
+        "gf": 14,
+        "ga": 13
       }
     },
     {
@@ -360,7 +360,7 @@
       "name": "South Africa",
       "flag": "🇿🇦",
       "pool": "C",
-      "fih_rank": 12,
+      "fih_rank": 13,
       "host": false,
       "nickname": "Amabhungane",
       "color": "#007A4D",
@@ -377,14 +377,14 @@
       "contender_tier": "outsider",
       "win_prob": 0.9,
       "intro": "Amabhungane arrive as Africa's representatives and the lowest-ranked side in Pool C, a position South Africa have turned into an identity. Austin Smith's experience anchors a squad that plays with more freedom than its ranking implies, and their tournament will hinge on the fixture against Ireland. South Africa have never got out of a World Cup pool; this is a group where the arithmetic at least allows the conversation.",
-      "fih_points": 2597.38,
+      "fih_points": 2585.34,
       "form": {
-        "played": 4,
-        "wins": 1,
+        "played": 5,
+        "wins": 2,
         "draws": 1,
         "losses": 2,
-        "gf": 7,
-        "ga": 10
+        "gf": 10,
+        "ga": 12
       }
     },
     {
@@ -456,7 +456,7 @@
       "name": "Pakistan",
       "flag": "🇵🇰",
       "pool": "D",
-      "fih_rank": 13,
+      "fih_rank": 12,
       "host": false,
       "nickname": "Green Shirts",
       "color": "#01411C",
@@ -518,5 +518,5 @@
   ],
   "intros_note": "Team introductions written before the tournament (pre-push-back, 15 Aug 2026). Not updated with results.",
   "rankings_source": "https://www.fih.hockey/outdoor-hockey-rankings",
-  "rankings_updated_at": "2026-08-23T01:34:48.533243+00:00"
+  "rankings_updated_at": "2026-08-24T01:26:22.640535+00:00"
 }

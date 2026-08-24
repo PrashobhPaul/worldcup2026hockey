@@ -1,9 +1,9 @@
 {
   "matches": 36,
-  "correct": 25,
-  "accuracy_pct": 69,
-  "brier": 0.4103,
-  "log_loss": 0.7131,
+  "correct": 23,
+  "accuracy_pct": 64,
+  "brier": 0.4264,
+  "log_loss": 0.7354,
   "method": "as-of-then replay: every completed match re-scored with only the form and rankings available before its own push-back",
-  "updated_at": "2026-08-23T20:26:56.696889+00:00"
+  "updated_at": "2026-08-24T01:26:32.933520+00:00"
 }

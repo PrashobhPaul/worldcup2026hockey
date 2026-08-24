@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-23T23:23:50.142125+00:00",
+  "updated_at": "2026-08-24T01:26:32.639319+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -2871,7 +2871,10 @@
       "pick": "HOME",
       "pick_confidence": 0.749,
       "reason": "FIH #10 NZL favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+      "publishedAt": "2026-08-23T01:34:58.688222+00:00",
+      "superseded": true,
+      "superseded_at": "2026-08-24T01:26:32.638985+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
     },
     {
       "id": "oracle-v1:S2E3:r8",
@@ -2900,6 +2903,20 @@
       "pick_confidence": 0.772,
       "reason": "FIH #1 NED favoured over #4 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "publishedAt": "2026-08-23T01:34:58.688222+00:00"
+    },
+    {
+      "id": "oracle-v1:S2G4:r11",
+      "matchId": "S2G4",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2G4:r10",
+      "p_home_win": 0.749,
+      "p_draw": 0.141,
+      "p_away_win": 0.111,
+      "pick": "HOME",
+      "pick_confidence": 0.749,
+      "reason": "FIH #9 NZL favoured over #12 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "publishedAt": "2026-08-24T01:26:32.638985+00:00"
     }
   ]
 }
