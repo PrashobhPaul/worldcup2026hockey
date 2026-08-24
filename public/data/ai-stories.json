@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T09:45:21.853487+00:00",
+  "updated_at": "2026-08-24T12:16:31.985669+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -226,6 +226,13 @@
       "matchId": "S2G3",
       "story": "Japan edged Wales 3-2 at the Wagener Stadion in Amstelveen, in a Pool G tie of the FIH Hockey World Cup 2026. Japan came in ranked 18th in the world, Wales 16th.\n\nJapan scored through Shota Yamada (15', penalty corner), Kosei Kawabe (28') and Kazumasa Matsumoto (60'); Wales through Jacob Draper (49', penalty corner) and Sam Welsh (60'). The opener came in Q1 and the final goal in Q4.\n\nJapan won 1 penalty corner to Wales' 1. 4 cards were shown.",
       "generatedAt": "2026-08-24T09:45:21.853384+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "S2G4",
+      "story": "New Zealand beat Pakistan 4-2 at the Wagener Stadion in Amstelveen, in a Pool G tie of the FIH Hockey World Cup 2026. New Zealand came in ranked 9th in the world, Pakistan 12th.\n\nNew Zealand scored through Dylan Thomas (1'), Scott Boyde (16'), George Baker (22') and Kane Russell (49', penalty corner); Pakistan through Sufyan Khan (33', penalty corner) and Afraz (38', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nNew Zealand won 1 penalty corner to Pakistan's 2. 2 cards were shown.",
+      "generatedAt": "2026-08-24T12:16:31.985641+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }
