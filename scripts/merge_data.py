@@ -246,11 +246,17 @@ def merge_rankings_history(ours, theirs):
 
 
 def merge_version(ours, theirs):
+    # The fingerprint is NOT set here: it describes the whole published set,
+    # and this handler sees only data-version.json. On the after-the-fact path
+    # main() restamps once every file is written. On the driver path nothing
+    # can — git hands each handler temporary files and updates the working
+    # tree only after the last driver returns — so whoever ran `git merge`
+    # restamps afterwards. The pipeline does it in update-data.yml; a local
+    # merge is caught by `data_fingerprint.py --check`, which says what to run.
     v = max((ours or {}).get('version', 0), (theirs or {}).get('version', 0)) + 1
     base = theirs or ours or {}
     base['version'] = v
     return base, f'version -> {v}'
-    # (the fingerprint is restamped after all files are written — see main)
 
 
 HANDLERS = {

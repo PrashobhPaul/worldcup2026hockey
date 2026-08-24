@@ -66,6 +66,15 @@ jobs:
             echo "Already contains main - nothing to merge."
           else
             git merge --no-edit origin/main
+            # A merge produces content neither side published on its own, so
+            # the stamp has to describe the result. The merge driver cannot do
+            # it: git hands each handler temporary files and updates the
+            # working tree only once every driver has returned, so nothing
+            # inside the merge can hash the finished tree.
+            python3 scripts/data_fingerprint.py --write
+            if ! git diff --quiet public/data/data-version.json; then
+              git commit -qam "data: restamp the fingerprint after merging main"
+            fi
             git push origin HEAD:${{ github.ref_name }}
           fi
 
