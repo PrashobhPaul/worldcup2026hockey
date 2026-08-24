@@ -1,0 +1,52 @@
+name: Merge main into this branch
+
+# The pipeline rewrites public/data/*.json on main every ten minutes, so any
+# branch open for more than a few minutes conflicts with it. .gitattributes
+# hands those files to scripts/merge_data.py, which knows which side owns
+# what — but a merge driver is per-clone git config, and GitHub's servers
+# never run it. That is why the same conflict, with the same correct answer,
+# keeps reappearing on every pull request.
+#
+# This job is that missing clone: it checks the branch out, configures the
+# driver, merges main, and pushes the result. Dispatch it whenever a pull
+# request goes red on conflicts.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Teach this clone the data merge driver
+        run: |
+          git config merge.hockeydata.name "Hockey.AI data merge"
+          git config merge.hockeydata.driver "python3 scripts/merge_data.py --driver %O %A %B %P"
+          git config user.name "hockey-ai-bot"
+          git config user.email "actions@github.com"
+
+      - name: Merge main
+        run: |
+          git fetch origin main
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "Already contains main — nothing to merge."
+            exit 0
+          fi
+          git merge --no-edit origin/main
+          git push origin HEAD:${{ github.ref_name }}
