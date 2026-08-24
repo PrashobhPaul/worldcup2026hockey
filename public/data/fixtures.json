@@ -4,7 +4,7 @@
   "location": "Belgium & Netherlands",
   "start": "2026-08-15",
   "end": "2026-08-30",
-  "last_updated": "2026-08-24T07:03:25.583229+00:00",
+  "last_updated": "2026-08-24T07:57:11.078189+00:00",
   "source": "FIH TMS",
   "phases": [
     "Pool A",
@@ -18403,7 +18403,7 @@
       "time": "09:30",
       "timezone": "CET",
       "venue": "AMV",
-      "status": "scheduled",
+      "status": "live",
       "score": {
         "home": null,
         "away": null
@@ -18757,7 +18757,12 @@
           "coach": "Daniel Newcombe"
         }
       },
-      "tms_id": 22370
+      "tms_id": 22370,
+      "live_score": {
+        "home": 0,
+        "away": 0,
+        "at": "2026-08-24T07:56:57.214483+00:00"
+      }
     },
     {
       "id": "S2G4",

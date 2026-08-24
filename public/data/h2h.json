@@ -1648,6 +1648,15 @@
     ],
     "JPN-WAL": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-24",
+        "home": "JPN",
+        "away": "WAL",
+        "home_goals": 0,
+        "away_goals": 0,
+        "current": false
+      },
+      {
         "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
         "date": "2025-06-20",
         "home": "JPN",
@@ -2051,5 +2060,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-24T07:03:13.239600+00:00"
+  "updated_at": "2026-08-24T07:56:56.158635+00:00"
 }
