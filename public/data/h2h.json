@@ -2022,6 +2022,167 @@
         "away_goals": 1,
         "current": false
       }
+    ],
+    "FRA-JPN": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
+        "date": "2026-06-19",
+        "home": "JPN",
+        "away": "FRA",
+        "home_goals": 3,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Hockey World League Semi-Final (Men)",
+        "date": "2017-07-13",
+        "home": "JPN",
+        "away": "FRA",
+        "home_goals": 1,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Champions Challenge 1 2014 (M)",
+        "date": "2014-05-03",
+        "home": "JPN",
+        "away": "FRA",
+        "home_goals": 2,
+        "away_goals": 3,
+        "current": false
+      }
+    ],
+    "MAS-WAL": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Malaysia 2024-25",
+        "date": "2025-06-21",
+        "home": "WAL",
+        "away": "MAS",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "FIH Men&#039;s Series Finals Kuala Lumpur 2019",
+        "date": "2019-05-01",
+        "home": "WAL",
+        "away": "MAS",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "XXI Commonwealth Games (M)",
+        "date": "2018-04-07",
+        "home": "WAL",
+        "away": "MAS",
+        "home_goals": 0,
+        "away_goals": 3,
+        "current": false
+      }
+    ],
+    "PAK-RSA": [
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup Poland 2023-24",
+        "date": "2024-06-09",
+        "home": "PAK",
+        "away": "RSA",
+        "home_goals": 3,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2022",
+        "date": "2022-11-28",
+        "home": "PAK",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 6,
+        "current": false
+      },
+      {
+        "competition": "2022 Sultan Azlan Shah Cup",
+        "date": "2022-11-01",
+        "home": "PAK",
+        "away": "RSA",
+        "home_goals": 1,
+        "away_goals": 4,
+        "current": false
+      },
+      {
+        "competition": "Commonwealth Games 2022 (M)",
+        "date": "2022-07-30",
+        "home": "PAK",
+        "away": "RSA",
+        "home_goals": 2,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hockey World League Semi-Final - Men",
+        "date": "2013-07-07",
+        "home": "PAK",
+        "away": "RSA",
+        "home_goals": 6,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hockey World League Semi-Final - Men",
+        "date": "2013-07-02",
+        "home": "PAK",
+        "away": "RSA",
+        "home_goals": 6,
+        "away_goals": 2,
+        "current": false
+      }
+    ],
+    "IRL-NZL": [
+      {
+        "competition": "2024 Olympic Games (M)",
+        "date": "2024-08-02",
+        "home": "NZL",
+        "away": "IRL",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "Hockey World League Semi-Final (Men)",
+        "date": "2017-07-22",
+        "home": "NZL",
+        "away": "IRL",
+        "home_goals": 0,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "2016 6 Nations Invitational (Valencia) : (M)",
+        "date": "2016-07-02",
+        "home": "NZL",
+        "away": "IRL",
+        "home_goals": 1,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Champions Challenge 1 2014 (M)",
+        "date": "2014-04-26",
+        "home": "NZL",
+        "away": "IRL",
+        "home_goals": 2,
+        "away_goals": 1,
+        "current": false
+      },
+      {
+        "competition": "Rabobank Hockey World League Semi-Final - Men",
+        "date": "2013-06-15",
+        "home": "NZL",
+        "away": "IRL",
+        "home_goals": 4,
+        "away_goals": 2,
+        "current": false
+      }
     ]
   },
   "updated_at": "2026-08-24T19:25:52.687423+00:00"

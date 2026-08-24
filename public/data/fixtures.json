@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-24T19:26:08.656968+00:00",
+ "last_updated": "2026-08-24T19:30:26.741925+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -656,7 +656,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T19:26:08.635090+00:00",
+    "generated_at": "2026-08-24T18:03:16.045115+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -2645,7 +2645,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T19:26:08.637007+00:00",
+    "generated_at": "2026-08-24T18:03:16.047044+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -4055,7 +4055,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T19:26:08.638372+00:00",
+    "generated_at": "2026-08-24T18:03:16.048448+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -6180,7 +6180,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T19:26:08.640221+00:00",
+    "generated_at": "2026-08-24T18:03:16.050309+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -8190,7 +8190,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T19:26:08.642137+00:00",
+    "generated_at": "2026-08-24T18:03:16.052120+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
@@ -10339,7 +10339,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T19:26:08.643968+00:00",
+    "generated_at": "2026-08-24T18:03:16.053946+00:00",
     "home": {
      "formation": "4-3-3",
      "fromTeamList": true,
