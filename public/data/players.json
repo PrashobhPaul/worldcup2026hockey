@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-25T13:52:55.391892+00:00",
+  "last_updated": "2026-08-25T14:26:26.085463+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -17,7 +17,7 @@
       "profile": "World's best drag flick specialist and captain. Penalty corner conversion rate 42%.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 98.0,
+      "ai_rating": 99,
       "on_team_list": true,
       "dob": "6 Jan 1996",
       "caps": 269
@@ -29,7 +29,7 @@
       "position": "Midfielder",
       "number": 7,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -38,7 +38,7 @@
       "profile": "Experienced midfield general. Orchestrates India's transitions.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 66.6,
+      "ai_rating": 61.0,
       "on_team_list": true,
       "dob": "26 Jun 1992",
       "caps": 422
@@ -99,7 +99,7 @@
       "profile": "Pacey forward. Scored India's third goal vs Wales.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 71.7,
+      "ai_rating": 70.0,
       "on_team_list": true,
       "dob": "15 Aug 1999",
       "caps": 140
@@ -120,7 +120,7 @@
       "profile": "Kookaburras captain. World-class link-up midfielder.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 64.6,
+      "ai_rating": 61.0,
       "on_team_list": false
     },
     {
@@ -130,7 +130,7 @@
       "position": "Forward",
       "number": 9,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -149,7 +149,7 @@
       "position": "Forward",
       "number": 13,
       "goals": 3,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -158,7 +158,7 @@
       "profile": "Drag flick specialist. High PC conversion rate.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 78.0,
+      "ai_rating": 80.0,
       "on_team_list": true,
       "dob": "6 Jul 1996",
       "caps": 184
@@ -198,7 +198,7 @@
       "profile": "World's most feared drag flicker. Penalty corner conversion rate 50%+.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 69.0,
       "on_team_list": true,
       "dob": "6 Aug 1993",
       "caps": 236
@@ -219,7 +219,7 @@
       "profile": "Red Lions captain. Dictates tempo from midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 61.0,
       "on_team_list": true,
       "dob": "3 May 1997",
       "caps": 213
@@ -240,7 +240,7 @@
       "profile": "Experienced international. Key link in Belgium's midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 61.0,
       "on_team_list": false
     },
     {
@@ -280,7 +280,7 @@
       "profile": "Captain of the host nation. Explosive forward with international pedigree.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 83.1,
+      "ai_rating": 81.0,
       "on_team_list": true,
       "dob": "19 Mar 1995",
       "caps": 223
@@ -301,7 +301,7 @@
       "profile": "Creative midfielder. Known for incisive passing.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 67.8,
+      "ai_rating": 61.0,
       "on_team_list": false
     },
     {
@@ -311,7 +311,7 @@
       "position": "Midfielder",
       "number": 11,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -320,7 +320,7 @@
       "profile": "Dynamic midfielder. Key to Netherlands' high press.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 64.8,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -358,7 +358,7 @@
       "profile": "Los Leones captain. Tenacious and experienced.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 65.6,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -396,7 +396,7 @@
       "profile": "Experienced drag-flicker. Argentina's primary PC option.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 67.8,
+      "ai_rating": 65.0,
       "on_team_list": false
     },
     {
@@ -415,7 +415,7 @@
       "profile": "Germany's captain and solid defensive anchor.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 70.6,
+      "ai_rating": 67.0,
       "on_team_list": false
     },
     {
@@ -434,7 +434,7 @@
       "profile": "Germany's top goal scorer. International class forward.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": 66.0,
       "on_team_list": true,
       "dob": "19 Dec 1993",
       "caps": 215
@@ -455,7 +455,7 @@
       "profile": "Midfield workhorse for Die Mannschaft.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 62.8,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -474,7 +474,7 @@
       "profile": "England's captain. Commanding midfielder.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 76.7,
+      "ai_rating": 68.0,
       "on_team_list": true,
       "dob": "17 Apr 1996",
       "caps": 142
@@ -495,7 +495,7 @@
       "profile": "England's most dangerous forward. Clinical finisher.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 74.3,
+      "ai_rating": 73.0,
       "on_team_list": true,
       "dob": "24 Dec 1990",
       "caps": 255
@@ -535,7 +535,7 @@
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 70.7,
+      "ai_rating": 67.0,
       "on_team_list": true,
       "dob": "14 Nov 1997",
       "caps": 153
@@ -547,7 +547,7 @@
       "position": "Forward",
       "number": 11,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -575,7 +575,7 @@
       "profile": "Creative playmaker. Scored in multiple major tournaments.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 61.6,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -594,7 +594,7 @@
       "profile": "Pakistan's captain. Skilful and combative.",
       "green_cards": 2,
       "matches_played": 5,
-      "ai_rating": 84.5,
+      "ai_rating": 80.0,
       "on_team_list": true,
       "dob": "13 Mar 2004",
       "caps": 76
@@ -606,7 +606,7 @@
       "position": "Forward",
       "number": 11,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -634,7 +634,7 @@
       "profile": "Energetic midfielder. Links defence and attack.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 63.2,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -672,7 +672,7 @@
       "profile": "Green Machine captain. Experienced defender.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 60.8,
+      "ai_rating": 60.0,
       "on_team_list": false
     },
     {
@@ -691,7 +691,7 @@
       "profile": "Malaysia's skipper. Hard-working midfield dynamo.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 63.6,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -729,7 +729,7 @@
       "profile": "South Africa's captain. Dogged and determined.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -748,7 +748,7 @@
       "profile": "Black Sticks skipper. Solid defensive leader.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": 65.0,
       "on_team_list": true,
       "dob": "30 Apr 1997",
       "caps": 138
@@ -769,7 +769,7 @@
       "profile": "Samurai Japan's captain. Engine of Japan's midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 60.8,
+      "ai_rating": 58.0,
       "on_team_list": false
     },
     {
@@ -788,7 +788,7 @@
       "profile": "France's captain and main attacking force.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 72.0,
+      "ai_rating": 77.0,
       "on_team_list": true,
       "dob": "19 Nov 1993",
       "caps": 188
@@ -809,7 +809,7 @@
       "profile": "Wales captain. Spirited leader in the Dragons' midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 90.0,
+      "ai_rating": 84.0,
       "on_team_list": true,
       "dob": "10 May 1992",
       "caps": 188
@@ -5797,7 +5797,7 @@
       "position": "Squad",
       "number": 5,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -6721,7 +6721,7 @@
       "position": "Squad",
       "number": 23,
       "goals": 3,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -7183,7 +7183,7 @@
       "position": "Squad",
       "number": 3,
       "goals": 0,
-      "assists": 0,
+      "assists": 1,
       "pc_scored": 0,
       "yellow_cards": 1,
       "red_cards": 0,
