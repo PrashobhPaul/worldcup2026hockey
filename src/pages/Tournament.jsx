@@ -4,6 +4,8 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings, computeStage2Standings } from '../engine/standings'
+import { cardPoints } from '../engine/awards'
+import { roleOf } from '../engine/bestXI'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
@@ -192,18 +194,29 @@ function StatsView({ teams, matches, byCode }) {
         to: `/teams/${code}`, chip: `${v.played} played`, value: v.ga, invert: true,
       }))
 
-    const cards = new Map(teams.map(t => [t.code, 0]))
+    // One weighting for cards, shared with the fair-play award, and scored per
+    // match played: a side that has played six matches is not punished for
+    // having been on the pitch longer than one that played four. This board
+    // used to ignore the green card, which in hockey is a suspension.
+    const cards = new Map(teams.map(t => [t.code, { pts: 0, count: 0 }]))
     for (const e of events) {
-      const pts = e.type === 'yellow_card' ? 1 : e.type === 'red_card' ? 3 : 0
-      if (pts && cards.has(e.team)) cards.set(e.team, cards.get(e.team) + pts)
+      const pts = cardPoints(e.type)
+      if (!pts || !cards.has(e.team)) continue
+      const r = cards.get(e.team)
+      r.pts += pts
+      r.count += 1
     }
     const fairPlay = played
-      .map(([code]) => ({ code, pts: cards.get(code) ?? 0 }))
-      .sort((x, y) => x.pts - y.pts)
+      .map(([code, row]) => {
+        const c = cards.get(code) ?? { pts: 0, count: 0 }
+        return { code, perMatch: row.played ? c.pts / row.played : 0, count: c.count, mp: row.played }
+      })
+      .sort((x, y) => x.perMatch - y.perMatch || x.count - y.count)
       .slice(0, 8)
       .map(r => ({
         key: r.code, name: byCode.get(r.code)?.name ?? r.code, flag: byCode.get(r.code)?.flag,
-        to: `/teams/${r.code}`, value: r.pts, invert: true,
+        to: `/teams/${r.code}`, value: r.perMatch.toFixed(1), invert: true,
+        chip: `${r.count} card${r.count === 1 ? '' : 's'} in ${r.mp}`,
       }))
 
     // ── Hockey.AI derivations ──────────────────────────────────────────
@@ -257,15 +270,22 @@ function StatsView({ teams, matches, byCode }) {
                    chip: p.position && p.position !== 'Squad' ? p.position : `${p.goals}G`,
                    value: p.ai_rating }))
 
+    // Ranked on the role each player is actually placed in — the FIH's where
+    // it states one, Hockey.AI's derivation where it does not. Reading
+    // `position` alone left the defenders' board with six names in a
+    // tournament of sixteen squads, because the entry list states a position
+    // for barely a fifth of the players.
     const performers = {}
     for (const pos of ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']) {
       performers[pos] = [...players]
-        .filter(p => p.position === pos && p.ai_rating != null)
+        .filter(p => roleOf(p).role === pos && p.ai_rating != null)
         .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
         .slice(0, 8)
         .map(p => ({
           key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-          chip: pos === 'Goalkeeper' ? 'keeper' : `${p.goals}G · ${p.pc_scored} PC`,
+          chip: pos === 'Goalkeeper'
+            ? (roleOf(p).source === 'FIH' ? 'keeper · FIH' : 'keeper')
+            : `${p.goals}G · ${p.pc_scored} PC · ${roleOf(p).source === 'FIH' ? 'FIH' : 'derived'}`,
           value: p.ai_rating,
         }))
     }
@@ -294,8 +314,8 @@ function StatsView({ teams, matches, byCode }) {
         <Board title="Talisman" icon={TalismanIcon} sub="Share of a side's goals, in per cent" rows={boards.talisman}
           derived accent="text-live"
           footnote="A player's goals as a percentage of everything their team has scored." />
-        <Board title="Fair Play" icon={FairPlayIcon} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
-          footnote="Totals grow with matches played, so deep runs carry more bookings." />
+        <Board title="Fair Play" icon={FairPlayIcon} sub="Disciplinary points per match — lower is cleaner" rows={boards.fairPlay} accent="text-live" derived
+          footnote="Green 1 · yellow 2 · red 5, following the length of the suspension each card carries, divided by matches played. The same weighting decides the fair-play award." />
       </div>
 
       {hasRatings && (

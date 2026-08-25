@@ -10,8 +10,31 @@
 // `winner` stays null until the pipeline fills it in. These are Hockey.AI's
 // standings for the same categories, and every surface that shows them says so.
 
-/** Cards weighted by severity, per match played — lower is cleaner. */
-const CARD_WEIGHT = { green: 1, yellow: 2, red: 5 }
+/**
+ * Cards weighted by severity, per match played — lower is cleaner.
+ *
+ * Hockey's three cards are three different sanctions: green is a two-minute
+ * suspension, yellow at least five, red is the rest of the match. The weights
+ * follow that, and this is the only place they are written down — the Fair
+ * Play board and the fair-play award once disagreed about what a card costs
+ * and about whether a green counted at all.
+ */
+export const CARD_WEIGHT = { green: 1, yellow: 2, red: 5 }
+
+/** Discipline points for one player, from the card counts on their record. */
+export function disciplinePoints(p) {
+  return (p.green_cards ?? 0) * CARD_WEIGHT.green
+    + (p.yellow_cards ?? 0) * CARD_WEIGHT.yellow
+    + (p.red_cards ?? 0) * CARD_WEIGHT.red
+}
+
+/** The same weighting applied to a single card event. */
+export function cardPoints(eventType) {
+  return eventType === 'green_card' ? CARD_WEIGHT.green
+    : eventType === 'yellow_card' ? CARD_WEIGHT.yellow
+    : eventType === 'red_card' ? CARD_WEIGHT.red
+    : 0
+}
 
 /** FIH junior eligibility is an age cut. Age on the day the tournament opened. */
 export const JUNIOR_MAX_AGE = 21
@@ -55,9 +78,8 @@ export function teamLedger(matches, players) {
   for (const p of players ?? []) {
     const r = rows.get(p.team)
     if (!r) continue
-    const g = p.green_cards ?? 0, y = p.yellow_cards ?? 0, rd = p.red_cards ?? 0
-    r.cards += g + y + rd
-    r.cardPoints += g * CARD_WEIGHT.green + y * CARD_WEIGHT.yellow + rd * CARD_WEIGHT.red
+    r.cards += (p.green_cards ?? 0) + (p.yellow_cards ?? 0) + (p.red_cards ?? 0)
+    r.cardPoints += disciplinePoints(p)
   }
   return rows
 }
