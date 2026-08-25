@@ -191,6 +191,37 @@ jobs:
               -d "{\"ref\":\"$b\"}" || echo "  could not dispatch on $b"
           done
 
+      # The same rule that makes the Pages dispatch below necessary — a
+      # GITHUB_TOKEN push triggers no `on: push` workflow — means a data push
+      # into a pull request's head branch leaves that pull request's own CI
+      # unrun, and GitHub queues the pull_request run as awaiting approval. So
+      # the branch is left reading "unstable" with an unrun check, which is
+      # exactly what a reviewer should not have to interpret.
+      #
+      # The gates therefore run here, in the run that made the change, whenever
+      # this pipeline is working on a branch rather than on main. main's own
+      # data pushes are covered by CI on the merge that lands them.
+      - name: Verify the data this run just wrote
+        if: steps.commit.outputs.pushed == 'true' && github.ref_name != 'main'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Run the gates against the new data
+        if: steps.commit.outputs.pushed == 'true' && github.ref_name != 'main'
+        run: |
+          npm ci
+          npm run test:probability
+          npm run test:bracket
+          npm run test:tiers
+          npm run test:accuracy
+          npm run test:picks
+          npm run test:playerstats
+          npm run test:bestxi
+          npm run test:fingerprint
+          python3 scripts/test_story_facts.py
+
       # GITHUB_TOKEN pushes never trigger `on: push` workflows, so the Pages
       # deploy must be dispatched explicitly or the live site serves stale data.
       - name: Redeploy GitHub Pages with fresh data
