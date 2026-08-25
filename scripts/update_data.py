@@ -717,6 +717,156 @@ def probe_match_report(tms_id):
         print(f'PROBE match page {tms_id}: no body ({pctype})')
 
 
+# ── Official per-player tournament figures ────────────────────────────────
+# Every TMS match page carries, for each of the two nations, the squad table
+# the FIH publishes for this competition:
+#
+#   Shirt #   Player                 Goals   Games Played   Current Caps
+#   22        CHARLET Victor           3          5             188
+#   7         MONTECOT Lucas           0          1              27
+#   23        CLÉMENT Marius (GK)      0          0               1
+#
+# then a totals row and "* As of <date>".
+#
+# Games Played is the figure this project had no source for. Every squad
+# member was being credited with his team's whole tournament, which is how a
+# player who has not left the bench ended up carrying the same appearance
+# count as a captain who played every minute. It is also the availability term
+# any honest rating needs: output has to be read against the time on the pitch
+# that produced it.
+#
+# The line-up pages are a separate matter and are now settled: the match page
+# states "Lineups will be displayed when the Match is in Warmup", which is why
+# all 88 of them answer 403 after the fact. There is no retrospective official
+# starting XI for this competition.
+MATCHPAGE_HEAD = ['Shirt #', 'Player', 'Goals', 'Games Played', 'Current Caps']
+_INT = re.compile(r'^\d{1,4}$')
+
+
+def parse_match_page_squads(lines):
+    """[{team_label, rows: [{number, name, goals, games_played, caps, ...}]}]
+
+    Read as fixed five-cell rows following the column headings, which is what
+    the page flattens to. A row is accepted only when its four numeric cells
+    are numeric and its name cell looks like a name — a totals row ("&nbsp;",
+    "9", "&nbsp;") therefore ends the table by failing to parse, rather than
+    by being recognised, so a layout change cannot smuggle one in as a player.
+    """
+    blocks = []
+    i = 0
+    while i < len(lines):
+        if [l.strip() for l in lines[i:i + 5]] != MATCHPAGE_HEAD:
+            i += 1
+            continue
+        # The nation heading sits just above, past a "PDF Lineup Form" link.
+        label = None
+        for back in range(1, 4):
+            cand = lines[i - back].strip() if i - back >= 0 else ''
+            if cand and cand != 'PDF Lineup Form' and not _INT.match(cand):
+                label = cand
+                break
+        rows, j = [], i + 5
+        while j + 4 < len(lines):
+            num, name, goals, games, caps = (l.strip() for l in lines[j:j + 5])
+            if not (_INT.match(num) and _INT.match(goals)
+                    and _INT.match(games) and _INT.match(caps)):
+                break
+            bare, roles = split_role(name)
+            if not NAME_CELL.match(bare):
+                break
+            rows.append({
+                'number': int(num),
+                'name': normalize_fih_name(' '.join(bare.split())),
+                'goals': int(goals),
+                'games_played': int(games),
+                'caps': int(caps),
+                'goalkeeper': bool(roles & {'GK', 'G'}),
+                'is_captain': 'C' in roles,
+            })
+            j += 5
+        if rows:
+            blocks.append({'team_label': label, 'rows': rows})
+        i = max(j, i + 5)
+    return blocks
+
+
+def fetch_official_player_figures(fixtures, links, players_doc):
+    """Write the FIH's own per-player figures onto our squad list.
+
+    A match page carries the table for both nations in that fixture, so
+    covering sixteen teams takes at most eight pages. Each team records the
+    number of completed matches its figures were read at, and is refetched
+    only once it has played again — so a run that changes nothing costs
+    nothing, and the figures never lag the record they describe.
+    """
+    if not links:
+        return False
+    players = players_doc['players']
+    squads = {}
+    for p in players:
+        squads.setdefault(p['team'], {})[p['name'].split()[-1].casefold()] = p
+
+    completed = {}
+    for m in fixtures['matches']:
+        if m['status'] == 'completed' and has_score(m):
+            for side in ('home', 'away'):
+                completed[m[side]] = completed.get(m[side], 0) + 1
+
+    stale = {code for code, n in completed.items()
+             if max((squads[code][k].get('figures_after') or 0)
+                    for k in squads.get(code, {})) < n} if squads else set()
+    if not stale:
+        print('FIGURES: every squad is current with the FIH match pages.')
+        return False
+
+    by_tms = {str(m.get('tms_id')): m for m in fixtures['matches'] if m.get('tms_id')}
+    # Newest pages first: the figures are tournament-to-date, so a later match
+    # page states a more recent line for both of its nations.
+    order = sorted(links, key=lambda mid: -int(mid))
+    changed = wrote = 0
+    for mid in order:
+        if not stale:
+            break
+        m = by_tms.get(str(mid))
+        if m and not ({m['home'], m['away']} & stale):
+            continue
+        body, _ = _tms_get(f'{TMS_HOST}/matches/{mid}', referer=TMS_BASE + '/matches')
+        if not body:
+            continue
+        blocks = parse_match_page_squads(_tms_lines(body))
+        for blk in blocks:
+            code = TEAM_CODE_MAP.get((blk['team_label'] or '').lower().strip())
+            if not code or code not in stale:
+                continue
+            index = squads.get(code, {})
+            hit = 0
+            for row in blk['rows']:
+                p = index.get(row['name'].split()[-1].casefold())
+                if not p:
+                    continue
+                hit += 1
+                for field, value in (('games_played', row['games_played']),
+                                     ('goals_official', row['goals']),
+                                     ('caps', row['caps'])):
+                    if p.get(field) != value:
+                        p[field] = value
+                        changed += 1
+                p['figures_after'] = completed.get(code, 0)
+                p['figures_source'] = 'fih-tms-matchpage'
+            # A block that matched almost none of a squad was not that squad.
+            if hit >= max(10, len(blk['rows']) // 2):
+                stale.discard(code)
+                wrote += 1
+                print(f'FIGURES: {code} — {hit} players updated from match page {mid}.')
+            else:
+                print(f'FIGURES: {code} block on page {mid} matched only {hit} '
+                      f'of {len(blk["rows"])} names — not applied.')
+    if stale:
+        print(f'FIGURES: no match page carried current figures for {sorted(stale)}.')
+    print(f'FIGURES: {wrote} squad(s) refreshed, {changed} field(s) written.')
+    return bool(changed)
+
+
 # ── Head-to-head history ──────────────────────────────────────────────────
 # Every TMS match page ends with a "Head to Head Matches" table: one row per
 # previous meeting between the two nations. The probe dump (IND v WAL) shows a
@@ -2265,6 +2415,12 @@ def derive_position(agg, stated):
     return None, None
 
 
+from player_rating import rate_group
+
+# The final quarter starts at 45 minutes in a four-quarter match.
+LATE_FROM_MINUTE = 46
+
+
 def update_player_stats(fixtures, players_doc):
     """
     Full idempotent recompute of every player's tournament numbers from the
@@ -2277,8 +2433,10 @@ def update_player_stats(fixtures, players_doc):
     team_conceded = {}
     team_scored = {}
 
-    agg = {p['name']: {'goals': 0, 'pc': 0, 'ps': 0, 'green': 0, 'yellow': 0, 'red': 0, 'mids': set()}
+    agg = {p['name']: {'goals': 0, 'pc': 0, 'ps': 0, 'late': 0,
+                       'green': 0, 'yellow': 0, 'red': 0, 'mids': set()}
            for p in players}
+    rating_rows = []
 
     for m in fixtures['matches']:
         if m['status'] != 'completed' or not has_score(m):
@@ -2296,6 +2454,8 @@ def update_player_stats(fixtures, players_doc):
             a['mids'].add(m['id'])
             if e['type'] == 'goal':
                 a['goals'] += 1
+                if (e.get('minute') or 0) >= LATE_FROM_MINUTE:
+                    a['late'] += 1
                 if e.get('via') == 'PC':
                     a['pc'] += 1
                 elif e.get('via') in ('PS', 'STROKE'):
@@ -2318,65 +2478,33 @@ def update_player_stats(fixtures, players_doc):
         ga_per_match = conceded / tm if tm else 0
 
         # ── Hockey.AI Player Index ─────────────────────────────────────
-        # A rating per position, built only from things this record can
-        # actually support: goals and how they were scored, cards, the team's
-        # scoring and conceding rate, and standing coming in. It is Hockey.AI's
-        # number, not the FIH's, and every surface that prints it says so.
-        #
-        # Positions are weighted for what the position is asked to do:
-        #   Goalkeeper  clean sheets and the goals-against rate carry it
-        #   Defender    goals against, plus drag-flick output — the penalty
-        #               corner is a defender's weapon in this sport
-        #   Midfielder  scoring and set-piece involvement, and the team's
-        #               attacking rate, which a midfield drives
-        #   Forward     goals above all, field goals weighted highest because
-        #               they are made rather than awarded
-        # Discipline is deducted everywhere. Volume scales the whole thing, so
-        # a player who has featured in one match cannot out-rank a tournament.
-        # The role the ratings are computed for: the FIH's when it states one,
-        # otherwise Hockey.AI's, derived above. A player with nothing on the
-        # record gets no role and falls through to the unclassified branch.
+        # Raw figures only here. The rating itself is a separate engine
+        # (scripts/player_rating.py): components, percentile-normalised inside
+        # the position group, weighted for what the position is asked to do,
+        # and carrying its own breakdown so the number can be read rather than
+        # taken on trust. Nothing is scored 0 for want of a source — a
+        # component the record cannot feed is declared missing and its weight
+        # is redistributed.
         pos, pos_source = derive_position(a, p.get('position'))
         scored = team_scored.get(p['team'], 0)
-        gf_per_match = scored / tm if tm else 0
-        field_goals = max(0, a['goals'] - a['pc'] - a['ps'])
-        share = (a['goals'] / scored) if scored else 0     # of the team's goals
-
-        if pos == 'Goalkeeper':
-            clean_sheets = 0
-            for m in fixtures['matches']:
-                if m['status'] == 'completed' and has_score(m):
-                    if m['home'] == p['team'] and m['score']['away'] == 0: clean_sheets += 1
-                    if m['away'] == p['team'] and m['score']['home'] == 0: clean_sheets += 1
-            base = 62 + max(0, (3.0 - ga_per_match)) * 9 + clean_sheets * 4
-        elif pos == 'Defender':
-            base = (58 + max(0, (3.0 - ga_per_match)) * 7
-                    + a['pc'] * 6 + field_goals * 4 + a['ps'] * 3)
-        elif pos == 'Midfielder':
-            base = (58 + a['goals'] * 5 + a['pc'] * 2
-                    + gf_per_match * 2 + share * 10)
-        elif pos == 'Forward':
-            base = (56 + field_goals * 7 + a['pc'] * 4 + a['ps'] * 4
-                    + share * 12)
-        else:
-            # No role: nothing on the record to derive one from. Cards alone
-            # still say something about a player who has been on the pitch.
-            contributed = a['yellow'] or a['red'] or a['green']
-            base = 57 if contributed else None
-        if base is None:
-            rating = None
-        else:
-            base -= a['yellow'] * 2 + a['red'] * 6
-            if p.get('world_rank'):
-                # FIH world top-114 standing as a prior: #1 is worth +8,
-                # tailing to nothing at #114 — enough to separate stars before
-                # events accrue, small enough for the ledger to overrule it.
-                base += (115 - p['world_rank']) / 114 * 8
-            elif p.get('fih_star'):
-                base += 3
-            if p.get('is_captain'): base += 1
-            volume = math.sqrt(mp / max_team_mp) if max_team_mp else 1
-            rating = round(min(99, max(40, 40 + (base - 40) * volume)), 1)
+        # Appearances are the FIH's, from the match-page squad table. Where
+        # that has not been read yet the figure is left unset rather than
+        # assumed: crediting every squad member with his team's whole
+        # tournament is what let a player who never left the bench carry the
+        # same appearance count as a captain who played every minute.
+        official_mp = p.get('games_played')
+        rating_rows.append({
+            'player': p,
+            'position': pos,
+            'goals': a['goals'],
+            'pc_scored': a['pc'],
+            'ps_scored': a['ps'],
+            'games_played': official_mp,
+            'late_goals': a['late'],
+            'goal_share': (a['goals'] / scored) if scored else 0.0,
+            'card_points': a['green'] * 1 + a['yellow'] * 2 + a['red'] * 5,
+            'team_ga_per_match': ga_per_match if tm else None,
+        })
 
         new_vals = {
             'goals': a['goals'],
@@ -2390,8 +2518,9 @@ def update_player_stats(fixtures, players_doc):
             'yellow_cards': a['yellow'],
             'red_cards': a['red'],
             'green_cards': a['green'],
-            'matches_played': mp,
-            'ai_rating': rating,
+            # The FIH's appearance count where it has been read, and the
+            # team's match count only as a stand-in until it has.
+            'matches_played': official_mp if official_mp is not None else mp,
             # The role every surface reads, and where it came from. `position`
             # is left exactly as the FIH entry list gave it and is never
             # rewritten — these sit beside it.
@@ -2402,8 +2531,37 @@ def update_player_stats(fixtures, players_doc):
             if p.get(k) != v:
                 p[k] = v
                 changed = True
+    # ── Rate, one position group at a time ─────────────────────────────
+    # Percentiles only mean something against comparable players, so a
+    # goalkeeper is ranked among goalkeepers. A player the record gives no
+    # role to is not rated: there is no position to rate him against.
+    for position in ('Goalkeeper', 'Defender', 'Midfielder', 'Forward'):
+        group = [r for r in rating_rows if r['position'] == position]
+        if not group:
+            continue
+        for row, result in zip(group, rate_group(group, position)):
+            p = row['player']
+            want = (result or {}).get('rating')
+            breakdown = (result or {}).get('components')
+            for field, value in (('ai_rating', want),
+                                 ('rating_components', breakdown),
+                                 ('rating_coverage', (result or {}).get('coverage')),
+                                 ('rating_missing', (result or {}).get('components_missing'))):
+                if p.get(field) != value:
+                    p[field] = value
+                    changed = True
+    # Anyone with no position carries no rating, rather than a stale one.
+    rated_names = {r['player']['name'] for r in rating_rows if r['position']}
+    for p in players:
+        if p['name'] in rated_names:
+            continue
+        for field in ('ai_rating', 'rating_components', 'rating_coverage', 'rating_missing'):
+            if p.get(field) is not None:
+                p[field] = None
+                changed = True
+
     if changed:
-        print('PLAYER STATS: recomputed tournament aggregates + AI ratings')
+        print('PLAYER STATS: recomputed tournament aggregates + positional ratings')
     return changed
 
 # ------------------------------------------------- knockout slotting
@@ -2974,6 +3132,10 @@ def main():
     # collision does not show up as a wrong number — it shows up as a player
     # who is simply not there.
     players_changed |= dedupe_player_ids(players)
+    # The FIH's own per-player figures — appearances above all, which nothing
+    # else here has a source for. Read from the same match pages the schedule
+    # and head-to-head passes already visit.
+    players_changed |= fetch_official_player_figures(fixtures, links, players)
     teams_changed |= apply_coaches(teams, staff)
     try:
         players_changed |= apply_player_rankings(players, load('player_rankings.json'))

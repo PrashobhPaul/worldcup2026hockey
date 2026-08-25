@@ -120,5 +120,12 @@ jobs:
       - name: Best XI is positional and players are uniquely identified
         run: npm run test:bestxi
 
+      # The rating has to be readable: every number is the weighted sum of the
+      # components printed beside it, each component is a percentile inside a
+      # comparable position group, and a component the record cannot feed is
+      # declared rather than scored zero.
+      - name: The positional rating explains itself
+        run: npm run test:rating
+
       - name: Build
         run: npm run build

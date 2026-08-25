@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Link } from 'react-router-dom'
+import RatingBreakdown from '../components/RatingBreakdown'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import SiblingNav from '../components/SiblingNav'
@@ -10,6 +11,9 @@ const POSITIONS = ['all', 'Forward', 'Midfielder', 'Defender', 'Goalkeeper']
 export default function PlayersPage() {
   const [pos, setPos] = useState('all')
   const [teamFilter, setTeamFilter] = useState('all')
+  // Which player's rating breakdown is open. The number means nothing on its
+  // own; the components behind it are the point.
+  const [openId, setOpenId] = useState(null)
   const players = useLiveQuery(() => db.players.toArray(), [])
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const byCode = new Map(teams.map(t => [t.code, t]))
@@ -76,6 +80,7 @@ export default function PlayersPage() {
       <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map(p => {
           const t = byCode.get(p.team)
+          const open = openId === p.id
           return (
             <div key={p.id} className="rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/20">
               <div className="flex items-center gap-2">
@@ -90,16 +95,23 @@ export default function PlayersPage() {
               </div>
               <div className="mt-2.5 flex flex-wrap gap-1.5 font-mono text-[10px]">
                 {p.ai_rating != null && (
-                  <span className="rounded bg-live/10 px-1.5 py-0.5 font-bold text-live">AI {p.ai_rating}</span>
+                  <button onClick={() => setOpenId(open ? null : p.id)}
+                    className="rounded bg-live/10 px-1.5 py-0.5 font-bold text-live hover:bg-live/20">
+                    AI {p.ai_rating} {open ? '▾' : '▸'}
+                  </button>
                 )}
                 {p.world_rank != null && (
                   <span className="rounded bg-sky-400/10 px-1.5 py-0.5 font-bold text-sky-300" title="FIH player world ranking">World #{p.world_rank}</span>
                 )}
                 <span className={`rounded px-1.5 py-0.5 ${p.goals > 0 ? 'bg-brand/10 text-brand' : 'bg-pitch-700 text-pitch-300'}`}>⚡ {p.goals}G</span>
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">{p.pc_scored} PC</span>
-                <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">🔴 {p.pc_scored} PC</span>
                 {p.yellow_cards > 0 && <span className="rounded bg-yellow-400/10 px-1.5 py-0.5 text-yellow-400">🟨 {p.yellow_cards}</span>}
               </div>
+              {open && (
+                <div className="mt-2.5">
+                  <RatingBreakdown player={p} />
+                </div>
+              )}
             </div>
           )
         })}

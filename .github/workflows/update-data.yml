@@ -219,6 +219,7 @@ jobs:
           npm run test:picks
           npm run test:playerstats
           npm run test:bestxi
+          npm run test:rating
           npm run test:fingerprint
           python3 scripts/test_story_facts.py
 

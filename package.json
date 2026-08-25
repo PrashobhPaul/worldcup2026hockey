@@ -24,7 +24,8 @@
     "test:fingerprint": "python3 scripts/data_fingerprint.py --check",
     "smoke:mobile": "node scripts/smoke_mobile.mjs",
     "smoke:routes": "node scripts/smoke_routes.mjs",
-    "test:bestxi": "node scripts/test_best_xi.mjs"
+    "test:bestxi": "node scripts/test_best_xi.mjs",
+    "test:rating": "node scripts/test_player_rating.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.8",
