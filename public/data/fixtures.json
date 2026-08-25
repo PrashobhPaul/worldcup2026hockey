@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-25T13:52:55.391892+00:00",
+ "last_updated": "2026-08-25T14:27:57.054233+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -151,7 +151,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T14:45:38.990692+00:00",
+    "generated_at": "2026-08-25T14:27:57.032219+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -638,7 +638,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T18:03:16.045115+00:00",
+    "generated_at": "2026-08-25T14:27:57.032936+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -1148,7 +1148,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.965096+00:00",
+    "generated_at": "2026-08-25T14:27:57.033445+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -1633,7 +1633,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.965594+00:00",
+    "generated_at": "2026-08-25T14:27:57.033894+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -2068,7 +2068,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T14:45:38.992705+00:00",
+    "generated_at": "2026-08-25T14:27:57.034355+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -2560,7 +2560,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T18:03:16.047044+00:00",
+    "generated_at": "2026-08-25T14:27:57.034787+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -3032,7 +3032,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-23T14:26:50.814933+00:00",
+    "generated_at": "2026-08-25T14:27:57.035214+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -3504,7 +3504,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-23T11:19:32.213166+00:00",
+    "generated_at": "2026-08-25T14:27:57.035659+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -3921,7 +3921,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T18:03:16.048448+00:00",
+    "generated_at": "2026-08-25T14:27:57.036087+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -4479,7 +4479,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T12:16:31.799483+00:00",
+    "generated_at": "2026-08-25T14:27:57.036575+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -4990,7 +4990,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.969013+00:00",
+    "generated_at": "2026-08-25T14:27:57.037017+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -5470,7 +5470,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.969474+00:00",
+    "generated_at": "2026-08-25T14:27:57.037452+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -5978,7 +5978,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T18:03:16.050309+00:00",
+    "generated_at": "2026-08-25T14:27:57.037882+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -6418,7 +6418,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.970442+00:00",
+    "generated_at": "2026-08-25T14:27:57.038294+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -6887,7 +6887,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.970941+00:00",
+    "generated_at": "2026-08-25T14:27:57.038734+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -7396,7 +7396,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-23T14:26:50.819202+00:00",
+    "generated_at": "2026-08-25T14:27:57.039167+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -7922,7 +7922,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T18:03:16.052120+00:00",
+    "generated_at": "2026-08-25T14:27:57.039590+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -8488,7 +8488,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.972378+00:00",
+    "generated_at": "2026-08-25T14:27:57.040017+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -9048,7 +9048,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.972879+00:00",
+    "generated_at": "2026-08-25T14:27:57.040493+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -9536,7 +9536,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-23T17:23:04.970089+00:00",
+    "generated_at": "2026-08-25T14:27:57.040917+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -10003,7 +10003,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T18:03:16.053946+00:00",
+    "generated_at": "2026-08-25T14:27:57.041368+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -10533,7 +10533,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.974297+00:00",
+    "generated_at": "2026-08-25T14:27:57.041784+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -11077,7 +11077,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-23T11:19:32.220065+00:00",
+    "generated_at": "2026-08-25T14:27:57.042200+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -11573,7 +11573,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-24T15:41:50.975254+00:00",
+    "generated_at": "2026-08-25T14:27:57.042640+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
