@@ -22,7 +22,9 @@
     "test:picks": "node scripts/test_pick_coherence.mjs",
     "test:playerstats": "node scripts/test_player_stats.mjs",
     "test:fingerprint": "python3 scripts/data_fingerprint.py --check",
-    "smoke:mobile": "node scripts/smoke_mobile.mjs"
+    "smoke:mobile": "node scripts/smoke_mobile.mjs",
+    "smoke:routes": "node scripts/smoke_routes.mjs",
+    "test:bestxi": "node scripts/test_best_xi.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.8",

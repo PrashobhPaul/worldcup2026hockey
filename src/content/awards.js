@@ -69,17 +69,37 @@ export const AWARDS_DISCLAIMER =
   'Award grading will reflect Oracle picks locked before the tournament began, recorded in the ' +
   'repository history. Official award winners per FIH, announced after the Gold Final on 30 August 2026.'
 
-// Player of the Tournament race — scoring weights (softmax over scores).
-// Mirrors Soccer.AI’s Ballon d’Or model disclosure, adapted to hockey.
+// Player of the Tournament race.
+//
+// The weights ARE the disclosure: the race scores each player by running the
+// terms below, and the "How Oracle scores this" panel prints the same list.
+// They cannot drift apart, which they had — the panel advertised a 15% assist
+// term that the scoring code never applied and that the FIH record cannot
+// support, because it publishes no assists for this competition.
 export const POTM_MODEL = {
-  weights: [
-    ['Goals', '30% — goals scored, with penalty-corner goals at full value'],
-    ['Assists', '15% — direct goal involvement beyond finishing'],
-    ['Team run', '25% — champion probability of the player’s team (Oracle live odds)'],
-    ['Set-piece threat', '15% — penalty-corner goals as a specialist signal'],
-    ['Pedigree', '15% — FIH star status and captaincy'],
+  terms: [
+    { key: 'goals', label: 'Goals', weight: 3.0,
+      of: p => p.goals ?? 0,
+      describe: 'per goal scored, however it was scored' },
+    { key: 'team_run', label: 'Team run', weight: 25,
+      of: (p, ctx) => ctx.championOf(p.team),
+      describe: 'times the champion probability of the player’s team, from Oracle' },
+    { key: 'set_piece', label: 'Set-piece threat', weight: 1.5,
+      of: p => p.pc_scored ?? 0,
+      describe: 'extra per penalty-corner goal — the specialist’s signal' },
+    { key: 'pedigree_star', label: 'Pedigree', weight: 1.5,
+      of: p => (p.fih_star ? 1 : 0),
+      describe: 'for a player the FIH lists among its world-ranked stars' },
+    { key: 'pedigree_captain', label: 'Captaincy', weight: 0.5,
+      of: p => (p.is_captain ? 1 : 0),
+      describe: 'for wearing the armband' },
   ],
   softmaxT: 4,
   note: 'Scores convert to probabilities via softmax (T = 4), summing to 100%. ' +
     'Recomputed after every completed match — this is a live race, not a frozen list.',
+}
+
+/** The one place a race score is computed. */
+export function potmScore(player, ctx) {
+  return POTM_MODEL.terms.reduce((sum, t) => sum + t.weight * t.of(player, ctx), 0)
 }

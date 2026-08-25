@@ -7,11 +7,11 @@ import { computeStandings, computeStage2Standings } from '../engine/standings'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
-import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
-import iconAttacking from '../assets/boards/icon-most-attacking.png'
-import iconDefense from '../assets/boards/icon-strongest-defense.png'
-import iconStandings from '../assets/boards/icon-standings.png'
-import iconPerformers from '../assets/boards/icon-attack-defense.png'
+import {
+  GoldenStickIcon, CrossedSticksIcon, KeeperPadIcon, PenaltyCornerIcon,
+  PlayerIndexIcon, FinalQuarterIcon, TalismanIcon, FairPlayIcon, PodiumIcon,
+  DerivedBadge,
+} from '../components/hockeyIcons'
 
 // The bracket is NOT here on purpose: the Oracle owns the one bracket view
 // (semis, medals, advance odds), and a second copy under the Cup confused
@@ -114,27 +114,15 @@ function BestXISpace({ players, byCode, xi, setXi }) {
 // Where a board's numbers come from. FIH boards count things the official
 // record states; Hockey.AI boards are this app's own derivation from that
 // record. The badge is on every board so a reader never has to guess which
-// kind they are looking at.
-function SourceBadge({ derived }) {
-  return derived ? (
-    <span className="rounded bg-brand/10 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-brand">
-      Hockey.AI
-    </span>
-  ) : (
-    <span className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-pitch-400">
-      FIH
-    </span>
-  )
-}
-
-function Board({ title, sub, rows, accent = 'text-brand', footnote, icon, derived = false }) {
+// kind they are looking at. One badge, shared with every other surface.
+function Board({ title, sub, rows, accent = 'text-brand', footnote, icon: Icon, derived = false }) {
   const max = Math.max(1, ...rows.map(r => r.value))
   return (
     <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
       <h2 className="flex items-center gap-2 font-display text-base font-semibold">
-        {icon && <img src={icon} alt="" className="h-6 w-6 rounded" />}
+        {Icon && <Icon size={26} />}
         <span className="flex-1">{title}</span>
-        <SourceBadge derived={derived} />
+        <DerivedBadge derived={derived} />
       </h2>
       <p className="mb-3 mt-0.5 text-[11px] text-pitch-400">{sub}</p>
       {rows.length === 0
@@ -145,15 +133,19 @@ function Board({ title, sub, rows, accent = 'text-brand', footnote, icon, derive
               <li key={r.key} className={`flex items-center gap-2.5 rounded-lg px-2 py-1.5 ${i === 0 ? 'bg-brand/5' : ''}`}>
                 <span className="w-5 text-center font-mono text-xs font-bold text-pitch-400">{i + 1}</span>
                 <span className="text-base">{r.flag}</span>
-                {r.to
-                  ? <Link to={r.to} className="min-w-0 flex-1 truncate text-sm font-semibold hover:text-brand">{r.name} {i === 0 && '🏆'}</Link>
-                  : <span className="min-w-0 flex-1 truncate text-sm font-semibold">{r.name} {i === 0 && '🏆'}</span>}
-                <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-pitch-600 sm:block">
+                {/* Name and detail stack. Sharing one row with the detail
+                    text truncated every name on a phone — "Harmanpre…". */}
+                <div className="min-w-0 flex-1">
+                  {r.to
+                    ? <Link to={r.to} className="block truncate text-sm font-semibold hover:text-brand">{r.name} {i === 0 && '🏆'}</Link>
+                    : <span className="block truncate text-sm font-semibold">{r.name} {i === 0 && '🏆'}</span>}
+                  {r.chip && <span className="block truncate font-mono text-[10px] text-pitch-400">{r.chip}</span>}
+                </div>
+                <div className="hidden h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-pitch-600 sm:block">
                   <div className={`h-full rounded-full ${r.invert ? 'bg-sky-400' : 'bg-brand'}`}
                     style={{ width: `${Math.max(6, (r.invert ? 1 - r.value / (max + 1) : r.value / max) * 100)}%` }} />
                 </div>
-                {r.chip && <span className="font-mono text-[10px] text-pitch-400">{r.chip}</span>}
-                <span className={`w-8 text-right font-mono text-sm font-bold ${accent}`}>{r.value}</span>
+                <span className={`w-8 shrink-0 text-right font-mono text-sm font-bold ${accent}`}>{r.value}</span>
               </li>
             ))}
           </ol>
@@ -286,30 +278,30 @@ function StatsView({ teams, matches, byCode }) {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
-        <Board title="Golden Stick" icon={iconGoldenStick} sub="Most goals in the tournament" rows={boards.scorers}
+        <Board title="Golden Stick" icon={GoldenStickIcon} sub="Most goals in the tournament" rows={boards.scorers}
           footnote="Ranked by goals, then by how many came from penalty corners — set-piece goals at full value." />
-        <Board title="Most Attacking" icon={iconAttacking} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
-        <Board title="Strongest Defense" icon={iconDefense} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
-        <Board title="Set-Piece Specialists" sub="Goals scored from penalty corners" rows={boards.setPiece}
+        <Board title="Most Attacking" icon={CrossedSticksIcon} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
+        <Board title="Strongest Defense" icon={KeeperPadIcon} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
+        <Board title="Set-Piece Specialists" icon={PenaltyCornerIcon} sub="Goals scored from penalty corners" rows={boards.setPiece}
           derived accent="text-brand"
           footnote="Counted from the goal method in the official record — the corner itself is not an FIH statistic, the goal is." />
-        <Board title="Hockey.AI Player Index" sub="This app's rating, by position and output" rows={boards.index}
+        <Board title="Hockey.AI Player Index" icon={PlayerIndexIcon} sub="This app's rating, by position and output" rows={boards.index}
           derived accent="text-brand"
           footnote="Goalkeepers on clean sheets and goals against; defenders on the same plus drag-flick output; midfielders on scoring and share; forwards on goals, field goals weighted highest. Cards deduct. Scaled by matches played." />
-        <Board title="Fourth-Quarter Goals" sub="Goals scored from the 46th minute on" rows={boards.clutch}
+        <Board title="Fourth-Quarter Goals" icon={FinalQuarterIcon} sub="Goals scored from the 46th minute on" rows={boards.clutch}
           derived accent="text-live"
           footnote="Derived from goal minutes in the official record." />
-        <Board title="Talisman" sub="Share of a side's goals, in per cent" rows={boards.talisman}
+        <Board title="Talisman" icon={TalismanIcon} sub="Share of a side's goals, in per cent" rows={boards.talisman}
           derived accent="text-live"
           footnote="A player's goals as a percentage of everything their team has scored." />
-        <Board title="Fair Play" icon={iconStandings} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
+        <Board title="Fair Play" icon={FairPlayIcon} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
           footnote="Totals grow with matches played, so deep runs carry more bookings." />
       </div>
 
       {hasRatings && (
         <>
           <div className="flex items-center gap-2.5 pt-2">
-            <img src={iconPerformers} alt="" className="h-8 w-8 rounded" />
+            <PodiumIcon size={34} />
             <div>
               <h2 className="font-display text-base font-semibold">Top Performers</h2>
               <p className="text-[11px] text-pitch-400">AI positional ratings · updated after every completed match</p>

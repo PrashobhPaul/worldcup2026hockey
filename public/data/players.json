@@ -20,7 +20,9 @@
       "ai_rating": 98.0,
       "on_team_list": true,
       "dob": "6 Jan 1996",
-      "caps": 269
+      "caps": 269,
+      "position_effective": "Defender",
+      "position_source": "FIH"
     },
     {
       "id": "IND_02",
@@ -41,7 +43,9 @@
       "ai_rating": 66.6,
       "on_team_list": true,
       "dob": "26 Jun 1992",
-      "caps": 422
+      "caps": 422,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "IND_03",
@@ -60,7 +64,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 62.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "IND_04",
@@ -81,7 +87,9 @@
       "ai_rating": 58.0,
       "on_team_list": true,
       "dob": "10 May 1993",
-      "caps": 249
+      "caps": 249,
+      "position_effective": "Defender",
+      "position_source": "FIH"
     },
     {
       "id": "IND_05",
@@ -102,7 +110,9 @@
       "ai_rating": 71.7,
       "on_team_list": true,
       "dob": "15 Aug 1999",
-      "caps": 140
+      "caps": 140,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_01",
@@ -121,7 +131,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 64.6,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_02",
@@ -140,7 +152,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 59.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_03",
@@ -161,7 +175,9 @@
       "ai_rating": 78.0,
       "on_team_list": true,
       "dob": "6 Jul 1996",
-      "caps": 184
+      "caps": 184,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_04",
@@ -180,7 +196,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 78.6,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "BEL_01",
@@ -201,7 +219,9 @@
       "ai_rating": 73.0,
       "on_team_list": true,
       "dob": "6 Aug 1993",
-      "caps": 236
+      "caps": 236,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "BEL_02",
@@ -222,7 +242,9 @@
       "ai_rating": 65.0,
       "on_team_list": true,
       "dob": "3 May 1997",
-      "caps": 213
+      "caps": 213,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "BEL_03",
@@ -241,7 +263,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 65.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "BEL_04",
@@ -262,7 +286,9 @@
       "ai_rating": 77.6,
       "on_team_list": true,
       "dob": "21 Dec 1987",
-      "caps": 304
+      "caps": 304,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "NED_01",
@@ -283,7 +309,9 @@
       "ai_rating": 83.1,
       "on_team_list": true,
       "dob": "19 Mar 1995",
-      "caps": 223
+      "caps": 223,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "NED_02",
@@ -302,7 +330,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 67.8,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "NED_03",
@@ -321,7 +351,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 64.8,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "NED_04",
@@ -340,7 +372,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 78.2,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ARG_01",
@@ -359,7 +393,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 65.6,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "ARG_02",
@@ -378,7 +414,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 56.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "ARG_03",
@@ -397,7 +435,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 67.8,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Defender",
+      "position_source": "FIH"
     },
     {
       "id": "GER_01",
@@ -416,7 +456,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 70.6,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Defender",
+      "position_source": "FIH"
     },
     {
       "id": "GER_02",
@@ -437,7 +479,9 @@
       "ai_rating": 67.0,
       "on_team_list": true,
       "dob": "19 Dec 1993",
-      "caps": 215
+      "caps": 215,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "GER_03",
@@ -456,7 +500,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 62.8,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "ENG_01",
@@ -477,7 +523,9 @@
       "ai_rating": 76.7,
       "on_team_list": true,
       "dob": "17 Apr 1996",
-      "caps": 142
+      "caps": 142,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "ENG_02",
@@ -498,7 +546,9 @@
       "ai_rating": 74.3,
       "on_team_list": true,
       "dob": "24 Dec 1990",
-      "caps": 255
+      "caps": 255,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "ENG_03",
@@ -517,7 +567,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 71.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ESP_01",
@@ -538,7 +590,9 @@
       "ai_rating": 70.7,
       "on_team_list": true,
       "dob": "14 Nov 1997",
-      "caps": 153
+      "caps": 153,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "ESP_02",
@@ -557,7 +611,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 56.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "ESP_03",
@@ -576,7 +632,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 61.6,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "PAK_01",
@@ -597,7 +655,9 @@
       "ai_rating": 84.5,
       "on_team_list": true,
       "dob": "13 Mar 2004",
-      "caps": 76
+      "caps": 76,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "PAK_02",
@@ -616,7 +676,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 56.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "PAK_03",
@@ -635,7 +697,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 63.2,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "IRL_01",
@@ -654,7 +718,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 56.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "IRL_02",
@@ -673,7 +739,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 60.8,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Defender",
+      "position_source": "FIH"
     },
     {
       "id": "MAS_01",
@@ -692,7 +760,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 63.6,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "MAS_02",
@@ -711,7 +781,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 56.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "RSA_01",
@@ -730,7 +802,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 62.0,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "NZL_01",
@@ -751,7 +825,9 @@
       "ai_rating": 67.0,
       "on_team_list": true,
       "dob": "30 Apr 1997",
-      "caps": 138
+      "caps": 138,
+      "position_effective": "Defender",
+      "position_source": "FIH"
     },
     {
       "id": "JPN_01",
@@ -770,7 +846,9 @@
       "green_cards": 0,
       "matches_played": 5,
       "ai_rating": 60.8,
-      "on_team_list": false
+      "on_team_list": false,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "FRA_01",
@@ -791,7 +869,9 @@
       "ai_rating": 72.0,
       "on_team_list": true,
       "dob": "19 Nov 1993",
-      "caps": 188
+      "caps": 188,
+      "position_effective": "Forward",
+      "position_source": "FIH"
     },
     {
       "id": "WAL_01",
@@ -812,7 +892,9 @@
       "ai_rating": 90.0,
       "on_team_list": true,
       "dob": "10 May 1992",
-      "caps": 188
+      "caps": 188,
+      "position_effective": "Midfielder",
+      "position_source": "FIH"
     },
     {
       "id": "ARG_04",
@@ -834,7 +916,9 @@
       "matches_played": 5,
       "ai_rating": 78.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ARG_05",
@@ -876,9 +960,11 @@
       "dob": "6 May 1997",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 71.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ARG_07",
@@ -898,9 +984,11 @@
       "dob": "5 Jun 1997",
       "caps": 163,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 70.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ARG_09",
@@ -922,7 +1010,9 @@
       "matches_played": 5,
       "ai_rating": 78.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ARG_10",
@@ -964,9 +1054,11 @@
       "dob": "25 Feb 2002",
       "caps": 38,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 71.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ARG_12",
@@ -1010,7 +1102,9 @@
       "matches_played": 5,
       "ai_rating": 99,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ARG_14",
@@ -1096,9 +1190,11 @@
       "dob": "3 May 2001",
       "caps": 79,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 73.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ARG_18",
@@ -1140,7 +1236,7 @@
       "dob": "27 May 1996",
       "caps": 121,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1162,9 +1258,11 @@
       "dob": "22 Oct 2003",
       "caps": 62,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ARG_21",
@@ -1206,9 +1304,11 @@
       "dob": "20 Aug 2000",
       "caps": 41,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 71.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "AUS_05",
@@ -1228,9 +1328,11 @@
       "dob": "3 Sep 1995",
       "caps": 173,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "AUS_06",
@@ -1294,7 +1396,7 @@
       "dob": "24 Apr 1995",
       "caps": 142,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1318,7 +1420,9 @@
       "matches_played": 5,
       "ai_rating": 78.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_10",
@@ -1360,7 +1464,7 @@
       "dob": "28 May 2002",
       "caps": 51,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1382,9 +1486,11 @@
       "dob": "15 Mar 2001",
       "caps": 93,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "AUS_13",
@@ -1426,7 +1532,7 @@
       "dob": "8 Sep 1997",
       "caps": 40,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1492,9 +1598,11 @@
       "dob": "24 Jul 1996",
       "caps": 22,
       "matches_played": 5,
-      "ai_rating": 87.0,
+      "ai_rating": 89.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "AUS_18",
@@ -1516,7 +1624,9 @@
       "matches_played": 5,
       "ai_rating": 78.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_19",
@@ -1558,7 +1668,7 @@
       "dob": "3 Mar 1993",
       "caps": 265,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1580,7 +1690,7 @@
       "dob": "3 Jul 2003",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1602,9 +1712,11 @@
       "dob": "20 Jul 2000",
       "caps": 88,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "BEL_08",
@@ -1668,7 +1780,7 @@
       "dob": "28 May 2001",
       "caps": 52,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1690,9 +1802,11 @@
       "dob": "21 Jun 2000",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 73.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "BEL_13",
@@ -1734,7 +1848,7 @@
       "dob": "12 Oct 2002",
       "caps": 37,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1778,9 +1892,11 @@
       "dob": "25 Jan 1990",
       "caps": 396,
       "matches_played": 5,
-      "ai_rating": 93.0,
+      "ai_rating": 93.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "BEL_18",
@@ -1800,9 +1916,11 @@
       "dob": "1 Mar 2000",
       "caps": 77,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "BEL_19",
@@ -1822,7 +1940,7 @@
       "dob": "15 Oct 2003",
       "caps": 19,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1866,9 +1984,11 @@
       "dob": "7 Aug 1998",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 83.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ENG_05",
@@ -1932,7 +2052,7 @@
       "dob": "21 Jan 2000",
       "caps": 72,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2042,9 +2162,11 @@
       "dob": "2 Aug 2002",
       "caps": 44,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "FRA_09",
@@ -2130,7 +2252,7 @@
       "dob": "4 Nov 1994",
       "caps": 184,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 58.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2152,9 +2274,11 @@
       "dob": "3 Nov 2003",
       "caps": 9,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "FRA_14",
@@ -2174,9 +2298,11 @@
       "dob": "18 Sep 1998",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "FRA_15",
@@ -2198,7 +2324,9 @@
       "matches_played": 5,
       "ai_rating": 69.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "FRA_16",
@@ -2218,7 +2346,7 @@
       "dob": "14 Aug 1998",
       "caps": 101,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2240,9 +2368,11 @@
       "dob": "8 Apr 2000",
       "caps": 92,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "FRA_18",
@@ -2264,7 +2394,9 @@
       "matches_played": 5,
       "ai_rating": 69.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "FRA_19",
@@ -2284,9 +2416,11 @@
       "dob": "9 Apr 2003",
       "caps": 26,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 72.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_04",
@@ -2306,9 +2440,11 @@
       "dob": "18 Dec 2006",
       "caps": 13,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 72.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_07",
@@ -2372,9 +2508,11 @@
       "dob": "20 Apr 2000",
       "caps": 92,
       "matches_played": 5,
-      "ai_rating": 75.0,
+      "ai_rating": 80.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_10",
@@ -2394,9 +2532,11 @@
       "dob": "19 Apr 2003",
       "caps": 51,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_12",
@@ -2438,9 +2578,11 @@
       "dob": "18 May 2000",
       "caps": 98,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_14",
@@ -2482,9 +2624,11 @@
       "dob": "4 Nov 2003",
       "caps": 21,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 82.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_16",
@@ -2528,7 +2672,9 @@
       "matches_played": 5,
       "ai_rating": 82.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "GER_18",
@@ -2592,9 +2738,11 @@
       "dob": "23 Sep 1998",
       "caps": 186,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IND_08",
@@ -2614,9 +2762,11 @@
       "dob": "12 Nov 1999",
       "caps": 127,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IND_09",
@@ -2636,7 +2786,7 @@
       "dob": "20 Dec 1996",
       "caps": 184,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2658,7 +2808,7 @@
       "dob": "2 May 1995",
       "caps": 160,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2704,7 +2854,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "IND_13",
@@ -2768,9 +2920,11 @@
       "dob": "5 Dec 1996",
       "caps": 129,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IND_16",
@@ -2812,9 +2966,11 @@
       "dob": "5 May 2001",
       "caps": 95,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IND_18",
@@ -2836,7 +2992,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "IND_19",
@@ -2856,7 +3014,7 @@
       "dob": "22 Dec 2002",
       "caps": 49,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2878,7 +3036,7 @@
       "dob": "5 May 1999",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2902,7 +3060,9 @@
       "matches_played": 5,
       "ai_rating": 65.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "IRL_04",
@@ -2924,7 +3084,9 @@
       "matches_played": 5,
       "ai_rating": 65.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "IRL_05",
@@ -3032,9 +3194,11 @@
       "dob": "2 Aug 1994",
       "caps": 154,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IRL_12",
@@ -3054,9 +3218,11 @@
       "dob": "13 Jul 1999",
       "caps": 129,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IRL_13",
@@ -3076,9 +3242,11 @@
       "dob": "5 Apr 2001",
       "caps": 71,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 76.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IRL_14",
@@ -3120,9 +3288,11 @@
       "dob": "21 Feb 1995",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 73.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IRL_16",
@@ -3164,9 +3334,11 @@
       "dob": "23 Dec 1998",
       "caps": 62,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "IRL_18",
@@ -3252,9 +3424,11 @@
       "dob": "11 Dec 2000",
       "caps": 32,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 66.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_02",
@@ -3274,9 +3448,11 @@
       "dob": "27 Feb 1996",
       "caps": 162,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_03",
@@ -3296,9 +3472,11 @@
       "dob": "21 Dec 1994",
       "caps": 185,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_04",
@@ -3384,7 +3562,7 @@
       "dob": "18 Nov 2001",
       "caps": 58,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -3406,9 +3584,11 @@
       "dob": "20 Jun 1999",
       "caps": 75,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_09",
@@ -3428,9 +3608,11 @@
       "dob": "21 Jun 2000",
       "caps": 54,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 73.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_10",
@@ -3583,9 +3765,11 @@
       "dob": "1 Nov 1995",
       "caps": 123,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_17",
@@ -3629,7 +3813,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "JPN_19",
@@ -3651,7 +3837,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "JPN_20",
@@ -3671,9 +3859,11 @@
       "dob": "30 Jan 2003",
       "caps": 27,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_03",
@@ -3715,9 +3905,11 @@
       "dob": "5 Mar 1990",
       "caps": 361,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_05",
@@ -3737,9 +3929,11 @@
       "dob": "13 Jan 1991",
       "caps": 327,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_06",
@@ -3759,9 +3953,11 @@
       "dob": "3 Apr 1999",
       "caps": 106,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_07",
@@ -3783,7 +3979,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "MAS_08",
@@ -3849,7 +4047,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "MAS_11",
@@ -3869,7 +4069,7 @@
       "dob": "17 Jun 1996",
       "caps": 154,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -3891,9 +4091,11 @@
       "dob": "3 Oct 1999",
       "caps": 126,
       "matches_played": 5,
-      "ai_rating": 87.0,
+      "ai_rating": 80.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_13",
@@ -3913,9 +4115,11 @@
       "dob": "19 Jul 1996",
       "caps": 202,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_14",
@@ -3979,9 +4183,11 @@
       "dob": "5 May 2000",
       "caps": 91,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_17",
@@ -4023,9 +4229,11 @@
       "dob": "24 Jun 2005",
       "caps": 33,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "MAS_19",
@@ -4089,9 +4297,11 @@
       "dob": "14 Oct 1997",
       "caps": 142,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 79.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NED_06",
@@ -4177,7 +4387,7 @@
       "dob": "4 Aug 1996",
       "caps": 156,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4199,9 +4409,11 @@
       "dob": "14 Oct 1999",
       "caps": 80,
       "matches_played": 5,
-      "ai_rating": 75.0,
+      "ai_rating": 79.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NED_13",
@@ -4223,7 +4435,9 @@
       "matches_played": 5,
       "ai_rating": 78.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "NED_17",
@@ -4243,9 +4457,11 @@
       "dob": "10 Oct 1999",
       "caps": 89,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 88.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NED_18",
@@ -4265,9 +4481,11 @@
       "dob": "17 Jul 2002",
       "caps": 47,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 76.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NED_19",
@@ -4287,7 +4505,7 @@
       "dob": "4 Jun 2001",
       "caps": 76,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4311,7 +4529,9 @@
       "matches_played": 5,
       "ai_rating": 66.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "NZL_03",
@@ -4331,7 +4551,7 @@
       "dob": "29 Aug 1990",
       "caps": 162,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4442,7 +4662,7 @@
       "dob": "4 Oct 2001",
       "caps": 55,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4464,9 +4684,11 @@
       "dob": "22 Apr 1992",
       "caps": 229,
       "matches_played": 5,
-      "ai_rating": 79.0,
+      "ai_rating": 73.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NZL_10",
@@ -4486,9 +4708,11 @@
       "dob": "14 Feb 1996",
       "caps": 85,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NZL_11",
@@ -4530,9 +4754,11 @@
       "dob": "21 Sep 2000",
       "caps": 19,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NZL_13",
@@ -4552,9 +4778,11 @@
       "dob": "24 Oct 2002",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NZL_14",
@@ -4618,7 +4846,7 @@
       "dob": "23 Apr 2003",
       "caps": 41,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4640,9 +4868,11 @@
       "dob": "2 May 2002",
       "caps": 16,
       "matches_played": 5,
-      "ai_rating": 83.0,
+      "ai_rating": 84.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NZL_18",
@@ -4664,7 +4894,9 @@
       "matches_played": 5,
       "ai_rating": 66.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "NZL_19",
@@ -4709,7 +4941,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "PAK_05",
@@ -4773,9 +5007,11 @@
       "dob": "7 Sep 2005",
       "caps": 68,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 87.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "PAK_08",
@@ -4795,7 +5031,7 @@
       "dob": "4 May 2004",
       "caps": 71,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4905,9 +5141,11 @@
       "dob": "12 Dec 2000",
       "caps": 59,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "PAK_14",
@@ -4927,10 +5165,12 @@
       "dob": "7 Feb 1999",
       "caps": 52,
       "matches_played": 5,
-      "ai_rating": 70.6,
+      "ai_rating": 76.5,
       "source": "fih-team-list",
       "on_team_list": true,
-      "world_rank": 7
+      "world_rank": 7,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "PAK_15",
@@ -4950,9 +5190,11 @@
       "dob": "10 Apr 1999",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "PAK_16",
@@ -4994,7 +5236,7 @@
       "dob": "10 Feb 1998",
       "caps": 117,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 58.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5018,7 +5260,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "PAK_19",
@@ -5038,7 +5282,7 @@
       "dob": "4 Dec 2002",
       "caps": 38,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5082,9 +5326,11 @@
       "dob": "19 Mar 2002",
       "caps": 74,
       "matches_played": 5,
-      "ai_rating": 99,
+      "ai_rating": 92.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "RSA_03",
@@ -5126,7 +5372,7 @@
       "dob": "22 Nov 2003",
       "caps": 33,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5148,7 +5394,7 @@
       "dob": "5 Aug 2001",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5214,7 +5460,7 @@
       "dob": "13 Jul 2002",
       "caps": 22,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5282,7 +5528,9 @@
       "matches_played": 5,
       "ai_rating": 65.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "RSA_12",
@@ -5324,9 +5572,11 @@
       "dob": "4 Apr 2000",
       "caps": 28,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "RSA_14",
@@ -5346,9 +5596,11 @@
       "dob": "28 Aug 1991",
       "caps": 91,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "RSA_15",
@@ -5414,7 +5666,9 @@
       "matches_played": 5,
       "ai_rating": 65.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "RSA_19",
@@ -5456,9 +5710,11 @@
       "dob": "8 Aug 2003",
       "caps": 14,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": 66.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ESP_04",
@@ -5544,7 +5800,7 @@
       "dob": "13 Sep 1999",
       "caps": 137,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5566,9 +5822,11 @@
       "dob": "3 Jan 1997",
       "caps": 113,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 86.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ESP_09",
@@ -5588,9 +5846,11 @@
       "dob": "18 May 1999",
       "caps": 105,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 78.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ESP_10",
@@ -5612,7 +5872,9 @@
       "matches_played": 5,
       "ai_rating": 80.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ESP_11",
@@ -5634,7 +5896,9 @@
       "matches_played": 5,
       "ai_rating": 80.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ESP_12",
@@ -5742,9 +6006,11 @@
       "dob": "4 Jan 2003",
       "caps": 42,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ESP_17",
@@ -5830,7 +6096,7 @@
       "dob": "18 Oct 1995",
       "caps": 103,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5852,7 +6118,7 @@
       "dob": "23 Oct 1993",
       "caps": 135,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5874,9 +6140,11 @@
       "dob": "19 Sep 2000",
       "caps": 86,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "WAL_06",
@@ -5896,9 +6164,11 @@
       "dob": "27 Oct 2001",
       "caps": 17,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 72.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "WAL_07",
@@ -5940,9 +6210,11 @@
       "dob": "9 Mar 1999",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 72.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "WAL_09",
@@ -6006,7 +6278,7 @@
       "dob": "20 Mar 1996",
       "caps": 131,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6096,7 +6368,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "WAL_16",
@@ -6121,7 +6395,7 @@
       "on_team_list": true
     },
     {
-      "id": "ARG_22",
+      "id": "ARG_08",
       "name": "Nicolas della Torre",
       "team": "ARG",
       "position": "Squad",
@@ -6138,12 +6412,14 @@
       "dob": "1 Mar 1990",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 79.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
-      "id": "BEL_18",
+      "id": "BEL_05",
       "name": "Arthur van Doren",
       "team": "BEL",
       "position": "Squad",
@@ -6160,12 +6436,14 @@
       "dob": "1 Oct 1994",
       "caps": 293,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 74.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
-      "id": "BEL_19",
+      "id": "BEL_10",
       "name": "Nicolas de Kerpel",
       "team": "BEL",
       "position": "Squad",
@@ -6187,7 +6465,7 @@
       "on_team_list": true
     },
     {
-      "id": "GER_16",
+      "id": "GER_05",
       "name": "Johannes Große",
       "team": "GER",
       "position": "Squad",
@@ -6209,7 +6487,7 @@
       "on_team_list": true
     },
     {
-      "id": "GER_18",
+      "id": "GER_06",
       "name": "Hugo von Montgelas",
       "team": "GER",
       "position": "Squad",
@@ -6226,12 +6504,14 @@
       "dob": "17 Apr 2004",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 76.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
-      "id": "IRL_20",
+      "id": "IRL_06",
       "name": "John McKee",
       "team": "IRL",
       "position": "Squad",
@@ -6248,12 +6528,14 @@
       "dob": "22 Dec 1996",
       "caps": 136,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 66.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
-      "id": "IRL_21",
+      "id": "IRL_10",
       "name": "Peter McKibbin",
       "team": "IRL",
       "position": "Squad",
@@ -6319,7 +6601,7 @@
       "on_team_list": true
     },
     {
-      "id": "NED_17",
+      "id": "NED_07",
       "name": "Pepijn van der Heijden",
       "team": "NED",
       "position": "Squad",
@@ -6341,7 +6623,7 @@
       "on_team_list": true
     },
     {
-      "id": "NED_18",
+      "id": "NED_10",
       "name": "Joep de Mol",
       "team": "NED",
       "position": "Squad",
@@ -6363,7 +6645,7 @@
       "on_team_list": true
     },
     {
-      "id": "NED_19",
+      "id": "NED_14",
       "name": "Steijn van Heijningen",
       "team": "NED",
       "position": "Squad",
@@ -6385,7 +6667,7 @@
       "on_team_list": true
     },
     {
-      "id": "RSA_20",
+      "id": "RSA_16",
       "name": "Trevor de Lora",
       "team": "RSA",
       "position": "Squad",
@@ -6402,7 +6684,7 @@
       "dob": "21 Mar 2000",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6424,9 +6706,11 @@
       "dob": "22 Sep 1999",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "AUS_21",
@@ -6473,7 +6757,7 @@
       "on_team_list": true
     },
     {
-      "id": "BEL_20",
+      "id": "BEL_15",
       "name": "Lucas Balthazar",
       "team": "BEL",
       "position": "Squad",
@@ -6556,9 +6840,11 @@
       "dob": "28 Oct 1996",
       "caps": 146,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 71.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ENG_09",
@@ -6578,9 +6864,11 @@
       "dob": "2 Oct 1995",
       "caps": 116,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 71.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ENG_10",
@@ -6624,7 +6912,9 @@
       "matches_played": 5,
       "ai_rating": 71.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ENG_12",
@@ -6644,9 +6934,11 @@
       "dob": "9 Sep 2000",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": 75.0,
+      "ai_rating": 78.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ENG_13",
@@ -6712,7 +7004,9 @@
       "matches_played": 5,
       "ai_rating": 71.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ENG_16",
@@ -6732,9 +7026,11 @@
       "dob": "14 Dec 1992",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 75.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ENG_17",
@@ -6798,12 +7094,12 @@
       "dob": "20 Dec 2001",
       "caps": 67,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
     {
-      "id": "GER_18",
+      "id": "GER_11",
       "name": "Linus Müller",
       "team": "GER",
       "position": "Squad",
@@ -6864,9 +7160,11 @@
       "dob": "21 Jun 1996",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "GER_21",
@@ -6888,7 +7186,9 @@
       "matches_played": 5,
       "ai_rating": 82.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "IRL_22",
@@ -6908,9 +7208,11 @@
       "dob": "14 Apr 1998",
       "caps": 125,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "JPN_21",
@@ -6952,7 +7254,7 @@
       "dob": "4 Mar 1993",
       "caps": 233,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6974,9 +7276,11 @@
       "dob": "2 May 2000",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NED_20",
@@ -6998,7 +7302,9 @@
       "matches_played": 5,
       "ai_rating": 78.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "NED_21",
@@ -7018,9 +7324,11 @@
       "dob": "5 Jan 1997",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "NED_22",
@@ -7062,9 +7370,11 @@
       "dob": "5 Aug 1994",
       "caps": 57,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 71.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "PAK_21",
@@ -7106,9 +7416,11 @@
       "dob": "1 Dec 1998",
       "caps": 103,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 67.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ESP_19",
@@ -7216,9 +7528,11 @@
       "dob": "24 Jul 1998",
       "caps": 167,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 65.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "WAL_19",
@@ -7240,7 +7554,9 @@
       "matches_played": 5,
       "ai_rating": 62.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "AUS_23",
@@ -7260,7 +7576,7 @@
       "dob": "23 Jun 1996",
       "caps": 175,
       "matches_played": 5,
-      "ai_rating": null,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -7284,7 +7600,9 @@
       "matches_played": 5,
       "ai_rating": 74.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH"
     },
     {
       "id": "ENG_20",
@@ -7304,9 +7622,11 @@
       "dob": "29 Sep 1999",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 64.0,
+      "ai_rating": 72.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ENG_21",
@@ -7326,9 +7646,11 @@
       "dob": "13 Apr 2001",
       "caps": 29,
       "matches_played": 5,
-      "ai_rating": 79.0,
+      "ai_rating": 81.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "FRA_20",
@@ -7414,9 +7736,11 @@
       "dob": "27 Jul 1998",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 76.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "PAK_22",
@@ -7436,9 +7760,11 @@
       "dob": "4 Feb 2000",
       "caps": 104,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI"
     },
     {
       "id": "ESP_22",

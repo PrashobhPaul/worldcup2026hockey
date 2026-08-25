@@ -1051,6 +1051,44 @@ def normalize_captaincy(players_doc, squads):
             changed = True
     return changed
 
+def _next_player_seq(players_doc, code):
+    """The lowest sequence this team has not used.
+
+    Counting the squad and adding one is not the same thing: seeded ids run to
+    the squad's own length, so a team carrying 21 players with ids up to
+    TEAM_23 got TEAM_22 for the next arrival — an id another player already
+    held. Thirteen players shared an id with someone else that way, and the
+    client store is keyed on id, so each collision dropped a real squad member
+    out of the app entirely.
+    """
+    used = {p['id'] for p in players_doc['players'] if p['team'] == code}
+    seq = 1
+    while f'{code}_{seq:02d}' in used:
+        seq += 1
+    return seq
+
+
+def dedupe_player_ids(players_doc):
+    """Give every player an id no one else holds. Idempotent."""
+    seen, fixed = set(), 0
+    for p in players_doc['players']:
+        if p['id'] not in seen:
+            seen.add(p['id'])
+            continue
+        code = p['team']
+        seq = 1
+        while f'{code}_{seq:02d}' in seen:
+            seq += 1
+        new_id = f'{code}_{seq:02d}'
+        print(f"PLAYERS: {p['name']} ({code}) held {p['id']}, already taken — now {new_id}.")
+        p['id'] = new_id
+        seen.add(new_id)
+        fixed += 1
+    if fixed:
+        print(f'PLAYERS: {fixed} duplicate id(s) resolved.')
+    return bool(fixed)
+
+
 def merge_squads(players_doc, squads, teams):
     """Add officially-listed players that we do not already carry. Never
     invents a player and never edits an existing one's accumulated stats."""
@@ -1076,7 +1114,7 @@ def merge_squads(players_doc, squads, teams):
                 print(f"SQUADS: {code} #{entry['number']} {entry['name']} skipped — "
                       f'shirt already held by another listed player.')
                 continue
-            seq = len([p for p in players_doc['players'] if p['team'] == code]) + 1
+            seq = _next_player_seq(players_doc, code)
             caps = entry.get('caps')
             players_doc['players'].append({
                 'id': f"{code}_{seq:02d}",
@@ -1281,8 +1319,19 @@ def fetch_official_lineups(fixtures, links, players_doc):
         squads.setdefault(p['team'], []).append(p)
     by_tms = {str(m.get('tms_id')): m for m in fixtures['matches'] if m.get('tms_id')}
 
+    # TMS answers every one of these with 403: the line-up pages exist and are
+    # linked, but they are not served publicly. Discovered by probing all 88 of
+    # them from the Actions runner. So the walk gives up after a run of refusals
+    # rather than spending half a minute on the same answer every ten minutes.
+    REFUSAL_BUDGET = 6
+    refused = 0
+
     changed = adopted = 0
     for mid, team_ids in sorted(links.items(), key=lambda kv: int(kv[0])):
+        if refused >= REFUSAL_BUDGET:
+            print(f'LINEUPS: TMS refused the first {refused} team sheets — '
+                  f'not walking the remaining {len(links) - refused} this run.')
+            break
         m = by_tms.get(str(mid))
         if not m or len(team_ids) != 2:
             continue
@@ -1293,7 +1342,9 @@ def fetch_official_lineups(fixtures, links, players_doc):
             body, _ = _tms_get(f'{TMS_HOST}/matches/{mid}/lineups/{tid}',
                                referer=f'{TMS_HOST}/matches/{mid}')
             if not body:
+                refused += 1
                 continue
+            refused = 0
             lines = _tms_lines(body)
             if probe:
                 _dump(f'lineup {mid}/{tid}', lines, 80)
@@ -2171,6 +2222,49 @@ def build_commentary(m):
     return beats
 
 # ------------------------------------------- player stats & AI ratings
+# ── Positions ─────────────────────────────────────────────────────────────
+# The FIH entry list does not state a position. It marks (GK) and (C) and
+# nothing else, which is why most of the squad carries the "Squad" placeholder.
+# The TMS match line-up pages would carry a real team sheet, and they are
+# linked from the competition — but every one of the 88 of them answers 403
+# from a runner. They are not served publicly. So there is no official source
+# for an outfield position in this competition, and there will not be one.
+#
+# A best XI is not any eleven — it is eleven players in the positions they
+# play. So Hockey.AI derives a role from what the match record does state:
+# how each player's goals were scored.
+#
+#   Penalty-corner and stroke goals mark a DEFENDER. The drag flick is taken
+#     from the top of the circle by a defender in the great majority of
+#     international sides; the primary flicker of eleven of the sixteen teams
+#     here is one, and Harmanpreet Singh — the only stated defender with a
+#     flick record on this list — is the archetype.
+#   Two or more field goals mark a FORWARD. Field goals are made, not awarded;
+#     scoring several in a tournament is a striker's return.
+#   Any other goal involvement marks a MIDFIELDER — a midfield scores, but
+#     one field goal does not make a striker.
+#   No involvement leaves the role unstated. Nothing is invented for these
+#     players: they are ranked below every classified player and, when one has
+#     to fill a shirt, the shirt says the role is not on the record.
+#
+# This is Hockey.AI's, not the FIH's, and every surface that uses it says so.
+DERIVED_FORWARD_FIELD_GOALS = 2
+
+def derive_position(agg, stated):
+    """(position, source) for one player. A stated position is never replaced."""
+    if stated and stated != 'Squad':
+        return stated, 'FIH'
+    set_piece = agg['pc'] + agg['ps']
+    field = max(0, agg['goals'] - set_piece)
+    if set_piece and field <= agg['pc']:
+        return 'Defender', 'Hockey.AI'
+    if field >= DERIVED_FORWARD_FIELD_GOALS:
+        return 'Forward', 'Hockey.AI'
+    if agg['goals']:
+        return 'Midfielder', 'Hockey.AI'
+    return None, None
+
+
 def update_player_stats(fixtures, players_doc):
     """
     Full idempotent recompute of every player's tournament numbers from the
@@ -2239,7 +2333,10 @@ def update_player_stats(fixtures, players_doc):
         #               they are made rather than awarded
         # Discipline is deducted everywhere. Volume scales the whole thing, so
         # a player who has featured in one match cannot out-rank a tournament.
-        pos = p['position']
+        # The role the ratings are computed for: the FIH's when it states one,
+        # otherwise Hockey.AI's, derived above. A player with nothing on the
+        # record gets no role and falls through to the unclassified branch.
+        pos, pos_source = derive_position(a, p.get('position'))
         scored = team_scored.get(p['team'], 0)
         gf_per_match = scored / tm if tm else 0
         field_goals = max(0, a['goals'] - a['pc'] - a['ps'])
@@ -2262,10 +2359,10 @@ def update_player_stats(fixtures, players_doc):
             base = (56 + field_goals * 7 + a['pc'] * 4 + a['ps'] * 4
                     + share * 12)
         else:
-            # Position not stated on the entry list. We still won't invent one,
-            # but a player with events on the record has something to rate.
-            contributed = a['goals'] or a['pc'] or a['yellow'] or a['red']
-            base = 57 + a['goals'] * 6 + a['pc'] * 2 if contributed else None
+            # No role: nothing on the record to derive one from. Cards alone
+            # still say something about a player who has been on the pitch.
+            contributed = a['yellow'] or a['red'] or a['green']
+            base = 57 if contributed else None
         if base is None:
             rating = None
         else:
@@ -2295,6 +2392,11 @@ def update_player_stats(fixtures, players_doc):
             'green_cards': a['green'],
             'matches_played': mp,
             'ai_rating': rating,
+            # The role every surface reads, and where it came from. `position`
+            # is left exactly as the FIH entry list gave it and is never
+            # rewritten — these sit beside it.
+            'position_effective': pos,
+            'position_source': pos_source,
         }
         for k, v in new_vals.items():
             if p.get(k) != v:
@@ -2868,6 +2970,10 @@ def main():
     squads, staff = fetch_tms_squads()
     players_changed = reconcile_team_lists(players, squads)
     players_changed |= merge_squads(players, squads, teams)
+    # Runs whatever the source: the client store is keyed on player id, so a
+    # collision does not show up as a wrong number — it shows up as a player
+    # who is simply not there.
+    players_changed |= dedupe_player_ids(players)
     teams_changed |= apply_coaches(teams, staff)
     try:
         players_changed |= apply_player_rankings(players, load('player_rankings.json'))

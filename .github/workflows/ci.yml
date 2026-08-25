@@ -113,5 +113,12 @@ jobs:
       - name: Player stats match the feed
         run: npm run test:playerstats
 
+      # The best XI is positional, and the pitch stands on the position data.
+      # It also guards player identity: ids are the client store's primary key,
+      # and thirteen players once shared one with a team-mate, which does not
+      # look like a wrong number — it looks like a missing player.
+      - name: Best XI is positional and players are uniquely identified
+        run: npm run test:bestxi
+
       - name: Build
         run: npm run build
