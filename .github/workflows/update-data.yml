@@ -161,7 +161,27 @@ jobs:
           git add public/emblem.png 2>/dev/null || true
           if ! git diff --staged --quiet; then
             git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+            # This job runs every ten minutes and the branch it pushes to is
+            # worked on at the same time, so the ref moves under it. A bare
+            # push simply loses that race and fails the run — which is what a
+            # rejected push here has meant every time. Rebasing onto whatever
+            # arrived and trying again resolves it: .gitattributes routes the
+            # data files through scripts/merge_data.py, so the rebase applies
+            # the same rules the merge would.
+            pushed=false
+            for attempt in 1 2 3 4; do
+              if git push; then pushed=true; break; fi
+              echo "push rejected (attempt $attempt) — taking what arrived and retrying."
+              git pull --rebase --no-edit origin "${{ github.ref_name }}" || break
+              python3 scripts/data_fingerprint.py --write
+              git add public/data/
+              git diff --staged --quiet || git commit -q --amend --no-edit
+              sleep $((attempt * 3))
+            done
+            if [ "$pushed" != true ]; then
+              echo "::error::could not push the data update after four attempts."
+              exit 1
+            fi
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No data changes."
