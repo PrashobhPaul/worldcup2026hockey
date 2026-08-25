@@ -134,5 +134,11 @@ jobs:
       - name: Team intros match the official team list
         run: npm run test:intros
 
+      # The official team sheet is read from a two-column PDF where a name
+      # can be one word or four, so the split between the two teams is the
+      # thing most likely to go quietly wrong.
+      - name: Official team sheets are read exactly
+        run: npm run test:sheets
+
       - name: Build
         run: npm run build

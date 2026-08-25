@@ -1451,6 +1451,63 @@ def _split_sheet(lines, rows):
     return before, after
 
 
+def fetch_match_reports(fixtures, players_doc):
+    """Adopt the official team sheet from each match's report PDF.
+
+    /matches/{id}/reports/matchreport is public — a sibling of the entry-list
+    and pool-standings reports this pipeline already fetches — and carries the
+    whole sheet: who started, the minute each substitute came on, who was named
+    and never used, the goal ledger and the officials. It is the source the
+    app shows, and it was sitting one path away from two endpoints already in
+    use here.
+
+    A sheet is adopted only when both sides parse to eleven starters. A
+    half-read report would replace a coherent estimate with an incoherent fact,
+    which is worse than the estimate.
+    """
+    by_team = {}
+    for p in players_doc['players']:
+        by_team.setdefault(p['team'], []).append(p)
+
+    adopted = skipped = 0
+    for m in fixtures['matches']:
+        if not m.get('tms_id') or m['status'] != 'completed' or not has_score(m):
+            continue
+        if (m.get('lineups') or {}).get('source') == 'official':
+            continue
+        body, _ = _tms_get(f"{TMS_HOST}/matches/{m['tms_id']}/reports/matchreport",
+                           referer=f"{TMS_HOST}/matches/{m['tms_id']}")
+        if not body or body[:4] != b'%PDF':
+            skipped += 1
+            continue
+        parsed = match_report.parse(_pdf_lines(body),
+                                    by_team.get(m['home'], []),
+                                    by_team.get(m['away'], []))
+        if not parsed:
+            print(f"REPORT: {m['id']} {m['home']} v {m['away']} — did not parse to two "
+                  f'full elevens; the estimated sheet stands.')
+            skipped += 1
+            continue
+        sheet = {'source': 'official', 'generated_at': now_utc().isoformat(),
+                 'report': 'fih-tms-matchreport'}
+        for side in ('home', 'away'):
+            rows = parsed[side]
+            sheet[side] = {
+                'team': m[side],
+                'formation': None,          # the report states the eleven, not a shape
+                'fromTeamList': True,
+                'startingXI': rows['startingXI'],
+                'substitutes': rows['substitutes'],
+                'coach': ((m.get('lineups') or {}).get(side) or {}).get('coach'),
+            }
+        m['lineups'] = sheet
+        adopted += 1
+        print(f"REPORT: {m['id']} {m['home']} v {m['away']} — official team sheet adopted "
+              f"({len(parsed['home']['substitutes'])}/{len(parsed['away']['substitutes'])} subs).")
+    print(f'REPORTS: {adopted} official sheet(s) adopted, {skipped} unavailable.')
+    return bool(adopted)
+
+
 def fetch_official_lineups(fixtures, links, players_doc):
     """Replace estimated sheets with the official ones where TMS has them."""
     if not links:
@@ -2415,6 +2472,7 @@ def derive_position(agg, stated):
     return None, None
 
 
+import match_report
 from player_rating import rate_group
 from team_rating import rate_teams
 
@@ -3166,6 +3224,9 @@ def main():
     changed |= slot_knockouts(fixtures)
     # Official sheets first; build_lineups then fills only what TMS could not
     # supply, and never overwrites a sheet marked official.
+    # The official team sheet, from the public match report. It runs before
+    # the estimator so a real sheet is never overwritten by a composed one.
+    changed |= fetch_match_reports(fixtures, players)
     changed |= fetch_official_lineups(fixtures, links, players)
     changed |= build_lineups(fixtures, players, teams)
     # The browser-side strength model must weight this tournament exactly as the

@@ -26,7 +26,8 @@
     "smoke:routes": "node scripts/smoke_routes.mjs",
     "test:bestxi": "node scripts/test_best_xi.mjs",
     "test:rating": "node scripts/test_player_rating.mjs",
-    "test:intros": "python3 scripts/team_intro_review.py --check"
+    "test:intros": "python3 scripts/team_intro_review.py --check",
+    "test:sheets": "node scripts/test_match_report.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.8",
