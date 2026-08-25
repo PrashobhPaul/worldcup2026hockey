@@ -149,6 +149,28 @@ def merge_players(ours, theirs):
     Neither depends on which side is newer, so neither is a merge decision.
     They are simply enforced.
     """
+    # The pipeline on the default branch runs whatever code the default branch
+    # has, so its players.json knows only the fields that code computes. A
+    # branch that adds fields — a derived position and its source, a rating
+    # broken into components, starts and appearances read from the official
+    # team sheets — loses every one of them the moment main's file arrives,
+    # because this function returns the pipeline's file whole.
+    #
+    # That is not a merge decision either: a field only one side knows about
+    # has no competing value to choose between. The pipeline's figures win
+    # where both sides have one; a field only the branch carries is kept.
+    mine = {(p.get('team'), p.get('name')): p for p in (ours or {}).get('players', [])}
+    kept = 0
+    for p in theirs['players']:
+        was = mine.get((p.get('team'), p.get('name')))
+        if not was:
+            continue
+        for field, value in was.items():
+            if value is None or field in p and p[field] is not None:
+                continue
+            p[field] = value
+            kept += 1
+
     assists = 0
     for p in theirs['players']:
         if p.get('assists'):
@@ -187,6 +209,8 @@ def merge_players(ours, theirs):
             if bool(p.get('is_captain')) != want:
                 p['is_captain'] = want; fixed += 1
     notes = [f'{fixed} captain flags corrected']
+    if kept:
+        notes.append(f'{kept} branch-only field(s) preserved')
     if assists:
         notes.append(f'{assists} phantom assist(s) cleared')
     if ids:
