@@ -2,6 +2,7 @@ import { useState } from 'react'
 import LineupSheet from '../components/LineupSheet'
 import { useParams, Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { preTournamentHistory } from '../engine/history'
 import { db } from '../db'
 import { useTeam, phaseTag, formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
@@ -224,6 +225,61 @@ function PreviewCard({ card }) {
   )
 }
 
+// Earlier meetings, shown as a record and labelled as one. The pick above is
+// argued from this tournament alone, so this block states plainly that it took
+// no part in it — otherwise a reader reasonably assumes everything on the page
+// fed the prediction.
+//
+// "Not retrieved" and "no meetings on record" are different claims. h2h.json
+// carries only the pairings that existed as fixtures when it last ran, so a
+// knockout tie is routinely absent until the pipeline catches up, and printing
+// "they have never met" in that gap would be inventing a fact.
+function HistoryFacts({ row, home, away, homeName, awayName }) {
+  const h = preTournamentHistory(row, home, away)
+  if (h.status === 'not-retrieved') return null
+  return (
+    <div id="sec-history" className="scroll-mt-28 rounded-xl border border-white/5 bg-pitch-800 p-4">
+      <h3 className="mb-1 flex items-baseline justify-between font-display text-sm font-semibold">
+        Before this tournament
+        <span className="font-mono text-[10px] font-normal text-pitch-400">record only</span>
+      </h3>
+      <p className="mb-3 text-[11px] leading-relaxed text-pitch-400">
+        Meetings before the 2025-26 Pro League, from the FIH record.
+        <span className="text-pitch-300"> Not used in the pick above</span>, which is argued
+        from this tournament only.
+      </p>
+      {h.status === 'none-on-record' ? (
+        <p className="font-mono text-xs text-pitch-300">
+          No meeting on record before the 2025-26 Pro League.
+        </p>
+      ) : (
+        <>
+          <div className="mb-3 flex items-center gap-3 font-mono text-xs">
+            <span className="text-pitch-300">{h.played} played</span>
+            <span className="text-pitch-600">|</span>
+            <span>{homeName} {h.wins[home]}</span>
+            <span className="text-pitch-600">|</span>
+            <span>{awayName} {h.wins[away]}</span>
+            <span className="text-pitch-600">|</span>
+            <span className="text-pitch-400">drawn {h.wins.drawn}</span>
+          </div>
+          <ul className="space-y-1.5">
+            {h.meetings.map((m, i) => (
+              <li key={i} className="flex items-baseline justify-between gap-3 font-mono text-[11px]">
+                <span className="text-pitch-400">{m.date}</span>
+                <span className="flex-1 truncate text-pitch-300">
+                  {m.home} {m.score[0]}&ndash;{m.score[1]} {m.away}
+                </span>
+                <span className="max-w-[45%] truncate text-right text-pitch-500">{m.competition}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  )
+}
+
 export default function MatchDetailPage() {
   const { matchId } = useParams()
   const match = useLiveQuery(() => db.matches.get(matchId), [matchId])
@@ -290,6 +346,9 @@ export default function MatchDetailPage() {
     m.id !== match.id && m.status === 'completed' && m.score?.home != null &&
     ((m.home === match.home && m.away === match.away) || (m.home === match.away && m.away === match.home)))
 
+  const historyShown = match && match.home !== 'TBD'
+    && preTournamentHistory(h2hRow, match.home, match.away).status !== 'not-retrieved'
+
   // Match Center pills (the Cricbuzz pattern): one sticky row that jumps to a
   // section instead of a scroll hunt. Built from the match's state, so a pill
   // never points at a section that is not on the page.
@@ -304,6 +363,7 @@ export default function MatchDetailPage() {
     (done || live) && { id: 'sec-stats', label: 'Stats' },
     { id: 'sec-intel', label: '🧠 Match Intelligence' },
     story && { id: 'sec-story', label: 'Story' },
+    historyShown && { id: 'sec-history', label: 'History' },
   ].filter(Boolean)
   const jumpTo = id => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -443,6 +503,9 @@ export default function MatchDetailPage() {
           <FormRow name={away?.name ?? match.away} form={awayForm} />
         </div>
       </div>
+
+      <HistoryFacts row={h2hRow} home={match.home} away={match.away}
+        homeName={home?.name ?? match.home} awayName={away?.name ?? match.away} />
 
       {/* Head to head */}
       <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">

@@ -163,6 +163,38 @@ for i, m in enumerate(done):
     check(f"{m['id']} keeps its published pick",
           p.get('pick') in ('HOME', 'DRAW', 'AWAY') and 'publishedAt' in p)
 
+# ── Upcoming picks are published prose too ──────────────────────────────────
+# The stage reviews replaced the ranking-gap sentence on every match that had
+# been played, and nothing checked the ones that had not. Eight fixtures went
+# out reading "FIH #10 FRA favoured over #16 JPN — points-based Elo with a
+# full draw model": a description of a ranking gap, not a case for a team.
+# A pick a reader can act on is held to the same standard as one they cannot.
+print('\nUpcoming picks argue from this tournament')
+upcoming = [m for m in fixtures
+            if m['status'] != 'completed'
+            and m['home'] != 'TBD' and m['away'] != 'TBD']
+upcoming.sort(key=lambda m: (m['date'], m['time']))
+for m in upcoming:
+    p = picks.get(m['id'])
+    if not p:
+        check(f"{m['id']} has a published pick", False, 'no active row')
+        continue
+    r = p['reason']
+    low = r.lower()
+    check(f"{m['id']} does not argue from a ranking gap alone",
+          not re.search(r'fih #\d+ .{0,40}favoured over #\d+', low)
+          and not re.search(r'points-based elo', low)
+          and not re.search(r'\belo\b', low), r[:90])
+    check(f"{m['id']} cites this tournament",
+          bool(re.search(r'\b(scored|conceded|won|lost|drawn|draw|goals?|matches?|points?)\b', low))
+          and bool(re.search(r'\d|\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|'
+                             r'twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|'
+                             r'nineteen|twenty|twenty-four)\b', low)), r[:90])
+    check(f"{m['id']} is a real argument", len(r.split()) >= 25, str(len(r.split())))
+    made_up = [w for w in UNPUBLISHED if re.search(w, low)]
+    check(f"{m['id']} claims no statistic FIH does not publish", not made_up, ', '.join(made_up))
+    check(f"{m['id']} keeps what it replaced", bool(p.get('reason_original')))
+
 print()
 if failures:
     print(f'{len(failures)} check(s) FAILED: {", ".join(failures[:8])}')
