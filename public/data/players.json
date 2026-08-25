@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-25T17:35:04.671780+00:00",
+  "last_updated": "2026-08-25T17:42:34.274057+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -833,7 +833,7 @@
       "profile": "England's captain. Commanding midfielder.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": 77.4,
       "on_team_list": true,
       "dob": "17 Apr 1996",
       "caps": 142,
@@ -860,7 +860,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -972,7 +972,7 @@
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 75.4,
+      "ai_rating": 74.3,
       "on_team_list": true,
       "dob": "14 Nov 1997",
       "caps": 153,
@@ -999,7 +999,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -1067,7 +1067,7 @@
       "profile": "Pakistan's captain. Skilful and combative.",
       "green_cards": 2,
       "matches_played": 5,
-      "ai_rating": 86.9,
+      "ai_rating": 89.0,
       "on_team_list": true,
       "dob": "13 Mar 2004",
       "caps": 76,
@@ -1094,9 +1094,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 2.6,
+          "score": 25.6,
           "weight": 0.15,
-          "raw": 4.0
+          "raw": 0.8
         }
       },
       "rating_coverage": 0.2,
@@ -1106,7 +1106,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_02",
@@ -1372,7 +1376,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "WAL_01",
@@ -1516,7 +1524,7 @@
       "dob": "6 May 1997",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 65.6,
+      "ai_rating": 64.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -1542,7 +1550,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -1574,7 +1582,7 @@
       "dob": "5 Jun 1997",
       "caps": 163,
       "matches_played": 5,
-      "ai_rating": 64.1,
+      "ai_rating": 63.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -1600,7 +1608,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 10.3,
+          "score": 3.8,
           "weight": 0.15,
           "raw": 2.0
         }
@@ -1779,7 +1787,7 @@
       "dob": "4 Sep 1997",
       "caps": 121,
       "matches_played": 5,
-      "ai_rating": 84.2,
+      "ai_rating": 83.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -1799,7 +1807,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 9.5,
           "weight": 0.129,
           "raw": 1.0
         }
@@ -2659,7 +2667,7 @@
       "dob": "20 Jul 2000",
       "caps": 88,
       "matches_played": 5,
-      "ai_rating": 66.3,
+      "ai_rating": 65.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -2685,7 +2693,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -2953,7 +2961,7 @@
       "dob": "1 Mar 2000",
       "caps": 77,
       "matches_played": 5,
-      "ai_rating": 66.3,
+      "ai_rating": 65.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -2979,7 +2987,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -3131,7 +3139,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_03",
@@ -3150,10 +3162,14 @@
       "profile": "Named on the official FIH team list — 69 senior caps.",
       "dob": "21 Jan 2000",
       "caps": 72,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_04",
@@ -3175,7 +3191,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_05",
@@ -3197,7 +3217,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_06",
@@ -3216,10 +3240,14 @@
       "profile": "Named on the official FIH team list — 26 senior caps.",
       "dob": "4 Sep 2001",
       "caps": 27,
-      "matches_played": 5,
+      "matches_played": 1,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_07",
@@ -3241,7 +3269,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_08",
@@ -3261,7 +3293,7 @@
       "dob": "2 Aug 2002",
       "caps": 44,
       "matches_played": 5,
-      "ai_rating": 75.4,
+      "ai_rating": 76.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -3287,9 +3319,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 35.9,
           "weight": 0.15,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.2,
@@ -3299,7 +3331,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_09",
@@ -3321,7 +3357,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_10",
@@ -3343,7 +3383,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_11",
@@ -3362,10 +3406,14 @@
       "profile": "Named on the official FIH team list — 17 senior caps.",
       "dob": "8 Apr 2007",
       "caps": 18,
-      "matches_played": 5,
+      "matches_played": 2,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 2,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_12",
@@ -3387,7 +3435,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_13",
@@ -3406,7 +3458,7 @@
       "profile": "Named on the official FIH team list — 6 senior caps.",
       "dob": "3 Nov 2003",
       "caps": 9,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": 73.5,
       "source": "fih-team-list",
       "on_team_list": true,
@@ -3445,7 +3497,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 4,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_14",
@@ -3465,7 +3521,7 @@
       "dob": "18 Sep 1998",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 69.7,
+      "ai_rating": 70.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -3491,9 +3547,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 35.9,
           "weight": 0.15,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.2,
@@ -3503,7 +3559,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_15",
@@ -3570,7 +3630,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_17",
@@ -3673,7 +3737,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "FRA_19",
@@ -3737,7 +3805,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_04",
@@ -3789,7 +3861,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 9.7,
+          "score": 8.1,
           "weight": 0.038,
           "raw": 1.0
         }
@@ -4009,7 +4081,7 @@
       "dob": "18 May 2000",
       "caps": 98,
       "matches_played": 5,
-      "ai_rating": 64.2,
+      "ai_rating": 63.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -4035,7 +4107,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -4549,7 +4621,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 9.7,
+          "score": 8.1,
           "weight": 0.038,
           "raw": 1.0
         }
@@ -4769,7 +4841,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_04",
@@ -4788,33 +4864,19 @@
       "profile": "Named on the official FIH team list — 15 senior caps.",
       "dob": "25 Nov 1999",
       "caps": 15,
-      "matches_played": 5,
-      "ai_rating": 66.4,
+      "matches_played": 0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
       "position_source": "FIH",
-      "rating_components": {
-        "team_defence": {
-          "label": "Goals against",
-          "score": 43.8,
-          "weight": 0.833,
-          "raw": 2.6
-        },
-        "discipline": {
-          "label": "Discipline",
-          "score": 50.0,
-          "weight": 0.167,
-          "raw": 0.0
-        }
-      },
-      "rating_coverage": 0.24,
-      "rating_missing": [
-        "availability",
-        "distribution",
-        "pc_defence",
-        "shot_stopping"
-      ]
+      "rating_components": null,
+      "rating_coverage": null,
+      "rating_missing": null,
+      "games_played": 0,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_05",
@@ -4833,10 +4895,14 @@
       "profile": "Named on the official FIH team list — 48 senior caps.",
       "dob": "10 Aug 1998",
       "caps": 51,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_07",
@@ -4858,7 +4924,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_08",
@@ -4880,7 +4950,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_09",
@@ -4899,10 +4973,14 @@
       "profile": "Named on the official FIH team list — 48 senior caps.",
       "dob": "28 May 1997",
       "caps": 51,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_11",
@@ -4922,7 +5000,7 @@
       "dob": "2 Aug 1994",
       "caps": 154,
       "matches_played": 5,
-      "ai_rating": 62.3,
+      "ai_rating": 63.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -4948,9 +5026,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 35.9,
           "weight": 0.15,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.2,
@@ -4960,7 +5038,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_12",
@@ -5024,7 +5106,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_13",
@@ -5044,7 +5130,7 @@
       "dob": "5 Apr 2001",
       "caps": 71,
       "matches_played": 5,
-      "ai_rating": 75.4,
+      "ai_rating": 75.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -5076,9 +5162,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 9.7,
+          "score": 14.5,
           "weight": 0.038,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.52,
@@ -5088,7 +5174,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_14",
@@ -5110,7 +5200,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_15",
@@ -5130,7 +5224,7 @@
       "dob": "21 Feb 1995",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 73.2,
+      "ai_rating": 74.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -5150,9 +5244,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 6.8,
+          "score": 20.3,
           "weight": 0.129,
-          "raw": 2.0
+          "raw": 0.4
         }
       },
       "rating_coverage": 0.31,
@@ -5162,7 +5256,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_16",
@@ -5184,7 +5282,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_17",
@@ -5203,7 +5305,7 @@
       "profile": "Named on the official FIH team list — 59 senior caps.",
       "dob": "23 Dec 1998",
       "caps": 62,
-      "matches_played": 5,
+      "matches_played": 3,
       "ai_rating": 71.9,
       "source": "fih-team-list",
       "on_team_list": true,
@@ -5242,7 +5344,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 3,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_18",
@@ -5264,7 +5370,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_19",
@@ -5283,10 +5393,14 @@
       "profile": "Named on the official FIH team list — 13 senior caps.",
       "dob": "14 Jun 2004",
       "caps": 16,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_20",
@@ -5305,10 +5419,14 @@
       "profile": "Named on the official FIH team list — 22 senior caps.",
       "dob": "31 Dec 1997",
       "caps": 24,
-      "matches_played": 5,
+      "matches_played": 2,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 2,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_21",
@@ -5328,7 +5446,7 @@
       "dob": "11 Dec 2000",
       "caps": 32,
       "matches_played": 5,
-      "ai_rating": 65.7,
+      "ai_rating": 66.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -5348,9 +5466,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 29.7,
           "weight": 0.129,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.31,
@@ -5360,7 +5478,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_02",
@@ -5412,7 +5534,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_03",
@@ -5432,7 +5558,7 @@
       "dob": "21 Dec 1994",
       "caps": 185,
       "matches_played": 5,
-      "ai_rating": 62.5,
+      "ai_rating": 61.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -5452,7 +5578,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 9.5,
           "weight": 0.129,
           "raw": 1.0
         }
@@ -5486,7 +5612,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_05",
@@ -5530,7 +5660,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_07",
@@ -5549,10 +5683,14 @@
       "profile": "Named on the official FIH team list — 55 senior caps.",
       "dob": "18 Nov 2001",
       "caps": 58,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_08",
@@ -5610,7 +5748,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_09",
@@ -5674,7 +5816,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_10",
@@ -5693,10 +5839,14 @@
       "profile": "Named on the official FIH team list — 67 senior caps.",
       "dob": "18 Mar 1996",
       "caps": 70,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_11",
@@ -5715,10 +5865,14 @@
       "profile": "Named on the official FIH team list — 258 senior caps.",
       "dob": "4 Feb 1989",
       "caps": 261,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_12",
@@ -5741,7 +5895,11 @@
       "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true,
-      "world_rank": 82
+      "world_rank": 82,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_13",
@@ -5763,7 +5921,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_14",
@@ -5807,7 +5969,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_16",
@@ -5865,7 +6031,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_17",
@@ -5887,7 +6057,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_18",
@@ -5932,7 +6106,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_19",
@@ -5977,7 +6155,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_20",
@@ -5997,7 +6179,7 @@
       "dob": "30 Jan 2003",
       "caps": 27,
       "matches_played": 5,
-      "ai_rating": 61.3,
+      "ai_rating": 62.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -6017,9 +6199,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 6.8,
+          "score": 20.3,
           "weight": 0.129,
-          "raw": 2.0
+          "raw": 0.4
         }
       },
       "rating_coverage": 0.31,
@@ -6029,7 +6211,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_03",
@@ -6048,10 +6234,14 @@
       "profile": "Named on the official FIH team list — 150 senior caps.",
       "dob": "12 May 1995",
       "caps": 150,
-      "matches_played": 5,
+      "matches_played": 1,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_04",
@@ -6103,7 +6293,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_05",
@@ -6123,7 +6317,7 @@
       "dob": "13 Jan 1991",
       "caps": 327,
       "matches_played": 5,
-      "ai_rating": 62.5,
+      "ai_rating": 62.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -6155,7 +6349,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 9.7,
+          "score": 8.1,
           "weight": 0.038,
           "raw": 1.0
         }
@@ -6187,7 +6381,7 @@
       "dob": "3 Apr 1999",
       "caps": 106,
       "matches_played": 5,
-      "ai_rating": 50.9,
+      "ai_rating": 51.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -6207,9 +6401,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 29.7,
           "weight": 0.129,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.31,
@@ -6219,7 +6413,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_07",
@@ -6264,7 +6462,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_08",
@@ -6286,7 +6488,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_09",
@@ -6308,7 +6514,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_10",
@@ -6327,33 +6537,19 @@
       "profile": "Named on the official FIH team list — 150 senior caps.",
       "dob": "7 Jan 1992",
       "caps": 150,
-      "matches_played": 5,
-      "ai_rating": 49.5,
+      "matches_played": 0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
       "position_source": "FIH",
-      "rating_components": {
-        "team_defence": {
-          "label": "Goals against",
-          "score": 9.4,
-          "weight": 0.833,
-          "raw": 4.6
-        },
-        "discipline": {
-          "label": "Discipline",
-          "score": 50.0,
-          "weight": 0.167,
-          "raw": 0.0
-        }
-      },
-      "rating_coverage": 0.24,
-      "rating_missing": [
-        "availability",
-        "distribution",
-        "pc_defence",
-        "shot_stopping"
-      ]
+      "rating_components": null,
+      "rating_coverage": null,
+      "rating_missing": null,
+      "games_played": 0,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_11",
@@ -6375,7 +6571,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_12",
@@ -6427,7 +6627,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 4,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_13",
@@ -6447,7 +6651,7 @@
       "dob": "19 Jul 1996",
       "caps": 202,
       "matches_played": 5,
-      "ai_rating": 49.8,
+      "ai_rating": 50.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -6467,9 +6671,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 6.8,
+          "score": 20.3,
           "weight": 0.129,
-          "raw": 2.0
+          "raw": 0.4
         }
       },
       "rating_coverage": 0.31,
@@ -6479,7 +6683,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_14",
@@ -6501,7 +6709,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_15",
@@ -6523,7 +6735,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_16",
@@ -6575,7 +6791,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_17",
@@ -6594,10 +6814,14 @@
       "profile": "Named on the official FIH team list — 43 senior caps.",
       "dob": "27 Nov 2002",
       "caps": 47,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_18",
@@ -6649,7 +6873,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_19",
@@ -6668,10 +6896,14 @@
       "profile": "Named on the official FIH team list — 36 senior caps.",
       "dob": "23 May 1995",
       "caps": 39,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_20",
@@ -6690,10 +6922,14 @@
       "profile": "Named on the official FIH team list — 32 senior caps.",
       "dob": "8 Aug 2005",
       "caps": 33,
-      "matches_played": 5,
+      "matches_played": 1,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_05",
@@ -6962,7 +7198,7 @@
       "dob": "10 Oct 1999",
       "caps": 89,
       "matches_played": 5,
-      "ai_rating": 87.7,
+      "ai_rating": 86.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -6982,7 +7218,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 9.5,
           "weight": 0.129,
           "raw": 1.0
         }
@@ -7125,7 +7361,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NZL_03",
@@ -7729,33 +7969,19 @@
       "profile": "Named on the official FIH team list — 7 senior caps.",
       "dob": "20 Dec 2000",
       "caps": 7,
-      "matches_played": 5,
-      "ai_rating": 52.6,
+      "matches_played": 0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
       "position_source": "FIH",
-      "rating_components": {
-        "team_defence": {
-          "label": "Goals against",
-          "score": 15.6,
-          "weight": 0.833,
-          "raw": 3.8
-        },
-        "discipline": {
-          "label": "Discipline",
-          "score": 50.0,
-          "weight": 0.167,
-          "raw": 0.0
-        }
-      },
-      "rating_coverage": 0.24,
-      "rating_missing": [
-        "availability",
-        "distribution",
-        "pc_defence",
-        "shot_stopping"
-      ]
+      "rating_components": null,
+      "rating_coverage": null,
+      "rating_missing": null,
+      "games_played": 0,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_05",
@@ -7777,7 +8003,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_06",
@@ -7799,7 +8029,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_07",
@@ -7863,7 +8097,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 4,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_08",
@@ -7885,7 +8123,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_09",
@@ -7904,10 +8146,14 @@
       "profile": "Named on the official FIH team list — 3 senior caps.",
       "dob": "7 Aug 2000",
       "caps": 6,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_10",
@@ -7926,10 +8172,14 @@
       "profile": "Named on the official FIH team list — 51 senior caps.",
       "dob": "8 Mar 1998",
       "caps": 52,
-      "matches_played": 5,
+      "matches_played": 2,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 2,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_11",
@@ -7948,10 +8198,14 @@
       "profile": "Named on the official FIH team list — 76 senior caps.",
       "dob": "27 Feb 2002",
       "caps": 80,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_12",
@@ -7973,7 +8227,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_13",
@@ -7993,7 +8251,7 @@
       "dob": "12 Dec 2000",
       "caps": 59,
       "matches_played": 5,
-      "ai_rating": 61.8,
+      "ai_rating": 63.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -8019,9 +8277,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 10.3,
+          "score": 29.5,
           "weight": 0.15,
-          "raw": 2.0
+          "raw": 0.4
         }
       },
       "rating_coverage": 0.2,
@@ -8031,7 +8289,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_14",
@@ -8050,7 +8312,7 @@
       "profile": "Named on the official FIH team list — 49 senior caps.",
       "dob": "7 Feb 1999",
       "caps": 52,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": 67.1,
       "source": "fih-team-list",
       "on_team_list": true,
@@ -8090,7 +8352,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 4,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_15",
@@ -8142,7 +8408,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_16",
@@ -8164,7 +8434,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_17",
@@ -8183,10 +8457,14 @@
       "profile": "Named on the official FIH team list — 115 senior caps.",
       "dob": "10 Feb 1998",
       "caps": 117,
-      "matches_played": 5,
+      "matches_played": 3,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 3,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_18",
@@ -8231,7 +8509,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_19",
@@ -8250,10 +8532,14 @@
       "profile": "Named on the official FIH team list — 35 senior caps.",
       "dob": "4 Dec 2002",
       "caps": 38,
-      "matches_played": 5,
+      "matches_played": 3,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 3,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "PAK_20",
@@ -8275,7 +8561,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_02",
@@ -8346,10 +8636,14 @@
       "profile": "Named on the official FIH team list — 54 senior caps.",
       "dob": "20 Mar 1998",
       "caps": 57,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_04",
@@ -8371,7 +8665,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_05",
@@ -8393,7 +8691,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_06",
@@ -8415,7 +8717,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_07",
@@ -8437,7 +8743,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_08",
@@ -8456,10 +8766,14 @@
       "profile": "Named on the official FIH team list — 19 senior caps.",
       "dob": "13 Jul 2002",
       "caps": 22,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_09",
@@ -8481,7 +8795,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_10",
@@ -8500,10 +8818,14 @@
       "profile": "Named on the official FIH team list — 16 senior caps.",
       "dob": "18 Jan 2004",
       "caps": 19,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_11",
@@ -8522,7 +8844,7 @@
       "profile": "Named on the official FIH team list — 4 senior caps.",
       "dob": "4 May 1999",
       "caps": 5,
-      "matches_played": 5,
+      "matches_played": 1,
       "ai_rating": 66.4,
       "source": "fih-team-list",
       "on_team_list": true,
@@ -8548,7 +8870,11 @@
         "distribution",
         "pc_defence",
         "shot_stopping"
-      ]
+      ],
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_12",
@@ -8570,7 +8896,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_13",
@@ -8590,7 +8920,7 @@
       "dob": "4 Apr 2000",
       "caps": 28,
       "matches_played": 5,
-      "ai_rating": 66.3,
+      "ai_rating": 67.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -8616,9 +8946,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 35.9,
           "weight": 0.15,
-          "raw": 1.0
+          "raw": 0.2
         }
       },
       "rating_coverage": 0.2,
@@ -8628,7 +8958,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_14",
@@ -8686,7 +9020,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_15",
@@ -8705,10 +9043,14 @@
       "profile": "Named on the official FIH team list — 7 senior caps.",
       "dob": "15 Apr 2003",
       "caps": 8,
-      "matches_played": 5,
+      "matches_played": 2,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 2,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_17",
@@ -8817,7 +9159,7 @@
       "dob": "8 Aug 2003",
       "caps": 14,
       "matches_played": 5,
-      "ai_rating": 64.5,
+      "ai_rating": 64.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -8843,7 +9185,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 6.4,
+          "score": 1.3,
           "weight": 0.15,
           "raw": 3.0
         }
@@ -10043,8 +10385,8 @@
       "profile": "Named on the official FIH team list — 133 senior caps.",
       "dob": "22 Dec 1996",
       "caps": 136,
-      "matches_played": 5,
-      "ai_rating": 65.7,
+      "matches_played": 4,
+      "ai_rating": 66.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -10064,9 +10406,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 25.7,
           "weight": 0.129,
-          "raw": 1.0
+          "raw": 0.25
         }
       },
       "rating_coverage": 0.31,
@@ -10076,7 +10418,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 4,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_10",
@@ -10098,7 +10444,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_15",
@@ -11030,7 +11380,7 @@
       "profile": "Named on the official FIH team list — 122 senior caps.",
       "dob": "14 Apr 1998",
       "caps": 125,
-      "matches_played": 5,
+      "matches_played": 4,
       "ai_rating": 59.6,
       "source": "fih-team-list",
       "on_team_list": true,
@@ -11075,7 +11425,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 4,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "JPN_21",
@@ -11097,7 +11451,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_21",
@@ -11115,11 +11473,15 @@
       "fih_star": false,
       "profile": "Named on the official FIH team list — 229 senior caps.",
       "dob": "4 Mar 1993",
-      "caps": 233,
+      "caps": 327,
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "MAS_22",
@@ -11183,7 +11545,11 @@
         "circle_impact",
         "possession",
         "pressing"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_20",
@@ -11400,7 +11766,11 @@
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "RSA_21",
@@ -11420,7 +11790,7 @@
       "dob": "1 Dec 1998",
       "caps": 103,
       "matches_played": 5,
-      "ai_rating": 69.9,
+      "ai_rating": 71.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -11446,9 +11816,9 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 2.6,
+          "score": 25.6,
           "weight": 0.15,
-          "raw": 4.0
+          "raw": 0.8
         }
       },
       "rating_coverage": 0.2,
@@ -11458,7 +11828,11 @@
         "defensive_actions",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_19",
@@ -11730,7 +12104,7 @@
       "dob": "29 Sep 1999",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 59.9,
+      "ai_rating": 58.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -11756,7 +12130,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 26.9,
+          "score": 14.1,
           "weight": 0.15,
           "raw": 1.0
         }
@@ -11788,7 +12162,7 @@
       "dob": "13 Apr 2001",
       "caps": 29,
       "matches_played": 5,
-      "ai_rating": 74.7,
+      "ai_rating": 73.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -11808,7 +12182,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 9.5,
           "weight": 0.129,
           "raw": 1.0
         }
@@ -11838,11 +12212,15 @@
       "fih_star": false,
       "profile": "Named on the official FIH team list — 10 senior caps.",
       "dob": "30 Aug 2002",
-      "caps": 13,
+      "caps": 92,
       "matches_played": 5,
       "ai_rating": null,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_22",
@@ -11906,7 +12284,7 @@
       "dob": "27 Jul 1998",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 79.1,
+      "ai_rating": 78.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -11926,7 +12304,7 @@
         },
         "discipline": {
           "label": "Discipline",
-          "score": 21.6,
+          "score": 9.5,
           "weight": 0.129,
           "raw": 1.0
         }
@@ -11990,7 +12368,11 @@
         "duels",
         "possession",
         "progression"
-      ]
+      ],
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_22",
