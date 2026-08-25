@@ -153,6 +153,38 @@ jobs:
             echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # Every push here puts every open pull request one commit behind main,
+      # and because these are whole-file rewrites of public/data/*.json that
+      # is a conflict, not a fast-forward. The branch has no way to notice: a
+      # push to main triggers nothing on a feature branch. So a review that
+      # was conflict-free ten minutes ago is dirty by the time anyone opens
+      # it, over and over, and somebody has to merge main by hand each time.
+      #
+      # This closes that loop. After a data push, every open pull request
+      # targeting main gets this same workflow dispatched on its head branch,
+      # where the first step configures the merge driver, merges main and
+      # pushes. Forks are skipped — the token cannot write to them. Failures
+      # are tolerated so a branch that cannot be updated never fails the data
+      # run that main depends on.
+      - name: Carry the update into open pull requests
+        if: steps.commit.outputs.pushed == 'true' && github.ref_name == 'main'
+        continue-on-error: true
+        run: |
+          branches=$(curl -sS \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&base=main&per_page=100" \
+            | python3 -c "import json,sys; print(' '.join(p['head']['ref'] for p in json.load(sys.stdin) if p['head']['repo'] and p['head']['repo']['full_name']=='${{ github.repository }}'))")
+          if [ -z "$branches" ]; then echo "No open pull requests to update."; exit 0; fi
+          for b in $branches; do
+            echo "Dispatching the data pipeline on $b to take main."
+            curl -sS -X POST \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/workflows/update-data.yml/dispatches" \
+              -d "{\"ref\":\"$b\"}" || echo "  could not dispatch on $b"
+          done
+
       # GITHUB_TOKEN pushes never trigger `on: push` workflows, so the Pages
       # deploy must be dispatched explicitly or the live site serves stale data.
       - name: Redeploy GitHub Pages with fresh data
