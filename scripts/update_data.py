@@ -2504,7 +2504,11 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             out = non_knockout_pick(m, (ph, pd, pa), points_of, fixtures, h2h_pairs)
             pick = out['prediction']
             ph, pd, pa = out['probs']['HOME'], out['probs']['DRAW'], out['probs']['AWAY']
-            conf = round(max(ph, pd, pa), 3)
+            # The pick's own probability, not the largest in the row. Those are
+            # the same number only when the pick leads, and a card that prints
+            # "India to win · 70%" over Argentina's 70% is asserting the
+            # opposite of what it means.
+            conf = round({'HOME': ph, 'DRAW': pd, 'AWAY': pa}[pick], 3)
         # A pick is stale if its numbers no longer follow from the current
         # ranks — or if the ranks its reason asserts are simply not the ranks.
         # (IND v PAK moved from #5 v #9 to #8 v #12: same gap, same
@@ -2606,7 +2610,11 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
             out = non_knockout_pick(m, (ph, pd, pa), points_of, fixtures, h2h_pairs)
             pick = out['prediction']
             ph, pd, pa = out['probs']['HOME'], out['probs']['DRAW'], out['probs']['AWAY']
-            conf = round(max(ph, pd, pa), 3)
+            # The pick's own probability, not the largest in the row. Those are
+            # the same number only when the pick leads, and a card that prints
+            # "India to win · 70%" over Argentina's 70% is asserting the
+            # opposite of what it means.
+            conf = round({'HOME': ph, 'DRAW': pd, 'AWAY': pa}[pick], 3)
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         stage_note = f" {m['phase'].replace('-', ' ').title()} slot decided by pool standings." if knockout else ''
         basis_note = (' Published pre-match.' if pre_match else

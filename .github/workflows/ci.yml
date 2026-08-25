@@ -101,5 +101,11 @@ jobs:
       - name: One published accuracy figure
         run: npm run test:accuracy
 
+      # A pick, its distribution and its confidence are three statements of
+      # one claim. A card once read "India to win" above ARG 70% with a 70%
+      # ring — the pick, the numbers and the reason disagreeing on the page.
+      - name: Picks agree with their own numbers
+        run: npm run test:picks
+
       - name: Build
         run: npm run build
