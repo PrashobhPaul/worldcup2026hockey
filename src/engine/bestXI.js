@@ -49,6 +49,27 @@ export function roleOf(p) {
 }
 
 /**
+ * The tournament's best XI: the highest-rated player in each line, across
+ * every nation, in 1-4-3-3.
+ *
+ * Different question from the per-team `bestXI` below, which answers "who does
+ * this coach actually field" and so orders on starts. This one is a merit XI
+ * and orders on the rating alone.
+ *
+ * The line a player belongs to is `roleOf`, never the raw entry-list value.
+ * This selection used to read `position` directly, and because the FIH marks
+ * only `(GK)` — three players in the whole tournament are stated Defenders —
+ * the back four could never be filled and the XI quietly fielded ten men.
+ */
+export function tournamentXI(players) {
+  const eligible = (players ?? []).filter(p => isAtTournament(p) && p.ai_rating != null)
+  const line = role => eligible
+    .filter(p => roleOf(p).role === role)
+    .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
+  return LINES.flatMap(l => line(l.role).slice(0, l.count).map(p => ({ ...p, line: l })))
+}
+
+/**
  * Who to pick for a role.
  *
  * Starts come first, because the official team sheets now state them and the

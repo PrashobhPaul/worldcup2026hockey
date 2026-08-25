@@ -3,12 +3,16 @@ import { goalSplit, splitText } from '../engine/goalSplit.js'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Link } from 'react-router-dom'
 import RatingBreakdown from '../components/RatingBreakdown'
-import { isAtTournament } from '../engine/bestXI'
+import { DerivedBadge } from '../components/hockeyIcons'
+import { isAtTournament, roleOf } from '../engine/bestXI'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import SiblingNav from '../components/SiblingNav'
 
 const POSITIONS = ['all', 'Forward', 'Midfielder', 'Defender', 'Goalkeeper']
+// The board is a top ten. It is a fixed ten so the page does not resize
+// under the reader every time a filter changes.
+const TOP_N = 10
 
 export default function PlayersPage() {
   const [pos, setPos] = useState('all')
@@ -26,10 +30,23 @@ export default function PlayersPage() {
 
   if (all === undefined) return <Skeleton h={500} />
 
-  const filtered = players.filter(p =>
-    (pos === 'all' || p.position === pos) &&
-    (teamFilter === 'all' || p.team === teamFilter)
-  )
+  // One order, whichever filter is on: the AI rating, highest first. The box
+  // below always holds the same ten places, so switching from All positions to
+  // Goalkeepers, or from every nation to one, changes who is in the ten and
+  // never where to look. A player the record gives no rating to sorts last
+  // rather than being read as a nought.
+  // The filter reads the role the app actually shows — the FIH entry list
+  // marks (GK) and nothing else, so 272 of these players are filed under a
+  // "Squad" placeholder. Filtering on that gave six forwards at a World Cup.
+  const matching = players
+    .filter(p =>
+      (pos === 'all' || roleOf(p).role === pos) &&
+      (teamFilter === 'all' || p.team === teamFilter))
+    .sort((a, b) =>
+      (b.ai_rating ?? -1) - (a.ai_rating ?? -1) ||
+      (b.goals ?? 0) - (a.goals ?? 0) ||
+      a.name.localeCompare(b.name))
+  const filtered = matching.slice(0, TOP_N)
 
   const scorers = [...players].filter(p => p.goals > 0).sort((a, b) => b.goals - a.goals || b.pc_scored - a.pc_scored).slice(0, 5)
 
@@ -41,7 +58,7 @@ export default function PlayersPage() {
       ]} />
       <div className="mb-5 border-b border-white/5 pb-4">
         <h1 className="font-display text-2xl font-bold tracking-tight">👤 Players</h1>
-        <p className="mt-1 text-xs text-pitch-400">{players.length} key players tracked · goals, penalty-corner goals, cards</p>
+        <p className="mt-1 text-xs text-pitch-400">{players.length} players on the official team lists · goals by method, cards, AI rating</p>
       </div>
 
       {scorers.length > 0 && (
@@ -83,13 +100,28 @@ export default function PlayersPage() {
         ))}
       </div>
 
-      <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map(p => {
+      <div className="mb-2 flex items-baseline justify-between">
+        <h2 className="font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">
+          Top {TOP_N} by AI rating
+        </h2>
+        <span className="font-mono text-[10px] text-pitch-400">
+          {matching.length > TOP_N ? `of ${matching.length} matching` : `${matching.length} matching`}
+        </span>
+      </div>
+      <div className="no-scrollbar grid h-[560px] gap-2.5 overflow-y-auto rounded-xl border border-white/5 bg-pitch-950/40 p-2.5 sm:h-[520px] sm:grid-cols-2 lg:grid-cols-2"
+        style={{ gridAutoRows: 'min-content' }}>
+        {filtered.length === 0 && (
+          <p className="col-span-full self-center text-center text-sm text-pitch-400">
+            No player on the official team lists matches this filter.
+          </p>
+        )}
+        {filtered.map((p, i) => {
           const t = byCode.get(p.team)
           const open = openId === p.id
           return (
             <div key={p.id} className="rounded-xl border border-white/5 bg-pitch-800 p-3.5 transition-colors hover:border-brand/20">
               <div className="flex items-center gap-2">
+                <span className="w-5 shrink-0 text-center font-mono text-xs font-bold text-brand">{i + 1}</span>
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 font-mono text-[10px] text-pitch-300">#{p.number}</span>
                 <span className="flex-1 truncate text-sm font-bold">{p.name}</span>
                 {p.is_captain && <span className="text-xs text-brand">Ⓒ</span>}
@@ -97,7 +129,10 @@ export default function PlayersPage() {
               </div>
               <div className="mt-1.5 flex items-center gap-2">
                 <Link to={`/teams/${p.team}`} className="text-base">{t?.flag ?? '🏑'}</Link>
-                <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-pitch-300">{p.position}</span>
+                <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-pitch-300">
+                  {roleOf(p).role ?? 'Role not on the record'}
+                </span>
+                <DerivedBadge derived={roleOf(p).source === 'Hockey.AI'} />
               </div>
               <div className="mt-2.5 flex flex-wrap gap-1.5 font-mono text-[10px]">
                 {p.ai_rating != null && (

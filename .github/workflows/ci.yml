@@ -146,5 +146,10 @@ jobs:
       - name: Player figures reconcile with the FIH's own statistics
         run: npm run test:stats
 
+      # The medal path is derived from the record rather than drawn, so it is
+      # checked against the label the FIH puts on the fixture itself.
+      - name: The medal path matches the FIH's own slot labels
+        run: npm run test:medalpath
+
       - name: Build
         run: npm run build

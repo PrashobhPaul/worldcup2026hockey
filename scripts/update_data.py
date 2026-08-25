@@ -2982,6 +2982,22 @@ def slot_knockouts(fixtures):
             brz['home'], brz['away'] = l1, l2
             changed = True
             print(f"SLOTTED BRZ: {l1} vs {l2}")
+
+    # A fixture is provisional exactly while it does not yet know who is in
+    # it. The seed schedule marked every knockout tie provisional because none
+    # of them did, and the flag was written once and never revisited — so a
+    # semi-final filled in from two finished tables went on calling itself a
+    # guess. Stating the invariant instead of setting the flag at each slot
+    # point also repairs the rows that were already filled in.
+    for m in fixtures['matches']:
+        if m['phase'] in ('pool',):
+            continue
+        want = m['home'] == 'TBD' or m['away'] == 'TBD'
+        if m.get('provisional') is not None and m['provisional'] != want:
+            m['provisional'] = want
+            changed = True
+            print(f"PROVISIONAL {m['id']}: {'yes' if want else 'no'} "
+                  f"({m['home']} vs {m['away']})")
     return changed
 
 # ------------------------------------------------------------- oracle

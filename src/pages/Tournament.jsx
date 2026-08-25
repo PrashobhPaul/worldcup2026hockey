@@ -6,10 +6,11 @@ import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings, computeStage2Standings } from '../engine/standings'
 import { cardPoints } from '../engine/awards'
-import { roleOf, isAtTournament } from '../engine/bestXI'
+import { isAtTournament, roleOf, tournamentXI } from '../engine/bestXI'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
+import BracketProgress from '../components/BracketProgress'
 import {
   GoldenStickIcon, CrossedSticksIcon, KeeperPadIcon, PenaltyCornerIcon,
   PlayerIndexIcon, FinalQuarterIcon, TalismanIcon, FairPlayIcon, PodiumIcon,
@@ -26,38 +27,22 @@ const VIEWS = [
   { id: 'awards', label: 'Awards' },
 ]
 
-// Best XI selection: top AI ratings per position line, 4-3-3.
-// Rising Stars XI: same rule restricted to nations outside the FIH top 6.
-function pickXI(players, byCode, { risingOnly = false, exclude = new Set() } = {}) {
-  const eligible = players.filter(p =>
-    p.ai_rating != null && !exclude.has(p.id) &&
-    (!risingOnly || (byCode.get(p.team)?.fihRank ?? 99) > 6))
-  const byPos = pos => eligible
-    .filter(p => p.position === pos)
-    .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
-  const xi = [
-    ...byPos('Goalkeeper').slice(0, 1),
-    ...byPos('Defender').slice(0, 4),
-    ...byPos('Midfielder').slice(0, 3),
-    ...byPos('Forward').slice(0, 3),
-  ]
-  return xi.map(p => ({
+// The tournament-wide XI lives in the engine beside the per-team one, so
+// there is one definition of a line and one gate over it.
+function pickXI(players) {
+  return tournamentXI(players).map(p => ({
     id: p.id,
     player: p.name,
     nat: p.team,
     rating: p.ai_rating,
-    pos: p.position === 'Goalkeeper' ? 'GK' : p.position === 'Defender' ? 'DF' : p.position === 'Midfielder' ? 'MF' : 'FW',
+    pos: { Goalkeeper: 'GK', Defender: 'DF', Midfielder: 'MF' }[p.line.role] ?? 'FW',
     stat: [`${p.goals}G`, splitText(p)].filter(Boolean).join(' · '),
   }))
 }
 
-function BestXISpace({ players, byCode, xi, setXi }) {
-  const best = useMemo(() => pickXI(players, byCode), [players, byCode])
-  const rising = useMemo(
-    () => pickXI(players, byCode, { risingOnly: true, exclude: new Set(best.map(p => p.id)) }),
-    [players, byCode, best])
-  const active = xi === 'rising' ? rising : best
-  const accent = xi === 'rising' ? '#34d399' : 'var(--color-brand)'
+function BestXISpace({ players, byCode }) {
+  const best = useMemo(() => pickXI(players), [players])
+  const accent = 'var(--color-brand)'
 
   if (!best.length) {
     return <div className="rounded-xl border border-white/5 bg-pitch-800 p-4 text-sm text-pitch-400">
@@ -67,29 +52,17 @@ function BestXISpace({ players, byCode, xi, setXi }) {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-1.5">
-        {[['best', 'Best XI'], ['rising', 'Rising Stars XI']].map(([id, label]) => (
-          <button key={id} onClick={() => setXi(id)}
-            className={`rounded-md border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-              xi === id || (id === 'best' && xi !== 'rising')
-                ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
-            }`}>
-            {label}
-          </button>
-        ))}
-      </div>
-
       <div className="grid gap-5 lg:grid-cols-2">
         <div>
           <h2 className="font-display text-base font-semibold" style={{ color: accent }}>
-            {xi === 'rising' ? 'Rising Stars XI' : "Tournament's Best XI"}
+            Tournament&apos;s Best XI
           </h2>
           <p className="mb-2 font-mono text-[10px] text-pitch-400">✨ Coach: Oracle · 1-4-3-3 · selected on AI positional ratings</p>
-          <Pitch players={active} formation="4-3-3" byCode={byCode} accent={accent} />
+          <Pitch players={best} formation="4-3-3" byCode={byCode} accent={accent} />
         </div>
         <div>
           <ol className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-pitch-800">
-            {active.map(p => (
+            {best.map(p => (
               <li key={p.id} className="flex items-center gap-2.5 px-3.5 py-2.5">
                 <span className="w-7 rounded bg-pitch-700 px-1 text-center font-mono text-[9px] font-bold text-pitch-300">{p.pos}</span>
                 <span>{byCode.get(p.nat)?.flag}</span>
@@ -101,9 +74,8 @@ function BestXISpace({ players, byCode, xi, setXi }) {
           </ol>
           <p className="mt-3 rounded-xl border-l-2 border-white/5 bg-pitch-800 p-3.5 text-xs leading-relaxed text-pitch-300"
             style={{ borderLeftColor: accent }}>
-            {xi === 'rising'
-              ? 'Oracle’s plan: the best-rated players from nations outside the FIH top six — the names this World Cup introduces to the world. High press, fast transfers, nothing to lose.'
-              : 'Oracle’s plan: the tournament’s highest-rated player in every line. A drag-flick battery in defence, total control through midfield, and the three most dangerous circle finishers up top.'}
+            Oracle’s plan: the tournament’s highest-rated player in every line. A drag-flick battery
+            in defence, total control through midfield, and the three most dangerous circle finishers up top.
           </p>
           <p className="mt-2 font-mono text-[10px] leading-relaxed text-pitch-400">
             Selected automatically from AI positional ratings — recomputed after every completed match. No editorial overrides.
@@ -390,7 +362,6 @@ export default function TournamentPage() {
   // Win Probability moved to the Oracle, where the same canonical snapshot
   // powers the race and the odds table — one home for one number.
   const view = VIEWS.some(v => v.id === requested) ? requested : 'standings'
-  const xi = params.get('xi') === 'rising' ? 'rising' : 'best'
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
   const players = useLiveQuery(
@@ -405,13 +376,9 @@ export default function TournamentPage() {
   const setView = (v) => {
     const next = new URLSearchParams(params)
     v === 'standings' ? next.delete('tab') : next.set('tab', v)
-    if (v !== 'best') next.delete('xi')
-    setParams(next, { replace: true })
-  }
-  const setXi = (v) => {
-    const next = new URLSearchParams(params)
-    next.set('tab', 'best')
-    v === 'best' ? next.delete('xi') : next.set('xi', v)
+    // ?xi=rising addressed the second XI, which no longer exists. Dropping it
+    // keeps an old link working rather than landing on a dead parameter.
+    next.delete('xi')
     setParams(next, { replace: true })
   }
 
@@ -450,6 +417,10 @@ export default function TournamentPage() {
         <>
           {view === 'standings' && (
             <div className="space-y-6">
+              {/* The medal path first: the shape of the tournament, then the
+                  tables that decide it. It states the record only — the
+                  Oracle keeps the one bracket that carries odds. */}
+              <BracketProgress teams={teams} matches={matches} />
               {/* Once Stage 2 begins, its tables lead — the Stage 1 letters are history. */}
               <Stage2Standings matches={matches} />
               <div>
@@ -477,7 +448,7 @@ export default function TournamentPage() {
 
           {view === 'stats' && <StatsView teams={teams} matches={matches} byCode={byCode} />}
 
-          {view === 'best' && <BestXISpace players={players} byCode={byCode} xi={xi} setXi={setXi} />}
+          {view === 'best' && <BestXISpace players={players} byCode={byCode} />}
 
           {view === 'awards' && <AwardsView />}
         </>
