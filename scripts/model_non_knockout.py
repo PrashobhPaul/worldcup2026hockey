@@ -88,26 +88,42 @@ def _aligned(probs, pick):
     """Make the published distribution agree with the published pick.
 
     The app prints the pick beside its own probability. A card reading
-    "Draw (18%)" directly above a Home bar at 55% is not a subtle
+    "India to win" above a bar showing Argentina at 70% is not a subtle
     inconsistency, it is the product contradicting itself in one sentence.
-    So when the draw rule overrides the base's call, the distribution moves
-    with it: the draw takes the top line by `align_lead`, and the remaining
-    mass stays with home and away in the ratio the ranking points gave them.
-    Order and relative strength are preserved; only the claim being asserted
-    changes, which is the whole point of the override.
+
+    So whenever a rule overrides the base's call, the distribution moves with
+    it: the picked outcome takes the top line by `align_lead`, and the
+    remaining mass stays with the other two in the ratio the ranking points
+    gave them. Order and relative strength among the rest are preserved; only
+    the claim being asserted changes, which is the whole point of an override.
+
+    This once covered the draw rule alone, because the draw rule was the only
+    override there was. The tournament rules also override to HOME and to
+    AWAY, and those went out with the base distribution untouched — ten of the
+    forty-eight published rows ended up asserting one thing in words and the
+    opposite in numbers.
     """
-    ph, pd, pa = probs
-    if not NK.get('align_probabilities', True) or pick != 'DRAW':
+    if not NK.get('align_probabilities', True):
         return probs
-    top = max(ph, pa)
-    if pd > top:
+    order = {'HOME': 0, 'DRAW': 1, 'AWAY': 2}
+    i = order.get(pick)
+    if i is None:
         return probs
+    vals = list(probs)
+    others = [v for j, v in enumerate(vals) if j != i]
+    top = max(others)
+    if vals[i] > top:
+        return probs                    # the pick already leads; nothing to do
     target = min(1.0, top + NK['align_lead'])
-    rest = ph + pa
+    rest = sum(others)
     if rest <= 0:
-        return 0.0, 1.0, 0.0
+        out = [0.0, 0.0, 0.0]
+        out[i] = 1.0
+        return tuple(out)
     scale = (1.0 - target) / rest
-    return round(ph * scale, 3), round(target, 3), round(pa * scale, 3)
+    out = [round(v * scale, 3) for v in vals]
+    out[i] = round(target, 3)
+    return tuple(out)
 
 
 def predict(f, mode=None):

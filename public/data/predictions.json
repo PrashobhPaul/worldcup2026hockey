@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-25T05:34:40.247250+00:00",
+  "updated_at": "2026-08-24T19:38:49.174830+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -16,7 +16,10 @@
       "reason_original": "India ranked #5 vs Wales #16 — an 11-place FIH gap. Harmanpreet Singh's drag flick is the premium set-piece weapon on the pitch.",
       "reason_revised_at": "2026-08-24T19:26:09.005068+00:00",
       "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
-      "pick_team": "IND"
+      "pick_team": "IND",
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v1:A1",
@@ -3513,12 +3516,13 @@
       "pick": "AWAY",
       "pick_team": "WAL",
       "pick_confidence": 0.571,
-      "reason": "Both lost their openers, and both lost them differently: Pakistan reached the England circle repeatedly and took only a 50th-minute consolation from it, while Wales were held to a single goal by India and did not score until the 56th. Pakistan's ability to create at this level is the edge here. Their discipline is the doubt — they took a green card against England, and this fixture rarely stays calm.",
+      "reason": "Both sides lost their openers and the margins differ: Wales stayed within two of India while Pakistan conceded four to England. The ranking gap between these two has closed to the point where seeding says very little, and on the only evidence this tournament has produced Wales have defended the better of the two. Pakistan's discipline is the counter-argument — they took a card against England — and this fixture rarely stays calm.",
       "reason_original": "FIH #9 PAK favoured over #16 WAL — Elo model from world rankings, published before push-back.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.673769+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:B3",
@@ -3531,12 +3535,13 @@
       "pick": "HOME",
       "pick_team": "GER",
       "pick_confidence": 0.472,
-      "reason": "Belgium opened with a 3-2 win over France in which both of their goals in the last sixteen minutes came from penalty corners, and Alexander Hendrickx's flick remains the most reliable set-piece finish in the tournament. Germany's 5-1 against Malaysia is the stronger attacking evidence — three goals inside seven minutes — so this pick rests on Belgium's defence keeping the game to one or two chances, not on outscoring them.",
+      "reason": "Both won their openers and Germany's was the more emphatic: five goals against Malaysia to Belgium's three against France, and one conceded against Belgium's two. Belgium remain the top-ranked side in the world and their late set-piece scoring won them that opener, but the points between these two have converged into the band where ranking order stops settling matches, and Germany's opening burst is the sharper attacking evidence.",
       "reason_original": "FIH #1 BEL favoured over #5 GER — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.673769+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:B6",
@@ -3549,12 +3554,10 @@
       "pick": "DRAW",
       "pick_team": null,
       "pick_confidence": 0.954,
-      "reason": "Germany have won both matches, conceded once, and beaten Belgium by keeping the best set-piece unit in the tournament off the scoresheet entirely — the most complete defensive performance of the pool stage. France have taken one point from two and needed a 59th-minute equaliser to get it. The caution is that France have now scored in every match and against Belgium showed they can punish one lapse, and Germany's wins have both been narrow in chances if not in scoreline.",
+      "reason": "Germany have won both, conceded once, and beaten the top-ranked side in the world; France have a single point from two and needed a late equaliser against Malaysia to get it. The case for a share is that Germany's rating has surged far enough on those results that the gap now overstates them, while France have scored in every match and concede at a rate that keeps them in games rather than out of them.",
       "reason_original": "FIH #5 GER favoured over #11 FRA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
-      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.673769+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00"
     },
     {
       "id": "oracle-v2:C5",
@@ -3567,12 +3570,10 @@
       "pick": "DRAW",
       "pick_team": null,
       "pick_confidence": 0.964,
-      "reason": "Australia have six points, four goals and one conceded, and have scored from a corner, from open play and from a stroke — three routes to goal against a South African side that has conceded seven in two matches and failed to score against Ireland. The one warning is discipline: Australia took three green cards against Spain in twenty-three minutes, and South Africa's Mustaphaa Cassiem has scored in both matches.",
+      "reason": "Australia arrive with six points from two and one goal conceded, South Africa with none from two and seven conceded. On the table this is the widest mismatch of the round, which is why the rating movement matters: Australia's has climbed steeply on two narrow wins, and a side whose points have run ahead of its scoring is the profile that has dropped points here. Mustaphaa Cassiem has scored in both South African defeats.",
       "reason_original": "FIH #5 AUS favoured over #13 RSA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
-      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.673769+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00"
     },
     {
       "id": "oracle-v2:S2H1",
@@ -3585,12 +3586,13 @@
       "pick": "AWAY",
       "pick_team": "RSA",
       "pick_confidence": 0.612,
-      "reason": "France left Pool B unbeaten against Germany and Malaysia and lost to Belgium by a single goal, conceding seven in three matches against far stronger opposition than South Africa met. South Africa bring one point from three into Stage 2, with nine conceded in the pool — seven of them to Spain and Ireland — and the Cassiem set-piece threat as their clearest route to goal. The steadier pool evidence favours France.",
+      "reason": "France are unbeaten in their last two but without a win in three, and their scoring has thinned to a goal a game since the opener. South Africa took a point off an unbeaten Australia in their last outing, the better single result either side can point to, and the ranking gap between them sits in the band where the lower-rated side has been the better call. The Cassiem set piece is the clearest route to goal on the pitch.",
       "reason_original": "FIH #9 FRA favoured over #13 RSA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2F2",
@@ -3603,12 +3605,13 @@
       "pick": "AWAY",
       "pick_team": "ESP",
       "pick_confidence": 0.561,
-      "reason": "Germany came through Pool B unbeaten with seven scored and only two conceded in three matches, the win over Belgium built on exactly the kind of defending this fixture rewards. Spain won twice by 3-1 in Pool C either side of a single-goal loss to Australia, so both arrive in form — but Spain's chances have come at a goal-a-game cost, and in a match likely to be tight and low-scoring, the side that has defended better all tournament is favoured.",
+      "reason": "Germany are unbeaten in three with two conceded; Spain have two wins and a single-goal defeat to Australia. The records are closer than the seeding: Spain scored six across the pool and conceded three, and their defeat came without conceding twice. Germany's scoring outside the Malaysia rout has been one goal per match, which against a defence that gives up very little in the circle is the thinner of the two attacking cases.",
       "reason_original": "FIH #5 GER favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2E2",
@@ -3621,12 +3624,13 @@
       "pick": "AWAY",
       "pick_team": "ARG",
       "pick_confidence": 0.524,
-      "reason": "England's pool was a procession: three wins from three, sixteen scored and five conceded, eight of them put past Wales in a single evening. Argentina's eleven pool goals — three past Japan, seven past New Zealand — trail only England and the Dutch, but their one meeting with a top-tier side ended in a two-goal defeat to the Netherlands, the same margin by which England beat India. Two of the tournament's three sharpest attacks meet; the one nobody has slowed yet is favoured.",
+      "reason": "England swept the pool with sixteen scored, but those wins came against Pakistan, India and Wales; the first top-eight side they meet is this one. Argentina have eleven goals of their own, four conceded, and their only defeat came against the unbeaten hosts. The head-to-head favours the side that has already beaten New Zealand by six, and the ranking gap has narrowed to where England's pool record flatters the difference.",
       "reason_original": "FIH #3 ENG favoured over #7 ARG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2H3",
@@ -3639,12 +3643,10 @@
       "pick": "DRAW",
       "pick_team": null,
       "pick_confidence": 0.629,
-      "reason": "South Africa arrive on the tournament's turnaround result — a first win over France, built on two converted short corners — after a pool that ended with a draw against unbeaten Australia. Malaysia are winless in four with twenty conceded, and while the set piece keeps producing, three corner goals against Ireland still came inside a 7-4 defeat. Two sides moving in opposite directions; South Africa favoured.",
+      "reason": "Malaysia are without a win in four and have conceded twenty; South Africa have one win in four and conceded ten. Neither defence has kept anyone out and both attacks have scored in every match they have played. Malaysia carry the worst goal difference in the competition, which has marked a side that scores enough to stay level rather than one beaten out of sight, and South Africa have already dropped points to a side below them.",
       "reason_original": "FIH #12 RSA favoured over #14 MAS — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
-      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00"
     },
     {
       "id": "oracle-v2:S2H4",
@@ -3657,12 +3659,13 @@
       "pick": "HOME",
       "pick_team": "FRA",
       "pick_confidence": 0.484,
-      "reason": "Ireland arrive from the tournament's highest-scoring match, a 7-4 win built on a first-half Lynch hat-trick — the afternoon their finishing finally matched their chances. France are winless in four: two pool draws, a one-goal loss to Belgium, and a Stage 2 defeat to South Africa in which they managed a single goal. Ireland's far sharper finishing favours them.",
+      "reason": "Ireland arrive from the highest-scoring match of the tournament and have won two of four; France are winless in four. The case for France is the head-to-head and the shape of Ireland's record: both their wins came against the two sides at the bottom of the pool, and both meetings with stronger opposition ended in defeat. France have conceded ten across four matches, taken something from two of them, and scored in every game.",
       "reason_original": "FIH #9 IRL favoured over #11 FRA — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2F3",
@@ -3675,12 +3678,13 @@
       "pick": "HOME",
       "pick_team": "GER",
       "pick_confidence": 0.382,
-      "reason": "Australia are the only side left in Pool F yet to lose a match this tournament — two wins and two draws around the pool's stingiest defence, four conceded in four. Germany's scoring has thinned since the five they put past Malaysia: one goal per match in the three games since, and Spain have just ended their unbeaten run. An attack producing once a game against the steadiest defence in the pool is the harder road; Australia are favoured to stay unbeaten.",
+      "reason": "Australia are unbeaten in four but have drawn the last two, and their rating has risen on results rather than on scoring — seven goals in four matches. Germany have lost once, to Spain, and carry the better attacking return over the same stretch. The head-to-head favours Germany, and a side whose points have climbed while its goals have not is the one this fixture asks the harder question of.",
       "reason_original": "FIH #3 AUS favoured over #6 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2G3",
@@ -3693,12 +3697,10 @@
       "pick": "DRAW",
       "pick_team": null,
       "pick_confidence": 0.416,
-      "reason": "Both sides are winless, so the argument is comparative. Wales have scored in all four of their matches — eight goals, three of them against Pakistan — while Japan's four games have produced four, three in one afternoon against that same Pakistan side, whom Japan still lost to and Wales held. Wales concede heavily, but here they meet the one attack in the tournament that has barely fired; the sharper of two struggling sides is favoured.",
+      "reason": "Both sides are still looking for a first win. Japan have scored four in four and Wales eight in four, but Wales have conceded twenty-one and Japan thirteen, the worst pair of goal differences in the tournament. Wales have already drawn with Pakistan, and a fixture between two sides who concede freely and score just enough is the shape that has produced shared points here.",
       "reason_original": "FIH #16 WAL favoured over #18 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
-      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00"
     },
     {
       "id": "oracle-v2:S2G4",
@@ -3711,12 +3713,13 @@
       "pick": "AWAY",
       "pick_team": "PAK",
       "pick_confidence": 0.749,
-      "reason": "New Zealand's defeats have come only against the Netherlands and Argentina; outside the top eight they have won both matches by a combined nine goals to two, the Wales rout showing an attack that punishes soft defences. Pakistan's eleven goals in four matches say they will score, but they have conceded at least three in every game, and their only win came against a Japan side that had scored once all tournament before that afternoon. New Zealand's edge at both ends is favoured.",
+      "reason": "New Zealand have won two of four, both against sides below them, and lost heavily to the Netherlands and Argentina. Pakistan bring the same eleven goals from four matches and have now beaten Japan, so the attacking records are level. The ranking gap between them sits inside the band where the lower-rated side has been the better call, and New Zealand's defence has given up fourteen across the four.",
       "reason_original": "FIH #9 NZL favoured over #12 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2E3",
@@ -3729,12 +3732,13 @@
       "pick": "AWAY",
       "pick_team": "IND",
       "pick_confidence": 0.699,
-      "reason": "Argentina's only defeat in four matches this tournament is to the Netherlands, and they arrive from beating England 3-1, every goal of it scored by Tomas Domene. India's four matches split the other way: wins over Wales and Pakistan, defeats in both meetings with top-eight opposition, and eleven conceded overall — nearly three a match. Argentina's corner battery against the tournament's most breached top-eight defence favours Los Leones.",
+      "reason": "Argentina have three wins from four and have just beaten England; India have split their four, winning both against sides below them and losing both against top-eight opposition. The case against Argentina is the rating movement: their points have surged on the England result until the gap overstates a side that lost to the Netherlands in this same tournament. India have scored eleven, conceded eleven, and have the drag flick to punish a lapse.",
       "reason_original": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v2:S2E4",
@@ -3747,12 +3751,13 @@
       "pick": "AWAY",
       "pick_team": "ENG",
       "pick_confidence": 0.772,
-      "reason": "The Netherlands are the tournament's only side with four wins from four — fifteen scored, four conceded, and never a winning margin under two. England's sixteen pool goals came against Pakistan, India and Wales; against the first top-eight defence they met, the attack managed a single goal. The Dutch have already beaten Argentina and India by that same controlled pattern, and the pool's deepest defence is favoured over its streakiest attack.",
+      "reason": "The Netherlands have won all four and conceded four; England bring seventeen goals from four and one defeat. The Dutch rating has climbed steeply across the pool and the crossover, far enough that the gap now overstates a side whose winning margins have been two rather than four, and England arrive with nothing left to play for and the deepest forward line in the tournament — seven different scorers against Wales alone.",
       "reason_original": "FIH #1 NED favoured over #4 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
-      "reason_revised_at": "2026-08-25T05:34:40.714785+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "superseded": true,
+      "superseded_at": "2026-08-25T05:31:06.013167+00:00",
+      "superseded_reason": "the distribution printed beside this pick did not support it; reissued with the same pick and the same rationale"
     },
     {
       "id": "oracle-v1:POS9:r2",
@@ -3873,6 +3878,204 @@
       "reason": "FIH #12 RSA favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
       "pick_team": "RSA"
+    },
+    {
+      "id": "coherent:oracle-v1:D1",
+      "matchId": "D1",
+      "source": "oracle-v1",
+      "p_home_win": 0.62,
+      "p_draw": 0.2,
+      "p_away_win": 0.18,
+      "pick": "HOME",
+      "pick_confidence": 0.62,
+      "reason": "Opening match, so there is no tournament form to read yet: the case rests on India's penalty-corner battery, with Harmanpreet Singh the most dangerous drag flick either side can put on the pitch, against a Welsh defence that will have to survive it repeatedly to stay in the match. The risk is that India have historically been corner-dependent, and one good defensive routine can keep this close.",
+      "publishedAt": "2026-08-15T08:00:00Z",
+      "reason_original": "India ranked #5 vs Wales #16 — an 11-place FIH gap. Harmanpreet Singh's drag flick is the premium set-piece weapon on the pitch.",
+      "reason_revised_at": "2026-08-24T19:26:09.005068+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
+      "pick_team": "IND",
+      "revises": "oracle-v1:D1",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:D4",
+      "matchId": "D4",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.286,
+      "p_draw": 0.123,
+      "p_away_win": 0.591,
+      "pick": "AWAY",
+      "pick_team": "WAL",
+      "pick_confidence": 0.591,
+      "reason": "Both sides lost their openers and the margins differ: Wales stayed within two of India while Pakistan conceded four to England. The ranking gap between these two has closed to the point where seeding says very little, and on the only evidence this tournament has produced Wales have defended the better of the two. Pakistan's discipline is the counter-argument — they took a card against England — and this fixture rarely stays calm.",
+      "reason_original": "FIH #9 PAK favoured over #16 WAL — Elo model from world rankings, published before push-back.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:D4",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:B3",
+      "matchId": "B3",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.492,
+      "p_draw": 0.195,
+      "p_away_win": 0.313,
+      "pick": "HOME",
+      "pick_team": "GER",
+      "pick_confidence": 0.492,
+      "reason": "Both won their openers and Germany's was the more emphatic: five goals against Malaysia to Belgium's three against France, and one conceded against Belgium's two. Belgium remain the top-ranked side in the world and their late set-piece scoring won them that opener, but the points between these two have converged into the band where ranking order stops settling matches, and Germany's opening burst is the sharper attacking evidence.",
+      "reason_original": "FIH #1 BEL favoured over #5 GER — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:B3",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2H1",
+      "matchId": "S2H1",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.27,
+      "p_draw": 0.098,
+      "p_away_win": 0.632,
+      "pick": "AWAY",
+      "pick_team": "RSA",
+      "pick_confidence": 0.632,
+      "reason": "France are unbeaten in their last two but without a win in three, and their scoring has thinned to a goal a game since the opener. South Africa took a point off an unbeaten Australia in their last outing, the better single result either side can point to, and the ranking gap between them sits in the band where the lower-rated side has been the better call. The Cassiem set piece is the clearest route to goal on the pitch.",
+      "reason_original": "FIH #9 FRA favoured over #13 RSA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2H1",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2F2",
+      "matchId": "S2F2",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.29,
+      "p_draw": 0.129,
+      "p_away_win": 0.581,
+      "pick": "AWAY",
+      "pick_team": "ESP",
+      "pick_confidence": 0.581,
+      "reason": "Germany are unbeaten in three with two conceded; Spain have two wins and a single-goal defeat to Australia. The records are closer than the seeding: Spain scored six across the pool and conceded three, and their defeat came without conceding twice. Germany's scoring outside the Malaysia rout has been one goal per match, which against a defence that gives up very little in the circle is the thinner of the two attacking cases.",
+      "reason_original": "FIH #5 GER favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2F2",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2E2",
+      "matchId": "S2E2",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.301,
+      "p_draw": 0.155,
+      "p_away_win": 0.544,
+      "pick": "AWAY",
+      "pick_team": "ARG",
+      "pick_confidence": 0.544,
+      "reason": "England swept the pool with sixteen scored, but those wins came against Pakistan, India and Wales; the first top-eight side they meet is this one. Argentina have eleven goals of their own, four conceded, and their only defeat came against the unbeaten hosts. The head-to-head favours the side that has already beaten New Zealand by six, and the ranking gap has narrowed to where England's pool record flatters the difference.",
+      "reason_original": "FIH #3 ENG favoured over #7 ARG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2E2",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2H4",
+      "matchId": "S2H4",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.504,
+      "p_draw": 0.185,
+      "p_away_win": 0.311,
+      "pick": "HOME",
+      "pick_team": "FRA",
+      "pick_confidence": 0.504,
+      "reason": "Ireland arrive from the highest-scoring match of the tournament and have won two of four; France are winless in four. The case for France is the head-to-head and the shape of Ireland's record: both their wins came against the two sides at the bottom of the pool, and both meetings with stronger opposition ended in defeat. France have conceded ten across four matches, taken something from two of them, and scored in every game.",
+      "reason_original": "FIH #9 IRL favoured over #11 FRA — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2H4",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2F3",
+      "matchId": "S2F3",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.402,
+      "p_draw": 0.308,
+      "p_away_win": 0.29,
+      "pick": "HOME",
+      "pick_team": "GER",
+      "pick_confidence": 0.402,
+      "reason": "Australia are unbeaten in four but have drawn the last two, and their rating has risen on results rather than on scoring — seven goals in four matches. Germany have lost once, to Spain, and carry the better attacking return over the same stretch. The head-to-head favours Germany, and a side whose points have climbed while its goals have not is the one this fixture asks the harder question of.",
+      "reason_original": "FIH #3 AUS favoured over #6 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2F3",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2G4",
+      "matchId": "S2G4",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.194,
+      "p_draw": 0.037,
+      "p_away_win": 0.769,
+      "pick": "AWAY",
+      "pick_team": "PAK",
+      "pick_confidence": 0.769,
+      "reason": "New Zealand have won two of four, both against sides below them, and lost heavily to the Netherlands and Argentina. Pakistan bring the same eleven goals from four matches and have now beaten Japan, so the attacking records are level. The ranking gap between them sits inside the band where the lower-rated side has been the better call, and New Zealand's defence has given up fourteen across the four.",
+      "reason_original": "FIH #9 NZL favoured over #12 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2G4",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2E3",
+      "matchId": "S2E3",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.226,
+      "p_draw": 0.055,
+      "p_away_win": 0.719,
+      "pick": "AWAY",
+      "pick_team": "IND",
+      "pick_confidence": 0.719,
+      "reason": "Argentina have three wins from four and have just beaten England; India have split their four, winning both against sides below them and losing both against top-eight opposition. The case against Argentina is the rating movement: their points have surged on the England result until the gap overstates a side that lost to the Netherlands in this same tournament. India have scored eleven, conceded eleven, and have the drag flick to punish a lapse.",
+      "reason_original": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2E3",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
+    },
+    {
+      "id": "coherent:oracle-v2:S2E4",
+      "matchId": "S2E4",
+      "source": "oracle-v1",
+      "basis": "model-recalibration",
+      "p_home_win": 0.179,
+      "p_draw": 0.029,
+      "p_away_win": 0.792,
+      "pick": "AWAY",
+      "pick_team": "ENG",
+      "pick_confidence": 0.792,
+      "reason": "The Netherlands have won all four and conceded four; England bring seventeen goals from four and one defeat. The Dutch rating has climbed steeply across the pool and the crossover, far enough that the gap now overstates a side whose winning margins have been two rather than four, and England arrive with nothing left to play for and the deepest forward line in the tournament — seven different scorers against Wales alone.",
+      "reason_original": "FIH #1 NED favoured over #4 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "model": "NON_KNOCKOUT_MODEL_V2",
+      "publishedAt": "2026-08-25T04:08:14.340016+00:00",
+      "revises": "oracle-v2:S2E4",
+      "reissued_at": "2026-08-25T05:31:06.013167+00:00"
     }
   ]
 }

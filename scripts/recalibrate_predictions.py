@@ -149,7 +149,7 @@ def main():
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': r['pick'],
             'pick_team': m['home'] if r['pick'] == 'HOME' else (m['away'] if r['pick'] == 'AWAY' else None),
-            'pick_confidence': round(max(ph, pd, pa), 3),
+            'pick_confidence': round({'HOME': ph, 'DRAW': pd, 'AWAY': pa}[r['pick']], 3),
             'reason': REASONS[r['id']],
             'reason_original': p.get('reason_original') or p.get('reason'),
             'model': nkm.MODEL_VERSION,
