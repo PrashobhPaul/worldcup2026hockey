@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-25T18:53:49.058303+00:00",
+ "last_updated": "2026-08-25T19:31:21.616689+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -22433,7 +22433,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.063182+00:00",
+    "generated_at": "2026-08-25T19:31:21.611837+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -22493,18 +22493,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "JPN_03",
-       "name": "Shota Yamada",
-       "number": 2,
+       "playerId": "JPN_20",
+       "name": "Hyota Yamada",
+       "number": 38,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "JPN_20",
-       "name": "Hyota Yamada",
-       "number": 38,
+       "playerId": "JPN_03",
+       "name": "Shota Yamada",
+       "number": 2,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -22629,18 +22629,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_08",
-       "name": "Noé Jouin",
-       "number": 11,
+       "playerId": "FRA_13",
+       "name": "Florent Vaal",
+       "number": 17,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_13",
-       "name": "Florent Vaal",
-       "number": 17,
+       "playerId": "FRA_08",
+       "name": "Noé Jouin",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -23139,7 +23139,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.064225+00:00",
+    "generated_at": "2026-08-25T19:31:21.612582+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23409,6 +23409,12 @@
      ],
      "substitutes": [
       {
+       "playerId": "RSA_11",
+       "name": "Brendan du Toit",
+       "number": 17,
+       "position": "Goalkeeper"
+      },
+      {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
@@ -23455,12 +23461,6 @@
        "name": "Damian Knott",
        "number": 26,
        "position": null
-      },
-      {
-       "playerId": "RSA_11",
-       "name": "Brendan du Toit",
-       "number": 17,
-       "position": "Goalkeeper"
       }
      ],
      "team": "RSA",
@@ -23492,7 +23492,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.064661+00:00",
+    "generated_at": "2026-08-25T19:31:21.612907+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23715,9 +23715,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
+       "playerId": "IRL_22",
+       "name": "Matthew Nelson",
+       "number": 9,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -23733,18 +23733,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IRL_12",
-       "name": "Benjamin Walker",
-       "number": 24,
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IRL_22",
-       "name": "Matthew Nelson",
-       "number": 9,
+       "playerId": "IRL_12",
+       "name": "Benjamin Walker",
+       "number": 24,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -23780,15 +23780,15 @@
        "position": null
       },
       {
-       "playerId": "IRL_09",
-       "name": "Mark McNellis",
-       "number": 18,
-       "position": null
-      },
-      {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
+       "position": null
+      },
+      {
+       "playerId": "IRL_09",
+       "name": "Mark McNellis",
+       "number": 18,
        "position": null
       },
       {
@@ -23845,7 +23845,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.065076+00:00",
+    "generated_at": "2026-08-25T19:31:21.613239+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24115,6 +24115,12 @@
      ],
      "substitutes": [
       {
+       "playerId": "AUS_09",
+       "name": "Jed Snowden",
+       "number": 12,
+       "position": "Goalkeeper"
+      },
+      {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
@@ -24149,12 +24155,6 @@
        "name": "Liam Henderson",
        "number": 9,
        "position": null
-      },
-      {
-       "playerId": "AUS_09",
-       "name": "Jed Snowden",
-       "number": 12,
-       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_15",
@@ -24197,7 +24197,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.065503+00:00",
+    "generated_at": "2026-08-25T19:31:21.613565+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24467,6 +24467,12 @@
      ],
      "substitutes": [
       {
+       "playerId": "BEL_21",
+       "name": "Simon Vandenbroucke",
+       "number": 1,
+       "position": "Goalkeeper"
+      },
+      {
        "playerId": "BEL_06",
        "name": "Arno van Dessel",
        "number": 5,
@@ -24509,12 +24515,6 @@
        "position": null
       },
       {
-       "playerId": "BEL_21",
-       "name": "Simon Vandenbroucke",
-       "number": 1,
-       "position": "Goalkeeper"
-      },
-      {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
@@ -24549,7 +24549,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.065925+00:00",
+    "generated_at": "2026-08-25T19:31:21.613892+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24564,18 +24564,18 @@
        "goalkeeper": true
       },
       {
-       "playerId": "NED_05",
-       "name": "Jip Janssen",
-       "number": 2,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
+       "playerId": "NED_05",
+       "name": "Jip Janssen",
+       "number": 2,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -24656,6 +24656,12 @@
      ],
      "substitutes": [
       {
+       "playerId": "NED_20",
+       "name": "Maurits Visser",
+       "number": 1,
+       "position": "Goalkeeper"
+      },
+      {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
@@ -24696,12 +24702,6 @@
        "name": "Floris Middendorp",
        "number": 77,
        "position": null
-      },
-      {
-       "playerId": "NED_20",
-       "name": "Maurits Visser",
-       "number": 1,
-       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_07",
@@ -24901,7 +24901,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.066351+00:00",
+    "generated_at": "2026-08-25T19:31:21.614235+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24934,15 +24934,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "GER_09",
        "name": "Justus Weigand",
        "number": 19,
@@ -24952,10 +24943,10 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_04",
-       "name": "Justus Warweg",
-       "number": 7,
-       "line": "Midfielder",
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
+       "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -24973,6 +24964,15 @@
        "playerId": "GER_10",
        "name": "Michel Struthoff",
        "number": 21,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "GER_04",
+       "name": "Justus Warweg",
+       "number": 7,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -25007,6 +25007,12 @@
       }
      ],
      "substitutes": [
+      {
+       "playerId": "GER_17",
+       "name": "Joshua Onyekwue Nnaji",
+       "number": 39,
+       "position": "Goalkeeper"
+      },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
@@ -25054,12 +25060,6 @@
        "name": "Erik Kleinlein",
        "number": 24,
        "position": null
-      },
-      {
-       "playerId": "GER_17",
-       "name": "Joshua Onyekwue Nnaji",
-       "number": 39,
-       "position": "Goalkeeper"
       }
      ],
      "team": "GER",
@@ -25115,18 +25115,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_06",
-       "name": "Nicolas Keenan",
-       "number": 7,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_06",
+       "name": "Nicolas Keenan",
+       "number": 7,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -25170,6 +25170,12 @@
       }
      ],
      "substitutes": [
+      {
+       "playerId": "ARG_09",
+       "name": "Nehuen Hernando",
+       "number": 12,
+       "position": "Goalkeeper"
+      },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
@@ -25217,12 +25223,6 @@
        "name": "Tomas Ruiz",
        "number": 15,
        "position": null
-      },
-      {
-       "playerId": "ARG_09",
-       "name": "Nehuen Hernando",
-       "number": 12,
-       "position": "Goalkeeper"
       }
      ],
      "team": "ARG",
