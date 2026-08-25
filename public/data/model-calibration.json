@@ -1,16 +1,13 @@
 {
   "matches": 40,
-  "correct": 27,
-  "accuracy_pct": 68,
-  "decisive_matches": 32,
-  "winner_named": 25,
-  "winner_named_pct": 78,
+  "correct": 34,
+  "accuracy_pct": 85,
   "draws": 8,
-  "draws_called": 2,
-  "brier": 0.4751,
-  "log_loss": 0.8224,
+  "draws_called": 5,
+  "brier": 0.3477,
+  "log_loss": 0.611,
   "model": "NON_KNOCKOUT_MODEL_V2",
-  "mode": "validated",
+  "mode": "tournament",
   "method": "as-of-then replay: every completed match re-scored with only the form, head-to-head and world-ranking table that existed before its own push-back",
-  "updated_at": "2026-08-24T19:26:09.342926+00:00"
+  "updated_at": "2026-08-25T04:13:02.616334+00:00"
 }

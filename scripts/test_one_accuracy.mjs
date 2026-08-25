@@ -1,9 +1,9 @@
 // One model, one published accuracy figure.
 //
 // This app has twice shipped two different records of the same model on the
-// same screen. The second time, the Home hero read `winner_named_pct` (78%)
-// while Matches, Oracle and Trust read `accuracy_pct` (68%) — both true, both
-// measuring something different, and nothing on screen said which was which.
+// same screen, because four pages each reached into the calibration file for
+// whichever field they liked and two different denominators were available.
+// The file now carries one figure and the pages share one helper.
 //
 // publishedAccuracy() in src/engine/prediction.js is now the single place that
 // decides. These checks keep it that way: no other source file may reach into
@@ -45,20 +45,28 @@ ok('at least one screen shows it', shows.length > 0, String(shows.length))
 // The published figure is the decisive one whenever the data carries it.
 const live = JSON.parse(fs.readFileSync(new URL('../public/data/model-calibration.json', import.meta.url), 'utf8'))
 const r = publishedAccuracy(live, null)
-ok('the published figure is the decisive-match record', r.basis === 'decisive', r.basis)
+ok('the published figure is the whole three-way record', r.basis === 'all-matches', r.basis)
 ok('numerator and denominator come from the same basis',
-   r.correct === live.winner_named && r.graded === live.decisive_matches,
-   `${r.correct}/${r.graded} vs ${live.winner_named}/${live.decisive_matches}`)
+   r.correct === live.correct && r.graded === live.matches,
+   `${r.correct}/${r.graded} vs ${live.correct}/${live.matches}`)
+ok('the denominator is every non-knockout match, not a subset',
+   r.graded === live.matches && r.graded > 0, `${r.graded} vs matches=${live.matches}`)
+// A second percentage on a different denominator is exactly how two records of
+// the same model ended up on the same screen. The published file carries one.
+ok('the published file carries a single accuracy figure',
+   Object.keys(live).filter(k => /_pct$|^accuracy|^correct$/.test(k)).sort().join(',')
+     === 'accuracy_pct,correct',
+   Object.keys(live).filter(k => /_pct$|^accuracy|^correct$/.test(k)).join(','))
 ok('the percentage matches its own fraction',
    Math.abs(Math.round((r.correct / r.graded) * 100) - r.pct) <= 1, `${r.pct}%`)
-ok('draws are reported separately, never folded into the headline',
-   r.drawsCalled === live.draws_called && r.draws === live.draws && r.graded !== live.matches,
-   JSON.stringify({ drawsCalled: r.drawsCalled, graded: r.graded, matches: live.matches }))
+ok('draws are reported alongside the headline, from the same file',
+   r.drawsCalled === live.draws_called && r.draws === live.draws,
+   JSON.stringify({ drawsCalled: r.drawsCalled, draws: r.draws }))
 
 // A client holding an older calibration must still show a coherent number.
 const legacy = publishedAccuracy({ correct: 25, matches: 40, accuracy_pct: 62 }, null)
 ok('an older calibration still yields one coherent figure',
-   legacy.basis === 'three-way' && legacy.correct === 25 && legacy.graded === 40 && legacy.pct === 62,
+   legacy.basis === 'all-matches' && legacy.correct === 25 && legacy.graded === 40 && legacy.pct === 62,
    JSON.stringify(legacy))
 const none = publishedAccuracy(null, { correct: 9, graded: 12, accuracyPct: 75 })
 ok('with no calibration at all it falls back to the graded tally',

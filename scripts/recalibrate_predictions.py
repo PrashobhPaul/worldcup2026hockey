@@ -69,6 +69,38 @@ def load(name):
         return json.load(fh)
 
 
+REASONS.update({
+    'D4': "Both sides lost their openers and the margins differ: Wales stayed within two of India while Pakistan conceded four to England. The ranking gap between these two has closed to the point where seeding says very little, and on the only evidence this tournament has produced Wales have defended the better of the two. Pakistan's discipline is the counter-argument — they took a card against England — and this fixture rarely stays calm.",
+
+    'B3': "Both won their openers and Germany's was the more emphatic: five goals against Malaysia to Belgium's three against France, and one conceded against Belgium's two. Belgium remain the top-ranked side in the world and their late set-piece scoring won them that opener, but the points between these two have converged into the band where ranking order stops settling matches, and Germany's opening burst is the sharper attacking evidence.",
+
+    'B6': "Germany have won both, conceded once, and beaten the top-ranked side in the world; France have a single point from two and needed a late equaliser against Malaysia to get it. The case for a share is that Germany's rating has surged far enough on those results that the gap now overstates them, while France have scored in every match and concede at a rate that keeps them in games rather than out of them.",
+
+    'C5': "Australia arrive with six points from two and one goal conceded, South Africa with none from two and seven conceded. On the table this is the widest mismatch of the round, which is why the rating movement matters: Australia's has climbed steeply on two narrow wins, and a side whose points have run ahead of its scoring is the profile that has dropped points here. Mustaphaa Cassiem has scored in both South African defeats.",
+
+    'S2H1': 'France are unbeaten in their last two but without a win in three, and their scoring has thinned to a goal a game since the opener. South Africa took a point off an unbeaten Australia in their last outing, the better single result either side can point to, and the ranking gap between them sits in the band where the lower-rated side has been the better call. The Cassiem set piece is the clearest route to goal on the pitch.',
+
+    'S2F2': "Germany are unbeaten in three with two conceded; Spain have two wins and a single-goal defeat to Australia. The records are closer than the seeding: Spain scored six across the pool and conceded three, and their defeat came without conceding twice. Germany's scoring outside the Malaysia rout has been one goal per match, which against a defence that gives up very little in the circle is the thinner of the two attacking cases.",
+
+    'S2E2': "England swept the pool with sixteen scored, but those wins came against Pakistan, India and Wales; the first top-eight side they meet is this one. Argentina have eleven goals of their own, four conceded, and their only defeat came against the unbeaten hosts. The head-to-head favours the side that has already beaten New Zealand by six, and the ranking gap has narrowed to where England's pool record flatters the difference.",
+
+    'S2H3': 'Malaysia are without a win in four and have conceded twenty; South Africa have one win in four and conceded ten. Neither defence has kept anyone out and both attacks have scored in every match they have played. Malaysia carry the worst goal difference in the competition, which has marked a side that scores enough to stay level rather than one beaten out of sight, and South Africa have already dropped points to a side below them.',
+
+    'S2H4': "Ireland arrive from the highest-scoring match of the tournament and have won two of four; France are winless in four. The case for France is the head-to-head and the shape of Ireland's record: both their wins came against the two sides at the bottom of the pool, and both meetings with stronger opposition ended in defeat. France have conceded ten across four matches, taken something from two of them, and scored in every game.",
+
+    'S2F3': 'Australia are unbeaten in four but have drawn the last two, and their rating has risen on results rather than on scoring — seven goals in four matches. Germany have lost once, to Spain, and carry the better attacking return over the same stretch. The head-to-head favours Germany, and a side whose points have climbed while its goals have not is the one this fixture asks the harder question of.',
+
+    'S2G3': 'Both sides are still looking for a first win. Japan have scored four in four and Wales eight in four, but Wales have conceded twenty-one and Japan thirteen, the worst pair of goal differences in the tournament. Wales have already drawn with Pakistan, and a fixture between two sides who concede freely and score just enough is the shape that has produced shared points here.',
+
+    'S2G4': "New Zealand have won two of four, both against sides below them, and lost heavily to the Netherlands and Argentina. Pakistan bring the same eleven goals from four matches and have now beaten Japan, so the attacking records are level. The ranking gap between them sits inside the band where the lower-rated side has been the better call, and New Zealand's defence has given up fourteen across the four.",
+
+    'S2E3': 'Argentina have three wins from four and have just beaten England; India have split their four, winning both against sides below them and losing both against top-eight opposition. The case against Argentina is the rating movement: their points have surged on the England result until the gap overstates a side that lost to the Netherlands in this same tournament. India have scored eleven, conceded eleven, and have the drag flick to punish a lapse.',
+
+    'S2E4': 'The Netherlands have won all four and conceded four; England bring seventeen goals from four and one defeat. The Dutch rating has climbed steeply across the pool and the crossover, far enough that the gap now overstates a side whose winning margins have been two rather than four, and England arrive with nothing left to play for and the deepest forward line in the tournament — seven different scorers against Wales alone.',
+
+})
+
+
 def main():
     check = '--check' in sys.argv
     rows, stats = bt.replay(nkm.DEFAULT_MODE)
@@ -95,7 +127,8 @@ def main():
     if missing_reason:
         print(f'  !! no rationale written for: {", ".join(missing_reason)} — left alone')
     if not changed:
-        print('Every published pick already matches the model.')
+        print('No pick to revise.' if not missing_reason else
+              'Nothing revised — every difference is waiting on a rationale.')
         return 1 if missing_reason else 0
     if check:
         print('(--check: nothing written)')

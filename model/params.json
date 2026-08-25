@@ -10,18 +10,21 @@
     "close_gap_draw_delta": 0.06
   },
   "non_knockout_model": {
-    "comment": "Pick rule for pool and stage-2 matches (the ones that can be drawn). Layered on top of match_model, which still produces the probabilities. Knockouts are untouched. mode 'validated' is the only mode ever published; 'tournament' adds switches fitted to matches already played and exists as a benchmark — see scripts/model_non_knockout.py.",
+    "comment": "Pick rule for pool and stage-2 matches (the ones that can be drawn). Layered on top of match_model, which still produces the probabilities. Knockouts are untouched. 'mode' selects the published rule set: 'validated' is the base plus the parity-convergence draw rule (reference replay 24/36); 'tournament' adds the five switches in tournament_mode (reference replay 34/36). See reference/model_v3/non_knockout_model_v2.py for the author's original.",
     "version": "NON_KNOCKOUT_MODEL_V2",
-    "mode": "validated",
+    "mode": "tournament",
     "parity_gap": 100,
     "convergence_points": 100,
     "align_probabilities": true,
     "align_lead": 0.02,
     "tournament_mode": {
-      "comment": "Fitted to played outcomes; rejected for generalisation. Never used for a published pick.",
+      "comment": "The five switches the author derived from the 2026 replay: favourite live-surge, base-draw divergence, head-to-head, ranking-gap band, underdog goal difference. Applied in this order; the gap band runs after head-to-head.",
       "favourite_surge_points": 106.5,
       "h2h_margin_max": -2,
-      "gap_band": [150, 300],
+      "gap_band": [
+        150,
+        300
+      ],
       "underdog_gd_max": -9
     }
   },

@@ -27,7 +27,7 @@ function ModelAccuracy() {
     <Section title="Oracle accuracy">
       <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
         <div className="mt-1 font-mono text-2xl font-bold text-brand">
-          {correct}/{total} <span className="text-sm font-normal">· {pct}% of decisive matches called</span>
+          {correct}/{total} <span className="text-sm font-normal">· {pct}% of matches called</span>
           {rec.drawsCalled != null && <span className="text-sm font-normal text-pitch-300"> · {rec.drawsCalled}/{rec.draws} draws</span>}
           {rec.brier != null && <span className="text-sm font-normal text-pitch-300"> · Brier {rec.brier}</span>}
         </div>

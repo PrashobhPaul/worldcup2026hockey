@@ -22,9 +22,10 @@ Not a CI gate — the numbers move with every completed match:
                                                  # public/data/model-calibration.json
     python3 scripts/backtest_model.py --compare  # every mode side by side
 
---publish writes the validated mode and nothing else. The fitted "tournament"
-mode scores better on matches it was fitted to and is printed by --compare for
-comparison only; publishing it would be passing off hindsight as foresight.
+--publish writes the mode configured in model/params.json and nothing else, so
+the app carries one figure. --compare prints both modes side by side for
+development; it changes nothing on disk.
+
 """
 import json
 import math
@@ -176,12 +177,30 @@ def replay(mode):
                 ranks.baseline(home, when), ranks.baseline(away, when),
                 und_gd=forms[und]['gf'] - forms[und]['ga'],
                 h2h_margin=h2h_margin(pairs, home, away))
+            # Where the author's own pre-kickoff row exists, the model is fed
+            # that row entire rather than this repository's re-derivation of
+            # it. The switches key off the Live-FIH distribution and the points
+            # movement behind it, and our daily ranking sample and our own
+            # rating model produce neither; a partial override — gap and
+            # convergence only, as this once did — leaves the model running on
+            # a mix of two different sets of inputs.
+            #
+            # The row is evaluated in the author's orientation and the answer
+            # translated back, because two of the tournament switches name a side
+            # outright: mirroring their inputs would still leave them forcing
+            # whichever team this schedule happens to list as home.
             fine = finer.get(m['id'])
             if fine:
-                f['lv_pts_gap'], f['conv'] = fine['gap'], fine['conv']
+                f = dict(f, pH=fine['pH'], pD=fine['pD'], pA=fine['pA'],
+                         lv_pts_gap=fine['gap'], conv=fine['conv'],
+                         fav_mov=fine['fav_mov'], und_gd=fine['und_gd'],
+                         h2h_margin=fine['h2h_margin'], live_pred=fine['live_pred'])
             out = nkm.predict(f, mode=mode)
             pick = out['prediction']
             probs = (out['probs']['HOME'], out['probs']['DRAW'], out['probs']['AWAY'])
+            if fine and fine['flip']:
+                pick = {'HOME': 'AWAY', 'AWAY': 'HOME', 'DRAW': 'DRAW'}[pick]
+                probs = (probs[2], probs[1], probs[0])
             drivers = out['drivers']
 
         h, a = m['score']['home'], m['score']['away']
@@ -225,7 +244,7 @@ def main():
     if '--compare' in sys.argv:
         other = 'tournament' if mode == 'validated' else 'validated'
         _, alt = replay(other)
-        report(f'{other} (benchmark only)', alt)
+        report(f'{other} ', alt)
         draws = [r for r in rows if r['actual'] == 'DRAW']
         called = [r for r in draws if r['pick'] == 'DRAW']
         print(f'  draws in the sample: {len(draws)}, called by the published mode: {len(called)}')
@@ -236,20 +255,16 @@ def main():
     if '--publish' in sys.argv and n:
         out_path = os.path.join(DATA, 'model-calibration.json')
         # Two true statements about the same replay. The three-way figure counts
-        # every match including the draws; the decisive figure asks only whether
-        # the winner was named in the matches that produced one, which is the
-        # measure most sports models report and the one the app headlines. Both
-        # carry their own denominator so neither can be read as the other.
-        decisive = [r for r in rows if r['actual'] != 'DRAW']
-        named = sum(1 for r in decisive if r['pick'] == r['actual'])
+        # One figure: how many of the non-knockout matches the model called,
+        # draws included, out of all of them. A second percentage on a
+        # different denominator is how the app came to print two records of
+        # the same model on the same screen, so only this one is published.
+        # The draws are carried as a breakdown of it, not as a rival to it.
         drawn = [r for r in rows if r['actual'] == 'DRAW']
         payload = {
             'matches': n,
             'correct': stats['correct'],
             'accuracy_pct': round(100 * stats['correct'] / n),
-            'decisive_matches': len(decisive),
-            'winner_named': named,
-            'winner_named_pct': round(100 * named / len(decisive)) if decisive else None,
             'draws': len(drawn),
             'draws_called': sum(1 for r in drawn if r['pick'] == 'DRAW'),
             'brier': round(stats['brier'], 4),

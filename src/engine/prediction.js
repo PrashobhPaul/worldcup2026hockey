@@ -157,31 +157,28 @@ export function oracleRecord(matches, predictions) {
 // read `winner_named_pct`. Those are both true and they measure different
 // things; showing both without saying so is the bug.
 //
-// The published figure is how often the model named the winner in the matches
-// that produced one. Draws are reported separately by the callers that have
-// room for them, never folded into the headline percentage.
+// The published figure is the whole three-way record: how many of the
+// non-knockout matches the model called, draws included, out of all of them.
+// That is the question the number is asked — "how many of the 40 did it get
+// right" — and a draw called correctly counts as a match called correctly.
+// The draws are also reported on their own by callers with room for them,
+// because calling five of eight draws is the part a bare percentage hides.
 //
-// Older calibration files (and the pipeline before this model) carry only the
-// three-way `correct/matches/accuracy_pct`; those are used when the decisive
-// fields are absent, so a client holding yesterday's data still shows a
-// coherent number rather than nothing.
+// Older calibration files carry only `correct/matches/accuracy_pct`, which is
+// this same three-way record, so they need no special case. A file with
+// neither falls back to the client-side tally, so a client holding yesterday's
+// data still shows a coherent number rather than nothing.
 export function publishedAccuracy(calibration, fallback) {
   const cal = calibration
-  if (cal?.winner_named_pct != null) {
+  if (cal?.accuracy_pct != null) {
     return {
-      correct: cal.winner_named,
-      graded: cal.decisive_matches,
-      pct: cal.winner_named_pct,
+      correct: cal.correct,
+      graded: cal.matches,
+      pct: cal.accuracy_pct,
       draws: cal.draws ?? null,
       drawsCalled: cal.draws_called ?? null,
       brier: cal.brier ?? null,
-      basis: 'decisive',
-    }
-  }
-  if (cal?.accuracy_pct != null) {
-    return {
-      correct: cal.correct, graded: cal.matches, pct: cal.accuracy_pct,
-      draws: null, drawsCalled: null, brier: cal.brier ?? null, basis: 'three-way',
+      basis: 'all-matches',
     }
   }
   return {

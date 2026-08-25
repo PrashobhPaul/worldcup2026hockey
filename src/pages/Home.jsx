@@ -24,9 +24,9 @@ const heroTiles = [
   { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
 
-// The model's record, given the top line of the app: how often it named the
-// winner in the matches that produced one. The denominator is on the badge,
-// so the figure states its own scope and needs nothing added to it.
+// The model's record, given the top line of the app: how many of the
+// non-knockout matches it called. The denominator is on the badge, so the
+// figure states its own scope and needs nothing added to it.
 function ModelBadge() {
   const cal = useLiveQuery(() => db.meta.get('calibration'), [])
   const rec = publishedAccuracy(cal, null)
@@ -35,9 +35,9 @@ function ModelBadge() {
     <Link to="/trust" className="hero-accuracy">
       <span className="hero-accuracy-pct">{rec.pct}%</span>
       <span className="hero-accuracy-label">
-        winner called
+        matches called
         <span className="hero-accuracy-sub">
-          {rec.correct} of {rec.graded} decisive matches
+          {rec.correct} of {rec.graded} matches
           {rec.drawsCalled ? ` · ${rec.drawsCalled}/${rec.draws} draws` : ''}
         </span>
       </span>
