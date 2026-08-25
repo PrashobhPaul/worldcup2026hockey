@@ -17,10 +17,40 @@
       "profile": "World's best drag flick specialist and captain. Penalty corner conversion rate 42%.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 99,
+      "ai_rating": 73.0,
       "on_team_list": true,
       "dob": "6 Jan 1996",
-      "caps": 269
+      "caps": 269,
+      "position_effective": "Defender",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 32.4,
+          "weight": 0.581,
+          "raw": 3.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 98.6,
+          "weight": 0.29,
+          "raw": 6.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IND_02",
@@ -29,7 +59,7 @@
       "position": "Midfielder",
       "number": 7,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -38,10 +68,46 @@
       "profile": "Experienced midfield general. Orchestrates India's transitions.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": 51.3,
       "on_team_list": true,
       "dob": "26 Jun 1992",
-      "caps": 422
+      "caps": 422,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 2.6,
+          "weight": 0.4,
+          "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 2.6,
+          "weight": 0.25,
+          "raw": 0.0
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IND_03",
@@ -59,7 +125,7 @@
       "profile": "India's first-choice keeper post-Sreejesh era. Strong shot-stopper.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -78,10 +144,40 @@
       "profile": "Vice-captain and drag flick specialist. Scored in opening match.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": 56.6,
       "on_team_list": true,
       "dob": "10 May 1993",
-      "caps": 249
+      "caps": 249,
+      "position_effective": "Defender",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 32.4,
+          "weight": 0.581,
+          "raw": 3.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 2.7,
+          "weight": 0.29,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IND_05",
@@ -99,10 +195,52 @@
       "profile": "Pacey forward. Scored India's third goal vs Wales.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 70.0,
+      "ai_rating": 59.6,
       "on_team_list": true,
       "dob": "15 Aug 1999",
-      "caps": 140
+      "caps": 140,
+      "position_effective": "Forward",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.096,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "AUS_01",
@@ -120,7 +258,7 @@
       "profile": "Kookaburras captain. World-class link-up midfielder.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -130,7 +268,7 @@
       "position": "Forward",
       "number": 9,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -139,7 +277,7 @@
       "profile": "Prolific forward. Australia's main goal threat in open play.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 59.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -149,7 +287,7 @@
       "position": "Forward",
       "number": 13,
       "goals": 3,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -158,10 +296,52 @@
       "profile": "Drag flick specialist. High PC conversion rate.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 80.0,
+      "ai_rating": 75.8,
       "on_team_list": true,
       "dob": "6 Jul 1996",
-      "caps": 184
+      "caps": 184,
+      "position_effective": "Forward",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 6.5,
+          "weight": 0.192,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 91.9,
+          "weight": 0.096,
+          "raw": 0.333
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "AUS_04",
@@ -179,7 +359,7 @@
       "profile": "Elite goalkeeper. Known for shootout saves.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -198,10 +378,46 @@
       "profile": "World's most feared drag flicker. Penalty corner conversion rate 50%+.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 75.9,
       "on_team_list": true,
       "dob": "6 Aug 1993",
-      "caps": 236
+      "caps": 236,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "BEL_02",
@@ -219,10 +435,46 @@
       "profile": "Red Lions captain. Dictates tempo from midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": 51.3,
       "on_team_list": true,
       "dob": "3 May 1997",
-      "caps": 213
+      "caps": 213,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 2.6,
+          "weight": 0.4,
+          "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 2.6,
+          "weight": 0.25,
+          "raw": 0.0
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "BEL_03",
@@ -240,7 +492,7 @@
       "profile": "Experienced international. Key link in Belgium's midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -259,10 +511,33 @@
       "profile": "World's best goalkeeper. Multiple FIH Goalkeeper of the Year.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 77.6,
+      "ai_rating": 80.3,
       "on_team_list": true,
       "dob": "21 Dec 1987",
-      "caps": 304
+      "caps": 304,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 71.9,
+          "weight": 0.833,
+          "raw": 1.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "NED_01",
@@ -280,10 +555,52 @@
       "profile": "Captain of the host nation. Explosive forward with international pedigree.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 83.0,
       "on_team_list": true,
       "dob": "19 Mar 1995",
-      "caps": 223
+      "caps": 223,
+      "position_effective": "Forward",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 87.1,
+          "weight": 0.192,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.5,
+          "weight": 0.096,
+          "raw": 0.176
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NED_02",
@@ -301,7 +618,7 @@
       "profile": "Creative midfielder. Known for incisive passing.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -311,7 +628,7 @@
       "position": "Midfielder",
       "number": 11,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -320,7 +637,7 @@
       "profile": "Dynamic midfielder. Key to Netherlands' high press.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -339,7 +656,7 @@
       "profile": "Steady presence between the sticks for Oranje.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 78.2,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -358,7 +675,7 @@
       "profile": "Los Leones captain. Tenacious and experienced.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -377,7 +694,7 @@
       "profile": "Argentina's key forward threat. Quick and clinical.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 56.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -396,7 +713,7 @@
       "profile": "Experienced drag-flicker. Argentina's primary PC option.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -415,7 +732,7 @@
       "profile": "Germany's captain and solid defensive anchor.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -434,10 +751,52 @@
       "profile": "Germany's top goal scorer. International class forward.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 43.8,
       "on_team_list": true,
       "dob": "19 Dec 1993",
-      "caps": 215
+      "caps": 215,
+      "position_effective": "Forward",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 1.6,
+          "weight": 0.577,
+          "raw": 1.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 6.5,
+          "weight": 0.192,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 1.6,
+          "weight": 0.096,
+          "raw": 0.083
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "GER_03",
@@ -455,7 +814,7 @@
       "profile": "Midfield workhorse for Die Mannschaft.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -474,10 +833,46 @@
       "profile": "England's captain. Commanding midfielder.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 68.0,
+      "ai_rating": 78.6,
       "on_team_list": true,
       "dob": "17 Apr 1996",
-      "caps": 142
+      "caps": 142,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 93.6,
+          "weight": 0.4,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 67.9,
+          "weight": 0.25,
+          "raw": 0.105
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ENG_02",
@@ -495,10 +890,52 @@
       "profile": "England's most dangerous forward. Clinical finisher.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 58.2,
       "on_team_list": true,
       "dob": "24 Dec 1990",
-      "caps": 255
+      "caps": 255,
+      "position_effective": "Forward",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 8.1,
+          "weight": 0.096,
+          "raw": 0.105
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "ENG_03",
@@ -516,7 +953,7 @@
       "profile": "Experienced England goalkeeper. Known for big-game performances.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -535,10 +972,46 @@
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": 75.4,
       "on_team_list": true,
       "dob": "14 Nov 1997",
-      "caps": 153
+      "caps": 153,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ESP_02",
@@ -547,7 +1020,7 @@
       "position": "Forward",
       "number": 11,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -556,7 +1029,7 @@
       "profile": "Pace and power forward. Spain's goal threat.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 56.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -575,7 +1048,7 @@
       "profile": "Creative playmaker. Scored in multiple major tournaments.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -594,10 +1067,46 @@
       "profile": "Pakistan's captain. Skilful and combative.",
       "green_cards": 2,
       "matches_played": 5,
-      "ai_rating": 80.0,
+      "ai_rating": 86.9,
       "on_team_list": true,
       "dob": "13 Mar 2004",
-      "caps": 76
+      "caps": 76,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 96.2,
+          "weight": 0.4,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 96.2,
+          "weight": 0.25,
+          "raw": 0.231
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 2.6,
+          "weight": 0.15,
+          "raw": 4.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "PAK_02",
@@ -606,7 +1115,7 @@
       "position": "Forward",
       "number": 11,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -615,7 +1124,7 @@
       "profile": "Prolific forward. Carries Pakistan's goal-scoring burden.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 56.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -634,7 +1143,7 @@
       "profile": "Energetic midfielder. Links defence and attack.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -653,7 +1162,7 @@
       "profile": "Ireland's leading goal scorer. Drag flick specialist.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 56.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -672,7 +1181,7 @@
       "profile": "Green Machine captain. Experienced defender.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 60.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -691,7 +1200,7 @@
       "profile": "Malaysia's skipper. Hard-working midfield dynamo.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -710,7 +1219,7 @@
       "profile": "Quick forward. Tigers' main counter-attack weapon.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 56.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -729,7 +1238,7 @@
       "profile": "South Africa's captain. Dogged and determined.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -748,10 +1257,40 @@
       "profile": "Black Sticks skipper. Solid defensive leader.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 56.6,
       "on_team_list": true,
       "dob": "30 Apr 1997",
-      "caps": 138
+      "caps": 138,
+      "position_effective": "Defender",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 32.4,
+          "weight": 0.581,
+          "raw": 3.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 2.7,
+          "weight": 0.29,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "JPN_01",
@@ -769,7 +1308,7 @@
       "profile": "Samurai Japan's captain. Engine of Japan's midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 58.0,
+      "ai_rating": null,
       "on_team_list": false
     },
     {
@@ -788,10 +1327,52 @@
       "profile": "France's captain and main attacking force.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 73.1,
       "on_team_list": true,
       "dob": "19 Nov 1993",
-      "caps": 188
+      "caps": 188,
+      "position_effective": "Forward",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 1.6,
+          "weight": 0.192,
+          "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 91.9,
+          "weight": 0.096,
+          "raw": 0.333
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "WAL_01",
@@ -809,10 +1390,46 @@
       "profile": "Wales captain. Spirited leader in the Dragons' midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 84.0,
+      "ai_rating": 95.7,
       "on_team_list": true,
       "dob": "10 May 1992",
-      "caps": 188
+      "caps": 188,
+      "position_effective": "Midfielder",
+      "position_source": "FIH",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 98.7,
+          "weight": 0.4,
+          "raw": 4.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 98.7,
+          "weight": 0.25,
+          "raw": 0.4
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 98.7,
+          "weight": 0.2,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ARG_04",
@@ -832,9 +1449,32 @@
       "dob": "15 Jun 1992",
       "caps": 123,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": 80.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 71.9,
+          "weight": 0.833,
+          "raw": 1.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ARG_05",
@@ -876,9 +1516,45 @@
       "dob": "6 May 1997",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 65.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 12.8,
+          "weight": 0.25,
+          "raw": 0.053
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ARG_07",
@@ -898,9 +1574,45 @@
       "dob": "5 Jun 1997",
       "caps": 163,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 64.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 12.8,
+          "weight": 0.25,
+          "raw": 0.053
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 10.3,
+          "weight": 0.15,
+          "raw": 2.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ARG_09",
@@ -920,9 +1632,32 @@
       "dob": "23 Jun 2000",
       "caps": 19,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": 80.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 71.9,
+          "weight": 0.833,
+          "raw": 1.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ARG_10",
@@ -964,9 +1699,45 @@
       "dob": "25 Feb 2002",
       "caps": 38,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 63.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 12.8,
+          "weight": 0.25,
+          "raw": 0.053
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ARG_12",
@@ -986,7 +1757,7 @@
       "dob": "9 Mar 2005",
       "caps": 29,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1008,9 +1779,39 @@
       "dob": "4 Sep 1997",
       "caps": 121,
       "matches_played": 5,
-      "ai_rating": 99,
+      "ai_rating": 84.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 94.6,
+          "weight": 0.29,
+          "raw": 5.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ARG_14",
@@ -1096,9 +1897,39 @@
       "dob": "3 May 2001",
       "caps": 79,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 77.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ARG_18",
@@ -1162,9 +1993,51 @@
       "dob": "22 Oct 2003",
       "caps": 62,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 60.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 8.1,
+          "weight": 0.096,
+          "raw": 0.105
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "ARG_21",
@@ -1206,9 +2079,45 @@
       "dob": "20 Aug 2000",
       "caps": 41,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 12.8,
+          "weight": 0.25,
+          "raw": 0.053
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "AUS_05",
@@ -1228,9 +2137,45 @@
       "dob": "3 Sep 1995",
       "caps": 173,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 73.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "AUS_06",
@@ -1316,9 +2261,32 @@
       "dob": "15 Aug 2001",
       "caps": 26,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": 80.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 71.9,
+          "weight": 0.833,
+          "raw": 1.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "AUS_10",
@@ -1382,9 +2350,45 @@
       "dob": "15 Mar 2001",
       "caps": 93,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 73.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "AUS_13",
@@ -1492,9 +2496,39 @@
       "dob": "24 Jul 1996",
       "caps": 22,
       "matches_played": 5,
-      "ai_rating": 87.0,
+      "ai_rating": 85.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "AUS_18",
@@ -1514,9 +2548,32 @@
       "dob": "21 Jul 1995",
       "caps": 31,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": 80.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 71.9,
+          "weight": 0.833,
+          "raw": 1.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "AUS_19",
@@ -1536,7 +2593,7 @@
       "dob": "29 Nov 1998",
       "caps": 136,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -1602,9 +2659,45 @@
       "dob": "20 Jul 2000",
       "caps": 88,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 66.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "BEL_08",
@@ -1690,9 +2783,39 @@
       "dob": "21 Jun 2000",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 77.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "BEL_13",
@@ -1778,9 +2901,39 @@
       "dob": "25 Jan 1990",
       "caps": 396,
       "matches_played": 5,
-      "ai_rating": 93.0,
+      "ai_rating": 85.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "BEL_18",
@@ -1800,9 +2953,45 @@
       "dob": "1 Mar 2000",
       "caps": 77,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 66.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "BEL_19",
@@ -1866,9 +3055,39 @@
       "dob": "7 Aug 1998",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 80.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 63.5,
+          "weight": 0.581,
+          "raw": 2.0
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ENG_05",
@@ -2042,9 +3261,45 @@
       "dob": "2 Aug 2002",
       "caps": 44,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 75.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "FRA_09",
@@ -2152,9 +3407,45 @@
       "dob": "3 Nov 2003",
       "caps": 9,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 73.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "FRA_14",
@@ -2174,9 +3465,45 @@
       "dob": "18 Sep 1998",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 69.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "FRA_15",
@@ -2196,9 +3523,32 @@
       "dob": "9 Jul 2002",
       "caps": 1,
       "matches_played": 5,
-      "ai_rating": 69.2,
+      "ai_rating": 71.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 53.1,
+          "weight": 0.833,
+          "raw": 2.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "FRA_16",
@@ -2240,9 +3590,45 @@
       "dob": "8 Apr 2000",
       "caps": 92,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 79.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "FRA_18",
@@ -2262,9 +3648,32 @@
       "dob": "1 Feb 1994",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 69.2,
+      "ai_rating": 71.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 53.1,
+          "weight": 0.833,
+          "raw": 2.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "FRA_19",
@@ -2284,9 +3693,51 @@
       "dob": "9 Apr 2003",
       "caps": 26,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 64.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 72.6,
+          "weight": 0.096,
+          "raw": 0.222
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "GER_04",
@@ -2306,9 +3757,51 @@
       "dob": "18 Dec 2006",
       "caps": 13,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 59.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 50.0,
+          "weight": 0.096,
+          "raw": 0.167
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 9.7,
+          "weight": 0.038,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "GER_07",
@@ -2372,9 +3865,51 @@
       "dob": "20 Apr 2000",
       "caps": 92,
       "matches_played": 5,
-      "ai_rating": 75.0,
+      "ai_rating": 81.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 87.1,
+          "weight": 0.192,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 75.8,
+          "weight": 0.096,
+          "raw": 0.25
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "GER_10",
@@ -2394,9 +3929,45 @@
       "dob": "19 Apr 2003",
       "caps": 51,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 68.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 42.3,
+          "weight": 0.25,
+          "raw": 0.083
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "GER_12",
@@ -2438,9 +4009,45 @@
       "dob": "18 May 2000",
       "caps": 98,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 64.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 42.3,
+          "weight": 0.25,
+          "raw": 0.083
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "GER_14",
@@ -2482,9 +4089,39 @@
       "dob": "4 Nov 2003",
       "caps": 21,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 88.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 93.2,
+          "weight": 0.581,
+          "raw": 1.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 66.2,
+          "weight": 0.29,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "GER_16",
@@ -2526,9 +4163,32 @@
       "dob": "2 Nov 2002",
       "caps": 12,
       "matches_played": 5,
-      "ai_rating": 82.2,
+      "ai_rating": 87.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 87.5,
+          "weight": 0.833,
+          "raw": 1.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "GER_18",
@@ -2592,9 +4252,39 @@
       "dob": "23 Sep 1998",
       "caps": 186,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 67.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 32.4,
+          "weight": 0.581,
+          "raw": 3.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 66.2,
+          "weight": 0.29,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IND_08",
@@ -2614,9 +4304,45 @@
       "dob": "12 Nov 1999",
       "caps": 127,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 66.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 29.5,
+          "weight": 0.25,
+          "raw": 0.071
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IND_09",
@@ -2680,7 +4406,7 @@
       "dob": "15 Jan 2003",
       "caps": 18,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -2702,9 +4428,32 @@
       "dob": "27 Feb 2002",
       "caps": 19,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 57.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 25.0,
+          "weight": 0.833,
+          "raw": 3.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "IND_13",
@@ -2768,9 +4517,51 @@
       "dob": "5 Dec 1996",
       "caps": 129,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 60.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.096,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 9.7,
+          "weight": 0.038,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "IND_16",
@@ -2812,9 +4603,39 @@
       "dob": "5 May 2001",
       "caps": 95,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 61.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 32.4,
+          "weight": 0.581,
+          "raw": 3.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IND_18",
@@ -2834,9 +4655,32 @@
       "dob": "14 Oct 1995",
       "caps": 94,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 57.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 25.0,
+          "weight": 0.833,
+          "raw": 3.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "IND_19",
@@ -2900,9 +4744,32 @@
       "dob": "13 Jun 1996",
       "caps": 101,
       "matches_played": 5,
-      "ai_rating": 65.6,
+      "ai_rating": 66.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 43.8,
+          "weight": 0.833,
+          "raw": 2.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "IRL_04",
@@ -2922,9 +4789,32 @@
       "dob": "25 Nov 1999",
       "caps": 15,
       "matches_played": 5,
-      "ai_rating": 65.6,
+      "ai_rating": 66.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 43.8,
+          "weight": 0.833,
+          "raw": 2.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "IRL_05",
@@ -3032,9 +4922,45 @@
       "dob": "2 Aug 1994",
       "caps": 154,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 62.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 29.5,
+          "weight": 0.25,
+          "raw": 0.071
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IRL_12",
@@ -3054,9 +4980,51 @@
       "dob": "13 Jul 1999",
       "caps": 129,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 61.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.096,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "IRL_13",
@@ -3076,9 +5044,51 @@
       "dob": "5 Apr 2001",
       "caps": 71,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 75.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 69.4,
+          "weight": 0.096,
+          "raw": 0.214
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 9.7,
+          "weight": 0.038,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "IRL_14",
@@ -3120,9 +5130,39 @@
       "dob": "21 Feb 1995",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 73.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 54.1,
+          "weight": 0.581,
+          "raw": 2.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 6.8,
+          "weight": 0.129,
+          "raw": 2.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IRL_16",
@@ -3164,9 +5204,45 @@
       "dob": "23 Dec 1998",
       "caps": 62,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 71.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 29.5,
+          "weight": 0.25,
+          "raw": 0.071
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "IRL_18",
@@ -3252,9 +5328,39 @@
       "dob": "11 Dec 2000",
       "caps": 32,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 65.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 54.1,
+          "weight": 0.581,
+          "raw": 2.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "JPN_02",
@@ -3274,9 +5380,39 @@
       "dob": "27 Feb 1996",
       "caps": 162,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 65.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 44.6,
+          "weight": 0.581,
+          "raw": 3.0
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "JPN_03",
@@ -3296,9 +5432,39 @@
       "dob": "21 Dec 1994",
       "caps": 185,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 62.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 44.6,
+          "weight": 0.581,
+          "raw": 3.0
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "JPN_04",
@@ -3406,9 +5572,45 @@
       "dob": "20 Jun 1999",
       "caps": 75,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 75.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 92.3,
+          "weight": 0.25,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "JPN_09",
@@ -3428,9 +5630,51 @@
       "dob": "21 Jun 2000",
       "caps": 54,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 64.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 82.3,
+          "weight": 0.096,
+          "raw": 0.286
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "JPN_10",
@@ -3494,7 +5738,7 @@
       "dob": "29 Dec 1999",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 58.3,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true,
       "world_rank": 82
@@ -3583,9 +5827,45 @@
       "dob": "1 Nov 1995",
       "caps": 123,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 75.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 92.3,
+          "weight": 0.25,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "JPN_17",
@@ -3627,9 +5907,32 @@
       "dob": "7 Oct 1999",
       "caps": 45,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 61.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 34.4,
+          "weight": 0.833,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "JPN_19",
@@ -3649,9 +5952,32 @@
       "dob": "29 Nov 1994",
       "caps": 183,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 61.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 34.4,
+          "weight": 0.833,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "JPN_20",
@@ -3671,9 +5997,39 @@
       "dob": "30 Jan 2003",
       "caps": 27,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 61.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 44.6,
+          "weight": 0.581,
+          "raw": 3.0
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 6.8,
+          "weight": 0.129,
+          "raw": 2.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_03",
@@ -3715,9 +6071,39 @@
       "dob": "5 Mar 1990",
       "caps": 361,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 54.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 10.8,
+          "weight": 0.581,
+          "raw": 4.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_05",
@@ -3737,9 +6123,51 @@
       "dob": "13 Jan 1991",
       "caps": 327,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 62.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.096,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 9.7,
+          "weight": 0.038,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "MAS_06",
@@ -3759,9 +6187,39 @@
       "dob": "3 Apr 1999",
       "caps": 106,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 50.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 10.8,
+          "weight": 0.581,
+          "raw": 4.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_07",
@@ -3781,9 +6239,32 @@
       "dob": "18 Sep 1997",
       "caps": 35,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 49.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 9.4,
+          "weight": 0.833,
+          "raw": 4.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "MAS_08",
@@ -3847,9 +6328,32 @@
       "dob": "7 Jan 1992",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 49.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 9.4,
+          "weight": 0.833,
+          "raw": 4.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "MAS_11",
@@ -3891,9 +6395,39 @@
       "dob": "3 Oct 1999",
       "caps": 126,
       "matches_played": 5,
-      "ai_rating": 87.0,
+      "ai_rating": 62.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 10.8,
+          "weight": 0.581,
+          "raw": 4.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_13",
@@ -3913,9 +6447,39 @@
       "dob": "19 Jul 1996",
       "caps": 202,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 49.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 10.8,
+          "weight": 0.581,
+          "raw": 4.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 6.8,
+          "weight": 0.129,
+          "raw": 2.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_14",
@@ -3979,9 +6543,39 @@
       "dob": "5 May 2000",
       "caps": 91,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 54.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 10.8,
+          "weight": 0.581,
+          "raw": 4.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_17",
@@ -4023,9 +6617,39 @@
       "dob": "24 Jun 2005",
       "caps": 33,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 54.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 10.8,
+          "weight": 0.581,
+          "raw": 4.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "MAS_19",
@@ -4089,9 +6713,39 @@
       "dob": "14 Oct 1997",
       "caps": 142,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 88.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 93.2,
+          "weight": 0.581,
+          "raw": 1.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 66.2,
+          "weight": 0.29,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "NED_06",
@@ -4199,9 +6853,51 @@
       "dob": "14 Oct 1999",
       "caps": 80,
       "matches_played": 5,
-      "ai_rating": 75.0,
+      "ai_rating": 84.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 87.1,
+          "weight": 0.192,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.5,
+          "weight": 0.096,
+          "raw": 0.176
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NED_13",
@@ -4221,9 +6917,32 @@
       "dob": "12 May 1997",
       "caps": 39,
       "matches_played": 5,
-      "ai_rating": 78.2,
+      "ai_rating": 87.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 87.5,
+          "weight": 0.833,
+          "raw": 1.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "NED_17",
@@ -4243,9 +6962,39 @@
       "dob": "10 Oct 1999",
       "caps": 89,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 87.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 93.2,
+          "weight": 0.581,
+          "raw": 1.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "NED_18",
@@ -4265,9 +7014,51 @@
       "dob": "17 Jul 2002",
       "caps": 47,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 75.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.5,
+          "weight": 0.096,
+          "raw": 0.176
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NED_19",
@@ -4309,9 +7100,32 @@
       "dob": "7 Aug 1996",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 57.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 25.0,
+          "weight": 0.833,
+          "raw": 3.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "NZL_03",
@@ -4353,7 +7167,7 @@
       "dob": "20 Jul 2003",
       "caps": 58,
       "matches_played": 5,
-      "ai_rating": 57.6,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true,
       "world_rank": 78
@@ -4464,9 +7278,39 @@
       "dob": "22 Apr 1992",
       "caps": 229,
       "matches_played": 5,
-      "ai_rating": 79.0,
+      "ai_rating": 70.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 32.4,
+          "weight": 0.581,
+          "raw": 3.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 82.4,
+          "weight": 0.29,
+          "raw": 3.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "NZL_10",
@@ -4486,9 +7330,51 @@
       "dob": "14 Feb 1996",
       "caps": 85,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 61.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.133
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NZL_11",
@@ -4530,9 +7416,45 @@
       "dob": "21 Sep 2000",
       "caps": 19,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 65.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 23.1,
+          "weight": 0.25,
+          "raw": 0.067
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "NZL_13",
@@ -4552,9 +7474,45 @@
       "dob": "24 Oct 2002",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 65.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 23.1,
+          "weight": 0.25,
+          "raw": 0.067
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "NZL_14",
@@ -4640,9 +7598,51 @@
       "dob": "2 May 2002",
       "caps": 16,
       "matches_played": 5,
-      "ai_rating": 83.0,
+      "ai_rating": 91.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 95.2,
+          "weight": 0.577,
+          "raw": 4.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 87.1,
+          "weight": 0.192,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.0,
+          "weight": 0.096,
+          "raw": 0.267
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NZL_18",
@@ -4662,9 +7662,32 @@
       "dob": "30 Dec 2004",
       "caps": 14,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 57.2,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 25.0,
+          "weight": 0.833,
+          "raw": 3.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "NZL_19",
@@ -4707,9 +7730,32 @@
       "dob": "20 Dec 2000",
       "caps": 7,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 52.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 15.6,
+          "weight": 0.833,
+          "raw": 3.8
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "PAK_05",
@@ -4729,7 +7775,7 @@
       "dob": "5 Nov 2002",
       "caps": 88,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -4773,9 +7819,51 @@
       "dob": "7 Sep 2005",
       "caps": 68,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 94.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 95.2,
+          "weight": 0.577,
+          "raw": 4.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 98.4,
+          "weight": 0.192,
+          "raw": 4.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 85.5,
+          "weight": 0.096,
+          "raw": 0.308
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "PAK_08",
@@ -4905,9 +7993,45 @@
       "dob": "12 Dec 2000",
       "caps": 59,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 61.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 35.9,
+          "weight": 0.25,
+          "raw": 0.077
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 10.3,
+          "weight": 0.15,
+          "raw": 2.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "PAK_14",
@@ -4927,10 +8051,46 @@
       "dob": "7 Feb 1999",
       "caps": 52,
       "matches_played": 5,
-      "ai_rating": 70.6,
+      "ai_rating": 67.1,
       "source": "fih-team-list",
       "on_team_list": true,
-      "world_rank": 7
+      "world_rank": 7,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 35.9,
+          "weight": 0.25,
+          "raw": 0.077
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "PAK_15",
@@ -4950,9 +8110,39 @@
       "dob": "10 Apr 1999",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 58.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 21.6,
+          "weight": 0.581,
+          "raw": 3.8
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "PAK_16",
@@ -5016,9 +8206,32 @@
       "dob": "4 Apr 2004",
       "caps": 24,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 52.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 15.6,
+          "weight": 0.833,
+          "raw": 3.8
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "PAK_19",
@@ -5082,9 +8295,39 @@
       "dob": "19 Mar 2002",
       "caps": 74,
       "matches_played": 5,
-      "ai_rating": 99,
+      "ai_rating": 74.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 54.1,
+          "weight": 0.581,
+          "raw": 2.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 94.6,
+          "weight": 0.29,
+          "raw": 5.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 1.4,
+          "weight": 0.129,
+          "raw": 3.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "RSA_03",
@@ -5280,9 +8523,32 @@
       "dob": "4 May 1999",
       "caps": 5,
       "matches_played": 5,
-      "ai_rating": 65.6,
+      "ai_rating": 66.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 43.8,
+          "weight": 0.833,
+          "raw": 2.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "RSA_12",
@@ -5302,7 +8568,7 @@
       "dob": "18 Feb 2003",
       "caps": 10,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5324,9 +8590,45 @@
       "dob": "4 Apr 2000",
       "caps": 28,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 66.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "RSA_14",
@@ -5346,9 +8648,45 @@
       "dob": "28 Aug 1991",
       "caps": 91,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 70.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "RSA_15",
@@ -5390,7 +8728,7 @@
       "dob": "23 Jan 1999",
       "caps": 86,
       "matches_played": 5,
-      "ai_rating": 53.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -5412,9 +8750,32 @@
       "dob": "28 Nov 2000",
       "caps": 22,
       "matches_played": 5,
-      "ai_rating": 65.6,
+      "ai_rating": 66.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 43.8,
+          "weight": 0.833,
+          "raw": 2.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "RSA_19",
@@ -5456,9 +8817,45 @@
       "dob": "8 Aug 2003",
       "caps": 14,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": 64.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 6.4,
+          "weight": 0.15,
+          "raw": 3.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ESP_04",
@@ -5566,9 +8963,51 @@
       "dob": "3 Jan 1997",
       "caps": 113,
       "matches_played": 5,
-      "ai_rating": 81.0,
+      "ai_rating": 92.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 95.2,
+          "weight": 0.577,
+          "raw": 4.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 87.1,
+          "weight": 0.192,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 98.4,
+          "weight": 0.096,
+          "raw": 0.444
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "ESP_09",
@@ -5588,9 +9027,51 @@
       "dob": "18 May 1999",
       "caps": 105,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 81.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 91.9,
+          "weight": 0.096,
+          "raw": 0.333
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "ESP_10",
@@ -5610,9 +9091,32 @@
       "dob": "15 Nov 2000",
       "caps": 82,
       "matches_played": 5,
-      "ai_rating": 80.0,
+      "ai_rating": 92.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 96.9,
+          "weight": 0.833,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ESP_11",
@@ -5632,9 +9136,32 @@
       "dob": "16 Feb 1998",
       "caps": 32,
       "matches_played": 5,
-      "ai_rating": 80.0,
+      "ai_rating": 92.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 96.9,
+          "weight": 0.833,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ESP_12",
@@ -5742,9 +9269,45 @@
       "dob": "4 Jan 2003",
       "caps": 42,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 73.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.5,
+          "weight": 0.25,
+          "raw": 0.111
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ESP_17",
@@ -5797,7 +9360,7 @@
       "position": "Squad",
       "number": 5,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -5874,9 +9437,45 @@
       "dob": "19 Sep 2000",
       "caps": 86,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 70.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "WAL_06",
@@ -5896,9 +9495,51 @@
       "dob": "27 Oct 2001",
       "caps": 17,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 65.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 64.5,
+          "weight": 0.096,
+          "raw": 0.2
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "WAL_07",
@@ -5940,9 +9581,51 @@
       "dob": "9 Mar 1999",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 61.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 64.5,
+          "weight": 0.096,
+          "raw": 0.2
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "WAL_09",
@@ -5984,7 +9667,7 @@
       "dob": "9 Jul 1997",
       "caps": 90,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6050,7 +9733,7 @@
       "dob": "16 Jul 2003",
       "caps": 8,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6094,9 +9777,32 @@
       "dob": "7 Jun 2001",
       "caps": 5,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 46.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 3.1,
+          "weight": 0.833,
+          "raw": 4.8
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "WAL_16",
@@ -6121,7 +9827,7 @@
       "on_team_list": true
     },
     {
-      "id": "ARG_22",
+      "id": "ARG_08",
       "name": "Nicolas della Torre",
       "team": "ARG",
       "position": "Squad",
@@ -6138,12 +9844,42 @@
       "dob": "1 Mar 1990",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 82.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 66.2,
+          "weight": 0.29,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
-      "id": "BEL_18",
+      "id": "BEL_05",
       "name": "Arthur van Doren",
       "team": "BEL",
       "position": "Squad",
@@ -6160,12 +9896,42 @@
       "dob": "1 Oct 1994",
       "caps": 293,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 77.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 77.0,
+          "weight": 0.581,
+          "raw": 1.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
-      "id": "BEL_19",
+      "id": "BEL_10",
       "name": "Nicolas de Kerpel",
       "team": "BEL",
       "position": "Squad",
@@ -6187,7 +9953,7 @@
       "on_team_list": true
     },
     {
-      "id": "GER_16",
+      "id": "GER_05",
       "name": "Johannes Große",
       "team": "GER",
       "position": "Squad",
@@ -6209,7 +9975,7 @@
       "on_team_list": true
     },
     {
-      "id": "GER_18",
+      "id": "GER_06",
       "name": "Hugo von Montgelas",
       "team": "GER",
       "position": "Squad",
@@ -6226,12 +9992,42 @@
       "dob": "17 Apr 2004",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 82.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 93.2,
+          "weight": 0.581,
+          "raw": 1.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
-      "id": "IRL_20",
+      "id": "IRL_06",
       "name": "John McKee",
       "team": "IRL",
       "position": "Squad",
@@ -6248,12 +10044,42 @@
       "dob": "22 Dec 1996",
       "caps": 136,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 65.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 54.1,
+          "weight": 0.581,
+          "raw": 2.6
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
-      "id": "IRL_21",
+      "id": "IRL_10",
       "name": "Peter McKibbin",
       "team": "IRL",
       "position": "Squad",
@@ -6319,7 +10145,7 @@
       "on_team_list": true
     },
     {
-      "id": "NED_17",
+      "id": "NED_07",
       "name": "Pepijn van der Heijden",
       "team": "NED",
       "position": "Squad",
@@ -6341,7 +10167,7 @@
       "on_team_list": true
     },
     {
-      "id": "NED_18",
+      "id": "NED_10",
       "name": "Joep de Mol",
       "team": "NED",
       "position": "Squad",
@@ -6363,7 +10189,7 @@
       "on_team_list": true
     },
     {
-      "id": "NED_19",
+      "id": "NED_14",
       "name": "Steijn van Heijningen",
       "team": "NED",
       "position": "Squad",
@@ -6385,7 +10211,7 @@
       "on_team_list": true
     },
     {
-      "id": "RSA_20",
+      "id": "RSA_16",
       "name": "Trevor de Lora",
       "team": "RSA",
       "position": "Squad",
@@ -6424,9 +10250,51 @@
       "dob": "22 Sep 1999",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 60.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 8.1,
+          "weight": 0.096,
+          "raw": 0.105
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "AUS_21",
@@ -6473,7 +10341,7 @@
       "on_team_list": true
     },
     {
-      "id": "BEL_20",
+      "id": "BEL_15",
       "name": "Lucas Balthazar",
       "team": "BEL",
       "position": "Squad",
@@ -6556,9 +10424,45 @@
       "dob": "28 Oct 1996",
       "caps": 146,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 63.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 12.8,
+          "weight": 0.25,
+          "raw": 0.053
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ENG_09",
@@ -6578,9 +10482,39 @@
       "dob": "2 Oct 1995",
       "caps": 116,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 72.4,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 63.5,
+          "weight": 0.581,
+          "raw": 2.0
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ENG_10",
@@ -6622,9 +10556,32 @@
       "dob": "4 Feb 2001",
       "caps": 72,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 74.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 59.4,
+          "weight": 0.833,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ENG_12",
@@ -6644,9 +10601,51 @@
       "dob": "9 Sep 2000",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": 75.0,
+      "ai_rating": 80.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 87.1,
+          "weight": 0.192,
+          "raw": 3.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 45.2,
+          "weight": 0.096,
+          "raw": 0.158
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "ENG_13",
@@ -6710,9 +10709,32 @@
       "dob": "6 Apr 1999",
       "caps": 105,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 74.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 59.4,
+          "weight": 0.833,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ENG_16",
@@ -6721,7 +10743,7 @@
       "position": "Squad",
       "number": 23,
       "goals": 3,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 1,
       "yellow_cards": 0,
       "red_cards": 0,
@@ -6732,9 +10754,51 @@
       "dob": "14 Dec 1992",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": 77.0,
+      "ai_rating": 79.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 74.2,
+          "weight": 0.577,
+          "raw": 3.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 45.2,
+          "weight": 0.096,
+          "raw": 0.158
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "ENG_17",
@@ -6803,7 +10867,7 @@
       "on_team_list": true
     },
     {
-      "id": "GER_18",
+      "id": "GER_11",
       "name": "Linus Müller",
       "team": "GER",
       "position": "Squad",
@@ -6842,7 +10906,7 @@
       "dob": "14 Jan 2001",
       "caps": 68,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -6864,9 +10928,45 @@
       "dob": "21 Jun 1996",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 63.0,
+      "ai_rating": 73.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 42.3,
+          "weight": 0.25,
+          "raw": 0.083
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 70.5,
+          "weight": 0.15,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "GER_21",
@@ -6886,9 +10986,32 @@
       "dob": "8 Nov 2002",
       "caps": 63,
       "matches_played": 5,
-      "ai_rating": 82.2,
+      "ai_rating": 87.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 87.5,
+          "weight": 0.833,
+          "raw": 1.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "IRL_22",
@@ -6908,9 +11031,51 @@
       "dob": "14 Apr 1998",
       "caps": 125,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 59.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.096,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "JPN_21",
@@ -6974,9 +11139,51 @@
       "dob": "2 May 2000",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 63.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.096,
+          "raw": 0.143
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 88.7,
+          "weight": 0.096,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NED_20",
@@ -6996,9 +11203,32 @@
       "dob": "8 Jun 1995",
       "caps": 55,
       "matches_played": 5,
-      "ai_rating": 78.2,
+      "ai_rating": 87.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 87.5,
+          "weight": 0.833,
+          "raw": 1.2
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "NED_21",
@@ -7018,9 +11248,51 @@
       "dob": "5 Jan 1997",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 60.8,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 14.5,
+          "weight": 0.096,
+          "raw": 0.118
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 58.1,
+          "weight": 0.096,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 58.1,
+          "weight": 0.038,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "NED_22",
@@ -7040,7 +11312,7 @@
       "dob": "14 Dec 1996",
       "caps": 110,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -7062,9 +11334,51 @@
       "dob": "5 Aug 1994",
       "caps": 57,
       "matches_played": 5,
-      "ai_rating": 69.0,
+      "ai_rating": 57.6,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Forward",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 30.6,
+          "weight": 0.577,
+          "raw": 2.0
+        },
+        "open_play": {
+          "label": "Open play",
+          "score": 43.5,
+          "weight": 0.192,
+          "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.133
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 19.4,
+          "weight": 0.096,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 1.6,
+          "weight": 0.038,
+          "raw": 2.0
+        }
+      },
+      "rating_coverage": 0.52,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "circle_impact",
+        "possession",
+        "pressing"
+      ]
     },
     {
       "id": "PAK_21",
@@ -7106,9 +11420,45 @@
       "dob": "1 Dec 1998",
       "caps": 103,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 69.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.4,
+          "weight": 0.25,
+          "raw": 0.1
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 83.3,
+          "weight": 0.2,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 2.6,
+          "weight": 0.15,
+          "raw": 4.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ESP_19",
@@ -7183,7 +11533,7 @@
       "position": "Squad",
       "number": 3,
       "goals": 0,
-      "assists": 1,
+      "assists": 0,
       "pc_scored": 0,
       "yellow_cards": 1,
       "red_cards": 0,
@@ -7194,7 +11544,7 @@
       "dob": "21 Mar 1995",
       "caps": 162,
       "matches_played": 5,
-      "ai_rating": 55.0,
+      "ai_rating": null,
       "source": "fih-team-list",
       "on_team_list": true
     },
@@ -7216,9 +11566,39 @@
       "dob": "24 Jul 1998",
       "caps": 167,
       "matches_played": 5,
-      "ai_rating": 66.0,
+      "ai_rating": 51.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 1.4,
+          "weight": 0.581,
+          "raw": 4.8
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "WAL_19",
@@ -7238,9 +11618,32 @@
       "dob": "6 Aug 1997",
       "caps": 63,
       "matches_played": 5,
-      "ai_rating": 62.0,
+      "ai_rating": 46.5,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 3.1,
+          "weight": 0.833,
+          "raw": 4.8
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "AUS_23",
@@ -7282,9 +11685,32 @@
       "dob": "6 Jun 1999",
       "caps": 17,
       "matches_played": 5,
-      "ai_rating": 74.6,
+      "ai_rating": 80.3,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Goalkeeper",
+      "position_source": "FIH",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 71.9,
+          "weight": 0.833,
+          "raw": 1.6
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 50.0,
+          "weight": 0.167,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.24,
+      "rating_missing": [
+        "availability",
+        "distribution",
+        "pc_defence",
+        "shot_stopping"
+      ]
     },
     {
       "id": "ENG_20",
@@ -7304,9 +11730,45 @@
       "dob": "29 Sep 1999",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 64.0,
+      "ai_rating": 59.9,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Midfielder",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "scoring": {
+          "label": "Scoring",
+          "score": 48.7,
+          "weight": 0.4,
+          "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 12.8,
+          "weight": 0.25,
+          "raw": 0.053
+        },
+        "clutch": {
+          "label": "Fourth quarter",
+          "score": 34.6,
+          "weight": 0.2,
+          "raw": 0.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 26.9,
+          "weight": 0.15,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.2,
+      "rating_missing": [
+        "availability",
+        "chance_creation",
+        "defensive_actions",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ENG_21",
@@ -7326,9 +11788,39 @@
       "dob": "13 Apr 2001",
       "caps": 29,
       "matches_played": 5,
-      "ai_rating": 79.0,
+      "ai_rating": 74.7,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 63.5,
+          "weight": 0.581,
+          "raw": 2.0
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 66.2,
+          "weight": 0.29,
+          "raw": 2.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "FRA_20",
@@ -7414,9 +11906,39 @@
       "dob": "27 Jul 1998",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 65.0,
+      "ai_rating": 79.1,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 93.2,
+          "weight": 0.581,
+          "raw": 1.2
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 21.6,
+          "weight": 0.129,
+          "raw": 1.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "PAK_22",
@@ -7436,9 +11958,39 @@
       "dob": "4 Feb 2000",
       "caps": 104,
       "matches_played": 5,
-      "ai_rating": 71.0,
+      "ai_rating": 58.0,
       "source": "fih-team-list",
-      "on_team_list": true
+      "on_team_list": true,
+      "position_effective": "Defender",
+      "position_source": "Hockey.AI",
+      "rating_components": {
+        "team_defence": {
+          "label": "Goals against",
+          "score": 21.6,
+          "weight": 0.581,
+          "raw": 3.8
+        },
+        "set_piece": {
+          "label": "Set pieces",
+          "score": 32.4,
+          "weight": 0.29,
+          "raw": 1.0
+        },
+        "discipline": {
+          "label": "Discipline",
+          "score": 66.2,
+          "weight": 0.129,
+          "raw": 0.0
+        }
+      },
+      "rating_coverage": 0.31,
+      "rating_missing": [
+        "availability",
+        "defensive_actions",
+        "duels",
+        "possession",
+        "progression"
+      ]
     },
     {
       "id": "ESP_22",
