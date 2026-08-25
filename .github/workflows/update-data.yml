@@ -82,18 +82,6 @@ jobs:
             git push origin HEAD:${{ github.ref_name }}
           fi
 
-      # The official app shows full line-ups — starting eleven, substitutes with
-      # the minute each came on, team staff — so the data exists and is served
-      # to somebody. Our fetcher gets 403. This finds out why: it warms up a
-      # session, reads the match page for how the tab is actually filled, and
-      # asks for the line-up every way a browser might. Dormant unless asked.
-      - name: Probe how the official line-ups are served
-        if: github.event.inputs.probe_lineup_match != ''
-        env:
-          PROBE_LINEUP_MATCH: ${{ github.event.inputs.probe_lineup_match }}
-        continue-on-error: true
-        run: python scripts/probe_lineups.py
-
       - name: Update fixtures, statuses & Oracle picks
         env:
           PROBE_MATCH_IDS: ${{ github.event.inputs.probe_match_ids }}
@@ -256,3 +244,20 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-pages.yml/dispatches" \
             -d '{"ref":"main"}'
           echo "Pages redeploy dispatched."
+
+      # The official app shows full line-ups — starting eleven, substitutes with
+      # the minute each came on, team staff — so the data exists and is served
+      # to somebody. Our fetcher gets 403. This finds out why: it warms up a
+      # session, reads the match page for how the tab is actually filled, and
+      # asks for the line-up every way a browser might.
+      #
+      # It runs last on purpose. The logs API truncates a job from the end, and
+      # this job prints tens of thousands of lines, so a probe placed anywhere
+      # else has its answer cut off — which is exactly what happened the first
+      # time. Dormant unless a match id is passed on dispatch.
+      - name: Probe how the official line-ups are served
+        if: github.event.inputs.probe_lineup_match != ''
+        env:
+          PROBE_LINEUP_MATCH: ${{ github.event.inputs.probe_lineup_match }}
+        continue-on-error: true
+        run: python scripts/probe_lineups.py
