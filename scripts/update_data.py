@@ -549,6 +549,26 @@ def _dump(label, lines, n=60):
     for ln in lines[:n]:
         print(f'  | {ln[:110]}')
 
+# The entry list states no position — only (GK) and (C) — which is why most
+# of the squad carries the placeholder. If TMS states a position anywhere on
+# the line-up pages, it will be in one of these forms; this reports what is
+# actually there so the parser can read it rather than guess it.
+POSITION_HINT = re.compile(
+    r'\b(goal\s?keeper|keeper|defender|def\b|midfielder|mid\b|forward|fwd\b|'
+    r'striker|attacker|back|half|position)\b', re.I)
+
+
+def _dump_position_hits(label, lines):
+    """Every line on a TMS page that could be stating a position."""
+    hits = [ln for ln in lines if POSITION_HINT.search(ln)]
+    if hits:
+        print(f'  {label} — {len(hits)} line(s) mentioning a position:')
+        for ln in hits[:20]:
+            print(f'  ? {ln[:110]}')
+    else:
+        print(f'  {label} — no line on this page states a position.')
+
+
 def _dump_team_page(lines, code):
     """The slice of the entry list belonging to one nation, for tuning."""
     start = next((i for i, ln in enumerate(lines) if _heading_code(ln) == code), None)
@@ -1248,7 +1268,14 @@ def fetch_official_lineups(fixtures, links, players_doc):
     if not links:
         print('LINEUPS: no TMS links to read team sheets from.')
         return False
-    probe = os.environ.get('PROBE_LINEUPS') == '1'
+    # Diagnostics turn themselves on exactly when they are needed. TMS is
+    # unreachable from a local sandbox, so the parser has never seen a real
+    # page; until one sheet is accepted, every page is dumped so the next run
+    # can be tuned against what TMS actually returns. Once a sheet lands the
+    # dumps stop on their own. PROBE_LINEUPS=1 forces them back on.
+    seen_official = any((m.get('lineups') or {}).get('source') == 'official'
+                        for m in fixtures['matches'])
+    probe = os.environ.get('PROBE_LINEUPS') == '1' or not seen_official
     squads = {}
     for p in players_doc['players']:
         squads.setdefault(p['team'], []).append(p)
@@ -1269,7 +1296,8 @@ def fetch_official_lineups(fixtures, links, players_doc):
                 continue
             lines = _tms_lines(body)
             if probe:
-                _dump(f'lineup {mid}/{tid}', lines, 60)
+                _dump(f'lineup {mid}/{tid}', lines, 80)
+                _dump_position_hits(f'lineup {mid}/{tid}', lines)
             rows = parse_player_rows(lines)
             side_squad = {c: squads.get(c, []) for c in (m['home'], m['away'])}
             code, hits = _match_side_by_squad(rows, side_squad)
