@@ -260,4 +260,6 @@ jobs:
         env:
           PROBE_LINEUP_MATCH: ${{ github.event.inputs.probe_lineup_match }}
         continue-on-error: true
-        run: python scripts/probe_lineups.py
+        run: |
+          python scripts/probe_lineups.py || true
+          python scripts/probe_appapi.py
