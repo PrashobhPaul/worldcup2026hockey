@@ -266,6 +266,23 @@ jobs:
           npm run test:fingerprint
           python3 scripts/test_story_facts.py
 
+      # The gates above verify the data, but they do it inside this run — so a
+      # pull request whose head this job just moved carries no check of its
+      # own, and a reviewer opening it sees an unverified head. The same
+      # GITHUB_TOKEN rule is the cause, and the same remedy applies as for the
+      # Pages deploy below: dispatch the check explicitly. A dispatched CI run
+      # attaches to the pull request the branch belongs to, so the head reads
+      # as verified rather than as unchecked.
+      - name: Post a visible check for the head this run pushed
+        if: steps.commit.outputs.pushed == 'true' && github.ref_name != 'main'
+        run: |
+          curl -sS -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/ci.yml/dispatches" \
+            -d "{\"ref\":\"${{ github.ref_name }}\"}" \
+            || echo "  could not dispatch CI on ${{ github.ref_name }}."
+
       # GITHUB_TOKEN pushes never trigger `on: push` workflows, so the Pages
       # deploy must be dispatched explicitly or the live site serves stale data.
       - name: Redeploy GitHub Pages with fresh data
