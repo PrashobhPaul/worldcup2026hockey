@@ -81,6 +81,20 @@ check('each position group shares one component set',
   [...groups].filter(([, g]) => new Set(g.map(p => Object.keys(p.rating_components).sort().join('|'))).size !== 1)
     .map(([k]) => k).join(','))
 
+// The condition that broke it: the FIH's appearance figures are read a squad
+// at a time, so mid-refresh some players in a group carry an appearance count
+// and others do not. Scoring the first on Availability while renormalising the
+// second without it ranks two halves of a position against different models.
+check('a component either counts for the whole group or for none of it',
+  [...groups].every(([, g]) => {
+    const keys = [...new Set(g.flatMap(p => Object.keys(p.rating_components)))]
+    return keys.every(k => g.every(p => k in p.rating_components))
+  }),
+  [...groups].filter(([, g]) => {
+    const keys = [...new Set(g.flatMap(p => Object.keys(p.rating_components)))]
+    return !keys.every(k => g.every(p => k in p.rating_components))
+  }).map(([k]) => k).join(','))
+
 check('each position group spans a real range, not one flat number',
   [...groups.values()].every(g => g.length < 3 || new Set(g.map(p => p.ai_rating)).size > 1))
 

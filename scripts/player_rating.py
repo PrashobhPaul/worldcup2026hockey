@@ -136,7 +136,7 @@ def _pct(values, invert=False):
     return out
 
 
-def _raw(row, comp):
+def _raw(row, comp, group_has_appearances=False):
     """The component's raw figure for one player, or None if unsupported.
 
     Volume, efficiency and impact are combined here, per component, and each
@@ -152,11 +152,11 @@ def _raw(row, comp):
         return None if mp is None else float(mp)
 
     if comp == SCORING:
-        # Per appearance where the appearance count is known, so a starter is
-        # not out-scored on volume alone. Until the FIH figures have been read
-        # the count is unknown for the whole group, so the group falls back to
-        # totals together and stays internally comparable.
-        if mp is None:
+        # Per appearance where the whole group's appearance counts are known,
+        # so a starter is not out-scored on volume alone — and totals for the
+        # whole group where they are not. Never a mix: two players measured in
+        # different units cannot be ranked against each other.
+        if not group_has_appearances:
             return float(g)
         return (g / mp) if mp else 0.0
     if comp == SET_PIECE:
@@ -202,14 +202,21 @@ def rate_group(rows, position):
     if not weights:
         return [None] * len(rows)
 
-    raws = {c: [_raw(r, c) for r in rows] for c in weights}
+    # A percentile only means something when everyone in the group is measured
+    # the same way. The FIH's appearance figures are read a squad at a time, so
+    # mid-refresh some players in a group carry an appearance count and others
+    # do not — and scoring the first group on Availability while the second is
+    # renormalised without it ranks two halves of a position against different
+    # models. A component counts for the group only when the group is complete
+    # on it.
+    group_has_appearances = all(r.get('games_played') is not None for r in rows)
+    raws = {c: [_raw(r, c, group_has_appearances) for r in rows] for c in weights}
     scores = {c: _pct(raws[c], invert=c in LOWER_IS_BETTER) for c in weights}
-    available = {c for c in weights if any(v is not None for v in raws[c])}
+    available = {c for c in weights if all(v is not None for v in raws[c])}
 
     out = []
     for i, row in enumerate(rows):
-        mine = {c: scores[c].get(i) for c in available}
-        mine = {c: v for c, v in mine.items() if v is not None}
+        mine = {c: scores[c][i] for c in available}
         total_w = sum(weights[c] for c in mine)
         if not total_w or row.get('games_played') == 0:
             out.append(None)
