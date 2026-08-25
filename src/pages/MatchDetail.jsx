@@ -13,6 +13,7 @@ import { buildPreview, h2hKey } from '../engine/preview'
 import { ArrowLeft } from 'lucide-react'
 import { EventIcon } from '../components/eventIcons'
 import MatchIntelligence from '../components/MatchIntelligence'
+import { MatchupEdge } from '../components/TeamRatingCard'
 
 function EventRow({ ev, homeCode, homeFlag, awayFlag }) {
   const isHome = ev.team === homeCode
@@ -503,6 +504,11 @@ export default function MatchDetailPage() {
           <FormRow name={away?.name ?? match.away} form={awayForm} />
         </div>
       </div>
+
+      {/* What this tournament's own numbers say separates the two sides —
+          the evidence a pick should be able to point at. */}
+      <MatchupEdge home={match.home} away={match.away}
+        byCode={new Map([[match.home, home], [match.away, away]].filter(([, t]) => t))} />
 
       <HistoryFacts row={h2hRow} home={match.home} away={match.away}
         homeName={home?.name ?? match.home} awayName={away?.name ?? match.away} />

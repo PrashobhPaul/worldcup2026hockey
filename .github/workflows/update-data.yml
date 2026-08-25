@@ -17,6 +17,10 @@ on:
         description: 'Comma-separated TMS match ids to dump (debug only)'
         required: false
         default: ''
+      probe_lineup_match:
+        description: 'TMS match id to probe for official line-ups (debug only)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -75,7 +79,12 @@ jobs:
             if ! git diff --quiet public/data/data-version.json; then
               git commit -qam "data: restamp the fingerprint after merging main"
             fi
-            git push origin HEAD:${{ github.ref_name }}
+            # Deliberately not pushed here. main runs main's code, so its data
+            # can be a schema behind this branch's — no official team sheets,
+            # ratings without their components. Pushing at this point publishes
+            # that intermediate state to the branch, and anything reading it in
+            # the minute before the rebuild finishes sees the worse of the two
+            # files. The merge commit rides out with the rebuilt data below.
           fi
 
       - name: Update fixtures, statuses & Oracle picks
@@ -105,6 +114,11 @@ jobs:
       # here means a brief reaches the published data through the pipeline
       # rather than only when someone runs the script by hand. Both are
       # idempotent — they write only when the wording actually differs.
+      # The intros describe who is at this tournament, and the official team
+      # list is what decides that. Idempotent — it writes only on a difference.
+      - name: Correct the team intros against the official team list
+        run: python scripts/team_intro_review.py
+
       - name: Apply written match briefs
         run: |
           python scripts/stage1_review.py
@@ -152,7 +166,32 @@ jobs:
           git add public/emblem.png 2>/dev/null || true
           if ! git diff --staged --quiet; then
             git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+          fi
+          # Anything unpushed goes out together — the merge above as well as
+          # the rebuild — so the branch never holds main's data without this
+          # run's work on top of it.
+          if [ "$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)" -gt 0 ]; then
+            # This job runs every ten minutes and the branch it pushes to is
+            # worked on at the same time, so the ref moves under it. A bare
+            # push simply loses that race and fails the run — which is what a
+            # rejected push here has meant every time. Rebasing onto whatever
+            # arrived and trying again resolves it: .gitattributes routes the
+            # data files through scripts/merge_data.py, so the rebase applies
+            # the same rules the merge would.
+            pushed=false
+            for attempt in 1 2 3 4; do
+              if git push; then pushed=true; break; fi
+              echo "push rejected (attempt $attempt) — taking what arrived and retrying."
+              git pull --rebase --no-edit origin "${{ github.ref_name }}" || break
+              python3 scripts/data_fingerprint.py --write
+              git add public/data/
+              git diff --staged --quiet || git commit -q --amend --no-edit
+              sleep $((attempt * 3))
+            done
+            if [ "$pushed" != true ]; then
+              echo "::error::could not push the data update after four attempts."
+              exit 1
+            fi
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No data changes."
@@ -191,6 +230,41 @@ jobs:
               -d "{\"ref\":\"$b\"}" || echo "  could not dispatch on $b"
           done
 
+      # The same rule that makes the Pages dispatch below necessary — a
+      # GITHUB_TOKEN push triggers no `on: push` workflow — means a data push
+      # into a pull request's head branch leaves that pull request's own CI
+      # unrun, and GitHub queues the pull_request run as awaiting approval. So
+      # the branch is left reading "unstable" with an unrun check, which is
+      # exactly what a reviewer should not have to interpret.
+      #
+      # The gates therefore run here, in the run that made the change, whenever
+      # this pipeline is working on a branch rather than on main. main's own
+      # data pushes are covered by CI on the merge that lands them.
+      - name: Verify the data this run just wrote
+        if: steps.commit.outputs.pushed == 'true' && github.ref_name != 'main'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Run the gates against the new data
+        if: steps.commit.outputs.pushed == 'true' && github.ref_name != 'main'
+        run: |
+          npm ci
+          npm run test:probability
+          npm run test:bracket
+          npm run test:tiers
+          npm run test:accuracy
+          npm run test:picks
+          npm run test:playerstats
+          npm run test:bestxi
+          npm run test:rating
+          npm run test:intros
+          npm run test:sheets
+          npm run test:stats
+          npm run test:fingerprint
+          python3 scripts/test_story_facts.py
+
       # GITHUB_TOKEN pushes never trigger `on: push` workflows, so the Pages
       # deploy must be dispatched explicitly or the live site serves stale data.
       - name: Redeploy GitHub Pages with fresh data
@@ -202,3 +276,24 @@ jobs:
             "https://api.github.com/repos/${{ github.repository }}/actions/workflows/deploy-pages.yml/dispatches" \
             -d '{"ref":"main"}'
           echo "Pages redeploy dispatched."
+
+      # The official app shows full line-ups — starting eleven, substitutes with
+      # the minute each came on, team staff — so the data exists and is served
+      # to somebody. Our fetcher gets 403. This finds out why: it warms up a
+      # session, reads the match page for how the tab is actually filled, and
+      # asks for the line-up every way a browser might.
+      #
+      # It runs last on purpose. The logs API truncates a job from the end, and
+      # this job prints tens of thousands of lines, so a probe placed anywhere
+      # else has its answer cut off — which is exactly what happened the first
+      # time. Dormant unless a match id is passed on dispatch.
+      - name: Probe how the official line-ups are served
+        if: github.event.inputs.probe_lineup_match != ''
+        env:
+          PROBE_LINEUP_MATCH: ${{ github.event.inputs.probe_lineup_match }}
+        continue-on-error: true
+        run: |
+          python scripts/probe_lineups.py || true
+          python scripts/probe_appapi.py || true
+          python scripts/probe_reports.py || true
+          python scripts/probe_sheets.py

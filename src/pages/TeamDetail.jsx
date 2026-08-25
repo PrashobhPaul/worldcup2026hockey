@@ -8,6 +8,9 @@ import { formatProbability, toPercent } from '../engine/probability.js'
 import { ArrowLeft } from 'lucide-react'
 import { useFavourite, toggleFavourite } from '../hooks/useFavourite'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+import BestElevenPitch, { RemainingSquad, TeamToppers, ScoreRow } from '../components/BestElevenPitch'
+import { teamToppers, HOCKEY_FORMATION } from '../engine/bestXI'
+import TeamRatingCard from '../components/TeamRatingCard'
 
 function OracleSnapshot({ team, teams, matches }) {
   const bundle = useOracleBundle(teams, matches)
@@ -108,6 +111,28 @@ export default function TeamDetailPage() {
   const allMatches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
   const players = useLiveQuery(() => db.players.where('team').equals(teamCode).toArray(), [teamCode], [])
   const matches = (allMatches ?? []).filter(m => m.home === teamCode || m.away === teamCode)
+  const byCode = new Map((teams ?? []).map(t => [t.code, t]))
+
+  // One pass over this team's fixtures: what has been played, what is next,
+  // and the record those results add up to. Every row deeplinks to its match.
+  const played = matches.filter(m =>
+    m.status === 'completed' && m.score && m.score.home != null && m.score.away != null)
+  const results = [...played].reverse()   // most recent first
+  const upcoming = matches.filter(m => m.status !== 'completed')
+  const nextMatch = upcoming[0] ?? null
+  const record = played.reduce((r, m) => {
+    const home = m.home === teamCode
+    const us = home ? m.score.home : m.score.away
+    const them = home ? m.score.away : m.score.home
+    return {
+      w: r.w + (us > them ? 1 : 0),
+      d: r.d + (us === them ? 1 : 0),
+      l: r.l + (us < them ? 1 : 0),
+      gf: r.gf + us,
+      ga: r.ga + them,
+    }
+  }, { w: 0, d: 0, l: 0, gf: 0, ga: 0 })
+  const toppers = teamToppers(players, { matchesPlayed: played.length, goalsAgainst: record.ga })
 
   if (team === undefined) return <Skeleton h={400} />
   if (!team) return <div className="text-sm text-pitch-400">Team not found. <Link className="text-brand" to="/teams">← Teams</Link></div>
@@ -158,33 +183,70 @@ export default function TeamDetailPage() {
 
       <OracleSnapshot team={team} teams={teams} matches={allMatches} />
 
+      <TeamRatingCard teamCode={team.code} />
+
       <section>
-        <h2 className="mb-3 font-display text-lg font-semibold">Squad Spotlight</h2>
-        <div className="grid gap-2.5 sm:grid-cols-2">
-          {players.map(p => (
-            <div key={p.id} className="rounded-xl border border-white/5 bg-pitch-800 p-3.5">
-              <div className="flex items-center gap-2.5">
-                <span className="rounded bg-pitch-700 px-1.5 py-0.5 font-mono text-[10px] text-pitch-300">#{p.number}</span>
-                <span className="text-sm font-bold">{p.name}</span>
-                {p.is_captain && <span className="text-xs text-brand">Ⓒ</span>}
-                {p.fih_star && <span className="text-xs">⭐</span>}
-              </div>
-              <div className="mt-1.5 flex items-center gap-2">
-                <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-pitch-300">{p.position}</span>
-                <span className="font-mono text-[10px] text-pitch-400">⚡{p.goals}G · {p.assists}A · {p.pc_scored} PC</span>
-              </div>
-              {p.profile && <p className="mt-2 text-xs leading-relaxed text-pitch-300">{p.profile}</p>}
-            </div>
-          ))}
+        <div className="mb-3 flex items-baseline justify-between gap-2">
+          <h2 className="font-display text-lg font-semibold">{team.name} leaders</h2>
+          <span className="font-mono text-[10px] text-pitch-400">this tournament</span>
         </div>
+        <TeamToppers rows={toppers} teamFlag={team.flag} />
       </section>
 
       <section>
-        <h2 className="mb-3 font-display text-lg font-semibold">Fixtures & Results</h2>
-        <div className="space-y-2.5">
-          {matches.map(m => <MatchCard key={m.id} match={m} />)}
+        <div className="mb-3 flex items-baseline justify-between gap-2">
+          <h2 className="font-display text-lg font-semibold">Best XI</h2>
+          <span className="font-mono text-[10px] text-pitch-400">{HOCKEY_FORMATION}</span>
         </div>
+        <BestElevenPitch squad={players} teamColor={team.color} />
+        <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
+          Selected by position, not by rating alone. The FIH entry list states no outfield position and the
+          TMS team-sheet pages are not served publicly, so where a role is not stated it is derived by
+          Hockey.AI from how a player&apos;s goals were scored. This is Hockey.AI&apos;s XI, not an FIH team sheet.
+        </p>
+        {players.length > 11 && (
+          <div className="mt-4">
+            <h3 className="mb-2 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">
+              Rest of the squad
+            </h3>
+            <RemainingSquad squad={players} teamCode={team.code} />
+          </div>
+        )}
       </section>
+
+      {nextMatch && (
+        <section>
+          <h2 className="mb-3 font-display text-lg font-semibold">Next match</h2>
+          <MatchCard match={nextMatch} />
+        </section>
+      )}
+
+      <section>
+        <div className="mb-3 flex items-baseline justify-between gap-2">
+          <h2 className="font-display text-lg font-semibold">Results</h2>
+          <span className="font-mono text-[10px] text-pitch-400">
+            {record.w}W · {record.d}D · {record.l}L · {record.gf}–{record.ga}
+          </span>
+        </div>
+        {results.length ? (
+          <ol className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-pitch-800">
+            {results.map(m => <ScoreRow key={m.id} match={m} teamCode={team.code} byCode={byCode} />)}
+          </ol>
+        ) : (
+          <p className="rounded-xl border border-white/5 bg-pitch-800 p-4 text-xs text-pitch-400">
+            No completed matches yet.
+          </p>
+        )}
+      </section>
+
+      {upcoming.length > 1 && (
+        <section>
+          <h2 className="mb-3 font-display text-lg font-semibold">Still to come</h2>
+          <div className="space-y-2.5">
+            {upcoming.slice(1).map(m => <MatchCard key={m.id} match={m} compact />)}
+          </div>
+        </section>
+      )}
     </div>
   )
 }

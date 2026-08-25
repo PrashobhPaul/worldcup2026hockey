@@ -1,18 +1,20 @@
 import { useMemo, useState } from 'react'
+import { splitText } from '../engine/goalSplit.js'
 import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings, computeStage2Standings } from '../engine/standings'
+import { cardPoints } from '../engine/awards'
+import { roleOf, isAtTournament } from '../engine/bestXI'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
-import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
-import iconAssists from '../assets/boards/icon-top-assists.png'
-import iconAttacking from '../assets/boards/icon-most-attacking.png'
-import iconDefense from '../assets/boards/icon-strongest-defense.png'
-import iconStandings from '../assets/boards/icon-standings.png'
-import iconPerformers from '../assets/boards/icon-attack-defense.png'
+import {
+  GoldenStickIcon, CrossedSticksIcon, KeeperPadIcon, PenaltyCornerIcon,
+  PlayerIndexIcon, FinalQuarterIcon, TalismanIcon, FairPlayIcon, PodiumIcon,
+  DerivedBadge,
+} from '../components/hockeyIcons'
 
 // The bracket is NOT here on purpose: the Oracle owns the one bracket view
 // (semis, medals, advance odds), and a second copy under the Cup confused
@@ -45,7 +47,7 @@ function pickXI(players, byCode, { risingOnly = false, exclude = new Set() } = {
     nat: p.team,
     rating: p.ai_rating,
     pos: p.position === 'Goalkeeper' ? 'GK' : p.position === 'Defender' ? 'DF' : p.position === 'Midfielder' ? 'MF' : 'FW',
-    stat: `${p.goals}G · ${p.assists}A · ${p.pc_scored} PC`,
+    stat: [`${p.goals}G`, splitText(p)].filter(Boolean).join(' · '),
   }))
 }
 
@@ -112,13 +114,18 @@ function BestXISpace({ players, byCode, xi, setXi }) {
   )
 }
 
-function Board({ title, sub, rows, accent = 'text-brand', footnote, icon }) {
+// Where a board's numbers come from. FIH boards count things the official
+// record states; Hockey.AI boards are this app's own derivation from that
+// record. The badge is on every board so a reader never has to guess which
+// kind they are looking at. One badge, shared with every other surface.
+function Board({ title, sub, rows, accent = 'text-brand', footnote, icon: Icon, derived = false }) {
   const max = Math.max(1, ...rows.map(r => r.value))
   return (
     <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
       <h2 className="flex items-center gap-2 font-display text-base font-semibold">
-        {icon && <img src={icon} alt="" className="h-6 w-6 rounded" />}
-        {title}
+        {Icon && <Icon size={26} />}
+        <span className="flex-1">{title}</span>
+        <DerivedBadge derived={derived} />
       </h2>
       <p className="mb-3 mt-0.5 text-[11px] text-pitch-400">{sub}</p>
       {rows.length === 0
@@ -129,15 +136,19 @@ function Board({ title, sub, rows, accent = 'text-brand', footnote, icon }) {
               <li key={r.key} className={`flex items-center gap-2.5 rounded-lg px-2 py-1.5 ${i === 0 ? 'bg-brand/5' : ''}`}>
                 <span className="w-5 text-center font-mono text-xs font-bold text-pitch-400">{i + 1}</span>
                 <span className="text-base">{r.flag}</span>
-                {r.to
-                  ? <Link to={r.to} className="min-w-0 flex-1 truncate text-sm font-semibold hover:text-brand">{r.name} {i === 0 && '🏆'}</Link>
-                  : <span className="min-w-0 flex-1 truncate text-sm font-semibold">{r.name} {i === 0 && '🏆'}</span>}
-                <div className="hidden h-1.5 w-24 overflow-hidden rounded-full bg-pitch-600 sm:block">
+                {/* Name and detail stack. Sharing one row with the detail
+                    text truncated every name on a phone — "Harmanpre…". */}
+                <div className="min-w-0 flex-1">
+                  {r.to
+                    ? <Link to={r.to} className="block truncate text-sm font-semibold hover:text-brand">{r.name} {i === 0 && '🏆'}</Link>
+                    : <span className="block truncate text-sm font-semibold">{r.name} {i === 0 && '🏆'}</span>}
+                  {r.chip && <span className="block truncate font-mono text-[10px] text-pitch-400">{r.chip}</span>}
+                </div>
+                <div className="hidden h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-pitch-600 sm:block">
                   <div className={`h-full rounded-full ${r.invert ? 'bg-sky-400' : 'bg-brand'}`}
                     style={{ width: `${Math.max(6, (r.invert ? 1 - r.value / (max + 1) : r.value / max) * 100)}%` }} />
                 </div>
-                {r.chip && <span className="font-mono text-[10px] text-pitch-400">{r.chip}</span>}
-                <span className={`w-8 text-right font-mono text-sm font-bold ${accent}`}>{r.value}</span>
+                <span className={`w-8 shrink-0 text-right font-mono text-sm font-bold ${accent}`}>{r.value}</span>
               </li>
             ))}
           </ol>
@@ -148,24 +159,19 @@ function Board({ title, sub, rows, accent = 'text-brand', footnote, icon }) {
 }
 
 function StatsView({ teams, matches, byCode }) {
-  const players = useLiveQuery(() => db.players.toArray(), [], [])
+  const players = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   const events = useLiveQuery(() => db.match_events.toArray(), [], [])
 
   const boards = useMemo(() => {
     const scorers = [...players]
       .filter(p => (p.goals ?? 0) > 0)
-      .sort((a, b) => b.goals - a.goals || b.assists - a.assists || a.name.localeCompare(b.name))
+      .sort((a, b) => b.goals - a.goals || b.pc_scored - a.pc_scored || a.name.localeCompare(b.name))
       .slice(0, 10)
       .map(p => ({
         key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-        chip: `${p.assists}A · ${p.pc_scored} PC`, value: p.goals,
+        chip: splitText(p) ?? 'no goals on the record', value: p.goals,
       }))
-
-    const assists = [...players]
-      .filter(p => (p.assists ?? 0) > 0)
-      .sort((a, b) => b.assists - a.assists || b.goals - a.goals || a.name.localeCompare(b.name))
-      .slice(0, 10)
-      .map(p => ({ key: p.id, name: p.name, flag: byCode.get(p.team)?.flag, chip: `${p.goals}G`, value: p.assists }))
 
     const attack = new Map(teams.map(t => [t.code, { gf: 0, ga: 0, played: 0 }]))
     for (const m of matches) {
@@ -190,34 +196,103 @@ function StatsView({ teams, matches, byCode }) {
         to: `/teams/${code}`, chip: `${v.played} played`, value: v.ga, invert: true,
       }))
 
-    const cards = new Map(teams.map(t => [t.code, 0]))
+    // One weighting for cards, shared with the fair-play award, and scored per
+    // match played: a side that has played six matches is not punished for
+    // having been on the pitch longer than one that played four. This board
+    // used to ignore the green card, which in hockey is a suspension.
+    const cards = new Map(teams.map(t => [t.code, { pts: 0, count: 0 }]))
     for (const e of events) {
-      const pts = e.type === 'yellow_card' ? 1 : e.type === 'red_card' ? 3 : 0
-      if (pts && cards.has(e.team)) cards.set(e.team, cards.get(e.team) + pts)
+      const pts = cardPoints(e.type)
+      if (!pts || !cards.has(e.team)) continue
+      const r = cards.get(e.team)
+      r.pts += pts
+      r.count += 1
     }
     const fairPlay = played
-      .map(([code]) => ({ code, pts: cards.get(code) ?? 0 }))
-      .sort((x, y) => x.pts - y.pts)
+      .map(([code, row]) => {
+        const c = cards.get(code) ?? { pts: 0, count: 0 }
+        return { code, perMatch: row.played ? c.pts / row.played : 0, count: c.count, mp: row.played }
+      })
+      .sort((x, y) => x.perMatch - y.perMatch || x.count - y.count)
       .slice(0, 8)
       .map(r => ({
         key: r.code, name: byCode.get(r.code)?.name ?? r.code, flag: byCode.get(r.code)?.flag,
-        to: `/teams/${r.code}`, value: r.pts, invert: true,
+        to: `/teams/${r.code}`, value: r.perMatch.toFixed(1), invert: true,
+        chip: `${r.count} card${r.count === 1 ? '' : 's'} in ${r.mp}`,
       }))
 
+    // ── Hockey.AI derivations ──────────────────────────────────────────
+    // Each of these is computed here from the official record — goals, their
+    // method, their minute, and cards. None of it is an FIH statistic; all of
+    // it is countable from FIH data, which is the line the badges draw.
+    const teamGoals = new Map()
+    for (const m of matches) {
+      if (m.status !== 'completed' || m.score?.home == null) continue
+      teamGoals.set(m.home, (teamGoals.get(m.home) ?? 0) + m.score.home)
+      teamGoals.set(m.away, (teamGoals.get(m.away) ?? 0) + m.score.away)
+    }
+
+    // Final-quarter goals: minute 46 onwards, when a match is decided.
+    const lateGoals = new Map()
+    for (const e of events) {
+      if (e.type !== 'goal' || !e.player || (e.minute ?? 0) < 46) continue
+      lateGoals.set(e.player, (lateGoals.get(e.player) ?? 0) + 1)
+    }
+    const clutch = [...lateGoals.entries()]
+      .map(([name, n]) => ({ name, n, p: players.find(x => x.name === name) }))
+      .filter(r => r.p)
+      .sort((a, b) => b.n - a.n || b.p.goals - a.p.goals || a.name.localeCompare(b.name))
+      .slice(0, 10)
+      .map(r => ({ key: r.p.id, name: r.name, flag: byCode.get(r.p.team)?.flag,
+                   chip: `${r.p.goals} in all`, value: r.n }))
+
+    // Share of a side's goals — who carries the scoring.
+    const talisman = players
+      .filter(p => (p.goals ?? 0) > 0 && (teamGoals.get(p.team) ?? 0) > 0)
+      .map(p => ({ p, pct: Math.round((p.goals / teamGoals.get(p.team)) * 100) }))
+      .sort((a, b) => b.pct - a.pct || b.p.goals - a.p.goals || a.p.name.localeCompare(b.p.name))
+      .slice(0, 10)
+      .map(r => ({ key: r.p.id, name: r.p.name, flag: byCode.get(r.p.team)?.flag,
+                   chip: `${r.p.goals} of ${teamGoals.get(r.p.team)}`, value: r.pct }))
+
+    // Penalty-corner goals: the set-piece specialists.
+    const setPiece = players
+      .filter(p => (p.pc_scored ?? 0) > 0)
+      .sort((a, b) => b.pc_scored - a.pc_scored || b.goals - a.goals || a.name.localeCompare(b.name))
+      .slice(0, 10)
+      .map(p => ({ key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
+                   chip: `${p.goals} goals in all`, value: p.pc_scored }))
+
+    // The overall index, across every rated player.
+    const index = players
+      .filter(p => p.ai_rating != null)
+      .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
+      .slice(0, 10)
+      .map(p => ({ key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
+                   chip: p.position && p.position !== 'Squad' ? p.position : `${p.goals}G`,
+                   value: p.ai_rating }))
+
+    // Ranked on the role each player is actually placed in — the FIH's where
+    // it states one, Hockey.AI's derivation where it does not. Reading
+    // `position` alone left the defenders' board with six names in a
+    // tournament of sixteen squads, because the entry list states a position
+    // for barely a fifth of the players.
     const performers = {}
     for (const pos of ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']) {
       performers[pos] = [...players]
-        .filter(p => p.position === pos && p.ai_rating != null)
+        .filter(p => roleOf(p).role === pos && p.ai_rating != null)
         .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
         .slice(0, 8)
         .map(p => ({
           key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-          chip: pos === 'Goalkeeper' ? `${p.matches_played ?? 0} MP` : `${p.goals}G · ${p.assists}A`,
+          chip: pos === 'Goalkeeper'
+            ? (roleOf(p).source === 'FIH' ? 'keeper · FIH' : 'keeper')
+            : `${p.goals}G · ${p.pc_scored} PC · ${roleOf(p).source === 'FIH' ? 'FIH' : 'derived'}`,
           value: p.ai_rating,
         }))
     }
 
-    return { scorers, assists, attackRows, defenseRows, fairPlay, performers }
+    return { scorers, attackRows, defenseRows, fairPlay, performers, clutch, talisman, setPiece, index }
   }, [players, events, matches, teams, byCode])
 
   const hasRatings = Object.values(boards.performers).some(r => r.length > 0)
@@ -225,29 +300,40 @@ function StatsView({ teams, matches, byCode }) {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
-        <Board title="Golden Stick" icon={iconGoldenStick} sub="Most goals in the tournament" rows={boards.scorers}
-          footnote="Ranked by goals, then assists — penalty-corner goals at full value." />
-        <Board title="Top Assists" icon={iconAssists} sub="Most assists in the tournament" rows={boards.assists} />
-        <Board title="Most Attacking" icon={iconAttacking} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
-        <Board title="Strongest Defense" icon={iconDefense} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
-        <Board title="Fair Play" icon={iconStandings} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
-          footnote="Totals grow with matches played, so deep runs carry more bookings." />
+        <Board title="Golden Stick" icon={GoldenStickIcon} sub="Most goals in the tournament" rows={boards.scorers}
+          footnote="Ranked by goals, then by how many came from penalty corners — set-piece goals at full value." />
+        <Board title="Most Attacking" icon={CrossedSticksIcon} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
+        <Board title="Strongest Defense" icon={KeeperPadIcon} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
+        <Board title="Set-Piece Specialists" icon={PenaltyCornerIcon} sub="Goals scored from penalty corners" rows={boards.setPiece}
+          derived accent="text-brand"
+          footnote="Counted from the goal method in the official record — the corner itself is not an FIH statistic, the goal is." />
+        <Board title="Hockey.AI Player Index" icon={PlayerIndexIcon} sub="This app's rating, by position and output" rows={boards.index}
+          derived accent="text-brand"
+          footnote="Goalkeepers on clean sheets and goals against; defenders on the same plus drag-flick output; midfielders on scoring and share; forwards on goals, field goals weighted highest. Cards deduct. Scaled by matches played." />
+        <Board title="Fourth-Quarter Goals" icon={FinalQuarterIcon} sub="Goals scored from the 46th minute on" rows={boards.clutch}
+          derived accent="text-live"
+          footnote="Derived from goal minutes in the official record." />
+        <Board title="Talisman" icon={TalismanIcon} sub="Share of a side's goals, in per cent" rows={boards.talisman}
+          derived accent="text-live"
+          footnote="A player's goals as a percentage of everything their team has scored." />
+        <Board title="Fair Play" icon={FairPlayIcon} sub="Disciplinary points per match — lower is cleaner" rows={boards.fairPlay} accent="text-live" derived
+          footnote="Green 1 · yellow 2 · red 5, following the length of the suspension each card carries, divided by matches played. The same weighting decides the fair-play award." />
       </div>
 
       {hasRatings && (
         <>
           <div className="flex items-center gap-2.5 pt-2">
-            <img src={iconPerformers} alt="" className="h-8 w-8 rounded" />
+            <PodiumIcon size={34} />
             <div>
               <h2 className="font-display text-base font-semibold">Top Performers</h2>
               <p className="text-[11px] text-pitch-400">AI positional ratings · updated after every completed match</p>
             </div>
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
-            <Board title="Goalkeepers" sub="Save reliability × clean sheets" rows={boards.performers.Goalkeeper} accent="text-sky-400" />
-            <Board title="Defenders" sub="Drag-flick threat, outletting, goals conceded" rows={boards.performers.Defender} />
-            <Board title="Midfielders" sub="Goal involvement + penalty-corner build-up" rows={boards.performers.Midfielder} />
-            <Board title="Forwards" sub="Goals, assists and circle threat" rows={boards.performers.Forward} accent="text-live" />
+            <Board title="Goalkeepers" sub="Clean sheets and goals conceded per match" derived rows={boards.performers.Goalkeeper} accent="text-sky-400" />
+            <Board title="Defenders" sub="Goals conceded, plus drag-flick and field-goal output" derived rows={boards.performers.Defender} />
+            <Board title="Midfielders" sub="Scoring, set-piece goals and share of the team's output" derived rows={boards.performers.Midfielder} />
+            <Board title="Forwards" sub="Goals and set-piece threat" derived rows={boards.performers.Forward} accent="text-live" />
           </div>
           <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
             Rule-based Hockey.AI positional model on the match event ledger. Volume-weighted, so pitch time
@@ -307,7 +393,8 @@ export default function TournamentPage() {
   const xi = params.get('xi') === 'rising' ? 'rising' : 'best'
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
-  const players = useLiveQuery(() => db.players.toArray(), [], [])
+  const players = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
 
   useSwipeTabs({
     count: VIEWS.length,

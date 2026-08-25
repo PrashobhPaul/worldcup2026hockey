@@ -132,7 +132,63 @@ def merge_teams(ours, theirs):
 
 
 def merge_players(ours, theirs):
-    """Pipeline stats, then one captain per team — the official list decides."""
+    """Pipeline stats, then the invariants that hold whatever either side says.
+
+    This function returns the pipeline's file, so anything broken upstream
+    arrives intact. Two things have now come back through it more than once,
+    which is what makes them the driver's business rather than the producer's:
+
+      * Assists. The FIH publishes none for this competition and no event in
+        the feed carries one, so a non-zero assist is always wrong, whichever
+        side it arrived on. It has been cleared three times.
+
+      * Player ids. The client store is keyed on id, so two players sharing one
+        does not read as a wrong number — it reads as a player who is not in
+        the app at all. Thirteen were lost that way.
+
+    Neither depends on which side is newer, so neither is a merge decision.
+    They are simply enforced.
+    """
+    # The pipeline on the default branch runs whatever code the default branch
+    # has, so its players.json knows only the fields that code computes. A
+    # branch that adds fields — a derived position and its source, a rating
+    # broken into components, starts and appearances read from the official
+    # team sheets — loses every one of them the moment main's file arrives,
+    # because this function returns the pipeline's file whole.
+    #
+    # That is not a merge decision either: a field only one side knows about
+    # has no competing value to choose between. The pipeline's figures win
+    # where both sides have one; a field only the branch carries is kept.
+    mine = {(p.get('team'), p.get('name')): p for p in (ours or {}).get('players', [])}
+    kept = 0
+    for p in theirs['players']:
+        was = mine.get((p.get('team'), p.get('name')))
+        if not was:
+            continue
+        for field, value in was.items():
+            if value is None or field in p and p[field] is not None:
+                continue
+            p[field] = value
+            kept += 1
+
+    assists = 0
+    for p in theirs['players']:
+        if p.get('assists'):
+            p['assists'] = 0
+            assists += 1
+
+    seen, ids = set(), 0
+    for p in theirs['players']:
+        if p['id'] not in seen:
+            seen.add(p['id'])
+            continue
+        seq = 1
+        while f"{p['team']}_{seq:02d}" in seen:
+            seq += 1
+        p['id'] = f"{p['team']}_{seq:02d}"
+        seen.add(p['id'])
+        ids += 1
+
     by = {}
     for p in theirs['players']:
         by.setdefault(p['team'], []).append(p)
@@ -152,7 +208,21 @@ def merge_players(ours, theirs):
             want = p is keep
             if bool(p.get('is_captain')) != want:
                 p['is_captain'] = want; fixed += 1
-    return theirs, f'pipeline stats, {fixed} captain flags corrected'
+    # Same argument one level up: a document-level key only the branch writes
+    # — the reconciliation against the FIH's own statistics tables — has no
+    # competing value either, so it is carried across rather than dropped.
+    for key in ('official_figures_check',):
+        if key in (ours or {}) and key not in theirs:
+            theirs[key] = ours[key]
+
+    notes = [f'{fixed} captain flags corrected']
+    if kept:
+        notes.append(f'{kept} branch-only field(s) preserved')
+    if assists:
+        notes.append(f'{assists} phantom assist(s) cleared')
+    if ids:
+        notes.append(f'{ids} duplicate id(s) resolved')
+    return theirs, 'pipeline stats, ' + ', '.join(notes)
 
 
 def merge_predictions(ours, theirs):

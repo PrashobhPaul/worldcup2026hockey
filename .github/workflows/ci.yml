@@ -107,5 +107,44 @@ jobs:
       - name: Picks agree with their own numbers
         run: npm run test:picks
 
+      # Every player number the app prints, recomputed from the match feed.
+      # A Top Assists board once ranked nine players on an assist apiece that
+      # no event records and FIH does not publish for this competition.
+      - name: Player stats match the feed
+        run: npm run test:playerstats
+
+      # The best XI is positional, and the pitch stands on the position data.
+      # It also guards player identity: ids are the client store's primary key,
+      # and thirteen players once shared one with a team-mate, which does not
+      # look like a wrong number — it looks like a missing player.
+      - name: Best XI is positional and players are uniquely identified
+        run: npm run test:bestxi
+
+      # The rating has to be readable: every number is the weighted sum of the
+      # components printed beside it, each component is a percentile inside a
+      # comparable position group, and a component the record cannot feed is
+      # declared rather than scored zero.
+      - name: The positional rating explains itself
+        run: npm run test:rating
+
+      # Every claim a team intro makes about who is at this tournament,
+      # checked against the official FIH team list. Eleven of sixteen team
+      # cards once named the wrong captain, and nine intros were built around
+      # players who did not travel.
+      - name: Team intros match the official team list
+        run: npm run test:intros
+
+      # The official team sheet is read from a two-column PDF where a name
+      # can be one word or four, so the split between the two teams is the
+      # thing most likely to go quietly wrong.
+      - name: Official team sheets are read exactly
+        run: npm run test:sheets
+
+      # The FIH publishes its own individual statistics for this competition.
+      # Every figure this app shows is derived instead, so the two are read
+      # against each other rather than assumed to agree.
+      - name: Player figures reconcile with the FIH's own statistics
+        run: npm run test:stats
+
       - name: Build
         run: npm run build

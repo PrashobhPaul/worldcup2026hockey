@@ -20,8 +20,16 @@
     "test:model": "python3 scripts/test_non_knockout_model.py",
     "test:accuracy": "node scripts/test_one_accuracy.mjs",
     "test:picks": "node scripts/test_pick_coherence.mjs",
+    "test:playerstats": "node scripts/test_player_stats.mjs",
     "test:fingerprint": "python3 scripts/data_fingerprint.py --check",
-    "smoke:mobile": "node scripts/smoke_mobile.mjs"
+    "smoke:mobile": "node scripts/smoke_mobile.mjs",
+    "smoke:routes": "node scripts/smoke_routes.mjs",
+    "test:bestxi": "node scripts/test_best_xi.mjs",
+    "test:rating": "node scripts/test_player_rating.mjs",
+    "test:intros": "python3 scripts/team_intro_review.py --check",
+    "test:sheets": "node scripts/test_match_report.mjs",
+    "test:stats": "python3 scripts/test_individual_stats.py",
+    "data:recompute": "python3 scripts/recompute.py"
   },
   "dependencies": {
     "dexie": "^4.0.8",

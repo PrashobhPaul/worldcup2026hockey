@@ -24,7 +24,7 @@
       "last_title": 2004,
       "contender_tier": "favourite",
       "win_prob": 18.2,
-      "intro": "Three-time world champions and the most decorated side never to stop rebuilding, the Netherlands arrive as hosts of half the tournament and as the team the draw was arranged around. Oranje's last world title came in 2004, an absence that sits uneasily with a nation that treats hockey as a birthright. Thierry Brinkman captains a squad built on relentless circle entries and a goalkeeper in Pirmin Blaak who has seen every kind of World Cup night. In Pool A they should have room to find rhythm early.",
+      "intro": "Three-time world champions and the most decorated side never to stop rebuilding, the Netherlands arrive as hosts of half the tournament and as the team the draw was arranged around. Oranje's last world title came in 2004, an absence that sits uneasily with a nation that treats hockey as a birthright. Thierry Brinkman captains a squad built on relentless circle entries, with Maurits Visser and Derk Meijer sharing the goalkeeping. In Pool A they should have room to find rhythm early.",
       "fih_points": 3731.83,
       "form": {
         "played": 5,
@@ -44,7 +44,7 @@
       "host": false,
       "nickname": "Los Leones",
       "color": "#75AADB",
-      "captain": "Lucas Martín Rossi",
+      "captain": "Maico Casella",
       "coach": "Lucas Rey",
       "key_players": [
         "Agustín Bugallo",
@@ -56,7 +56,7 @@
       "last_title": 2010,
       "contender_tier": "contender",
       "win_prob": 14.7,
-      "intro": "Los Leones changed the sport's power map when they took Olympic gold in 2016, and they have never gone back to being anyone's outsiders. Two world titles sit in the cabinet, the most recent in 2010. Argentina's game is built on speed of thought — quick restarts, aggressive pressing, drag-flick threat from distance — and Lucas Martín Rossi leads a group that has grown up together. Pool A pits them against the hosts immediately, which is exactly the kind of opening night they enjoy.",
+      "intro": "Los Leones changed the sport's power map when they took Olympic gold in 2016, and they have never gone back to being anyone's outsiders. Two world titles sit in the cabinet, the most recent in 2010. Argentina's game is built on speed of thought — quick restarts, aggressive pressing, drag-flick threat from distance — and Maico Casella leads a group that has grown up together. Pool A pits them against the hosts immediately, which is exactly the kind of opening night they enjoy.",
       "fih_points": 3486.84,
       "form": {
         "played": 5,
@@ -108,7 +108,7 @@
       "host": false,
       "nickname": "Samurai Japan",
       "color": "#BC002D",
-      "captain": "Koji Kayukawa",
+      "captain": "Raiki Fujishima",
       "coach": "Yoshihiro Anai",
       "key_players": [
         "Kosuke Yamada",
@@ -120,7 +120,7 @@
       "last_title": null,
       "contender_tier": "dark_horse",
       "win_prob": 1.4,
-      "intro": "Samurai Japan qualified as Asian contenders and arrive with the lowest ranking in Pool A and none of the associated resignation. Japan's hockey is quick, structured and unusually disciplined at the back — a side that concedes late rarely and turns games into low-scoring tests of patience. Koji Kayukawa leads a squad that will look at a pool containing the Netherlands and Argentina and see two chances to be remembered.",
+      "intro": "Samurai Japan qualified as Asian contenders and arrive with the lowest ranking in Pool A and none of the associated resignation. Japan's hockey is quick, structured and unusually disciplined at the back — a side that concedes late rarely and turns games into low-scoring tests of patience. Raiki Fujishima leads a squad that will look at a pool containing the Netherlands and Argentina and see two chances to be remembered.",
       "fih_points": 2357.83,
       "form": {
         "played": 5,
@@ -140,7 +140,7 @@
       "host": true,
       "nickname": "Red Lions",
       "color": "#EF3340",
-      "captain": "Arthur de Sloover",
+      "captain": "Arthur van Doren",
       "coach": "Shane McLeod",
       "key_players": [
         "Alexander Hendrickx",
@@ -152,7 +152,7 @@
       "last_title": null,
       "contender_tier": "favourite",
       "win_prob": 16.9,
-      "intro": "The Red Lions are the modern era's great overachievers: Olympic champions, world champions in 2018, and co-hosts here with a home crowd in Brussels for the knockout nights. Belgium have no World Cup title from before their golden generation and everything since. Alexander Hendrickx remains the most feared drag-flicker in the game, Vincent Vanasch one of its best goalkeepers, and Arthur de Sloover captains a side that treats structure as a weapon. Anything less than the medal rounds would count as failure.",
+      "intro": "The Red Lions are the modern era's great overachievers: Olympic champions, world champions in 2018, and co-hosts here with a home crowd in Brussels for the knockout nights. Belgium have no World Cup title from before their golden generation and everything since. Alexander Hendrickx remains the most feared drag-flicker in the game, Vincent Vanasch one of its best goalkeepers, and Arthur van Doren captains a side that treats structure as a weapon. Anything less than the medal rounds would count as failure.",
       "fih_points": 3671.8,
       "form": {
         "played": 5,
@@ -172,7 +172,7 @@
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
-      "captain": "Victor Charlet",
+      "captain": "François Goyet",
       "coach": "John-John Dohmen",
       "key_players": [
         "Victor Charlet",
@@ -204,7 +204,7 @@
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
-      "captain": "Niklas Wellen",
+      "captain": "Tom Grambusch",
       "coach": "André Henning",
       "key_players": [
         "Niklas Wellen",
@@ -216,7 +216,7 @@
       "last_title": 2006,
       "contender_tier": "contender",
       "win_prob": 9.3,
-      "intro": "Four world titles, the most of any nation here, and a habit of arriving at tournaments in better shape than the rankings suggest. Germany's last World Cup came in 2006, but the intervening years have produced a stream of finals and a culture that reloads rather than rebuilds. Niklas Wellen and Christopher Rühr give them scoring from open play as well as set pieces. Pool B alongside Belgium is the toughest first-round draw in the tournament.",
+      "intro": "Four world titles, the most of any nation here, and a habit of arriving at tournaments in better shape than the rankings suggest. Germany's last World Cup came in 2006, but the intervening years have produced a stream of finals and a culture that reloads rather than rebuilds. Christopher Rühr and Tom Grambusch give them scoring from open play as well as set pieces. Pool B alongside Belgium is the toughest first-round draw in the tournament.",
       "fih_points": 3530.72,
       "form": {
         "played": 5,
@@ -236,7 +236,7 @@
       "host": false,
       "nickname": "Tigers",
       "color": "#CC0001",
-      "captain": "Adrian Albert",
+      "captain": "Marhan Jalil",
       "coach": "Brendon Carolan",
       "key_players": [
         "Tengku Ahmad Tajuddin",
@@ -248,7 +248,7 @@
       "last_title": null,
       "contender_tier": "challenger",
       "win_prob": 2.6,
-      "intro": "The Tigers arrive as Asia's most improved side and the team most likely to make the pool stage uncomfortable for somebody. Malaysia's hockey is played at pace, with Tengku Ahmad Tajuddin driving from midfield and Adrian Albert leading a squad that has closed the gap on the European sides in recent seasons. In Pool B with Belgium, Germany and France, they will need to take at least one scalp — and they have taken them before.",
+      "intro": "The Tigers arrive as Asia's most improved side and the team most likely to make the pool stage uncomfortable for somebody. Malaysia's hockey is played at pace, with Marhan Jalil leading a squad that has closed the gap on the European sides in recent seasons. In Pool B with Belgium, Germany and France, they will need to take at least one scalp — and they have taken them before.",
       "fih_points": 2404.94,
       "form": {
         "played": 5,
@@ -280,7 +280,7 @@
       "last_title": 2010,
       "contender_tier": "favourite",
       "win_prob": 21.6,
-      "intro": "The Kookaburras are a fixture at the top of the world rankings, and the position flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Blake Govers' flick and Tom Wickham's movement lead the scoring threat. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided once the crossover stage begins.",
+      "intro": "The Kookaburras are a fixture at the top of the world rankings, and the position flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Blake Govers' flick leads the scoring threat. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided once the crossover stage begins.",
       "fih_points": 3477.21,
       "form": {
         "played": 5,
@@ -312,7 +312,7 @@
       "last_title": 1998,
       "contender_tier": "contender",
       "win_prob": 6.2,
-      "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around Marc Miralles and Pau Quemada. Drawn with Australia in Pool C, they will fancy second place and a Stage-2 draw where their patience and set-piece accuracy can outlast a more expansive opponent.",
+      "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around captain Marc Miralles. Drawn with Australia in Pool C, they will fancy second place and a Stage-2 draw where their patience and set-piece accuracy can outlast a more expansive opponent.",
       "fih_points": 3437.73,
       "form": {
         "played": 5,
@@ -332,7 +332,7 @@
       "host": false,
       "nickname": "Green Machine",
       "color": "#169B62",
-      "captain": "Conor Harte",
+      "captain": "Kyle Marshall",
       "coach": "Mark Tumilty",
       "key_players": [
         "Shane O'Donoghue",
@@ -344,7 +344,7 @@
       "last_title": null,
       "contender_tier": "dark_horse",
       "win_prob": 2.8,
-      "intro": "The Green Machine reached this World Cup the hard way, and that has been Ireland's pattern for a decade: qualify against the odds, then make life miserable for someone better resourced. Conor Harte leads a squad with Shane O'Donoghue's experience and a defensive block that stays compact for the full seventy minutes. Pool C offers Spain and South Africa as realistic targets, and Ireland have made a habit of taking realistic targets.",
+      "intro": "The Green Machine reached this World Cup the hard way, and that has been Ireland's pattern for a decade: qualify against the odds, then make life miserable for someone better resourced. Kyle Marshall leads a squad with a defensive block that stays compact for the full seventy minutes. Pool C offers Spain and South Africa as realistic targets, and Ireland have made a habit of taking realistic targets.",
       "fih_points": 2730.51,
       "form": {
         "played": 5,
@@ -364,7 +364,7 @@
       "host": false,
       "nickname": "Amabhungane",
       "color": "#007A4D",
-      "captain": "Jethro Eustice",
+      "captain": "Dayaan Cassiem",
       "coach": "Devon van der Merwe",
       "key_players": [
         "Austin Smith",
@@ -428,7 +428,7 @@
       "host": false,
       "nickname": "Three Lions",
       "color": "#CF142B",
-      "captain": "Will Calnan",
+      "captain": "Zachary Wallace",
       "coach": "Zak Jones",
       "key_players": [
         "Sam Ward",
@@ -460,7 +460,7 @@
       "host": false,
       "nickname": "Green Shirts",
       "color": "#01411C",
-      "captain": "Sufyan Khan",
+      "captain": "Abu Mahmood",
       "coach": "Bob Veldhof",
       "key_players": [
         "Arshad Liaquat",
@@ -472,7 +472,7 @@
       "last_title": 1994,
       "contender_tier": "dark_horse",
       "win_prob": 3.1,
-      "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Sufyan Khan leads a young squad in which Muhammad Umar Bhutta's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game.",
+      "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Abu Mahmood leads a young squad in which Sufyan Khan's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game.",
       "fih_points": 2507.71,
       "form": {
         "played": 5,
@@ -492,7 +492,7 @@
       "host": false,
       "nickname": "Dragons",
       "color": "#C8102E",
-      "captain": "Gareth Furlong",
+      "captain": "Jacob Draper",
       "coach": "Daniel Newcombe",
       "key_players": [
         "Rupert Shipperley",

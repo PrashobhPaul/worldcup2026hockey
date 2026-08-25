@@ -147,9 +147,9 @@ function PlayerRow({ p, events, sub }) {
         : <span className="min-w-0 flex-1 truncate text-sm font-semibold">{p.name}</span>}
       {p.captain && <span className="rounded bg-brand/15 px-1.5 py-0.5 font-mono text-[10px] font-bold text-brand">C</span>}
       {p.goalkeeper && <span className="rounded bg-sky-400/15 px-1.5 py-0.5 font-mono text-[10px] font-bold text-sky-300">GK</span>}
-      {sub && p.onAt && (
-        <span className="font-mono text-[10px] text-live">↑ {p.onAt}</span>
-      )}
+      {/* No entry time: hockey rolls substitutions continuously and TMS does
+          not publish when each player came on. The clock reading printed here
+          was generated, not observed. */}
       <GoalChips goals={goals} />
       <CardChips cards={cards} />
     </li>

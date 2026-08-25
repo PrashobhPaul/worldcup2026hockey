@@ -1,0 +1,39 @@
+name: Probe
+
+# Investigations against the official sources, run on demand and nowhere near
+# the data pipeline. Their output is the point, and a probe folded into the
+# pipeline job is unreadable: the log is dominated by the run around it and the
+# API truncates from the end, so the answer is the part that gets cut.
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: 'Which probe to run'
+        required: true
+        default: 'lineups'
+        type: choice
+        options:
+          - lineups
+      match_id:
+        description: 'TMS match id'
+        required: false
+        default: '22334'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install pdfplumber
+      - name: Run the probe
+        env:
+          PROBE_LINEUP_MATCH: ${{ inputs.match_id }}
+        run: python scripts/probe_${{ inputs.script }}.py
