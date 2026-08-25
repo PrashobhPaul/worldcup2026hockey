@@ -111,13 +111,30 @@ function BestXISpace({ players, byCode, xi, setXi }) {
   )
 }
 
-function Board({ title, sub, rows, accent = 'text-brand', footnote, icon }) {
+// Where a board's numbers come from. FIH boards count things the official
+// record states; Hockey.AI boards are this app's own derivation from that
+// record. The badge is on every board so a reader never has to guess which
+// kind they are looking at.
+function SourceBadge({ derived }) {
+  return derived ? (
+    <span className="rounded bg-brand/10 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-brand">
+      Hockey.AI
+    </span>
+  ) : (
+    <span className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-pitch-400">
+      FIH
+    </span>
+  )
+}
+
+function Board({ title, sub, rows, accent = 'text-brand', footnote, icon, derived = false }) {
   const max = Math.max(1, ...rows.map(r => r.value))
   return (
     <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
       <h2 className="flex items-center gap-2 font-display text-base font-semibold">
         {icon && <img src={icon} alt="" className="h-6 w-6 rounded" />}
-        {title}
+        <span className="flex-1">{title}</span>
+        <SourceBadge derived={derived} />
       </h2>
       <p className="mb-3 mt-0.5 text-[11px] text-pitch-400">{sub}</p>
       {rows.length === 0
@@ -197,6 +214,57 @@ function StatsView({ teams, matches, byCode }) {
         to: `/teams/${r.code}`, value: r.pts, invert: true,
       }))
 
+    // ── Hockey.AI derivations ──────────────────────────────────────────
+    // Each of these is computed here from the official record — goals, their
+    // method, their minute, and cards. None of it is an FIH statistic; all of
+    // it is countable from FIH data, which is the line the badges draw.
+    const teamGoals = new Map()
+    for (const m of matches) {
+      if (m.status !== 'completed' || m.score?.home == null) continue
+      teamGoals.set(m.home, (teamGoals.get(m.home) ?? 0) + m.score.home)
+      teamGoals.set(m.away, (teamGoals.get(m.away) ?? 0) + m.score.away)
+    }
+
+    // Final-quarter goals: minute 46 onwards, when a match is decided.
+    const lateGoals = new Map()
+    for (const e of events) {
+      if (e.type !== 'goal' || !e.player || (e.minute ?? 0) < 46) continue
+      lateGoals.set(e.player, (lateGoals.get(e.player) ?? 0) + 1)
+    }
+    const clutch = [...lateGoals.entries()]
+      .map(([name, n]) => ({ name, n, p: players.find(x => x.name === name) }))
+      .filter(r => r.p)
+      .sort((a, b) => b.n - a.n || b.p.goals - a.p.goals || a.name.localeCompare(b.name))
+      .slice(0, 10)
+      .map(r => ({ key: r.p.id, name: r.name, flag: byCode.get(r.p.team)?.flag,
+                   chip: `${r.p.goals} in all`, value: r.n }))
+
+    // Share of a side's goals — who carries the scoring.
+    const talisman = players
+      .filter(p => (p.goals ?? 0) > 0 && (teamGoals.get(p.team) ?? 0) > 0)
+      .map(p => ({ p, pct: Math.round((p.goals / teamGoals.get(p.team)) * 100) }))
+      .sort((a, b) => b.pct - a.pct || b.p.goals - a.p.goals || a.p.name.localeCompare(b.p.name))
+      .slice(0, 10)
+      .map(r => ({ key: r.p.id, name: r.p.name, flag: byCode.get(r.p.team)?.flag,
+                   chip: `${r.p.goals} of ${teamGoals.get(r.p.team)}`, value: r.pct }))
+
+    // Penalty-corner goals: the set-piece specialists.
+    const setPiece = players
+      .filter(p => (p.pc_scored ?? 0) > 0)
+      .sort((a, b) => b.pc_scored - a.pc_scored || b.goals - a.goals || a.name.localeCompare(b.name))
+      .slice(0, 10)
+      .map(p => ({ key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
+                   chip: `${p.goals} goals in all`, value: p.pc_scored }))
+
+    // The overall index, across every rated player.
+    const index = players
+      .filter(p => p.ai_rating != null)
+      .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
+      .slice(0, 10)
+      .map(p => ({ key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
+                   chip: p.position && p.position !== 'Squad' ? p.position : `${p.goals}G`,
+                   value: p.ai_rating }))
+
     const performers = {}
     for (const pos of ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']) {
       performers[pos] = [...players]
@@ -210,7 +278,7 @@ function StatsView({ teams, matches, byCode }) {
         }))
     }
 
-    return { scorers, attackRows, defenseRows, fairPlay, performers }
+    return { scorers, attackRows, defenseRows, fairPlay, performers, clutch, talisman, setPiece, index }
   }, [players, events, matches, teams, byCode])
 
   const hasRatings = Object.values(boards.performers).some(r => r.length > 0)
@@ -222,6 +290,18 @@ function StatsView({ teams, matches, byCode }) {
           footnote="Ranked by goals, then by how many came from penalty corners — set-piece goals at full value." />
         <Board title="Most Attacking" icon={iconAttacking} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
         <Board title="Strongest Defense" icon={iconDefense} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
+        <Board title="Set-Piece Specialists" sub="Goals scored from penalty corners" rows={boards.setPiece}
+          derived accent="text-brand"
+          footnote="Counted from the goal method in the official record — the corner itself is not an FIH statistic, the goal is." />
+        <Board title="Hockey.AI Player Index" sub="This app's rating, by position and output" rows={boards.index}
+          derived accent="text-brand"
+          footnote="Goalkeepers on clean sheets and goals against; defenders on the same plus drag-flick output; midfielders on scoring and share; forwards on goals, field goals weighted highest. Cards deduct. Scaled by matches played." />
+        <Board title="Fourth-Quarter Goals" sub="Goals scored from the 46th minute on" rows={boards.clutch}
+          derived accent="text-live"
+          footnote="Derived from goal minutes in the official record." />
+        <Board title="Talisman" sub="Share of a side's goals, in per cent" rows={boards.talisman}
+          derived accent="text-live"
+          footnote="A player's goals as a percentage of everything their team has scored." />
         <Board title="Fair Play" icon={iconStandings} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
           footnote="Totals grow with matches played, so deep runs carry more bookings." />
       </div>
@@ -236,10 +316,10 @@ function StatsView({ teams, matches, byCode }) {
             </div>
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
-            <Board title="Goalkeepers" sub="Save reliability × clean sheets" rows={boards.performers.Goalkeeper} accent="text-sky-400" />
-            <Board title="Defenders" sub="Drag-flick threat, outletting, goals conceded" rows={boards.performers.Defender} />
-            <Board title="Midfielders" sub="Goal involvement + penalty-corner build-up" rows={boards.performers.Midfielder} />
-            <Board title="Forwards" sub="Goals and set-piece threat" rows={boards.performers.Forward} accent="text-live" />
+            <Board title="Goalkeepers" sub="Clean sheets and goals conceded per match" derived rows={boards.performers.Goalkeeper} accent="text-sky-400" />
+            <Board title="Defenders" sub="Goals conceded, plus drag-flick and field-goal output" derived rows={boards.performers.Defender} />
+            <Board title="Midfielders" sub="Scoring, set-piece goals and share of the team's output" derived rows={boards.performers.Midfielder} />
+            <Board title="Forwards" sub="Goals and set-piece threat" derived rows={boards.performers.Forward} accent="text-live" />
           </div>
           <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
             Rule-based Hockey.AI positional model on the match event ledger. Volume-weighted, so pitch time

@@ -153,7 +153,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T14:45:38.990692+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -261,71 +261,62 @@
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
        "number": 27,
-       "position": "Goalkeeper",
-       "onAt": "37:04"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IND_14",
        "name": "Vivek Sagar Prasad",
        "number": 32,
-       "position": null,
-       "onAt": "08:53"
+       "position": null
       },
       {
        "playerId": "IND_09",
        "name": "Sumit",
        "number": 17,
-       "position": null,
-       "onAt": "20:38"
+       "position": null
       },
       {
        "playerId": "IND_06",
        "name": "Jarmanpreet Singh",
        "number": 4,
-       "position": null,
-       "onAt": "11:24"
+       "position": null
       },
       {
        "playerId": "IND_10",
        "name": "Nilakanta Sharma",
        "number": 18,
-       "position": null,
-       "onAt": "17:55"
+       "position": null
       },
       {
        "playerId": "IND_13",
        "name": "Jugraj Singh",
        "number": 31,
-       "position": null,
-       "onAt": "18:52"
+       "position": null
       },
       {
        "playerId": "IND_20",
        "name": "Shilanand Lakra",
        "number": 99,
-       "position": null,
-       "onAt": "10:43"
+       "position": null
       },
       {
        "playerId": "IND_19",
        "name": "Rajinder Singh",
        "number": 78,
-       "position": null,
-       "onAt": "50:51"
+       "position": null
       },
       {
        "playerId": "IND_16",
        "name": "Yashdeep Siwach",
        "number": 47,
-       "position": null,
-       "onAt": "38:14"
+       "position": null
       }
      ],
      "team": "IND",
      "coach": "Craig Fulton"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -433,64 +424,55 @@
        "playerId": "WAL_15",
        "name": "Rhys Payne",
        "number": 33,
-       "position": "Goalkeeper",
-       "onAt": "24:49"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
-       "position": null,
-       "onAt": "23:50"
+       "position": null
       },
       {
        "playerId": "WAL_02",
        "name": "Alf Dinnie",
        "number": 5,
-       "position": null,
-       "onAt": "36:32"
+       "position": null
       },
       {
        "playerId": "WAL_20",
        "name": "Gareth Griffiths",
        "number": 7,
-       "position": null,
-       "onAt": "48:17"
+       "position": null
       },
       {
        "playerId": "WAL_09",
        "name": "Jack Pritchard",
        "number": 23,
-       "position": null,
-       "onAt": "26:07"
+       "position": null
       },
       {
        "playerId": "WAL_07",
        "name": "Fred Newbold",
        "number": 17,
-       "position": null,
-       "onAt": "48:33"
+       "position": null
       },
       {
        "playerId": "WAL_16",
        "name": "Nicholas Morgan",
        "number": 44,
-       "position": null,
-       "onAt": "26:52"
+       "position": null
       },
       {
        "playerId": "WAL_12",
        "name": "Jonathan Fleck",
        "number": 29,
-       "position": null,
-       "onAt": "15:54"
+       "position": null
       },
       {
        "playerId": "WAL_14",
        "name": "Liam Barker",
        "number": 31,
-       "position": null,
-       "onAt": "49:52"
+       "position": null
       }
      ],
      "team": "WAL",
@@ -658,7 +640,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T18:03:16.045115+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -766,71 +748,62 @@
        "playerId": "ENG_11",
        "name": "James Mazarelo",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "22:23"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ENG_17",
        "name": "James Gall",
        "number": 26,
-       "position": null,
-       "onAt": "20:51"
+       "position": null
       },
       {
        "playerId": "ENG_07",
        "name": "Jack Waller",
        "number": 3,
-       "position": null,
-       "onAt": "37:56"
+       "position": null
       },
       {
        "playerId": "ENG_18",
        "name": "Liam Sanford",
        "number": 27,
-       "position": null,
-       "onAt": "28:39"
+       "position": null
       },
       {
        "playerId": "ENG_14",
        "name": "David Goodfield",
        "number": 19,
-       "position": null,
-       "onAt": "38:30"
+       "position": null
       },
       {
        "playerId": "ENG_06",
        "name": "Nicholas Park",
        "number": 2,
-       "position": null,
-       "onAt": "30:52"
+       "position": null
       },
       {
        "playerId": "ENG_13",
        "name": "Timothy Nurse",
        "number": 18,
-       "position": null,
-       "onAt": "41:51"
+       "position": null
       },
       {
        "playerId": "ENG_19",
        "name": "Conor Williamson",
        "number": 30,
-       "position": null,
-       "onAt": "45:21"
+       "position": null
       },
       {
        "playerId": "ENG_05",
        "name": "Ben Fox",
        "number": 47,
-       "position": null,
-       "onAt": "08:49"
+       "position": null
       }
      ],
      "team": "ENG",
      "coach": "Zak Jones"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -938,64 +911,55 @@
        "playerId": "PAK_04",
        "name": "Waqar",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "46:00"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "position": null,
-       "onAt": "27:46"
+       "position": null
       },
       {
        "playerId": "PAK_11",
        "name": "Ghazanfar Ali",
        "number": 15,
-       "position": null,
-       "onAt": "23:47"
+       "position": null
       },
       {
        "playerId": "PAK_08",
        "name": "Zikriya Hayat",
        "number": 10,
-       "position": null,
-       "onAt": "19:02"
+       "position": null
       },
       {
        "playerId": "PAK_10",
        "name": "Ahmad Nadeem",
        "number": 14,
-       "position": null,
-       "onAt": "46:14"
+       "position": null
       },
       {
        "playerId": "PAK_20",
        "name": "Muhammad Ammad",
        "number": 35,
-       "position": null,
-       "onAt": "26:47"
+       "position": null
       },
       {
        "playerId": "PAK_19",
        "name": "Abdul Manan",
        "number": 32,
-       "position": null,
-       "onAt": "48:14"
+       "position": null
       },
       {
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "position": null,
-       "onAt": "43:58"
+       "position": null
       },
       {
        "playerId": "PAK_09",
        "name": "Adeel Latif",
        "number": 13,
-       "position": null,
-       "onAt": "15:32"
+       "position": null
       }
      ],
      "team": "PAK",
@@ -1186,7 +1150,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.965096+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -1294,57 +1258,50 @@
        "playerId": "GER_17",
        "name": "Joshua Onyekwue Nnaji",
        "number": 39,
-       "position": "Goalkeeper",
-       "onAt": "35:09"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "GER_16",
        "name": "Johannes Große",
        "number": 10,
-       "position": null,
-       "onAt": "48:52"
+       "position": null
       },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
        "number": 11,
-       "position": null,
-       "onAt": "08:24"
+       "position": null
       },
       {
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "position": null,
-       "onAt": "46:58"
+       "position": null
       },
       {
        "playerId": "GER_14",
        "name": "Malte Hellwig",
        "number": 29,
-       "position": null,
-       "onAt": "43:29"
+       "position": null
       },
       {
        "playerId": "GER_16",
        "name": "Antheus Barry",
        "number": 38,
-       "position": null,
-       "onAt": "28:43"
+       "position": null
       },
       {
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
-       "position": null,
-       "onAt": "27:18"
+       "position": null
       }
      ],
      "team": "GER",
      "coach": "André Henning"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -1452,64 +1409,55 @@
        "playerId": "MAS_07",
        "name": "Zaimi Mat Deris",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "15:33"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "MAS_11",
        "name": "Norsyafiq Sumantri",
        "number": 22,
-       "position": null,
-       "onAt": "13:43"
+       "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
-       "position": null,
-       "onAt": "16:47"
+       "position": null
       },
       {
        "playerId": "MAS_09",
        "name": "Ashran Hamsani",
        "number": 20,
-       "position": null,
-       "onAt": "43:55"
+       "position": null
       },
       {
        "playerId": "MAS_14",
        "name": "Muhajir Abdu Rauf",
        "number": 26,
-       "position": null,
-       "onAt": "27:41"
+       "position": null
       },
       {
        "playerId": "MAS_15",
        "name": "Shafiq Hassan",
        "number": 27,
-       "position": null,
-       "onAt": "13:25"
+       "position": null
       },
       {
        "playerId": "MAS_17",
        "name": "Faris Harizan",
        "number": 30,
-       "position": null,
-       "onAt": "15:46"
+       "position": null
       },
       {
        "playerId": "MAS_19",
        "name": "Aminuddin Mohd Zain",
        "number": 32,
-       "position": null,
-       "onAt": "34:39"
+       "position": null
       },
       {
        "playerId": "MAS_20",
        "name": "Andywalfian Jeffrynus",
        "number": 35,
-       "position": null,
-       "onAt": "46:13"
+       "position": null
       }
      ],
      "team": "MAS",
@@ -1687,7 +1635,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.965594+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -1795,57 +1743,50 @@
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "47:05"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "BEL_09",
        "name": "Tommy Willems",
        "number": 11,
-       "position": null,
-       "onAt": "13:47"
+       "position": null
       },
       {
        "playerId": "BEL_11",
        "name": "Guillaume Hellin",
        "number": 17,
-       "position": null,
-       "onAt": "32:26"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Thomas Crols",
        "number": 37,
-       "position": null,
-       "onAt": "31:55"
+       "position": null
       },
       {
        "playerId": "BEL_14",
        "name": "Victor Foubert",
        "number": 22,
-       "position": null,
-       "onAt": "36:25"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Lucas Balthazar",
        "number": 6,
-       "position": null,
-       "onAt": "40:12"
+       "position": null
       },
       {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
-       "position": null,
-       "onAt": "51:12"
+       "position": null
       }
      ],
      "team": "BEL",
      "coach": "Shane McLeod"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -1953,64 +1894,55 @@
        "playerId": "FRA_15",
        "name": "Marius Clément",
        "number": 23,
-       "position": "Goalkeeper",
-       "onAt": "11:03"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "FRA_04",
        "name": "Brieuc Delemazure",
        "number": 4,
-       "position": null,
-       "onAt": "21:24"
+       "position": null
       },
       {
        "playerId": "FRA_05",
        "name": "Corentin Sellier",
        "number": 6,
-       "position": null,
-       "onAt": "08:02"
+       "position": null
       },
       {
        "playerId": "FRA_10",
        "name": "Benjamin Marqué",
        "number": 13,
-       "position": null,
-       "onAt": "25:18"
+       "position": null
       },
       {
        "playerId": "FRA_07",
        "name": "Xavier Esmenjaud",
        "number": 8,
-       "position": null,
-       "onAt": "15:39"
+       "position": null
       },
       {
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
        "number": 7,
-       "position": null,
-       "onAt": "27:12"
+       "position": null
       },
       {
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
-       "position": null,
-       "onAt": "13:02"
+       "position": null
       },
       {
        "playerId": "FRA_20",
        "name": "Mathis Clément",
        "number": 9,
-       "position": null,
-       "onAt": "37:57"
+       "position": null
       },
       {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
-       "position": null,
-       "onAt": "40:40"
+       "position": null
       }
      ],
      "team": "FRA",
@@ -2138,7 +2070,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T14:45:38.992705+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -2246,64 +2178,56 @@
        "playerId": "ARG_09",
        "name": "Nehuen Hernando",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "42:08"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
        "number": 23,
-       "position": null,
-       "onAt": "19:55"
+       "position": null
       },
       {
        "playerId": "ARG_16",
        "name": "Nicolas Cicileo",
        "number": 26,
-       "position": null,
-       "onAt": "25:46"
+       "position": null
       },
       {
        "playerId": "ARG_19",
        "name": "Thomas Habif",
        "number": 29,
-       "position": null,
-       "onAt": "11:58"
+       "position": null
       },
       {
        "playerId": "ARG_21",
        "name": "Martin Ferreiro",
        "number": 32,
-       "position": null,
-       "onAt": "20:28"
+       "position": null
       },
       {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
-       "position": null,
-       "onAt": "12:57"
+       "position": null
       },
       {
        "playerId": "ARG_18",
        "name": "Ignacio Ibarra",
        "number": 28,
-       "position": null,
-       "onAt": "43:23"
+       "position": null
       },
       {
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "position": null,
-       "onAt": "16:15"
+       "position": null
       }
      ],
      "team": "ARG",
      "coach": "Lucas Rey"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -2411,64 +2335,55 @@
        "playerId": "JPN_18",
        "name": "Takumi Kitagawa",
        "number": 29,
-       "position": "Goalkeeper",
-       "onAt": "10:54"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "JPN_15",
        "name": "Ryoma Ooka",
        "number": 19,
-       "position": null,
-       "onAt": "19:53"
+       "position": null
       },
       {
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
        "number": 4,
-       "position": null,
-       "onAt": "13:38"
+       "position": null
       },
       {
        "playerId": "JPN_17",
        "name": "Yusuke Kawamura",
        "number": 23,
-       "position": null,
-       "onAt": "23:09"
+       "position": null
       },
       {
        "playerId": "JPN_07",
        "name": "Taiki Takade",
        "number": 8,
-       "position": null,
-       "onAt": "50:59"
+       "position": null
       },
       {
        "playerId": "JPN_13",
        "name": "Hiro Saito",
        "number": 16,
-       "position": null,
-       "onAt": "41:17"
+       "position": null
       },
       {
        "playerId": "JPN_06",
        "name": "Naru Kimura",
        "number": 6,
-       "position": null,
-       "onAt": "25:32"
+       "position": null
       },
       {
        "playerId": "JPN_14",
        "name": "Tsubasa Tanaka",
        "number": 18,
-       "position": null,
-       "onAt": "23:30"
+       "position": null
       },
       {
        "playerId": "JPN_21",
        "name": "Jun Watanabe",
        "number": 7,
-       "position": null,
-       "onAt": "19:50"
+       "position": null
       }
      ],
      "team": "JPN",
@@ -2647,7 +2562,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T18:03:16.047044+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -2755,57 +2670,50 @@
        "playerId": "NED_13",
        "name": "Derk Meijer",
        "number": 20,
-       "position": "Goalkeeper",
-       "onAt": "26:49"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
-       "position": null,
-       "onAt": "21:10"
+       "position": null
       },
       {
        "playerId": "NED_11",
        "name": "Floris Wortelboer",
        "number": 16,
-       "position": null,
-       "onAt": "45:55"
+       "position": null
       },
       {
        "playerId": "NED_09",
        "name": "Justen Blok",
        "number": 12,
-       "position": null,
-       "onAt": "15:36"
+       "position": null
       },
       {
        "playerId": "NED_16",
        "name": "Derck de Vilder",
        "number": 14,
-       "position": null,
-       "onAt": "46:15"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Steijn van Heijningen",
        "number": 24,
-       "position": null,
-       "onAt": "16:45"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Floris Middendorp",
        "number": 77,
-       "position": null,
-       "onAt": "27:41"
+       "position": null
       }
      ],
      "team": "NED",
      "coach": "Jeroen Delmee"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -2913,64 +2821,55 @@
        "playerId": "NZL_18",
        "name": "Matthew Ruetsch",
        "number": 40,
-       "position": "Goalkeeper",
-       "onAt": "32:35"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NZL_03",
        "name": "Dane Lett",
        "number": 4,
-       "position": null,
-       "onAt": "18:38"
+       "position": null
       },
       {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
-       "position": null,
-       "onAt": "32:29"
+       "position": null
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
-       "position": null,
-       "onAt": "40:49"
+       "position": null
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
-       "position": null,
-       "onAt": "11:02"
+       "position": null
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "33:46"
+       "position": null
       },
       {
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
        "number": 38,
-       "position": null,
-       "onAt": "38:30"
+       "position": null
       },
       {
        "playerId": "NZL_14",
        "name": "Ryan Parr",
        "number": 35,
-       "position": null,
-       "onAt": "12:37"
+       "position": null
       },
       {
        "playerId": "NZL_11",
        "name": "Bradley Rothwell",
        "number": 25,
-       "position": null,
-       "onAt": "46:43"
+       "position": null
       }
      ],
      "team": "NZL",
@@ -3135,7 +3034,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T14:26:50.814933+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -3243,71 +3142,62 @@
        "playerId": "AUS_09",
        "name": "Jed Snowden",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "29:04"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
-       "position": null,
-       "onAt": "33:44"
+       "position": null
       },
       {
        "playerId": "AUS_16",
        "name": "James Collins",
        "number": 26,
-       "position": null,
-       "onAt": "49:45"
+       "position": null
       },
       {
        "playerId": "AUS_11",
        "name": "Craig Marais",
        "number": 19,
-       "position": null,
-       "onAt": "18:40"
+       "position": null
       },
       {
        "playerId": "AUS_10",
        "name": "Jayden Atkinson",
        "number": 15,
-       "position": null,
-       "onAt": "15:53"
+       "position": null
       },
       {
        "playerId": "AUS_14",
        "name": "Hayden Beltz",
        "number": 23,
-       "position": null,
-       "onAt": "14:13"
+       "position": null
       },
       {
        "playerId": "AUS_22",
        "name": "Liam Henderson",
        "number": 9,
-       "position": null,
-       "onAt": "28:38"
+       "position": null
       },
       {
        "playerId": "AUS_15",
        "name": "Cambell Geddes",
        "number": 24,
-       "position": null,
-       "onAt": "08:51"
+       "position": null
       },
       {
        "playerId": "AUS_07",
        "name": "Connar Otterbach",
        "number": 8,
-       "position": null,
-       "onAt": "12:13"
+       "position": null
       }
      ],
      "team": "AUS",
      "coach": "Mark Hager"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -3415,50 +3305,43 @@
        "playerId": "IRL_04",
        "name": "Luke Roleston",
        "number": 2,
-       "position": "Goalkeeper",
-       "onAt": "13:55"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IRL_14",
        "name": "Peter Brown",
        "number": 26,
-       "position": null,
-       "onAt": "18:39"
+       "position": null
       },
       {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
-       "position": null,
-       "onAt": "31:50"
+       "position": null
       },
       {
        "playerId": "IRL_09",
        "name": "Mark McNellis",
        "number": 18,
-       "position": null,
-       "onAt": "16:55"
+       "position": null
       },
       {
        "playerId": "IRL_18",
        "name": "Fergus Gibson",
        "number": 39,
-       "position": null,
-       "onAt": "29:30"
+       "position": null
       },
       {
        "playerId": "IRL_16",
        "name": "Louis Rowe",
        "number": 30,
-       "position": null,
-       "onAt": "34:07"
+       "position": null
       },
       {
        "playerId": "IRL_19",
        "name": "Gregory Williams",
        "number": 46,
-       "position": null,
-       "onAt": "48:52"
+       "position": null
       }
      ],
      "team": "IRL",
@@ -3623,7 +3506,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T11:19:32.213166+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -3731,71 +3614,62 @@
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "50:57"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ESP_12",
        "name": "Pepe Cunill",
        "number": 17,
-       "position": null,
-       "onAt": "31:06"
+       "position": null
       },
       {
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "position": null,
-       "onAt": "09:02"
+       "position": null
       },
       {
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "position": null,
-       "onAt": "49:35"
+       "position": null
       },
       {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
-       "position": null,
-       "onAt": "13:23"
+       "position": null
       },
       {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
-       "position": null,
-       "onAt": "42:25"
+       "position": null
       },
       {
        "playerId": "ESP_13",
        "name": "Pol Cabre Verdiell",
        "number": 22,
-       "position": null,
-       "onAt": "45:38"
+       "position": null
       },
       {
        "playerId": "ESP_18",
        "name": "Ignacio Cobos",
        "number": 62,
-       "position": null,
-       "onAt": "27:17"
+       "position": null
       },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null,
-       "onAt": "26:45"
+       "position": null
       }
      ],
      "team": "ESP",
      "coach": "Max Caldas"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -3903,57 +3777,49 @@
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
-       "position": "Goalkeeper",
-       "onAt": "24:01"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
-       "position": null,
-       "onAt": "13:06"
+       "position": null
       },
       {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "position": null,
-       "onAt": "11:04"
+       "position": null
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
-       "position": null,
-       "onAt": "19:41"
+       "position": null
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
-       "position": null,
-       "onAt": "21:52"
+       "position": null
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
-       "position": null,
-       "onAt": "51:33"
+       "position": null
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "24:25"
+       "position": null
       },
       {
        "playerId": "RSA_15",
        "name": "Damian Knott",
        "number": 26,
-       "position": null,
-       "onAt": "22:31"
+       "position": null
       }
      ],
      "team": "RSA",
@@ -4057,7 +3923,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T18:03:16.048448+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -4165,71 +4031,62 @@
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
        "number": 27,
-       "position": "Goalkeeper",
-       "onAt": "25:30"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IND_14",
        "name": "Vivek Sagar Prasad",
        "number": 32,
-       "position": null,
-       "onAt": "50:57"
+       "position": null
       },
       {
        "playerId": "IND_09",
        "name": "Sumit",
        "number": 17,
-       "position": null,
-       "onAt": "29:06"
+       "position": null
       },
       {
        "playerId": "IND_06",
        "name": "Jarmanpreet Singh",
        "number": 4,
-       "position": null,
-       "onAt": "11:08"
+       "position": null
       },
       {
        "playerId": "IND_10",
        "name": "Nilakanta Sharma",
        "number": 18,
-       "position": null,
-       "onAt": "23:17"
+       "position": null
       },
       {
        "playerId": "IND_13",
        "name": "Jugraj Singh",
        "number": 31,
-       "position": null,
-       "onAt": "40:37"
+       "position": null
       },
       {
        "playerId": "IND_20",
        "name": "Shilanand Lakra",
        "number": 99,
-       "position": null,
-       "onAt": "37:10"
+       "position": null
       },
       {
        "playerId": "IND_19",
        "name": "Rajinder Singh",
        "number": 78,
-       "position": null,
-       "onAt": "30:21"
+       "position": null
       },
       {
        "playerId": "IND_16",
        "name": "Yashdeep Siwach",
        "number": 47,
-       "position": null,
-       "onAt": "20:54"
+       "position": null
       }
      ],
      "team": "IND",
      "coach": "Craig Fulton"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -4337,64 +4194,55 @@
        "playerId": "ENG_11",
        "name": "James Mazarelo",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "31:58"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ENG_17",
        "name": "James Gall",
        "number": 26,
-       "position": null,
-       "onAt": "36:00"
+       "position": null
       },
       {
        "playerId": "ENG_07",
        "name": "Jack Waller",
        "number": 3,
-       "position": null,
-       "onAt": "46:32"
+       "position": null
       },
       {
        "playerId": "ENG_18",
        "name": "Liam Sanford",
        "number": 27,
-       "position": null,
-       "onAt": "41:26"
+       "position": null
       },
       {
        "playerId": "ENG_14",
        "name": "David Goodfield",
        "number": 19,
-       "position": null,
-       "onAt": "21:22"
+       "position": null
       },
       {
        "playerId": "ENG_06",
        "name": "Nicholas Park",
        "number": 2,
-       "position": null,
-       "onAt": "09:13"
+       "position": null
       },
       {
        "playerId": "ENG_13",
        "name": "Timothy Nurse",
        "number": 18,
-       "position": null,
-       "onAt": "12:30"
+       "position": null
       },
       {
        "playerId": "ENG_19",
        "name": "Conor Williamson",
        "number": 30,
-       "position": null,
-       "onAt": "12:49"
+       "position": null
       },
       {
        "playerId": "ENG_05",
        "name": "Ben Fox",
        "number": 47,
-       "position": null,
-       "onAt": "12:08"
+       "position": null
       }
      ],
      "team": "ENG",
@@ -4633,7 +4481,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T12:16:31.799483+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -4741,71 +4589,62 @@
        "playerId": "PAK_04",
        "name": "Waqar",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "38:50"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "position": null,
-       "onAt": "43:31"
+       "position": null
       },
       {
        "playerId": "PAK_11",
        "name": "Ghazanfar Ali",
        "number": 15,
-       "position": null,
-       "onAt": "51:58"
+       "position": null
       },
       {
        "playerId": "PAK_08",
        "name": "Zikriya Hayat",
        "number": 10,
-       "position": null,
-       "onAt": "08:02"
+       "position": null
       },
       {
        "playerId": "PAK_10",
        "name": "Ahmad Nadeem",
        "number": 14,
-       "position": null,
-       "onAt": "10:24"
+       "position": null
       },
       {
        "playerId": "PAK_20",
        "name": "Muhammad Ammad",
        "number": 35,
-       "position": null,
-       "onAt": "22:50"
+       "position": null
       },
       {
        "playerId": "PAK_19",
        "name": "Abdul Manan",
        "number": 32,
-       "position": null,
-       "onAt": "42:40"
+       "position": null
       },
       {
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "position": null,
-       "onAt": "48:48"
+       "position": null
       },
       {
        "playerId": "PAK_09",
        "name": "Adeel Latif",
        "number": 13,
-       "position": null,
-       "onAt": "48:05"
+       "position": null
       }
      ],
      "team": "PAK",
      "coach": "Bob Veldhof"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -4913,64 +4752,55 @@
        "playerId": "WAL_15",
        "name": "Rhys Payne",
        "number": 33,
-       "position": "Goalkeeper",
-       "onAt": "37:40"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
-       "position": null,
-       "onAt": "33:43"
+       "position": null
       },
       {
        "playerId": "WAL_02",
        "name": "Alf Dinnie",
        "number": 5,
-       "position": null,
-       "onAt": "36:59"
+       "position": null
       },
       {
        "playerId": "WAL_20",
        "name": "Gareth Griffiths",
        "number": 7,
-       "position": null,
-       "onAt": "08:11"
+       "position": null
       },
       {
        "playerId": "WAL_09",
        "name": "Jack Pritchard",
        "number": 23,
-       "position": null,
-       "onAt": "23:09"
+       "position": null
       },
       {
        "playerId": "WAL_07",
        "name": "Fred Newbold",
        "number": 17,
-       "position": null,
-       "onAt": "35:59"
+       "position": null
       },
       {
        "playerId": "WAL_16",
        "name": "Nicholas Morgan",
        "number": 44,
-       "position": null,
-       "onAt": "15:24"
+       "position": null
       },
       {
        "playerId": "WAL_12",
        "name": "Jonathan Fleck",
        "number": 29,
-       "position": null,
-       "onAt": "45:57"
+       "position": null
       },
       {
        "playerId": "WAL_14",
        "name": "Liam Barker",
        "number": 31,
-       "position": null,
-       "onAt": "22:48"
+       "position": null
       }
      ],
      "team": "WAL",
@@ -5162,7 +4992,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.969013+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -5270,57 +5100,50 @@
        "playerId": "GER_17",
        "name": "Joshua Onyekwue Nnaji",
        "number": 39,
-       "position": "Goalkeeper",
-       "onAt": "18:13"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "GER_16",
        "name": "Johannes Große",
        "number": 10,
-       "position": null,
-       "onAt": "35:19"
+       "position": null
       },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
        "number": 11,
-       "position": null,
-       "onAt": "17:13"
+       "position": null
       },
       {
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "position": null,
-       "onAt": "26:11"
+       "position": null
       },
       {
        "playerId": "GER_14",
        "name": "Malte Hellwig",
        "number": 29,
-       "position": null,
-       "onAt": "29:50"
+       "position": null
       },
       {
        "playerId": "GER_16",
        "name": "Antheus Barry",
        "number": 38,
-       "position": null,
-       "onAt": "43:46"
+       "position": null
       },
       {
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
-       "position": null,
-       "onAt": "21:28"
+       "position": null
       }
      ],
      "team": "GER",
      "coach": "André Henning"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -5428,50 +5251,43 @@
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "29:46"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "BEL_09",
        "name": "Tommy Willems",
        "number": 11,
-       "position": null,
-       "onAt": "49:54"
+       "position": null
       },
       {
        "playerId": "BEL_11",
        "name": "Guillaume Hellin",
        "number": 17,
-       "position": null,
-       "onAt": "49:53"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Thomas Crols",
        "number": 37,
-       "position": null,
-       "onAt": "14:01"
+       "position": null
       },
       {
        "playerId": "BEL_14",
        "name": "Victor Foubert",
        "number": 22,
-       "position": null,
-       "onAt": "28:58"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Lucas Balthazar",
        "number": 6,
-       "position": null,
-       "onAt": "08:44"
+       "position": null
       },
       {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
-       "position": null,
-       "onAt": "42:03"
+       "position": null
       }
      ],
      "team": "BEL",
@@ -5656,7 +5472,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.969474+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -5764,71 +5580,62 @@
        "playerId": "FRA_15",
        "name": "Marius Clément",
        "number": 23,
-       "position": "Goalkeeper",
-       "onAt": "30:17"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "FRA_04",
        "name": "Brieuc Delemazure",
        "number": 4,
-       "position": null,
-       "onAt": "24:57"
+       "position": null
       },
       {
        "playerId": "FRA_05",
        "name": "Corentin Sellier",
        "number": 6,
-       "position": null,
-       "onAt": "22:01"
+       "position": null
       },
       {
        "playerId": "FRA_10",
        "name": "Benjamin Marqué",
        "number": 13,
-       "position": null,
-       "onAt": "47:07"
+       "position": null
       },
       {
        "playerId": "FRA_07",
        "name": "Xavier Esmenjaud",
        "number": 8,
-       "position": null,
-       "onAt": "34:45"
+       "position": null
       },
       {
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
        "number": 7,
-       "position": null,
-       "onAt": "13:25"
+       "position": null
       },
       {
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
-       "position": null,
-       "onAt": "38:48"
+       "position": null
       },
       {
        "playerId": "FRA_20",
        "name": "Mathis Clément",
        "number": 9,
-       "position": null,
-       "onAt": "35:22"
+       "position": null
       },
       {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
-       "position": null,
-       "onAt": "15:04"
+       "position": null
       }
      ],
      "team": "FRA",
      "coach": "John-John Dohmen"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -5936,64 +5743,55 @@
        "playerId": "MAS_07",
        "name": "Zaimi Mat Deris",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "21:11"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "MAS_11",
        "name": "Norsyafiq Sumantri",
        "number": 22,
-       "position": null,
-       "onAt": "08:10"
+       "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
-       "position": null,
-       "onAt": "25:52"
+       "position": null
       },
       {
        "playerId": "MAS_09",
        "name": "Ashran Hamsani",
        "number": 20,
-       "position": null,
-       "onAt": "49:33"
+       "position": null
       },
       {
        "playerId": "MAS_14",
        "name": "Muhajir Abdu Rauf",
        "number": 26,
-       "position": null,
-       "onAt": "33:37"
+       "position": null
       },
       {
        "playerId": "MAS_15",
        "name": "Shafiq Hassan",
        "number": 27,
-       "position": null,
-       "onAt": "09:55"
+       "position": null
       },
       {
        "playerId": "MAS_17",
        "name": "Faris Harizan",
        "number": 30,
-       "position": null,
-       "onAt": "26:28"
+       "position": null
       },
       {
        "playerId": "MAS_19",
        "name": "Aminuddin Mohd Zain",
        "number": 32,
-       "position": null,
-       "onAt": "16:55"
+       "position": null
       },
       {
        "playerId": "MAS_20",
        "name": "Andywalfian Jeffrynus",
        "number": 35,
-       "position": null,
-       "onAt": "39:04"
+       "position": null
       }
      ],
      "team": "MAS",
@@ -6182,7 +5980,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T18:03:16.050309+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -6290,64 +6088,56 @@
        "playerId": "ARG_09",
        "name": "Nehuen Hernando",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "21:31"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
        "number": 23,
-       "position": null,
-       "onAt": "37:03"
+       "position": null
       },
       {
        "playerId": "ARG_16",
        "name": "Nicolas Cicileo",
        "number": 26,
-       "position": null,
-       "onAt": "47:18"
+       "position": null
       },
       {
        "playerId": "ARG_19",
        "name": "Thomas Habif",
        "number": 29,
-       "position": null,
-       "onAt": "43:30"
+       "position": null
       },
       {
        "playerId": "ARG_21",
        "name": "Martin Ferreiro",
        "number": 32,
-       "position": null,
-       "onAt": "17:22"
+       "position": null
       },
       {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
-       "position": null,
-       "onAt": "32:59"
+       "position": null
       },
       {
        "playerId": "ARG_18",
        "name": "Ignacio Ibarra",
        "number": 28,
-       "position": null,
-       "onAt": "31:45"
+       "position": null
       },
       {
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "position": null,
-       "onAt": "17:56"
+       "position": null
       }
      ],
      "team": "ARG",
      "coach": "Lucas Rey"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -6455,50 +6245,43 @@
        "playerId": "NED_13",
        "name": "Derk Meijer",
        "number": 20,
-       "position": "Goalkeeper",
-       "onAt": "13:12"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
-       "position": null,
-       "onAt": "49:51"
+       "position": null
       },
       {
        "playerId": "NED_11",
        "name": "Floris Wortelboer",
        "number": 16,
-       "position": null,
-       "onAt": "28:29"
+       "position": null
       },
       {
        "playerId": "NED_09",
        "name": "Justen Blok",
        "number": 12,
-       "position": null,
-       "onAt": "29:38"
+       "position": null
       },
       {
        "playerId": "NED_16",
        "name": "Derck de Vilder",
        "number": 14,
-       "position": null,
-       "onAt": "38:54"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Steijn van Heijningen",
        "number": 24,
-       "position": null,
-       "onAt": "15:17"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Floris Middendorp",
        "number": 77,
-       "position": null,
-       "onAt": "11:54"
+       "position": null
       }
      ],
      "team": "NED",
@@ -6637,7 +6420,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.970442+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -6745,71 +6528,62 @@
        "playerId": "NZL_18",
        "name": "Matthew Ruetsch",
        "number": 40,
-       "position": "Goalkeeper",
-       "onAt": "14:15"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NZL_03",
        "name": "Dane Lett",
        "number": 4,
-       "position": null,
-       "onAt": "11:42"
+       "position": null
       },
       {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
-       "position": null,
-       "onAt": "48:28"
+       "position": null
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
-       "position": null,
-       "onAt": "12:04"
+       "position": null
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
-       "position": null,
-       "onAt": "42:58"
+       "position": null
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "09:41"
+       "position": null
       },
       {
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
        "number": 38,
-       "position": null,
-       "onAt": "33:19"
+       "position": null
       },
       {
        "playerId": "NZL_14",
        "name": "Ryan Parr",
        "number": 35,
-       "position": null,
-       "onAt": "38:12"
+       "position": null
       },
       {
        "playerId": "NZL_11",
        "name": "Bradley Rothwell",
        "number": 25,
-       "position": null,
-       "onAt": "09:20"
+       "position": null
       }
      ],
      "team": "NZL",
      "coach": "Greg Nicol"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -6917,64 +6691,55 @@
        "playerId": "JPN_18",
        "name": "Takumi Kitagawa",
        "number": 29,
-       "position": "Goalkeeper",
-       "onAt": "28:26"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "JPN_15",
        "name": "Ryoma Ooka",
        "number": 19,
-       "position": null,
-       "onAt": "21:06"
+       "position": null
       },
       {
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
        "number": 4,
-       "position": null,
-       "onAt": "39:48"
+       "position": null
       },
       {
        "playerId": "JPN_17",
        "name": "Yusuke Kawamura",
        "number": 23,
-       "position": null,
-       "onAt": "10:36"
+       "position": null
       },
       {
        "playerId": "JPN_07",
        "name": "Taiki Takade",
        "number": 8,
-       "position": null,
-       "onAt": "32:40"
+       "position": null
       },
       {
        "playerId": "JPN_13",
        "name": "Hiro Saito",
        "number": 16,
-       "position": null,
-       "onAt": "12:53"
+       "position": null
       },
       {
        "playerId": "JPN_06",
        "name": "Naru Kimura",
        "number": 6,
-       "position": null,
-       "onAt": "34:51"
+       "position": null
       },
       {
        "playerId": "JPN_14",
        "name": "Tsubasa Tanaka",
        "number": 18,
-       "position": null,
-       "onAt": "09:37"
+       "position": null
       },
       {
        "playerId": "JPN_21",
        "name": "Jun Watanabe",
        "number": 7,
-       "position": null,
-       "onAt": "40:58"
+       "position": null
       }
      ],
      "team": "JPN",
@@ -7124,7 +6889,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.970941+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -7232,71 +6997,62 @@
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "43:07"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ESP_12",
        "name": "Pepe Cunill",
        "number": 17,
-       "position": null,
-       "onAt": "38:16"
+       "position": null
       },
       {
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "position": null,
-       "onAt": "21:40"
+       "position": null
       },
       {
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "position": null,
-       "onAt": "14:25"
+       "position": null
       },
       {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
-       "position": null,
-       "onAt": "24:24"
+       "position": null
       },
       {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
-       "position": null,
-       "onAt": "12:02"
+       "position": null
       },
       {
        "playerId": "ESP_13",
        "name": "Pol Cabre Verdiell",
        "number": 22,
-       "position": null,
-       "onAt": "37:29"
+       "position": null
       },
       {
        "playerId": "ESP_18",
        "name": "Ignacio Cobos",
        "number": 62,
-       "position": null,
-       "onAt": "24:07"
+       "position": null
       },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null,
-       "onAt": "23:40"
+       "position": null
       }
      ],
      "team": "ESP",
      "coach": "Max Caldas"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -7404,64 +7160,55 @@
        "playerId": "AUS_09",
        "name": "Jed Snowden",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "20:32"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
-       "position": null,
-       "onAt": "09:07"
+       "position": null
       },
       {
        "playerId": "AUS_16",
        "name": "James Collins",
        "number": 26,
-       "position": null,
-       "onAt": "18:14"
+       "position": null
       },
       {
        "playerId": "AUS_11",
        "name": "Craig Marais",
        "number": 19,
-       "position": null,
-       "onAt": "27:25"
+       "position": null
       },
       {
        "playerId": "AUS_10",
        "name": "Jayden Atkinson",
        "number": 15,
-       "position": null,
-       "onAt": "33:14"
+       "position": null
       },
       {
        "playerId": "AUS_14",
        "name": "Hayden Beltz",
        "number": 23,
-       "position": null,
-       "onAt": "35:19"
+       "position": null
       },
       {
        "playerId": "AUS_22",
        "name": "Liam Henderson",
        "number": 9,
-       "position": null,
-       "onAt": "25:58"
+       "position": null
       },
       {
        "playerId": "AUS_15",
        "name": "Cambell Geddes",
        "number": 24,
-       "position": null,
-       "onAt": "36:40"
+       "position": null
       },
       {
        "playerId": "AUS_07",
        "name": "Connar Otterbach",
        "number": 8,
-       "position": null,
-       "onAt": "21:48"
+       "position": null
       }
      ],
      "team": "AUS",
@@ -7651,7 +7398,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T14:26:50.819202+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -7759,57 +7506,50 @@
        "playerId": "IRL_04",
        "name": "Luke Roleston",
        "number": 2,
-       "position": "Goalkeeper",
-       "onAt": "17:11"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IRL_14",
        "name": "Peter Brown",
        "number": 26,
-       "position": null,
-       "onAt": "33:47"
+       "position": null
       },
       {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
-       "position": null,
-       "onAt": "27:38"
+       "position": null
       },
       {
        "playerId": "IRL_09",
        "name": "Mark McNellis",
        "number": 18,
-       "position": null,
-       "onAt": "33:27"
+       "position": null
       },
       {
        "playerId": "IRL_18",
        "name": "Fergus Gibson",
        "number": 39,
-       "position": null,
-       "onAt": "33:09"
+       "position": null
       },
       {
        "playerId": "IRL_16",
        "name": "Louis Rowe",
        "number": 30,
-       "position": null,
-       "onAt": "22:57"
+       "position": null
       },
       {
        "playerId": "IRL_19",
        "name": "Gregory Williams",
        "number": 46,
-       "position": null,
-       "onAt": "08:17"
+       "position": null
       }
      ],
      "team": "IRL",
      "coach": "Mark Tumilty"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -7917,57 +7657,49 @@
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
-       "position": "Goalkeeper",
-       "onAt": "38:40"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
-       "position": null,
-       "onAt": "17:35"
+       "position": null
       },
       {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "position": null,
-       "onAt": "14:55"
+       "position": null
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
-       "position": null,
-       "onAt": "44:44"
+       "position": null
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
-       "position": null,
-       "onAt": "51:24"
+       "position": null
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
-       "position": null,
-       "onAt": "16:19"
+       "position": null
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "24:18"
+       "position": null
       },
       {
        "playerId": "RSA_15",
        "name": "Damian Knott",
        "number": 26,
-       "position": null,
-       "onAt": "21:19"
+       "position": null
       }
      ],
      "team": "RSA",
@@ -8192,7 +7924,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T18:03:16.052120+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -8300,71 +8032,62 @@
        "playerId": "ENG_11",
        "name": "James Mazarelo",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "32:09"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ENG_17",
        "name": "James Gall",
        "number": 26,
-       "position": null,
-       "onAt": "18:32"
+       "position": null
       },
       {
        "playerId": "ENG_07",
        "name": "Jack Waller",
        "number": 3,
-       "position": null,
-       "onAt": "48:19"
+       "position": null
       },
       {
        "playerId": "ENG_18",
        "name": "Liam Sanford",
        "number": 27,
-       "position": null,
-       "onAt": "28:26"
+       "position": null
       },
       {
        "playerId": "ENG_14",
        "name": "David Goodfield",
        "number": 19,
-       "position": null,
-       "onAt": "19:46"
+       "position": null
       },
       {
        "playerId": "ENG_06",
        "name": "Nicholas Park",
        "number": 2,
-       "position": null,
-       "onAt": "13:53"
+       "position": null
       },
       {
        "playerId": "ENG_13",
        "name": "Timothy Nurse",
        "number": 18,
-       "position": null,
-       "onAt": "11:24"
+       "position": null
       },
       {
        "playerId": "ENG_19",
        "name": "Conor Williamson",
        "number": 30,
-       "position": null,
-       "onAt": "41:12"
+       "position": null
       },
       {
        "playerId": "ENG_05",
        "name": "Ben Fox",
        "number": 47,
-       "position": null,
-       "onAt": "30:14"
+       "position": null
       }
      ],
      "team": "ENG",
      "coach": "Zak Jones"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -8472,64 +8195,55 @@
        "playerId": "WAL_15",
        "name": "Rhys Payne",
        "number": 33,
-       "position": "Goalkeeper",
-       "onAt": "23:32"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
-       "position": null,
-       "onAt": "39:12"
+       "position": null
       },
       {
        "playerId": "WAL_02",
        "name": "Alf Dinnie",
        "number": 5,
-       "position": null,
-       "onAt": "39:31"
+       "position": null
       },
       {
        "playerId": "WAL_20",
        "name": "Gareth Griffiths",
        "number": 7,
-       "position": null,
-       "onAt": "14:51"
+       "position": null
       },
       {
        "playerId": "WAL_09",
        "name": "Jack Pritchard",
        "number": 23,
-       "position": null,
-       "onAt": "40:37"
+       "position": null
       },
       {
        "playerId": "WAL_07",
        "name": "Fred Newbold",
        "number": 17,
-       "position": null,
-       "onAt": "28:44"
+       "position": null
       },
       {
        "playerId": "WAL_16",
        "name": "Nicholas Morgan",
        "number": 44,
-       "position": null,
-       "onAt": "10:01"
+       "position": null
       },
       {
        "playerId": "WAL_12",
        "name": "Jonathan Fleck",
        "number": 29,
-       "position": null,
-       "onAt": "42:48"
+       "position": null
       },
       {
        "playerId": "WAL_14",
        "name": "Liam Barker",
        "number": 31,
-       "position": null,
-       "onAt": "12:28"
+       "position": null
       }
      ],
      "team": "WAL",
@@ -8776,7 +8490,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.972378+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -8884,71 +8598,62 @@
        "playerId": "PAK_04",
        "name": "Waqar",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "19:39"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "position": null,
-       "onAt": "41:18"
+       "position": null
       },
       {
        "playerId": "PAK_11",
        "name": "Ghazanfar Ali",
        "number": 15,
-       "position": null,
-       "onAt": "15:18"
+       "position": null
       },
       {
        "playerId": "PAK_08",
        "name": "Zikriya Hayat",
        "number": 10,
-       "position": null,
-       "onAt": "24:39"
+       "position": null
       },
       {
        "playerId": "PAK_10",
        "name": "Ahmad Nadeem",
        "number": 14,
-       "position": null,
-       "onAt": "28:15"
+       "position": null
       },
       {
        "playerId": "PAK_20",
        "name": "Muhammad Ammad",
        "number": 35,
-       "position": null,
-       "onAt": "37:51"
+       "position": null
       },
       {
        "playerId": "PAK_19",
        "name": "Abdul Manan",
        "number": 32,
-       "position": null,
-       "onAt": "49:23"
+       "position": null
       },
       {
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "position": null,
-       "onAt": "08:54"
+       "position": null
       },
       {
        "playerId": "PAK_09",
        "name": "Adeel Latif",
        "number": 13,
-       "position": null,
-       "onAt": "31:26"
+       "position": null
       }
      ],
      "team": "PAK",
      "coach": "Bob Veldhof"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -9056,64 +8761,55 @@
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
        "number": 27,
-       "position": "Goalkeeper",
-       "onAt": "44:09"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IND_14",
        "name": "Vivek Sagar Prasad",
        "number": 32,
-       "position": null,
-       "onAt": "39:20"
+       "position": null
       },
       {
        "playerId": "IND_09",
        "name": "Sumit",
        "number": 17,
-       "position": null,
-       "onAt": "17:58"
+       "position": null
       },
       {
        "playerId": "IND_06",
        "name": "Jarmanpreet Singh",
        "number": 4,
-       "position": null,
-       "onAt": "41:04"
+       "position": null
       },
       {
        "playerId": "IND_10",
        "name": "Nilakanta Sharma",
        "number": 18,
-       "position": null,
-       "onAt": "29:10"
+       "position": null
       },
       {
        "playerId": "IND_13",
        "name": "Jugraj Singh",
        "number": 31,
-       "position": null,
-       "onAt": "10:35"
+       "position": null
       },
       {
        "playerId": "IND_20",
        "name": "Shilanand Lakra",
        "number": 99,
-       "position": null,
-       "onAt": "48:46"
+       "position": null
       },
       {
        "playerId": "IND_19",
        "name": "Rajinder Singh",
        "number": 78,
-       "position": null,
-       "onAt": "15:40"
+       "position": null
       },
       {
        "playerId": "IND_16",
        "name": "Yashdeep Siwach",
        "number": 47,
-       "position": null,
-       "onAt": "38:38"
+       "position": null
       }
      ],
      "team": "IND",
@@ -9354,7 +9050,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.972879+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -9462,57 +9158,50 @@
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "29:27"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "BEL_09",
        "name": "Tommy Willems",
        "number": 11,
-       "position": null,
-       "onAt": "11:42"
+       "position": null
       },
       {
        "playerId": "BEL_11",
        "name": "Guillaume Hellin",
        "number": 17,
-       "position": null,
-       "onAt": "47:47"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Thomas Crols",
        "number": 37,
-       "position": null,
-       "onAt": "23:18"
+       "position": null
       },
       {
        "playerId": "BEL_14",
        "name": "Victor Foubert",
        "number": 22,
-       "position": null,
-       "onAt": "48:38"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Lucas Balthazar",
        "number": 6,
-       "position": null,
-       "onAt": "09:33"
+       "position": null
       },
       {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
-       "position": null,
-       "onAt": "21:32"
+       "position": null
       }
      ],
      "team": "BEL",
      "coach": "Shane McLeod"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -9620,64 +9309,55 @@
        "playerId": "MAS_07",
        "name": "Zaimi Mat Deris",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "41:54"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "MAS_11",
        "name": "Norsyafiq Sumantri",
        "number": 22,
-       "position": null,
-       "onAt": "40:54"
+       "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
-       "position": null,
-       "onAt": "34:04"
+       "position": null
       },
       {
        "playerId": "MAS_09",
        "name": "Ashran Hamsani",
        "number": 20,
-       "position": null,
-       "onAt": "42:02"
+       "position": null
       },
       {
        "playerId": "MAS_14",
        "name": "Muhajir Abdu Rauf",
        "number": 26,
-       "position": null,
-       "onAt": "09:06"
+       "position": null
       },
       {
        "playerId": "MAS_15",
        "name": "Shafiq Hassan",
        "number": 27,
-       "position": null,
-       "onAt": "37:25"
+       "position": null
       },
       {
        "playerId": "MAS_17",
        "name": "Faris Harizan",
        "number": 30,
-       "position": null,
-       "onAt": "09:46"
+       "position": null
       },
       {
        "playerId": "MAS_19",
        "name": "Aminuddin Mohd Zain",
        "number": 32,
-       "position": null,
-       "onAt": "42:09"
+       "position": null
       },
       {
        "playerId": "MAS_20",
        "name": "Andywalfian Jeffrynus",
        "number": 35,
-       "position": null,
-       "onAt": "46:37"
+       "position": null
       }
      ],
      "team": "MAS",
@@ -9858,7 +9538,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T17:23:04.970089+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -9966,71 +9646,62 @@
        "playerId": "FRA_15",
        "name": "Marius Clément",
        "number": 23,
-       "position": "Goalkeeper",
-       "onAt": "12:01"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "FRA_04",
        "name": "Brieuc Delemazure",
        "number": 4,
-       "position": null,
-       "onAt": "14:48"
+       "position": null
       },
       {
        "playerId": "FRA_05",
        "name": "Corentin Sellier",
        "number": 6,
-       "position": null,
-       "onAt": "12:48"
+       "position": null
       },
       {
        "playerId": "FRA_10",
        "name": "Benjamin Marqué",
        "number": 13,
-       "position": null,
-       "onAt": "17:58"
+       "position": null
       },
       {
        "playerId": "FRA_07",
        "name": "Xavier Esmenjaud",
        "number": 8,
-       "position": null,
-       "onAt": "34:22"
+       "position": null
       },
       {
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
        "number": 7,
-       "position": null,
-       "onAt": "18:05"
+       "position": null
       },
       {
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
-       "position": null,
-       "onAt": "40:05"
+       "position": null
       },
       {
        "playerId": "FRA_20",
        "name": "Mathis Clément",
        "number": 9,
-       "position": null,
-       "onAt": "16:00"
+       "position": null
       },
       {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
-       "position": null,
-       "onAt": "13:39"
+       "position": null
       }
      ],
      "team": "FRA",
      "coach": "John-John Dohmen"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -10138,50 +9809,43 @@
        "playerId": "GER_17",
        "name": "Joshua Onyekwue Nnaji",
        "number": 39,
-       "position": "Goalkeeper",
-       "onAt": "46:36"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "GER_16",
        "name": "Johannes Große",
        "number": 10,
-       "position": null,
-       "onAt": "21:23"
+       "position": null
       },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
        "number": 11,
-       "position": null,
-       "onAt": "39:55"
+       "position": null
       },
       {
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "position": null,
-       "onAt": "12:55"
+       "position": null
       },
       {
        "playerId": "GER_14",
        "name": "Malte Hellwig",
        "number": 29,
-       "position": null,
-       "onAt": "29:13"
+       "position": null
       },
       {
        "playerId": "GER_16",
        "name": "Antheus Barry",
        "number": 38,
-       "position": null,
-       "onAt": "36:46"
+       "position": null
       },
       {
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
-       "position": null,
-       "onAt": "45:10"
+       "position": null
       }
      ],
      "team": "GER",
@@ -10341,7 +10005,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T18:03:16.053946+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -10449,57 +10113,50 @@
        "playerId": "NED_13",
        "name": "Derk Meijer",
        "number": 20,
-       "position": "Goalkeeper",
-       "onAt": "21:29"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
-       "position": null,
-       "onAt": "23:02"
+       "position": null
       },
       {
        "playerId": "NED_11",
        "name": "Floris Wortelboer",
        "number": 16,
-       "position": null,
-       "onAt": "38:06"
+       "position": null
       },
       {
        "playerId": "NED_09",
        "name": "Justen Blok",
        "number": 12,
-       "position": null,
-       "onAt": "19:51"
+       "position": null
       },
       {
        "playerId": "NED_16",
        "name": "Derck de Vilder",
        "number": 14,
-       "position": null,
-       "onAt": "10:54"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Steijn van Heijningen",
        "number": 24,
-       "position": null,
-       "onAt": "23:59"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Floris Middendorp",
        "number": 77,
-       "position": null,
-       "onAt": "17:42"
+       "position": null
       }
      ],
      "team": "NED",
      "coach": "Jeroen Delmee"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -10607,64 +10264,55 @@
        "playerId": "JPN_18",
        "name": "Takumi Kitagawa",
        "number": 29,
-       "position": "Goalkeeper",
-       "onAt": "34:23"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "JPN_15",
        "name": "Ryoma Ooka",
        "number": 19,
-       "position": null,
-       "onAt": "27:57"
+       "position": null
       },
       {
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
        "number": 4,
-       "position": null,
-       "onAt": "48:05"
+       "position": null
       },
       {
        "playerId": "JPN_17",
        "name": "Yusuke Kawamura",
        "number": 23,
-       "position": null,
-       "onAt": "15:07"
+       "position": null
       },
       {
        "playerId": "JPN_07",
        "name": "Taiki Takade",
        "number": 8,
-       "position": null,
-       "onAt": "49:35"
+       "position": null
       },
       {
        "playerId": "JPN_13",
        "name": "Hiro Saito",
        "number": 16,
-       "position": null,
-       "onAt": "47:15"
+       "position": null
       },
       {
        "playerId": "JPN_06",
        "name": "Naru Kimura",
        "number": 6,
-       "position": null,
-       "onAt": "38:01"
+       "position": null
       },
       {
        "playerId": "JPN_14",
        "name": "Tsubasa Tanaka",
        "number": 18,
-       "position": null,
-       "onAt": "08:22"
+       "position": null
       },
       {
        "playerId": "JPN_21",
        "name": "Jun Watanabe",
        "number": 7,
-       "position": null,
-       "onAt": "37:55"
+       "position": null
       }
      ],
      "team": "JPN",
@@ -10887,7 +10535,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.974297+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -10995,71 +10643,62 @@
        "playerId": "NZL_18",
        "name": "Matthew Ruetsch",
        "number": 40,
-       "position": "Goalkeeper",
-       "onAt": "10:06"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NZL_03",
        "name": "Dane Lett",
        "number": 4,
-       "position": null,
-       "onAt": "22:32"
+       "position": null
       },
       {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
-       "position": null,
-       "onAt": "46:31"
+       "position": null
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
-       "position": null,
-       "onAt": "48:50"
+       "position": null
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
-       "position": null,
-       "onAt": "17:57"
+       "position": null
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "50:01"
+       "position": null
       },
       {
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
        "number": 38,
-       "position": null,
-       "onAt": "48:44"
+       "position": null
       },
       {
        "playerId": "NZL_14",
        "name": "Ryan Parr",
        "number": 35,
-       "position": null,
-       "onAt": "47:01"
+       "position": null
       },
       {
        "playerId": "NZL_11",
        "name": "Bradley Rothwell",
        "number": 25,
-       "position": null,
-       "onAt": "30:10"
+       "position": null
       }
      ],
      "team": "NZL",
      "coach": "Greg Nicol"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -11167,57 +10806,49 @@
        "playerId": "ARG_09",
        "name": "Nehuen Hernando",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "08:22"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
        "number": 23,
-       "position": null,
-       "onAt": "18:22"
+       "position": null
       },
       {
        "playerId": "ARG_16",
        "name": "Nicolas Cicileo",
        "number": 26,
-       "position": null,
-       "onAt": "11:42"
+       "position": null
       },
       {
        "playerId": "ARG_19",
        "name": "Thomas Habif",
        "number": 29,
-       "position": null,
-       "onAt": "23:24"
+       "position": null
       },
       {
        "playerId": "ARG_21",
        "name": "Martin Ferreiro",
        "number": 32,
-       "position": null,
-       "onAt": "31:29"
+       "position": null
       },
       {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
-       "position": null,
-       "onAt": "38:24"
+       "position": null
       },
       {
        "playerId": "ARG_18",
        "name": "Ignacio Ibarra",
        "number": 28,
-       "position": null,
-       "onAt": "22:58"
+       "position": null
       },
       {
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "position": null,
-       "onAt": "12:55"
+       "position": null
       }
      ],
      "team": "ARG",
@@ -11448,7 +11079,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T11:19:32.220065+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -11556,71 +11187,62 @@
        "playerId": "AUS_09",
        "name": "Jed Snowden",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "20:10"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
-       "position": null,
-       "onAt": "48:19"
+       "position": null
       },
       {
        "playerId": "AUS_16",
        "name": "James Collins",
        "number": 26,
-       "position": null,
-       "onAt": "40:37"
+       "position": null
       },
       {
        "playerId": "AUS_11",
        "name": "Craig Marais",
        "number": 19,
-       "position": null,
-       "onAt": "30:21"
+       "position": null
       },
       {
        "playerId": "AUS_10",
        "name": "Jayden Atkinson",
        "number": 15,
-       "position": null,
-       "onAt": "13:20"
+       "position": null
       },
       {
        "playerId": "AUS_14",
        "name": "Hayden Beltz",
        "number": 23,
-       "position": null,
-       "onAt": "09:33"
+       "position": null
       },
       {
        "playerId": "AUS_22",
        "name": "Liam Henderson",
        "number": 9,
-       "position": null,
-       "onAt": "35:43"
+       "position": null
       },
       {
        "playerId": "AUS_15",
        "name": "Cambell Geddes",
        "number": 24,
-       "position": null,
-       "onAt": "27:37"
+       "position": null
       },
       {
        "playerId": "AUS_07",
        "name": "Connar Otterbach",
        "number": 8,
-       "position": null,
-       "onAt": "42:12"
+       "position": null
       }
      ],
      "team": "AUS",
      "coach": "Mark Hager"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -11728,57 +11350,49 @@
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
-       "position": "Goalkeeper",
-       "onAt": "19:41"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
-       "position": null,
-       "onAt": "46:41"
+       "position": null
       },
       {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "position": null,
-       "onAt": "17:44"
+       "position": null
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
-       "position": null,
-       "onAt": "20:09"
+       "position": null
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
-       "position": null,
-       "onAt": "20:05"
+       "position": null
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
-       "position": null,
-       "onAt": "32:17"
+       "position": null
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "27:32"
+       "position": null
       },
       {
        "playerId": "RSA_15",
        "name": "Damian Knott",
        "number": 26,
-       "position": null,
-       "onAt": "46:10"
+       "position": null
       }
      ],
      "team": "RSA",
@@ -11961,7 +11575,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.975254+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -12069,57 +11683,50 @@
        "playerId": "IRL_04",
        "name": "Luke Roleston",
        "number": 2,
-       "position": "Goalkeeper",
-       "onAt": "21:52"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IRL_14",
        "name": "Peter Brown",
        "number": 26,
-       "position": null,
-       "onAt": "40:46"
+       "position": null
       },
       {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
-       "position": null,
-       "onAt": "32:37"
+       "position": null
       },
       {
        "playerId": "IRL_09",
        "name": "Mark McNellis",
        "number": 18,
-       "position": null,
-       "onAt": "25:53"
+       "position": null
       },
       {
        "playerId": "IRL_18",
        "name": "Fergus Gibson",
        "number": 39,
-       "position": null,
-       "onAt": "44:44"
+       "position": null
       },
       {
        "playerId": "IRL_16",
        "name": "Louis Rowe",
        "number": 30,
-       "position": null,
-       "onAt": "49:23"
+       "position": null
       },
       {
        "playerId": "IRL_19",
        "name": "Gregory Williams",
        "number": 46,
-       "position": null,
-       "onAt": "35:44"
+       "position": null
       }
      ],
      "team": "IRL",
      "coach": "Mark Tumilty"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -12227,64 +11834,55 @@
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "14:21"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ESP_12",
        "name": "Pepe Cunill",
        "number": 17,
-       "position": null,
-       "onAt": "36:51"
+       "position": null
       },
       {
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "position": null,
-       "onAt": "08:43"
+       "position": null
       },
       {
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "position": null,
-       "onAt": "11:03"
+       "position": null
       },
       {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
-       "position": null,
-       "onAt": "14:34"
+       "position": null
       },
       {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
-       "position": null,
-       "onAt": "09:01"
+       "position": null
       },
       {
        "playerId": "ESP_13",
        "name": "Pol Cabre Verdiell",
        "number": 22,
-       "position": null,
-       "onAt": "35:08"
+       "position": null
       },
       {
        "playerId": "ESP_18",
        "name": "Ignacio Cobos",
        "number": 62,
-       "position": null,
-       "onAt": "08:22"
+       "position": null
       },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null,
-       "onAt": "35:50"
+       "position": null
       }
      ],
      "team": "ESP",
@@ -12460,7 +12058,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.975731+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -12568,71 +12166,62 @@
        "playerId": "FRA_15",
        "name": "Marius Clément",
        "number": 23,
-       "position": "Goalkeeper",
-       "onAt": "30:57"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "FRA_04",
        "name": "Brieuc Delemazure",
        "number": 4,
-       "position": null,
-       "onAt": "24:34"
+       "position": null
       },
       {
        "playerId": "FRA_05",
        "name": "Corentin Sellier",
        "number": 6,
-       "position": null,
-       "onAt": "51:10"
+       "position": null
       },
       {
        "playerId": "FRA_10",
        "name": "Benjamin Marqué",
        "number": 13,
-       "position": null,
-       "onAt": "15:17"
+       "position": null
       },
       {
        "playerId": "FRA_07",
        "name": "Xavier Esmenjaud",
        "number": 8,
-       "position": null,
-       "onAt": "33:04"
+       "position": null
       },
       {
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
        "number": 7,
-       "position": null,
-       "onAt": "26:42"
+       "position": null
       },
       {
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
-       "position": null,
-       "onAt": "41:44"
+       "position": null
       },
       {
        "playerId": "FRA_20",
        "name": "Mathis Clément",
        "number": 9,
-       "position": null,
-       "onAt": "25:20"
+       "position": null
       },
       {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
-       "position": null,
-       "onAt": "25:46"
+       "position": null
       }
      ],
      "team": "FRA",
      "coach": "John-John Dohmen"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -12740,57 +12329,49 @@
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
-       "position": "Goalkeeper",
-       "onAt": "29:36"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
-       "position": null,
-       "onAt": "13:35"
+       "position": null
       },
       {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "position": null,
-       "onAt": "22:22"
+       "position": null
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
-       "position": null,
-       "onAt": "44:54"
+       "position": null
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
-       "position": null,
-       "onAt": "38:17"
+       "position": null
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
-       "position": null,
-       "onAt": "29:56"
+       "position": null
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "47:23"
+       "position": null
       },
       {
        "playerId": "RSA_15",
        "name": "Damian Knott",
        "number": 26,
-       "position": null,
-       "onAt": "33:06"
+       "position": null
       }
      ],
      "team": "RSA",
@@ -13009,7 +12590,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.976208+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -13117,57 +12698,50 @@
        "playerId": "IRL_04",
        "name": "Luke Roleston",
        "number": 2,
-       "position": "Goalkeeper",
-       "onAt": "13:26"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IRL_14",
        "name": "Peter Brown",
        "number": 26,
-       "position": null,
-       "onAt": "12:48"
+       "position": null
       },
       {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
-       "position": null,
-       "onAt": "23:13"
+       "position": null
       },
       {
        "playerId": "IRL_09",
        "name": "Mark McNellis",
        "number": 18,
-       "position": null,
-       "onAt": "18:22"
+       "position": null
       },
       {
        "playerId": "IRL_18",
        "name": "Fergus Gibson",
        "number": 39,
-       "position": null,
-       "onAt": "14:10"
+       "position": null
       },
       {
        "playerId": "IRL_16",
        "name": "Louis Rowe",
        "number": 30,
-       "position": null,
-       "onAt": "46:12"
+       "position": null
       },
       {
        "playerId": "IRL_19",
        "name": "Gregory Williams",
        "number": 46,
-       "position": null,
-       "onAt": "25:29"
+       "position": null
       }
      ],
      "team": "IRL",
      "coach": "Mark Tumilty"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -13275,64 +12849,55 @@
        "playerId": "MAS_07",
        "name": "Zaimi Mat Deris",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "12:59"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "MAS_11",
        "name": "Norsyafiq Sumantri",
        "number": 22,
-       "position": null,
-       "onAt": "08:59"
+       "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
-       "position": null,
-       "onAt": "28:40"
+       "position": null
       },
       {
        "playerId": "MAS_09",
        "name": "Ashran Hamsani",
        "number": 20,
-       "position": null,
-       "onAt": "17:35"
+       "position": null
       },
       {
        "playerId": "MAS_14",
        "name": "Muhajir Abdu Rauf",
        "number": 26,
-       "position": null,
-       "onAt": "21:56"
+       "position": null
       },
       {
        "playerId": "MAS_15",
        "name": "Shafiq Hassan",
        "number": 27,
-       "position": null,
-       "onAt": "15:39"
+       "position": null
       },
       {
        "playerId": "MAS_17",
        "name": "Faris Harizan",
        "number": 30,
-       "position": null,
-       "onAt": "24:24"
+       "position": null
       },
       {
        "playerId": "MAS_19",
        "name": "Aminuddin Mohd Zain",
        "number": 32,
-       "position": null,
-       "onAt": "19:33"
+       "position": null
       },
       {
        "playerId": "MAS_20",
        "name": "Andywalfian Jeffrynus",
        "number": 35,
-       "position": null,
-       "onAt": "37:56"
+       "position": null
       }
      ],
      "team": "MAS",
@@ -13512,7 +13077,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.976687+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -13620,71 +13185,62 @@
        "playerId": "AUS_09",
        "name": "Jed Snowden",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "20:35"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
-       "position": null,
-       "onAt": "14:50"
+       "position": null
       },
       {
        "playerId": "AUS_16",
        "name": "James Collins",
        "number": 26,
-       "position": null,
-       "onAt": "13:53"
+       "position": null
       },
       {
        "playerId": "AUS_11",
        "name": "Craig Marais",
        "number": 19,
-       "position": null,
-       "onAt": "47:56"
+       "position": null
       },
       {
        "playerId": "AUS_10",
        "name": "Jayden Atkinson",
        "number": 15,
-       "position": null,
-       "onAt": "31:49"
+       "position": null
       },
       {
        "playerId": "AUS_14",
        "name": "Hayden Beltz",
        "number": 23,
-       "position": null,
-       "onAt": "30:16"
+       "position": null
       },
       {
        "playerId": "AUS_22",
        "name": "Liam Henderson",
        "number": 9,
-       "position": null,
-       "onAt": "16:34"
+       "position": null
       },
       {
        "playerId": "AUS_15",
        "name": "Cambell Geddes",
        "number": 24,
-       "position": null,
-       "onAt": "31:50"
+       "position": null
       },
       {
        "playerId": "AUS_07",
        "name": "Connar Otterbach",
        "number": 8,
-       "position": null,
-       "onAt": "44:46"
+       "position": null
       }
      ],
      "team": "AUS",
      "coach": "Mark Hager"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -13792,50 +13348,43 @@
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "12:46"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "BEL_09",
        "name": "Tommy Willems",
        "number": 11,
-       "position": null,
-       "onAt": "40:38"
+       "position": null
       },
       {
        "playerId": "BEL_11",
        "name": "Guillaume Hellin",
        "number": 17,
-       "position": null,
-       "onAt": "29:42"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Thomas Crols",
        "number": 37,
-       "position": null,
-       "onAt": "35:06"
+       "position": null
       },
       {
        "playerId": "BEL_14",
        "name": "Victor Foubert",
        "number": 22,
-       "position": null,
-       "onAt": "32:31"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Lucas Balthazar",
        "number": 6,
-       "position": null,
-       "onAt": "26:32"
+       "position": null
       },
       {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
-       "position": null,
-       "onAt": "40:20"
+       "position": null
       }
      ],
      "team": "BEL",
@@ -13962,7 +13511,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.977158+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -14070,57 +13619,50 @@
        "playerId": "GER_17",
        "name": "Joshua Onyekwue Nnaji",
        "number": 39,
-       "position": "Goalkeeper",
-       "onAt": "16:27"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "GER_16",
        "name": "Johannes Große",
        "number": 10,
-       "position": null,
-       "onAt": "26:29"
+       "position": null
       },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
        "number": 11,
-       "position": null,
-       "onAt": "17:18"
+       "position": null
       },
       {
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "position": null,
-       "onAt": "51:30"
+       "position": null
       },
       {
        "playerId": "GER_14",
        "name": "Malte Hellwig",
        "number": 29,
-       "position": null,
-       "onAt": "33:46"
+       "position": null
       },
       {
        "playerId": "GER_16",
        "name": "Antheus Barry",
        "number": 38,
-       "position": null,
-       "onAt": "09:13"
+       "position": null
       },
       {
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
-       "position": null,
-       "onAt": "11:24"
+       "position": null
       }
      ],
      "team": "GER",
      "coach": "André Henning"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -14228,64 +13770,55 @@
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "34:52"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ESP_12",
        "name": "Pepe Cunill",
        "number": 17,
-       "position": null,
-       "onAt": "40:29"
+       "position": null
       },
       {
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "position": null,
-       "onAt": "48:11"
+       "position": null
       },
       {
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "position": null,
-       "onAt": "50:59"
+       "position": null
       },
       {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
-       "position": null,
-       "onAt": "08:47"
+       "position": null
       },
       {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
-       "position": null,
-       "onAt": "39:26"
+       "position": null
       },
       {
        "playerId": "ESP_13",
        "name": "Pol Cabre Verdiell",
        "number": 22,
-       "position": null,
-       "onAt": "40:38"
+       "position": null
       },
       {
        "playerId": "ESP_18",
        "name": "Ignacio Cobos",
        "number": 62,
-       "position": null,
-       "onAt": "19:34"
+       "position": null
       },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null,
-       "onAt": "24:47"
+       "position": null
       }
      ],
      "team": "ESP",
@@ -14472,7 +14005,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.977638+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -14580,71 +14113,62 @@
        "playerId": "NZL_18",
        "name": "Matthew Ruetsch",
        "number": 40,
-       "position": "Goalkeeper",
-       "onAt": "37:55"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NZL_03",
        "name": "Dane Lett",
        "number": 4,
-       "position": null,
-       "onAt": "47:32"
+       "position": null
       },
       {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
-       "position": null,
-       "onAt": "08:02"
+       "position": null
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
-       "position": null,
-       "onAt": "29:28"
+       "position": null
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
-       "position": null,
-       "onAt": "37:06"
+       "position": null
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "21:27"
+       "position": null
       },
       {
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
        "number": 38,
-       "position": null,
-       "onAt": "28:00"
+       "position": null
       },
       {
        "playerId": "NZL_14",
        "name": "Ryan Parr",
        "number": 35,
-       "position": null,
-       "onAt": "09:54"
+       "position": null
       },
       {
        "playerId": "NZL_11",
        "name": "Bradley Rothwell",
        "number": 25,
-       "position": null,
-       "onAt": "44:49"
+       "position": null
       }
      ],
      "team": "NZL",
      "coach": "Greg Nicol"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -14752,64 +14276,55 @@
        "playerId": "WAL_15",
        "name": "Rhys Payne",
        "number": 33,
-       "position": "Goalkeeper",
-       "onAt": "20:00"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
-       "position": null,
-       "onAt": "49:29"
+       "position": null
       },
       {
        "playerId": "WAL_02",
        "name": "Alf Dinnie",
        "number": 5,
-       "position": null,
-       "onAt": "47:24"
+       "position": null
       },
       {
        "playerId": "WAL_20",
        "name": "Gareth Griffiths",
        "number": 7,
-       "position": null,
-       "onAt": "22:18"
+       "position": null
       },
       {
        "playerId": "WAL_09",
        "name": "Jack Pritchard",
        "number": 23,
-       "position": null,
-       "onAt": "50:24"
+       "position": null
       },
       {
        "playerId": "WAL_07",
        "name": "Fred Newbold",
        "number": 17,
-       "position": null,
-       "onAt": "10:40"
+       "position": null
       },
       {
        "playerId": "WAL_16",
        "name": "Nicholas Morgan",
        "number": 44,
-       "position": null,
-       "onAt": "11:17"
+       "position": null
       },
       {
        "playerId": "WAL_12",
        "name": "Jonathan Fleck",
        "number": 29,
-       "position": null,
-       "onAt": "35:31"
+       "position": null
       },
       {
        "playerId": "WAL_14",
        "name": "Liam Barker",
        "number": 31,
-       "position": null,
-       "onAt": "36:58"
+       "position": null
       }
      ],
      "team": "WAL",
@@ -15042,7 +14557,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.978116+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -15150,71 +14665,62 @@
        "playerId": "PAK_04",
        "name": "Waqar",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "28:52"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "position": null,
-       "onAt": "51:49"
+       "position": null
       },
       {
        "playerId": "PAK_11",
        "name": "Ghazanfar Ali",
        "number": 15,
-       "position": null,
-       "onAt": "15:13"
+       "position": null
       },
       {
        "playerId": "PAK_08",
        "name": "Zikriya Hayat",
        "number": 10,
-       "position": null,
-       "onAt": "19:21"
+       "position": null
       },
       {
        "playerId": "PAK_10",
        "name": "Ahmad Nadeem",
        "number": 14,
-       "position": null,
-       "onAt": "22:48"
+       "position": null
       },
       {
        "playerId": "PAK_20",
        "name": "Muhammad Ammad",
        "number": 35,
-       "position": null,
-       "onAt": "35:17"
+       "position": null
       },
       {
        "playerId": "PAK_19",
        "name": "Abdul Manan",
        "number": 32,
-       "position": null,
-       "onAt": "12:06"
+       "position": null
       },
       {
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "position": null,
-       "onAt": "50:31"
+       "position": null
       },
       {
        "playerId": "PAK_09",
        "name": "Adeel Latif",
        "number": 13,
-       "position": null,
-       "onAt": "08:44"
+       "position": null
       }
      ],
      "team": "PAK",
      "coach": "Bob Veldhof"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -15322,64 +14828,55 @@
        "playerId": "JPN_18",
        "name": "Takumi Kitagawa",
        "number": 29,
-       "position": "Goalkeeper",
-       "onAt": "50:29"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "JPN_15",
        "name": "Ryoma Ooka",
        "number": 19,
-       "position": null,
-       "onAt": "33:52"
+       "position": null
       },
       {
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
        "number": 4,
-       "position": null,
-       "onAt": "33:51"
+       "position": null
       },
       {
        "playerId": "JPN_17",
        "name": "Yusuke Kawamura",
        "number": 23,
-       "position": null,
-       "onAt": "28:24"
+       "position": null
       },
       {
        "playerId": "JPN_07",
        "name": "Taiki Takade",
        "number": 8,
-       "position": null,
-       "onAt": "44:34"
+       "position": null
       },
       {
        "playerId": "JPN_13",
        "name": "Hiro Saito",
        "number": 16,
-       "position": null,
-       "onAt": "22:58"
+       "position": null
       },
       {
        "playerId": "JPN_06",
        "name": "Naru Kimura",
        "number": 6,
-       "position": null,
-       "onAt": "20:54"
+       "position": null
       },
       {
        "playerId": "JPN_14",
        "name": "Tsubasa Tanaka",
        "number": 18,
-       "position": null,
-       "onAt": "36:53"
+       "position": null
       },
       {
        "playerId": "JPN_21",
        "name": "Jun Watanabe",
        "number": 7,
-       "position": null,
-       "onAt": "38:49"
+       "position": null
       }
      ],
      "team": "JPN",
@@ -15579,7 +15076,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.648423+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -15687,57 +15184,50 @@
        "playerId": "NED_13",
        "name": "Derk Meijer",
        "number": 20,
-       "position": "Goalkeeper",
-       "onAt": "20:56"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
-       "position": null,
-       "onAt": "21:23"
+       "position": null
       },
       {
        "playerId": "NED_11",
        "name": "Floris Wortelboer",
        "number": 16,
-       "position": null,
-       "onAt": "27:59"
+       "position": null
       },
       {
        "playerId": "NED_09",
        "name": "Justen Blok",
        "number": 12,
-       "position": null,
-       "onAt": "45:58"
+       "position": null
       },
       {
        "playerId": "NED_16",
        "name": "Derck de Vilder",
        "number": 14,
-       "position": null,
-       "onAt": "12:02"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Steijn van Heijningen",
        "number": 24,
-       "position": null,
-       "onAt": "21:16"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Floris Middendorp",
        "number": 77,
-       "position": null,
-       "onAt": "14:22"
+       "position": null
       }
      ],
      "team": "NED",
      "coach": "Jeroen Delmee"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -15845,64 +15335,55 @@
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
        "number": 27,
-       "position": "Goalkeeper",
-       "onAt": "32:06"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IND_14",
        "name": "Vivek Sagar Prasad",
        "number": 32,
-       "position": null,
-       "onAt": "22:27"
+       "position": null
       },
       {
        "playerId": "IND_09",
        "name": "Sumit",
        "number": 17,
-       "position": null,
-       "onAt": "42:45"
+       "position": null
       },
       {
        "playerId": "IND_06",
        "name": "Jarmanpreet Singh",
        "number": 4,
-       "position": null,
-       "onAt": "13:12"
+       "position": null
       },
       {
        "playerId": "IND_10",
        "name": "Nilakanta Sharma",
        "number": 18,
-       "position": null,
-       "onAt": "49:10"
+       "position": null
       },
       {
        "playerId": "IND_13",
        "name": "Jugraj Singh",
        "number": 31,
-       "position": null,
-       "onAt": "50:56"
+       "position": null
       },
       {
        "playerId": "IND_20",
        "name": "Shilanand Lakra",
        "number": 99,
-       "position": null,
-       "onAt": "21:59"
+       "position": null
       },
       {
        "playerId": "IND_19",
        "name": "Rajinder Singh",
        "number": 78,
-       "position": null,
-       "onAt": "11:36"
+       "position": null
       },
       {
        "playerId": "IND_16",
        "name": "Yashdeep Siwach",
        "number": 47,
-       "position": null,
-       "onAt": "34:39"
+       "position": null
       }
      ],
      "team": "IND",
@@ -16066,7 +15547,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.648880+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -16174,71 +15655,62 @@
        "playerId": "ENG_11",
        "name": "James Mazarelo",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "50:06"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ENG_17",
        "name": "James Gall",
        "number": 26,
-       "position": null,
-       "onAt": "42:10"
+       "position": null
       },
       {
        "playerId": "ENG_07",
        "name": "Jack Waller",
        "number": 3,
-       "position": null,
-       "onAt": "37:19"
+       "position": null
       },
       {
        "playerId": "ENG_18",
        "name": "Liam Sanford",
        "number": 27,
-       "position": null,
-       "onAt": "28:31"
+       "position": null
       },
       {
        "playerId": "ENG_14",
        "name": "David Goodfield",
        "number": 19,
-       "position": null,
-       "onAt": "37:22"
+       "position": null
       },
       {
        "playerId": "ENG_06",
        "name": "Nicholas Park",
        "number": 2,
-       "position": null,
-       "onAt": "38:28"
+       "position": null
       },
       {
        "playerId": "ENG_13",
        "name": "Timothy Nurse",
        "number": 18,
-       "position": null,
-       "onAt": "32:40"
+       "position": null
       },
       {
        "playerId": "ENG_19",
        "name": "Conor Williamson",
        "number": 30,
-       "position": null,
-       "onAt": "28:33"
+       "position": null
       },
       {
        "playerId": "ENG_05",
        "name": "Ben Fox",
        "number": 47,
-       "position": null,
-       "onAt": "50:05"
+       "position": null
       }
      ],
      "team": "ENG",
      "coach": "Zak Jones"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -16346,57 +15818,49 @@
        "playerId": "ARG_09",
        "name": "Nehuen Hernando",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "50:16"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
        "number": 23,
-       "position": null,
-       "onAt": "14:56"
+       "position": null
       },
       {
        "playerId": "ARG_16",
        "name": "Nicolas Cicileo",
        "number": 26,
-       "position": null,
-       "onAt": "48:25"
+       "position": null
       },
       {
        "playerId": "ARG_19",
        "name": "Thomas Habif",
        "number": 29,
-       "position": null,
-       "onAt": "50:44"
+       "position": null
       },
       {
        "playerId": "ARG_21",
        "name": "Martin Ferreiro",
        "number": 32,
-       "position": null,
-       "onAt": "28:02"
+       "position": null
       },
       {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
-       "position": null,
-       "onAt": "29:46"
+       "position": null
       },
       {
        "playerId": "ARG_18",
        "name": "Ignacio Ibarra",
        "number": 28,
-       "position": null,
-       "onAt": "39:09"
+       "position": null
       },
       {
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "position": null,
-       "onAt": "20:20"
+       "position": null
       }
      ],
      "team": "ARG",
@@ -16592,7 +16056,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.979549+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -16700,71 +16164,62 @@
        "playerId": "MAS_07",
        "name": "Zaimi Mat Deris",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "37:38"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "MAS_11",
        "name": "Norsyafiq Sumantri",
        "number": 22,
-       "position": null,
-       "onAt": "50:41"
+       "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
-       "position": null,
-       "onAt": "49:53"
+       "position": null
       },
       {
        "playerId": "MAS_09",
        "name": "Ashran Hamsani",
        "number": 20,
-       "position": null,
-       "onAt": "43:51"
+       "position": null
       },
       {
        "playerId": "MAS_14",
        "name": "Muhajir Abdu Rauf",
        "number": 26,
-       "position": null,
-       "onAt": "36:52"
+       "position": null
       },
       {
        "playerId": "MAS_15",
        "name": "Shafiq Hassan",
        "number": 27,
-       "position": null,
-       "onAt": "35:06"
+       "position": null
       },
       {
        "playerId": "MAS_17",
        "name": "Faris Harizan",
        "number": 30,
-       "position": null,
-       "onAt": "19:56"
+       "position": null
       },
       {
        "playerId": "MAS_19",
        "name": "Aminuddin Mohd Zain",
        "number": 32,
-       "position": null,
-       "onAt": "18:22"
+       "position": null
       },
       {
        "playerId": "MAS_20",
        "name": "Andywalfian Jeffrynus",
        "number": 35,
-       "position": null,
-       "onAt": "34:41"
+       "position": null
       }
      ],
      "team": "MAS",
      "coach": "Brendon Carolan"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -16872,57 +16327,49 @@
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
-       "position": "Goalkeeper",
-       "onAt": "13:43"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
-       "position": null,
-       "onAt": "49:16"
+       "position": null
       },
       {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "position": null,
-       "onAt": "15:44"
+       "position": null
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
-       "position": null,
-       "onAt": "36:02"
+       "position": null
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
-       "position": null,
-       "onAt": "25:43"
+       "position": null
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
-       "position": null,
-       "onAt": "27:21"
+       "position": null
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "49:59"
+       "position": null
       },
       {
        "playerId": "RSA_15",
        "name": "Damian Knott",
        "number": 26,
-       "position": null,
-       "onAt": "25:19"
+       "position": null
       }
      ],
      "team": "RSA",
@@ -17121,7 +16568,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T14:26:50.827647+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -17229,71 +16676,62 @@
        "playerId": "FRA_15",
        "name": "Marius Clément",
        "number": 23,
-       "position": "Goalkeeper",
-       "onAt": "20:17"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "FRA_04",
        "name": "Brieuc Delemazure",
        "number": 4,
-       "position": null,
-       "onAt": "34:27"
+       "position": null
       },
       {
        "playerId": "FRA_05",
        "name": "Corentin Sellier",
        "number": 6,
-       "position": null,
-       "onAt": "15:39"
+       "position": null
       },
       {
        "playerId": "FRA_10",
        "name": "Benjamin Marqué",
        "number": 13,
-       "position": null,
-       "onAt": "51:42"
+       "position": null
       },
       {
        "playerId": "FRA_07",
        "name": "Xavier Esmenjaud",
        "number": 8,
-       "position": null,
-       "onAt": "32:45"
+       "position": null
       },
       {
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
        "number": 7,
-       "position": null,
-       "onAt": "51:44"
+       "position": null
       },
       {
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
-       "position": null,
-       "onAt": "49:15"
+       "position": null
       },
       {
        "playerId": "FRA_20",
        "name": "Mathis Clément",
        "number": 9,
-       "position": null,
-       "onAt": "24:35"
+       "position": null
       },
       {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
-       "position": null,
-       "onAt": "31:05"
+       "position": null
       }
      ],
      "team": "FRA",
      "coach": "John-John Dohmen"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -17401,50 +16839,43 @@
        "playerId": "IRL_04",
        "name": "Luke Roleston",
        "number": 2,
-       "position": "Goalkeeper",
-       "onAt": "08:14"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IRL_14",
        "name": "Peter Brown",
        "number": 26,
-       "position": null,
-       "onAt": "19:07"
+       "position": null
       },
       {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
-       "position": null,
-       "onAt": "50:16"
+       "position": null
       },
       {
        "playerId": "IRL_09",
        "name": "Mark McNellis",
        "number": 18,
-       "position": null,
-       "onAt": "24:12"
+       "position": null
       },
       {
        "playerId": "IRL_18",
        "name": "Fergus Gibson",
        "number": 39,
-       "position": null,
-       "onAt": "17:40"
+       "position": null
       },
       {
        "playerId": "IRL_16",
        "name": "Louis Rowe",
        "number": 30,
-       "position": null,
-       "onAt": "25:45"
+       "position": null
       },
       {
        "playerId": "IRL_19",
        "name": "Gregory Williams",
        "number": 46,
-       "position": null,
-       "onAt": "16:50"
+       "position": null
       }
      ],
      "team": "IRL",
@@ -17628,7 +17059,7 @@
     "source": "estimated",
     "generated_at": "2026-08-23T17:23:04.977258+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -17736,57 +17167,50 @@
        "playerId": "GER_17",
        "name": "Joshua Onyekwue Nnaji",
        "number": 39,
-       "position": "Goalkeeper",
-       "onAt": "29:48"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "GER_16",
        "name": "Johannes Große",
        "number": 10,
-       "position": null,
-       "onAt": "51:03"
+       "position": null
       },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
        "number": 11,
-       "position": null,
-       "onAt": "23:01"
+       "position": null
       },
       {
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "position": null,
-       "onAt": "17:28"
+       "position": null
       },
       {
        "playerId": "GER_14",
        "name": "Malte Hellwig",
        "number": 29,
-       "position": null,
-       "onAt": "16:04"
+       "position": null
       },
       {
        "playerId": "GER_16",
        "name": "Antheus Barry",
        "number": 38,
-       "position": null,
-       "onAt": "37:42"
+       "position": null
       },
       {
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
-       "position": null,
-       "onAt": "40:29"
+       "position": null
       }
      ],
      "team": "GER",
      "coach": "André Henning"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -17894,64 +17318,55 @@
        "playerId": "AUS_09",
        "name": "Jed Snowden",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "18:07"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
-       "position": null,
-       "onAt": "31:54"
+       "position": null
       },
       {
        "playerId": "AUS_16",
        "name": "James Collins",
        "number": 26,
-       "position": null,
-       "onAt": "31:02"
+       "position": null
       },
       {
        "playerId": "AUS_11",
        "name": "Craig Marais",
        "number": 19,
-       "position": null,
-       "onAt": "42:39"
+       "position": null
       },
       {
        "playerId": "AUS_10",
        "name": "Jayden Atkinson",
        "number": 15,
-       "position": null,
-       "onAt": "41:24"
+       "position": null
       },
       {
        "playerId": "AUS_14",
        "name": "Hayden Beltz",
        "number": 23,
-       "position": null,
-       "onAt": "45:47"
+       "position": null
       },
       {
        "playerId": "AUS_22",
        "name": "Liam Henderson",
        "number": 9,
-       "position": null,
-       "onAt": "26:23"
+       "position": null
       },
       {
        "playerId": "AUS_15",
        "name": "Cambell Geddes",
        "number": 24,
-       "position": null,
-       "onAt": "49:44"
+       "position": null
       },
       {
        "playerId": "AUS_07",
        "name": "Connar Otterbach",
        "number": 8,
-       "position": null,
-       "onAt": "15:52"
+       "position": null
       }
      ],
      "team": "AUS",
@@ -18113,7 +17528,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.981042+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -18221,71 +17636,62 @@
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "25:43"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ESP_12",
        "name": "Pepe Cunill",
        "number": 17,
-       "position": null,
-       "onAt": "19:26"
+       "position": null
       },
       {
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "position": null,
-       "onAt": "11:00"
+       "position": null
       },
       {
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "position": null,
-       "onAt": "39:41"
+       "position": null
       },
       {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
-       "position": null,
-       "onAt": "31:08"
+       "position": null
       },
       {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
-       "position": null,
-       "onAt": "28:04"
+       "position": null
       },
       {
        "playerId": "ESP_13",
        "name": "Pol Cabre Verdiell",
        "number": 22,
-       "position": null,
-       "onAt": "51:07"
+       "position": null
       },
       {
        "playerId": "ESP_18",
        "name": "Ignacio Cobos",
        "number": 62,
-       "position": null,
-       "onAt": "45:31"
+       "position": null
       },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null,
-       "onAt": "24:21"
+       "position": null
       }
      ],
      "team": "ESP",
      "coach": "Max Caldas"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -18393,50 +17799,43 @@
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "34:57"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "BEL_09",
        "name": "Tommy Willems",
        "number": 11,
-       "position": null,
-       "onAt": "28:17"
+       "position": null
       },
       {
        "playerId": "BEL_11",
        "name": "Guillaume Hellin",
        "number": 17,
-       "position": null,
-       "onAt": "11:19"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Thomas Crols",
        "number": 37,
-       "position": null,
-       "onAt": "37:56"
+       "position": null
       },
       {
        "playerId": "BEL_14",
        "name": "Victor Foubert",
        "number": 22,
-       "position": null,
-       "onAt": "27:02"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Lucas Balthazar",
        "number": 6,
-       "position": null,
-       "onAt": "15:30"
+       "position": null
       },
       {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
-       "position": null,
-       "onAt": "28:42"
+       "position": null
       }
      ],
      "team": "BEL",
@@ -18607,7 +18006,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T09:45:21.623825+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -18715,71 +18114,62 @@
        "playerId": "JPN_18",
        "name": "Takumi Kitagawa",
        "number": 29,
-       "position": "Goalkeeper",
-       "onAt": "29:39"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "JPN_15",
        "name": "Ryoma Ooka",
        "number": 19,
-       "position": null,
-       "onAt": "26:37"
+       "position": null
       },
       {
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
        "number": 4,
-       "position": null,
-       "onAt": "45:11"
+       "position": null
       },
       {
        "playerId": "JPN_17",
        "name": "Yusuke Kawamura",
        "number": 23,
-       "position": null,
-       "onAt": "11:40"
+       "position": null
       },
       {
        "playerId": "JPN_07",
        "name": "Taiki Takade",
        "number": 8,
-       "position": null,
-       "onAt": "16:20"
+       "position": null
       },
       {
        "playerId": "JPN_13",
        "name": "Hiro Saito",
        "number": 16,
-       "position": null,
-       "onAt": "09:00"
+       "position": null
       },
       {
        "playerId": "JPN_06",
        "name": "Naru Kimura",
        "number": 6,
-       "position": null,
-       "onAt": "09:52"
+       "position": null
       },
       {
        "playerId": "JPN_14",
        "name": "Tsubasa Tanaka",
        "number": 18,
-       "position": null,
-       "onAt": "17:36"
+       "position": null
       },
       {
        "playerId": "JPN_21",
        "name": "Jun Watanabe",
        "number": 7,
-       "position": null,
-       "onAt": "28:04"
+       "position": null
       }
      ],
      "team": "JPN",
      "coach": "Yoshihiro Anai"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -18887,64 +18277,55 @@
        "playerId": "WAL_15",
        "name": "Rhys Payne",
        "number": 33,
-       "position": "Goalkeeper",
-       "onAt": "36:40"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
-       "position": null,
-       "onAt": "44:04"
+       "position": null
       },
       {
        "playerId": "WAL_02",
        "name": "Alf Dinnie",
        "number": 5,
-       "position": null,
-       "onAt": "10:32"
+       "position": null
       },
       {
        "playerId": "WAL_20",
        "name": "Gareth Griffiths",
        "number": 7,
-       "position": null,
-       "onAt": "17:45"
+       "position": null
       },
       {
        "playerId": "WAL_09",
        "name": "Jack Pritchard",
        "number": 23,
-       "position": null,
-       "onAt": "21:22"
+       "position": null
       },
       {
        "playerId": "WAL_07",
        "name": "Fred Newbold",
        "number": 17,
-       "position": null,
-       "onAt": "39:57"
+       "position": null
       },
       {
        "playerId": "WAL_16",
        "name": "Nicholas Morgan",
        "number": 44,
-       "position": null,
-       "onAt": "16:29"
+       "position": null
       },
       {
        "playerId": "WAL_12",
        "name": "Jonathan Fleck",
        "number": 29,
-       "position": null,
-       "onAt": "42:45"
+       "position": null
       },
       {
        "playerId": "WAL_14",
        "name": "Liam Barker",
        "number": 31,
-       "position": null,
-       "onAt": "35:09"
+       "position": null
       }
      ],
      "team": "WAL",
@@ -19145,7 +18526,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T12:16:31.812352+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -19253,71 +18634,62 @@
        "playerId": "NZL_18",
        "name": "Matthew Ruetsch",
        "number": 40,
-       "position": "Goalkeeper",
-       "onAt": "41:37"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NZL_03",
        "name": "Dane Lett",
        "number": 4,
-       "position": null,
-       "onAt": "45:28"
+       "position": null
       },
       {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
-       "position": null,
-       "onAt": "49:28"
+       "position": null
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
-       "position": null,
-       "onAt": "37:21"
+       "position": null
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
-       "position": null,
-       "onAt": "18:55"
+       "position": null
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "33:51"
+       "position": null
       },
       {
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
        "number": 38,
-       "position": null,
-       "onAt": "29:54"
+       "position": null
       },
       {
        "playerId": "NZL_14",
        "name": "Ryan Parr",
        "number": 35,
-       "position": null,
-       "onAt": "31:32"
+       "position": null
       },
       {
        "playerId": "NZL_11",
        "name": "Bradley Rothwell",
        "number": 25,
-       "position": null,
-       "onAt": "08:00"
+       "position": null
       }
      ],
      "team": "NZL",
      "coach": "Greg Nicol"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -19425,64 +18797,55 @@
        "playerId": "PAK_04",
        "name": "Waqar",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "46:01"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "position": null,
-       "onAt": "12:06"
+       "position": null
       },
       {
        "playerId": "PAK_11",
        "name": "Ghazanfar Ali",
        "number": 15,
-       "position": null,
-       "onAt": "45:18"
+       "position": null
       },
       {
        "playerId": "PAK_08",
        "name": "Zikriya Hayat",
        "number": 10,
-       "position": null,
-       "onAt": "18:33"
+       "position": null
       },
       {
        "playerId": "PAK_10",
        "name": "Ahmad Nadeem",
        "number": 14,
-       "position": null,
-       "onAt": "25:11"
+       "position": null
       },
       {
        "playerId": "PAK_20",
        "name": "Muhammad Ammad",
        "number": 35,
-       "position": null,
-       "onAt": "47:08"
+       "position": null
       },
       {
        "playerId": "PAK_19",
        "name": "Abdul Manan",
        "number": 32,
-       "position": null,
-       "onAt": "14:06"
+       "position": null
       },
       {
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "position": null,
-       "onAt": "09:44"
+       "position": null
       },
       {
        "playerId": "PAK_09",
        "name": "Adeel Latif",
        "number": 13,
-       "position": null,
-       "onAt": "33:31"
+       "position": null
       }
      ],
      "team": "PAK",
@@ -19685,7 +19048,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T14:45:39.008135+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -19793,64 +19156,56 @@
        "playerId": "ARG_09",
        "name": "Nehuen Hernando",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "27:45"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
        "number": 23,
-       "position": null,
-       "onAt": "36:17"
+       "position": null
       },
       {
        "playerId": "ARG_16",
        "name": "Nicolas Cicileo",
        "number": 26,
-       "position": null,
-       "onAt": "34:07"
+       "position": null
       },
       {
        "playerId": "ARG_19",
        "name": "Thomas Habif",
        "number": 29,
-       "position": null,
-       "onAt": "37:21"
+       "position": null
       },
       {
        "playerId": "ARG_21",
        "name": "Martin Ferreiro",
        "number": 32,
-       "position": null,
-       "onAt": "37:00"
+       "position": null
       },
       {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
-       "position": null,
-       "onAt": "33:44"
+       "position": null
       },
       {
        "playerId": "ARG_18",
        "name": "Ignacio Ibarra",
        "number": 28,
-       "position": null,
-       "onAt": "30:44"
+       "position": null
       },
       {
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "position": null,
-       "onAt": "26:18"
+       "position": null
       }
      ],
      "team": "ARG",
      "coach": "Lucas Rey"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -19958,64 +19313,55 @@
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
        "number": 27,
-       "position": "Goalkeeper",
-       "onAt": "49:24"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IND_14",
        "name": "Vivek Sagar Prasad",
        "number": 32,
-       "position": null,
-       "onAt": "19:47"
+       "position": null
       },
       {
        "playerId": "IND_09",
        "name": "Sumit",
        "number": 17,
-       "position": null,
-       "onAt": "51:58"
+       "position": null
       },
       {
        "playerId": "IND_06",
        "name": "Jarmanpreet Singh",
        "number": 4,
-       "position": null,
-       "onAt": "22:18"
+       "position": null
       },
       {
        "playerId": "IND_10",
        "name": "Nilakanta Sharma",
        "number": 18,
-       "position": null,
-       "onAt": "45:51"
+       "position": null
       },
       {
        "playerId": "IND_13",
        "name": "Jugraj Singh",
        "number": 31,
-       "position": null,
-       "onAt": "48:02"
+       "position": null
       },
       {
        "playerId": "IND_20",
        "name": "Shilanand Lakra",
        "number": 99,
-       "position": null,
-       "onAt": "25:54"
+       "position": null
       },
       {
        "playerId": "IND_19",
        "name": "Rajinder Singh",
        "number": 78,
-       "position": null,
-       "onAt": "28:31"
+       "position": null
       },
       {
        "playerId": "IND_16",
        "name": "Yashdeep Siwach",
        "number": 47,
-       "position": null,
-       "onAt": "08:18"
+       "position": null
       }
      ],
      "team": "IND",
@@ -20208,7 +19554,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.652449+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -20316,57 +19662,50 @@
        "playerId": "NED_13",
        "name": "Derk Meijer",
        "number": 20,
-       "position": "Goalkeeper",
-       "onAt": "51:16"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
-       "position": null,
-       "onAt": "15:13"
+       "position": null
       },
       {
        "playerId": "NED_11",
        "name": "Floris Wortelboer",
        "number": 16,
-       "position": null,
-       "onAt": "46:27"
+       "position": null
       },
       {
        "playerId": "NED_09",
        "name": "Justen Blok",
        "number": 12,
-       "position": null,
-       "onAt": "14:31"
+       "position": null
       },
       {
        "playerId": "NED_16",
        "name": "Derck de Vilder",
        "number": 14,
-       "position": null,
-       "onAt": "39:27"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Steijn van Heijningen",
        "number": 24,
-       "position": null,
-       "onAt": "48:03"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Floris Middendorp",
        "number": 77,
-       "position": null,
-       "onAt": "11:55"
+       "position": null
       }
      ],
      "team": "NED",
      "coach": "Jeroen Delmee"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -20474,64 +19813,55 @@
        "playerId": "ENG_11",
        "name": "James Mazarelo",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "27:42"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ENG_17",
        "name": "James Gall",
        "number": 26,
-       "position": null,
-       "onAt": "37:46"
+       "position": null
       },
       {
        "playerId": "ENG_07",
        "name": "Jack Waller",
        "number": 3,
-       "position": null,
-       "onAt": "28:21"
+       "position": null
       },
       {
        "playerId": "ENG_18",
        "name": "Liam Sanford",
        "number": 27,
-       "position": null,
-       "onAt": "20:10"
+       "position": null
       },
       {
        "playerId": "ENG_14",
        "name": "David Goodfield",
        "number": 19,
-       "position": null,
-       "onAt": "35:43"
+       "position": null
       },
       {
        "playerId": "ENG_06",
        "name": "Nicholas Park",
        "number": 2,
-       "position": null,
-       "onAt": "27:14"
+       "position": null
       },
       {
        "playerId": "ENG_13",
        "name": "Timothy Nurse",
        "number": 18,
-       "position": null,
-       "onAt": "27:46"
+       "position": null
       },
       {
        "playerId": "ENG_19",
        "name": "Conor Williamson",
        "number": 30,
-       "position": null,
-       "onAt": "25:47"
+       "position": null
       },
       {
        "playerId": "ENG_05",
        "name": "Ben Fox",
        "number": 47,
-       "position": null,
-       "onAt": "08:41"
+       "position": null
       }
      ],
      "team": "ENG",
@@ -20665,7 +19995,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.983439+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -20773,71 +20103,62 @@
        "playerId": "JPN_18",
        "name": "Takumi Kitagawa",
        "number": 29,
-       "position": "Goalkeeper",
-       "onAt": "41:50"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "JPN_15",
        "name": "Ryoma Ooka",
        "number": 19,
-       "position": null,
-       "onAt": "34:29"
+       "position": null
       },
       {
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
        "number": 4,
-       "position": null,
-       "onAt": "41:54"
+       "position": null
       },
       {
        "playerId": "JPN_17",
        "name": "Yusuke Kawamura",
        "number": 23,
-       "position": null,
-       "onAt": "28:53"
+       "position": null
       },
       {
        "playerId": "JPN_07",
        "name": "Taiki Takade",
        "number": 8,
-       "position": null,
-       "onAt": "34:04"
+       "position": null
       },
       {
        "playerId": "JPN_13",
        "name": "Hiro Saito",
        "number": 16,
-       "position": null,
-       "onAt": "38:02"
+       "position": null
       },
       {
        "playerId": "JPN_06",
        "name": "Naru Kimura",
        "number": 6,
-       "position": null,
-       "onAt": "10:31"
+       "position": null
       },
       {
        "playerId": "JPN_14",
        "name": "Tsubasa Tanaka",
        "number": 18,
-       "position": null,
-       "onAt": "23:11"
+       "position": null
       },
       {
        "playerId": "JPN_21",
        "name": "Jun Watanabe",
        "number": 7,
-       "position": null,
-       "onAt": "49:27"
+       "position": null
       }
      ],
      "team": "JPN",
      "coach": "Yoshihiro Anai"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -20945,64 +20266,55 @@
        "playerId": "FRA_15",
        "name": "Marius Clément",
        "number": 23,
-       "position": "Goalkeeper",
-       "onAt": "17:26"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "FRA_04",
        "name": "Brieuc Delemazure",
        "number": 4,
-       "position": null,
-       "onAt": "35:13"
+       "position": null
       },
       {
        "playerId": "FRA_05",
        "name": "Corentin Sellier",
        "number": 6,
-       "position": null,
-       "onAt": "40:06"
+       "position": null
       },
       {
        "playerId": "FRA_10",
        "name": "Benjamin Marqué",
        "number": 13,
-       "position": null,
-       "onAt": "22:39"
+       "position": null
       },
       {
        "playerId": "FRA_07",
        "name": "Xavier Esmenjaud",
        "number": 8,
-       "position": null,
-       "onAt": "49:02"
+       "position": null
       },
       {
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
        "number": 7,
-       "position": null,
-       "onAt": "49:05"
+       "position": null
       },
       {
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
-       "position": null,
-       "onAt": "10:43"
+       "position": null
       },
       {
        "playerId": "FRA_20",
        "name": "Mathis Clément",
        "number": 9,
-       "position": null,
-       "onAt": "43:54"
+       "position": null
       },
       {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
-       "position": null,
-       "onAt": "32:28"
+       "position": null
       }
      ],
      "team": "FRA",
@@ -21036,7 +20348,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.983820+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -21144,71 +20456,62 @@
        "playerId": "WAL_15",
        "name": "Rhys Payne",
        "number": 33,
-       "position": "Goalkeeper",
-       "onAt": "41:32"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
-       "position": null,
-       "onAt": "19:25"
+       "position": null
       },
       {
        "playerId": "WAL_02",
        "name": "Alf Dinnie",
        "number": 5,
-       "position": null,
-       "onAt": "10:10"
+       "position": null
       },
       {
        "playerId": "WAL_20",
        "name": "Gareth Griffiths",
        "number": 7,
-       "position": null,
-       "onAt": "12:06"
+       "position": null
       },
       {
        "playerId": "WAL_09",
        "name": "Jack Pritchard",
        "number": 23,
-       "position": null,
-       "onAt": "48:43"
+       "position": null
       },
       {
        "playerId": "WAL_07",
        "name": "Fred Newbold",
        "number": 17,
-       "position": null,
-       "onAt": "09:53"
+       "position": null
       },
       {
        "playerId": "WAL_16",
        "name": "Nicholas Morgan",
        "number": 44,
-       "position": null,
-       "onAt": "26:51"
+       "position": null
       },
       {
        "playerId": "WAL_12",
        "name": "Jonathan Fleck",
        "number": 29,
-       "position": null,
-       "onAt": "08:18"
+       "position": null
       },
       {
        "playerId": "WAL_14",
        "name": "Liam Barker",
        "number": 31,
-       "position": null,
-       "onAt": "25:39"
+       "position": null
       }
      ],
      "team": "WAL",
      "coach": "Daniel Newcombe"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -21316,64 +20619,55 @@
        "playerId": "MAS_07",
        "name": "Zaimi Mat Deris",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "08:42"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "MAS_11",
        "name": "Norsyafiq Sumantri",
        "number": 22,
-       "position": null,
-       "onAt": "47:50"
+       "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
-       "position": null,
-       "onAt": "40:56"
+       "position": null
       },
       {
        "playerId": "MAS_09",
        "name": "Ashran Hamsani",
        "number": 20,
-       "position": null,
-       "onAt": "15:34"
+       "position": null
       },
       {
        "playerId": "MAS_14",
        "name": "Muhajir Abdu Rauf",
        "number": 26,
-       "position": null,
-       "onAt": "24:02"
+       "position": null
       },
       {
        "playerId": "MAS_15",
        "name": "Shafiq Hassan",
        "number": 27,
-       "position": null,
-       "onAt": "41:53"
+       "position": null
       },
       {
        "playerId": "MAS_17",
        "name": "Faris Harizan",
        "number": 30,
-       "position": null,
-       "onAt": "29:02"
+       "position": null
       },
       {
        "playerId": "MAS_19",
        "name": "Aminuddin Mohd Zain",
        "number": 32,
-       "position": null,
-       "onAt": "12:17"
+       "position": null
       },
       {
        "playerId": "MAS_20",
        "name": "Andywalfian Jeffrynus",
        "number": 35,
-       "position": null,
-       "onAt": "29:02"
+       "position": null
       }
      ],
      "team": "MAS",
@@ -21407,7 +20701,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.984169+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -21515,71 +20809,62 @@
        "playerId": "PAK_04",
        "name": "Waqar",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "24:33"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "position": null,
-       "onAt": "51:46"
+       "position": null
       },
       {
        "playerId": "PAK_11",
        "name": "Ghazanfar Ali",
        "number": 15,
-       "position": null,
-       "onAt": "45:13"
+       "position": null
       },
       {
        "playerId": "PAK_08",
        "name": "Zikriya Hayat",
        "number": 10,
-       "position": null,
-       "onAt": "16:55"
+       "position": null
       },
       {
        "playerId": "PAK_10",
        "name": "Ahmad Nadeem",
        "number": 14,
-       "position": null,
-       "onAt": "09:22"
+       "position": null
       },
       {
        "playerId": "PAK_20",
        "name": "Muhammad Ammad",
        "number": 35,
-       "position": null,
-       "onAt": "33:27"
+       "position": null
       },
       {
        "playerId": "PAK_19",
        "name": "Abdul Manan",
        "number": 32,
-       "position": null,
-       "onAt": "15:06"
+       "position": null
       },
       {
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "position": null,
-       "onAt": "45:54"
+       "position": null
       },
       {
        "playerId": "PAK_09",
        "name": "Adeel Latif",
        "number": 13,
-       "position": null,
-       "onAt": "08:43"
+       "position": null
       }
      ],
      "team": "PAK",
      "coach": "Bob Veldhof"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -21687,57 +20972,49 @@
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
-       "position": "Goalkeeper",
-       "onAt": "27:18"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "RSA_04",
        "name": "Calvin Davis",
        "number": 4,
-       "position": null,
-       "onAt": "45:17"
+       "position": null
       },
       {
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "position": null,
-       "onAt": "34:02"
+       "position": null
       },
       {
        "playerId": "RSA_19",
        "name": "Ayakha Mthalane",
        "number": 32,
-       "position": null,
-       "onAt": "50:48"
+       "position": null
       },
       {
        "playerId": "RSA_10",
        "name": "Carlon Mentoor",
        "number": 15,
-       "position": null,
-       "onAt": "23:06"
+       "position": null
       },
       {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
-       "position": null,
-       "onAt": "51:01"
+       "position": null
       },
       {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "position": null,
-       "onAt": "13:46"
+       "position": null
       },
       {
        "playerId": "RSA_15",
        "name": "Damian Knott",
        "number": 26,
-       "position": null,
-       "onAt": "48:35"
+       "position": null
       }
      ],
      "team": "RSA",
@@ -21771,7 +21048,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T15:41:50.984529+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -21879,71 +21156,62 @@
        "playerId": "NZL_18",
        "name": "Matthew Ruetsch",
        "number": 40,
-       "position": "Goalkeeper",
-       "onAt": "40:53"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NZL_03",
        "name": "Dane Lett",
        "number": 4,
-       "position": null,
-       "onAt": "28:17"
+       "position": null
       },
       {
        "playerId": "NZL_06",
        "name": "Aidan Sarikaya",
        "number": 16,
-       "position": null,
-       "onAt": "30:36"
+       "position": null
       },
       {
        "playerId": "NZL_08",
        "name": "Joseph Morrison",
        "number": 19,
-       "position": null,
-       "onAt": "47:59"
+       "position": null
       },
       {
        "playerId": "NZL_15",
        "name": "Isaac Houlbrooke",
        "number": 37,
-       "position": null,
-       "onAt": "32:25"
+       "position": null
       },
       {
        "playerId": "NZL_05",
        "name": "Simon Yorston",
        "number": 13,
-       "position": null,
-       "onAt": "21:42"
+       "position": null
       },
       {
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
        "number": 38,
-       "position": null,
-       "onAt": "22:51"
+       "position": null
       },
       {
        "playerId": "NZL_14",
        "name": "Ryan Parr",
        "number": 35,
-       "position": null,
-       "onAt": "20:12"
+       "position": null
       },
       {
        "playerId": "NZL_11",
        "name": "Bradley Rothwell",
        "number": 25,
-       "position": null,
-       "onAt": "34:43"
+       "position": null
       }
      ],
      "team": "NZL",
      "coach": "Greg Nicol"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -22051,50 +21319,43 @@
        "playerId": "IRL_04",
        "name": "Luke Roleston",
        "number": 2,
-       "position": "Goalkeeper",
-       "onAt": "18:39"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IRL_14",
        "name": "Peter Brown",
        "number": 26,
-       "position": null,
-       "onAt": "25:22"
+       "position": null
       },
       {
        "playerId": "IRL_05",
        "name": "Luke Witherow",
        "number": 4,
-       "position": null,
-       "onAt": "14:51"
+       "position": null
       },
       {
        "playerId": "IRL_09",
        "name": "Mark McNellis",
        "number": 18,
-       "position": null,
-       "onAt": "24:19"
+       "position": null
       },
       {
        "playerId": "IRL_18",
        "name": "Fergus Gibson",
        "number": 39,
-       "position": null,
-       "onAt": "20:19"
+       "position": null
       },
       {
        "playerId": "IRL_16",
        "name": "Louis Rowe",
        "number": 30,
-       "position": null,
-       "onAt": "24:10"
+       "position": null
       },
       {
        "playerId": "IRL_19",
        "name": "Gregory Williams",
        "number": 46,
-       "position": null,
-       "onAt": "28:22"
+       "position": null
       }
      ],
      "team": "IRL",
@@ -22128,7 +21389,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.654667+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -22236,71 +21497,62 @@
        "playerId": "ENG_11",
        "name": "James Mazarelo",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "35:47"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ENG_17",
        "name": "James Gall",
        "number": 26,
-       "position": null,
-       "onAt": "31:12"
+       "position": null
       },
       {
        "playerId": "ENG_07",
        "name": "Jack Waller",
        "number": 3,
-       "position": null,
-       "onAt": "28:13"
+       "position": null
       },
       {
        "playerId": "ENG_18",
        "name": "Liam Sanford",
        "number": 27,
-       "position": null,
-       "onAt": "18:05"
+       "position": null
       },
       {
        "playerId": "ENG_14",
        "name": "David Goodfield",
        "number": 19,
-       "position": null,
-       "onAt": "49:07"
+       "position": null
       },
       {
        "playerId": "ENG_06",
        "name": "Nicholas Park",
        "number": 2,
-       "position": null,
-       "onAt": "29:54"
+       "position": null
       },
       {
        "playerId": "ENG_13",
        "name": "Timothy Nurse",
        "number": 18,
-       "position": null,
-       "onAt": "25:16"
+       "position": null
       },
       {
        "playerId": "ENG_19",
        "name": "Conor Williamson",
        "number": 30,
-       "position": null,
-       "onAt": "46:53"
+       "position": null
       },
       {
        "playerId": "ENG_05",
        "name": "Ben Fox",
        "number": 47,
-       "position": null,
-       "onAt": "39:12"
+       "position": null
       }
      ],
      "team": "ENG",
      "coach": "Zak Jones"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -22408,64 +21660,55 @@
        "playerId": "AUS_09",
        "name": "Jed Snowden",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "38:18"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "AUS_13",
        "name": "Jack Welch",
        "number": 21,
-       "position": null,
-       "onAt": "35:33"
+       "position": null
       },
       {
        "playerId": "AUS_16",
        "name": "James Collins",
        "number": 26,
-       "position": null,
-       "onAt": "36:00"
+       "position": null
       },
       {
        "playerId": "AUS_11",
        "name": "Craig Marais",
        "number": 19,
-       "position": null,
-       "onAt": "29:40"
+       "position": null
       },
       {
        "playerId": "AUS_10",
        "name": "Jayden Atkinson",
        "number": 15,
-       "position": null,
-       "onAt": "37:08"
+       "position": null
       },
       {
        "playerId": "AUS_14",
        "name": "Hayden Beltz",
        "number": 23,
-       "position": null,
-       "onAt": "43:31"
+       "position": null
       },
       {
        "playerId": "AUS_22",
        "name": "Liam Henderson",
        "number": 9,
-       "position": null,
-       "onAt": "26:39"
+       "position": null
       },
       {
        "playerId": "AUS_15",
        "name": "Cambell Geddes",
        "number": 24,
-       "position": null,
-       "onAt": "46:16"
+       "position": null
       },
       {
        "playerId": "AUS_07",
        "name": "Connar Otterbach",
        "number": 8,
-       "position": null,
-       "onAt": "46:02"
+       "position": null
       }
      ],
      "team": "AUS",
@@ -22498,7 +21741,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.655019+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -22606,71 +21849,62 @@
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
        "number": 27,
-       "position": "Goalkeeper",
-       "onAt": "40:06"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "IND_14",
        "name": "Vivek Sagar Prasad",
        "number": 32,
-       "position": null,
-       "onAt": "28:51"
+       "position": null
       },
       {
        "playerId": "IND_09",
        "name": "Sumit",
        "number": 17,
-       "position": null,
-       "onAt": "16:07"
+       "position": null
       },
       {
        "playerId": "IND_06",
        "name": "Jarmanpreet Singh",
        "number": 4,
-       "position": null,
-       "onAt": "37:12"
+       "position": null
       },
       {
        "playerId": "IND_10",
        "name": "Nilakanta Sharma",
        "number": 18,
-       "position": null,
-       "onAt": "10:57"
+       "position": null
       },
       {
        "playerId": "IND_13",
        "name": "Jugraj Singh",
        "number": 31,
-       "position": null,
-       "onAt": "09:07"
+       "position": null
       },
       {
        "playerId": "IND_20",
        "name": "Shilanand Lakra",
        "number": 99,
-       "position": null,
-       "onAt": "29:17"
+       "position": null
       },
       {
        "playerId": "IND_19",
        "name": "Rajinder Singh",
        "number": 78,
-       "position": null,
-       "onAt": "10:30"
+       "position": null
       },
       {
        "playerId": "IND_16",
        "name": "Yashdeep Siwach",
        "number": 47,
-       "position": null,
-       "onAt": "09:19"
+       "position": null
       }
      ],
      "team": "IND",
      "coach": "Craig Fulton"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -22778,50 +22012,43 @@
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
        "number": 1,
-       "position": "Goalkeeper",
-       "onAt": "18:40"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "BEL_09",
        "name": "Tommy Willems",
        "number": 11,
-       "position": null,
-       "onAt": "42:42"
+       "position": null
       },
       {
        "playerId": "BEL_11",
        "name": "Guillaume Hellin",
        "number": 17,
-       "position": null,
-       "onAt": "13:29"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Thomas Crols",
        "number": 37,
-       "position": null,
-       "onAt": "24:33"
+       "position": null
       },
       {
        "playerId": "BEL_14",
        "name": "Victor Foubert",
        "number": 22,
-       "position": null,
-       "onAt": "34:30"
+       "position": null
       },
       {
        "playerId": "BEL_20",
        "name": "Lucas Balthazar",
        "number": 6,
-       "position": null,
-       "onAt": "15:46"
+       "position": null
       },
       {
        "playerId": "BEL_13",
        "name": "Hugo Labouchere",
        "number": 19,
-       "position": null,
-       "onAt": "41:18"
+       "position": null
       }
      ],
      "team": "BEL",
@@ -22854,7 +22081,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.655354+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -22962,57 +22189,50 @@
        "playerId": "NED_13",
        "name": "Derk Meijer",
        "number": 20,
-       "position": "Goalkeeper",
-       "onAt": "41:23"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "NED_15",
        "name": "Jonas de Geus",
        "number": 6,
-       "position": null,
-       "onAt": "14:14"
+       "position": null
       },
       {
        "playerId": "NED_11",
        "name": "Floris Wortelboer",
        "number": 16,
-       "position": null,
-       "onAt": "40:16"
+       "position": null
       },
       {
        "playerId": "NED_09",
        "name": "Justen Blok",
        "number": 12,
-       "position": null,
-       "onAt": "51:51"
+       "position": null
       },
       {
        "playerId": "NED_16",
        "name": "Derck de Vilder",
        "number": 14,
-       "position": null,
-       "onAt": "35:17"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Steijn van Heijningen",
        "number": 24,
-       "position": null,
-       "onAt": "14:58"
+       "position": null
       },
       {
        "playerId": "NED_19",
        "name": "Floris Middendorp",
        "number": 77,
-       "position": null,
-       "onAt": "23:36"
+       "position": null
       }
      ],
      "team": "NED",
      "coach": "Jeroen Delmee"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -23120,64 +22340,55 @@
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
        "number": 16,
-       "position": "Goalkeeper",
-       "onAt": "47:41"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ESP_12",
        "name": "Pepe Cunill",
        "number": 17,
-       "position": null,
-       "onAt": "15:45"
+       "position": null
       },
       {
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "position": null,
-       "onAt": "42:19"
+       "position": null
       },
       {
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "position": null,
-       "onAt": "36:28"
+       "position": null
       },
       {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
-       "position": null,
-       "onAt": "19:59"
+       "position": null
       },
       {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
-       "position": null,
-       "onAt": "50:46"
+       "position": null
       },
       {
        "playerId": "ESP_13",
        "name": "Pol Cabre Verdiell",
        "number": 22,
-       "position": null,
-       "onAt": "38:16"
+       "position": null
       },
       {
        "playerId": "ESP_18",
        "name": "Ignacio Cobos",
        "number": 62,
-       "position": null,
-       "onAt": "19:21"
+       "position": null
       },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null,
-       "onAt": "46:07"
+       "position": null
       }
      ],
      "team": "ESP",
@@ -23210,7 +22421,7 @@
     "source": "estimated",
     "generated_at": "2026-08-24T19:26:08.655681+00:00",
     "home": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -23318,57 +22529,50 @@
        "playerId": "GER_17",
        "name": "Joshua Onyekwue Nnaji",
        "number": 39,
-       "position": "Goalkeeper",
-       "onAt": "26:04"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "GER_16",
        "name": "Johannes Große",
        "number": 10,
-       "position": null,
-       "onAt": "13:52"
+       "position": null
       },
       {
        "playerId": "GER_22",
        "name": "Thies Prinz",
        "number": 11,
-       "position": null,
-       "onAt": "45:36"
+       "position": null
       },
       {
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "position": null,
-       "onAt": "36:37"
+       "position": null
       },
       {
        "playerId": "GER_14",
        "name": "Malte Hellwig",
        "number": 29,
-       "position": null,
-       "onAt": "24:47"
+       "position": null
       },
       {
        "playerId": "GER_16",
        "name": "Antheus Barry",
        "number": 38,
-       "position": null,
-       "onAt": "37:37"
+       "position": null
       },
       {
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
-       "position": null,
-       "onAt": "51:51"
+       "position": null
       }
      ],
      "team": "GER",
      "coach": "André Henning"
     },
     "away": {
-     "formation": "4-3-3",
+     "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
       {
@@ -23476,57 +22680,49 @@
        "playerId": "ARG_09",
        "name": "Nehuen Hernando",
        "number": 12,
-       "position": "Goalkeeper",
-       "onAt": "09:17"
+       "position": "Goalkeeper"
       },
       {
        "playerId": "ARG_15",
        "name": "Lucas Martinez",
        "number": 23,
-       "position": null,
-       "onAt": "49:21"
+       "position": null
       },
       {
        "playerId": "ARG_16",
        "name": "Nicolas Cicileo",
        "number": 26,
-       "position": null,
-       "onAt": "29:27"
+       "position": null
       },
       {
        "playerId": "ARG_19",
        "name": "Thomas Habif",
        "number": 29,
-       "position": null,
-       "onAt": "50:42"
+       "position": null
       },
       {
        "playerId": "ARG_21",
        "name": "Martin Ferreiro",
        "number": 32,
-       "position": null,
-       "onAt": "44:05"
+       "position": null
       },
       {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
-       "position": null,
-       "onAt": "11:50"
+       "position": null
       },
       {
        "playerId": "ARG_18",
        "name": "Ignacio Ibarra",
        "number": 28,
-       "position": null,
-       "onAt": "08:39"
+       "position": null
       },
       {
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "position": null,
-       "onAt": "47:58"
+       "position": null
       }
      ],
      "team": "ARG",
