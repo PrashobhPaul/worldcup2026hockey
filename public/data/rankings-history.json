@@ -1,12 +1,12 @@
 {
   "source": "this repository: every world-ranking table the data pipeline committed, read back out of git",
   "note": "The FIH table is live — a match moves both nations' points — so a finished match must be replayed with the snapshot that stood before its push-back, not today's. The first entry is the baseline the convergence feature measures from; matches played before it carry no convergence signal.",
-  "frozen_at": "2026-08-24T01:26:22.640535+00:00",
+  "frozen_at": "2026-08-25T01:23:40.211346+00:00",
   "frozen": {
-    "NED": 3744.02,
-    "ARG": 3410.97,
-    "NZL": 2802.59,
-    "JPN": 2247.36,
+    "NED": 3731.83,
+    "ARG": 3486.84,
+    "NZL": 2880.93,
+    "JPN": 2357.83,
     "BEL": 3671.8,
     "FRA": 2784.56,
     "GER": 3530.72,
@@ -15,19 +15,19 @@
     "ESP": 3437.73,
     "IRL": 2730.51,
     "RSA": 2585.34,
-    "IND": 3169.65,
-    "ENG": 3525.42,
-    "PAK": 2586.06,
-    "WAL": 2352.03
+    "IND": 3093.78,
+    "ENG": 3537.61,
+    "PAK": 2507.71,
+    "WAL": 2241.56
   },
   "snapshots": [
     {
-      "at": "2026-08-24T01:26:22.640535+00:00",
+      "at": "2026-08-25T01:23:40.211346+00:00",
       "points": {
-        "NED": 3744.02,
-        "ARG": 3410.97,
-        "NZL": 2802.59,
-        "JPN": 2247.36,
+        "NED": 3731.83,
+        "ARG": 3486.84,
+        "NZL": 2880.93,
+        "JPN": 2357.83,
         "BEL": 3671.8,
         "FRA": 2784.56,
         "GER": 3530.72,
@@ -36,10 +36,10 @@
         "ESP": 3437.73,
         "IRL": 2730.51,
         "RSA": 2585.34,
-        "IND": 3169.65,
-        "ENG": 3525.42,
-        "PAK": 2586.06,
-        "WAL": 2352.03
+        "IND": 3093.78,
+        "ENG": 3537.61,
+        "PAK": 2507.71,
+        "WAL": 2241.56
       }
     }
   ]
