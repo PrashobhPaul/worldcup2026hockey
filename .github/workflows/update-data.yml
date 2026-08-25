@@ -284,4 +284,5 @@ jobs:
         run: |
           python scripts/probe_lineups.py || true
           python scripts/probe_appapi.py || true
-          python scripts/probe_reports.py
+          python scripts/probe_reports.py || true
+          python scripts/probe_sheets.py
