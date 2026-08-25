@@ -23,8 +23,9 @@ than guessed at.
 """
 import re
 
-MARKER = r'(?:X|\d{1,2})?'
-CARD_TAIL = re.compile(r'(?:\s+\d)*\s*$')
+# The minute a player came on. "15+" is a substitution in the time added to a
+# quarter, and the report writes it exactly that way.
+MINUTE = re.compile(r'^(\d{1,2})\+?$')
 
 
 def pdf_name_key(name):
@@ -46,9 +47,11 @@ def _entry(tokens, squad_by_number):
     if i < len(tokens) and tokens[i] == 'X':
         started = True
         i += 1
-    elif i + 1 < len(tokens) and tokens[i].isdigit() and tokens[i + 1].isdigit():
+    elif (i + 1 < len(tokens) and MINUTE.match(tokens[i])
+            and tokens[i + 1].isdigit()):
         # A leading number is the minute only when a shirt number follows it.
-        minute = int(tokens[i])
+        # It may carry a "+": a substitution in a quarter's added time.
+        minute = int(MINUTE.match(tokens[i]).group(1))
         i += 1
     if i >= len(tokens) or not tokens[i].isdigit():
         return None
@@ -99,7 +102,13 @@ def split_row(line, home_by_number, away_by_number):
     # leaves tokens behind has mis-split it.
     for start in range(used, len(tokens)):
         away = _entry(tokens[start:], away_by_number)
-        if away and start + away[1] == len(tokens):
+        if not away:
+            continue
+        # What follows the away player's name is the card columns, and they
+        # hold the minute a card was shown — "GOYET François (C) 26" — so a
+        # row is fully accounted for when nothing but numbers is left over.
+        rest = tokens[start + away[1]:]
+        if all(t.isdigit() for t in rest):
             return home[0], away[0]
     return None
 
@@ -137,7 +146,7 @@ def parse(lines, home_squad, away_squad, on_reject=None):
                 continue
             # Card counts trail the name; they are read from the competition
             # report instead, which states them per player without ambiguity.
-            row = CARD_TAIL.sub('', line)
+            row = line
             pair = split_row(row, home_by_number, away_by_number)
             if pair:
                 rows_home.append(pair[0])
