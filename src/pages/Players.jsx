@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { goalSplit, splitText } from '../engine/goalSplit.js'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Link } from 'react-router-dom'
 import RatingBreakdown from '../components/RatingBreakdown'
@@ -52,7 +53,7 @@ export default function PlayersPage() {
                 <span className="w-5 text-center font-mono text-xs font-bold text-brand">{i + 1}</span>
                 <span className="text-lg">{byCode.get(p.team)?.flag ?? '🏑'}</span>
                 <span className="flex-1 text-sm font-semibold">{p.name}</span>
-                <span className="font-mono text-xs text-pitch-300">{p.goals}G · {p.pc_scored} PC</span>
+                <span className="font-mono text-xs text-pitch-300">{p.goals}G{splitText(p) ? ` · ${splitText(p)}` : ''}</span>
               </div>
             ))}
           </div>
@@ -109,8 +110,15 @@ export default function PlayersPage() {
                   <span className="rounded bg-sky-400/10 px-1.5 py-0.5 font-bold text-sky-300" title="FIH player world ranking">World #{p.world_rank}</span>
                 )}
                 <span className={`rounded px-1.5 py-0.5 ${p.goals > 0 ? 'bg-brand/10 text-brand' : 'bg-pitch-700 text-pitch-300'}`}>⚡ {p.goals}G</span>
-                <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">{p.pc_scored} PC</span>
-                {p.yellow_cards > 0 && <span className="rounded bg-yellow-400/10 px-1.5 py-0.5 text-yellow-400">🟨 {p.yellow_cards}</span>}
+                {/* How they were scored, the way the FIH splits them, and only
+                    the methods he actually scored by. */}
+                {goalSplit(p).map(m => (
+                  <span key={m.key} title={m.label}
+                    className="rounded bg-pitch-700 px-1.5 py-0.5 text-pitch-300">{m.value} {m.short}</span>
+                ))}
+                {p.yellow_cards > 0 && <span className="rounded bg-yellow-400/10 px-1.5 py-0.5 text-yellow-400" title="Yellow cards">🟨 {p.yellow_cards}</span>}
+                {p.green_cards > 0 && <span className="rounded bg-emerald-400/10 px-1.5 py-0.5 text-emerald-300" title="Green cards">🟩 {p.green_cards}</span>}
+                {p.red_cards > 0 && <span className="rounded bg-red-500/10 px-1.5 py-0.5 text-red-400" title="Red cards">🟥 {p.red_cards}</span>}
               </div>
               {open && (
                 <div className="mt-2.5">

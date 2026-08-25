@@ -1716,6 +1716,140 @@ def parse_rankings_text(lines):
             return None
     return rows
 
+def _pdf_word_rows(pdf_bytes):
+    """The PDF as it is printed: one list per line of (text, x0, x1).
+
+    Text extraction drops empty cells, so a statistics table read as lines of
+    text loses which column a lone number sat under. The coordinates keep it.
+    """
+    try:
+        import pdfplumber
+    except ImportError:
+        return []
+    rows = []
+    try:
+        with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+            for page in pdf.pages:
+                words = sorted(page.extract_words(use_text_flow=False,
+                                                  keep_blank_chars=False),
+                               key=lambda w: (round(w['top'], 1), w['x0']))
+                line, top = [], None
+                for w in words:
+                    if top is not None and abs(w['top'] - top) > 4:
+                        rows.append(line)
+                        line = []
+                    line.append((w['text'], w['x0'], w['x1']))
+                    top = w['top'] if top is None or abs(w['top'] - top) > 4 else top
+                if line:
+                    rows.append(line)
+    except Exception as e:
+        print(f'  TMS pdf word parse failed: {e}')
+    return rows
+
+
+def fetch_individual_stats(players_doc):
+    """Check every player figure this app publishes against the FIH's own.
+
+    The governing body publishes two individual statistics tables for its own
+    tournament — goals split field/corner/stroke, and cards split red/yellow/
+    green. Everything here is derived instead, from the per-match reports, and
+    the two happen to agree exactly today: 114 field, 76 corner, 11 stroke, and
+    0 red, 20 yellow, 83 green, player by player.
+
+    Agreeing today is not the same as staying in agreement, and a number that
+    drifts is indistinguishable from one that is right unless something is
+    checking. So the tables are fetched every run and reconciled against the
+    record, name by name, and any disagreement is printed with both figures.
+    Neither table is copied over the record: the derived figures carry the
+    minute a goal was scored and the match it belongs to, which a competition
+    summary cannot, and a record that agrees is not improved by replacing it.
+
+    What is written is the fact of the check — which report, read on which
+    day, and whether it reconciled.
+    """
+    players = players_doc['players']
+    by_shirt = {(p['team'], p.get('number')): p for p in players}
+    checked, disagreed = 0, []
+
+    body, _ = _tms_get(f'{TMS_BASE}/reports/scorers')
+    scorers = individual_stats.parse_scorers(_pdf_lines(body)) if body else None
+    if scorers is None:
+        print('STATS: the scorers report did not read; nothing checked against it.')
+    else:
+        for row in scorers:
+            p = by_shirt.get((row['team'], row['number']))
+            if not p:
+                disagreed.append(f"scorers: {row['team']} #{row['number']} "
+                                 f"{row['name']} is not in our squad list")
+                continue
+            checked += 1
+            ours = (p.get('fg_scored') or 0, p.get('pc_scored') or 0,
+                    p.get('ps_scored') or 0)
+            theirs = (row['fg'], row['pc'], row['ps'])
+            if ours != theirs:
+                disagreed.append(f"{p['name']} ({p['team']}): we have "
+                                 f'{ours[0]}F/{ours[1]}PC/{ours[2]}PS, the FIH '
+                                 f'states {theirs[0]}F/{theirs[1]}PC/{theirs[2]}PS')
+        # A scorer we do not carry is one thing; a scorer we invent is worse.
+        listed = {(r['team'], r['number']) for r in scorers}
+        for p in players:
+            if (p.get('goals') or 0) > 0 and (p['team'], p.get('number')) not in listed:
+                disagreed.append(f"{p['name']} ({p['team']}): we credit "
+                                 f"{p['goals']} goal(s); the FIH scorers report "
+                                 'does not list him')
+
+    body, _ = _tms_get(f'{TMS_BASE}/reports/cards')
+    cards = individual_stats.parse_cards(_pdf_word_rows(body)) if body else None
+    if cards is None:
+        print('STATS: the cards report did not read; nothing checked against it.')
+    else:
+        for row in cards:
+            p = by_shirt.get((row['team'], row['number']))
+            if not p:
+                disagreed.append(f"cards: {row['team']} #{row['number']} "
+                                 f"{row['name']} is not in our squad list")
+                continue
+            checked += 1
+            ours = (p.get('red_cards') or 0, p.get('yellow_cards') or 0,
+                    p.get('green_cards') or 0)
+            theirs = (row['red'], row['yellow'], row['green'])
+            if ours != theirs:
+                disagreed.append(f"{p['name']} ({p['team']}): we have "
+                                 f'{ours[0]}R/{ours[1]}Y/{ours[2]}G, the FIH '
+                                 f'states {theirs[0]}R/{theirs[1]}Y/{theirs[2]}G')
+        listed = {(r['team'], r['number']) for r in cards}
+        for p in players:
+            carded = (p.get('red_cards') or 0) + (p.get('yellow_cards') or 0) \
+                + (p.get('green_cards') or 0)
+            if carded and (p['team'], p.get('number')) not in listed:
+                disagreed.append(f"{p['name']} ({p['team']}): we show "
+                                 f'{carded} card(s); the FIH cards report does '
+                                 'not list him')
+
+    if scorers is None and cards is None:
+        return False
+    for line in disagreed:
+        print(f'  STATS: {line}')
+    print(f'STATS: {checked} player figure(s) checked against the FIH '
+          f'individual statistics, {len(disagreed)} disagreement(s).')
+
+    # The timestamp is deliberately not part of what counts as a change. A
+    # check that reports the same thing it reported ten minutes ago has not
+    # changed the data, and stamping it anyway would commit the file on every
+    # run of the hour.
+    stamp = {'reports': [r for r, ok in (('scorers', scorers is not None),
+                                         ('cards', cards is not None)) if ok],
+             'players_checked': checked,
+             'disagreements': disagreed}
+    was = dict(players_doc.get('official_figures_check') or {})
+    was.pop('checked_at', None)
+    changed = was != stamp
+    if changed:
+        players_doc['official_figures_check'] = dict(stamp,
+                                                     checked_at=now_utc().isoformat())
+    return changed
+
+
 def fetch_fih_rankings():
     """Scrape the official men's outdoor world ranking → {code: rank}."""
     html = None
@@ -2477,6 +2611,7 @@ def derive_position(agg, stated):
     return None, None
 
 
+import individual_stats
 import match_report
 from player_rating import rate_group
 from team_rating import rate_teams
@@ -2633,6 +2768,14 @@ def update_player_stats(fixtures, players_doc):
             # weighting them.
             'assists': 0,
             'pc_scored': a['pc'],
+            # Goals split the way the FIH splits them. A penalty stroke is not
+            # open play and it is not a corner, and with the stroke left out
+            # of the record every surface that wanted field goals was reading
+            # goals-minus-corners and quietly counting eleven strokes as open
+            # play. The competition scorers report states all three; this is
+            # the same split, from the event ledger, and checked against it.
+            'ps_scored': a['ps'],
+            'fg_scored': a['goals'] - a['pc'] - a['ps'],
             'yellow_cards': a['yellow'],
             'red_cards': a['red'],
             'green_cards': a['green'],
@@ -3283,14 +3426,22 @@ def main():
     # matches a report hasn't been published for yet.
     changed |= apply_official_events(fixtures, players)
     changed |= estimate_enrichment(fixtures, players)
-    changed |= update_player_stats(fixtures, players)
-    changed |= slot_knockouts(fixtures)
-    # Official sheets first; build_lineups then fills only what TMS could not
-    # supply, and never overwrites a sheet marked official.
-    # The official team sheet, from the public match report. It runs before
-    # the estimator so a real sheet is never overwritten by a composed one.
+    # The official team sheets are read before anything is derived from them.
+    # They were read after, and that is a whole class of bug rather than one:
+    # starts and appearances come out of the sheets, so a run that adopted a
+    # sheet published figures computed without it, and since a sheet is
+    # adopted once and then skipped, the lag never corrected itself. Every
+    # fact the FIH states is established first; the derivations follow.
     changed |= fetch_match_reports(fixtures, players)
     changed |= fetch_official_lineups(fixtures, links, players)
+    changed |= update_player_stats(fixtures, players)
+    # Every published player figure, checked against the FIH's own individual
+    # statistics tables. It runs after the recompute so it checks what this run
+    # will actually publish, not what the last one did.
+    players_changed |= fetch_individual_stats(players)
+    changed |= slot_knockouts(fixtures)
+    # build_lineups composes an estimate only where no official sheet exists,
+    # and never overwrites one — so it runs last of the three.
     changed |= build_lineups(fixtures, players, teams)
     # The browser-side strength model must weight this tournament exactly as the
     # published picks do, so the aggregates live on the team rather than being

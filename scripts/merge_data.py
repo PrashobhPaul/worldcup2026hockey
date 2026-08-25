@@ -208,6 +208,13 @@ def merge_players(ours, theirs):
             want = p is keep
             if bool(p.get('is_captain')) != want:
                 p['is_captain'] = want; fixed += 1
+    # Same argument one level up: a document-level key only the branch writes
+    # — the reconciliation against the FIH's own statistics tables — has no
+    # competing value either, so it is carried across rather than dropped.
+    for key in ('official_figures_check',):
+        if key in (ours or {}) and key not in theirs:
+            theirs[key] = ours[key]
+
     notes = [f'{fixed} captain flags corrected']
     if kept:
         notes.append(f'{kept} branch-only field(s) preserved')

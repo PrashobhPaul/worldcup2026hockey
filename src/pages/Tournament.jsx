@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { splitText } from '../engine/goalSplit.js'
 import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import Pitch from '../components/Pitch'
@@ -46,7 +47,7 @@ function pickXI(players, byCode, { risingOnly = false, exclude = new Set() } = {
     nat: p.team,
     rating: p.ai_rating,
     pos: p.position === 'Goalkeeper' ? 'GK' : p.position === 'Defender' ? 'DF' : p.position === 'Midfielder' ? 'MF' : 'FW',
-    stat: `${p.goals}G · ${p.pc_scored} PC`,
+    stat: [`${p.goals}G`, splitText(p)].filter(Boolean).join(' · '),
   }))
 }
 
@@ -169,7 +170,7 @@ function StatsView({ teams, matches, byCode }) {
       .slice(0, 10)
       .map(p => ({
         key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-        chip: `${p.pc_scored} from penalty corners`, value: p.goals,
+        chip: splitText(p) ?? 'no goals on the record', value: p.goals,
       }))
 
     const attack = new Map(teams.map(t => [t.code, { gf: 0, ga: 0, played: 0 }]))

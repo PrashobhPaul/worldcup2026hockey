@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { splitText } from '../engine/goalSplit.js'
 import { bestXI } from '../engine/bestXI'
 import { DerivedBadge } from './hockeyIcons'
 
@@ -124,7 +125,7 @@ export function RemainingSquad({ squad, teamCode }) {
             <div className="font-mono text-[9px] uppercase tracking-wide text-pitch-400">
               {p.position_effective ?? 'Role not on the record'}
               {p.goals ? ` · ${p.goals}G` : ''}
-              {p.pc_scored ? ` · ${p.pc_scored} PC` : ''}
+              {splitText(p) ? ` · ${splitText(p)}` : ''}
             </div>
           </div>
           {p.ai_rating != null && (

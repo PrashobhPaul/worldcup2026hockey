@@ -140,5 +140,11 @@ jobs:
       - name: Official team sheets are read exactly
         run: npm run test:sheets
 
+      # The FIH publishes its own individual statistics for this competition.
+      # Every figure this app shows is derived instead, so the two are read
+      # against each other rather than assumed to agree.
+      - name: Player figures reconcile with the FIH's own statistics
+        run: npm run test:stats
+
       - name: Build
         run: npm run build

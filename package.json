@@ -28,6 +28,7 @@
     "test:rating": "node scripts/test_player_rating.mjs",
     "test:intros": "python3 scripts/team_intro_review.py --check",
     "test:sheets": "node scripts/test_match_report.mjs",
+    "test:stats": "python3 scripts/test_individual_stats.py",
     "data:recompute": "python3 scripts/recompute.py"
   },
   "dependencies": {

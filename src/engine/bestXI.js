@@ -135,7 +135,7 @@ export function teamToppers(rawSquad, { matchesPlayed = 0, goalsAgainst = 0 } = 
 
   const scorer = best(p => (p.goals ?? 0) > 0, num('goals'), p => p.goals)
   const setPiece = best(p => (p.pc_scored ?? 0) > 0, num('pc_scored'), p => p.pc_scored)
-  const fieldOf = p => Math.max(0, (p.goals ?? 0) - (p.pc_scored ?? 0))
+  const fieldOf = p => p.fg_scored ?? Math.max(0, (p.goals ?? 0) - (p.pc_scored ?? 0) - (p.ps_scored ?? 0))
   const fieldRows = list.filter(p => fieldOf(p) > 0)
     .sort((a, b) => fieldOf(b) - fieldOf(a) || a.name.localeCompare(b.name))
   const index = best(p => p.ai_rating != null, num('ai_rating'), p => p.ai_rating)
