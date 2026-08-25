@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
-import { activePredictions, derivePrediction, gradePrediction, oracleRecord } from '../engine/prediction'
+import { activePredictions, derivePrediction, gradePrediction, oracleRecord, publishedAccuracy } from '../engine/prediction'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
@@ -255,8 +255,14 @@ function TieCard({ tie, byCode }) {
       }`} style={{ borderStyle: tie.locked ? 'solid' : 'dashed' }}>
         {team?.flag ?? '❓'}
       </span>
+      {/* Square brackets mark a nation the bracket projects into this tie
+          rather than one the results have put there, so the notation matches
+          the Matches card and a prediction is never read as a confirmed
+          line-up. The Locked/Projected label says the same thing in words. */}
       <span className={`flex-1 text-sm ${tie.predicted === code ? 'font-bold' : 'text-pitch-300'}`}>
-        {team?.name ?? code ?? 'TBD'}
+        {tie.locked
+          ? (team?.name ?? code ?? 'TBD')
+          : `[${team?.name ?? code ?? 'TBD'}]`}
       </span>
       {prob != null && tie.predicted === code && (
         <span className="font-mono text-xs font-bold text-brand">{Math.round(prob * 100)}%</span>
@@ -405,10 +411,7 @@ export default function OraclePage() {
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const bundle = useOracleBundle(teams, matches)
   const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
-  const fallback = oracleRecord(matches ?? [], predictions ?? [])
-  const rec = calibration
-    ? { correct: calibration.correct, graded: calibration.matches, accuracyPct: calibration.accuracy_pct }
-    : fallback
+  const rec = publishedAccuracy(calibration, oracleRecord(matches ?? [], predictions ?? []))
 
   const setTab = (t) => {
     const next = new URLSearchParams(params)
@@ -436,7 +439,7 @@ export default function OraclePage() {
             same one-line subtitle treatment as the Matches page. */}
         <p className="mt-1 text-xs text-pitch-400">
           {SUBTITLES[tab]}
-          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.accuracyPct}%</span>}
+          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.pct}%</span>}
         </p>
       </div>
 

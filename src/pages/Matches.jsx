@@ -5,8 +5,9 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import MatchCard, { formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
-import { oracleRecord } from '../engine/prediction'
+import { oracleRecord, publishedAccuracy } from '../engine/prediction'
 import { effectiveStatus } from '../engine/clock'
+import { useOracleBundle } from '../engine/oracleBundle'
 import { useNowTick } from '../hooks/useNowTick'
 import { SIM_ID, SIM_MATCH } from '../content/sim'
 
@@ -62,20 +63,24 @@ export default function MatchesPage() {
   const [stage, setStage] = useState(
     STAGE_TABS.some(s => s.id === params.get('stage')) ? params.get('stage') : null)
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
+  const teams = useLiveQuery(() => db.teams.toArray(), [], [])
+  // The bracket is the app's one answer for a fixture whose nations are not
+  // settled yet, so the medal matches read the same here as on the Cup and
+  // Oracle tabs instead of showing "TBD" on one screen and a projection on
+  // another.
+  const bundle = useOracleBundle(teams, matches ?? [])
+  const slotOf = id => bundle?.bracket?.byId?.get(id) ?? null
 
   const loading = matches === undefined
   const all = matches ?? []
 
-  // The Oracle's accuracy rides the subtitle — one line, no extra strip.
-  // Source: model-calibration.json (the whole tournament scored under the
-  // current model with as-of-then inputs, recomputed by the pipeline each
-  // run); the graded-pick tally stands in until the first sync delivers it.
+  // The Oracle's accuracy rides the subtitle — one line, no extra strip, and
+  // the SAME figure the Home hero prints. publishedAccuracy owns that choice
+  // for every screen; reading a calibration field directly here is what put
+  // 68% on this page while the hero said 78%.
   const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
   const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
-  const fallback = oracleRecord(all, predictions)
-  const rec = calibration
-    ? { correct: calibration.correct, graded: calibration.matches, accuracyPct: calibration.accuracy_pct }
-    : fallback
+  const rec = publishedAccuracy(calibration, oracleRecord(all, predictions))
 
   // Membership follows the clock, not the stored status: a match past
   // push-back sits under Live (with its running clock and 0-0) the moment it
@@ -156,7 +161,7 @@ export default function MatchesPage() {
         <h1 className="font-display text-2xl font-bold tracking-tight">🏑 Matches</h1>
         <p className="mt-1 text-xs text-pitch-400">
           {counts.results} of {all.length} fixtures{counts.live > 0 && <span className="text-live"> · {counts.live} LIVE</span>}
-          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.accuracyPct}%</span>}
+          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.pct}%</span>}
         </p>
       </div>
 
@@ -199,7 +204,7 @@ export default function MatchesPage() {
                 <span className="h-px flex-1 bg-white/5" />
               </div>
               <div className="space-y-2.5">
-                {byDate[date].map(m => <MatchCard key={m.id} match={m} />)}
+                {byDate[date].map(m => <MatchCard key={m.id} match={m} projection={slotOf(m.id)} />)}
               </div>
             </div>
           ))}

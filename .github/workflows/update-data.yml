@@ -30,7 +30,13 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
+      # Full history: rankings_history.py recovers the world-ranking snapshot
+      # that stood before each match from the commit log, and a shallow clone
+      # collapses that series to a single entry.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -38,6 +44,39 @@ jobs:
 
       - name: Install dependencies
         run: pip install pdfplumber
+
+      # This job owns public/data/*.json, and it runs on main every ten
+      # minutes, so any branch open longer than one cycle diverges from it.
+      # .gitattributes already routes those files to scripts/merge_data.py,
+      # which knows the pipeline owns played results while the branch owns the
+      # schedule and the editorial fields — but a merge driver is per-clone git
+      # config, and GitHub's servers never configure one. That is why the same
+      # conflict, with the same correct answer, kept reappearing on every pull
+      # request. Configuring it here and taking main first makes this the clone
+      # that resolves it. On main the merge is already an ancestor, so this is
+      # a no-op.
+      - name: Take main's data before rebuilding it
+        run: |
+          git config merge.hockeydata.name "Hockey.AI data merge"
+          git config merge.hockeydata.driver "python3 scripts/merge_data.py --driver %O %A %B %P"
+          git config user.name "hockey-ai-bot"
+          git config user.email "actions@github.com"
+          git fetch origin main
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "Already contains main - nothing to merge."
+          else
+            git merge --no-edit origin/main
+            # A merge produces content neither side published on its own, so
+            # the stamp has to describe the result. The merge driver cannot do
+            # it: git hands each handler temporary files and updates the
+            # working tree only once every driver has returned, so nothing
+            # inside the merge can hash the finished tree.
+            python3 scripts/data_fingerprint.py --write
+            if ! git diff --quiet public/data/data-version.json; then
+              git commit -qam "data: restamp the fingerprint after merging main"
+            fi
+            git push origin HEAD:${{ github.ref_name }}
+          fi
 
       - name: Update fixtures, statuses & Oracle picks
         env:
@@ -61,8 +100,16 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/generate_ai_rationales.py
 
-      # Model calibration, replayed as-of-then over every completed match —
-      # published alongside the ledger record so the Trust page can show both.
+      # Written match briefs and pre-match rationales live in the review
+      # scripts, which are the source of truth for that prose. Applying them
+      # here means a brief reaches the published data through the pipeline
+      # rather than only when someone runs the script by hand. Both are
+      # idempotent — they write only when the wording actually differs.
+      - name: Apply written match briefs
+        run: |
+          python scripts/stage1_review.py
+          python scripts/stage2_review.py
+
       # The pipeline rebuilds these files from its own sources every ten
       # minutes, which would quietly undo the corrections made against the
       # official FIH export — a wrong scoreline and eight reversed listings.
@@ -76,8 +123,19 @@ jobs:
       - name: Refresh ranking history
         run: python scripts/rankings_history.py
 
+      # Model calibration, replayed as-of-then over every completed match, so
+      # the figure the app headlines is reproducible from the repository.
       - name: Publish model calibration
         run: python scripts/backtest_model.py --publish
+
+      # Every step above may have written into public/data, and not all of
+      # them stamp: update_data.py and apply_official_matchdata.py do,
+      # rankings_history.py and backtest_model.py do not. Stamping once here,
+      # after the last writer and before the commit, describes whatever the
+      # job actually produced and does not depend on remembering to add a
+      # stamp to the next script that joins the pipeline.
+      - name: Stamp the data fingerprint
+        run: python3 scripts/data_fingerprint.py --write
 
       - name: Commit & push if changed
         id: commit

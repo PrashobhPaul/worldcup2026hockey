@@ -1,0 +1,72 @@
+{
+ "historical_tournament": 34,
+ "replay_errors": [
+  9,
+  10
+ ],
+ "m37_40": [
+  {
+   "num": 37,
+   "match": "JPN-WAL",
+   "probs": [
+    0.217,
+    0.357,
+    0.426
+   ],
+   "validated": "WAL",
+   "tournament": "DRAW",
+   "conf": "low",
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "underdogGD<=-9 -> DRAW [T]"
+   ]
+  },
+  {
+   "num": 38,
+   "match": "NZL-PAK",
+   "probs": [
+    0.573,
+    0.244,
+    0.183
+   ],
+   "validated": "NZL",
+   "tournament": "PAK",
+   "conf": "medium",
+   "drivers": [
+    "Live FIH base -> HOME",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 39,
+   "match": "ARG-IND",
+   "probs": [
+    0.717,
+    0.16,
+    0.123
+   ],
+   "validated": "ARG",
+   "tournament": "ARG",
+   "conf": "high",
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 40,
+   "match": "NED-ENG",
+   "probs": [
+    0.709,
+    0.165,
+    0.126
+   ],
+   "validated": "NED",
+   "tournament": "DRAW",
+   "conf": "high",
+   "drivers": [
+    "Live FIH base -> HOME",
+    "favourite live-surge -> DRAW [T]"
+   ]
+  }
+ ]
+}

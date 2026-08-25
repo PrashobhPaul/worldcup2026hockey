@@ -234,12 +234,29 @@ def merge_calibration(ours, theirs):
     return pick, f"{pick.get('correct')}/{pick.get('matches')} kept (recomputed post-merge)"
 
 
+def merge_rankings_history(ours, theirs):
+    """Union of snapshots, earliest baseline. Losing one loses a match's inputs."""
+    by_at = {s['at']: s for s in (theirs.get('snapshots') or [])}
+    by_at.update({s['at']: s for s in (ours.get('snapshots') or [])})
+    series = [by_at[k] for k in sorted(by_at)]
+    base = ours if ours.get('frozen_at', '9') <= theirs.get('frozen_at', '9') else theirs
+    out = dict(base)
+    out['snapshots'] = series
+    return out, f'{len(series)} snapshots (union), baseline {out.get("frozen_at")}'
+
+
 def merge_version(ours, theirs):
+    # The fingerprint is NOT set here: it describes the whole published set,
+    # and this handler sees only data-version.json. On the after-the-fact path
+    # main() restamps once every file is written. On the driver path nothing
+    # can — git hands each handler temporary files and updates the working
+    # tree only after the last driver returns — so whoever ran `git merge`
+    # restamps afterwards. The pipeline does it in update-data.yml; a local
+    # merge is caught by `data_fingerprint.py --check`, which says what to run.
     v = max((ours or {}).get('version', 0), (theirs or {}).get('version', 0)) + 1
     base = theirs or ours or {}
     base['version'] = v
     return base, f'version -> {v}'
-    # (the fingerprint is restamped after all files are written — see main)
 
 
 HANDLERS = {
@@ -249,6 +266,7 @@ HANDLERS = {
     'predictions.json': merge_predictions,
     'h2h.json': merge_h2h,
     'ai-stories.json': merge_stories,
+    'rankings-history.json': merge_rankings_history,
     'data-version.json': merge_version,
     'model-calibration.json': merge_calibration,
 }

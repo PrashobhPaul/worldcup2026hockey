@@ -1,0 +1,641 @@
+{
+ "replay": [
+  {
+   "num": 1,
+   "home": "IND",
+   "away": "WAL",
+   "score": "3-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.928,
+   "pD": 0.05,
+   "pA": 0.022,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 2,
+   "home": "GER",
+   "away": "MAS",
+   "score": "5-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.945,
+   "pD": 0.05,
+   "pA": 0.005,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 3,
+   "home": "ENG",
+   "away": "PAK",
+   "score": "4-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.938,
+   "pD": 0.05,
+   "pA": 0.012,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 4,
+   "home": "BEL",
+   "away": "FRA",
+   "score": "3-2",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.934,
+   "pD": 0.05,
+   "pA": 0.016,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 5,
+   "home": "AUS",
+   "away": "IRL",
+   "score": "3-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.92,
+   "pD": 0.05,
+   "pA": 0.03,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 6,
+   "home": "ESP",
+   "away": "RSA",
+   "score": "3-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.932,
+   "pD": 0.05,
+   "pA": 0.018,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 7,
+   "home": "NED",
+   "away": "NZL",
+   "score": "5-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.938,
+   "pD": 0.05,
+   "pA": 0.012,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 8,
+   "home": "ARG",
+   "away": "JPN",
+   "score": "3-0",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.946,
+   "pD": 0.05,
+   "pA": 0.004,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 9,
+   "home": "PAK",
+   "away": "WAL",
+   "score": "3-3",
+   "pred": "AWAY",
+   "actual": "DRAW",
+   "ok": false,
+   "pH": 0.571,
+   "pD": 0.245,
+   "pA": 0.184,
+   "drivers": [
+    "Live FIH base -> HOME",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 10,
+   "home": "FRA",
+   "away": "MAS",
+   "score": "3-3",
+   "pred": "HOME",
+   "actual": "DRAW",
+   "ok": false,
+   "pH": 0.702,
+   "pD": 0.169,
+   "pA": 0.129,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 11,
+   "home": "IND",
+   "away": "ENG",
+   "score": "2-4",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.139,
+   "pD": 0.184,
+   "pA": 0.677,
+   "drivers": [
+    "Live FIH base -> AWAY"
+   ]
+  },
+  {
+   "num": 12,
+   "home": "GER",
+   "away": "BEL",
+   "score": "1-0",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.234,
+   "pD": 0.294,
+   "pA": 0.472,
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 13,
+   "home": "NZL",
+   "away": "JPN",
+   "score": "2-0",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.858,
+   "pD": 0.074,
+   "pA": 0.068,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 14,
+   "home": "ESP",
+   "away": "AUS",
+   "score": "0-1",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.272,
+   "pD": 0.386,
+   "pA": 0.342,
+   "drivers": [
+    "Live FIH base -> DRAW",
+    "rawLive=DRAW & diverged -> favourite [T]"
+   ]
+  },
+  {
+   "num": 15,
+   "home": "IRL",
+   "away": "RSA",
+   "score": "4-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.415,
+   "pD": 0.362,
+   "pA": 0.223,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 16,
+   "home": "ARG",
+   "away": "NED",
+   "score": "1-3",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.141,
+   "pD": 0.187,
+   "pA": 0.672,
+   "drivers": [
+    "Live FIH base -> AWAY"
+   ]
+  },
+  {
+   "num": 17,
+   "home": "ENG",
+   "away": "WAL",
+   "score": "8-2",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.947,
+   "pD": 0.05,
+   "pA": 0.003,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 18,
+   "home": "PAK",
+   "away": "IND",
+   "score": "3-5",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.07,
+   "pD": 0.076,
+   "pA": 0.854,
+   "drivers": [
+    "Live FIH base -> AWAY"
+   ]
+  },
+  {
+   "num": 19,
+   "home": "FRA",
+   "away": "GER",
+   "score": "1-1",
+   "pred": "DRAW",
+   "actual": "DRAW",
+   "ok": true,
+   "pH": 0.016,
+   "pD": 0.05,
+   "pA": 0.934,
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "favourite live-surge -> DRAW [T]"
+   ]
+  },
+  {
+   "num": 20,
+   "home": "BEL",
+   "away": "MAS",
+   "score": "5-3",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.945,
+   "pD": 0.05,
+   "pA": 0.005,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 21,
+   "home": "AUS",
+   "away": "RSA",
+   "score": "2-2",
+   "pred": "DRAW",
+   "actual": "DRAW",
+   "ok": true,
+   "pH": 0.944,
+   "pD": 0.05,
+   "pA": 0.006,
+   "drivers": [
+    "Live FIH base -> HOME",
+    "favourite live-surge -> DRAW [T]"
+   ]
+  },
+  {
+   "num": 22,
+   "home": "NZL",
+   "away": "ARG",
+   "score": "1-7",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.081,
+   "pD": 0.095,
+   "pA": 0.824,
+   "drivers": [
+    "Live FIH base -> AWAY"
+   ]
+  },
+  {
+   "num": 23,
+   "home": "IRL",
+   "away": "ESP",
+   "score": "1-3",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.064,
+   "pD": 0.068,
+   "pA": 0.868,
+   "drivers": [
+    "Live FIH base -> AWAY"
+   ]
+  },
+  {
+   "num": 24,
+   "home": "NED",
+   "away": "JPN",
+   "score": "4-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.949,
+   "pD": 0.05,
+   "pA": 0.001,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 25,
+   "home": "FRA",
+   "away": "RSA",
+   "score": "1-3",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.612,
+   "pD": 0.222,
+   "pA": 0.166,
+   "drivers": [
+    "Live FIH base -> HOME",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 26,
+   "home": "IRL",
+   "away": "MAS",
+   "score": "7-4",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.672,
+   "pD": 0.187,
+   "pA": 0.141,
+   "drivers": [
+    "Live FIH base -> HOME",
+    "H2H<=-2 -> HOME [T]"
+   ]
+  },
+  {
+   "num": 27,
+   "home": "ESP",
+   "away": "GER",
+   "score": "2-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.189,
+   "pD": 0.25,
+   "pA": 0.561,
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 28,
+   "home": "AUS",
+   "away": "BEL",
+   "score": "1-1",
+   "pred": "DRAW",
+   "actual": "DRAW",
+   "ok": true,
+   "pH": 0.318,
+   "pD": 0.389,
+   "pA": 0.292,
+   "drivers": [
+    "Live FIH base -> DRAW",
+    "parity+convergence -> DRAW",
+    "favourite live-surge -> DRAW [T]"
+   ]
+  },
+  {
+   "num": 29,
+   "home": "NZL",
+   "away": "WAL",
+   "score": "7-2",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.786,
+   "pD": 0.118,
+   "pA": 0.096,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 30,
+   "home": "PAK",
+   "away": "JPN",
+   "score": "4-3",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.662,
+   "pD": 0.193,
+   "pA": 0.145,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 31,
+   "home": "NED",
+   "away": "IND",
+   "score": "3-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.904,
+   "pD": 0.05,
+   "pA": 0.046,
+   "drivers": [
+    "Live FIH base -> HOME"
+   ]
+  },
+  {
+   "num": 32,
+   "home": "ENG",
+   "away": "ARG",
+   "score": "1-3",
+   "pred": "AWAY",
+   "actual": "AWAY",
+   "ok": true,
+   "pH": 0.525,
+   "pD": 0.269,
+   "pA": 0.206,
+   "drivers": [
+    "Live FIH base -> HOME",
+    "H2H<=-2 -> HOME [T]",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 33,
+   "home": "MAS",
+   "away": "RSA",
+   "score": "3-3",
+   "pred": "DRAW",
+   "actual": "DRAW",
+   "ok": true,
+   "pH": 0.167,
+   "pD": 0.224,
+   "pA": 0.609,
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "gap150-300 -> underdog [T]",
+    "underdogGD<=-9 -> DRAW [T]"
+   ]
+  },
+  {
+   "num": 34,
+   "home": "FRA",
+   "away": "IRL",
+   "score": "2-1",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.227,
+   "pD": 0.289,
+   "pA": 0.484,
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "gap150-300 -> underdog [T]"
+   ]
+  },
+  {
+   "num": 35,
+   "home": "GER",
+   "away": "AUS",
+   "score": "4-2",
+   "pred": "HOME",
+   "actual": "HOME",
+   "ok": true,
+   "pH": 0.258,
+   "pD": 0.382,
+   "pA": 0.36,
+   "drivers": [
+    "Live FIH base -> DRAW",
+    "favourite live-surge -> DRAW [T]",
+    "rawLive=DRAW & diverged -> favourite [T]",
+    "H2H<=-2 -> HOME [T]"
+   ]
+  },
+  {
+   "num": 36,
+   "home": "BEL",
+   "away": "ESP",
+   "score": "1-1",
+   "pred": "DRAW",
+   "actual": "DRAW",
+   "ok": true,
+   "pH": 0.337,
+   "pD": 0.387,
+   "pA": 0.276,
+   "drivers": [
+    "Live FIH base -> DRAW",
+    "parity+convergence -> DRAW"
+   ]
+  }
+ ],
+ "m37_40": [
+  {
+   "num": 37,
+   "mid": "S2G3",
+   "home": "JPN",
+   "away": "WAL",
+   "pH": 0.217,
+   "pD": 0.357,
+   "pA": 0.426,
+   "pred": "DRAW",
+   "pick": "DRAW",
+   "conf": "low",
+   "drivers": [
+    "Live FIH base -> AWAY",
+    "underdogGD<=-9 -> DRAW [T]"
+   ],
+   "lv_gap": 147,
+   "conv": -42,
+   "h2h": -1
+  },
+  {
+   "num": 38,
+   "mid": "S2G4",
+   "home": "NZL",
+   "away": "PAK",
+   "pH": 0.573,
+   "pD": 0.244,
+   "pA": 0.183,
+   "pred": "AWAY",
+   "pick": "PAK",
+   "conf": "medium",
+   "drivers": [
+    "Live FIH base -> HOME",
+    "gap150-300 -> underdog [T]"
+   ],
+   "lv_gap": 247,
+   "conv": -31,
+   "h2h": 6
+  },
+  {
+   "num": 39,
+   "mid": "S2E3",
+   "home": "ARG",
+   "away": "IND",
+   "pH": 0.717,
+   "pD": 0.16,
+   "pA": 0.123,
+   "pred": "HOME",
+   "pick": "ARG",
+   "conf": "high",
+   "drivers": [
+    "Live FIH base -> HOME"
+   ],
+   "lv_gap": 382,
+   "conv": -141,
+   "h2h": 0
+  },
+  {
+   "num": 40,
+   "mid": "S2E4",
+   "home": "NED",
+   "away": "ENG",
+   "pH": 0.709,
+   "pD": 0.165,
+   "pA": 0.126,
+   "pred": "DRAW",
+   "pick": "DRAW",
+   "conf": "high",
+   "drivers": [
+    "Live FIH base -> HOME",
+    "favourite live-surge -> DRAW [T]"
+   ],
+   "lv_gap": 374,
+   "conv": -156,
+   "h2h": 15
+  }
+ ],
+ "historical": 34
+}

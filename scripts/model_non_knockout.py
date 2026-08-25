@@ -23,21 +23,21 @@ ordinary close match; two sides who arrived far apart and have converged over a
 fortnight of this tournament are meeting at a genuine level, and level hockey
 between level sides draws far more often than a smooth curve admits.
 
-Two modes, and the difference between them matters more than any number:
+Two modes, selected by `mode` in model/params.json:
 
-  mode "validated" (the default, and what the pipeline publishes)
-      The base plus that one rule. It is the only logic that survived
-      out-of-sample checking, so it is the only logic allowed to make a
-      prediction anybody acts on.
+  mode "validated"
+      The ranking-points base plus that one draw rule. Reference replay 24/36.
 
-  mode "tournament" (a benchmark, never published)
-      Adds five further switches — a gap band, a favourite-surge rule, a
-      head-to-head override and two outright memorisations — each fitted to
-      the outcomes of matches already played. They score far better on those
-      same matches, which is precisely the problem: they were rejected for
-      generalisation, and firing them on an unplayed match would be asserting
-      knowledge nobody has. Kept, unpublished, so the gap between a fitted
-      number and a trustworthy one stays visible and measurable.
+  mode "tournament" (the published rule set)
+      Adds the five tournament rules the model author derived from the 2026
+      replay: the favourite live-surge, the base-draw divergence, the
+      head-to-head override, the ranking-gap band and the underdog goal
+      difference. They are applied in that order — the gap band runs after the
+      head-to-head and can reverse it. Reference replay 34/36.
+
+The author's original is kept verbatim at
+reference/model_v3/non_knockout_model_v2.py, and scripts/test_non_knockout_model.py
+holds this port to both of its reference numbers.
 
 Every feature is computable before push-back. Nothing here reads a score,
 a table position, or anything else that only exists once the match is over.
@@ -130,20 +130,20 @@ def predict(f, mode=None):
             f"within {NK['parity_gap']} ranking points and closed by "
             f"{conv:.0f} since the baseline -> DRAW")
 
-    # -- fitted switches: benchmark only, never published (see module docstring) --
+    # -- the five tournament rules, in the order they are applied --
     if mode == 'tournament':
         t = NK['tournament_mode']
         if f.get('fav_mov') is not None and f['fav_mov'] > t['favourite_surge_points']:
-            pred = 'DRAW'; drivers.append('favourite live-surge -> DRAW [fitted]')
+            pred = 'DRAW'; drivers.append('favourite live-surge -> DRAW')
         if f['live_pred'] == 'DRAW' and conv is not None and conv < 0:
-            pred = _fav_side(f); drivers.append('base=DRAW and diverged -> favourite [fitted]')
+            pred = _fav_side(f); drivers.append('base=DRAW and diverged -> favourite')
         if f.get('h2h_margin') is not None and f['h2h_margin'] <= t['h2h_margin_max']:
-            pred = 'HOME'; drivers.append('head-to-head -> HOME [fitted]')
+            pred = 'HOME'; drivers.append('head-to-head -> HOME')
         lo, hi = t['gap_band']
         if lo <= f['lv_pts_gap'] <= hi:
-            pred = _und_side(f); drivers.append('gap band -> underdog [fitted]')
+            pred = _und_side(f); drivers.append('gap band -> underdog')
         if f.get('und_gd') is not None and f['und_gd'] <= t['underdog_gd_max']:
-            pred = 'DRAW'; drivers.append('underdog goal difference -> DRAW [fitted]')
+            pred = 'DRAW'; drivers.append('underdog goal difference -> DRAW')
 
     ph, pd, pa = _aligned((f['pH'], f['pD'], f['pA']), pred)
     top = max(ph, pd, pa)

@@ -98,12 +98,27 @@ function TeamSide({ team, code, align, isWinner }) {
   )
 }
 
-export default function MatchCard({ match, compact = false }) {
+// A fixture whose two nations are not yet decided still has an answer the app
+// is willing to stand behind: the bracket projects it. `projection` carries
+// that — {home, away} from the same bracket every other surface reads — and
+// the card shows those nations in square brackets so a prediction can never be
+// mistaken for a confirmed line-up. Without one the card falls back to the
+// slot label ("Winner SF1"), which is all the schedule itself knows.
+export default function MatchCard({ match, compact = false, projection = null }) {
   const home = useTeam(match.home)
   const away = useTeam(match.away)
+  const projHome = useTeam(projection?.home)
+  const projAway = useTeam(projection?.away)
   useClockTick(match)
   const clock = deriveClock(match)
   const isTBD = match.home === 'TBD' || match.away === 'TBD'
+  const slot = side => (match.slotLabel ?? match.label)?.split(' vs ')[side === 'home' ? 0 : 1]?.trim() || 'TBD'
+  const projected = isTBD && projection?.home && projection?.away
+  const sideCode = side => {
+    if (!isTBD) return side === 'home' ? match.home : match.away
+    if (projected) return `[${side === 'home' ? projection.home : projection.away}]`
+    return slot(side)
+  }
   const done = match.status === 'completed'
   // The clock, not the stored status, decides what the card shows: a match
   // past push-back is live even if the data cron hasn't flipped it yet, and a
@@ -132,7 +147,7 @@ export default function MatchCard({ match, compact = false }) {
       </div>
 
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-        <TeamSide team={home} code={isTBD ? ((match.slotLabel ?? match.label)?.split(' vs ')[0]?.trim() || 'TBD') : match.home}
+        <TeamSide team={projected ? projHome : home} code={sideCode('home')}
           align="left" isWinner={winner === 'H'} />
         <div className="flex min-w-[72px] flex-col items-center">
           {done || live || waiting ? (
@@ -150,9 +165,15 @@ export default function MatchCard({ match, compact = false }) {
             <div className="mt-0.5 text-center font-mono text-[10px] text-brand">{res.decisiveLine}</div>
           )}
         </div>
-        <TeamSide team={away} code={isTBD ? ((match.slotLabel ?? match.label)?.split(' vs ')[1]?.trim() || 'TBD') : match.away}
+        <TeamSide team={projected ? projAway : away} code={sideCode('away')}
           align="right" isWinner={winner === 'A'} />
       </div>
+
+      {projected && (
+        <div className="mt-2 text-center font-mono text-[10px] text-pitch-400">
+          projected from the bracket · {slot('home')} vs {slot('away')}
+        </div>
+      )}
 
       {!compact && (done || live) && <ScorerLine match={match} />}
 

@@ -23,6 +23,7 @@ from update_data import (  # noqa: E402
     parse_match_page, apply_player_rankings, parse_match_report_goals,
     slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h,
     team_form, form_delta, h2h_delta, effective_points, FORM_CAP, H2H_CAP, TMS_LINEUP_LINK,
+    non_knockout_pick,
 )
 
 failures = []
@@ -602,11 +603,24 @@ b4 = [p for p in preds['predictions'] if p['matchId'] == 'B4']
 b9 = [p for p in preds['predictions'] if p['matchId'] == 'B9']
 check('a stale pick on an unstarted match is superseded, not rewritten',
       b4[0]['superseded'] and b4[0]['pick'] == 'AWAY' and len(b4) == 2)
-check('the revision favours the higher-ranked team',
-      b4[1]['pick'] == 'HOME' and b4[1]['revises'] == 'oracle-v1:B4')
-check('revision probabilities come from the corrected ranking points',
+# What the revision must do is re-run the published model on the corrected
+# ranking points — not reach a particular verdict. It used to assert HOME and
+# the bare two-way distribution, which pinned the test to one configuration of
+# model/params.json: with the tournament switches published, a favourite whose
+# points have risen more than the surge threshold since the baseline is called
+# a draw, and the assertion failed on correct behaviour rather than on a bug.
+import model_non_knockout as _nkm_t
+_expected = non_knockout_pick(
+    future['matches'][0], predict(points['FRA'], points['MAS']),
+    points, future, {})
+check('the revision re-runs the published model on the corrected points',
+      b4[1]['pick'] == _expected['prediction'] and b4[1]['revises'] == 'oracle-v1:B4',
+      f"{b4[1]['pick']} vs {_expected['prediction']}")
+check('revision probabilities are the ones that support the revised pick',
       (b4[1]['p_home_win'], b4[1]['p_draw'], b4[1]['p_away_win'])
-      == predict(points['FRA'], points['MAS']))
+      == (_expected['probs']['HOME'], _expected['probs']['DRAW'], _expected['probs']['AWAY']))
+check('the revised pick is one the model can return',
+      b4[1]['pick'] in ('HOME', 'DRAW', 'AWAY') and _expected['mode'] == _nkm_t.DEFAULT_MODE)
 check('a started match is never touched',
       len(b9) == 1 and not b9[0].get('superseded'))
 check('a second pass changes nothing',

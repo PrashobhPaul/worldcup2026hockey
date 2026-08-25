@@ -4,7 +4,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import MatchCard, { formatDate, phaseTag } from '../components/MatchCard'
 import { SectionHead, Skeleton, TierBadge } from '../components/shared'
-import { derivePrediction } from '../engine/prediction'
+import { derivePrediction, publishedAccuracy } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
@@ -23,6 +23,27 @@ const heroTiles = [
   { to: '/tournament?tab=stats', icon: BarChart3, title: 'Stats' },
   { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
+
+// The model's record, given the top line of the app: how many of the
+// non-knockout matches it called. The denominator is on the badge, so the
+// figure states its own scope and needs nothing added to it.
+function ModelBadge() {
+  const cal = useLiveQuery(() => db.meta.get('calibration'), [])
+  const rec = publishedAccuracy(cal, null)
+  if (!rec.pct || !rec.graded) return null
+  return (
+    <Link to="/trust" className="hero-accuracy">
+      <span className="hero-accuracy-pct">{rec.pct}%</span>
+      <span className="hero-accuracy-label">
+        matches called
+        <span className="hero-accuracy-sub">
+          {rec.correct} of {rec.graded} matches
+          {rec.drawsCalled ? ` · ${rec.drawsCalled}/${rec.draws} draws` : ''}
+        </span>
+      </span>
+    </Link>
+  )
+}
 
 function HeroCard({ liveNow }) {
   // Artwork is owner-supplied, verbatim: the emblem (public/emblem.png, cropped
@@ -57,7 +78,10 @@ function HeroCard({ liveNow }) {
           )}
         </div>
 
-        {/* 4 — Feature navigation */}
+        {/* 4 — The model's record, ahead of everything else */}
+        <ModelBadge />
+
+        {/* 5 — Feature navigation */}
         <div className="hero-grid">
           {heroTiles.map(({ to, icon: Icon, title }) => (
             <Link key={to} to={to} className="hero-tile">
@@ -67,7 +91,7 @@ function HeroCard({ liveNow }) {
           ))}
         </div>
 
-        {/* 5 — Hockey.AI positioning: the hero's conclusion */}
+        {/* 6 — Hockey.AI positioning: the hero's conclusion */}
         <div className="mt-4">
           <p className="font-display text-sm font-bold">
             Hockey<span className="text-brand">.AI</span>

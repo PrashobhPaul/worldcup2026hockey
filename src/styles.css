@@ -211,3 +211,53 @@ body {
   .hero-tile { animation: none; opacity: 1; }
   .hero-tile:hover, .hero-tile:active { transform: none; }
 }
+
+
+/* The model's record, given the top line of the hero: large enough to read as
+   the app's headline claim, restrained enough not to shout over the emblem. */
+.hero-accuracy {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem 0.5rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(150, 180, 255, 0.22);
+  background: rgba(10, 25, 60, 0.42);
+  backdrop-filter: blur(14px) saturate(160%) brightness(1.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.hero-accuracy:hover { border-color: rgba(150, 180, 255, 0.42); background: rgba(10, 25, 60, 0.58); }
+.hero-accuracy-pct {
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #7fb0ff;
+  font-variant-numeric: tabular-nums;
+}
+.hero-accuracy-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.94);
+}
+.hero-accuracy-sub {
+  margin-top: 0.15rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.61rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(148, 163, 184, 0.95);
+}
+@media (max-width: 380px) {
+  .hero-accuracy { gap: 0.5rem; padding: 0.45rem 0.85rem; }
+  .hero-accuracy-pct { font-size: 1.4rem; }
+  .hero-accuracy-sub { font-size: 0.56rem; }
+}

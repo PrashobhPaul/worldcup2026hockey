@@ -149,3 +149,42 @@ export function oracleRecord(matches, predictions) {
     accuracyPct: graded ? Math.round((correct / graded) * 100) : null,
   }
 }
+
+// THE published accuracy figure. One definition, used by every screen that
+// shows a number, because the app has twice shipped two different records of
+// the same model on the same screen — most recently 78% in the hero beside
+// 68% on Matches, Oracle and Trust, which read `accuracy_pct` while the hero
+// read `winner_named_pct`. Those are both true and they measure different
+// things; showing both without saying so is the bug.
+//
+// The published figure is the whole three-way record: how many of the
+// non-knockout matches the model called, draws included, out of all of them.
+// That is the question the number is asked — "how many of the 40 did it get
+// right" — and a draw called correctly counts as a match called correctly.
+// The draws are also reported on their own by callers with room for them,
+// because calling five of eight draws is the part a bare percentage hides.
+//
+// Older calibration files carry only `correct/matches/accuracy_pct`, which is
+// this same three-way record, so they need no special case. A file with
+// neither falls back to the client-side tally, so a client holding yesterday's
+// data still shows a coherent number rather than nothing.
+export function publishedAccuracy(calibration, fallback) {
+  const cal = calibration
+  if (cal?.accuracy_pct != null) {
+    return {
+      correct: cal.correct,
+      graded: cal.matches,
+      pct: cal.accuracy_pct,
+      draws: cal.draws ?? null,
+      drawsCalled: cal.draws_called ?? null,
+      brier: cal.brier ?? null,
+      basis: 'all-matches',
+    }
+  }
+  return {
+    correct: fallback?.correct ?? 0,
+    graded: fallback?.graded ?? 0,
+    pct: fallback?.accuracyPct ?? null,
+    draws: null, drawsCalled: null, brier: null, basis: 'client-tally',
+  }
+}

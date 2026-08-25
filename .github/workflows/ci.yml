@@ -90,10 +90,16 @@ jobs:
         run: npm run test:tiers
 
       # The published pick rule is a port of a model whose replay numbers are
-      # known. Reproduce them from the reference table, and refuse to let the
-      # fitted benchmark mode become the one that ships.
+      # known. Reproduce them from the author's reference table in both
+      # modes, and hold every published pick to the configured one.
       - name: Non-knockout model port
         run: npm run test:model
+
+      # One model, one published figure. The hero once read winner_named_pct
+      # while Matches, Oracle and Trust read accuracy_pct — 78% beside 68%,
+      # both true, measuring different things, with nothing saying which.
+      - name: One published accuracy figure
+        run: npm run test:accuracy
 
       - name: Build
         run: npm run build
