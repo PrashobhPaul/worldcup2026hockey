@@ -7,6 +7,7 @@ import MatchCard, { formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
 import { oracleRecord, publishedAccuracy } from '../engine/prediction'
 import { effectiveStatus } from '../engine/clock'
+import { useOracleBundle } from '../engine/oracleBundle'
 import { useNowTick } from '../hooks/useNowTick'
 import { SIM_ID, SIM_MATCH } from '../content/sim'
 
@@ -62,6 +63,13 @@ export default function MatchesPage() {
   const [stage, setStage] = useState(
     STAGE_TABS.some(s => s.id === params.get('stage')) ? params.get('stage') : null)
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
+  const teams = useLiveQuery(() => db.teams.toArray(), [], [])
+  // The bracket is the app's one answer for a fixture whose nations are not
+  // settled yet, so the medal matches read the same here as on the Cup and
+  // Oracle tabs instead of showing "TBD" on one screen and a projection on
+  // another.
+  const bundle = useOracleBundle(teams, matches ?? [])
+  const slotOf = id => bundle?.bracket?.byId?.get(id) ?? null
 
   const loading = matches === undefined
   const all = matches ?? []
@@ -196,7 +204,7 @@ export default function MatchesPage() {
                 <span className="h-px flex-1 bg-white/5" />
               </div>
               <div className="space-y-2.5">
-                {byDate[date].map(m => <MatchCard key={m.id} match={m} />)}
+                {byDate[date].map(m => <MatchCard key={m.id} match={m} projection={slotOf(m.id)} />)}
               </div>
             </div>
           ))}

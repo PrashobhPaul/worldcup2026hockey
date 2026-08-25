@@ -26,23 +26,46 @@ export function computeOracleBundle(teams, matches) {
   const standings = computeStandings(teams, matches)
   const bracket = projectBracket(teams, matches, standings)
 
-  // Title-elimination point on the finished-count axis. Everyone advances from
-  // Stage 1 to Stage 2, so nobody is out of the *tournament* at the pool stage —
-  // but finishing 3rd/4th drops a team into pools G/H, which only play for
-  // places 9–16, so they are out of *contention* the moment their pool
-  // completes. Semi-final losers drop out of the gold race at that result.
+  // Title-elimination point on the finished-count axis.
+  //
+  // The title race is the semi-final path and nothing else, so the honest
+  // definition is the bracket's: once the semi-finals name their four teams,
+  // everyone else is out of contention — including the sides that finished
+  // 3rd and 4th in Pools E and F, who play only for 5th to 8th. Reading it
+  // off the bracket rather than re-deriving it here is what keeps the Teams
+  // grid, the Oracle race and the team pages from disagreeing: they are all
+  // looking at the same four names.
+  //
+  // Before the semi-finals are named, a Stage-1 pool that has finished still
+  // settles part of it — 3rd and 4th drop into Pools G/H, which play only for
+  // places 9–16 — so that rule stays as the earlier signal.
   const eliminationAt = new Map()
+  const markOut = (code, stage) => {
+    if (eliminationAt.has(code)) return
+    const lastIdx = results.reduce((acc, m, i) =>
+      (m.home === code || m.away === code) ? i + 1 : acc, 0)
+    eliminationAt.set(code, { finishedCount: lastIdx, stage })
+  }
+
   const poolMatches = matches.filter(m => m.phase === 'pool')
   for (const pool of standings) {
     const done = poolMatches.filter(m => m.pool === pool.id).every(m =>
       m.status === 'completed' && m.score?.home != null)
     if (!done) continue
-    pool.standings.slice(2).forEach(row => {
-      const lastIdx = results.reduce((acc, m, i) =>
-        (m.home === row.team || m.away === row.team) ? i + 1 : acc, 0)
-      eliminationAt.set(row.team, { finishedCount: lastIdx, stage: 'Stage 2 (9–16)' })
-    })
+    pool.standings.slice(2).forEach(row => markOut(row.team, 'Stage 2 (9–16)'))
   }
+
+  // Once both semi-finals name their sides, the four of them are the title
+  // race and every other nation is out of it.
+  const semis = bracket.ties.filter(t => t.group === 'semi')
+  const contenders = new Set(semis.flatMap(t => [t.home, t.away]).filter(Boolean))
+  if (semis.length > 0 && semis.every(t => t.locked) && contenders.size === semis.length * 2) {
+    for (const t of teams) {
+      if (!contenders.has(t.code)) markOut(t.code, 'Stage 2 (5–8)')
+    }
+  }
+
+  // A semi-final that has been played settles two more.
   for (const tie of bracket.ties) {
     if (tie.played && tie.loser && tie.group === 'semi') {
       const idx = results.findIndex(m => m.id === tie.id)

@@ -255,8 +255,14 @@ function TieCard({ tie, byCode }) {
       }`} style={{ borderStyle: tie.locked ? 'solid' : 'dashed' }}>
         {team?.flag ?? '❓'}
       </span>
+      {/* Square brackets mark a nation the bracket projects into this tie
+          rather than one the results have put there, so the notation matches
+          the Matches card and a prediction is never read as a confirmed
+          line-up. The Locked/Projected label says the same thing in words. */}
       <span className={`flex-1 text-sm ${tie.predicted === code ? 'font-bold' : 'text-pitch-300'}`}>
-        {team?.name ?? code ?? 'TBD'}
+        {tie.locked
+          ? (team?.name ?? code ?? 'TBD')
+          : `[${team?.name ?? code ?? 'TBD'}]`}
       </span>
       {prob != null && tie.predicted === code && (
         <span className="font-mono text-xs font-bold text-brand">{Math.round(prob * 100)}%</span>
