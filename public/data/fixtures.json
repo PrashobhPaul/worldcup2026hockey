@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-25T16:41:59.314490+00:00",
+ "last_updated": "2026-08-25T16:55:40.166062+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -151,7 +151,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.300867+00:00",
+    "generated_at": "2026-08-25T16:55:40.145704+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -184,18 +184,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_08",
-       "name": "Dilpreet Singh",
-       "number": 9,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "number": 8,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
+       "playerId": "IND_08",
+       "name": "Dilpreet Singh",
+       "number": 9,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -211,18 +211,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "number": 70,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "number": 34,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -638,7 +638,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.301347+00:00",
+    "generated_at": "2026-08-25T16:55:40.146251+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -662,6 +662,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ENG_04",
+       "name": "Samuel Hooper",
+       "number": 33,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ENG_12",
        "name": "Stuart Rushmere",
        "number": 17,
@@ -674,15 +683,6 @@
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
        "number": 23,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_04",
-       "name": "Samuel Hooper",
-       "number": 33,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -707,9 +707,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "number": 14,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -725,9 +725,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -1148,7 +1148,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.301652+00:00",
+    "generated_at": "2026-08-25T16:55:40.146676+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -1181,18 +1181,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -1335,9 +1335,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -1353,9 +1353,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -1645,7 +1645,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.301937+00:00",
+    "generated_at": "2026-08-25T16:55:40.147064+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -2092,7 +2092,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.302234+00:00",
+    "generated_at": "2026-08-25T16:55:40.147442+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -2134,18 +2134,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -2590,7 +2590,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.302514+00:00",
+    "generated_at": "2026-08-25T16:55:40.147824+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -2603,15 +2603,6 @@
        "position": "Goalkeeper",
        "captain": false,
        "goalkeeper": true
-      },
-      {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       },
       {
        "playerId": "NED_05",
@@ -2632,9 +2623,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -2644,6 +2635,15 @@
        "playerId": "NED_23",
        "name": "Koen Bijen",
        "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -2786,6 +2786,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "number": 21,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_13",
        "name": "George Baker",
        "number": 32,
@@ -2798,7 +2807,7 @@
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -2807,15 +2816,6 @@
        "playerId": "NZL_10",
        "name": "Dylan Thomas",
        "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -3074,7 +3074,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.302794+00:00",
+    "generated_at": "2026-08-25T16:55:40.148207+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -3261,6 +3261,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "number": 25,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_15",
        "name": "Lee Cole",
        "number": 29,
@@ -3282,24 +3291,6 @@
        "playerId": "IRL_21",
        "name": "Alistair Empey",
        "number": 49,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -3309,6 +3300,15 @@
        "playerId": "IRL_06",
        "name": "John McKee",
        "number": 8,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -3558,7 +3558,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.303067+00:00",
+    "generated_at": "2026-08-25T16:55:40.148592+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -3754,15 +3754,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_20",
-       "name": "Kenton Melville",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "RSA_14",
        "name": "Nicholas Spooner",
        "number": 23,
@@ -3775,6 +3766,15 @@
        "playerId": "RSA_13",
        "name": "Luke Wynford",
        "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_20",
+       "name": "Kenton Melville",
+       "number": 47,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -3981,7 +3981,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.303358+00:00",
+    "generated_at": "2026-08-25T16:55:40.148970+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -4014,18 +4014,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_08",
-       "name": "Dilpreet Singh",
-       "number": 9,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "number": 8,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
+       "playerId": "IND_08",
+       "name": "Dilpreet Singh",
+       "number": 9,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -4041,18 +4041,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "number": 70,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "number": 34,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -4168,6 +4168,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ENG_04",
+       "name": "Samuel Hooper",
+       "number": 33,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ENG_12",
        "name": "Stuart Rushmere",
        "number": 17,
@@ -4180,15 +4189,6 @@
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
        "number": 23,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_04",
-       "name": "Samuel Hooper",
-       "number": 33,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -4213,9 +4213,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "number": 14,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -4231,9 +4231,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -4539,7 +4539,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.303631+00:00",
+    "generated_at": "2026-08-25T16:55:40.149338+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -5050,7 +5050,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.303896+00:00",
+    "generated_at": "2026-08-25T16:55:40.149715+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -5083,18 +5083,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -5554,7 +5554,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.304157+00:00",
+    "generated_at": "2026-08-25T16:55:40.150078+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -5741,9 +5741,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -5759,9 +5759,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -6062,7 +6062,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.304426+00:00",
+    "generated_at": "2026-08-25T16:55:40.150439+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -6104,18 +6104,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -6240,15 +6240,6 @@
        "goalkeeper": true
       },
       {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "NED_05",
        "name": "Jip Janssen",
        "number": 2,
@@ -6267,9 +6258,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -6279,6 +6270,15 @@
        "playerId": "NED_23",
        "name": "Koen Bijen",
        "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -6520,7 +6520,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.304695+00:00",
+    "generated_at": "2026-08-25T16:55:40.150807+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -6553,6 +6553,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "number": 21,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_13",
        "name": "George Baker",
        "number": 32,
@@ -6565,7 +6574,7 @@
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -6574,15 +6583,6 @@
        "playerId": "NZL_10",
        "name": "Dylan Thomas",
        "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -6989,7 +6989,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.304956+00:00",
+    "generated_at": "2026-08-25T16:55:40.151166+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -7498,7 +7498,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.305237+00:00",
+    "generated_at": "2026-08-25T16:55:40.151526+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -7519,6 +7519,15 @@
        "line": "Defender",
        "position": null,
        "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "number": 25,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
        "goalkeeper": false
       },
       {
@@ -7543,24 +7552,6 @@
        "playerId": "IRL_21",
        "name": "Alistair Empey",
        "number": 49,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -7570,6 +7561,15 @@
        "playerId": "IRL_06",
        "name": "John McKee",
        "number": 8,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -7694,15 +7694,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_20",
-       "name": "Kenton Melville",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "RSA_14",
        "name": "Nicholas Spooner",
        "number": 23,
@@ -7715,6 +7706,15 @@
        "playerId": "RSA_13",
        "name": "Luke Wynford",
        "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_20",
+       "name": "Kenton Melville",
+       "number": 47,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -8042,7 +8042,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.305495+00:00",
+    "generated_at": "2026-08-25T16:55:40.151885+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -8066,6 +8066,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ENG_04",
+       "name": "Samuel Hooper",
+       "number": 33,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ENG_12",
        "name": "Stuart Rushmere",
        "number": 17,
@@ -8078,15 +8087,6 @@
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
        "number": 23,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_04",
-       "name": "Samuel Hooper",
-       "number": 33,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -8111,9 +8111,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "number": 14,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -8129,9 +8129,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -8608,7 +8608,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.305762+00:00",
+    "generated_at": "2026-08-25T16:55:40.152245+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -8804,18 +8804,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_08",
-       "name": "Dilpreet Singh",
-       "number": 9,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "number": 8,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
+       "playerId": "IND_08",
+       "name": "Dilpreet Singh",
+       "number": 9,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -8831,18 +8831,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "number": 70,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "number": 34,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -9168,7 +9168,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.306028+00:00",
+    "generated_at": "2026-08-25T16:55:40.152612+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -9355,9 +9355,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -9373,9 +9373,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -9668,7 +9668,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.306294+00:00",
+    "generated_at": "2026-08-25T16:55:40.152971+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -9864,18 +9864,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -10147,7 +10147,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.306558+00:00",
+    "generated_at": "2026-08-25T16:55:40.153331+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -10160,15 +10160,6 @@
        "position": "Goalkeeper",
        "captain": false,
        "goalkeeper": true
-      },
-      {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       },
       {
        "playerId": "NED_05",
@@ -10189,9 +10180,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -10201,6 +10192,15 @@
        "playerId": "NED_23",
        "name": "Koen Bijen",
        "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -10689,7 +10689,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.306814+00:00",
+    "generated_at": "2026-08-25T16:55:40.153696+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -10722,6 +10722,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "number": 21,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_13",
        "name": "George Baker",
        "number": 32,
@@ -10734,7 +10743,7 @@
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -10743,15 +10752,6 @@
        "playerId": "NZL_10",
        "name": "Dylan Thomas",
        "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -10894,18 +10894,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -11239,7 +11239,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.307068+00:00",
+    "generated_at": "2026-08-25T16:55:40.154055+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -11435,15 +11435,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_20",
-       "name": "Kenton Melville",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "RSA_14",
        "name": "Nicholas Spooner",
        "number": 23,
@@ -11456,6 +11447,15 @@
        "playerId": "RSA_13",
        "name": "Luke Wynford",
        "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_20",
+       "name": "Kenton Melville",
+       "number": 47,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -11741,7 +11741,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.307333+00:00",
+    "generated_at": "2026-08-25T16:55:40.154412+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -11762,6 +11762,15 @@
        "line": "Defender",
        "position": null,
        "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "number": 25,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
        "goalkeeper": false
       },
       {
@@ -11786,24 +11795,6 @@
        "playerId": "IRL_21",
        "name": "Alistair Empey",
        "number": 49,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -11813,6 +11804,15 @@
        "playerId": "IRL_06",
        "name": "John McKee",
        "number": 8,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -12236,7 +12236,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.307597+00:00",
+    "generated_at": "2026-08-25T16:55:40.154781+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -12432,15 +12432,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_20",
-       "name": "Kenton Melville",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "RSA_14",
        "name": "Nicholas Spooner",
        "number": 23,
@@ -12453,6 +12444,15 @@
        "playerId": "RSA_13",
        "name": "Luke Wynford",
        "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_20",
+       "name": "Kenton Melville",
+       "number": 47,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -12774,7 +12774,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.307858+00:00",
+    "generated_at": "2026-08-25T16:55:40.155163+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -12795,6 +12795,15 @@
        "line": "Defender",
        "position": null,
        "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "number": 25,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
        "goalkeeper": false
       },
       {
@@ -12819,24 +12828,6 @@
        "playerId": "IRL_21",
        "name": "Alistair Empey",
        "number": 49,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -12846,6 +12837,15 @@
        "playerId": "IRL_06",
        "name": "John McKee",
        "number": 8,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -12961,9 +12961,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -12979,9 +12979,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -13719,7 +13719,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.308386+00:00",
+    "generated_at": "2026-08-25T16:55:40.155887+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -13752,18 +13752,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -14225,7 +14225,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.308647+00:00",
+    "generated_at": "2026-08-25T16:55:40.156252+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -14258,6 +14258,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "number": 21,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_13",
        "name": "George Baker",
        "number": 32,
@@ -14270,7 +14279,7 @@
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -14279,15 +14288,6 @@
        "playerId": "NZL_10",
        "name": "Dylan Thomas",
        "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -15296,7 +15296,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.309172+00:00",
+    "generated_at": "2026-08-25T16:55:40.156975+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -15309,15 +15309,6 @@
        "position": "Goalkeeper",
        "captain": false,
        "goalkeeper": true
-      },
-      {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       },
       {
        "playerId": "NED_05",
@@ -15338,9 +15329,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -15350,6 +15341,15 @@
        "playerId": "NED_23",
        "name": "Koen Bijen",
        "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -15492,18 +15492,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_08",
-       "name": "Dilpreet Singh",
-       "number": 9,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "number": 8,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
+       "playerId": "IND_08",
+       "name": "Dilpreet Singh",
+       "number": 9,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -15519,18 +15519,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "number": 70,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "number": 34,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -15779,7 +15779,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.309438+00:00",
+    "generated_at": "2026-08-25T16:55:40.157333+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -15803,6 +15803,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ENG_04",
+       "name": "Samuel Hooper",
+       "number": 33,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ENG_12",
        "name": "Stuart Rushmere",
        "number": 17,
@@ -15815,15 +15824,6 @@
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
        "number": 23,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_04",
-       "name": "Samuel Hooper",
-       "number": 33,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -15848,9 +15848,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "number": 14,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -15866,9 +15866,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -15984,18 +15984,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -16294,7 +16294,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.309702+00:00",
+    "generated_at": "2026-08-25T16:55:40.157696+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -16318,9 +16318,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -16336,9 +16336,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -16490,15 +16490,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_20",
-       "name": "Kenton Melville",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "RSA_14",
        "name": "Nicholas Spooner",
        "number": 23,
@@ -16511,6 +16502,15 @@
        "playerId": "RSA_13",
        "name": "Luke Wynford",
        "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_20",
+       "name": "Kenton Melville",
+       "number": 47,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -16812,7 +16812,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.309957+00:00",
+    "generated_at": "2026-08-25T16:55:40.158065+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -16999,6 +16999,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "number": 25,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_15",
        "name": "Lee Cole",
        "number": 29,
@@ -17020,24 +17029,6 @@
        "playerId": "IRL_21",
        "name": "Alistair Empey",
        "number": 49,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -17047,6 +17038,15 @@
        "playerId": "IRL_06",
        "name": "John McKee",
        "number": 8,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -17315,7 +17315,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.310233+00:00",
+    "generated_at": "2026-08-25T16:55:40.158428+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -17348,18 +17348,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -18806,7 +18806,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.311004+00:00",
+    "generated_at": "2026-08-25T16:55:40.159534+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -18839,6 +18839,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "number": 21,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_13",
        "name": "George Baker",
        "number": 32,
@@ -18851,7 +18860,7 @@
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -18860,15 +18869,6 @@
        "playerId": "NZL_10",
        "name": "Dylan Thomas",
        "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -19328,7 +19328,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.311269+00:00",
+    "generated_at": "2026-08-25T16:55:40.159907+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -19370,18 +19370,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -19524,18 +19524,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_08",
-       "name": "Dilpreet Singh",
-       "number": 9,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "number": 8,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
+       "playerId": "IND_08",
+       "name": "Dilpreet Singh",
+       "number": 9,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -19551,18 +19551,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "number": 70,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "number": 34,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -19840,7 +19840,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.311530+00:00",
+    "generated_at": "2026-08-25T16:55:40.160272+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -19853,15 +19853,6 @@
        "position": "Goalkeeper",
        "captain": false,
        "goalkeeper": true
-      },
-      {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       },
       {
        "playerId": "NED_05",
@@ -19882,9 +19873,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -19894,6 +19885,15 @@
        "playerId": "NED_23",
        "name": "Koen Bijen",
        "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -20027,6 +20027,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ENG_04",
+       "name": "Samuel Hooper",
+       "number": 33,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ENG_12",
        "name": "Stuart Rushmere",
        "number": 17,
@@ -20039,15 +20048,6 @@
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
        "number": 23,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_04",
-       "name": "Samuel Hooper",
-       "number": 33,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -20072,9 +20072,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "number": 14,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -20090,9 +20090,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -20646,7 +20646,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.312043+00:00",
+    "generated_at": "2026-08-25T16:55:40.161015+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -20833,9 +20833,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -20851,9 +20851,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -20999,7 +20999,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.312305+00:00",
+    "generated_at": "2026-08-25T16:55:40.161377+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -21195,15 +21195,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_20",
-       "name": "Kenton Melville",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "RSA_14",
        "name": "Nicholas Spooner",
        "number": 23,
@@ -21216,6 +21207,15 @@
        "playerId": "RSA_13",
        "name": "Luke Wynford",
        "number": 20,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "RSA_20",
+       "name": "Kenton Melville",
+       "number": 47,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -21352,7 +21352,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.312564+00:00",
+    "generated_at": "2026-08-25T16:55:40.161741+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -21385,6 +21385,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "number": 21,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "NZL_13",
        "name": "George Baker",
        "number": 32,
@@ -21397,7 +21406,7 @@
        "playerId": "NZL_12",
        "name": "Finn Ward",
        "number": 30,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -21406,15 +21415,6 @@
        "playerId": "NZL_10",
        "name": "Dylan Thomas",
        "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -21539,6 +21539,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "number": 25,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "IRL_15",
        "name": "Lee Cole",
        "number": 29,
@@ -21560,24 +21569,6 @@
        "playerId": "IRL_21",
        "name": "Alistair Empey",
        "number": 49,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -21587,6 +21578,15 @@
        "playerId": "IRL_06",
        "name": "John McKee",
        "number": 8,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "number": 20,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -21705,7 +21705,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.312824+00:00",
+    "generated_at": "2026-08-25T16:55:40.162102+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -21729,6 +21729,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ENG_04",
+       "name": "Samuel Hooper",
+       "number": 33,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ENG_12",
        "name": "Stuart Rushmere",
        "number": 17,
@@ -21741,15 +21750,6 @@
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
        "number": 23,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_04",
-       "name": "Samuel Hooper",
-       "number": 33,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -21774,9 +21774,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "number": 14,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -21792,9 +21792,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -22057,7 +22057,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.313089+00:00",
+    "generated_at": "2026-08-25T16:55:40.162474+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -22090,18 +22090,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_08",
-       "name": "Dilpreet Singh",
-       "number": 9,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "number": 8,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
+       "playerId": "IND_08",
+       "name": "Dilpreet Singh",
+       "number": 9,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -22117,18 +22117,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "number": 70,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "number": 34,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -22409,7 +22409,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.313364+00:00",
+    "generated_at": "2026-08-25T16:55:40.162864+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -22422,15 +22422,6 @@
        "position": "Goalkeeper",
        "captain": false,
        "goalkeeper": true
-      },
-      {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
       },
       {
        "playerId": "NED_05",
@@ -22451,9 +22442,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -22463,6 +22454,15 @@
        "playerId": "NED_23",
        "name": "Koen Bijen",
        "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -22761,7 +22761,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T16:41:59.313635+00:00",
+    "generated_at": "2026-08-25T16:55:40.163247+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -22794,18 +22794,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -22966,18 +22966,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
        "line": "Midfielder",
        "position": null,
        "captain": false,
