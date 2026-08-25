@@ -3778,9 +3778,12 @@
       "p_away_win": 0.311,
       "pick": "HOME",
       "pick_confidence": 0.689,
-      "reason": "FIH #9 NZL favoured over #11 IRL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "New Zealand have won both of their classification matches and three of five overall, scoring fifteen; Ireland have won two of five and lost three. Ireland's seven goals against Malaysia are the biggest single return either side has managed, and Lee Cole and Jonathan Lynch have three each, so the attacking case is real. New Zealand's is the steadier record across the fortnight.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "NZL"
+      "pick_team": "NZL",
+      "reason_original": "FIH #9 NZL favoured over #11 IRL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:POS5:r2",
@@ -3793,9 +3796,12 @@
       "p_away_win": 0.344,
       "pick": "HOME",
       "pick_confidence": 0.656,
-      "reason": "FIH #3 ENG favoured over #6 AUS — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "England have scored nineteen goals in five matches to Australia's nine, with twelve of them from open play and seven from set pieces — the broadest scoring of any side outside the semi-finals. Australia have conceded eight to England's ten and lost only once, so this is a contest between the sharper attack and the tighter defence, and the attack has the larger margin.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "ENG"
+      "pick_team": "ENG",
+      "reason_original": "FIH #3 ENG favoured over #6 AUS — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:POS7:r2",
@@ -3808,9 +3814,12 @@
       "p_away_win": 0.948,
       "pick": "AWAY",
       "pick_confidence": 0.948,
-      "reason": "FIH #2 BEL favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "Belgium have conceded eight goals in five matches to India's sixteen, and have lost once where India have lost three, including their last three in a row. India's fourteen goals and Harmanpreet Singh's six from penalty corners are the counter-argument, and a real one — they have the more dangerous set piece on the pitch. Belgium's defence is the more reliable of the two.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "BEL"
+      "pick_team": "BEL",
+      "reason_original": "FIH #2 BEL favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:SF1:r2",
@@ -3823,9 +3832,12 @@
       "p_away_win": 0.149,
       "pick": "HOME",
       "pick_confidence": 0.851,
-      "reason": "FIH #1 NED favoured over #7 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "The Netherlands are the only unbeaten side left, with seventeen goals scored and six conceded across five matches, and they are playing at home in Amstelveen. Spain have conceded only five, the fewest of anyone, and have already beaten Germany here, so this is the tournament's best attack against its most miserly defence. Spain's nine goals in five matches are why the Netherlands are favoured rather than certain.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "NED"
+      "pick_team": "NED",
+      "reason_original": "FIH #1 NED favoured over #7 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:SF2:r2",
@@ -3838,9 +3850,12 @@
       "p_away_win": 0.517,
       "pick": "AWAY",
       "pick_confidence": 0.517,
-      "reason": "FIH #4 ARG favoured over #5 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "Argentina come in on four straight wins with nineteen goals, and Tomas Domene's eight are the most by any player in the tournament — he scored all three in the win over England. Germany have conceded six to Argentina's eight and beat Australia to top the pool, so the defensive record is theirs. The margin is narrow: Argentina's scoring rate against Germany's back line.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "ARG"
+      "pick_team": "ARG",
+      "reason_original": "FIH #4 ARG favoured over #5 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:POS13:r3",
@@ -3853,9 +3868,12 @@
       "p_away_win": 0.94,
       "pick": "AWAY",
       "pick_confidence": 0.94,
-      "reason": "FIH #10 FRA favoured over #16 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "France have taken a point off Germany and beaten Ireland in this tournament, and have scored in four of their five matches; Japan's only win came against Wales, the side with the worst defensive record here. Nine goals to seven and eleven conceded to fifteen is a narrow edge rather than a wide one, and Japan arrive on their first win of the fortnight, which is the case against.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "FRA"
+      "pick_team": "FRA",
+      "reason_original": "FIH #10 FRA favoured over #16 JPN — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:POS15:r4",
@@ -3868,9 +3886,12 @@
       "p_away_win": 0.756,
       "pick": "AWAY",
       "pick_confidence": 0.756,
-      "reason": "FIH #14 MAS favoured over #18 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "Neither side has won a match here, so the argument is which of two struggling teams creates more. Malaysia have scored fourteen to Wales' ten and have taken two draws to Wales' one; Abu Kamal Azrai has four of those goals. Wales have conceded twenty-four, the most of any side in the tournament. Gareth Furlong's four goals are the reason this is not comfortable.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "MAS"
+      "pick_team": "MAS",
+      "reason_original": "FIH #14 MAS favoured over #18 WAL — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:POS11:r4",
@@ -3883,9 +3904,12 @@
       "p_away_win": 0.659,
       "pick": "AWAY",
       "pick_confidence": 0.659,
-      "reason": "FIH #12 RSA favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason": "South Africa have the better result on their sheet — a draw with an unbeaten Australia and a three-goal win over France — and Mustaphaa Cassiem's six goals are the most by anyone outside the semi-finalists. Pakistan have scored thirteen to South Africa's ten, so the attacking numbers favour them, but they have conceded nineteen against South Africa's thirteen and their only win came against Japan.",
       "publishedAt": "2026-08-25T01:23:47.914683+00:00",
-      "pick_team": "RSA"
+      "pick_team": "RSA",
+      "reason_original": "FIH #12 RSA favoured over #13 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
+      "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged"
     },
     {
       "id": "coherent:oracle-v1:D1",

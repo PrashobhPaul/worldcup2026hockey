@@ -1,0 +1,2244 @@
+{
+  "_meta": {
+    "tournament": "2026 FIH Men's Hockey World Cup",
+    "hosts": [
+      "Belgium",
+      "Netherlands"
+    ],
+    "dates": "2026-08-15 to 2026-08-30",
+    "venues": {
+      "AMS": "Wagener Stadium, Amstelveen (NED)",
+      "WAV": "Belfius Hockey Arena, Wavre (BEL)"
+    },
+    "compiled_on": "2026-08-25",
+    "format": "4 pools of 4 (A-D) -> 2 crossover second-round pools (E,F) with head-to-head carryover -> top 2 of E and F to semis (no quarter-finals); bottom 2 of each pool to classification pools (G,H) for places 9-16",
+    "source_confidence": "Scores and standings VERIFIED (FIH / Olympics.com / Chase Your Sport). Goal-type team totals VERIFIED (FIH Data Hub). Individual goal minutes populated only where a report gave them. See _coverage_gaps.",
+    "_coverage_gaps": {
+      "penalty_corners_earned": "NOT in official FIH stats for this event; recoverable only from ball-by-ball commentary. Marked null pending a commentary-mining pass. Known exception recorded: GER 1-0 BEL.",
+      "penalty_corners_conceded": "Same as above; null pending commentary pass.",
+      "shots_and_shots_on_target": "NOT published; null. Known exception: none reliable.",
+      "circle_entries": "NOT published as team aggregates; null. Known exception: GER 1-0 BEL (BEL 26 entries / 0 goals; GER 12 entries).",
+      "gk_save_pct": "NOT published; null. Only qualitative standout-save notes available.",
+      "possession_pct": "NOT published; null.",
+      "goal_minutes": "Populated only where a match report stated them; otherwise null.",
+      "to_fill_later": "Run per-match commentary extraction (FIH match-centre, Olympics.com live blog, ESPN, Sportstar/Scroll ball-by-ball for India + marquee games) to populate pc_earned, pc_conceded, shots, circle_entries per team, then merge on match_id."
+    },
+    "schema": {
+      "match_id": "int",
+      "stage": "pool_A|pool_B|pool_C|pool_D|round2_E|round2_F|class_G|class_H",
+      "date": "YYYY-MM-DD",
+      "venue": "AMS|WAV",
+      "home": "team code",
+      "away": "team code",
+      "score": "[home_goals, away_goals]",
+      "result": "winner code or DRAW",
+      "goals": [
+        {
+          "team": "code",
+          "scorer": "name|null",
+          "minute": "int|null",
+          "type": "field|pc|stroke"
+        }
+      ],
+      "team_stats": {
+        "CODE": {
+          "pc_earned": "int|null",
+          "pc_converted": "int|null",
+          "pc_conceded": "int|null",
+          "circle_entries": "int|null",
+          "shots": "int|null",
+          "cards": []
+        }
+      },
+      "notes": "string"
+    }
+  },
+  "fih_ranking_points_2026_06_29": {
+    "BEL": {
+      "rank": 1,
+      "pts": 3738
+    },
+    "NED": {
+      "rank": 2,
+      "pts": 3513
+    },
+    "ENG": {
+      "rank": 3,
+      "pts": 3500
+    },
+    "AUS": {
+      "rank": 4,
+      "pts": 3395
+    },
+    "GER": {
+      "rank": 5,
+      "pts": 3306
+    },
+    "ESP": {
+      "rank": 6,
+      "pts": 3197
+    },
+    "ARG": {
+      "rank": 7,
+      "pts": 3165
+    },
+    "IND": {
+      "rank": 8,
+      "pts": 3134
+    },
+    "FRA": {
+      "rank": 9,
+      "pts": 2696
+    },
+    "IRL": {
+      "rank": 10,
+      "pts": 2695
+    },
+    "NZL": {
+      "rank": 11,
+      "pts": 2637
+    },
+    "PAK": {
+      "rank": 12,
+      "pts": 2439
+    },
+    "RSA": {
+      "rank": 13,
+      "pts": 2418
+    },
+    "MAS": {
+      "rank": 14,
+      "pts": 2378
+    },
+    "JPN": {
+      "rank": 15,
+      "pts": 2312
+    },
+    "WAL": {
+      "rank": 22,
+      "pts": null
+    }
+  },
+  "team_aggregates": {
+    "_note": "All teams played 5 matches. GF/GA verified from scorelines. pc_goals = penalty-corner goals scored (verified, FIH). stroke_goals verified. form is in chronological order.",
+    "NED": {
+      "gf": 17,
+      "ga": 6,
+      "gd": 11,
+      "gf_pg": 3.4,
+      "ga_pg": 1.2,
+      "pc_goals": 6,
+      "stroke_goals": 1,
+      "field_goals": 10,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "W",
+        "D"
+      ],
+      "streak": "unbeaten (4W+1D)",
+      "result": "SEMI-FINAL",
+      "upset_flags": []
+    },
+    "ARG": {
+      "gf": 19,
+      "ga": 8,
+      "gd": 11,
+      "gf_pg": 3.8,
+      "ga_pg": 1.6,
+      "pc_goals": 6,
+      "stroke_goals": 2,
+      "field_goals": 11,
+      "form": [
+        "W",
+        "L",
+        "W",
+        "W",
+        "W"
+      ],
+      "streak": "4 wins in last 4",
+      "result": "SEMI-FINAL",
+      "upset_flags": [
+        "beat ENG #3 (3-1)"
+      ]
+    },
+    "GER": {
+      "gf": 12,
+      "ga": 6,
+      "gd": 6,
+      "gf_pg": 2.4,
+      "ga_pg": 1.2,
+      "pc_goals": 3,
+      "stroke_goals": 0,
+      "field_goals": 9,
+      "form": [
+        "W",
+        "W",
+        "D",
+        "L",
+        "W"
+      ],
+      "streak": "1",
+      "result": "SEMI-FINAL",
+      "upset_flags": [
+        "lost to ESP #6 (1-2)"
+      ]
+    },
+    "ESP": {
+      "gf": 9,
+      "ga": 5,
+      "gd": 4,
+      "gf_pg": 1.8,
+      "ga_pg": 1.0,
+      "pc_goals": 2,
+      "stroke_goals": 1,
+      "field_goals": 6,
+      "form": [
+        "W",
+        "L",
+        "W",
+        "W",
+        "D"
+      ],
+      "streak": "unbeaten last 3",
+      "result": "SEMI-FINAL",
+      "upset_flags": [
+        "beat GER #5 (2-1)"
+      ]
+    },
+    "ENG": {
+      "gf": 19,
+      "ga": 10,
+      "gd": 9,
+      "gf_pg": 3.8,
+      "ga_pg": 2.0,
+      "pc_goals": 6,
+      "stroke_goals": 0,
+      "field_goals": 13,
+      "form": [
+        "W",
+        "W",
+        "W",
+        "L",
+        "D"
+      ],
+      "streak": "unbeaten? no - W W W then L D",
+      "result": "5-6 playoff",
+      "upset_flags": [
+        "lost to ARG #7 (1-3)"
+      ]
+    },
+    "AUS": {
+      "gf": 9,
+      "ga": 8,
+      "gd": 1,
+      "gf_pg": 1.8,
+      "ga_pg": 1.6,
+      "pc_goals": 5,
+      "stroke_goals": 1,
+      "field_goals": 3,
+      "form": [
+        "W",
+        "D",
+        "W",
+        "D",
+        "L"
+      ],
+      "streak": "0",
+      "result": "5-6 playoff",
+      "upset_flags": [
+        "beat ESP (1-0) but missed semis"
+      ]
+    },
+    "IND": {
+      "gf": 14,
+      "ga": 16,
+      "gd": -2,
+      "gf_pg": 2.8,
+      "ga_pg": 3.2,
+      "pc_goals": 8,
+      "stroke_goals": 1,
+      "field_goals": 5,
+      "form": [
+        "W",
+        "L",
+        "W",
+        "L",
+        "L"
+      ],
+      "streak": "3 losses",
+      "result": "7-8 playoff",
+      "upset_flags": []
+    },
+    "BEL": {
+      "gf": 10,
+      "ga": 8,
+      "gd": 2,
+      "gf_pg": 2.0,
+      "ga_pg": 1.6,
+      "pc_goals": 6,
+      "stroke_goals": 0,
+      "field_goals": 4,
+      "form": [
+        "W",
+        "L",
+        "W",
+        "D",
+        "D"
+      ],
+      "streak": "0 (2 draws)",
+      "result": "7-8 playoff (HOST, eliminated from semis)",
+      "upset_flags": [
+        "world #1 failed to win any round-2 match"
+      ]
+    },
+    "NZL": {
+      "gf": 15,
+      "ga": 16,
+      "gd": -1,
+      "gf_pg": 3.0,
+      "ga_pg": 3.2,
+      "pc_goals": null,
+      "form": [
+        "L",
+        "L",
+        "W",
+        "W",
+        "(class)"
+      ],
+      "result": "9-10 playoff",
+      "upset_flags": []
+    },
+    "IRL": {
+      "gf": 14,
+      "ga": 13,
+      "gd": 1,
+      "gf_pg": 2.8,
+      "ga_pg": 2.6,
+      "pc_goals": null,
+      "form": [
+        "L",
+        "W",
+        "L",
+        "W",
+        "(class)"
+      ],
+      "result": "9-10 playoff",
+      "upset_flags": []
+    },
+    "PAK": {
+      "gf": 13,
+      "ga": 19,
+      "gd": -6,
+      "gf_pg": 2.6,
+      "ga_pg": 3.8,
+      "pc_goals": 3,
+      "form": [
+        "L",
+        "D",
+        "L",
+        "W",
+        "(class)"
+      ],
+      "result": "11-12 playoff",
+      "upset_flags": []
+    },
+    "RSA": {
+      "gf": 10,
+      "ga": 13,
+      "gd": -3,
+      "gf_pg": 2.0,
+      "ga_pg": 2.6,
+      "pc_goals": 5,
+      "form": [
+        "L",
+        "W",
+        "D",
+        "W",
+        "(class)"
+      ],
+      "result": "11-12 playoff",
+      "upset_flags": [
+        "held AUS #4 (2-2)"
+      ]
+    },
+    "FRA": {
+      "gf": 9,
+      "ga": 11,
+      "gd": -2,
+      "gf_pg": 1.8,
+      "ga_pg": 2.2,
+      "pc_goals": null,
+      "form": [
+        "L",
+        "D",
+        "D",
+        "W",
+        "(class)"
+      ],
+      "result": "13-14 playoff",
+      "upset_flags": [
+        "drew GER (1-1)"
+      ]
+    },
+    "JPN": {
+      "gf": 7,
+      "ga": 15,
+      "gd": -8,
+      "gf_pg": 1.4,
+      "ga_pg": 3.0,
+      "pc_goals": null,
+      "form": [
+        "L",
+        "L",
+        "L",
+        "W",
+        "(class)"
+      ],
+      "result": "13-14 playoff",
+      "upset_flags": []
+    },
+    "MAS": {
+      "gf": 14,
+      "ga": 23,
+      "gd": -9,
+      "gf_pg": 2.8,
+      "ga_pg": 4.6,
+      "pc_goals": 4,
+      "form": [
+        "L",
+        "D",
+        "L",
+        "D",
+        "(class)"
+      ],
+      "result": "15-16 playoff",
+      "upset_flags": []
+    },
+    "WAL": {
+      "gf": 10,
+      "ga": 24,
+      "gd": -14,
+      "gf_pg": 2.0,
+      "ga_pg": 4.8,
+      "pc_goals": 2,
+      "stroke_goals": 2,
+      "form": [
+        "L",
+        "D",
+        "L",
+        "L",
+        "(class)"
+      ],
+      "result": "15-16 playoff",
+      "upset_flags": []
+    }
+  },
+  "top_scorers": [
+    {
+      "player": "Tomas Domene",
+      "team": "ARG",
+      "goals": 8,
+      "split": {
+        "field": 3,
+        "pc": 3,
+        "stroke": 2
+      }
+    },
+    {
+      "player": "Mustaphaa Cassiem",
+      "team": "RSA",
+      "goals": 6,
+      "split": {
+        "field": 1,
+        "pc": 5,
+        "stroke": 0
+      }
+    },
+    {
+      "player": "Harmanpreet Singh",
+      "team": "IND",
+      "goals": 6,
+      "split": {
+        "field": 0,
+        "pc": 6,
+        "stroke": 0
+      }
+    },
+    {
+      "player": "Tom Boon",
+      "team": "BEL",
+      "goals": 5,
+      "split": {
+        "field": 2,
+        "pc": 3,
+        "stroke": 0
+      }
+    },
+    {
+      "player": "Jose Basterra",
+      "team": "ESP",
+      "goals": 4,
+      "split": {
+        "field": 3,
+        "pc": 0,
+        "stroke": 1
+      }
+    },
+    {
+      "player": "Joel Rintala",
+      "team": "AUS",
+      "goals": 4,
+      "split": {
+        "field": 1,
+        "pc": 3,
+        "stroke": 0
+      }
+    },
+    {
+      "player": "Gareth Furlong",
+      "team": "WAL",
+      "goals": 4,
+      "split": {
+        "field": 0,
+        "pc": 2,
+        "stroke": 2
+      }
+    },
+    {
+      "player": "Abu Kamal Azrai",
+      "team": "MAS",
+      "goals": 4,
+      "split": {
+        "field": 0,
+        "pc": 4,
+        "stroke": 0
+      }
+    },
+    {
+      "player": "James Hickson",
+      "team": "NZL",
+      "goals": 4
+    },
+    {
+      "player": "Hannan Shahid",
+      "team": "PAK",
+      "goals": 4
+    }
+  ],
+  "primary_drag_flickers": {
+    "IND": "Harmanpreet Singh (6 PC goals - elite)",
+    "RSA": "Mustaphaa Cassiem (5 PC)",
+    "ARG": "Tomas Domene (3 PC) + Nicolas della Torre (2 PC)",
+    "BEL": "Tom Boon (3 PC) + Hendrickx/Duvekot/Van Doren",
+    "NED": "Tijmen Reyenga (3 PC); Jip Janssen designated flicker (1 stroke)",
+    "GER": "Jakob Brilla (2 PC) + von Montgelas (1)",
+    "ESP": "Marc Miralles / Marc Reyne (1 PC each) - weak PC unit",
+    "AUS": "Joel Rintala (3 PC)",
+    "ENG": "Samuel Hooper (3 PC)",
+    "MAS": "Abu Kamal Azrai (4 PC)",
+    "PAK": "Sufyan Khan (3 PC)",
+    "WAL": "Gareth Furlong"
+  },
+  "goalkeepers": {
+    "NED": "Maurits Visser (starter); Derk Meijer backup. NOTE: Pirmin Blaak RETIRED post-Paris-2024, NOT in this squad.",
+    "GER": "Jean-Paul Danneberg",
+    "ARG": "Tomas Santiago (decisive late PC save vs IND)",
+    "ESP": "Luis Calzado (standout vs GER)",
+    "IND": "Suraj Karkera / Mohith",
+    "BEL": "Vincent Vanasch (squad status unconfirmed)"
+  },
+  "matches": [
+    {
+      "match_id": 1,
+      "stage": "pool_A",
+      "venue": "AMS",
+      "home": "NED",
+      "away": "NZL",
+      "score": [
+        5,
+        1
+      ],
+      "result": "NED",
+      "goals": [
+        {
+          "team": "NED",
+          "scorer": "Tjep Hoedemakers",
+          "minute": 35,
+          "type": "field"
+        },
+        {
+          "team": "NED",
+          "scorer": "Duco Telgenkamp",
+          "minute": 41,
+          "type": "field"
+        },
+        {
+          "team": "NED",
+          "scorer": "Thierry Brinkman",
+          "minute": 49,
+          "type": "field"
+        },
+        {
+          "team": "NED",
+          "scorer": "Tjep Hoedemakers",
+          "minute": 50,
+          "type": "field"
+        },
+        {
+          "team": "NED",
+          "scorer": "Koen Bijen",
+          "minute": 52,
+          "type": "field"
+        },
+        {
+          "team": "NZL",
+          "scorer": "James Hickson",
+          "minute": 23,
+          "type": "field"
+        }
+      ],
+      "team_stats": {
+        "NED": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "NZL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Hoedemakers brace."
+    },
+    {
+      "match_id": 2,
+      "stage": "pool_A",
+      "venue": "AMS",
+      "home": "ARG",
+      "away": "JPN",
+      "score": [
+        3,
+        0
+      ],
+      "result": "ARG",
+      "goals": [
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "ARG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "JPN": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Scorer detail not in gathered sources."
+    },
+    {
+      "match_id": 3,
+      "stage": "pool_A",
+      "venue": "AMS",
+      "home": "NZL",
+      "away": "JPN",
+      "score": [
+        2,
+        0
+      ],
+      "result": "NZL",
+      "goals": [
+        {
+          "team": "NZL",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NZL",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "NZL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "JPN": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 4,
+      "stage": "pool_A",
+      "venue": "AMS",
+      "home": "NED",
+      "away": "ARG",
+      "score": [
+        3,
+        1
+      ],
+      "result": "NED",
+      "goals": [
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "NED": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ARG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Head-to-head carried into Pool E (NED +3). Key form data point for NED v ARG."
+    },
+    {
+      "match_id": 5,
+      "stage": "pool_A",
+      "venue": "AMS",
+      "home": "ARG",
+      "away": "NZL",
+      "score": [
+        7,
+        1
+      ],
+      "result": "ARG",
+      "goals": [
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NZL",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "ARG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "NZL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": [
+            {
+              "player": "Joseph Morrison",
+              "type": "yellow"
+            },
+            {
+              "player": "Charlie Morrison",
+              "type": "yellow"
+            }
+          ]
+        }
+      },
+      "notes": "Domene hat-trick. NZ down to 10 men after successive yellows to the Morrisons, triggering the rout."
+    },
+    {
+      "match_id": 6,
+      "stage": "pool_A",
+      "venue": "AMS",
+      "home": "NED",
+      "away": "JPN",
+      "score": [
+        4,
+        1
+      ],
+      "result": "NED",
+      "goals": [
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "JPN",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "NED": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "JPN": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 7,
+      "stage": "pool_B",
+      "venue": "WAV",
+      "home": "GER",
+      "away": "MAS",
+      "score": [
+        5,
+        1
+      ],
+      "result": "GER",
+      "goals": [],
+      "team_stats": {
+        "GER": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "MAS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Scorer detail not gathered."
+    },
+    {
+      "match_id": 8,
+      "stage": "pool_B",
+      "venue": "WAV",
+      "home": "BEL",
+      "away": "FRA",
+      "score": [
+        3,
+        2
+      ],
+      "result": "BEL",
+      "goals": [],
+      "team_stats": {
+        "BEL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "FRA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 9,
+      "stage": "pool_B",
+      "venue": "WAV",
+      "home": "FRA",
+      "away": "MAS",
+      "score": [
+        3,
+        3
+      ],
+      "result": "DRAW",
+      "goals": [],
+      "team_stats": {
+        "FRA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "MAS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 10,
+      "stage": "pool_B",
+      "venue": "WAV",
+      "home": "GER",
+      "away": "BEL",
+      "score": [
+        1,
+        0
+      ],
+      "result": "GER",
+      "goals": [
+        {
+          "team": "GER",
+          "scorer": "Jakob Brilla",
+          "minute": 39,
+          "type": "pc"
+        }
+      ],
+      "team_stats": {
+        "GER": {
+          "pc_earned": null,
+          "pc_converted": 1,
+          "circle_entries": 12,
+          "shots": null,
+          "cards": []
+        },
+        "BEL": {
+          "pc_earned": null,
+          "pc_converted": 0,
+          "circle_entries": 26,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "UPSET (GER #5 beat host BEL #1). Rare granular data: BEL 26 circle entries and 0 goals; GER 12 entries, 1 PC goal. Defining stat of Belgium's finishing failure. Sent BEL into Pool F with 0 carryover -> eliminated from semis."
+    },
+    {
+      "match_id": 11,
+      "stage": "pool_B",
+      "venue": "WAV",
+      "home": "FRA",
+      "away": "GER",
+      "score": [
+        1,
+        1
+      ],
+      "result": "DRAW",
+      "goals": [],
+      "team_stats": {
+        "FRA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "GER": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "France held the reigning champions."
+    },
+    {
+      "match_id": 12,
+      "stage": "pool_B",
+      "venue": "WAV",
+      "home": "BEL",
+      "away": "MAS",
+      "score": [
+        5,
+        3
+      ],
+      "result": "BEL",
+      "goals": [
+        {
+          "team": "BEL",
+          "scorer": "Tom Boon",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "BEL",
+          "scorer": "Tom Boon",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "BEL",
+          "scorer": "Tom Boon",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "BEL",
+          "scorer": "Tom Boon",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "BEL",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "BEL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "MAS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Tom Boon four goals."
+    },
+    {
+      "match_id": 13,
+      "stage": "pool_C",
+      "venue": "AMS",
+      "home": "AUS",
+      "away": "IRL",
+      "score": [
+        3,
+        1
+      ],
+      "result": "AUS",
+      "goals": [],
+      "team_stats": {
+        "AUS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "IRL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 14,
+      "stage": "pool_C",
+      "venue": "AMS",
+      "home": "ESP",
+      "away": "RSA",
+      "score": [
+        3,
+        1
+      ],
+      "result": "ESP",
+      "goals": [],
+      "team_stats": {
+        "ESP": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "RSA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 15,
+      "stage": "pool_C",
+      "venue": "AMS",
+      "home": "ESP",
+      "away": "AUS",
+      "score": [
+        0,
+        1
+      ],
+      "result": "AUS",
+      "goals": [
+        {
+          "team": "AUS",
+          "scorer": "Blake Govers",
+          "minute": 47,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "ESP": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "AUS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Carried into Pool F (AUS +3). Govers winner."
+    },
+    {
+      "match_id": 16,
+      "stage": "pool_C",
+      "venue": "AMS",
+      "home": "IRL",
+      "away": "RSA",
+      "score": [
+        4,
+        1
+      ],
+      "result": "IRL",
+      "goals": [],
+      "team_stats": {
+        "IRL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "RSA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 17,
+      "stage": "pool_C",
+      "venue": "AMS",
+      "home": "AUS",
+      "away": "RSA",
+      "score": [
+        2,
+        2
+      ],
+      "result": "DRAW",
+      "goals": [],
+      "team_stats": {
+        "AUS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "RSA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "UPSET-ADJACENT: RSA #13 held AUS #4."
+    },
+    {
+      "match_id": 18,
+      "stage": "pool_C",
+      "venue": "AMS",
+      "home": "IRL",
+      "away": "ESP",
+      "score": [
+        1,
+        3
+      ],
+      "result": "ESP",
+      "goals": [],
+      "team_stats": {
+        "IRL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ESP": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 19,
+      "stage": "pool_D",
+      "venue": "WAV",
+      "home": "IND",
+      "away": "WAL",
+      "score": [
+        3,
+        1
+      ],
+      "result": "IND",
+      "goals": [],
+      "team_stats": {
+        "IND": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "WAL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 20,
+      "stage": "pool_D",
+      "venue": "WAV",
+      "home": "ENG",
+      "away": "PAK",
+      "score": [
+        4,
+        1
+      ],
+      "result": "ENG",
+      "goals": [],
+      "team_stats": {
+        "ENG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "PAK": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 21,
+      "stage": "pool_D",
+      "venue": "WAV",
+      "home": "PAK",
+      "away": "WAL",
+      "score": [
+        3,
+        3
+      ],
+      "result": "DRAW",
+      "goals": [],
+      "team_stats": {
+        "PAK": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "WAL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 22,
+      "stage": "pool_D",
+      "venue": "WAV",
+      "home": "IND",
+      "away": "ENG",
+      "score": [
+        2,
+        4
+      ],
+      "result": "ENG",
+      "goals": [],
+      "team_stats": {
+        "IND": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ENG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Carried into Pool E (ENG +3)."
+    },
+    {
+      "match_id": 23,
+      "stage": "pool_D",
+      "venue": "WAV",
+      "home": "ENG",
+      "away": "WAL",
+      "score": [
+        8,
+        2
+      ],
+      "result": "ENG",
+      "goals": [],
+      "team_stats": {
+        "ENG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "WAL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 24,
+      "stage": "pool_D",
+      "venue": "WAV",
+      "home": "PAK",
+      "away": "IND",
+      "score": [
+        3,
+        5
+      ],
+      "result": "IND",
+      "goals": [],
+      "team_stats": {
+        "PAK": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "IND": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 25,
+      "stage": "round2_E",
+      "venue": "AMS",
+      "home": "NED",
+      "away": "IND",
+      "score": [
+        3,
+        1
+      ],
+      "result": "NED",
+      "goals": [
+        {
+          "team": "IND",
+          "scorer": "Harmanpreet Singh",
+          "minute": 52,
+          "type": "pc"
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "NED",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "NED": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "IND": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Mohith (IND GK) made a key save."
+    },
+    {
+      "match_id": 26,
+      "stage": "round2_E",
+      "venue": "AMS",
+      "home": "ENG",
+      "away": "ARG",
+      "score": [
+        1,
+        3
+      ],
+      "result": "ARG",
+      "goals": [
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "ENG",
+          "scorer": null,
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "ENG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ARG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "UPSET (ARG #7 beat ENG #3). Domene hat-trick - major bracket shaper."
+    },
+    {
+      "match_id": 27,
+      "stage": "round2_E",
+      "venue": "AMS",
+      "home": "ARG",
+      "away": "IND",
+      "score": [
+        5,
+        3
+      ],
+      "result": "ARG",
+      "goals": [
+        {
+          "team": "ARG",
+          "scorer": "Tomas Domene",
+          "minute": null,
+          "type": "stroke"
+        }
+      ],
+      "team_stats": {
+        "ARG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "IND": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Tomas Santiago (ARG GK) made a decisive late PC save to seal it."
+    },
+    {
+      "match_id": 28,
+      "stage": "round2_E",
+      "venue": "AMS",
+      "home": "NED",
+      "away": "ENG",
+      "score": [
+        2,
+        2
+      ],
+      "result": "DRAW",
+      "goals": [],
+      "team_stats": {
+        "NED": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ENG": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "NED's only dropped points; ENG's strongest result of round 2."
+    },
+    {
+      "match_id": 29,
+      "stage": "round2_F",
+      "venue": "WAV",
+      "home": "AUS",
+      "away": "BEL",
+      "score": [
+        1,
+        1
+      ],
+      "result": "DRAW",
+      "goals": [
+        {
+          "team": "AUS",
+          "scorer": "Craig",
+          "minute": null,
+          "type": null
+        },
+        {
+          "team": "BEL",
+          "scorer": "Tom Boon",
+          "minute": null,
+          "type": "pc"
+        }
+      ],
+      "team_stats": {
+        "AUS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "BEL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 30,
+      "stage": "round2_F",
+      "venue": "WAV",
+      "home": "GER",
+      "away": "ESP",
+      "score": [
+        1,
+        2
+      ],
+      "result": "ESP",
+      "goals": [
+        {
+          "team": "ESP",
+          "scorer": "Jose Basterra",
+          "minute": 30,
+          "type": "pc"
+        },
+        {
+          "team": "ESP",
+          "scorer": "Jose Basterra",
+          "minute": 50,
+          "type": "field"
+        },
+        {
+          "team": "GER",
+          "scorer": "Justus Weigand",
+          "minute": null,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "GER": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ESP": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "UPSET (ESP #6 beat GER #5) - Germany's only loss. Basterra brace after trailing. Sent Spain to semis. Directly relevant to a possible ESP-GER final/bronze rematch."
+    },
+    {
+      "match_id": 31,
+      "stage": "round2_F",
+      "venue": "WAV",
+      "home": "GER",
+      "away": "AUS",
+      "score": [
+        4,
+        2
+      ],
+      "result": "GER",
+      "goals": [],
+      "team_stats": {
+        "GER": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "AUS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "AUS led 1-0 (Govers) but lost; a draw would have taken AUS to the semis instead of GER topping the pool."
+    },
+    {
+      "match_id": 32,
+      "stage": "round2_F",
+      "venue": "WAV",
+      "home": "BEL",
+      "away": "ESP",
+      "score": [
+        1,
+        1
+      ],
+      "result": "DRAW",
+      "goals": [
+        {
+          "team": "BEL",
+          "scorer": "Arthur Van Doren",
+          "minute": 4,
+          "type": null
+        },
+        {
+          "team": "ESP",
+          "scorer": "Marc Miralles",
+          "minute": 46,
+          "type": null
+        }
+      ],
+      "team_stats": {
+        "BEL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "ESP": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Miralles' 46' equaliser (his 50th international goal) eliminated host Belgium from semi contention. BEL had a goal disallowed on backstick referral, hit the post; Calzado (ESP GK) excellent."
+    },
+    {
+      "match_id": 33,
+      "stage": "class_G",
+      "venue": "WAV",
+      "home": "NZL",
+      "away": "WAL",
+      "score": [
+        7,
+        2
+      ],
+      "result": "NZL",
+      "goals": [],
+      "team_stats": {
+        "NZL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "WAL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Classification pool for places 9-16."
+    },
+    {
+      "match_id": 34,
+      "stage": "class_G",
+      "venue": "WAV",
+      "home": "PAK",
+      "away": "JPN",
+      "score": [
+        4,
+        3
+      ],
+      "result": "PAK",
+      "goals": [],
+      "team_stats": {
+        "PAK": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "JPN": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 35,
+      "stage": "class_G",
+      "venue": "WAV",
+      "home": "NZL",
+      "away": "PAK",
+      "score": [
+        4,
+        2
+      ],
+      "result": "NZL",
+      "goals": [],
+      "team_stats": {
+        "NZL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "PAK": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 36,
+      "stage": "class_G",
+      "venue": "WAV",
+      "home": "JPN",
+      "away": "WAL",
+      "score": [
+        3,
+        2
+      ],
+      "result": "JPN",
+      "goals": [],
+      "team_stats": {
+        "JPN": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "WAL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Result confirms JPN 3rd / WAL 4th in Pool G -> 13/14 and 15/16 fixtures."
+    },
+    {
+      "match_id": 37,
+      "stage": "class_H",
+      "venue": "AMS",
+      "home": "MAS",
+      "away": "RSA",
+      "score": [
+        3,
+        3
+      ],
+      "result": "DRAW",
+      "goals": [],
+      "team_stats": {
+        "MAS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "RSA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "Classification pool for places 9-16."
+    },
+    {
+      "match_id": 38,
+      "stage": "class_H",
+      "venue": "AMS",
+      "home": "FRA",
+      "away": "IRL",
+      "score": [
+        2,
+        1
+      ],
+      "result": "FRA",
+      "goals": [],
+      "team_stats": {
+        "FRA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "IRL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 39,
+      "stage": "class_H",
+      "venue": "AMS",
+      "home": "RSA",
+      "away": "FRA",
+      "score": [
+        3,
+        1
+      ],
+      "result": "RSA",
+      "goals": [],
+      "team_stats": {
+        "RSA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "FRA": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": ""
+    },
+    {
+      "match_id": 40,
+      "stage": "class_H",
+      "venue": "AMS",
+      "home": "IRL",
+      "away": "MAS",
+      "score": [
+        7,
+        4
+      ],
+      "result": "IRL",
+      "goals": [],
+      "team_stats": {
+        "IRL": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        },
+        "MAS": {
+          "pc_earned": null,
+          "pc_converted": null,
+          "circle_entries": null,
+          "shots": null,
+          "cards": []
+        }
+      },
+      "notes": "NOTE: class_G and class_H each list 4 of 6 pool matches in gathered sources; 2 matches per pool are coverage gaps (e.g. IRL v RSA, FRA v MAS not captured). Final standings still confirmed by fixtures."
+    }
+  ],
+  "remaining_fixtures": [
+    {
+      "match_id": 41,
+      "stage": "13-14",
+      "date": "2026-08-28",
+      "time_cet": "09:30",
+      "venue": "AMS",
+      "home": "JPN",
+      "away": "FRA"
+    },
+    {
+      "match_id": 42,
+      "stage": "15-16",
+      "date": "2026-08-28",
+      "time_cet": "11:00",
+      "venue": "WAV",
+      "home": "WAL",
+      "away": "MAS"
+    },
+    {
+      "match_id": 43,
+      "stage": "11-12",
+      "date": "2026-08-28",
+      "time_cet": "12:30",
+      "venue": "AMS",
+      "home": "PAK",
+      "away": "RSA"
+    },
+    {
+      "match_id": 44,
+      "stage": "9-10",
+      "date": "2026-08-28",
+      "time_cet": "14:00",
+      "venue": "WAV",
+      "home": "NZL",
+      "away": "IRL"
+    },
+    {
+      "match_id": 45,
+      "stage": "5-6",
+      "date": "2026-08-28",
+      "time_cet": "15:00",
+      "venue": "AMS",
+      "home": "ENG",
+      "away": "AUS"
+    },
+    {
+      "match_id": 47,
+      "stage": "semi_final",
+      "date": "2026-08-28",
+      "time_cet": "18:00",
+      "venue": "AMS",
+      "home": "NED",
+      "away": "ESP",
+      "note": "1st Pool E vs 2nd Pool F"
+    },
+    {
+      "match_id": 46,
+      "stage": "7-8",
+      "date": "2026-08-28",
+      "time_cet": "18:15",
+      "venue": "WAV",
+      "home": "IND",
+      "away": "BEL"
+    },
+    {
+      "match_id": 48,
+      "stage": "semi_final",
+      "date": "2026-08-28",
+      "time_cet": "20:30",
+      "venue": "WAV",
+      "home": "GER",
+      "away": "ARG",
+      "note": "1st Pool F vs 2nd Pool E"
+    },
+    {
+      "match_id": 49,
+      "stage": "bronze",
+      "date": "2026-08-30",
+      "time_cet": "14:00",
+      "venue": "WAV",
+      "home": "Loser_47",
+      "away": "Loser_48"
+    },
+    {
+      "match_id": 50,
+      "stage": "final",
+      "date": "2026-08-30",
+      "time_cet": "16:30",
+      "venue": "WAV",
+      "home": "Winner_47",
+      "away": "Winner_48"
+    }
+  ],
+  "predictions_2026_08_25": {
+    "model_note": "Blend of FIH-points prior with heavy in-tournament override (attack GF/pg, defence GA/pg, PC-goal threat, form/streak, upsets). Probabilities are calibrated, not extreme, where evidence is thin.",
+    "matches": {
+      "41": {
+        "pick": "FRA",
+        "pct": 66
+      },
+      "42": {
+        "pick": "MAS",
+        "pct": 65
+      },
+      "43": {
+        "pick": "RSA",
+        "pct": 56
+      },
+      "44": {
+        "pick": "NZL",
+        "pct": 54
+      },
+      "45": {
+        "pick": "ENG",
+        "pct": 55
+      },
+      "46": {
+        "pick": "BEL",
+        "pct": 60
+      },
+      "47": {
+        "pick": "NED",
+        "pct": 76
+      },
+      "48": {
+        "pick": "GER",
+        "pct": 52
+      }
+    },
+    "bracket": {
+      "most_likely_final": "NED v GER (40%)",
+      "second_final": "NED v ARG (36%)",
+      "most_likely_bronze_match": "ESP v ARG (40%)"
+    },
+    "champion_probabilities": {
+      "NED": 47,
+      "GER": 23,
+      "ARG": 20,
+      "ESP": 10
+    },
+    "bronze_medal_probabilities": {
+      "ESP": 31,
+      "GER": 25,
+      "ARG": 25,
+      "NED": 15
+    }
+  },
+  "_provenance": {
+    "label": "Commentary-derived — not an FIH source",
+    "disclaimer": "All figures in this file are current to the end of Stage 2 and were compiled from match commentary, not from the FIH. Everything else Hockey.AI publishes is taken directly from the FIH or derived from it, and the FIH is the officially approved source. Where this file and the FIH record disagree, the FIH record is what the app publishes.",
+    "updated_to": "end of Stage 2 (match 40)",
+    "verified_against_fih": {
+      "goals_for_and_against": "agrees for all 16 teams",
+      "top_scorers": "agrees with the FIH-derived player records",
+      "goal_method_split": "disagrees for 6 of 16 teams — AUS, ENG, IND, MAS, PAK, WAL. The FIH-derived figures in public/data are the published ones; these are kept for comparison."
+    },
+    "used_for": "reference and comparison only; no published pick is argued from this file",
+    "source_file": "fih_whc_2026_dataset.json (uploaded 2026-08-25)"
+  }
+}

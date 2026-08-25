@@ -110,6 +110,12 @@ jobs:
           python scripts/stage1_review.py
           python scripts/stage2_review.py
 
+      # Fixtures still to be played carry a pick, so they carry a rationale,
+      # and it is held to the same standard as one for a match already played:
+      # argued from this tournament, never from a ranking gap. Idempotent.
+      - name: Apply written rationales for the fixtures still to come
+        run: python scripts/knockout_review.py
+
       # The pipeline rebuilds these files from its own sources every ten
       # minutes, which would quietly undo the corrections made against the
       # official FIH export — a wrong scoreline and eight reversed listings.
