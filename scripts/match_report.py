@@ -111,7 +111,7 @@ STAFF = re.compile(r'^(Coach|Team Manager|Umpire|Scoring Judge|Timing Judge|'
                    r'Technical Officer|Reserve Umpire)\b', re.I)
 
 
-def parse(lines, home_squad, away_squad):
+def parse(lines, home_squad, away_squad, on_reject=None):
     """
     {home: {...}, away: {...}, goals: [...]} from the report's text lines.
 
@@ -137,10 +137,16 @@ def parse(lines, home_squad, away_squad):
                 continue
             # Card counts trail the name; they are read from the competition
             # report instead, which states them per player without ambiguity.
-            pair = split_row(CARD_TAIL.sub('', line), home_by_number, away_by_number)
+            row = CARD_TAIL.sub('', line)
+            pair = split_row(row, home_by_number, away_by_number)
             if pair:
                 rows_home.append(pair[0])
                 rows_away.append(pair[1])
+            elif on_reject and row.strip():
+                # One unreadable row leaves ten starters and loses the whole
+                # sheet, so a rejection has to say which row and why rather
+                # than leaving the caller to guess.
+                on_reject(row)
             continue
         if in_goals:
             m = GOAL_ROW.match(line.strip())

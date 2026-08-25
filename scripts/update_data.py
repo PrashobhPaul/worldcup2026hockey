@@ -1480,12 +1480,17 @@ def fetch_match_reports(fixtures, players_doc):
         if not body or body[:4] != b'%PDF':
             skipped += 1
             continue
+        rejected = []
         parsed = match_report.parse(_pdf_lines(body),
                                     by_team.get(m['home'], []),
-                                    by_team.get(m['away'], []))
+                                    by_team.get(m['away'], []),
+                                    on_reject=rejected.append)
         if not parsed:
             print(f"REPORT: {m['id']} {m['home']} v {m['away']} — did not parse to two "
-                  f'full elevens; the estimated sheet stands.')
+                  f'full elevens; the estimated sheet stands. '
+                  f'{len(rejected)} row(s) unread:')
+            for row in rejected[:6]:
+                print(f'  ?| {row[:110]}')
             skipped += 1
             continue
         sheet = {'source': 'official', 'generated_at': now_utc().isoformat(),
