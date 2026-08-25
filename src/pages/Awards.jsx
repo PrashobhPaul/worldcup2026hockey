@@ -117,7 +117,6 @@ function PotmRace({ teams, byCode }) {
     const scored = players.map(p => {
       const score =
         (p.goals ?? 0) * 3.0 +
-        (p.assists ?? 0) * 1.5 +
         champOf(p.team) * 25 +
         (p.pc_scored ?? 0) * 1.5 +
         (p.fih_star ? 1.5 : 0) +
@@ -158,7 +157,6 @@ function PotmRace({ teams, byCode }) {
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
               {[
                 ['Goals', p.goals],
-                ['Assists', p.assists],
                 ['PC goals', p.pc_scored],
                 ['Team odds', formatProbability(bundle?.current.championOf(p.team) ?? 0)],
                 ['Score', p.score.toFixed(2)],

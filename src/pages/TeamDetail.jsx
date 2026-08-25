@@ -171,7 +171,7 @@ export default function TeamDetailPage() {
               </div>
               <div className="mt-1.5 flex items-center gap-2">
                 <span className="rounded bg-pitch-700 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-pitch-300">{p.position}</span>
-                <span className="font-mono text-[10px] text-pitch-400">⚡{p.goals}G · {p.assists}A · {p.pc_scored} PC</span>
+                <span className="font-mono text-[10px] text-pitch-400">⚡{p.goals}G · {p.pc_scored} PC</span>
               </div>
               {p.profile && <p className="mt-2 text-xs leading-relaxed text-pitch-300">{p.profile}</p>}
             </div>

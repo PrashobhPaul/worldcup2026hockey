@@ -107,5 +107,11 @@ jobs:
       - name: Picks agree with their own numbers
         run: npm run test:picks
 
+      # Every player number the app prints, recomputed from the match feed.
+      # A Top Assists board once ranked nine players on an assist apiece that
+      # no event records and FIH does not publish for this competition.
+      - name: Player stats match the feed
+        run: npm run test:playerstats
+
       - name: Build
         run: npm run build

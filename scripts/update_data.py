@@ -2022,7 +2022,7 @@ def update_player_stats(fixtures, players_doc):
     team_matches = {}
     team_conceded = {}
 
-    agg = {p['name']: {'goals': 0, 'assists': 0, 'pc': 0, 'green': 0, 'yellow': 0, 'red': 0, 'mids': set()}
+    agg = {p['name']: {'goals': 0, 'pc': 0, 'green': 0, 'yellow': 0, 'red': 0, 'mids': set()}
            for p in players}
 
     for m in fixtures['matches']:
@@ -2048,8 +2048,7 @@ def update_player_stats(fixtures, players_doc):
                 a['yellow'] += 1
             elif e['type'] == 'red_card':
                 a['red'] += 1
-            if e.get('assist') and e['assist'] in agg:
-                agg[e['assist']]['assists'] += 1
+            # Nothing accumulates an assist: FIH does not publish them here.
 
     max_team_mp = max(team_matches.values(), default=1)
     changed = False
@@ -2070,11 +2069,11 @@ def update_player_stats(fixtures, players_doc):
                     if m['away'] == p['team'] and m['score']['home'] == 0: clean_sheets += 1
             base += clean_sheets * 4
         elif pos == 'Defender':
-            base = 58 + a['pc'] * 6 + a['goals'] * 3 + a['assists'] * 3 + max(0, (3.0 - ga_per_match)) * 5
+            base = 58 + a['pc'] * 6 + a['goals'] * 3 + max(0, (3.0 - ga_per_match)) * 5
         elif pos == 'Midfielder':
-            base = 58 + a['goals'] * 5 + a['assists'] * 5 + a['pc'] * 3
+            base = 58 + a['goals'] * 5 + a['pc'] * 3
         elif pos == 'Forward':
-            base = 56 + a['goals'] * 7 + a['assists'] * 3.5
+            base = 56 + a['goals'] * 7
         else:
             # Position not stated on the entry list. We still won't invent one —
             # but a player who actually did something on the pitch (scored,
@@ -2082,8 +2081,8 @@ def update_player_stats(fixtures, players_doc):
             # position-agnostic score rather than leave a genuine contributor
             # blank. A squad member with no events stays unrated: no fabricated
             # number, and the named-position Best XI never draws from them.
-            contributed = a['goals'] or a['assists'] or a['pc'] or a['yellow'] or a['red']
-            base = 57 + a['goals'] * 6 + a['assists'] * 4 + a['pc'] * 2 if contributed else None
+            contributed = a['goals'] or a['pc'] or a['yellow'] or a['red']
+            base = 57 + a['goals'] * 6 + a['pc'] * 2 if contributed else None
         if base is None:
             rating = None
         else:
@@ -2101,7 +2100,12 @@ def update_player_stats(fixtures, players_doc):
 
         new_vals = {
             'goals': a['goals'],
-            'assists': max(p.get('assists', 0), a['assists']),  # keep seeded assists if ledger lacks them
+            # Assists are NOT in the FIH record for this competition, and no
+            # event in the feed carries one, so there is nothing to count.
+            # Nine players held a phantom assist each, kept alive by a max()
+            # against the pre-tournament seed, and the rating formulas were
+            # weighting them.
+            'assists': 0,
             'pc_scored': a['pc'],
             'yellow_cards': a['yellow'],
             'red_cards': a['red'],

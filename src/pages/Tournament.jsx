@@ -8,7 +8,6 @@ import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
 import iconGoldenStick from '../assets/boards/icon-golden-boot.png'
-import iconAssists from '../assets/boards/icon-top-assists.png'
 import iconAttacking from '../assets/boards/icon-most-attacking.png'
 import iconDefense from '../assets/boards/icon-strongest-defense.png'
 import iconStandings from '../assets/boards/icon-standings.png'
@@ -45,7 +44,7 @@ function pickXI(players, byCode, { risingOnly = false, exclude = new Set() } = {
     nat: p.team,
     rating: p.ai_rating,
     pos: p.position === 'Goalkeeper' ? 'GK' : p.position === 'Defender' ? 'DF' : p.position === 'Midfielder' ? 'MF' : 'FW',
-    stat: `${p.goals}G · ${p.assists}A · ${p.pc_scored} PC`,
+    stat: `${p.goals}G · ${p.pc_scored} PC`,
   }))
 }
 
@@ -154,18 +153,12 @@ function StatsView({ teams, matches, byCode }) {
   const boards = useMemo(() => {
     const scorers = [...players]
       .filter(p => (p.goals ?? 0) > 0)
-      .sort((a, b) => b.goals - a.goals || b.assists - a.assists || a.name.localeCompare(b.name))
+      .sort((a, b) => b.goals - a.goals || b.pc_scored - a.pc_scored || a.name.localeCompare(b.name))
       .slice(0, 10)
       .map(p => ({
         key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-        chip: `${p.assists}A · ${p.pc_scored} PC`, value: p.goals,
+        chip: `${p.pc_scored} from penalty corners`, value: p.goals,
       }))
-
-    const assists = [...players]
-      .filter(p => (p.assists ?? 0) > 0)
-      .sort((a, b) => b.assists - a.assists || b.goals - a.goals || a.name.localeCompare(b.name))
-      .slice(0, 10)
-      .map(p => ({ key: p.id, name: p.name, flag: byCode.get(p.team)?.flag, chip: `${p.goals}G`, value: p.assists }))
 
     const attack = new Map(teams.map(t => [t.code, { gf: 0, ga: 0, played: 0 }]))
     for (const m of matches) {
@@ -212,12 +205,12 @@ function StatsView({ teams, matches, byCode }) {
         .slice(0, 8)
         .map(p => ({
           key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-          chip: pos === 'Goalkeeper' ? `${p.matches_played ?? 0} MP` : `${p.goals}G · ${p.assists}A`,
+          chip: pos === 'Goalkeeper' ? 'keeper' : `${p.goals}G · ${p.pc_scored} PC`,
           value: p.ai_rating,
         }))
     }
 
-    return { scorers, assists, attackRows, defenseRows, fairPlay, performers }
+    return { scorers, attackRows, defenseRows, fairPlay, performers }
   }, [players, events, matches, teams, byCode])
 
   const hasRatings = Object.values(boards.performers).some(r => r.length > 0)
@@ -226,8 +219,7 @@ function StatsView({ teams, matches, byCode }) {
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
         <Board title="Golden Stick" icon={iconGoldenStick} sub="Most goals in the tournament" rows={boards.scorers}
-          footnote="Ranked by goals, then assists — penalty-corner goals at full value." />
-        <Board title="Top Assists" icon={iconAssists} sub="Most assists in the tournament" rows={boards.assists} />
+          footnote="Ranked by goals, then by how many came from penalty corners — set-piece goals at full value." />
         <Board title="Most Attacking" icon={iconAttacking} sub="Total goals scored" rows={boards.attackRows} accent="text-live" />
         <Board title="Strongest Defense" icon={iconDefense} sub="Fewest goals conceded" rows={boards.defenseRows} accent="text-sky-400" />
         <Board title="Fair Play" icon={iconStandings} sub="Lowest disciplinary points (yellow 1 · red 3) — lower is better" rows={boards.fairPlay} accent="text-live"
@@ -247,7 +239,7 @@ function StatsView({ teams, matches, byCode }) {
             <Board title="Goalkeepers" sub="Save reliability × clean sheets" rows={boards.performers.Goalkeeper} accent="text-sky-400" />
             <Board title="Defenders" sub="Drag-flick threat, outletting, goals conceded" rows={boards.performers.Defender} />
             <Board title="Midfielders" sub="Goal involvement + penalty-corner build-up" rows={boards.performers.Midfielder} />
-            <Board title="Forwards" sub="Goals, assists and circle threat" rows={boards.performers.Forward} accent="text-live" />
+            <Board title="Forwards" sub="Goals and set-piece threat" rows={boards.performers.Forward} accent="text-live" />
           </div>
           <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
             Rule-based Hockey.AI positional model on the match event ledger. Volume-weighted, so pitch time
