@@ -4,7 +4,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import MatchCard, { formatDate, phaseTag } from '../components/MatchCard'
 import { SectionHead, Skeleton, TierBadge } from '../components/shared'
-import { derivePrediction } from '../engine/prediction'
+import { derivePrediction, publishedAccuracy } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
@@ -29,15 +29,16 @@ const heroTiles = [
 // so the figure states its own scope and needs nothing added to it.
 function ModelBadge() {
   const cal = useLiveQuery(() => db.meta.get('calibration'), [])
-  if (!cal?.winner_named_pct) return null
+  const rec = publishedAccuracy(cal, null)
+  if (!rec.pct || !rec.graded) return null
   return (
     <Link to="/trust" className="hero-accuracy">
-      <span className="hero-accuracy-pct">{cal.winner_named_pct}%</span>
+      <span className="hero-accuracy-pct">{rec.pct}%</span>
       <span className="hero-accuracy-label">
         winner called
         <span className="hero-accuracy-sub">
-          {cal.winner_named} of {cal.decisive_matches} decisive matches
-          {cal.draws_called ? ` · ${cal.draws_called}/${cal.draws} draws` : ''}
+          {rec.correct} of {rec.graded} decisive matches
+          {rec.drawsCalled ? ` · ${rec.drawsCalled}/${rec.draws} draws` : ''}
         </span>
       </span>
     </Link>

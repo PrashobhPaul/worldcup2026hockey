@@ -95,5 +95,11 @@ jobs:
       - name: Non-knockout model port
         run: npm run test:model
 
+      # One model, one published figure. The hero once read winner_named_pct
+      # while Matches, Oracle and Trust read accuracy_pct — 78% beside 68%,
+      # both true, measuring different things, with nothing saying which.
+      - name: One published accuracy figure
+        run: npm run test:accuracy
+
       - name: Build
         run: npm run build

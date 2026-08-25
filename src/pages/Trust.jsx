@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
-import { oracleRecord } from '../engine/prediction'
+import { oracleRecord, publishedAccuracy } from '../engine/prediction'
 
 function Section({ title, children }) {
   return (
@@ -20,17 +20,16 @@ function ModelAccuracy() {
   const matches = useLiveQuery(() => db.matches.toArray(), [], [])
   const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
   const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
-  const fallback = oracleRecord(matches, predictions)
-  const correct = calibration?.correct ?? fallback.correct
-  const total = calibration?.matches ?? fallback.graded
-  const pct = calibration?.accuracy_pct ?? fallback.accuracyPct
+  const rec = publishedAccuracy(calibration, oracleRecord(matches, predictions))
+  const { correct, graded: total, pct } = rec
   if (!total) return null
   return (
     <Section title="Oracle accuracy">
       <div className="rounded-xl border border-white/5 bg-pitch-950/50 p-3.5">
         <div className="mt-1 font-mono text-2xl font-bold text-brand">
-          {correct}/{total} <span className="text-sm font-normal">· {pct}% of matches called</span>
-          {calibration && <span className="text-sm font-normal text-pitch-300"> · Brier {calibration.brier}</span>}
+          {correct}/{total} <span className="text-sm font-normal">· {pct}% of decisive matches called</span>
+          {rec.drawsCalled != null && <span className="text-sm font-normal text-pitch-300"> · {rec.drawsCalled}/{rec.draws} draws</span>}
+          {rec.brier != null && <span className="text-sm font-normal text-pitch-300"> · Brier {rec.brier}</span>}
         </div>
         <p className="mt-1 text-xs text-pitch-400">
           Every completed match, scored with the model using only the information available before its
