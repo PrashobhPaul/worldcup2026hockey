@@ -79,7 +79,12 @@ jobs:
             if ! git diff --quiet public/data/data-version.json; then
               git commit -qam "data: restamp the fingerprint after merging main"
             fi
-            git push origin HEAD:${{ github.ref_name }}
+            # Deliberately not pushed here. main runs main's code, so its data
+            # can be a schema behind this branch's — no official team sheets,
+            # ratings without their components. Pushing at this point publishes
+            # that intermediate state to the branch, and anything reading it in
+            # the minute before the rebuild finishes sees the worse of the two
+            # files. The merge commit rides out with the rebuilt data below.
           fi
 
       - name: Update fixtures, statuses & Oracle picks
@@ -161,6 +166,11 @@ jobs:
           git add public/emblem.png 2>/dev/null || true
           if ! git diff --staged --quiet; then
             git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          fi
+          # Anything unpushed goes out together — the merge above as well as
+          # the rebuild — so the branch never holds main's data without this
+          # run's work on top of it.
+          if [ "$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)" -gt 0 ]; then
             # This job runs every ten minutes and the branch it pushes to is
             # worked on at the same time, so the ref moves under it. A bare
             # push simply loses that race and fails the run — which is what a
