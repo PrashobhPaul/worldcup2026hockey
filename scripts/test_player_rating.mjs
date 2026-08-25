@@ -63,9 +63,19 @@ check('a goalkeeper is rated on goals against, not on scoring',
   rated.filter(p => p.position_effective === 'Goalkeeper')
     .every(p => !('scoring' in p.rating_components) && 'team_defence' in p.rating_components))
 
+// Two official figures can disagree — the match-page squad table is a
+// snapshot stamped "as of" a date and lags, the match sheets are per match.
+// The sheets decide, so the check reads what the rating actually used.
+const played = p => p.appearances ?? p.games_played
 check('nobody who never took the field carries a rating',
-  rated.every(p => p.games_played == null || p.games_played > 0),
-  rated.filter(p => p.games_played === 0).map(p => p.name).join(','))
+  rated.every(p => played(p) == null || played(p) > 0),
+  rated.filter(p => played(p) === 0).map(p => p.name).join(','))
+
+check('a player named on a sheet and never used is not counted as appearing',
+  PLAYERS.filter(p => p.starts === 0 && p.appearances === 0)
+    .every(p => p.ai_rating == null),
+  PLAYERS.filter(p => p.starts === 0 && p.appearances === 0 && p.ai_rating != null)
+    .map(p => p.name).join(','))
 
 // Percentiles only mean something within a comparable group.
 const groups = new Map()

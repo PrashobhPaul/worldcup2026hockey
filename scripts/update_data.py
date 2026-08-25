@@ -2485,6 +2485,41 @@ from team_rating import rate_teams
 LATE_FROM_MINUTE = 46
 
 
+def official_appearances(fixtures):
+    """{player name: {starts, appearances, benched}} from the official sheets.
+
+    Every completed match now carries the FIH's own team sheet, so who played
+    is a fact rather than an inference. Three figures come out of it and they
+    are three different things:
+
+      starts       named in the eleven that took the field
+      appearances  started, or came on — a minute on the record
+      benched      named on the sheet and never used
+
+    The squad table on the match pages states an appearance count too, and the
+    two agree; this one is preferred because it is per match, so it also yields
+    starts, which nothing else here could give.
+    """
+    out = {}
+    for m in fixtures['matches']:
+        sheet = m.get('lineups') or {}
+        if sheet.get('source') != 'official':
+            continue
+        for side in ('home', 'away'):
+            block = sheet.get(side) or {}
+            for row in block.get('startingXI', []):
+                r = out.setdefault(row['name'], {'starts': 0, 'appearances': 0, 'benched': 0})
+                r['starts'] += 1
+                r['appearances'] += 1
+            for row in block.get('substitutes', []):
+                r = out.setdefault(row['name'], {'starts': 0, 'appearances': 0, 'benched': 0})
+                if row.get('on_minute') is not None:
+                    r['appearances'] += 1
+                else:
+                    r['benched'] += 1
+    return out
+
+
 def update_player_stats(fixtures, players_doc):
     """
     Full idempotent recompute of every player's tournament numbers from the
@@ -2533,6 +2568,8 @@ def update_player_stats(fixtures, players_doc):
             # Nothing accumulates an assist: FIH does not publish them here.
 
     max_team_mp = max(team_matches.values(), default=1)
+    official = official_appearances(fixtures)
+    disagreements = []
     changed = False
     for p in players:
         a = agg[p['name']]
@@ -2556,7 +2593,18 @@ def update_player_stats(fixtures, players_doc):
         # assumed: crediting every squad member with his team's whole
         # tournament is what let a player who never left the bench carry the
         # same appearance count as a captain who played every minute.
-        official_mp = p.get('games_played')
+        # The sheets are per match, so they carry starts as well as
+        # appearances. Where they have not been read the match-page squad
+        # table's count stands, and where neither has, nothing is assumed.
+        seen = official.get(p['name'])
+        # Two official figures, and they can disagree: the match-page squad
+        # table is a snapshot stamped "as of" a date and can lag, while the
+        # reports are per match. Ireland's Luke Roleston is carried at nought
+        # appearances by the table and at one by the sheets, which record the
+        # minute he came on. The per-match evidence is the better of the two.
+        if seen and p.get('games_played') not in (None, seen['appearances']):
+            disagreements.append((p['name'], p['games_played'], seen['appearances']))
+        official_mp = seen['appearances'] if seen else p.get('games_played')
         # Only players the official FIH team list carries are at this
         # tournament. The rest are pre-tournament seed rows for players who
         # were expected and did not travel; rating them puts a player who is
@@ -2596,6 +2644,11 @@ def update_player_stats(fixtures, players_doc):
             # rewritten — these sit beside it.
             'position_effective': pos,
             'position_source': pos_source,
+            # From the official team sheets: started, took the field at all,
+            # and was named without being used. Three different facts.
+            'starts': seen['starts'] if seen else None,
+            'appearances': seen['appearances'] if seen else None,
+            'benched': seen['benched'] if seen else None,
         }
         for k, v in new_vals.items():
             if p.get(k) != v:
@@ -2630,6 +2683,11 @@ def update_player_stats(fixtures, players_doc):
                 p[field] = None
                 changed = True
 
+    if disagreements:
+        print(f'APPEARANCES: {len(disagreements)} player(s) where the squad table and '
+              f'the match sheets disagree; the sheets are used:')
+        for name, table, sheets in disagreements[:8]:
+            print(f'  · {name}: table says {table}, sheets say {sheets}')
     if changed:
         print('PLAYER STATS: recomputed tournament aggregates + positional ratings')
     return changed

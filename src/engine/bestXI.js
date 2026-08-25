@@ -48,7 +48,20 @@ export function roleOf(p) {
   }
 }
 
+/**
+ * Who to pick for a role.
+ *
+ * Starts come first, because the official team sheets now state them and the
+ * side a coach actually fields is a better answer to "the best eleven" than a
+ * rating is. The rating breaks ties between players the coach used equally,
+ * and goals break ties after that.
+ *
+ * Before the sheets were readable there was no start count and this ordered on
+ * rating alone, which meant a substitute who scored could displace a man who
+ * started every match.
+ */
 const byIndex = (a, b) =>
+  (b.starts ?? 0) - (a.starts ?? 0) ||
   (b.ai_rating ?? 0) - (a.ai_rating ?? 0) ||
   (b.goals ?? 0) - (a.goals ?? 0) ||
   a.name.localeCompare(b.name)

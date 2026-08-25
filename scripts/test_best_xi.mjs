@@ -72,6 +72,21 @@ check('the bench holds exactly the travelling squad members not on the pitch',
 // The data contract the pitch stands on.
 console.log('\nPosition provenance in the published data')
 
+// The sheets state who started, so the XI must reflect them: a role's shirt
+// cannot go to a player the coach used less than one the role passed over.
+check('within a role, no player is picked over a team-mate with more starts',
+  all([...xis], ([t, x]) => {
+    const squad = HERE.filter(p => p.team === t)
+    return x.lines.every(line => {
+      const picked = line.slots.filter(s => !s.offRole).map(s => s.player)
+      if (!picked.length) return true
+      const lowest = Math.min(...picked.map(p => p.starts ?? 0))
+      const passedOver = squad.filter(p =>
+        roleOf(p).role === line.role && !picked.some(q => q.id === p.id))
+      return passedOver.every(p => (p.starts ?? 0) <= lowest)
+    })
+  }).length === 0)
+
 check('a player who did not travel carries no rating',
   ABSENT.every(p => p.ai_rating == null && p.position_effective == null),
   ABSENT.filter(p => p.ai_rating != null).map(p => p.name).join(','))
