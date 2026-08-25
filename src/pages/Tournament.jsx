@@ -5,7 +5,7 @@ import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings, computeStage2Standings } from '../engine/standings'
 import { cardPoints } from '../engine/awards'
-import { roleOf } from '../engine/bestXI'
+import { roleOf, isAtTournament } from '../engine/bestXI'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
@@ -158,7 +158,8 @@ function Board({ title, sub, rows, accent = 'text-brand', footnote, icon: Icon, 
 }
 
 function StatsView({ teams, matches, byCode }) {
-  const players = useLiveQuery(() => db.players.toArray(), [], [])
+  const players = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   const events = useLiveQuery(() => db.match_events.toArray(), [], [])
 
   const boards = useMemo(() => {
@@ -391,7 +392,8 @@ export default function TournamentPage() {
   const xi = params.get('xi') === 'rising' ? 'rising' : 'best'
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [])
-  const players = useLiveQuery(() => db.players.toArray(), [], [])
+  const players = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
 
   useSwipeTabs({
     count: VIEWS.length,

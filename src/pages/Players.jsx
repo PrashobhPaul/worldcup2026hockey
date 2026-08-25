@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Link } from 'react-router-dom'
 import RatingBreakdown from '../components/RatingBreakdown'
+import { isAtTournament } from '../engine/bestXI'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import SiblingNav from '../components/SiblingNav'
@@ -14,11 +15,15 @@ export default function PlayersPage() {
   // Which player's rating breakdown is open. The number means nothing on its
   // own; the components behind it are the point.
   const [openId, setOpenId] = useState(null)
-  const players = useLiveQuery(() => db.players.toArray(), [])
+  // Only the players the official FIH team list carries. The store also holds
+  // pre-tournament entries for players who were expected and did not travel;
+  // a page about this tournament must not list them.
+  const all = useLiveQuery(() => db.players.toArray(), [])
+  const players = all?.filter(isAtTournament)
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const byCode = new Map(teams.map(t => [t.code, t]))
 
-  if (players === undefined) return <Skeleton h={500} />
+  if (all === undefined) return <Skeleton h={500} />
 
   const filtered = players.filter(p =>
     (pos === 'all' || p.position === pos) &&

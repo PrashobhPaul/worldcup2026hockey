@@ -2416,6 +2416,7 @@ def derive_position(agg, stated):
 
 
 from player_rating import rate_group
+from team_rating import rate_teams
 
 # The final quarter starts at 45 minutes in a four-quarter match.
 LATE_FROM_MINUTE = 46
@@ -2493,6 +2494,12 @@ def update_player_stats(fixtures, players_doc):
         # tournament is what let a player who never left the bench carry the
         # same appearance count as a captain who played every minute.
         official_mp = p.get('games_played')
+        # Only players the official FIH team list carries are at this
+        # tournament. The rest are pre-tournament seed rows for players who
+        # were expected and did not travel; rating them puts a player who is
+        # not here onto boards that describe who is.
+        if p.get('on_team_list') is False:
+            pos, pos_source = None, None
         rating_rows.append({
             'player': p,
             'position': pos,
@@ -3170,6 +3177,24 @@ def main():
             t['form'] = f
             changed = True
     changed |= generate_predictions(fixtures, teams, predictions, h2h_doc.get('pairs'))
+
+    # Team ratings, on the same component architecture as the player rating:
+    # every figure a rate per match, percentile-ranked across the sixteen, and
+    # carrying its own breakdown. Published as its own file because it is
+    # evidence as much as it is a table — a pick can point at the two or three
+    # components that actually separate the sides, in this tournament's
+    # numbers, instead of asserting that one team is better than another.
+    team_ratings = {
+        'model': 'hockey-ai-team-components-1',
+        'generated_at': now_utc().isoformat(),
+        'source': 'Hockey.AI, derived from the FIH match record',
+        'teams': rate_teams(fixtures['matches']),
+    }
+    prev = load_or('team-ratings.json', {})
+    if json.dumps(prev.get('teams'), sort_keys=True) != json.dumps(team_ratings['teams'], sort_keys=True):
+        save('team-ratings.json', team_ratings)
+        changed = True
+        print(f"TEAM RATINGS: {len(team_ratings['teams'])} teams rated.")
 
     stamp = now_utc().isoformat()
     if players_changed:

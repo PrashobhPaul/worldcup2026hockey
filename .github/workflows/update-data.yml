@@ -105,6 +105,11 @@ jobs:
       # here means a brief reaches the published data through the pipeline
       # rather than only when someone runs the script by hand. Both are
       # idempotent — they write only when the wording actually differs.
+      # The intros describe who is at this tournament, and the official team
+      # list is what decides that. Idempotent — it writes only on a difference.
+      - name: Correct the team intros against the official team list
+        run: python scripts/team_intro_review.py
+
       - name: Apply written match briefs
         run: |
           python scripts/stage1_review.py
@@ -220,6 +225,7 @@ jobs:
           npm run test:playerstats
           npm run test:bestxi
           npm run test:rating
+          npm run test:intros
           npm run test:fingerprint
           python3 scripts/test_story_facts.py
 

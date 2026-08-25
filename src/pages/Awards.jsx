@@ -7,6 +7,7 @@ import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { HOF_AWARDS, AWARDS_STATE, AWARDS_DISCLAIMER, POTM_MODEL, potmScore } from '../content/awards'
 import { liveAwardLeaders } from '../engine/awards'
+import { isAtTournament } from '../engine/bestXI'
 import { AwardIcon, DerivedBadge } from '../components/hockeyIcons'
 
 const RING = {
@@ -284,7 +285,8 @@ export function AwardsView() {
   const [params, setParams] = useSearchParams()
   const view = params.get('awards') === 'potm' ? 'potm' : 'hall-of-fame'
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
-  const players = useLiveQuery(() => db.players.toArray(), [], [])
+  const players = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   const matches = useLiveQuery(() => db.matches.toArray(), [], [])
   const byCode = new Map(teams.map(t => [t.code, t]))
   const bundle = useOracleBundle(teams, matches)

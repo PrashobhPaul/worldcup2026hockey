@@ -10,6 +10,7 @@ import { useFavourite, toggleFavourite } from '../hooks/useFavourite'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import BestElevenPitch, { RemainingSquad, TeamToppers, ScoreRow } from '../components/BestElevenPitch'
 import { teamToppers, HOCKEY_FORMATION } from '../engine/bestXI'
+import TeamRatingCard from '../components/TeamRatingCard'
 
 function OracleSnapshot({ team, teams, matches }) {
   const bundle = useOracleBundle(teams, matches)
@@ -181,6 +182,8 @@ export default function TeamDetailPage() {
       </div>
 
       <OracleSnapshot team={team} teams={teams} matches={allMatches} />
+
+      <TeamRatingCard teamCode={team.code} />
 
       <section>
         <div className="mb-3 flex items-baseline justify-between gap-2">

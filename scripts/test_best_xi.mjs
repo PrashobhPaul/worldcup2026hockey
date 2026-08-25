@@ -1,7 +1,7 @@
 // Hockey.AI — the best XI is positional, and honest about where each role
 // came from. These are the properties the page depends on.
 import { readFileSync } from 'node:fs'
-import { bestXI, roleOf, LINES } from '../src/engine/bestXI.js'
+import { bestXI, roleOf, LINES, isAtTournament } from '../src/engine/bestXI.js'
 
 const PLAYERS = JSON.parse(readFileSync(new URL('../public/data/players.json', import.meta.url))).players
 const TEAMS = [...new Set(PLAYERS.map(p => p.team))].sort()
@@ -16,6 +16,10 @@ const all = (list, pred) => list.filter(x => !pred(x))
 console.log(`Best XI across ${TEAMS.length} squads`)
 
 const xis = new Map(TEAMS.map(t => [t, bestXI(PLAYERS.filter(p => p.team === t))]))
+// A player the official FIH team list does not carry did not travel, and no
+// surface describing this tournament may show him.
+const HERE = PLAYERS.filter(isAtTournament)
+const ABSENT = PLAYERS.filter(p => !isAtTournament(p))
 
 check('every squad fields eleven',
   all([...xis], ([, x]) => x.size === 11).length === 0,
@@ -50,9 +54,16 @@ check('every shirt says where its role came from',
   all([...xis], ([, x]) => x.lines.every(l => l.slots.every(s =>
     (s.source === 'FIH' || s.source === 'Hockey.AI') !== s.offRole))).length === 0)
 
-check('the bench holds exactly the squad members not on the pitch',
+check('nobody outside the official team list reaches a pitch or a bench',
+  all([...xis], ([, x]) =>
+    x.lines.every(l => l.slots.every(s => isAtTournament(s.player)))
+    && x.bench.every(isAtTournament)).length === 0,
+  [...xis].filter(([, x]) => x.bench.some(p => !isAtTournament(p)))
+    .map(([t]) => t).join(','))
+
+check('the bench holds exactly the travelling squad members not on the pitch',
   all([...xis], ([t, x]) => {
-    const squad = PLAYERS.filter(p => p.team === t)
+    const squad = HERE.filter(p => p.team === t)
     const on = new Set(x.lines.flatMap(l => l.slots.map(s => s.player.id)))
     return x.bench.length === squad.length - on.size
       && x.bench.every(p => !on.has(p.id))
@@ -61,7 +72,12 @@ check('the bench holds exactly the squad members not on the pitch',
 // The data contract the pitch stands on.
 console.log('\nPosition provenance in the published data')
 
-const stated = PLAYERS.filter(p => p.position && p.position !== 'Squad')
+check('a player who did not travel carries no rating',
+  ABSENT.every(p => p.ai_rating == null && p.position_effective == null),
+  ABSENT.filter(p => p.ai_rating != null).map(p => p.name).join(','))
+
+// Provenance only applies to the players actually at the tournament.
+const stated = HERE.filter(p => p.position && p.position !== 'Squad')
 check('a stated position is never overwritten',
   stated.every(p => p.position_effective === p.position),
   stated.filter(p => p.position_effective !== p.position).map(p => p.name).join(','))
@@ -69,7 +85,7 @@ check('a stated position is never overwritten',
 check('a stated position is always sourced to the FIH',
   stated.every(p => p.position_source === 'FIH'))
 
-const derived = PLAYERS.filter(p => p.position_source === 'Hockey.AI')
+const derived = HERE.filter(p => p.position_source === 'Hockey.AI')
 check('a derived position is only ever given where the FIH states none',
   derived.every(p => !p.position || p.position === 'Squad'))
 
@@ -82,11 +98,11 @@ check('a penalty-corner scorer is derived as a defender',
     .every(p => p.position_effective === 'Defender'))
 
 check('a player with nothing on the record is given no position',
-  PLAYERS.filter(p => (p.goals ?? 0) === 0 && (!p.position || p.position === 'Squad'))
+  HERE.filter(p => (p.goals ?? 0) === 0 && (!p.position || p.position === 'Squad'))
     .every(p => p.position_effective == null && p.position_source == null))
 
 check('every position is one of the four hockey plays',
-  PLAYERS.every(p => p.position_effective == null
+  HERE.every(p => p.position_effective == null
     || LINES.some(l => l.role === p.position_effective)))
 
 console.log(failed ? `\n${failed} check(s) failed.` : '\nAll best-XI checks passed.')

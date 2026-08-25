@@ -24,6 +24,21 @@ export const LINES = [
   { role: 'Forward', short: 'FWD', count: 3 },
 ]
 
+/**
+ * Is this player actually at the tournament?
+ *
+ * The squad list carries two kinds of row: the twenty names on each nation's
+ * official FIH team list, and pre-tournament seed entries for players who were
+ * expected and did not travel. Twenty-four of the latter were being rated,
+ * ranked and picked for best XIs — the Netherlands were fielding a goalkeeper
+ * who retired after Paris 2024. A player the official list does not carry is
+ * not part of this tournament, and no surface that describes the tournament
+ * should show him.
+ */
+export function isAtTournament(p) {
+  return p?.on_team_list !== false
+}
+
 /** The role a surface should show for a player, and where it came from. */
 export function roleOf(p) {
   const stated = p.position && p.position !== 'Squad' ? p.position : null
@@ -45,7 +60,8 @@ const byIndex = (a, b) =>
  *   {player, source: 'FIH'|'Hockey.AI'|null, offRole: boolean}
  * where offRole marks a shirt filled by a player the record gives no role to.
  */
-export function bestXI(squad) {
+export function bestXI(rawSquad) {
+  const squad = (rawSquad ?? []).filter(isAtTournament)
   // Every squad member is available to fill a shirt. Filtering to players who
   // carry a rating left four squads short of eleven: a player the record says
   // nothing about still travelled, and the shirt he fills says exactly that.
@@ -96,8 +112,8 @@ export function bestXI(squad) {
  *
  * Every entry carries whether it is the FIH's figure or Hockey.AI's.
  */
-export function teamToppers(squad, { matchesPlayed = 0, goalsAgainst = 0 } = {}) {
-  const list = (squad ?? [])
+export function teamToppers(rawSquad, { matchesPlayed = 0, goalsAgainst = 0 } = {}) {
+  const list = (rawSquad ?? []).filter(isAtTournament)
   const best = (pred, cmp, pick) => {
     const rows = list.filter(pred).sort(cmp)
     return rows.length && pick(rows[0]) ? rows[0] : null

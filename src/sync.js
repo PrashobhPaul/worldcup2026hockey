@@ -129,6 +129,9 @@ async function _sync(force) {
   ])
   // Model calibration (as-of-then replay) — optional, shown on the Trust page.
   const calibration = await fetchJSON('model-calibration.json').catch(() => null)
+  // Team component ratings — absent on a first deploy before the pipeline has
+  // run, which must not break the sync.
+  const teamRatings = await fetchJSON('team-ratings.json').catch(() => null)
 
   const teams = (teamsDoc.teams || []).map(t => ({
     ...t,
@@ -183,6 +186,7 @@ async function _sync(force) {
         syncedAt: Date.now(),
       })
       if (calibration) await db.meta.put({ id: 'calibration', ...calibration })
+      if (teamRatings) await db.meta.put({ id: 'teamRatings', ...teamRatings })
     })
 
   setStatus({ state: 'synced', version: remote.version, empty: false, error: null })

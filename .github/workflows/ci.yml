@@ -127,5 +127,12 @@ jobs:
       - name: The positional rating explains itself
         run: npm run test:rating
 
+      # Every claim a team intro makes about who is at this tournament,
+      # checked against the official FIH team list. Eleven of sixteen team
+      # cards once named the wrong captain, and nine intros were built around
+      # players who did not travel.
+      - name: Team intros match the official team list
+        run: npm run test:intros
+
       - name: Build
         run: npm run build
