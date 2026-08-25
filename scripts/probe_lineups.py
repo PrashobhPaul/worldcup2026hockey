@@ -26,6 +26,7 @@ Three things are tried, in order of how likely they are to be the answer:
 Run: PROBE_LINEUP_MATCH=22334 python3 scripts/probe_lineups.py
 """
 import http.cookiejar
+import json
 import os
 import re
 import sys
@@ -95,49 +96,80 @@ def main():
     for m in set(re.findall(r'https?://[a-z0-9.-]*(?:api|altius|fih)[a-z0-9.-]*/[^\s"\'<>]*', text, re.I)):
         print(f'  host| {m[:140]}')
 
-    ids = sorted(set(re.findall(rf'/matches/{match_id}/lineups/(\d+)', text)))
-    print(f'  team ids linked on this page: {ids or "none found"}')
-    if not ids:
-        print('  no line-up link on the page — the path may have changed.')
-        return 1
+    # The page embeds its own state as JSON in an attribute — the signature of
+    # an Inertia application on a Laravel back end. If that is what this is,
+    # the same URLs answer with pure JSON when asked to, and there is nothing
+    # to scrape at all.
+    print('\n== 3. The page state embedded in the HTML ==')
+    blob = re.search(r'data-page="([^"]+)"', text)
+    if blob:
+        import html as _html
+        try:
+            payload = json.loads(_html.unescape(blob.group(1)))
+            print(f'  data-page found. component={payload.get("component")!r}')
+            print(f'  top-level keys: {sorted(payload.keys())}')
+            props = payload.get('props') or {}
+            print(f'  props keys: {sorted(props.keys())[:40]}')
+            for k, v in props.items():
+                if isinstance(v, dict):
+                    print(f'    {k}: dict({sorted(v.keys())[:18]})')
+                elif isinstance(v, list):
+                    print(f'    {k}: list[{len(v)}]'
+                          + (f' first={sorted(v[0].keys())[:14]}' if v and isinstance(v[0], dict) else ''))
+                else:
+                    print(f'    {k}: {str(v)[:70]}')
+        except Exception as e:
+            print(f'  data-page present but did not parse: {e}')
+    else:
+        print('  no data-page attribute; not an Inertia page.')
 
-    target = f'{HOST}/matches/{match_id}/lineups/{ids[0]}'
     referer = f'{HOST}/matches/{match_id}'
+    # The link the page actually carries has no team segment. Ours had one,
+    # which is why all eighty-eight answered 403: we were asking for a route
+    # that does not exist.
+    target = f'{HOST}/matches/{match_id}/lineups'
 
-    print(f'\n== 3. Ask for {target} every way a browser might ==')
+    print(f'\n== 4. Ask for {target} ==')
     attempts = [
-        ('session + browser headers', {**base, **html, 'Referer': referer}),
-        ('session + XHR', {**base, 'Accept': 'text/html, */*; q=0.01',
-                           'Referer': referer, 'X-Requested-With': 'XMLHttpRequest'}),
-        ('session + turbo stream', {**base, 'Accept': 'text/vnd.turbo-stream.html, text/html, application/xhtml+xml',
-                                    'Referer': referer, 'X-Requested-With': 'XMLHttpRequest'}),
-        ('session + json', {**base, 'Accept': 'application/json', 'Referer': referer,
-                            'X-Requested-With': 'XMLHttpRequest'}),
-        ('session, no referer', {**base, **html}),
-        ('no session (fresh opener)', None),
+        ('browser page', {**base, **html, 'Referer': referer}),
+        ('inertia json', {**base, 'Accept': 'text/html, application/xhtml+xml',
+                          'Referer': referer, 'X-Inertia': 'true',
+                          'X-Inertia-Version': (payload or {}).get('version', '') if blob else ''}),
+        ('xhr', {**base, 'Accept': 'text/html, */*; q=0.01', 'Referer': referer,
+                 'X-Requested-With': 'XMLHttpRequest'}),
+        ('json', {**base, 'Accept': 'application/json', 'Referer': referer}),
     ]
     for label, headers in attempts:
-        if headers is None:
-            fresh, _ = opener_with_cookies()
-            get(fresh, target, {**base, **html}, label)
-        else:
-            body = get(op, target, headers, label)
-            if body:
-                lines = [l.strip() for l in re.sub(r'<[^>]+>', '\n', body.decode('utf8', 'ignore')).split('\n')]
-                lines = [l for l in lines if l][:60]
-                print(f'      first {len(lines)} text lines of the response:')
-                for l in lines:
-                    print(f'      | {l[:110]}')
+        body = get(op, target, {k: v for k, v in headers.items() if v != ''}, label)
+        if not body:
+            continue
+        raw = body.decode('utf8', 'ignore')
+        inner = re.search(r'data-page="([^"]+)"', raw)
+        if inner:
+            import html as _html
+            try:
+                pl = json.loads(_html.unescape(inner.group(1)))
+                pr = pl.get('props') or {}
+                print(f'      component={pl.get("component")!r} props={sorted(pr.keys())[:30]}')
+                for k, v in pr.items():
+                    if isinstance(v, list) and v and isinstance(v[0], dict):
+                        print(f'      {k}: list[{len(v)}] keys={sorted(v[0].keys())[:16]}')
+                        print(f'        first row: {json.dumps(v[0], ensure_ascii=False)[:400]}')
+                    elif isinstance(v, dict):
+                        print(f'      {k}: dict keys={sorted(v.keys())[:16]}')
                 return 0
+            except Exception as e:
+                print(f'      inner data-page did not parse: {e}')
+        lines = [l.strip() for l in re.sub(r'<[^>]+>', '\n', raw).split('\n')]
+        lines = [l for l in lines if l][:80]
+        print(f'      first {len(lines)} text lines:')
+        for l in lines:
+            print(f'      | {l[:110]}')
+        return 0
 
-    # Some applications serve the same partial under a singular or nested path.
-    print('\n== 4. Nearby paths, in case the link is not the endpoint ==')
-    for path in (f'/matches/{match_id}/lineups',
-                 f'/matches/{match_id}/lineup',
-                 f'/matches/{match_id}/teams/{ids[0]}/lineup',
-                 f'/matches/{match_id}/lineups/{ids[0]}.json',
+    print('\n== 5. Nearby paths ==')
+    for path in (f'/matches/{match_id}/lineups.json',
                  f'/matches/{match_id}.json',
-                 f'/api/matches/{match_id}/lineups',
                  f'/matches/{match_id}/reports/lineupform'):
         get(op, HOST + path, {**base, **html, 'Referer': referer}, path)
     return 1
