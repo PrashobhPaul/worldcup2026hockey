@@ -132,7 +132,41 @@ def merge_teams(ours, theirs):
 
 
 def merge_players(ours, theirs):
-    """Pipeline stats, then one captain per team — the official list decides."""
+    """Pipeline stats, then the invariants that hold whatever either side says.
+
+    This function returns the pipeline's file, so anything broken upstream
+    arrives intact. Two things have now come back through it more than once,
+    which is what makes them the driver's business rather than the producer's:
+
+      * Assists. The FIH publishes none for this competition and no event in
+        the feed carries one, so a non-zero assist is always wrong, whichever
+        side it arrived on. It has been cleared three times.
+
+      * Player ids. The client store is keyed on id, so two players sharing one
+        does not read as a wrong number — it reads as a player who is not in
+        the app at all. Thirteen were lost that way.
+
+    Neither depends on which side is newer, so neither is a merge decision.
+    They are simply enforced.
+    """
+    assists = 0
+    for p in theirs['players']:
+        if p.get('assists'):
+            p['assists'] = 0
+            assists += 1
+
+    seen, ids = set(), 0
+    for p in theirs['players']:
+        if p['id'] not in seen:
+            seen.add(p['id'])
+            continue
+        seq = 1
+        while f"{p['team']}_{seq:02d}" in seen:
+            seq += 1
+        p['id'] = f"{p['team']}_{seq:02d}"
+        seen.add(p['id'])
+        ids += 1
+
     by = {}
     for p in theirs['players']:
         by.setdefault(p['team'], []).append(p)
@@ -152,7 +186,12 @@ def merge_players(ours, theirs):
             want = p is keep
             if bool(p.get('is_captain')) != want:
                 p['is_captain'] = want; fixed += 1
-    return theirs, f'pipeline stats, {fixed} captain flags corrected'
+    notes = [f'{fixed} captain flags corrected']
+    if assists:
+        notes.append(f'{assists} phantom assist(s) cleared')
+    if ids:
+        notes.append(f'{ids} duplicate id(s) resolved')
+    return theirs, 'pipeline stats, ' + ', '.join(notes)
 
 
 def merge_predictions(ours, theirs):
