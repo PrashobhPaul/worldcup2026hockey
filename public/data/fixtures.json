@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-25T17:42:34.274057+00:00",
+ "last_updated": "2026-08-25T17:46:38.148148+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -1203,7 +1203,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:42:34.259714+00:00",
+    "generated_at": "2026-08-25T17:46:38.130897+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -1453,18 +1453,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -1700,7 +1700,7 @@
    "enrichment": "official",
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:42:34.260082+00:00",
+    "generated_at": "2026-08-25T17:46:38.131367+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -1950,18 +1950,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "number": 3,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "number": 12,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -1974,12 +1974,6 @@
        "name": "Marius Clément",
        "number": 23,
        "position": "Goalkeeper"
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "position": null
       },
       {
        "playerId": "FRA_04",
@@ -2015,6 +2009,12 @@
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
+       "position": null
+      },
+      {
+       "playerId": "FRA_20",
+       "name": "Mathis Clément",
+       "number": 9,
        "position": null
       },
       {
@@ -5719,7 +5719,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:42:34.262109+00:00",
+    "generated_at": "2026-08-25T17:46:38.133896+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -5806,18 +5806,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "number": 3,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "number": 12,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -5830,12 +5830,6 @@
        "name": "Marius Clément",
        "number": 23,
        "position": "Goalkeeper"
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "position": null
       },
       {
        "playerId": "FRA_04",
@@ -5871,6 +5865,12 @@
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
+       "position": null
+      },
+      {
+       "playerId": "FRA_20",
+       "name": "Mathis Clément",
+       "number": 9,
        "position": null
       },
       {
@@ -5969,18 +5969,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -9388,7 +9388,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:42:34.264085+00:00",
+    "generated_at": "2026-08-25T17:46:38.136360+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -9638,18 +9638,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -9888,7 +9888,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:42:34.264408+00:00",
+    "generated_at": "2026-08-25T17:46:38.136763+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -9975,18 +9975,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "number": 3,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "number": 12,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -9999,12 +9999,6 @@
        "name": "Marius Clément",
        "number": 23,
        "position": "Goalkeeper"
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "position": null
       },
       {
        "playerId": "FRA_04",
@@ -10040,6 +10034,12 @@
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
+       "position": null
+      },
+      {
+       "playerId": "FRA_20",
+       "name": "Mathis Clément",
+       "number": 9,
        "position": null
       },
       {
@@ -12456,7 +12456,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:33:49.744083+00:00",
+    "generated_at": "2026-08-25T17:46:38.138863+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -12543,18 +12543,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "number": 3,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "number": 12,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -12567,12 +12567,6 @@
        "name": "Marius Clément",
        "number": 23,
        "position": "Goalkeeper"
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "position": null
       },
       {
        "playerId": "FRA_04",
@@ -12608,6 +12602,12 @@
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
+       "position": null
+      },
+      {
+       "playerId": "FRA_20",
+       "name": "Mathis Clément",
+       "number": 9,
        "position": null
       },
       {
@@ -12994,7 +12994,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:33:49.744501+00:00",
+    "generated_at": "2026-08-25T17:46:38.139278+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -13244,18 +13244,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -16714,7 +16714,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:33:49.747334+00:00",
+    "generated_at": "2026-08-25T17:46:38.140489+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -16801,18 +16801,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -17232,7 +17232,7 @@
    ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:33:49.747724+00:00",
+    "generated_at": "2026-08-25T17:46:38.140878+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -17319,18 +17319,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "number": 3,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "number": 12,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -17343,12 +17343,6 @@
        "name": "Marius Clément",
        "number": 23,
        "position": "Goalkeeper"
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "position": null
       },
       {
        "playerId": "FRA_04",
@@ -17384,6 +17378,12 @@
        "playerId": "FRA_11",
        "name": "Malo Martinache",
        "number": 14,
+       "position": null
+      },
+      {
+       "playerId": "FRA_20",
+       "name": "Mathis Clément",
+       "number": 9,
        "position": null
       },
       {
@@ -20893,7 +20893,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:33:49.750545+00:00",
+    "generated_at": "2026-08-25T17:46:38.142097+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -21143,18 +21143,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "number": 3,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "number": 12,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -21167,12 +21167,6 @@
        "name": "Marius Clément",
        "number": 23,
        "position": "Goalkeeper"
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "position": null
       },
       {
        "playerId": "FRA_04",
@@ -21211,6 +21205,12 @@
        "position": null
       },
       {
+       "playerId": "FRA_20",
+       "name": "Mathis Clément",
+       "number": 9,
+       "position": null
+      },
+      {
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
        "number": 2,
@@ -21246,7 +21246,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T17:33:49.750955+00:00",
+    "generated_at": "2026-08-25T17:46:38.142494+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -21496,18 +21496,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
