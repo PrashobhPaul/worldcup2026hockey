@@ -30,6 +30,7 @@
     "test:sheets": "node scripts/test_match_report.mjs",
     "test:stats": "python3 scripts/test_individual_stats.py",
     "test:medalpath": "node scripts/test_medal_path.mjs",
+    "test:impact": "node scripts/test_impact.mjs",
     "data:recompute": "python3 scripts/recompute.py"
   },
   "dependencies": {

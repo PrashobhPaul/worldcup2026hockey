@@ -9,7 +9,9 @@ import { ArrowLeft } from 'lucide-react'
 import { useFavourite, toggleFavourite } from '../hooks/useFavourite'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import BestElevenPitch, { RemainingSquad, TeamToppers, ScoreRow } from '../components/BestElevenPitch'
-import { teamToppers, HOCKEY_FORMATION } from '../engine/bestXI'
+import { teamToppers, HOCKEY_FORMATION, isAtTournament } from '../engine/bestXI'
+import { impactContext, teamKeyPlayers } from '../engine/impact'
+import { KeyPlayerCard as KeyPlayerCards } from '../components/KeyPlayers'
 import TeamRatingCard from '../components/TeamRatingCard'
 
 function OracleSnapshot({ team, teams, matches }) {
@@ -110,6 +112,10 @@ export default function TeamDetailPage() {
   const teams = useLiveQuery(() => db.teams.toArray(), [], [])
   const allMatches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
   const players = useLiveQuery(() => db.players.where('team').equals(teamCode).toArray(), [teamCode], [])
+  // Every squad at the tournament, because a rating rank and a share of the
+  // scoring are only meaningful against the whole field.
+  const allPlayers = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   const matches = (allMatches ?? []).filter(m => m.home === teamCode || m.away === teamCode)
   const byCode = new Map((teams ?? []).map(t => [t.code, t]))
 
@@ -133,6 +139,10 @@ export default function TeamDetailPage() {
     }
   }, { w: 0, d: 0, l: 0, gf: 0, ga: 0 })
   const toppers = teamToppers(players, { matchesPlayed: played.length, goalsAgainst: record.ga })
+  // Measured across the whole tournament: a share of the scoring only means
+  // something against every side's scoring, and a rating rank only means
+  // something against every player in that line.
+  const impact = impactContext(allPlayers, allMatches)
 
   if (team === undefined) return <Skeleton h={400} />
   if (!team) return <div className="text-sm text-pitch-400">Team not found. <Link className="text-brand" to="/teams">← Teams</Link></div>
@@ -184,6 +194,22 @@ export default function TeamDetailPage() {
       <OracleSnapshot team={team} teams={teams} matches={allMatches} />
 
       <TeamRatingCard teamCode={team.code} />
+
+      {/* Who decides matches for this nation, on the same measures the
+          knockout pages use: share of the scoring, the corner routine, the
+          positional rating and its rank in that line, and the keeper the coach
+          actually plays. The departmental counts follow underneath. */}
+      <section>
+        <div className="mb-3 flex items-baseline justify-between gap-2">
+          <h2 className="font-display text-lg font-semibold">{team.name} key players</h2>
+          <span className="font-mono text-[10px] text-pitch-400">this tournament</span>
+        </div>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {teamKeyPlayers(players, impact).map(card => (
+            <KeyPlayerCards key={card.key} card={card} flag={team.flag} />
+          ))}
+        </div>
+      </section>
 
       <section>
         <div className="mb-3 flex items-baseline justify-between gap-2">

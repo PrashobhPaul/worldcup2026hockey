@@ -10,6 +10,9 @@ import { deriveClock, effectiveStatus, isLiveClock, phaseLabel } from '../engine
 import { useClockTick } from '../hooks/useClockTick'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
 import { buildPreview, h2hKey } from '../engine/preview'
+import { impactContext } from '../engine/impact'
+import { isAtTournament } from '../engine/bestXI'
+import KeyPlayers from '../components/KeyPlayers'
 import { ArrowLeft } from 'lucide-react'
 import { EventIcon } from '../components/eventIcons'
 import MatchIntelligence from '../components/MatchIntelligence'
@@ -298,6 +301,11 @@ export default function MatchDetailPage() {
   // Every event in the tournament — the preview deck reasons over all of them,
   // not just this fixture's.
   const allEvents = useLiveQuery(() => db.match_events.toArray(), [], [])
+  // Squads, for the key-player cards. Only the players actually at the
+  // tournament; the store also holds pre-tournament rows for players who did
+  // not travel.
+  const allPlayers = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   // The official meeting record for this pair, harvested from TMS.
   const h2hRow = useLiveQuery(
     () => (match?.home && match?.away && match.home !== 'TBD'
@@ -341,6 +349,19 @@ export default function MatchDetailPage() {
 
   const preview = buildPreview({ match, home, away, matches: allMatches, events: allEvents, pred, h2h: h2hRow?.meetings })
 
+  // Key players. Past the pools every fixture is a knockout in effect — a
+  // semi-final, a medal match or a classification place — and the question a
+  // reader arrives with is who decides it. The cards are measured against the
+  // whole tournament, so the context is built from every match rather than
+  // this one.
+  const knockout = match.phase !== 'pool' && match.phase !== 'stage2'
+  const keyPlayersShown = knockout && match.home !== 'TBD' && match.away !== 'TBD'
+    && allPlayers.length > 0
+  // Plain calls, not memos: this sits below the early returns above, and a
+  // hook after a conditional return is a hook that sometimes does not run.
+  const impact = keyPlayersShown ? impactContext(allPlayers, allMatches) : null
+  const byCode = new Map([home, away].filter(Boolean).map(t => [t.code, t]))
+
   const homeForm = tournamentForm(allMatches, match.home).filter(f => f.id !== match.id)
   const awayForm = tournamentForm(allMatches, match.away).filter(f => f.id !== match.id)
   const h2h = allMatches.filter(m =>
@@ -358,6 +379,7 @@ export default function MatchDetailPage() {
   const pills = [
     pred?.status === 'ready' && { id: 'sec-pick', label: '🎯 Pick' },
     preview.length > 0 && { id: 'sec-preview', label: 'Preview' },
+    keyPlayersShown && { id: 'sec-key', label: 'Key players' },
     { id: 'sec-form', label: 'Form' },
     (done || live) && (events?.length ?? 0) > 0 && { id: 'sec-timeline', label: 'Timeline' },
     { id: 'sec-lineups', label: 'Line-ups' },
@@ -491,6 +513,13 @@ export default function MatchDetailPage() {
           <div className="space-y-2.5">
             {preview.map(c => <PreviewCard key={c.kind} card={c} />)}
           </div>
+        </div>
+      )}
+
+      {keyPlayersShown && (
+        <div id="sec-key" className="scroll-mt-28">
+          <KeyPlayers home={match.home} away={match.away} players={allPlayers}
+            ctx={impact} byCode={byCode} />
         </div>
       )}
 

@@ -1,7 +1,7 @@
 // Hockey.AI — the best XI is positional, and honest about where each role
 // came from. These are the properties the page depends on.
 import { readFileSync } from 'node:fs'
-import { bestXI, roleOf, LINES, isAtTournament, tournamentXI } from '../src/engine/bestXI.js'
+import { bestXI, roleOf, LINES, isAtTournament, tournamentXI, positionBoards } from '../src/engine/bestXI.js'
 
 const PLAYERS = JSON.parse(readFileSync(new URL('../public/data/players.json', import.meta.url))).players
 const TEAMS = [...new Set(PLAYERS.map(p => p.team))].sort()
@@ -145,6 +145,21 @@ check('every position is one of the four hockey plays',
       const picked = xi.filter(p => p.line.role === line.role).map(p => p.ai_rating)
       return picked.every((r, i) => r === pool[i])
     }))
+
+  // The Stats tab shows these boards and the pitch shows this XI, and a reader
+  // comparing the two has to find the same names. They are one ranking, so the
+  // XI must be exactly the head of each board — name for name, in order.
+  const boards = positionBoards(PLAYERS)
+  check('the XI is the head of each Top Performers board',
+    LINES.every(line =>
+      boards[line.role].slice(0, line.count).map(r => r.player.id).join(',') ===
+      xi.filter(p => p.line.role === line.role).map(p => p.id).join(',')),
+    LINES.map(l => `${l.role}: board ${boards[l.role].slice(0, l.count).map(r => r.player.name)} vs XI ${xi.filter(p => p.line.role === l.role).map(p => p.name)}`).join(' | '))
+  check('every board ranks strictly by the rating',
+    LINES.every(line => boards[line.role]
+      .every((r, i, all) => i === 0 || all[i - 1].rating >= r.rating)))
+  check('a board rank is the position in that board',
+    LINES.every(line => boards[line.role].every((r, i) => r.rank === i + 1)))
   check('nobody outside the official team lists reaches the XI',
     xi.every(p => isAtTournament(p)))
   check('no player is picked twice', new Set(xi.map(p => p.id)).size === xi.length)
