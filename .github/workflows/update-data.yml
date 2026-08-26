@@ -315,4 +315,8 @@ jobs:
           python scripts/probe_lineups.py || true
           python scripts/probe_appapi.py || true
           python scripts/probe_reports.py || true
-          python scripts/probe_sheets.py
+          python scripts/probe_sheets.py || true
+          # The entry list, against what we publish. Report only: a name this
+          # app has shown for a fortnight is not rewritten by a report nobody
+          # has read yet.
+          python scripts/verify_squads.py
