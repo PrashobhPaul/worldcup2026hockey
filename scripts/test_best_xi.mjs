@@ -1,7 +1,7 @@
 // Hockey.AI — the best XI is positional, and honest about where each role
 // came from. These are the properties the page depends on.
 import { readFileSync } from 'node:fs'
-import { bestXI, roleOf, LINES, isAtTournament } from '../src/engine/bestXI.js'
+import { bestXI, roleOf, LINES, isAtTournament, tournamentXI } from '../src/engine/bestXI.js'
 
 const PLAYERS = JSON.parse(readFileSync(new URL('../public/data/players.json', import.meta.url))).players
 const TEAMS = [...new Set(PLAYERS.map(p => p.team))].sort()
@@ -119,6 +119,36 @@ check('a player with nothing on the record is given no position',
 check('every position is one of the four hockey plays',
   HERE.every(p => p.position_effective == null
     || LINES.some(l => l.role === p.position_effective)))
+
+
+// ── The tournament-wide XI ────────────────────────────────────────────────
+// A separate selection from the per-team one above and a separate question:
+// the highest-rated player in each line across every nation. It read the raw
+// entry-list position, where three players in the whole tournament are stated
+// Defenders, so the back four could not be filled and the XI fielded ten men
+// without saying so.
+{
+  const xi = tournamentXI(PLAYERS)
+  console.log('Tournament XI')
+  check('the tournament XI fields eleven', xi.length === 11, `${xi.length} picked`)
+  for (const line of LINES) {
+    const got = xi.filter(p => p.line.role === line.role)
+    check(`the ${line.role.toLowerCase()} line is full`, got.length === line.count,
+      `${got.length} of ${line.count}`)
+    check(`every ${line.role.toLowerCase()} picked plays there`,
+      got.every(p => roleOf(p).role === line.role))
+  }
+  check('nobody is picked over a higher-rated player in the same line',
+    LINES.every(line => {
+      const pool = PLAYERS.filter(p => isAtTournament(p) && p.ai_rating != null &&
+        roleOf(p).role === line.role).map(p => p.ai_rating).sort((a, b) => b - a)
+      const picked = xi.filter(p => p.line.role === line.role).map(p => p.ai_rating)
+      return picked.every((r, i) => r === pool[i])
+    }))
+  check('nobody outside the official team lists reaches the XI',
+    xi.every(p => isAtTournament(p)))
+  check('no player is picked twice', new Set(xi.map(p => p.id)).size === xi.length)
+}
 
 console.log(failed ? `\n${failed} check(s) failed.` : '\nAll best-XI checks passed.')
 process.exit(failed ? 1 : 0)
