@@ -151,5 +151,11 @@ jobs:
       - name: The medal path matches the FIH's own slot labels
         run: npm run test:medalpath
 
+      # Key players are named on the knockout pages and on every team page. A
+      # card that hands each question to a different name looks right and reads
+      # wrong, so the selection is asserted rather than eyeballed.
+      - name: Key players are the players who actually carry a side
+        run: npm run test:impact
+
       - name: Build
         run: npm run build

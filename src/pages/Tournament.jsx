@@ -6,7 +6,7 @@ import Pitch from '../components/Pitch'
 import { db } from '../db'
 import { computeStandings, computeStage2Standings } from '../engine/standings'
 import { cardPoints } from '../engine/awards'
-import { isAtTournament, roleOf, tournamentXI } from '../engine/bestXI'
+import { isAtTournament, roleOf, tournamentXI, positionBoards, LINES } from '../engine/bestXI'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
@@ -57,7 +57,10 @@ function BestXISpace({ players, byCode }) {
           <h2 className="font-display text-base font-semibold" style={{ color: accent }}>
             Tournament&apos;s Best XI
           </h2>
-          <p className="mb-2 font-mono text-[10px] text-pitch-400">✨ Coach: Oracle · 1-4-3-3 · selected on AI positional ratings</p>
+          <p className="mb-2 font-mono text-[10px] text-pitch-400">
+            ✨ Coach: Oracle · 1-4-3-3 · the top of each{' '}
+            <Link to="/tournament?tab=stats" className="text-brand hover:underline">Top Performers</Link> board
+          </p>
           <Pitch players={best} formation="4-3-3" byCode={byCode} accent={accent} />
         </div>
         <div>
@@ -111,9 +114,15 @@ function Board({ title, sub, rows, accent = 'text-brand', footnote, icon: Icon, 
                 {/* Name and detail stack. Sharing one row with the detail
                     text truncated every name on a phone — "Harmanpre…". */}
                 <div className="min-w-0 flex-1">
-                  {r.to
-                    ? <Link to={r.to} className="block truncate text-sm font-semibold hover:text-brand">{r.name} {i === 0 && '🏆'}</Link>
-                    : <span className="block truncate text-sm font-semibold">{r.name} {i === 0 && '🏆'}</span>}
+                  <div className="flex items-center gap-1.5">
+                    {r.to
+                      ? <Link to={r.to} className="min-w-0 truncate text-sm font-semibold hover:text-brand">{r.name} {i === 0 && '🏆'}</Link>
+                      : <span className="min-w-0 truncate text-sm font-semibold">{r.name} {i === 0 && '🏆'}</span>}
+                    {r.badge && (
+                      <span className="shrink-0 rounded bg-brand/15 px-1 py-px font-mono text-[8px] font-bold uppercase tracking-wider text-brand"
+                        title="In the Tournament's Best XI">{r.badge}</span>
+                    )}
+                  </div>
                   {r.chip && <span className="block truncate font-mono text-[10px] text-pitch-400">{r.chip}</span>}
                 </div>
                 <div className="hidden h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-pitch-600 sm:block">
@@ -249,19 +258,23 @@ function StatsView({ teams, matches, byCode }) {
     // `position` alone left the defenders' board with six names in a
     // tournament of sixteen squads, because the entry list states a position
     // for barely a fifth of the players.
+    // One ranking, shared with the best XI: these boards are the source it
+    // picks from, so the shirts on the pitch are the names at the top here.
+    // The XI chip says which, rather than leaving a reader to compare two
+    // tabs and hope.
+    const ranked = positionBoards(players, { top: 8 })
     const performers = {}
-    for (const pos of ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']) {
-      performers[pos] = [...players]
-        .filter(p => roleOf(p).role === pos && p.ai_rating != null)
-        .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
-        .slice(0, 8)
-        .map(p => ({
-          key: p.id, name: p.name, flag: byCode.get(p.team)?.flag,
-          chip: pos === 'Goalkeeper'
-            ? (roleOf(p).source === 'FIH' ? 'keeper · FIH' : 'keeper')
-            : `${p.goals}G · ${p.pc_scored} PC · ${roleOf(p).source === 'FIH' ? 'FIH' : 'derived'}`,
-          value: p.ai_rating,
-        }))
+    for (const line of LINES) {
+      performers[line.role] = ranked[line.role].map(r => ({
+        key: r.player.id,
+        name: r.player.name,
+        flag: byCode.get(r.player.team)?.flag,
+        badge: r.rank <= line.count ? 'XI' : null,
+        chip: line.role === 'Goalkeeper'
+          ? (roleOf(r.player).source === 'FIH' ? 'keeper · FIH' : 'keeper')
+          : `${r.player.goals}G · ${r.player.pc_scored} PC · ${roleOf(r.player).source === 'FIH' ? 'FIH' : 'derived'}`,
+        value: r.rating,
+      }))
     }
 
     return { scorers, attackRows, defenseRows, fairPlay, performers, clutch, talisman, setPiece, index }
@@ -310,6 +323,9 @@ function StatsView({ teams, matches, byCode }) {
           <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
             Rule-based Hockey.AI positional model on the match event ledger. Volume-weighted, so pitch time
             matters — a one-match cameo cannot outrank a tournament-long starter on the same rating.
+            The <span className="text-brand">XI</span> mark is the first keeper, four defenders, three
+            midfielders and three forwards on these four boards — which is exactly the{' '}
+            <Link to="/tournament?tab=best" className="text-brand hover:underline">Tournament&apos;s Best XI</Link>.
           </p>
         </>
       )}

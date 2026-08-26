@@ -263,6 +263,7 @@ jobs:
           npm run test:sheets
           npm run test:stats
           npm run test:medalpath
+          npm run test:impact
           npm run test:fingerprint
           python3 scripts/test_story_facts.py
 

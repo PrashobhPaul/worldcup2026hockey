@@ -49,6 +49,29 @@ export function roleOf(p) {
 }
 
 /**
+ * The Top Performers boards: every rated player at the tournament, ranked
+ * within the line they actually play in.
+ *
+ * This is the one ranking. The Stats tab shows the head of each board and the
+ * best XI takes the first one, four, three and three from the same four
+ * lists, so the eleven on the pitch are by construction the players at the top
+ * of the boards beside them — they cannot drift apart, because there is
+ * nothing to drift from.
+ */
+export function positionBoards(players, { top = Infinity } = {}) {
+  const eligible = (players ?? []).filter(p => isAtTournament(p) && p.ai_rating != null)
+  const boards = {}
+  for (const line of LINES) {
+    boards[line.role] = eligible
+      .filter(p => roleOf(p).role === line.role)
+      .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
+      .map((p, i) => ({ player: p, rating: p.ai_rating, rank: i + 1, line }))
+      .slice(0, top)
+  }
+  return boards
+}
+
+/**
  * The tournament's best XI: the highest-rated player in each line, across
  * every nation, in 1-4-3-3.
  *
@@ -62,11 +85,9 @@ export function roleOf(p) {
  * the back four could never be filled and the XI quietly fielded ten men.
  */
 export function tournamentXI(players) {
-  const eligible = (players ?? []).filter(p => isAtTournament(p) && p.ai_rating != null)
-  const line = role => eligible
-    .filter(p => roleOf(p).role === role)
-    .sort((a, b) => b.ai_rating - a.ai_rating || a.name.localeCompare(b.name))
-  return LINES.flatMap(l => line(l.role).slice(0, l.count).map(p => ({ ...p, line: l })))
+  const boards = positionBoards(players)
+  return LINES.flatMap(l => boards[l.role].slice(0, l.count)
+    .map(r => ({ ...r.player, line: l, roleRank: r.rank })))
 }
 
 /**
