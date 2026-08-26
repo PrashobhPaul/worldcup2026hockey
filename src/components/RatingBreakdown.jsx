@@ -37,6 +37,21 @@ export default function RatingBreakdown({ player, compact = false }) {
         <span className="font-mono text-[10px] text-pitch-400">of 100</span>
       </div>
 
+      {/* The rating is what he did times the standard he did it against, and
+          both halves are printed: a multiplier a reader cannot see is a
+          multiplier they have to take on trust. */}
+      {player.rating_context && (
+        <div className="mb-2.5 flex items-baseline justify-between gap-2 rounded border border-white/5 bg-pitch-800/60 px-2 py-1.5">
+          <span className="font-mono text-[10px] text-pitch-300">
+            {player.rating_performance} <span className="text-pitch-600">performance</span>
+            {' × '}{player.rating_context.factor} <span className="text-pitch-600">context</span>
+          </span>
+          <span className="font-mono text-[9px] text-pitch-400" title="His side's points per match, ranked against the rest">
+            {player.rating_context.label} {player.rating_context.score}
+          </span>
+        </div>
+      )}
+
       <ul className="space-y-1.5">
         {rows.map(([key, c]) => (
           <li key={key} className="grid grid-cols-[1fr_auto] items-center gap-x-2 gap-y-0.5">
@@ -55,6 +70,11 @@ export default function RatingBreakdown({ player, compact = false }) {
           Each score is this player&apos;s percentile against every other {(player.position_effective ?? 'player').toLowerCase()} at
           this tournament; the percentage beside it is the share of the rating that component carried.
           {' '}This rating rests on {Math.round(coverage * 100)}% of the {(player.position_effective ?? 'position').toLowerCase()} model.
+          {player.rating_context && (
+            <> The components give a performance of {player.rating_performance}; the match-context
+            factor of {player.rating_context.factor} is his side&apos;s points per match ranked against
+            the rest, and it can move a rating by at most 12%, never to zero.</>
+          )}
           {missing.length > 0 && (
             <> The rest — {missing.length} component{missing.length === 1 ? '' : 's'} covering passing,
             carrying, circle entries, tackles and saves — needs figures the FIH does not publish for this

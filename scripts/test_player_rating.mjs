@@ -34,15 +34,47 @@ check('every component score is a percentile in range',
 check('every rating sits inside its scale',
   rated.every(p => p.ai_rating >= 40 && p.ai_rating <= 99))
 
-check('the rating is the weighted sum of its own components',
+// The published rating is the performance the components add up to, times the
+// standard it was produced against. Both halves are published, so both are
+// checked: a rating that cannot be reconstructed from what is printed beside
+// it is a number the reader is being asked to take on trust.
+check('the performance is the weighted sum of its own components',
   rated.every(p => {
     const pct = Object.values(p.rating_components).reduce((s, c) => s + c.weight * c.score, 0)
-    return Math.abs((40 + (99 - 40) * pct / 100) - p.ai_rating) < 0.15
+    return Math.abs((40 + (99 - 40) * pct / 100) - p.rating_performance) < 0.15
   }),
   rated.filter(p => {
     const pct = Object.values(p.rating_components).reduce((s, c) => s + c.weight * c.score, 0)
-    return Math.abs((40 + (99 - 40) * pct / 100) - p.ai_rating) >= 0.15
-  }).slice(0, 3).map(p => `${p.name} ${p.ai_rating}`).join(','))
+    return Math.abs((40 + (99 - 40) * pct / 100) - p.rating_performance) >= 0.15
+  }).slice(0, 3).map(p => `${p.name} ${p.rating_performance}`).join(','))
+
+check('the rating is the performance times the match context',
+  rated.every(p => {
+    const factor = p.rating_context ? p.rating_context.factor : 1
+    return Math.abs(p.rating_performance * factor - p.ai_rating) < 0.15
+  }),
+  rated.filter(p => {
+    const factor = p.rating_context ? p.rating_context.factor : 1
+    return Math.abs(p.rating_performance * factor - p.ai_rating) >= 0.15
+  }).slice(0, 3).map(p => `${p.name} ${p.rating_performance}x${p.rating_context?.factor}!=${p.ai_rating}`).join(','))
+
+// Context is bounded on purpose. It was tried as a weighted component and the
+// engine's redistribution of unfed components inflated a declared 12% into
+// 37.5% of a midfielder's rating, filling the XI with players whose countries
+// had won matches. A multiplier cannot grow like that, and the floor says
+// exactly how much it is allowed to matter.
+check('the match context never leaves its bounds',
+  rated.every(p => !p.rating_context ||
+    (p.rating_context.factor >= 0.88 && p.rating_context.factor <= 1)),
+  rated.filter(p => p.rating_context &&
+    (p.rating_context.factor < 0.88 || p.rating_context.factor > 1))
+    .slice(0, 3).map(p => `${p.name} ${p.rating_context.factor}`).join(','))
+
+check('the match context never outranks the performance',
+  rated.every(p => p.ai_rating <= p.rating_performance + 0.05))
+
+check('match context is not also a weighted component',
+  rated.every(p => !Object.keys(p.rating_components).includes('match_context')))
 
 check('every rating declares how much of its model it stands on',
   rated.every(p => p.rating_coverage > 0 && p.rating_coverage <= 1))

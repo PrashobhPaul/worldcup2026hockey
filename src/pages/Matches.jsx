@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -10,8 +10,14 @@ import { effectiveStatus } from '../engine/clock'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { useNowTick } from '../hooks/useNowTick'
 import { SIM_ID, SIM_MATCH } from '../content/sim'
+import { simulate } from '../engine/sim'
 
-function SimulationCard() {
+// The card only appears once the engine can actually pick both elevens: a
+// link promising a simulated scoreline that resolves to "not yet" is worse
+// than no link. The score shown is the one the sim page shows, from the same
+// call, so the two can never disagree.
+function SimulationCard({ sim }) {
+  if (!sim) return null
   return (
     <div className="mb-4">
       <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">✨ AI Simulation</div>
@@ -23,7 +29,7 @@ function SimulationCard() {
         <span className="min-w-0 flex-1 truncate text-sm font-semibold">
           {SIM_MATCH.homeLabel} <span className="font-mono text-xs text-pitch-400">vs</span> {SIM_MATCH.awayLabel}
         </span>
-        <span className="font-mono text-sm font-bold text-brand">{SIM_MATCH.result.home}–{SIM_MATCH.result.away}</span>
+        <span className="font-mono text-sm font-bold text-brand">{sim.score.home}–{sim.score.away}</span>
       </Link>
     </div>
   )
@@ -81,6 +87,11 @@ export default function MatchesPage() {
   const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
   const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
   const rec = publishedAccuracy(calibration, oracleRecord(all, predictions))
+
+  // Both elevens and the exhibition between them, from the same engine the
+  // sim page uses, so the card and the page cannot print two scorelines.
+  const players = useLiveQuery(() => db.players.toArray(), [], [])
+  const sim = useMemo(() => simulate(players, matches ?? []), [players, matches])
 
   // Membership follows the clock, not the stored status: a match past
   // push-back sits under Live (with its running clock and 0-0) the moment it
@@ -187,7 +198,7 @@ export default function MatchesPage() {
         ))}
       </div>
 
-      {tab === 'live' && <SimulationCard />}
+      {tab === 'live' && <SimulationCard sim={sim} />}
 
       {loading ? <Skeleton h={400} /> : (
         <div className="space-y-2.5">

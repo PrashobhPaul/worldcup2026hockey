@@ -16,6 +16,7 @@
 // not on the record. Nothing is invented to fill a shirt quietly.
 
 import { ageOn } from './awards.js'
+import { splitText } from './goalSplit.js'
 
 export const HOCKEY_FORMATION = '1-4-3-3'
 
@@ -131,6 +132,30 @@ export function risingXI(players, startDate) {
   const eligible = (players ?? []).filter(p =>
     isAtTournament(p) && p.ai_rating != null && isRising(p, startDate))
   return tournamentXI(eligible).map(p => ({ ...p, rising: isRising(p, startDate) }))
+}
+
+/**
+ * One picked XI, shaped for the surfaces that draw it.
+ *
+ * The pitch, the sim and the Tournament's Best list all draw the same eleven,
+ * so they all shape it here. Two of them shaped it separately once and the sim
+ * ended up carrying a team sheet of its own — names typed in before the
+ * tournament, three of whom never travelled.
+ */
+export function xiRows(selected) {
+  return (selected ?? []).map(p => ({
+    id: p.id,
+    player: p.name,
+    nat: p.team,
+    rating: p.ai_rating,
+    role: p.line.role,
+    pos: { Goalkeeper: 'GK', Defender: 'DF', Midfielder: 'MF' }[p.line.role] ?? 'FW',
+    goals: p.goals ?? 0,
+    pcGoals: p.pc_scored ?? 0,
+    caps: p.caps ?? null,
+    stat: [`${p.goals}G`, splitText(p)].filter(Boolean).join(' \u00b7 '),
+    note: p.rising ? p.rising.reason : null,
+  }))
 }
 
 /**

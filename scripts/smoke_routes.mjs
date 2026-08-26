@@ -31,6 +31,11 @@ const ROUTES = [
   '/teams',
   '/tournament', '/tournament?tab=standings', '/tournament?tab=bracket',
   '/tournament?tab=stats', '/tournament?tab=awards', '/tournament?tab=awards&awards=potm',
+  '/tournament?tab=best', '/tournament?tab=best&xi=rising',
+  // The simulated exhibition draws two engine-picked elevens now. It was not
+  // on this list while it was a static table, which is how it went a fortnight
+  // showing players who never travelled.
+  '/match/sim/sim_best_xi_vs_rising_xi',
   '/prediction-race', '/lab', '/players',
   ...TEAMS.teams.map(t => `/teams/${t.code}`),
   played && `/matches/${played.id}`,

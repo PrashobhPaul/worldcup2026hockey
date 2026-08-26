@@ -157,5 +157,11 @@ jobs:
       - name: Key players are the players who actually carry a side
         run: npm run test:impact
 
+      # Both the rising XI and the simulated exhibition are selections now,
+      # not tables, so both are checked as selections: eleven eligible players
+      # a shirt at a time, and nobody on both team sheets at once.
+      - name: The rising XI and the simulation are picked, not written
+        run: npm run test:sim
+
       - name: Build
         run: npm run build

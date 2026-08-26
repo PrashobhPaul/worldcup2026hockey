@@ -135,6 +135,27 @@ jobs:
       # official FIH export — a wrong scoreline and eight reversed listings.
       # Re-applying here keeps the published record agreeing with the match
       # centre no matter how often the pipeline runs. It is idempotent.
+      # The FIH entry list is the answer to "is this the squad, and is that
+      # how the man spells his name" — for every nation, every shirt number,
+      # every captaincy and goalkeeper mark. It ran inside the line-up probe,
+      # which is dormant unless a match id is dispatched and sits after the
+      # gates, so it had never once executed: a check nothing runs is not a
+      # check. It runs every time now, before anything can fail, and writes its
+      # findings to the run summary so they survive log truncation.
+      #
+      # Report only. A name this app has shown for a fortnight is not rewritten
+      # by a report nobody has read, and the entry list is unreachable often
+      # enough that a failure here must not stop the data update.
+      - name: Check the published squads against the FIH entry list
+        continue-on-error: true
+        run: |
+          {
+            echo '## Squads vs the FIH entry list'
+            echo '```'
+            python scripts/verify_squads.py 2>&1 || true
+            echo '```'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
       - name: Reconcile against the official FIH record
         run: python scripts/apply_official_matchdata.py
 
@@ -264,6 +285,7 @@ jobs:
           npm run test:stats
           npm run test:medalpath
           npm run test:impact
+          npm run test:sim
           npm run test:fingerprint
           python3 scripts/test_story_facts.py
 
@@ -316,7 +338,3 @@ jobs:
           python scripts/probe_appapi.py || true
           python scripts/probe_reports.py || true
           python scripts/probe_sheets.py || true
-          # The entry list, against what we publish. Report only: a name this
-          # app has shown for a fortnight is not rewritten by a report nobody
-          # has read yet.
-          python scripts/verify_squads.py
