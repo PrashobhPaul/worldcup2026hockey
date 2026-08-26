@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-26T21:00:12.128920+00:00",
+ "last_updated": "2026-08-26T21:06:17.026762+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -24901,7 +24901,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T19:31:21.614235+00:00",
+    "generated_at": "2026-08-26T21:06:17.023586+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24934,18 +24934,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Defender",
        "position": null,
        "captain": false,
