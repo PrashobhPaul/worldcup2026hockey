@@ -2702,6 +2702,17 @@ def update_player_stats(fixtures, players_doc):
                 a['red'] += 1
             # Nothing accumulates an assist: FIH does not publish them here.
 
+    # Points won, for the match-context component: the standard a performance
+    # was produced against, which nothing in a forward's or midfielder's model
+    # otherwise knows about.
+    team_points = {}
+    for m in fixtures['matches']:
+        if m['status'] != 'completed' or m.get('score', {}).get('home') is None:
+            continue
+        h, a_ = m['score']['home'], m['score']['away']
+        for code, mine, theirs in ((m['home'], h, a_), (m['away'], a_, h)):
+            team_points[code] = team_points.get(code, 0) + (3 if mine > theirs else 1 if mine == theirs else 0)
+
     max_team_mp = max(team_matches.values(), default=1)
     official = official_appearances(fixtures)
     disagreements = []
@@ -2757,6 +2768,9 @@ def update_player_stats(fixtures, players_doc):
             'goal_share': (a['goals'] / scored) if scored else 0.0,
             'card_points': a['green'] * 1 + a['yellow'] * 2 + a['red'] * 5,
             'team_ga_per_match': ga_per_match if tm else None,
+            # How far this player's side actually got, in the record's own
+            # terms. Three for a win, one for a draw, over matches played.
+            'team_points_per_match': (team_points.get(p['team'], 0) / tm) if tm else None,
         })
 
         new_vals = {
@@ -2811,6 +2825,12 @@ def update_player_stats(fixtures, players_doc):
             breakdown = (result or {}).get('components')
             for field, value in (('ai_rating', want),
                                  ('rating_components', breakdown),
+                                 # What he did, before the standard he did it
+                                 # against is applied — both are published, so
+                                 # the multiplier can be read rather than
+                                 # inferred from a number that moved.
+                                 ('rating_performance', (result or {}).get('performance')),
+                                 ('rating_context', (result or {}).get('context')),
                                  ('rating_coverage', (result or {}).get('coverage')),
                                  ('rating_missing', (result or {}).get('components_missing'))):
                 if p.get(field) != value:
@@ -2821,7 +2841,8 @@ def update_player_stats(fixtures, players_doc):
     for p in players:
         if p['name'] in rated_names:
             continue
-        for field in ('ai_rating', 'rating_components', 'rating_coverage', 'rating_missing'):
+        for field in ('ai_rating', 'rating_components', 'rating_performance',
+                      'rating_context', 'rating_coverage', 'rating_missing'):
             if p.get(field) is not None:
                 p[field] = None
                 changed = True

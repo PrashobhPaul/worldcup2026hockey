@@ -55,11 +55,11 @@ def compare(squads, players_doc):
     for code in sorted(squads):
         listed = squads[code]
         mine = ours.get(code, [])
-        by_key = {ud._name_tokens(p['name']): p for p in mine}
+        by_key = {tuple(ud._name_tokens(p['name'])): p for p in mine}
 
         seen = set()
         for entry in listed:
-            key = ud._name_tokens(entry['name'])
+            key = tuple(ud._name_tokens(entry['name']))
             match = by_key.get(key)
             if match is None:
                 # A name can be spelled differently and still be the same man;

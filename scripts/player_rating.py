@@ -50,6 +50,7 @@ TEAM_DEFENCE = 'team_defence'
 CLUTCH = 'clutch'
 TALISMAN = 'talisman'
 DISCIPLINE = 'discipline'
+MATCH_CONTEXT = 'match_context'
 # Declared, not yet fed by any source.
 CHANCE_CREATION = 'chance_creation'
 CIRCLE_IMPACT = 'circle_impact'
@@ -71,6 +72,7 @@ COMPONENTS = {
     CLUTCH:            {'label': 'Fourth quarter',    'needs': ['late_goals']},
     TALISMAN:          {'label': 'Share of attack',   'needs': ['goal_share']},
     DISCIPLINE:        {'label': 'Discipline',        'needs': ['card_points']},
+    MATCH_CONTEXT:     {'label': 'Match context',     'needs': ['team_points_per_match']},
     CHANCE_CREATION:   {'label': 'Chance creation',   'needs': ['key_passes', 'assists']},
     CIRCLE_IMPACT:     {'label': 'Circle impact',     'needs': ['circle_entries']},
     PROGRESSION:       {'label': 'Progression',       'needs': ['progressive_passes', 'carries']},
@@ -109,6 +111,23 @@ WEIGHTS = {
         DISTRIBUTION: 0.10, AVAILABILITY: 0.08, DISCIPLINE: 0.04,
     },
 }
+
+# ── Match context ─────────────────────────────────────────────────────────
+# The standard a performance was produced against, applied the way the
+# architecture always called for it — Performance x Context — rather than as
+# another weighted component.
+#
+# It was tried as a component first and that was wrong. The engine
+# redistributes the weight of components the record cannot feed, so a
+# component that is always available grows exactly where coverage is thinnest:
+# a declared 12% became 37.5% of a midfielder's rating, and the XI filled with
+# players who were in it because their country won matches rather than because
+# they did anything. As a bounded multiplier it cannot do that.
+#
+# The floor is the claim being made: a performance for the weakest side in the
+# tournament is worth 88% of the same performance for the strongest. Nothing
+# is zeroed and nobody is excluded for the company they keep.
+CONTEXT_FLOOR = 0.88
 
 SCALE_MIN, SCALE_MAX = 40.0, 99.0
 
@@ -172,6 +191,19 @@ def _raw(row, comp, group_has_appearances=False):
     if comp == TALISMAN:
         v = row.get('goal_share')
         return None if v is None else float(v)
+    if comp == MATCH_CONTEXT:
+        # The standard a performance was produced against.
+        #
+        # Without it the model asks only "how well did he play his position",
+        # and a player carrying a side that went out in the pools outranks one
+        # in a side that reached the semi-finals — because nothing in a
+        # forward's or midfielder's model knows what his team was up against.
+        # Points per match is the record's own answer to how far a side got,
+        # and it is percentile-ranked like every other component rather than
+        # being applied as a hidden multiplier: it appears in the breakdown
+        # with its weight, so a reader can see it and disagree with it.
+        v = row.get('team_points_per_match')
+        return None if v is None else float(v)
     if comp == DISCIPLINE:
         pts = row.get('card_points')
         if pts is None:
@@ -214,6 +246,12 @@ def rate_group(rows, position):
     scores = {c: _pct(raws[c], invert=c in LOWER_IS_BETTER) for c in weights}
     available = {c for c in weights if all(v is not None for v in raws[c])}
 
+    # Context is scored across the group like everything else, but it never
+    # joins the weighted sum — see the note above CONTEXT_FLOOR.
+    context_raw = [_raw(r, MATCH_CONTEXT) for r in rows]
+    context_score = (_pct(context_raw)
+                     if all(v is not None for v in context_raw) else {})
+
     out = []
     for i, row in enumerate(rows):
         mine = {c: scores[c][i] for c in available}
@@ -222,9 +260,21 @@ def rate_group(rows, position):
             out.append(None)
             continue
         pct = sum(weights[c] * mine[c] for c in mine) / total_w
-        rating = SCALE_MIN + (SCALE_MAX - SCALE_MIN) * pct / 100.0
+        performance = SCALE_MIN + (SCALE_MAX - SCALE_MIN) * pct / 100.0
+        ctx = context_score.get(i)
+        factor = 1.0 if ctx is None else CONTEXT_FLOOR + (1 - CONTEXT_FLOOR) * ctx / 100.0
+        rating = performance * factor
         out.append({
             'rating': round(rating, 1),
+            'performance': round(performance, 1),
+            # Stated separately because it is a different kind of claim from
+            # the components: not what he did, but what he did it against.
+            'context': None if ctx is None else {
+                'label': COMPONENTS[MATCH_CONTEXT]['label'],
+                'score': round(ctx, 1),
+                'factor': round(factor, 3),
+                'raw': round(context_raw[i], 3),
+            },
             'position': position,
             # Every component that fed the number, with the share it carried,
             # so the rating can be read rather than taken on trust.

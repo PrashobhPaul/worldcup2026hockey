@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-26T21:00:12.128920+00:00",
+  "last_updated": "2026-08-26T19:06:42.281534+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -17,7 +17,7 @@
       "profile": "World's best drag flick specialist and captain. Penalty corner conversion rate 42%.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 73.1,
+      "ai_rating": 68.2,
       "on_team_list": true,
       "dob": "6 Jan 1996",
       "caps": 269,
@@ -60,7 +60,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 73.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_02",
@@ -78,7 +85,7 @@
       "profile": "Experienced midfield general. Orchestrates India's transitions.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 54.6,
+      "ai_rating": 50.9,
       "on_team_list": true,
       "dob": "26 Jun 1992",
       "caps": 422,
@@ -127,7 +134,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 54.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.6,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_03",
@@ -166,7 +180,7 @@
       "profile": "Vice-captain and drag flick specialist. Scored in opening match.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 59.0,
+      "ai_rating": 55.0,
       "on_team_list": true,
       "dob": "10 May 1993",
       "caps": 249,
@@ -209,7 +223,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 59.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_05",
@@ -227,7 +248,7 @@
       "profile": "Pacey forward. Scored India's third goal vs Wales.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 59.2,
+      "ai_rating": 54.5,
       "on_team_list": true,
       "dob": "15 Aug 1999",
       "caps": 140,
@@ -246,17 +267,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 32.3,
-          "weight": 0.091,
-          "raw": 0.143
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.091,
+          "raw": 0.143
         },
         "availability": {
           "label": "Availability",
@@ -282,7 +303,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 59.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 33.9,
+        "factor": 0.921,
+        "raw": 1.2
+      }
     },
     {
       "id": "AUS_01",
@@ -342,7 +370,7 @@
       "profile": "Drag flick specialist. High PC conversion rate.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 75.6,
+      "ai_rating": 70.5,
       "on_team_list": true,
       "dob": "6 Jul 1996",
       "caps": 184,
@@ -361,17 +389,17 @@
           "weight": 0.182,
           "raw": 1.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 91.9,
-          "weight": 0.091,
-          "raw": 0.333
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 91.9,
+          "weight": 0.091,
+          "raw": 0.333
         },
         "availability": {
           "label": "Availability",
@@ -397,7 +425,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 1,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 75.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.5,
+        "factor": 0.932,
+        "raw": 1.6
+      }
     },
     {
       "id": "AUS_04",
@@ -436,7 +471,7 @@
       "profile": "World's most feared drag flicker. Penalty corner conversion rate 50%+.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 73.8,
+      "ai_rating": 70.0,
       "on_team_list": true,
       "dob": "6 Aug 1993",
       "caps": 236,
@@ -485,7 +520,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 73.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.4,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_02",
@@ -503,7 +545,7 @@
       "profile": "Red Lions captain. Dictates tempo from midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 54.6,
+      "ai_rating": 51.7,
       "on_team_list": true,
       "dob": "3 May 1997",
       "caps": 213,
@@ -552,7 +594,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 54.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.4,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_03",
@@ -591,7 +640,7 @@
       "profile": "World's best goalkeeper. Multiple FIH Goalkeeper of the Year.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 80.8,
+      "ai_rating": 76.6,
       "on_team_list": true,
       "dob": "21 Dec 1987",
       "caps": 304,
@@ -627,7 +676,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 80.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.2,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "NED_01",
@@ -645,7 +701,7 @@
       "profile": "Captain of the host nation. Explosive forward with international pedigree.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 82.3,
+      "ai_rating": 81.7,
       "on_team_list": true,
       "dob": "19 Mar 1995",
       "caps": 223,
@@ -664,17 +720,17 @@
           "weight": 0.182,
           "raw": 3.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 56.5,
-          "weight": 0.091,
-          "raw": 0.176
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.5,
+          "weight": 0.091,
+          "raw": 0.176
         },
         "availability": {
           "label": "Availability",
@@ -700,7 +756,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 82.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 93.5,
+        "factor": 0.992,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_02",
@@ -865,7 +928,7 @@
       "profile": "Germany's top goal scorer. International class forward.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 45.3,
+      "ai_rating": 43.5,
       "on_team_list": true,
       "dob": "19 Dec 1993",
       "caps": 215,
@@ -884,17 +947,17 @@
           "weight": 0.182,
           "raw": 1.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 1.6,
-          "weight": 0.091,
-          "raw": 0.083
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 1.6,
+          "weight": 0.091,
+          "raw": 0.083
         },
         "availability": {
           "label": "Availability",
@@ -920,7 +983,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 45.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_03",
@@ -959,7 +1029,7 @@
       "profile": "England's captain. Commanding midfielder.",
       "green_cards": 1,
       "matches_played": 3,
-      "ai_rating": 73.5,
+      "ai_rating": 71.7,
       "on_team_list": true,
       "dob": "17 Apr 1996",
       "caps": 142,
@@ -1008,7 +1078,14 @@
       "appearances": 3,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 73.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_02",
@@ -1026,7 +1103,7 @@
       "profile": "England's most dangerous forward. Clinical finisher.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 57.9,
+      "ai_rating": 55.7,
       "on_team_list": true,
       "dob": "24 Dec 1990",
       "caps": 255,
@@ -1045,17 +1122,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 8.1,
-          "weight": 0.091,
-          "raw": 0.105
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 8.1,
+          "weight": 0.091,
+          "raw": 0.105
         },
         "availability": {
           "label": "Availability",
@@ -1081,7 +1158,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 57.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_03",
@@ -1120,7 +1204,7 @@
       "profile": "Spain's skipper. Energetic midfield presence.",
       "green_cards": 1,
       "matches_played": 5,
-      "ai_rating": 73.6,
+      "ai_rating": 71.8,
       "on_team_list": true,
       "dob": "14 Nov 1997",
       "caps": 153,
@@ -1169,7 +1253,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 73.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "ESP_02",
@@ -1229,7 +1320,7 @@
       "profile": "Pakistan's captain. Skilful and combative.",
       "green_cards": 2,
       "matches_played": 5,
-      "ai_rating": 85.0,
+      "ai_rating": 76.3,
       "on_team_list": true,
       "dob": "13 Mar 2004",
       "caps": 76,
@@ -1282,7 +1373,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 85.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 14.1,
+        "factor": 0.897,
+        "raw": 0.8
+      }
     },
     {
       "id": "PAK_02",
@@ -1447,7 +1545,7 @@
       "profile": "Black Sticks skipper. Solid defensive leader.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 59.0,
+      "ai_rating": 56.7,
       "on_team_list": true,
       "dob": "30 Apr 1997",
       "caps": 138,
@@ -1490,7 +1588,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 59.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.6,
+        "factor": 0.961,
+        "raw": 1.8
+      }
     },
     {
       "id": "JPN_01",
@@ -1529,7 +1634,7 @@
       "profile": "France's captain and main attacking force.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 73.0,
+      "ai_rating": 66.2,
       "on_team_list": true,
       "dob": "19 Nov 1993",
       "caps": 188,
@@ -1552,17 +1657,17 @@
           "weight": 0.182,
           "raw": 0.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 91.9,
-          "weight": 0.091,
-          "raw": 0.333
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 91.9,
+          "weight": 0.091,
+          "raw": 0.333
         },
         "availability": {
           "label": "Availability",
@@ -1588,7 +1693,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 73.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 22.6,
+        "factor": 0.907,
+        "raw": 1.0
+      }
     },
     {
       "id": "WAL_01",
@@ -1606,7 +1718,7 @@
       "profile": "Wales captain. Spirited leader in the Dragons' midfield.",
       "green_cards": 0,
       "matches_played": 5,
-      "ai_rating": 93.2,
+      "ai_rating": 82.3,
       "on_team_list": true,
       "dob": "10 May 1992",
       "caps": 188,
@@ -1655,7 +1767,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 2,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 93.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 2.6,
+        "factor": 0.883,
+        "raw": 0.2
+      }
     },
     {
       "id": "ARG_04",
@@ -1675,7 +1794,7 @@
       "dob": "15 Jun 1992",
       "caps": 123,
       "matches_played": 5,
-      "ai_rating": 80.8,
+      "ai_rating": 79.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -1710,7 +1829,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 80.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 90.6,
+        "factor": 0.989,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_05",
@@ -1757,7 +1883,7 @@
       "dob": "6 May 1997",
       "caps": 109,
       "matches_played": 4,
-      "ai_rating": 69.0,
+      "ai_rating": 68.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -1805,7 +1931,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 69.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 94.9,
+        "factor": 0.994,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_07",
@@ -1825,7 +1958,7 @@
       "dob": "5 Jun 1997",
       "caps": 163,
       "matches_played": 5,
-      "ai_rating": 63.6,
+      "ai_rating": 63.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -1873,7 +2006,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 63.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 94.9,
+        "factor": 0.994,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_09",
@@ -1893,7 +2033,7 @@
       "dob": "23 Jun 2000",
       "caps": 19,
       "matches_played": 1,
-      "ai_rating": 74.3,
+      "ai_rating": 73.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -1928,7 +2068,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 74.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 90.6,
+        "factor": 0.989,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_10",
@@ -1975,7 +2122,7 @@
       "dob": "25 Feb 2002",
       "caps": 38,
       "matches_played": 4,
-      "ai_rating": 68.1,
+      "ai_rating": 67.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -2023,7 +2170,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 68.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 94.9,
+        "factor": 0.994,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_12",
@@ -2070,7 +2224,7 @@
       "dob": "4 Sep 1997",
       "caps": 121,
       "matches_played": 5,
-      "ai_rating": 83.0,
+      "ai_rating": 81.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -2112,7 +2266,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 2,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 83.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 87.8,
+        "factor": 0.985,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_14",
@@ -2213,7 +2374,7 @@
       "dob": "3 May 2001",
       "caps": 79,
       "matches_played": 5,
-      "ai_rating": 76.5,
+      "ai_rating": 75.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -2255,7 +2416,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 76.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 87.8,
+        "factor": 0.985,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_18",
@@ -2329,7 +2497,7 @@
       "dob": "22 Oct 2003",
       "caps": 62,
       "matches_played": 5,
-      "ai_rating": 60.0,
+      "ai_rating": 58.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -2347,17 +2515,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 8.1,
-          "weight": 0.091,
-          "raw": 0.105
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 8.1,
+          "weight": 0.091,
+          "raw": 0.105
         },
         "availability": {
           "label": "Availability",
@@ -2383,7 +2551,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 60.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 83.9,
+        "factor": 0.981,
+        "raw": 2.4
+      }
     },
     {
       "id": "ARG_21",
@@ -2430,7 +2605,7 @@
       "dob": "20 Aug 2000",
       "caps": 41,
       "matches_played": 4,
-      "ai_rating": 73.1,
+      "ai_rating": 72.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -2478,7 +2653,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 73.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 94.9,
+        "factor": 0.994,
+        "raw": 2.4
+      }
     },
     {
       "id": "AUS_05",
@@ -2498,7 +2680,7 @@
       "dob": "3 Sep 1995",
       "caps": 173,
       "matches_played": 5,
-      "ai_rating": 71.8,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -2546,7 +2728,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 71.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.4,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "AUS_06",
@@ -2647,7 +2836,7 @@
       "dob": "15 Aug 2001",
       "caps": 26,
       "matches_played": 1,
-      "ai_rating": 74.3,
+      "ai_rating": 70.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -2682,7 +2871,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 74.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.2,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "AUS_10",
@@ -2756,7 +2952,7 @@
       "dob": "15 Mar 2001",
       "caps": 93,
       "matches_played": 5,
-      "ai_rating": 71.8,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -2804,7 +3000,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 71.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.4,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "AUS_13",
@@ -2932,7 +3135,7 @@
       "dob": "24 Jul 1996",
       "caps": 22,
       "matches_played": 5,
-      "ai_rating": 83.9,
+      "ai_rating": 79.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -2974,7 +3177,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 83.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 59.5,
+        "factor": 0.951,
+        "raw": 1.6
+      }
     },
     {
       "id": "AUS_18",
@@ -2994,7 +3204,7 @@
       "dob": "21 Jul 1995",
       "caps": 31,
       "matches_played": 5,
-      "ai_rating": 80.8,
+      "ai_rating": 76.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -3029,7 +3239,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 80.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.2,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "AUS_19",
@@ -3130,7 +3347,7 @@
       "dob": "20 Jul 2000",
       "caps": 88,
       "matches_played": 5,
-      "ai_rating": 65.7,
+      "ai_rating": 62.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -3178,7 +3395,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 65.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.4,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_08",
@@ -3279,7 +3503,7 @@
       "dob": "21 Jun 2000",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": 76.5,
+      "ai_rating": 72.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -3321,7 +3545,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 76.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 59.5,
+        "factor": 0.951,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_13",
@@ -3419,7 +3650,7 @@
       "dob": "25 Jan 1990",
       "caps": 396,
       "matches_played": 5,
-      "ai_rating": 83.9,
+      "ai_rating": 79.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -3461,7 +3692,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 83.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 59.5,
+        "factor": 0.951,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_18",
@@ -3481,7 +3719,7 @@
       "dob": "1 Mar 2000",
       "caps": 77,
       "matches_played": 5,
-      "ai_rating": 65.7,
+      "ai_rating": 62.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -3529,7 +3767,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 65.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.4,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_19",
@@ -3603,7 +3848,7 @@
       "dob": "7 Aug 1998",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": 79.9,
+      "ai_rating": 77.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -3645,7 +3890,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 79.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 77.0,
+        "factor": 0.972,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_05",
@@ -3878,7 +4130,7 @@
       "dob": "2 Aug 2002",
       "caps": 44,
       "matches_played": 5,
-      "ai_rating": 73.6,
+      "ai_rating": 67.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -3930,7 +4182,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 73.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "FRA_09",
@@ -4074,7 +4333,7 @@
       "dob": "3 Nov 2003",
       "caps": 9,
       "matches_played": 4,
-      "ai_rating": 76.7,
+      "ai_rating": 70.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 4,
@@ -4126,7 +4385,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 76.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "FRA_14",
@@ -4146,7 +4412,7 @@
       "dob": "18 Sep 1998",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 68.6,
+      "ai_rating": 62.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -4198,7 +4464,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 68.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "FRA_15",
@@ -4278,7 +4551,7 @@
       "dob": "8 Apr 2000",
       "caps": 92,
       "matches_played": 5,
-      "ai_rating": 76.8,
+      "ai_rating": 70.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -4326,7 +4599,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 76.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "FRA_18",
@@ -4346,7 +4626,7 @@
       "dob": "1 Feb 1994",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 73.9,
+      "ai_rating": 67.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -4385,7 +4665,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 73.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 31.2,
+        "factor": 0.917,
+        "raw": 1.0
+      }
     },
     {
       "id": "FRA_19",
@@ -4405,7 +4692,7 @@
       "dob": "9 Apr 2003",
       "caps": 26,
       "matches_played": 5,
-      "ai_rating": 63.5,
+      "ai_rating": 57.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -4427,17 +4714,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 72.6,
-          "weight": 0.091,
-          "raw": 0.222
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 72.6,
+          "weight": 0.091,
+          "raw": 0.222
         },
         "availability": {
           "label": "Availability",
@@ -4463,7 +4750,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 63.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 22.6,
+        "factor": 0.907,
+        "raw": 1.0
+      }
     },
     {
       "id": "GER_04",
@@ -4483,7 +4777,7 @@
       "dob": "18 Dec 2006",
       "caps": 13,
       "matches_played": 4,
-      "ai_rating": 66.2,
+      "ai_rating": 63.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -4501,17 +4795,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 50.0,
-          "weight": 0.091,
-          "raw": 0.167
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 50.0,
+          "weight": 0.091,
+          "raw": 0.167
         },
         "availability": {
           "label": "Availability",
@@ -4537,7 +4831,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 66.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_07",
@@ -4611,7 +4912,7 @@
       "dob": "20 Apr 2000",
       "caps": 92,
       "matches_played": 5,
-      "ai_rating": 81.3,
+      "ai_rating": 78.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -4629,17 +4930,17 @@
           "weight": 0.182,
           "raw": 3.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 75.8,
-          "weight": 0.091,
-          "raw": 0.25
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 75.8,
+          "weight": 0.091,
+          "raw": 0.25
         },
         "availability": {
           "label": "Availability",
@@ -4665,7 +4966,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 81.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_10",
@@ -4685,7 +4993,7 @@
       "dob": "19 Apr 2003",
       "caps": 51,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": 65.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -4733,7 +5041,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 67.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_12",
@@ -4780,7 +5095,7 @@
       "dob": "18 May 2000",
       "caps": 98,
       "matches_played": 5,
-      "ai_rating": 63.9,
+      "ai_rating": 62.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -4828,7 +5143,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 63.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_14",
@@ -4875,7 +5197,7 @@
       "dob": "4 Nov 2003",
       "caps": 21,
       "matches_played": 5,
-      "ai_rating": 86.3,
+      "ai_rating": 83.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -4917,7 +5239,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 86.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 77.0,
+        "factor": 0.972,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_16",
@@ -4964,7 +5293,7 @@
       "dob": "2 Nov 2002",
       "caps": 12,
       "matches_played": 1,
-      "ai_rating": 80.1,
+      "ai_rating": 78.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -4999,7 +5328,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 80.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 78.1,
+        "factor": 0.974,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_18",
@@ -5073,7 +5409,7 @@
       "dob": "23 Sep 1998",
       "caps": 186,
       "matches_played": 5,
-      "ai_rating": 68.3,
+      "ai_rating": 63.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -5115,7 +5451,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 2,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 68.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_08",
@@ -5135,7 +5478,7 @@
       "dob": "12 Nov 1999",
       "caps": 127,
       "matches_played": 5,
-      "ai_rating": 65.4,
+      "ai_rating": 61.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -5183,7 +5526,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 65.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.6,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_09",
@@ -5284,7 +5634,7 @@
       "dob": "27 Feb 2002",
       "caps": 19,
       "matches_played": 4,
-      "ai_rating": 59.1,
+      "ai_rating": 55.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -5319,7 +5669,14 @@
       "appearances": 4,
       "benched": 1,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 59.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.8,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_13",
@@ -5393,7 +5750,7 @@
       "dob": "5 Dec 1996",
       "caps": 129,
       "matches_played": 5,
-      "ai_rating": 60.3,
+      "ai_rating": 55.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -5411,17 +5768,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 32.3,
-          "weight": 0.091,
-          "raw": 0.143
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.091,
+          "raw": 0.143
         },
         "availability": {
           "label": "Availability",
@@ -5447,7 +5804,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 60.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 33.9,
+        "factor": 0.921,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_16",
@@ -5494,7 +5858,7 @@
       "dob": "5 May 2001",
       "caps": 95,
       "matches_played": 5,
-      "ai_rating": 63.3,
+      "ai_rating": 59.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -5536,7 +5900,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 63.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_18",
@@ -5556,7 +5927,7 @@
       "dob": "14 Oct 1995",
       "caps": 94,
       "matches_played": 5,
-      "ai_rating": 63.5,
+      "ai_rating": 59.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -5591,7 +5962,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 63.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.8,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IND_19",
@@ -5665,7 +6043,7 @@
       "dob": "13 Jun 1996",
       "caps": 101,
       "matches_played": 5,
-      "ai_rating": 70.4,
+      "ai_rating": 65.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -5704,7 +6082,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 70.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.8,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_04",
@@ -5724,7 +6109,7 @@
       "dob": "25 Nov 1999",
       "caps": 15,
       "matches_played": 1,
-      "ai_rating": 64.0,
+      "ai_rating": 59.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 0,
@@ -5763,7 +6148,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 64.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.8,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_05",
@@ -5907,7 +6299,7 @@
       "dob": "2 Aug 1994",
       "caps": 154,
       "matches_played": 5,
-      "ai_rating": 62.2,
+      "ai_rating": 58.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -5959,7 +6351,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 62.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.6,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_12",
@@ -5979,7 +6378,7 @@
       "dob": "13 Jul 1999",
       "caps": 129,
       "matches_played": 5,
-      "ai_rating": 61.3,
+      "ai_rating": 56.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6001,17 +6400,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 32.3,
-          "weight": 0.091,
-          "raw": 0.143
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.091,
+          "raw": 0.143
         },
         "availability": {
           "label": "Availability",
@@ -6037,7 +6436,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 61.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 33.9,
+        "factor": 0.921,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_13",
@@ -6057,7 +6463,7 @@
       "dob": "5 Apr 2001",
       "caps": 71,
       "matches_played": 5,
-      "ai_rating": 75.3,
+      "ai_rating": 69.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6079,17 +6485,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 69.4,
-          "weight": 0.091,
-          "raw": 0.214
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 69.4,
+          "weight": 0.091,
+          "raw": 0.214
         },
         "availability": {
           "label": "Availability",
@@ -6115,7 +6521,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 75.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 33.9,
+        "factor": 0.921,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_14",
@@ -6166,7 +6579,7 @@
       "dob": "21 Feb 1995",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 73.5,
+      "ai_rating": 68.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6212,7 +6625,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 1,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 73.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_16",
@@ -6263,7 +6683,7 @@
       "dob": "23 Dec 1998",
       "caps": 62,
       "matches_played": 3,
-      "ai_rating": 76.3,
+      "ai_rating": 71.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 3,
@@ -6315,7 +6735,14 @@
       "appearances": 3,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 76.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 43.6,
+        "factor": 0.932,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_18",
@@ -6428,7 +6855,7 @@
       "dob": "11 Dec 2000",
       "caps": 32,
       "matches_played": 5,
-      "ai_rating": 67.1,
+      "ai_rating": 62.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6474,7 +6901,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 67.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "JPN_02",
@@ -6494,7 +6928,7 @@
       "dob": "27 Feb 1996",
       "caps": 162,
       "matches_played": 5,
-      "ai_rating": 66.9,
+      "ai_rating": 60.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6540,7 +6974,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 66.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 23.0,
+        "factor": 0.908,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_03",
@@ -6560,7 +7001,7 @@
       "dob": "21 Dec 1994",
       "caps": 185,
       "matches_played": 2,
-      "ai_rating": 58.4,
+      "ai_rating": 53.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -6602,7 +7043,14 @@
       "appearances": 2,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 58.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 23.0,
+        "factor": 0.908,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_04",
@@ -6742,7 +7190,7 @@
       "dob": "20 Jun 1999",
       "caps": 75,
       "matches_played": 5,
-      "ai_rating": 73.4,
+      "ai_rating": 65.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6794,7 +7242,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 73.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 7.7,
+        "factor": 0.889,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_09",
@@ -6814,7 +7269,7 @@
       "dob": "21 Jun 2000",
       "caps": 54,
       "matches_played": 5,
-      "ai_rating": 64.0,
+      "ai_rating": 57.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -6836,17 +7291,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 82.3,
-          "weight": 0.091,
-          "raw": 0.286
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 82.3,
+          "weight": 0.091,
+          "raw": 0.286
         },
         "availability": {
           "label": "Availability",
@@ -6872,7 +7327,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 64.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 14.5,
+        "factor": 0.897,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_10",
@@ -7075,7 +7537,7 @@
       "dob": "1 Nov 1995",
       "caps": 123,
       "matches_played": 5,
-      "ai_rating": 73.4,
+      "ai_rating": 65.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7127,7 +7589,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 73.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 7.7,
+        "factor": 0.889,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_17",
@@ -7178,7 +7647,7 @@
       "dob": "7 Oct 1999",
       "caps": 45,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": 60.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7217,7 +7686,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 67.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 15.6,
+        "factor": 0.899,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_19",
@@ -7237,7 +7713,7 @@
       "dob": "29 Nov 1994",
       "caps": 183,
       "matches_played": 5,
-      "ai_rating": 67.0,
+      "ai_rating": 60.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7276,7 +7752,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 67.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 15.6,
+        "factor": 0.899,
+        "raw": 0.6
+      }
     },
     {
       "id": "JPN_20",
@@ -7296,7 +7779,7 @@
       "dob": "30 Jan 2003",
       "caps": 27,
       "matches_played": 4,
-      "ai_rating": 59.0,
+      "ai_rating": 53.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7342,7 +7825,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 59.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 23.0,
+        "factor": 0.908,
+        "raw": 0.6
+      }
     },
     {
       "id": "MAS_03",
@@ -7393,7 +7883,7 @@
       "dob": "5 Mar 1990",
       "caps": 361,
       "matches_played": 5,
-      "ai_rating": 57.0,
+      "ai_rating": 50.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7439,7 +7929,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 57.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 10.8,
+        "factor": 0.893,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_05",
@@ -7459,7 +7956,7 @@
       "dob": "13 Jan 1991",
       "caps": 327,
       "matches_played": 5,
-      "ai_rating": 61.9,
+      "ai_rating": 55.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -7477,17 +7974,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 32.3,
-          "weight": 0.091,
-          "raw": 0.143
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.091,
+          "raw": 0.143
         },
         "availability": {
           "label": "Availability",
@@ -7513,7 +8010,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 61.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 9.7,
+        "factor": 0.892,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_06",
@@ -7533,7 +8037,7 @@
       "dob": "3 Apr 1999",
       "caps": 106,
       "matches_played": 5,
-      "ai_rating": 54.3,
+      "ai_rating": 48.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7579,7 +8083,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 54.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 10.8,
+        "factor": 0.893,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_07",
@@ -7599,7 +8110,7 @@
       "dob": "18 Sep 1997",
       "caps": 35,
       "matches_played": 5,
-      "ai_rating": 57.7,
+      "ai_rating": 51.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7638,7 +8149,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 57.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 9.4,
+        "factor": 0.891,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_08",
@@ -7784,7 +8302,7 @@
       "dob": "3 Oct 1999",
       "caps": 126,
       "matches_played": 5,
-      "ai_rating": 64.3,
+      "ai_rating": 57.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7830,7 +8348,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 64.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 10.8,
+        "factor": 0.893,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_13",
@@ -7850,7 +8375,7 @@
       "dob": "19 Jul 1996",
       "caps": 202,
       "matches_played": 5,
-      "ai_rating": 53.3,
+      "ai_rating": 47.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -7896,7 +8421,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 53.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 10.8,
+        "factor": 0.893,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_14",
@@ -7978,7 +8510,7 @@
       "dob": "5 May 2000",
       "caps": 91,
       "matches_played": 5,
-      "ai_rating": 57.0,
+      "ai_rating": 50.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -8024,7 +8556,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 57.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 10.8,
+        "factor": 0.893,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_17",
@@ -8075,7 +8614,7 @@
       "dob": "24 Jun 2005",
       "caps": 33,
       "matches_played": 5,
-      "ai_rating": 57.0,
+      "ai_rating": 50.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -8121,7 +8660,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 57.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 10.8,
+        "factor": 0.893,
+        "raw": 0.4
+      }
     },
     {
       "id": "MAS_19",
@@ -8203,7 +8749,7 @@
       "dob": "14 Oct 1997",
       "caps": 142,
       "matches_played": 4,
-      "ai_rating": 82.3,
+      "ai_rating": 81.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -8245,7 +8791,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 1,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 82.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 95.9,
+        "factor": 0.995,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_06",
@@ -8373,7 +8926,7 @@
       "dob": "14 Oct 1999",
       "caps": 80,
       "matches_played": 5,
-      "ai_rating": 84.0,
+      "ai_rating": 83.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -8391,17 +8944,17 @@
           "weight": 0.182,
           "raw": 3.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 56.5,
-          "weight": 0.091,
-          "raw": 0.176
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.5,
+          "weight": 0.091,
+          "raw": 0.176
         },
         "availability": {
           "label": "Availability",
@@ -8427,7 +8980,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 84.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 93.5,
+        "factor": 0.992,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_13",
@@ -8447,7 +9007,7 @@
       "dob": "12 May 1997",
       "caps": 39,
       "matches_played": 5,
-      "ai_rating": 86.6,
+      "ai_rating": 86.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -8482,7 +9042,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 86.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 96.9,
+        "factor": 0.996,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_17",
@@ -8502,7 +9069,7 @@
       "dob": "10 Oct 1999",
       "caps": 89,
       "matches_played": 4,
-      "ai_rating": 81.4,
+      "ai_rating": 81.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -8544,7 +9111,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 81.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 95.9,
+        "factor": 0.995,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_18",
@@ -8564,7 +9138,7 @@
       "dob": "17 Jul 2002",
       "caps": 47,
       "matches_played": 5,
-      "ai_rating": 75.6,
+      "ai_rating": 75.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -8582,17 +9156,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 56.5,
-          "weight": 0.091,
-          "raw": 0.176
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 56.5,
+          "weight": 0.091,
+          "raw": 0.176
         },
         "availability": {
           "label": "Availability",
@@ -8618,7 +9192,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 75.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 93.5,
+        "factor": 0.992,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_19",
@@ -8665,7 +9246,7 @@
       "dob": "7 Aug 1996",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 63.5,
+      "ai_rating": 60.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -8704,7 +9285,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 63.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 65.6,
+        "factor": 0.959,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_03",
@@ -8887,7 +9475,7 @@
       "dob": "22 Apr 1992",
       "caps": 229,
       "matches_played": 5,
-      "ai_rating": 70.7,
+      "ai_rating": 68.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -8929,7 +9517,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 1,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 70.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.6,
+        "factor": 0.961,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_10",
@@ -8949,7 +9544,7 @@
       "dob": "14 Feb 1996",
       "caps": 85,
       "matches_played": 5,
-      "ai_rating": 60.6,
+      "ai_rating": 57.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -8967,17 +9562,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 19.4,
-          "weight": 0.091,
-          "raw": 0.133
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 19.4,
+          "weight": 0.091,
+          "raw": 0.133
         },
         "availability": {
           "label": "Availability",
@@ -9003,7 +9598,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 60.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 50.0,
+        "factor": 0.94,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_11",
@@ -9050,7 +9652,7 @@
       "dob": "21 Sep 2000",
       "caps": 19,
       "matches_played": 2,
-      "ai_rating": 70.7,
+      "ai_rating": 67.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -9098,7 +9700,14 @@
       "appearances": 2,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 70.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 66.7,
+        "factor": 0.96,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_13",
@@ -9118,7 +9727,7 @@
       "dob": "24 Oct 2002",
       "caps": 48,
       "matches_played": 5,
-      "ai_rating": 64.6,
+      "ai_rating": 62.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -9166,7 +9775,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 64.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 66.7,
+        "factor": 0.96,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_14",
@@ -9267,7 +9883,7 @@
       "dob": "2 May 2002",
       "caps": 16,
       "matches_played": 5,
-      "ai_rating": 90.3,
+      "ai_rating": 84.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -9285,17 +9901,17 @@
           "weight": 0.182,
           "raw": 3.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 79.0,
-          "weight": 0.091,
-          "raw": 0.267
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 79.0,
+          "weight": 0.091,
+          "raw": 0.267
         },
         "availability": {
           "label": "Availability",
@@ -9321,7 +9937,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 90.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 50.0,
+        "factor": 0.94,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_18",
@@ -9341,7 +9964,7 @@
       "dob": "30 Dec 2004",
       "caps": 14,
       "matches_played": 1,
-      "ai_rating": 57.1,
+      "ai_rating": 54.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -9376,7 +9999,14 @@
       "appearances": 1,
       "benched": 3,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 57.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 65.6,
+        "factor": 0.959,
+        "raw": 1.8
+      }
     },
     {
       "id": "NZL_19",
@@ -9519,7 +10149,7 @@
       "dob": "7 Sep 2005",
       "caps": 68,
       "matches_played": 5,
-      "ai_rating": 93.5,
+      "ai_rating": 84.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -9541,17 +10171,17 @@
           "weight": 0.182,
           "raw": 4.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 85.5,
-          "weight": 0.091,
-          "raw": 0.308
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 85.5,
+          "weight": 0.091,
+          "raw": 0.308
         },
         "availability": {
           "label": "Availability",
@@ -9577,7 +10207,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 4
+      "fg_scored": 4,
+      "rating_performance": 93.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 17.7,
+        "factor": 0.901,
+        "raw": 0.8
+      }
     },
     {
       "id": "PAK_08",
@@ -9752,7 +10389,7 @@
       "dob": "12 Dec 2000",
       "caps": 59,
       "matches_played": 5,
-      "ai_rating": 61.6,
+      "ai_rating": 55.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -9804,7 +10441,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 61.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 14.1,
+        "factor": 0.897,
+        "raw": 0.8
+      }
     },
     {
       "id": "PAK_14",
@@ -9824,7 +10468,7 @@
       "dob": "7 Feb 1999",
       "caps": 52,
       "matches_played": 4,
-      "ai_rating": 71.1,
+      "ai_rating": 63.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "world_rank": 7,
@@ -9877,7 +10521,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 71.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 14.1,
+        "factor": 0.897,
+        "raw": 0.8
+      }
     },
     {
       "id": "PAK_15",
@@ -9897,7 +10548,7 @@
       "dob": "10 Apr 1999",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": 60.2,
+      "ai_rating": 55.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -9943,7 +10594,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 60.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 29.7,
+        "factor": 0.916,
+        "raw": 0.8
+      }
     },
     {
       "id": "PAK_16",
@@ -10025,7 +10683,7 @@
       "dob": "4 Apr 2004",
       "caps": 24,
       "matches_played": 5,
-      "ai_rating": 60.1,
+      "ai_rating": 54.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -10064,7 +10722,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 60.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 21.9,
+        "factor": 0.906,
+        "raw": 0.8
+      }
     },
     {
       "id": "PAK_19",
@@ -10146,7 +10811,7 @@
       "dob": "19 Mar 2002",
       "caps": 74,
       "matches_played": 5,
-      "ai_rating": 74.6,
+      "ai_rating": 68.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -10188,7 +10853,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 74.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 33.8,
+        "factor": 0.921,
+        "raw": 1.0
+      }
     },
     {
       "id": "RSA_03",
@@ -10456,7 +11128,7 @@
       "dob": "4 May 1999",
       "caps": 5,
       "matches_played": 1,
-      "ai_rating": 64.0,
+      "ai_rating": 58.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 1,
@@ -10495,7 +11167,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 64.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 31.2,
+        "factor": 0.917,
+        "raw": 1.0
+      }
     },
     {
       "id": "RSA_12",
@@ -10546,7 +11225,7 @@
       "dob": "4 Apr 2000",
       "caps": 28,
       "matches_played": 5,
-      "ai_rating": 65.7,
+      "ai_rating": 60.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -10598,7 +11277,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 65.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "RSA_14",
@@ -10618,7 +11304,7 @@
       "dob": "28 Aug 1991",
       "caps": 91,
       "matches_played": 5,
-      "ai_rating": 68.8,
+      "ai_rating": 62.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -10670,7 +11356,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 68.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "RSA_15",
@@ -10748,7 +11441,7 @@
       "dob": "28 Nov 2000",
       "caps": 22,
       "matches_played": 5,
-      "ai_rating": 70.4,
+      "ai_rating": 64.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -10783,7 +11476,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 70.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 31.2,
+        "factor": 0.917,
+        "raw": 1.0
+      }
     },
     {
       "id": "RSA_19",
@@ -10830,7 +11530,7 @@
       "dob": "8 Aug 2003",
       "caps": 14,
       "matches_played": 5,
-      "ai_rating": 63.9,
+      "ai_rating": 58.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -10878,7 +11578,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 63.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "ESP_04",
@@ -11006,7 +11713,7 @@
       "dob": "3 Jan 1997",
       "caps": 113,
       "matches_played": 5,
-      "ai_rating": 91.3,
+      "ai_rating": 87.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -11024,17 +11731,17 @@
           "weight": 0.182,
           "raw": 3.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 98.4,
-          "weight": 0.091,
-          "raw": 0.444
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 98.4,
+          "weight": 0.091,
+          "raw": 0.444
         },
         "availability": {
           "label": "Availability",
@@ -11060,7 +11767,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 1,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 91.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "ESP_09",
@@ -11080,7 +11794,7 @@
       "dob": "18 May 1999",
       "caps": 105,
       "matches_played": 5,
-      "ai_rating": 81.2,
+      "ai_rating": 78.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -11098,17 +11812,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 91.9,
-          "weight": 0.091,
-          "raw": 0.333
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 91.9,
+          "weight": 0.091,
+          "raw": 0.333
         },
         "availability": {
           "label": "Availability",
@@ -11134,7 +11848,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 81.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "ESP_10",
@@ -11154,7 +11875,7 @@
       "dob": "15 Nov 2000",
       "caps": 82,
       "matches_played": 5,
-      "ai_rating": 90.0,
+      "ai_rating": 87.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -11189,7 +11910,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 90.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 78.1,
+        "factor": 0.974,
+        "raw": 2.0
+      }
     },
     {
       "id": "ESP_11",
@@ -11346,7 +12074,7 @@
       "dob": "4 Jan 2003",
       "caps": 42,
       "matches_played": 4,
-      "ai_rating": 76.7,
+      "ai_rating": 74.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -11394,7 +12122,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 76.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "ESP_17",
@@ -11549,7 +12284,7 @@
       "dob": "19 Sep 2000",
       "caps": 86,
       "matches_played": 5,
-      "ai_rating": 68.8,
+      "ai_rating": 60.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -11597,7 +12332,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 68.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 2.6,
+        "factor": 0.883,
+        "raw": 0.2
+      }
     },
     {
       "id": "WAL_06",
@@ -11617,7 +12359,7 @@
       "dob": "27 Oct 2001",
       "caps": 17,
       "matches_played": 5,
-      "ai_rating": 64.7,
+      "ai_rating": 57.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -11635,17 +12377,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 64.5,
-          "weight": 0.091,
-          "raw": 0.2
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 64.5,
+          "weight": 0.091,
+          "raw": 0.2
         },
         "availability": {
           "label": "Availability",
@@ -11671,7 +12413,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 64.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 3.2,
+        "factor": 0.884,
+        "raw": 0.2
+      }
     },
     {
       "id": "WAL_07",
@@ -11718,7 +12467,7 @@
       "dob": "9 Mar 1999",
       "caps": 65,
       "matches_played": 5,
-      "ai_rating": 61.0,
+      "ai_rating": 53.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -11736,17 +12485,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 64.5,
-          "weight": 0.091,
-          "raw": 0.2
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 64.5,
+          "weight": 0.091,
+          "raw": 0.2
         },
         "availability": {
           "label": "Availability",
@@ -11772,7 +12521,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 61.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 3.2,
+        "factor": 0.884,
+        "raw": 0.2
+      }
     },
     {
       "id": "WAL_09",
@@ -12010,7 +12766,7 @@
       "dob": "1 Mar 1990",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 81.5,
+      "ai_rating": 80.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -12052,7 +12808,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 81.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 87.8,
+        "factor": 0.985,
+        "raw": 2.4
+      }
     },
     {
       "id": "BEL_05",
@@ -12072,7 +12835,7 @@
       "dob": "1 Oct 1994",
       "caps": 293,
       "matches_played": 5,
-      "ai_rating": 76.5,
+      "ai_rating": 72.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -12114,7 +12877,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 76.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 59.5,
+        "factor": 0.951,
+        "raw": 1.6
+      }
     },
     {
       "id": "BEL_10",
@@ -12188,7 +12958,7 @@
       "dob": "17 Apr 2004",
       "caps": 34,
       "matches_played": 5,
-      "ai_rating": 81.3,
+      "ai_rating": 79.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -12230,7 +13000,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 81.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 77.0,
+        "factor": 0.972,
+        "raw": 2.0
+      }
     },
     {
       "id": "IRL_06",
@@ -12250,7 +13027,7 @@
       "dob": "22 Dec 1996",
       "caps": 136,
       "matches_played": 4,
-      "ai_rating": 62.5,
+      "ai_rating": 58.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 4,
@@ -12296,7 +13073,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 62.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 44.6,
+        "factor": 0.934,
+        "raw": 1.2
+      }
     },
     {
       "id": "IRL_10",
@@ -12506,7 +13290,7 @@
       "dob": "22 Sep 1999",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 60.0,
+      "ai_rating": 58.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -12524,17 +13308,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 8.1,
-          "weight": 0.091,
-          "raw": 0.105
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 8.1,
+          "weight": 0.091,
+          "raw": 0.105
         },
         "availability": {
           "label": "Availability",
@@ -12560,7 +13344,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 60.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 83.9,
+        "factor": 0.981,
+        "raw": 2.4
+      }
     },
     {
       "id": "AUS_21",
@@ -12715,7 +13506,7 @@
       "dob": "28 Oct 1996",
       "caps": 146,
       "matches_played": 5,
-      "ai_rating": 63.3,
+      "ai_rating": 61.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -12763,7 +13554,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 63.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_09",
@@ -12783,7 +13581,7 @@
       "dob": "2 Oct 1995",
       "caps": 116,
       "matches_played": 5,
-      "ai_rating": 72.5,
+      "ai_rating": 70.5,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -12825,7 +13623,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 72.5,
+      "rating_context": {
+        "label": "Match context",
+        "score": 77.0,
+        "factor": 0.972,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_10",
@@ -12872,7 +13677,7 @@
       "dob": "4 Feb 2001",
       "caps": 72,
       "matches_played": 5,
-      "ai_rating": 76.2,
+      "ai_rating": 74.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -12907,7 +13712,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 76.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 78.1,
+        "factor": 0.974,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_12",
@@ -12927,7 +13739,7 @@
       "dob": "9 Sep 2000",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": 79.6,
+      "ai_rating": 76.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -12945,17 +13757,17 @@
           "weight": 0.182,
           "raw": 3.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 45.2,
-          "weight": 0.091,
-          "raw": 0.158
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 45.2,
+          "weight": 0.091,
+          "raw": 0.158
         },
         "availability": {
           "label": "Availability",
@@ -12981,7 +13793,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 3
+      "fg_scored": 3,
+      "rating_performance": 79.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_13",
@@ -13055,7 +13874,7 @@
       "dob": "6 Apr 1999",
       "caps": 105,
       "matches_played": 5,
-      "ai_rating": 76.2,
+      "ai_rating": 74.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -13090,7 +13909,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 76.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 78.1,
+        "factor": 0.974,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_16",
@@ -13110,7 +13936,7 @@
       "dob": "14 Dec 1992",
       "caps": 81,
       "matches_played": 5,
-      "ai_rating": 78.7,
+      "ai_rating": 75.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -13128,17 +13954,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 45.2,
-          "weight": 0.091,
-          "raw": 0.158
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 45.2,
+          "weight": 0.091,
+          "raw": 0.158
         },
         "availability": {
           "label": "Availability",
@@ -13164,7 +13990,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 78.7,
+      "rating_context": {
+        "label": "Match context",
+        "score": 67.7,
+        "factor": 0.961,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_17",
@@ -13319,7 +14152,7 @@
       "dob": "21 Jun 1996",
       "caps": 96,
       "matches_played": 5,
-      "ai_rating": 72.0,
+      "ai_rating": 70.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -13367,7 +14200,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 72.0,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "GER_21",
@@ -13387,7 +14227,7 @@
       "dob": "8 Nov 2002",
       "caps": 63,
       "matches_played": 5,
-      "ai_rating": 86.6,
+      "ai_rating": 84.3,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -13422,7 +14262,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 86.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 78.1,
+        "factor": 0.974,
+        "raw": 2.0
+      }
     },
     {
       "id": "IRL_22",
@@ -13442,7 +14289,7 @@
       "dob": "14 Apr 1998",
       "caps": 125,
       "matches_played": 4,
-      "ai_rating": 66.4,
+      "ai_rating": 61.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 4,
@@ -13464,17 +14311,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 32.3,
-          "weight": 0.091,
-          "raw": 0.143
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.091,
+          "raw": 0.143
         },
         "availability": {
           "label": "Availability",
@@ -13500,7 +14347,14 @@
       "appearances": 4,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 66.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 33.9,
+        "factor": 0.921,
+        "raw": 1.2
+      }
     },
     {
       "id": "JPN_21",
@@ -13582,7 +14436,7 @@
       "dob": "2 May 2000",
       "caps": 73,
       "matches_played": 5,
-      "ai_rating": 62.9,
+      "ai_rating": 56.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -13604,17 +14458,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 32.3,
-          "weight": 0.091,
-          "raw": 0.143
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 88.7,
           "weight": 0.091,
           "raw": 2.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 32.3,
+          "weight": 0.091,
+          "raw": 0.143
         },
         "availability": {
           "label": "Availability",
@@ -13640,7 +14494,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 62.9,
+      "rating_context": {
+        "label": "Match context",
+        "score": 9.7,
+        "factor": 0.892,
+        "raw": 0.4
+      }
     },
     {
       "id": "NED_20",
@@ -13660,7 +14521,7 @@
       "dob": "8 Jun 1995",
       "caps": 55,
       "matches_played": 1,
-      "ai_rating": 80.1,
+      "ai_rating": 79.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -13695,7 +14556,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 80.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 96.9,
+        "factor": 0.996,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_21",
@@ -13715,7 +14583,7 @@
       "dob": "5 Jan 1997",
       "caps": 150,
       "matches_played": 5,
-      "ai_rating": 60.3,
+      "ai_rating": 59.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -13733,17 +14601,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 14.5,
-          "weight": 0.091,
-          "raw": 0.118
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 58.1,
           "weight": 0.091,
           "raw": 1.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 14.5,
+          "weight": 0.091,
+          "raw": 0.118
         },
         "availability": {
           "label": "Availability",
@@ -13769,7 +14637,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 60.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 93.5,
+        "factor": 0.992,
+        "raw": 2.6
+      }
     },
     {
       "id": "NED_22",
@@ -13816,7 +14691,7 @@
       "dob": "5 Aug 1994",
       "caps": 57,
       "matches_played": 5,
-      "ai_rating": 57.3,
+      "ai_rating": 53.9,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Forward",
@@ -13834,17 +14709,17 @@
           "weight": 0.182,
           "raw": 2.0
         },
-        "talisman": {
-          "label": "Share of attack",
-          "score": 19.4,
-          "weight": 0.091,
-          "raw": 0.133
-        },
         "clutch": {
           "label": "Fourth quarter",
           "score": 19.4,
           "weight": 0.091,
           "raw": 0.0
+        },
+        "talisman": {
+          "label": "Share of attack",
+          "score": 19.4,
+          "weight": 0.091,
+          "raw": 0.133
         },
         "availability": {
           "label": "Availability",
@@ -13870,7 +14745,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 2
+      "fg_scored": 2,
+      "rating_performance": 57.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 50.0,
+        "factor": 0.94,
+        "raw": 1.8
+      }
     },
     {
       "id": "PAK_21",
@@ -13921,7 +14803,7 @@
       "dob": "1 Dec 1998",
       "caps": 103,
       "matches_played": 5,
-      "ai_rating": 68.6,
+      "ai_rating": 62.7,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -13973,7 +14855,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 68.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 28.2,
+        "factor": 0.914,
+        "raw": 1.0
+      }
     },
     {
       "id": "ESP_19",
@@ -14101,7 +14990,7 @@
       "dob": "24 Jul 1998",
       "caps": 167,
       "matches_played": 5,
-      "ai_rating": 54.2,
+      "ai_rating": 47.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -14143,7 +15032,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 54.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 1.4,
+        "factor": 0.882,
+        "raw": 0.2
+      }
     },
     {
       "id": "WAL_19",
@@ -14163,7 +15059,7 @@
       "dob": "6 Aug 1997",
       "caps": 63,
       "matches_played": 5,
-      "ai_rating": 55.4,
+      "ai_rating": 49.0,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -14198,7 +15094,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 55.4,
+      "rating_context": {
+        "label": "Match context",
+        "score": 3.1,
+        "factor": 0.884,
+        "raw": 0.2
+      }
     },
     {
       "id": "AUS_23",
@@ -14245,7 +15148,7 @@
       "dob": "6 Jun 1999",
       "caps": 17,
       "matches_played": 1,
-      "ai_rating": 74.3,
+      "ai_rating": 70.4,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Goalkeeper",
@@ -14280,7 +15183,14 @@
         "shot_stopping"
       ],
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 74.3,
+      "rating_context": {
+        "label": "Match context",
+        "score": 56.2,
+        "factor": 0.948,
+        "raw": 1.6
+      }
     },
     {
       "id": "ENG_20",
@@ -14300,7 +15210,7 @@
       "dob": "29 Sep 1999",
       "caps": 164,
       "matches_played": 5,
-      "ai_rating": 60.1,
+      "ai_rating": 58.6,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Midfielder",
@@ -14348,7 +15258,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 60.1,
+      "rating_context": {
+        "label": "Match context",
+        "score": 79.5,
+        "factor": 0.975,
+        "raw": 2.0
+      }
     },
     {
       "id": "ENG_21",
@@ -14368,7 +15285,7 @@
       "dob": "13 Apr 2001",
       "caps": 29,
       "matches_played": 5,
-      "ai_rating": 74.8,
+      "ai_rating": 72.8,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -14410,7 +15327,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 74.8,
+      "rating_context": {
+        "label": "Match context",
+        "score": 77.0,
+        "factor": 0.972,
+        "raw": 2.0
+      }
     },
     {
       "id": "FRA_20",
@@ -14515,7 +15439,7 @@
       "dob": "27 Jul 1998",
       "caps": 109,
       "matches_played": 5,
-      "ai_rating": 78.6,
+      "ai_rating": 78.2,
       "source": "fih-team-list",
       "on_team_list": true,
       "position_effective": "Defender",
@@ -14557,7 +15481,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 0
+      "fg_scored": 0,
+      "rating_performance": 78.6,
+      "rating_context": {
+        "label": "Match context",
+        "score": 95.9,
+        "factor": 0.995,
+        "raw": 2.6
+      }
     },
     {
       "id": "PAK_22",
@@ -14577,7 +15508,7 @@
       "dob": "4 Feb 2000",
       "caps": 104,
       "matches_played": 5,
-      "ai_rating": 60.2,
+      "ai_rating": 55.1,
       "source": "fih-team-list",
       "on_team_list": true,
       "games_played": 5,
@@ -14623,7 +15554,14 @@
       "appearances": 5,
       "benched": 0,
       "ps_scored": 0,
-      "fg_scored": 1
+      "fg_scored": 1,
+      "rating_performance": 60.2,
+      "rating_context": {
+        "label": "Match context",
+        "score": 29.7,
+        "factor": 0.916,
+        "raw": 0.8
+      }
     },
     {
       "id": "ESP_22",
