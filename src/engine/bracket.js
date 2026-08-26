@@ -1,48 +1,43 @@
-// Hockey.AI — the medal path, as the FIH's own tournament diagram lays it out.
+// Hockey.AI — the tournament as a progression, not a list of cards.
 //
-//        POOL A                  FINAL                  POOL B
-//                        POOL E        POOL F
-//        POOL D               SEMI-FINALS               POOL C
+// The structure is declared once, here, and the view renders it:
 //
-// Nothing about that shape is hardcoded here. Which Stage-2 pools carry the
-// medal path, which Stage-1 pools feed them, and which side of the draw each
-// sits on are all read out of the match record:
+//     A + D  →  E                    W(SF1) + W(SF2)  →  FINAL
+//     B + C  →  F                    L(SF1) + L(SF2)  →  BRONZE
+//     1E + 2F  →  SF1
+//     2E + 1F  →  SF2
 //
-//   * a medal pool is a Stage-2 pool every one of whose entrants finished
-//     first or second in its Stage-1 pool — the other two carry the sides
-//     that finished third and fourth, and lead to the classification places
-//     rather than to a semi-final;
-//   * a Stage-1 pool belongs to the side of the draw its qualifiers went to.
+// Which Stage-1 pools feed which crossover pool is still read out of the match
+// record rather than written down — a crossover pool is one every entrant of
+// which arrived as a first or second place, and a Stage-1 pool belongs to the
+// side its qualifiers went to. If the format changes this follows it.
 //
-// So if the format changes, this follows it instead of misdescribing it.
+// Every slot is addressed by (source, position) and resolved through that key
+// alone: "2nd Pool A" is looked up as the second row of Pool A's final table,
+// never taken from whatever object happened to be to hand. Two slots therefore
+// cannot collapse onto the same team by sharing a reference — the only way
+// they can name the same nation is if the table itself says so twice, which it
+// cannot.
 //
-// Every slot carries the label the diagram prints — "1st Pool A", "Winner
-// Semi 1" — and resolves to a nation only where the record settles it. A pool
-// that has not finished states no positions, because it has none yet.
+// Nothing here is a forecast. A slot names a nation only where the record
+// settles it, and the status says which kind of knowledge it is. PROJECTED is
+// part of the vocabulary because a caller may one day supply projections; this
+// engine never emits it, because the Oracle owns the projected bracket and two
+// brackets disagreeing about the same tie is the thing worth avoiding.
 import { computeStandings, computeStage2Standings } from './standings.js'
 
 const ORDINALS = ['', '1st', '2nd', '3rd', '4th']
 export const ordinal = n => ORDINALS[n] ?? `${n}th`
 
+export const STATUS = {
+  COMPLETED: 'COMPLETED',   // the match behind this slot has been played
+  LOCKED: 'LOCKED',         // the record names the nation
+  PROJECTED: 'PROJECTED',   // a projection, never emitted here
+  TBD: 'TBD',               // not yet known
+}
+
 const played = m => m?.status === 'completed' && m?.score?.home != null
-const named = code => code && code !== 'TBD'
-
-function slot(label, team) {
-  return { label, team: named(team) ? team : null }
-}
-
-function tie(match, home, away) {
-  if (!match) return null
-  return {
-    id: match.id,
-    home,
-    away,
-    score: played(match) ? [match.score.home, match.score.away] : null,
-    status: match.status,
-    date: match.date ?? null,
-    provisional: match.provisional === true,
-  }
-}
+const named = code => (code && code !== 'TBD' ? code : null)
 
 export function buildBracket(teams, matches) {
   const all = matches ?? []
@@ -50,11 +45,17 @@ export function buildBracket(teams, matches) {
   const stage2 = computeStage2Standings(all)
   if (!stage1.length || !stage2.length) return null
 
-  // Where each nation finished Stage 1, and whether that pool is settled.
+  // ── Stage 1 ─────────────────────────────────────────────────────────
   const poolSettled = new Map()
   for (const pool of stage1) {
     const fixtures = all.filter(m => m.phase === 'pool' && m.pool === pool.id)
     poolSettled.set(pool.id, fixtures.length > 0 && fixtures.every(played))
+  }
+  // (pool, position) → nation. The one lookup every Stage-1 slot goes through.
+  const place1 = (poolId, position) => {
+    const pool = stage1.find(p => p.id === poolId)
+    if (!pool || !poolSettled.get(poolId)) return null
+    return pool.standings[position - 1]?.team ?? null
   }
   const from = new Map()
   for (const pool of stage1) {
@@ -63,101 +64,160 @@ export function buildBracket(teams, matches) {
     })
   }
 
-  // A medal pool: every entrant arrived as a first or second place.
+  // ── The crossover pools that carry the medal path ───────────────────
   const medal = stage2.filter(p =>
     p.standings.length > 0 &&
     p.standings.every(r => from.get(r.team)?.settled && from.get(r.team).pos <= 2))
   if (medal.length !== 2) return null
 
   const complete = p => p.crossTotal > 0 && p.crossPlayed === p.crossTotal
-  const posIn = (pool, team) => {
-    if (!complete(pool)) return null
-    const i = pool.standings.findIndex(r => r.team === team)
-    return i < 0 ? null : i + 1
+  // (crossover pool, position) → nation, the Stage-2 equivalent of place1.
+  const place2 = (poolId, position) => {
+    const pool = medal.find(p => p.id === poolId)
+    if (!pool || !complete(pool)) return null
+    return pool.standings[position - 1]?.team ?? null
   }
 
-  const pools = medal.map(pool => ({
-    id: pool.id,
-    complete: complete(pool),
-    // The diagram lists who *enters* the pool, in Stage-1 order: 1st Pool A,
-    // 2nd Pool A, 1st Pool D, 2nd Pool D. The live position is carried
-    // alongside so the same box shows how the pool is actually going.
-    entries: pool.standings
-      .map(r => {
-        const entry = from.get(r.team)
-        return {
-          team: r.team,
-          entryPool: entry.pool,
-          entryPos: entry.pos,
-          // Where the nation stands in this pool now, once it has finished.
-          pos: posIn(pool, r.team),
-        }
-      })
-      .sort((a, b) => a.entryPool.localeCompare(b.entryPool) || a.entryPos - b.entryPos)
-      .map(e => ({
-        team: e.team,
-        label: `${ordinal(e.entryPos)} Pool ${e.entryPool}`,
-        pos: e.pos,
-      })),
-    feeders: [...new Set(pool.standings.map(r => from.get(r.team).pool))].sort(),
-  }))
+  const qualifiers = medal.map(pool => {
+    const feeders = [...new Set(pool.standings.map(r => from.get(r.team).pool))].sort()
+    // Four independent slots: 1st and 2nd of each feeding pool, each resolved
+    // by its own (pool, position) key.
+    const slots = feeders.flatMap(feeder => [1, 2].map(position => {
+      const team = place1(feeder, position)
+      return {
+        id: `${pool.id}:${feeder}${position}`,
+        sourcePool: feeder,
+        sourcePosition: position,
+        label: `${ordinal(position)} Pool ${feeder}`,
+        team,
+        status: team ? STATUS.LOCKED : STATUS.TBD,
+        // Where that nation stands in this pool now, once it has finished.
+        standing: team && complete(pool)
+          ? pool.standings.findIndex(r => r.team === team) + 1
+          : null,
+      }
+    }))
+    return {
+      id: pool.id,
+      feeders,
+      complete: complete(pool),
+      played: pool.crossPlayed,
+      total: pool.crossTotal,
+      slots,
+    }
+  })
 
-  // Semi-finals, in the order the schedule runs them.
-  // In schedule order: the FIH numbers every match, and the semis are 47 and
-  // 48, so "Semi 1" and "Semi 2" mean the same thing here as on the diagram.
-  const semiFixtures = all
-    .filter(m => m.phase === 'semi-final')
+  const groups = stage1
+    .filter(p => qualifiers.some(q => q.feeders.includes(p.id)))
+    .map(p => {
+      const fixtures = all.filter(m => m.phase === 'pool' && m.pool === p.id)
+      return {
+        id: p.id,
+        settled: poolSettled.get(p.id),
+        played: fixtures.filter(played).length,
+        total: fixtures.length,
+        feeds: qualifiers.find(q => q.feeders.includes(p.id)).id,
+        rows: p.standings.map((r, i) => ({ team: r.team, pos: i + 1, advanced: i < 2 })),
+      }
+    })
+
+  // ── Semi-finals: 1E v 2F, 2E v 1F ───────────────────────────────────
+  const [left, right] = qualifiers
+  const fixtureFor = phase => all
+    .filter(m => m.phase === phase)
     .sort((a, b) => (a.matchNo ?? 0) - (b.matchNo ?? 0) || a.id.localeCompare(b.id))
 
-  // A nation's place in the medal pools, for labelling a semi-final side the
-  // way the diagram does — "1st Pool E".
-  const seat = new Map()
-  for (const pool of pools) {
-    for (const e of pool.entries) {
-      if (e.pos) seat.set(e.team, `${ordinal(e.pos)} Pool ${pool.id}`)
+  const crossSlot = (poolId, position) => {
+    const team = place2(poolId, position)
+    return {
+      id: `${poolId}${position}`,
+      source: poolId,
+      sourcePosition: position,
+      label: `${ordinal(position)} Group ${poolId}`,
+      team,
+      status: team ? STATUS.LOCKED : STATUS.TBD,
     }
   }
-  const sideLabel = (code, fallback) => (named(code) && seat.get(code)) || fallback
 
-  // The diagram's own pairing: semi 1 is 1st of the left pool against 2nd of
-  // the right, semi 2 the mirror of it. Used only to label a side the record
-  // has not named yet.
-  const [left, right] = pools
-  const fallback = [
-    [`1st Pool ${left.id}`, `2nd Pool ${right.id}`],
-    [`2nd Pool ${left.id}`, `1st Pool ${right.id}`],
+  const semiFixtures = fixtureFor('semi-final')
+  const pairings = [
+    [crossSlot(left.id, 1), crossSlot(right.id, 2)],
+    [crossSlot(left.id, 2), crossSlot(right.id, 1)],
   ]
-  const semis = semiFixtures.map((m, i) => ({
-    ...tie(m,
-      slot(sideLabel(m.home, fallback[i]?.[0] ?? 'Semi-finalist'), m.home),
-      slot(sideLabel(m.away, fallback[i]?.[1] ?? 'Semi-finalist'), m.away)),
-    number: i + 1,
-  }))
+  const semis = pairings.map(([home, away], i) => {
+    const fixture = semiFixtures[i]
+    const done = played(fixture)
+    // The sides stay in the order the structure declares — 2nd of one pool
+    // against 1st of the other — and the score is aligned to them by team
+    // rather than by position. The FIH may write the same tie the other way
+    // round, and reading its score positionally would hand the match to the
+    // side that lost it.
+    const goalsFor = slot => {
+      if (!done) return null
+      if (slot.team && named(fixture.home) === slot.team) return fixture.score.home
+      if (slot.team && named(fixture.away) === slot.team) return fixture.score.away
+      return null
+    }
+    const score = done && goalsFor(home) != null && goalsFor(away) != null
+      ? [goalsFor(home), goalsFor(away)]
+      : (done ? [fixture.score.home, fixture.score.away] : null)
+    return {
+      id: fixture?.id ?? `SF${i + 1}`,
+      type: 'SEMIFINAL',
+      number: i + 1,
+      title: `Semi Final ${i + 1}`,
+      home: { ...home, status: done ? STATUS.COMPLETED : home.status },
+      away: { ...away, status: done ? STATUS.COMPLETED : away.status },
+      score,
+      date: fixture?.date ?? null,
+      // The fixture is the FIH's own statement of the same pairing. Where it
+      // names a side, it and the derivation must agree; test:medalpath fails
+      // if they ever do not, rather than one of them silently winning here.
+      stated: fixture ? [named(fixture.home), named(fixture.away)] : [null, null],
+      slotLabel: fixture?.slotLabel ?? null,
+    }
+  })
 
-  const winnerOf = m => (m && m.score ? (m.score[0] > m.score[1] ? m.home.team : m.away.team) : null)
-  const loserOf = m => (m && m.score ? (m.score[0] > m.score[1] ? m.away.team : m.home.team) : null)
+  const outcome = (semi, want) => {
+    if (!semi.score) return null
+    const homeWon = semi.score[0] > semi.score[1]
+    const side = want === 'winner' ? (homeWon ? 'home' : 'away') : (homeWon ? 'away' : 'home')
+    return semi[side].team
+  }
 
-  const goldFixture = all.find(m => m.phase === 'gold-final')
-  const bronzeFixture = all.find(m => m.phase === 'bronze-final')
-  const final = tie(goldFixture,
-    slot('Winner Semi 1', named(goldFixture?.home) ? goldFixture.home : winnerOf(semis[0])),
-    slot('Winner Semi 2', named(goldFixture?.away) ? goldFixture.away : winnerOf(semis[1])))
-  const bronze = tie(bronzeFixture,
-    slot('Loser Semi 1', named(bronzeFixture?.home) ? bronzeFixture.home : loserOf(semis[0])),
-    slot('Loser Semi 2', named(bronzeFixture?.away) ? bronzeFixture.away : loserOf(semis[1])))
-
-  // Each side of the draw: the Stage-1 pools that fed that medal pool.
-  const sides = pools.map(pool => ({
-    poolId: pool.id,
-    stage1: pool.feeders.map(id => {
-      const s = stage1.find(p => p.id === id)
+  const medalMatch = (phase, id, type, title, want, verb) => {
+    const fixture = fixtureFor(phase)[0]
+    const done = played(fixture)
+    const slots = semis.map(semi => {
+      const derived = outcome(semi, want)
+      const team = derived ?? null
       return {
-        id,
-        settled: poolSettled.get(id),
-        rows: s.standings.map((r, i) => ({ team: r.team, pos: i + 1, advanced: i < 2 })),
+        id: `${want}-${semi.id}`,
+        source: semi.id,
+        sourceMatch: semi.number,
+        label: `${verb} Semi Final ${semi.number}`,
+        team,
+        status: team ? (done ? STATUS.COMPLETED : STATUS.LOCKED) : STATUS.TBD,
       }
-    }),
-  }))
+    })
+    return {
+      id: fixture?.id ?? id,
+      type,
+      title,
+      path: want,
+      home: slots[0],
+      away: slots[1],
+      score: done ? [fixture.score.home, fixture.score.away] : null,
+      date: fixture?.date ?? null,
+      stated: fixture ? [named(fixture.home), named(fixture.away)] : [null, null],
+    }
+  }
 
-  return { pools, sides, semis, final, bronze }
+  return {
+    groups,
+    qualifiers,
+    semis,
+    final: medalMatch('gold-final', 'GOLD', 'FINAL', 'Grand Final', 'winner', 'Winner'),
+    bronze: medalMatch('bronze-final', 'BRZ', 'BRONZE', '3rd Place', 'loser', 'Loser'),
+  }
 }

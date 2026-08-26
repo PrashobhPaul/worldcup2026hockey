@@ -10,7 +10,7 @@ import { isAtTournament, roleOf, tournamentXI } from '../engine/bestXI'
 import { AwardsView } from './Awards'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
-import BracketProgress from '../components/BracketProgress'
+import TournamentProgress from '../components/TournamentProgress'
 import {
   GoldenStickIcon, CrossedSticksIcon, KeeperPadIcon, PenaltyCornerIcon,
   PlayerIndexIcon, FinalQuarterIcon, TalismanIcon, FairPlayIcon, PodiumIcon,
@@ -417,10 +417,10 @@ export default function TournamentPage() {
         <>
           {view === 'standings' && (
             <div className="space-y-6">
-              {/* The medal path first: the shape of the tournament, then the
-                  tables that decide it. It states the record only — the
-                  Oracle keeps the one bracket that carries odds. */}
-              <BracketProgress teams={teams} matches={matches} />
+              {/* The shape of the tournament first, then the tables that
+                  decide it. It states the record only — the Oracle keeps the
+                  one bracket that carries odds. */}
+              <TournamentProgress teams={teams} matches={matches} />
               {/* Once Stage 2 begins, its tables lead — the Stage 1 letters are history. */}
               <Stage2Standings matches={matches} />
               <div>
