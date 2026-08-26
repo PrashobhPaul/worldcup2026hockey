@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-26T21:47:27.348346+00:00",
+ "last_updated": "2026-08-26T21:49:19.575269+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -22786,7 +22786,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-25T18:44:52.063778+00:00",
+    "generated_at": "2026-08-26T21:49:19.570922+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -22804,6 +22804,15 @@
        "playerId": "WAL_18",
        "name": "Jacob Draper",
        "number": 6,
+       "line": "Defender",
+       "position": null,
+       "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "WAL_11",
+       "name": "Benjamin Francis",
+       "number": 25,
        "line": "Defender",
        "position": null,
        "captain": true,
@@ -22828,20 +22837,20 @@
        "goalkeeper": false
       },
       {
-       "playerId": "WAL_08",
-       "name": "Jolyon Morgan",
-       "number": 20,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "WAL_01",
        "name": "Gareth Furlong",
        "number": 18,
        "line": "Midfielder",
        "position": "Midfielder",
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "WAL_08",
+       "name": "Jolyon Morgan",
+       "number": 20,
+       "line": "Midfielder",
+       "position": null,
        "captain": false,
        "goalkeeper": false
       },
@@ -22858,15 +22867,6 @@
        "playerId": "WAL_04",
        "name": "Dale Hutchinson",
        "number": 13,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "WAL_11",
-       "name": "Benjamin Francis",
-       "number": 25,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -24901,7 +24901,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-26T21:06:17.023586+00:00",
+    "generated_at": "2026-08-26T21:49:19.572910+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -25088,6 +25088,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ARG_14",
+       "name": "Matias Rey",
+       "number": 22,
+       "line": "Defender",
+       "position": null,
+       "captain": true,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ARG_13",
        "name": "Tomas Domene",
        "number": 21,
@@ -25109,7 +25118,7 @@
        "playerId": "ARG_17",
        "name": "Tadeo Marcucci",
        "number": 27,
-       "line": "Defender",
+       "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -25136,7 +25145,7 @@
        "playerId": "ARG_11",
        "name": "Joaquin Toscani",
        "number": 16,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -25154,15 +25163,6 @@
        "playerId": "ARG_20",
        "name": "Bautista Capurro",
        "number": 31,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_14",
-       "name": "Matias Rey",
-       "number": 22,
        "line": "Forward",
        "position": null,
        "captain": false,
