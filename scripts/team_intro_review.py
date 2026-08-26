@@ -108,16 +108,19 @@ def check_intros(team_rows, players):
             if surname and surname in intro and surname not in listed_surnames:
                 problems.append(f'{code} names {surname}, which belongs only to '
                                 f"{p['name']}, who is not on the official team list")
-        # Nobody may be introduced as leading a side he does not captain.
-        captain = next((p['name'] for p in squad
-                        if p.get('on_team_list') and p.get('is_captain')), None)
+        # Nobody may be introduced as leading a side he does not captain. A side
+        # can have more than one — the FIH list marks co-captains for Argentina
+        # and Wales — so this reads the whole set, not the first name it finds.
+        captains = {p['name'] for p in squad
+                    if p.get('on_team_list') and p.get('is_captain')}
         for p in squad:
-            if not p.get('on_team_list') or p['name'] == captain:
+            if not p.get('on_team_list') or p['name'] in captains:
                 continue
             for verb in ('captains', 'leads a squad', 'leads a group', 'leads a young squad'):
                 if f"{p['name']} {verb}" in intro:
                     problems.append(f"{code} has {p['name']} {verb}, but the team "
-                                    f'list marks {captain} as captain')
+                                    f"list marks {' and '.join(sorted(captains)) or 'nobody'} "
+                                    f'as captain')
     return problems
 
 
@@ -125,8 +128,6 @@ def main(check_only=False):
     teams = load('teams.json')
     players = load('players.json')['players']
     on_list = {(p['team'], p['name']) for p in players if p.get('on_team_list')}
-    captains = {p['team']: p['name'] for p in players
-                if p.get('on_team_list') and p.get('is_captain')}
 
     by_code = {t['code']: t for t in teams['teams']}
     changed = applied = 0
@@ -153,14 +154,19 @@ def main(check_only=False):
     for b in bad:
         print('UNRESOLVED:', b)
 
-    # The team card prints its own captain field, which drifted from the list
-    # in the same way the prose did.
-    for code, name in captains.items():
-        team = by_code.get(code)
-        if team and team.get('captain') != name:
-            print(f"{code}: captain {team.get('captain')} -> {name} (official team list)")
+    # The team row used to carry its own `captain` string and the team page
+    # printed it. Nothing cleared it when a captain turned out not to be at the
+    # tournament — this loop only ever visited teams that HAD a captain on the
+    # list — so Australia's page named Aran Zalewski, a pre-tournament seed the
+    # official list does not carry, for the whole competition. The page now
+    # reads the flag off the squad, which is the only place captaincy is
+    # reconciled, so the field is removed rather than kept in sync.
+    for team in teams['teams']:
+        if 'captain' in team:
+            print(f"{team['code']}: dropping the team row's own captain field "
+                  f"({team['captain']!r}) — the squad is the source.")
             if not check_only:
-                team['captain'] = name
+                del team['captain']
             changed = 1
             applied += 1
 

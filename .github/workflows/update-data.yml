@@ -143,16 +143,20 @@ jobs:
       # check. It runs every time now, before anything can fail, and writes its
       # findings to the run summary so they survive log truncation.
       #
-      # Report only. A name this app has shown for a fortnight is not rewritten
-      # by a report nobody has read, and the entry list is unreachable often
-      # enough that a failure here must not stop the data update.
+      # It corrects what it finds. The first report it ever produced named two
+      # differences in 320 players — two co-captains the pipeline was dropping —
+      # so the drift this catches is small and the entry list is the authority
+      # on all of it. The script refuses to write past its own ceiling, so a
+      # parser regression reports instead of rewriting three hundred rows, and
+      # the entry list is unreachable often enough that a failure here must not
+      # stop the data update.
       - name: Check the published squads against the FIH entry list
         continue-on-error: true
         run: |
           {
             echo '## Squads vs the FIH entry list'
             echo '```'
-            python scripts/verify_squads.py 2>&1 || true
+            python scripts/verify_squads.py --write 2>&1 || true
             echo '```'
           } | tee -a "$GITHUB_STEP_SUMMARY"
 

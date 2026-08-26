@@ -165,5 +165,40 @@ check('every position is one of the four hockey plays',
   check('no player is picked twice', new Set(xi.map(p => p.id)).size === xi.length)
 }
 
-console.log(failed ? `\n${failed} check(s) failed.` : '\nAll best-XI checks passed.')
+console.log(failed ? `\n${failed} check(s) failed so far.` : '\nAll best-XI checks passed.')
+
+// Captaincy — the one field the FIH entry list states outright for every squad,
+// and the one that had drifted. teams.json used to carry its own `captain`
+// string that nothing reconciled against the list, so Australia's team page
+// named a pre-tournament seed for the whole competition; and the pipeline
+// capped every side at one captain, which silently dropped the co-captains the
+// list marks for Argentina and Wales.
+console.log('\nCaptaincy')
+const TEAM_ROWS = JSON.parse(readFileSync(new URL('../public/data/teams.json', import.meta.url))).teams
+const travelling = PLAYERS.filter(isAtTournament)
+
+check('no team row carries a captain of its own — the squad is the source',
+  TEAM_ROWS.every(t => !('captain' in t)),
+  TEAM_ROWS.filter(t => 'captain' in t).map(t => t.code).join(','))
+
+check('every captain is on an official FIH team list for this tournament',
+  PLAYERS.filter(p => p.is_captain).every(isAtTournament),
+  PLAYERS.filter(p => p.is_captain && !isAtTournament(p)).map(p => `${p.team} ${p.name}`).join(','))
+
+check('every captain carries a shirt number',
+  travelling.filter(p => p.is_captain).every(p => p.number != null),
+  travelling.filter(p => p.is_captain && p.number == null).map(p => p.name).join(','))
+
+// Two is the most the entry list marks for any side at this tournament. Three
+// would mean the reconciliation stopped clearing stale flags.
+const captainsOf = code => travelling.filter(p => p.team === code && p.is_captain)
+check('no side carries more captains than the entry list marks',
+  TEAMS.every(code => captainsOf(code).length <= 2),
+  TEAMS.filter(code => captainsOf(code).length > 2)
+    .map(code => `${code}:${captainsOf(code).length}`).join(','))
+
+check('no captain is named twice on the same side',
+  TEAMS.every(code => new Set(captainsOf(code).map(p => p.name)).size === captainsOf(code).length))
+
+console.log(failed ? `\n${failed} check(s) failed.` : '\nAll captaincy checks passed.')
 process.exit(failed ? 1 : 0)

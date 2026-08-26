@@ -1140,15 +1140,22 @@ def reconcile_team_lists(players_doc, squads):
     return changed
 
 def normalize_captaincy(players_doc, squads):
-    """Exactly one captain per team, with the official team list as authority.
+    """The captains the official team list marks — all of them, and only them.
 
     is_captain was only ever reconciled for players found ON the team list, so a
     seeded captain the list does not carry kept his flag for good — Argentina
     ended up showing Rossi (seeded) alongside Casella (official), and the match
-    line-up drew two "C" badges. Whenever the official list marks a captain for a
-    team, that player is the captain and every other flag on that team is
-    cleared. A team the list says nothing about keeps whatever it had, still
-    capped at one. Nothing here invents a captain: if no source names one, the
+    line-up drew two "C" badges. The fix capped every team at one captain, which
+    over-corrected: hockey has co-captains and the FIH list marks them. It marks
+    two for Argentina (Casella and Rey) and two for Wales (Draper and Francis),
+    and this was silently dropping the second — the squad check against the
+    entry list reported both, run after run, as the only differences in 320
+    players.
+
+    So: whoever the list marks is a captain, however many that is, and any flag
+    on a player the list does not carry is cleared. A team the list says nothing
+    about keeps whatever it had, capped at one, because a second captain there
+    has no source. Nothing here invents a captain: if no source names one, the
     team simply has none.
     """
     changed = False
@@ -1174,16 +1181,13 @@ def normalize_captaincy(players_doc, squads):
             continue
         official = [p for p in squad if p['name'].lower() in listed_caps]
         if len(official) > 1:
-            # The list itself names more than one — never guess which is the
-            # real captain. Keep the first as the official sheet orders them,
-            # and say so loudly rather than silently picking.
             order = [e['name'].lower() for e in roster]
             official.sort(key=lambda p: order.index(p['name'].lower()))
             print(f"SQUADS: {code} team list marks {len(official)} captains "
-                  f"({', '.join(p['name'] for p in official)}) — keeping the first listed.")
-        skipper = official[0] if official else None
+                  f"({', '.join(p['name'] for p in official)}).")
+        skippers = {id(p) for p in official}
         for p in squad:
-            want = p is skipper
+            want = id(p) in skippers
             if bool(p.get('is_captain')) != want:
                 if want:
                     print(f"SQUADS: {code} captain is {p['name']} (official team list).")
@@ -1192,12 +1196,17 @@ def normalize_captaincy(players_doc, squads):
                 p['is_captain'] = want
                 changed = True
 
-    # Whatever the source, no team may carry two captains.
+    # A team the official list says nothing about has no source for a second
+    # captain, so it keeps one. Teams the list does cover were settled above and
+    # are left alone here — capping them is what dropped the co-captains.
     for code, squad in sorted(by_team.items()):
+        if squads.get(code):
+            continue
         caps = [p for p in squad if p.get('is_captain')]
         for p in caps[1:]:
             print(f"SQUADS: {code} dropping duplicate captain flag on {p['name']}.")
             p['is_captain'] = False
+            changed = True
             changed = True
     return changed
 

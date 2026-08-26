@@ -9,9 +9,10 @@ Both are tried, because a host being down is not the same as a squad changing.
 It reports rather than assumes: for every nation, who the list carries that we
 do not, who we carry that it does not, and every shirt number, spelling,
 captaincy and goalkeeper mark that differs. `--write` applies the list's answer
-to public/data/players.json; without it nothing is touched, which is the mode
-to run first — a name this app has shown for a fortnight should not be rewritten
-by a report nobody has read.
+to public/data/players.json, refusing outright if the differences run past
+WRITE_CEILING — a parser regression that misreads the PDF would otherwise
+rewrite three hundred shirt numbers unattended, and a squad that changed by more
+than a handful of fields is a thing to read before applying.
 
     python3 scripts/verify_squads.py            # report
     python3 scripts/verify_squads.py --write    # report and correct
@@ -26,6 +27,12 @@ sys.path.insert(0, HERE)
 import update_data as ud                                        # noqa: E402
 
 HOSTS = ['https://fih.altiusrt.com', 'https://tms.fih.ch']
+
+# The most corrections --write will apply in one run. The entry list settles
+# once a tournament starts: a handful of captaincy or shirt changes is real
+# drift, a hundred is the parser having lost the column layout. Above this the
+# run reports and writes nothing, which is the safe failure.
+WRITE_CEILING = 25
 
 
 def official_squads():
@@ -124,13 +131,20 @@ def main():
     if not notes:
         print('  Every squad matches the entry list, name for name.')
 
-    if write and fixes:
-        for player, field, want in fixes:
-            player[field] = want
-        ud.save('players.json', players)
-        print(f'\nWROTE {len(fixes)} correction(s) to players.json.')
-    elif fixes:
+    if not fixes:
+        return 0
+    if not write:
         print(f'\n{len(fixes)} correction(s) available — rerun with --write to apply.')
+        return 0
+    if len(fixes) > WRITE_CEILING:
+        print(f'\nREFUSING TO WRITE: {len(fixes)} corrections is past the ceiling of '
+              f'{WRITE_CEILING}. A squad does not change this much mid-tournament; read '
+              f'the differences above before applying any of them.')
+        return 0
+    for player, field, want in fixes:
+        player[field] = want
+    ud.save('players.json', players)
+    print(f'\nWROTE {len(fixes)} correction(s) to players.json.')
     return 0
 
 

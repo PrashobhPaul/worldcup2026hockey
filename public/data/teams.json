@@ -12,7 +12,6 @@
       "host": true,
       "nickname": "Oranje",
       "color": "#FF6400",
-      "captain": "Thierry Brinkman",
       "coach": "Jeroen Delmee",
       "key_players": [
         "Thierry Brinkman",
@@ -44,7 +43,6 @@
       "host": false,
       "nickname": "Los Leones",
       "color": "#75AADB",
-      "captain": "Maico Casella",
       "coach": "Lucas Rey",
       "key_players": [
         "Agustín Bugallo",
@@ -76,7 +74,6 @@
       "host": false,
       "nickname": "Black Sticks",
       "color": "#000000",
-      "captain": "Sam Lane",
       "coach": "Greg Nicol",
       "key_players": [
         "Brad Read",
@@ -108,7 +105,6 @@
       "host": false,
       "nickname": "Samurai Japan",
       "color": "#BC002D",
-      "captain": "Raiki Fujishima",
       "coach": "Yoshihiro Anai",
       "key_players": [
         "Kosuke Yamada",
@@ -140,7 +136,6 @@
       "host": true,
       "nickname": "Red Lions",
       "color": "#EF3340",
-      "captain": "Arthur van Doren",
       "coach": "Shane McLeod",
       "key_players": [
         "Alexander Hendrickx",
@@ -172,7 +167,6 @@
       "host": false,
       "nickname": "Les Bleus",
       "color": "#002395",
-      "captain": "François Goyet",
       "coach": "John-John Dohmen",
       "key_players": [
         "Victor Charlet",
@@ -204,7 +198,6 @@
       "host": false,
       "nickname": "Die Mannschaft",
       "color": "#FFCE00",
-      "captain": "Tom Grambusch",
       "coach": "André Henning",
       "key_players": [
         "Niklas Wellen",
@@ -236,7 +229,6 @@
       "host": false,
       "nickname": "Tigers",
       "color": "#CC0001",
-      "captain": "Marhan Jalil",
       "coach": "Brendon Carolan",
       "key_players": [
         "Tengku Ahmad Tajuddin",
@@ -268,7 +260,6 @@
       "host": false,
       "nickname": "Kookaburras",
       "color": "#00843D",
-      "captain": "Aran Zalewski",
       "coach": "Mark Hager",
       "key_players": [
         "Tom Wickham",
@@ -300,7 +291,6 @@
       "host": false,
       "nickname": "Los Redsticks",
       "color": "#AA151B",
-      "captain": "Marc Miralles",
       "coach": "Max Caldas",
       "key_players": [
         "Pau Quemada",
@@ -332,7 +322,6 @@
       "host": false,
       "nickname": "Green Machine",
       "color": "#169B62",
-      "captain": "Kyle Marshall",
       "coach": "Mark Tumilty",
       "key_players": [
         "Shane O'Donoghue",
@@ -364,7 +353,6 @@
       "host": false,
       "nickname": "Amabhungane",
       "color": "#007A4D",
-      "captain": "Dayaan Cassiem",
       "coach": "Devon van der Merwe",
       "key_players": [
         "Austin Smith",
@@ -396,7 +384,6 @@
       "host": false,
       "nickname": "Men in Blue",
       "color": "#FF9933",
-      "captain": "Harmanpreet Singh",
       "coach": "Craig Fulton",
       "key_players": [
         "Harmanpreet Singh",
@@ -428,7 +415,6 @@
       "host": false,
       "nickname": "Three Lions",
       "color": "#CF142B",
-      "captain": "Zachary Wallace",
       "coach": "Zak Jones",
       "key_players": [
         "Sam Ward",
@@ -460,7 +446,6 @@
       "host": false,
       "nickname": "Green Shirts",
       "color": "#01411C",
-      "captain": "Abu Mahmood",
       "coach": "Bob Veldhof",
       "key_players": [
         "Arshad Liaquat",
@@ -492,7 +477,6 @@
       "host": false,
       "nickname": "Dragons",
       "color": "#C8102E",
-      "captain": "Jacob Draper",
       "coach": "Daniel Newcombe",
       "key_players": [
         "Rupert Shipperley",
