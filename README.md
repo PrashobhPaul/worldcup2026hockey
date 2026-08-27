@@ -12,7 +12,7 @@
 
 <br>
 
-<a href="https://prashobhpaul.github.io/worldcup2026hockey/">
+<a href="https://hockeyworldcup2026.prashobhpaul.com/">
 <img src="https://img.shields.io/badge/▶%20Open%20Hockey.AI-Install%20as%20an%20app-ffb547?style=for-the-badge&labelColor=0b1736" alt="Open Hockey.AI">
 </a>
 <a href="https://github.com/PrashobhPaul/worldcup2026hockey/releases/download/apk-latest/HockeyAI.apk">

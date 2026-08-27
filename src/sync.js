@@ -16,7 +16,15 @@ async function fetchJSON(path) {
   const ctrl = new AbortController()
   const timer = setTimeout(() => ctrl.abort(), 12000)
   try {
-    const r = await fetch(`${DATA_BASE}/${path}?t=${Date.now()}`, { signal: ctrl.signal })
+    // No `?t=` cache-buster. It made every request a URL the service worker
+    // had never seen, so the NetworkFirst rule for /data/ could never fall
+    // back to its cache: on a slow connection the network raced past the
+    // handler's timeout, the cache lookup missed on that unique URL, and the
+    // fetch rejected — which the chip then reported as OFFLINE on a device
+    // that was plainly online. `no-store` keeps the response fresh without
+    // inventing a new URL, and leaves the worker a stable key to cache under
+    // so the app genuinely works offline.
+    const r = await fetch(`${DATA_BASE}/${path}`, { signal: ctrl.signal, cache: 'no-store' })
     if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`)
     return await r.json()
   } finally {
@@ -26,6 +34,15 @@ async function fetchJSON(path) {
 
 let _syncPromise = null
 let _versionFails = 0
+
+/**
+ * Does the device itself report no network?
+ *
+ * `navigator.onLine` is only trustworthy in the negative — false means there
+ * is definitively no connection, while true only means an interface is up. So
+ * it gates the word OFFLINE and is never taken as proof of health.
+ */
+const isOffline = () => typeof navigator !== 'undefined' && navigator.onLine === false
 
 // What the last sync attempt did. The UI subscribes so an empty database can
 // say WHY it is empty instead of rendering blank tabs — the failure mode this
@@ -83,15 +100,23 @@ async function _sync(force) {
     if (empty) {
       // Nothing to show — the reader has to be told immediately.
       setStatus({ state: 'error', empty, error: 'Could not reach the data feed.' })
-    } else if (_versionFails >= 2) {
-      // Two consecutive failures with a populated cache: genuinely offline.
+    } else if (isOffline()) {
+      // The device itself says there is no network. That is the only thing
+      // OFFLINE is allowed to mean — the word has to be worth reading.
       setStatus({ state: 'offline', empty, error: null })
+    } else if (_versionFails >= 5) {
+      // Online, data on the device, and the feed unreachable for five straight
+      // polls: a real fault, and a failure to reach the feed rather than an
+      // absent network. It reads RETRY, not OFFLINE.
+      setStatus({ state: 'error', empty, error: 'Could not reach the data feed.' })
     }
-    // A single failed check with a populated cache is NOT offline: the site
-    // redeploys after every data push (several times an hour on match days)
-    // and a request landing mid-swap can 404. The chip keeps its last good
-    // state; the next poll settles it either way.
-    return { status: 'offline' }
+    // Otherwise keep the last good state. A failed check with data already on
+    // the device is not news: the site redeploys after every data push
+    // (several times an hour on match days), a request landing mid-swap can
+    // 404, and a slow mobile response can time out. None of that means the
+    // reader is offline, and saying so on a working phone is exactly what made
+    // the indicator meaningless.
+    return { status: 'retry' }
   }
 
   const localMeta = await db.meta.get('data')
@@ -212,6 +237,14 @@ export function startAutoSync(intervalMs = 60 * 1000) {
   })
   // The instant the network returns, resync — don't sit amber for up to a
   // minute waiting for the next poll.
-  window.addEventListener('online', () => syncData({ force: true }))
+  window.addEventListener('online', () => {
+    _versionFails = 0
+    syncData({ force: true })
+  })
+  // And the instant it goes, say so, instead of waiting for polls to fail
+  // first. The device knows before any fetch does.
+  window.addEventListener('offline', async () => {
+    setStatus({ state: 'offline', empty: await storeIsEmpty(), error: null })
+  })
   return () => clearInterval(id)
 }

@@ -13,6 +13,7 @@
     "test:tiers": "node scripts/test_tiers.mjs",
     "test:bracket": "node scripts/test_bracket.mjs",
     "test:sync": "node scripts/test_sync_policy.mjs",
+    "test:offline": "node scripts/test_offline_chip.mjs",
     "test:clock": "node scripts/test_clock.mjs",
     "test:intel": "node scripts/test_intel.mjs",
     "smoke:recovery": "node scripts/smoke_recovery.mjs",
