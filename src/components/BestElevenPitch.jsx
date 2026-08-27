@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { splitText } from '../engine/goalSplit.js'
 import { bestXI } from '../engine/bestXI'
-import { DerivedBadge } from './hockeyIcons'
+import { DerivedBadge, ImpactBadge } from './hockeyIcons'
 
 // Hockey.AI — a squad's best XI, drawn in the shape hockey is played in.
 //
@@ -118,9 +118,10 @@ export function RemainingSquad({ squad, teamCode }) {
             {p.number ?? '—'}
           </span>
           <div className="min-w-0 flex-1">
-            <div className="truncate text-xs font-semibold">
-              {p.name}
-              {p.is_captain && <span className="ml-1.5 text-brand">Ⓒ</span>}
+            <div className="flex items-center gap-1.5 truncate text-xs font-semibold">
+              <span className="truncate">{p.name}</span>
+              {p.is_captain && <span className="text-brand">Ⓒ</span>}
+              <ImpactBadge goals={p.impact_sub_goals} />
             </div>
             <div className="font-mono text-[9px] uppercase tracking-wide text-pitch-400">
               {p.position_effective ?? 'Role not on the record'}

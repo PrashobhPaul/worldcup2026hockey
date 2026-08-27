@@ -63,11 +63,16 @@ ok('no player claims an assist the feed cannot support', claimingAssists.length 
    claimingAssists.slice(0, 6).map(p => `${p.name} (${p.team}) ${p.assists}`).join(', '))
 
 // A rating is a derived opinion, but it must not be built on an unsupported
-// stat, and it must stay inside its own scale.
+// stat, and it must stay inside its own scale — widened here below the
+// component blend's own 40-99, because two bounded multipliers (match
+// context, playing time) can each only shrink a rating, and a player caught
+// by both — a losing side's man who barely played — is meant to read low.
 const rated = players.filter(p => p.ai_rating != null)
+const RATING_FLOOR = 40 * 0.45 * 0.88 // PLAYING_TIME_FLOOR x CONTEXT_FLOOR, player_rating.py
 ok('every rating sits inside its scale',
-   rated.every(p => p.ai_rating >= 40 && p.ai_rating <= 99),
-   rated.filter(p => p.ai_rating < 40 || p.ai_rating > 99).map(p => `${p.name} ${p.ai_rating}`).join(', '))
+   rated.every(p => p.ai_rating >= RATING_FLOOR - 0.15 && p.ai_rating <= 99),
+   rated.filter(p => p.ai_rating < RATING_FLOOR - 0.15 || p.ai_rating > 99)
+     .map(p => `${p.name} ${p.ai_rating}`).join(', '))
 ok('a rated player has something in the feed or a stated position',
    rated.every(p => truth.has(p.name) || p.position),
    rated.filter(p => !truth.has(p.name) && !p.position).slice(0, 4).map(p => p.name).join(', '))
