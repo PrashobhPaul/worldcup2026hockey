@@ -1,21 +1,31 @@
 name: Build Android APK
 
-# Wraps the deployed PWA in a Trusted Web Activity via Bubblewrap and
-# publishes the APK to a rolling GitHub Release, so Android users can
-# sideload the app directly.
+# Hockey.AI for Android — a real app, not a browser pointed at the website.
 #
-# Signing: if the ANDROID_KEYSTORE_B64 / ANDROID_KEYSTORE_PASSWORD secrets
-# are set, the APK is signed with that stable key (installs update in
-# place, and the fingerprint can be published in assetlinks.json for the
-# full-screen TWA experience). Without them a fresh key is generated per
-# build — the APK still installs, but each new build must be uninstalled
-# first, and Android shows the browser bar until asset links verify.
+# This used to wrap the deployed site in a Trusted Web Activity, which is
+# literally a Chrome window: it showed the address bar unless Android could
+# verify the app against the site, it could only ever be as available as that
+# site, and it tied the app's fate to a domain resolving. None of that has
+# anything to do with what the app is for.
+#
+# Now the interface is compiled into the APK and the app reads the same
+# central data files the web app reads. Two clients, one source. The app opens
+# with the data it shipped with, refreshes from the repository whenever there
+# is a connection, and keeps working when there is not — no site, no domain
+# and no asset-link verification anywhere in the picture.
+#
+# Signing: with ANDROID_KEYSTORE_B64 / ANDROID_KEYSTORE_PASSWORD set, the APK
+# is signed with that stable key and installs as an update over a previous
+# copy. Without them a fresh key is generated per build — still installable,
+# but Android will not update an existing install in place.
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['twa-manifest.json', '.github/workflows/build-apk.yml']
+    paths:
+      - 'capacitor.config.json'
+      - '.github/workflows/build-apk.yml'
 
 permissions:
   contents: write
@@ -29,35 +39,55 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      # An APK is a thing people install and keep, so it must not be built
-      # against a host that does not exist yet. twa-manifest.json names the
-      # host the app will open; if that name does not resolve and serve, every
-      # install is a blank screen nobody can fix from their phone. Stop here
-      # instead — the same ahead-of-DNS mistake that took the web app down.
-      - name: The app's host has to be live before anything is built
-        run: |
-          HOST=$(node -p "require('./twa-manifest.json').host")
-          URL="https://$HOST/"
-          # curl's own failure and the HTTP status have to be read separately.
-          # -w always prints a code, so `|| echo 000` on an unresolvable host
-          # appends a second one and the comparison silently stops matching —
-          # the guard would wave through exactly the outage it exists to catch.
-          if ! CODE=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "$URL"); then
-            echo "::error::$URL could not be reached at all. Create the DNS record and let Pages serve it before building an APK — otherwise the build installs an app that opens nothing."
-            exit 1
-          fi
-          case "$CODE" in
-            2*|3*) echo "::notice::$URL answered HTTP $CODE — safe to build." ;;
-            *)
-              echo "::error::$URL answered HTTP $CODE, so the app would open an error page. Fix the site before building an APK."
-              exit 1 ;;
-          esac
+          cache: npm
 
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The interface that ships inside the APK. VITE_NATIVE drops the site's
+      # base path (the app serves from its own root) and the service worker
+      # (every asset is already local). VITE_DATA_BASE is the one thing the app
+      # needs from outside: the central data files, read straight from this
+      # repository, so the app does not care whether the website is up.
+      - name: Build the interface for the app
+        env:
+          VITE_NATIVE: '1'
+          VITE_DATA_BASE: https://raw.githubusercontent.com/${{ github.repository }}/main/public/data
+        run: |
+          npm run build
+          test -f dist/index.html
+          # A bundled shell still pointing at a site's sub-path would load
+          # nothing once installed, so prove the paths are app-root-relative.
+          if grep -q 'src="/worldcup2026hockey/' dist/index.html; then
+            echo "::error::The app build carries the website's base path — it would load nothing once installed."
+            exit 1
+          fi
+          # And the app must not be left reading its own bundled snapshot.
+          grep -q 'raw.githubusercontent.com' dist/assets/*.js \
+            || { echo "::error::the app build has no central data URL compiled in"; exit 1; }
+
+          # Compiled in is not the same as answering. An APK is installed and
+          # kept, so one built against a data URL that does not serve is a blank
+          # app nobody can fix from their phone — the same ahead-of-reality
+          # mistake that took the website down. Read curl's own failure and the
+          # HTTP status separately: -w always prints a code, so `|| echo 000`
+          # on an unreachable host appends a second one and the comparison
+          # silently stops matching, waving through the outage it exists to catch.
+          if ! CODE=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "$VITE_DATA_BASE/data-version.json"); then
+            echo "::error::$VITE_DATA_BASE/data-version.json could not be reached at all. The app would open on its shipped snapshot and never update."
+            exit 1
+          fi
+          case "$CODE" in
+            2*) echo "::notice::central data answered HTTP $CODE — safe to build." ;;
+            *)
+              echo "::error::$VITE_DATA_BASE/data-version.json answered HTTP $CODE, so the app could never refresh. Fix the data path before building an APK."
+              exit 1 ;;
+          esac
 
       - name: Prepare keystore
         env:
@@ -67,7 +97,6 @@ jobs:
           if [ -n "$KS_B64" ]; then
             echo "$KS_B64" | base64 -d > android.keystore
             echo "KS_PASS=$KS_PASS" >> "$GITHUB_ENV"
-            echo "KS_STABLE=1" >> "$GITHUB_ENV"
             echo "Stable keystore from secrets."
           else
             KS_PASS="hockeyai-$(openssl rand -hex 8)"
@@ -76,98 +105,45 @@ jobs:
               -storepass "$KS_PASS" -keypass "$KS_PASS" \
               -dname "CN=Hockey.AI, OU=App, O=Hockey.AI, L=NA, S=NA, C=IN"
             echo "KS_PASS=$KS_PASS" >> "$GITHUB_ENV"
-            echo "Ephemeral keystore generated (set ANDROID_KEYSTORE_B64 / ANDROID_KEYSTORE_PASSWORD secrets for stable signing)."
+            echo "::warning::No ANDROID_KEYSTORE_B64 secret, so this APK is signed with a throwaway key. It installs, but Android will refuse to update an existing install over it — set the secrets for a stable signature."
           fi
 
-      - name: Install Bubblewrap
-        run: npm install -g @bubblewrap/cli
-
-      - name: Configure Bubblewrap paths
+      # The Android project is generated rather than committed: it is entirely
+      # derived from capacitor.config.json and the build above, and a checked-in
+      # copy only rots against the toolchain.
+      - name: Generate the Android project
         run: |
-          # Bubblewrap validates androidSdkPath by looking for tools/ or bin/
-          # at its root (its own managed-download layout), while the runner's
-          # SDK uses the modern cmdline-tools/latest layout. A shim directory
-          # of symlinks satisfies both: bin/ from cmdline-tools, everything
-          # else from the real SDK.
-          SDK_SHIM="$HOME/bubblewrap-sdk"
-          mkdir -p "$SDK_SHIM"
-          ln -s "$ANDROID_HOME/cmdline-tools/latest/bin" "$SDK_SHIM/bin"
-          for d in build-tools platforms platform-tools licenses cmdline-tools tools; do
-            [ -e "$ANDROID_HOME/$d" ] && ln -s "$ANDROID_HOME/$d" "$SDK_SHIM/$d" || true
-          done
-          mkdir -p ~/.bubblewrap
-          cat > ~/.bubblewrap/config.json <<EOF
-          {"jdkPath": "$JAVA_HOME", "androidSdkPath": "$SDK_SHIM"}
+          npm i --no-save @capacitor/core @capacitor/cli @capacitor/android
+          npx cap add android
+          npx cap sync android
+
+      - name: Build the APK
+        run: |
+          cd android
+          cat >> app/build.gradle <<'EOF'
+
+          android {
+              signingConfigs {
+                  release {
+                      storeFile file(System.getenv("KS_FILE"))
+                      storePassword System.getenv("KS_PASS")
+                      keyAlias "hockeyai"
+                      keyPassword System.getenv("KS_PASS")
+                  }
+              }
+              buildTypes {
+                  release {
+                      signingConfig signingConfigs.release
+                  }
+              }
+          }
           EOF
-          ls -la "$SDK_SHIM"
-          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
-
-      - name: Build APK
-        env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.KS_PASS }}
-          BUBBLEWRAP_KEY_PASSWORD: ${{ env.KS_PASS }}
-        run: |
-          # Gradle's Android plugin refuses when ANDROID_HOME and
-          # ANDROID_SDK_ROOT disagree; point both at the shim.
-          export ANDROID_HOME="$HOME/bubblewrap-sdk"
-          export ANDROID_SDK_ROOT="$HOME/bubblewrap-sdk"
-          bubblewrap doctor || true
-          bubblewrap update --skipVersionUpgrade
-          bubblewrap build --skipPwaValidation
-          ls -la ./*.apk || ls -la app/build/outputs/apk/release/ || true
-          APK=$(find . -name 'app-release-signed.apk' -o -name 'app-release.apk' | head -1)
-          echo "APK=$APK" >> "$GITHUB_ENV"
+          KS_FILE="$GITHUB_WORKSPACE/android.keystore" ./gradlew assembleRelease --no-daemon
+          cd ..
+          APK=$(find android -name '*-release.apk' ! -name '*unsigned*' | head -1)
+          if [ -z "$APK" ]; then echo "::error::no signed APK produced"; exit 1; fi
           cp "$APK" HockeyAI.apk
-
-      # Digital Asset Links is the whole difference between a full-screen app
-      # and one wearing a browser address bar. Android reads the statement
-      # from the DOMAIN ROOT — https://<host>/.well-known/assetlinks.json —
-      # and never from a sub-path. On the old project-pages URL this file
-      # deployed under /worldcup2026hockey/, where Android never looked, so
-      # every build so far installed with the bar showing. It only works now
-      # because public/CNAME serves the site at the root of its own domain.
-      - name: Publish asset links (stable signing only)
-        if: ${{ env.KS_STABLE == '1' }}
-        run: |
-          FP=$(keytool -exportcert -keystore android.keystore -alias hockeyai \
-                -storepass "$KS_PASS" -rfc | openssl x509 -noout -fingerprint -sha256 \
-                | sed 's/.*=//')
-          mkdir -p public/.well-known
-          cat > public/.well-known/assetlinks.json <<EOF
-          [{
-            "relation": ["delegate_permission/common.handle_all_urls"],
-            "target": {
-              "namespace": "android_app",
-              "package_name": "com.prashobhpaul.hockeyai",
-              "sha256_cert_fingerprints": ["$FP"]
-            }
-          }]
-          EOF
-          if ! git diff --quiet -- public/.well-known/assetlinks.json; then
-            git config user.name "hockey-ai-bot"
-            git config user.email "actions@github.com"
-            git add public/.well-known/assetlinks.json
-            git commit -m "android: publish asset links for the app signing key"
-            git push origin HEAD:main
-          fi
-
-      # Say plainly what this APK will do once installed, rather than leaving
-      # a browser-headed build to be discovered on a phone. The host comes
-      # from twa-manifest.json, so this cannot drift from what was built.
-      - name: Report the asset-link state
-        run: |
-          HOST=$(node -p "require('./twa-manifest.json').host")
-          URL="https://$HOST/.well-known/assetlinks.json"
-          if [ "${KS_STABLE:-0}" != "1" ]; then
-            echo "::warning::Signed with an EPHEMERAL key, so no asset links were published. This APK will show the browser address bar and cannot update an installed copy in place. Set ANDROID_KEYSTORE_B64 and ANDROID_KEYSTORE_PASSWORD for a full-screen, updatable build."
-            exit 0
-          fi
-          CODE=$(curl -s -o /tmp/al.json -w '%{http_code}' "$URL" || echo 000)
-          if [ "$CODE" = "200" ] && grep -q "com.prashobhpaul.hockeyai" /tmp/al.json; then
-            echo "::notice::Asset links live at $URL — the installed app runs full-screen."
-          else
-            echo "::warning::$URL is not serving the statement yet (HTTP $CODE). Expected on the run that first publishes it, since the Pages deploy follows this job. Re-check after that deploy; reinstall the APK if the address bar is still showing."
-          fi
+          ls -la HockeyAI.apk
 
       - name: Publish to rolling release
         env:
@@ -177,4 +153,4 @@ jobs:
           git push --delete origin apk-latest 2>/dev/null || true
           gh release create apk-latest HockeyAI.apk \
             --title "Hockey.AI for Android" \
-            --notes "Sideloadable Android build of the Hockey.AI PWA (Trusted Web Activity). Download HockeyAI.apk, allow installs from your browser when prompted, and open. Same app, same offline storage, same live data — with the match-alert bell available from the Home screen once a team is followed."
+            --notes "The Android build of Hockey.AI. Download HockeyAI.apk, allow installs from your browser when prompted, and open — it runs as its own app, with no address bar and no dependency on the website. Every match, table, rating and prediction is stored on the device and refreshes from the central data whenever there is a connection, so it keeps working in a stadium with no signal. Follow a team on its page and tap the bell on Home for start-of-match and full-time alerts while the app is open or in the background."
