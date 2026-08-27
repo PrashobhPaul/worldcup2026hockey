@@ -4,21 +4,26 @@ import { db } from '../db'
 import { Skeleton, TierBadge } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
+import { isAtTournament } from '../engine/bestXI'
+import OracleElevens from '../components/OracleElevens'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import SiblingNav from '../components/SiblingNav'
 import { useFavourite } from '../hooks/useFavourite'
 
-// Five cuts. All and Alive are the two ways to read the whole field; the three
-// tags below them are earned, not seeded — engine/tiers.js re-derives them from
-// the same canonical snapshot every other surface reads, after every completed
-// match. Only six of the sixteen carry a tag at any moment, so the counts in
-// the chips are fixed at 3 / 2 / 1 while teams remain alive.
+// Five cuts. All and Alive are the two ways to read the whole field; the two
+// tags between them are earned, not seeded — engine/tiers.js re-derives them
+// from the same canonical snapshot every other surface reads, after every
+// completed match. The Underdog tag used to sit here too, but its quota is
+// one team drawn from the half of the field ranked below the surviving
+// median — once that half is entirely eliminated, which happens well before
+// the tournament ends, the chip sits at 0 for the rest of it. The chip in its
+// place never runs dry: the Oracle's own picks, recomputed after every match.
 const FILTERS = [
   { id: 'all', label: 'All', match: () => true },
   { id: 'alive', label: 'Alive', match: (_t, ctx) => !ctx.out },
   { id: 'favourites', label: '⭐ Favourites', match: (_t, ctx) => ctx.tier === 'favourite' },
   { id: 'dark_horses', label: '♞ Dark Horses', match: (_t, ctx) => ctx.tier === 'dark_horse' },
-  { id: 'underdogs', label: '⚡ Underdogs', match: (_t, ctx) => ctx.tier === 'underdog' },
+  { id: 'oracle', label: "🎯 Oracle's XI", oracle: true, match: () => false },
 ]
 
 export default function TeamsPage() {
@@ -28,13 +33,24 @@ export default function TeamsPage() {
 
   const teams = useLiveQuery(() => db.teams.toArray(), [])
   const matches = useLiveQuery(() => db.matches.orderBy('kickoffUtc').toArray(), [], [])
+  const players = useLiveQuery(
+    () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   // Same canonical snapshot as every other surface — tier badges here can
   // never disagree with the percentages shown elsewhere.
   const bundle = useOracleBundle(teams ?? [], matches ?? [])
 
+  const xi = params.get('xi') === 'rising' ? 'rising' : 'best'
+  const setXi = v => {
+    const next = new URLSearchParams(params)
+    next.set('filter', 'oracle')
+    v === 'best' ? next.delete('xi') : next.set('xi', v)
+    setParams(next, { replace: true })
+  }
+
   const setFilter = id => {
     const next = new URLSearchParams(params)
     id === 'all' ? next.delete('filter') : next.set('filter', id)
+    if (id !== 'oracle') next.delete('xi')
     setParams(next, { replace: true })
   }
 
@@ -88,25 +104,31 @@ export default function TeamsPage() {
 
       <div className="no-scrollbar sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
         {FILTERS.map(f => {
-          const count = teams.filter(t => f.match(t, ctxOf(t))).length
+          const count = f.oracle ? null : teams.filter(t => f.match(t, ctxOf(t))).length
           return (
             <button key={f.id} role="tab" aria-selected={filterId === f.id} onClick={() => setFilter(f.id)}
               className={`shrink-0 rounded-md border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
                 filterId === f.id ? 'border-brand/30 bg-brand/10 text-brand' : 'border-white/5 bg-pitch-800 text-pitch-400'
               }`}>
-              {f.label} <span className="font-mono text-[10px] opacity-70">{count}</span>
+              {f.label} {count != null && <span className="font-mono text-[10px] opacity-70">{count}</span>}
             </button>
           )
         })}
       </div>
 
-      {visible.length === 0 && (
+      {filterId === 'oracle' && (
+        players === undefined
+          ? <Skeleton h={400} />
+          : <OracleElevens players={players} byCode={new Map(teams.map(t => [t.code, t]))} matches={matches ?? []} xi={xi} setXi={setXi} />
+      )}
+
+      {filterId !== 'oracle' && visible.length === 0 && (
         <p className="rounded-xl border border-white/5 bg-pitch-800 p-4 text-sm text-pitch-400">
           No team carries this tag right now — the engine re-classifies after every completed match.
         </p>
       )}
 
-      {pools.map(pool => {
+      {filterId !== 'oracle' && pools.map(pool => {
         const inPool = visible.filter(t => poolOf(t) === pool).sort((a, b) => a.fihRank - b.fihRank)
         if (!inPool.length) return null
         return (

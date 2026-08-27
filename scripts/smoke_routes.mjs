@@ -28,7 +28,7 @@ const ahead = FIXTURES.matches.find(m => m.status !== 'completed' && m.home !== 
 const ROUTES = [
   '/',
   '/matches', '/matches?tab=upcoming', '/matches?tab=live', '/matches?tab=results',
-  '/teams',
+  '/teams', '/teams?filter=oracle', '/teams?filter=oracle&xi=rising',
   '/tournament', '/tournament?tab=standings', '/tournament?tab=bracket',
   '/tournament?tab=stats', '/tournament?tab=awards', '/tournament?tab=awards&awards=potm',
   '/tournament?tab=best', '/tournament?tab=best&xi=rising',
