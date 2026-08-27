@@ -118,11 +118,37 @@ jobs:
           npx cap sync android
 
       - name: Build the APK
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+          VERSION_NAME: 1.0.${{ github.run_number }}
         run: |
           cd android
-          cat >> app/build.gradle <<'EOF'
+          cat >> app/build.gradle <<EOF
+
+          // Kotlin folded kotlin-stdlib-jdk7 and -jdk8 into kotlin-stdlib at
+          // 1.8. Part of the Capacitor dependency graph still asks for those
+          // split artifacts at 1.6.21 while everything else resolves the
+          // stdlib at 1.8.22, so the release build saw every JDK7/8 class
+          // twice and checkReleaseDuplicateClasses stopped it. Drop the
+          // merged-away artifacts instead of pinning a Kotlin version: their
+          // classes all live in the stdlib that is already on the classpath,
+          // so nothing is lost and there is no version here to go stale.
+          configurations.all {
+              exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk7"
+              exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
+          }
 
           android {
+              // Every APK the workflow has ever produced carried the template's
+              // versionCode 1. Android only installs over an existing app when
+              // the code strictly increases, so a stable signing key alone was
+              // never going to make updates work — each new build looked like
+              // the same version and would be refused. Take the number from the
+              // run counter so it rises on its own and nothing is pinned here.
+              defaultConfig {
+                  versionCode $VERSION_CODE
+                  versionName "$VERSION_NAME"
+              }
               signingConfigs {
                   release {
                       storeFile file(System.getenv("KS_FILE"))
@@ -138,14 +164,81 @@ jobs:
               }
           }
           EOF
-          KS_FILE="$GITHUB_WORKSPACE/android.keystore" ./gradlew assembleRelease --no-daemon
+          # Dropping those artifacts is only safe while the stdlib actually
+          # carries their classes, which it has since 1.8. Check that rather
+          # than trust it: a stdlib older than 1.8 would build clean here and
+          # crash on the phone with a missing class, which is the worst way to
+          # find out. Resolve the real classpath and read the version off it.
+          # KS_FILE has to be exported for EVERY gradle invocation, not just the
+          # assemble: the signingConfigs block above reads it at configuration
+          # time, so without it file(null) throws before any task can run —
+          # which is exactly how the first attempt at this check died.
+          export KS_FILE="$GITHUB_WORKSPACE/android.keystore"
+          ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --no-daemon > /tmp/deps.txt 2>&1 || true
+          STDLIB=$(grep -oE 'org\.jetbrains\.kotlin:kotlin-stdlib:[0-9]+\.[0-9]+\.[0-9]+( -> [0-9]+\.[0-9]+\.[0-9]+)?' /tmp/deps.txt \
+            | grep -oE '[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          if [ -z "$STDLIB" ]; then
+            # Say why rather than just that it failed — a silent "unreadable"
+            # is a dead end for whoever reads this next.
+            echo "::error::could not read the resolved kotlin-stdlib version, so the JDK7/8 exclusion above cannot be shown to be safe. Gradle output follows."
+            tail -40 /tmp/deps.txt
+            exit 1
+          fi
+          MAJOR=${STDLIB%%.*}; REST=${STDLIB#*.}; MINOR=${REST%%.*}
+          if [ "$MAJOR" -lt 2 ] && { [ "$MAJOR" -lt 1 ] || [ "$MINOR" -lt 8 ]; }; then
+            echo "::error::kotlin-stdlib resolves to $STDLIB, which predates the 1.8 merge of kotlin-stdlib-jdk7/jdk8. Excluding those artifacts would drop classes the app needs at runtime."
+            exit 1
+          fi
+          echo "::notice::kotlin-stdlib $STDLIB carries the JDK7/8 classes — the exclusion is safe."
+
+          ./gradlew assembleRelease --no-daemon
           cd ..
           APK=$(find android -name '*-release.apk' ! -name '*unsigned*' | head -1)
           if [ -z "$APK" ]; then echo "::error::no signed APK produced"; exit 1; fi
           cp "$APK" HockeyAI.apk
           ls -la HockeyAI.apk
 
+          # A green compile says nothing about what ended up inside. These are
+          # the things whose absence would install cleanly and then show an
+          # empty app on someone's phone, which is the one failure nobody can
+          # diagnose from there.
+          for f in assets/public/index.html assets/public/data/data-version.json; do
+            unzip -l HockeyAI.apk | grep -q " $f\$" \
+              || { echo "::error::the APK does not contain $f — it would install and open on nothing"; exit 1; }
+          done
+          echo "::notice::APK carries the interface and the data snapshot."
+
+          # And prove the version actually rose, rather than trusting the
+          # override above to have taken. A silent no-op here is invisible
+          # until an install is refused months later.
+          AAPT=$(find "$ANDROID_HOME/build-tools" -name 'aapt2' -type f 2>/dev/null | sort -V | tail -1)
+          if [ -z "$AAPT" ]; then
+            echo "::warning::aapt2 not found, so the APK's versionCode could not be read back."
+          else
+            GOT=$("$AAPT" dump badging HockeyAI.apk 2>/dev/null | grep -oE "versionCode='[0-9]+'" | grep -oE '[0-9]+' | head -1)
+            if [ "$GOT" != "$VERSION_CODE" ]; then
+              echo "::error::APK reports versionCode $GOT, expected $VERSION_CODE. Android refuses an update unless this rises, so the override did not take."
+              exit 1
+            fi
+            echo "::notice::APK versionCode $GOT — installs will update in place once a stable key is set."
+          fi
+
+      # Every run leaves an installable APK attached to itself, so a branch
+      # can be tested on a real phone before it is merged. This is the only
+      # artifact a branch run produces — see the publish step below.
+      - name: Attach the APK to this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: HockeyAI-apk
+          path: HockeyAI.apk
+          if-no-files-found: error
+
+      # The rolling release is what people download, so only main publishes to
+      # it. A branch run still builds and proves the APK above; without this
+      # gate, dispatching the workflow to test a branch would quietly replace
+      # the public download with an unreviewed build.
       - name: Publish to rolling release
+        if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
