@@ -232,7 +232,7 @@ function StatsView({ teams, matches, byCode }) {
           footnote="Counted from the goal method in the official record — the corner itself is not an FIH statistic, the goal is." />
         <Board title="Hockey.AI Player Index" icon={PlayerIndexIcon} sub="This app's rating, by position and output" rows={boards.index}
           derived accent="text-brand"
-          footnote="Goalkeepers on clean sheets and goals against; defenders on the same plus drag-flick output; midfielders on scoring and share; forwards on goals, field goals weighted highest. Cards deduct. Scaled by matches played." />
+          footnote="Goalkeepers and defenders on defence; midfielders and forwards on scoring. Cards deduct." />
         <Board title="Fourth-Quarter Goals" icon={FinalQuarterIcon} sub="Goals scored from the 46th minute on" rows={boards.clutch}
           derived accent="text-live"
           footnote="Derived from goal minutes in the official record." />
@@ -240,7 +240,7 @@ function StatsView({ teams, matches, byCode }) {
           derived accent="text-live"
           footnote="A player's goals as a percentage of everything their team has scored." />
         <Board title="Fair Play" icon={FairPlayIcon} sub="Disciplinary points per match — lower is cleaner" rows={boards.fairPlay} accent="text-live" derived
-          footnote="Green 1 · yellow 2 · red 5, following the length of the suspension each card carries, divided by matches played. The same weighting decides the fair-play award." />
+          footnote="Green 1 · yellow 2 · red 5." />
       </div>
 
       {hasRatings && (
@@ -259,10 +259,7 @@ function StatsView({ teams, matches, byCode }) {
             <Board title="Forwards" sub="Goals and set-piece threat" derived rows={boards.performers.Forward} accent="text-live" />
           </div>
           <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
-            Rule-based Hockey.AI positional model on the match event ledger. Volume-weighted, so pitch time
-            matters — a one-match cameo cannot outrank a tournament-long starter on the same rating.
-            The <span className="text-brand">XI</span> mark is the first keeper, four defenders, three
-            midfielders and three forwards on these four boards — which is exactly the{' '}
+            The <span className="text-brand">XI</span> mark is exactly the{' '}
             <Link to="/tournament?tab=best" className="text-brand hover:underline">Tournament&apos;s Best XI</Link>.
           </p>
         </>

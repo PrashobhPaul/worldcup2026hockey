@@ -304,13 +304,10 @@ export function simulate(players, matches) {
       ...insights(home, away, result, base),
       {
         key: 'disclosure',
-        detail: 'An Oracle-simulated exhibition, not a fixture. Both team sheets are the engine’s '
-          + 'own selections from this tournament’s positional ratings, and every player named is on '
-          + 'an official FIH team list. Nobody plays twice: the Best XI picks first, and the Rising '
-          + 'Stars here are the emerging players it did not take, so this side is narrower than the '
-          + 'Rising Stars XI on the Tournament’s Best tab. The scoreline is the most likely result '
-          + 'of a Poisson model built from the tournament’s own goal rate and the two elevens’ '
-          + 'ratings — not a prediction, and no FIH endorsement is implied.',
+        detail: 'An Oracle-simulated exhibition, not a fixture and not a prediction — no FIH '
+          + 'endorsement implied. Every player named is on an official FIH team list; the Best XI '
+          + 'picks first, so this Rising Stars side is narrower than the Rising Stars XI on the '
+          + 'Tournament’s Best tab.',
       },
     ],
   }

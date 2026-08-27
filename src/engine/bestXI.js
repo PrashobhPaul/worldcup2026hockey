@@ -251,9 +251,6 @@ export function teamToppers(rawSquad, { matchesPlayed = 0, goalsAgainst = 0 } = 
   const index = best(p => p.ai_rating != null, num('ai_rating'), p => p.ai_rating)
   const keeper = best(p => p.position === 'Goalkeeper' && p.ai_rating != null,
     num('ai_rating'), p => p.ai_rating)
-  const cardsOf = p => (p.green_cards ?? 0) + (p.yellow_cards ?? 0) + (p.red_cards ?? 0)
-  const carded = list.filter(p => cardsOf(p) > 0)
-    .sort((a, b) => cardsOf(b) - cardsOf(a) || a.name.localeCompare(b.name))[0] ?? null
 
   const rows = [
     scorer && { key: 'scorer', label: 'Top scorer', player: scorer, derived: false,
@@ -268,8 +265,6 @@ export function teamToppers(rawSquad, { matchesPlayed = 0, goalsAgainst = 0 } = 
         : `index ${keeper.ai_rating}` },
     index && { key: 'index', label: 'Player index', player: index, derived: true,
       stat: `${index.ai_rating} / 100` },
-    carded && { key: 'cards', label: 'Most carded', player: carded, derived: false,
-      stat: `${cardsOf(carded)} card${cardsOf(carded) === 1 ? '' : 's'}` },
   ].filter(Boolean)
 
   return rows

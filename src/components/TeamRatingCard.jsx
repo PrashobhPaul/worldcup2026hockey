@@ -49,9 +49,7 @@ export default function TeamRatingCard({ teamCode }) {
       </div>
       <ul className="space-y-1.5">{rows.map(c => <Row key={c.label} c={c} />)}</ul>
       <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-        Each figure is a rate per match from this tournament&apos;s record; the ordinal beside it is this
-        side&apos;s percentile against the other fifteen. Weighted for what decides hockey matches — goals
-        scored and conceded, points won, and the set piece. Hockey.AI&apos;s rating, not an FIH one.
+        Hockey.AI&apos;s rating, not an FIH one — a rate per match, ranked against the other fifteen sides.
       </p>
     </section>
   )
