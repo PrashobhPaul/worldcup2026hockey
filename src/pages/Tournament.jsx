@@ -347,10 +347,10 @@ export default function TournamentPage() {
   return (
     <div>
       <div className="mb-4 border-b border-white/5 pb-4">
-        <h1 className="flex items-center gap-2.5 font-display text-2xl font-bold tracking-tight">
+        <h1 className="flex items-center gap-3.5 font-display text-2xl font-bold tracking-tight">
           <img src={`${import.meta.env.BASE_URL}emblem.png`} alt=""
-            className="h-8 w-8 shrink-0 rounded-md object-contain" />
-          Tournament
+            className="h-[68px] w-[68px] shrink-0 rounded-lg object-contain" />
+          Men&apos;s World Cup 2026
         </h1>
         <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and awards — computed live from completed matches</p>
       </div>
