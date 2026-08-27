@@ -18,36 +18,7 @@ import AwardsRedirect from './pages/Awards'
 import TrustPage from './pages/Trust'
 import MatchSimPage from './pages/MatchSim'
 
-// The app now lives at the root of its own domain, which is the only place
-// Android will read /.well-known/assetlinks.json from and so the only way the
-// installed APK runs without a browser address bar.
-//
-// Anyone already carrying a service worker from the old project-pages path
-// cannot simply be redirected there: that worker answers every navigation
-// from its own precache without touching the network, so it would serve its
-// frozen copy of the app forever and never see the redirect. Its own update
-// check is dead too — sw.js at the old URL now redirects across origins,
-// which a worker script may not do. So the old home tears the worker down,
-// empties its caches, and hands the reader over exactly once.
-const NEW_HOME = 'https://hockeyworldcup2026.prashobhpaul.com/'
-const atOldHome = location.hostname.endsWith('.github.io')
-  && location.pathname.startsWith('/worldcup2026hockey')
-
-if (atOldHome) {
-  ;(async () => {
-    try {
-      const regs = (await navigator.serviceWorker?.getRegistrations?.()) ?? []
-      await Promise.all(regs.map(r => r.unregister()))
-      const keys = (await window.caches?.keys?.()) ?? []
-      await Promise.all(keys.map(k => caches.delete(k)))
-    } catch { /* nothing registered to clear */ }
-    // Carry the deep link across so a shared /teams/NED still lands on it.
-    const rest = location.pathname.replace(/^\/worldcup2026hockey\/?/, '')
-    location.replace(`${NEW_HOME}${rest}${location.search}${location.hash}`)
-  })()
-} else {
-  startAutoSync()
-}
+startAutoSync()
 
 // Keep the installed app honest with the central data source. The service
 // worker already serves /data/ network-first, so an open app resyncs within a

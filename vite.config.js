@@ -13,12 +13,31 @@ import { VitePWA } from 'vite-plugin-pwa'
 // every asset URL of a build about to be served from the domain root, which
 // loads nothing at all. The file in the artifact is what decides where the
 // site lands, so it decides the base too.
+//
+// ORDER MATTERS, and getting it wrong takes the site down rather than
+// degrading it. A CNAME in the artifact makes Pages move the whole site to
+// that hostname immediately, so the project URL starts redirecting to it —
+// and if DNS does not resolve yet, every visitor gets nothing at all. That is
+// exactly what shipping this file ahead of the DNS record did once. To move
+// the app to its own domain:
+//
+//   1. create the DNS record  (CNAME <sub> -> prashobhpaul.github.io)
+//   2. wait until it resolves
+//   3. THEN add public/CNAME containing that hostname, and merge
+//
+// Never step 3 before step 1. Removing the file again reverts the base here,
+// but Pages may keep the domain in Settings -> Pages, which has to be cleared
+// by hand.
 const base = existsSync(new URL('./public/CNAME', import.meta.url))
   ? '/'
   : `${process.env.BASE_PATH || ''}/`
 
+// The Android build ships the interface inside the APK and is served from the
+// app's own root, so it never carries a site's base path.
+const native = process.env.VITE_NATIVE === '1'
+
 export default defineConfig({
-  base,
+  base: native ? '/' : base,
   build: {
     rollupOptions: {
       output: {
@@ -34,6 +53,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
+      // A service worker exists to make a *website* behave like an installed
+      // app — precache the shell, survive a lost connection. The Android build
+      // already is an installed app: every asset ships inside the APK, so the
+      // worker would only add a second, staler copy of files that are local
+      // anyway, and with it the whole class of "the app is showing an old
+      // build" faults. Off there; untouched on the web.
+      disable: native,
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'og.png', 'logo.png'],
       manifest: {
