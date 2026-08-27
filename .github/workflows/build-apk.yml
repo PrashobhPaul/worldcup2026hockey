@@ -122,6 +122,19 @@ jobs:
           cd android
           cat >> app/build.gradle <<'EOF'
 
+          // Kotlin folded kotlin-stdlib-jdk7 and -jdk8 into kotlin-stdlib at
+          // 1.8. Part of the Capacitor dependency graph still asks for those
+          // split artifacts at 1.6.21 while everything else resolves the
+          // stdlib at 1.8.22, so the release build saw every JDK7/8 class
+          // twice and checkReleaseDuplicateClasses stopped it. Drop the
+          // merged-away artifacts instead of pinning a Kotlin version: their
+          // classes all live in the stdlib that is already on the classpath,
+          // so nothing is lost and there is no version here to go stale.
+          configurations.all {
+              exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk7"
+              exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
+          }
+
           android {
               signingConfigs {
                   release {
@@ -138,6 +151,25 @@ jobs:
               }
           }
           EOF
+          # Dropping those artifacts is only safe while the stdlib actually
+          # carries their classes, which it has since 1.8. Check that rather
+          # than trust it: a stdlib older than 1.8 would build clean here and
+          # crash on the phone with a missing class, which is the worst way to
+          # find out. Resolve the real classpath and read the version off it.
+          STDLIB=$(./gradlew -q :app:dependencies --configuration releaseRuntimeClasspath 2>/dev/null \
+            | grep -oE 'org\.jetbrains\.kotlin:kotlin-stdlib:[0-9]+\.[0-9]+\.[0-9]+( -> [0-9]+\.[0-9]+\.[0-9]+)?' \
+            | grep -oE '[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+          if [ -z "$STDLIB" ]; then
+            echo "::error::could not read the resolved kotlin-stdlib version, so the JDK7/8 exclusion above cannot be shown to be safe"
+            exit 1
+          fi
+          MAJOR=${STDLIB%%.*}; REST=${STDLIB#*.}; MINOR=${REST%%.*}
+          if [ "$MAJOR" -lt 2 ] && { [ "$MAJOR" -lt 1 ] || [ "$MINOR" -lt 8 ]; }; then
+            echo "::error::kotlin-stdlib resolves to $STDLIB, which predates the 1.8 merge of kotlin-stdlib-jdk7/jdk8. Excluding those artifacts would drop classes the app needs at runtime."
+            exit 1
+          fi
+          echo "::notice::kotlin-stdlib $STDLIB carries the JDK7/8 classes — the exclusion is safe."
+
           KS_FILE="$GITHUB_WORKSPACE/android.keystore" ./gradlew assembleRelease --no-daemon
           cd ..
           APK=$(find android -name '*-release.apk' ! -name '*unsigned*' | head -1)
