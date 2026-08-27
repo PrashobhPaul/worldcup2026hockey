@@ -11,7 +11,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import BestElevenPitch, { RemainingSquad, TeamToppers, ScoreRow } from '../components/BestElevenPitch'
 import { teamToppers, HOCKEY_FORMATION, isAtTournament } from '../engine/bestXI'
 import { impactContext, teamKeyPlayers } from '../engine/impact'
-import { KeyPlayerCard as KeyPlayerCards } from '../components/KeyPlayers'
+import { KeyPlayerRow } from '../components/KeyPlayers'
 import TeamRatingCard from '../components/TeamRatingCard'
 
 function OracleSnapshot({ team, teams, matches }) {
@@ -214,11 +214,11 @@ export default function TeamDetailPage() {
           <h2 className="font-display text-lg font-semibold">{team.name} key players</h2>
           <span className="font-mono text-[10px] text-pitch-400">this tournament</span>
         </div>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-pitch-800">
           {teamKeyPlayers(players, impact).map(card => (
-            <KeyPlayerCards key={card.key} card={card} flag={team.flag} />
+            <KeyPlayerRow key={card.key} card={card} flag={team.flag} />
           ))}
-        </div>
+        </ul>
       </section>
 
       <section>
@@ -236,9 +236,7 @@ export default function TeamDetailPage() {
         </div>
         <BestElevenPitch squad={players} teamColor={team.color} />
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-          Selected by position, not by rating alone. The FIH entry list states no outfield position and the
-          TMS team-sheet pages are not served publicly, so where a role is not stated it is derived by
-          Hockey.AI from how a player&apos;s goals were scored. This is Hockey.AI&apos;s XI, not an FIH team sheet.
+          Hockey.AI&apos;s own XI, not an FIH team sheet — selected by position, not rating alone.
         </p>
         {players.length > 11 && (
           <div className="mt-4">

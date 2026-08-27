@@ -163,8 +163,8 @@ function RaceTab({ bundle, teams }) {
         </div>
       )}
       <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-        X-axis: completed matches (0 at the start of the tournament, 32 at the Gold Final).
-        Y-axis: model-estimated probability of lifting the trophy. Each finished result triggers a fresh Monte-Carlo run — {bundle.current.simulationCount.toLocaleString()} simulated tournaments per snapshot, seeded and reproducible. The right-hand end of every line is the same number the Tournament tab and Odds table show.
+        X-axis: completed matches (0–32, Gold Final). Y-axis: model probability of the trophy — the
+        right-hand end of every line is the same number the Tournament tab and Odds table show.
       </p>
     </div>
   )

@@ -142,21 +142,21 @@ export function RemainingSquad({ squad, teamCode }) {
 export function TeamToppers({ rows, teamFlag }) {
   if (!rows?.length) return null
   return (
-    <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-pitch-800">
       {rows.map(r => (
-        <div key={r.key} className="rounded-xl border border-white/5 bg-pitch-800 p-3">
-          <div className="flex items-baseline justify-between gap-2">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-pitch-400">{r.label}</span>
-            <DerivedBadge derived={r.derived} />
+        <li key={r.key} className="flex items-center gap-2.5 px-3.5 py-2.5">
+          <span className="text-sm leading-none">{teamFlag ?? '🏑'}</span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-baseline gap-1.5">
+              <span className="truncate text-xs font-bold">{r.player.name}</span>
+              <DerivedBadge derived={r.derived} />
+            </div>
+            <div className="font-mono text-[9px] uppercase tracking-widest text-pitch-400">{r.label}</div>
           </div>
-          <div className="mt-1.5 flex items-center gap-2">
-            <span className="text-sm leading-none">{teamFlag ?? '🏑'}</span>
-            <span className="min-w-0 flex-1 truncate text-xs font-bold">{r.player.name}</span>
-          </div>
-          <div className="mt-0.5 font-mono text-[10px] text-brand">{r.stat}</div>
-        </div>
+          <span className="shrink-0 font-mono text-[10px] text-brand">{r.stat}</span>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
 

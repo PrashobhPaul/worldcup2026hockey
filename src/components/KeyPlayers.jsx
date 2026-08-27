@@ -27,10 +27,10 @@ function ShareBar({ pct }) {
   )
 }
 
-export function KeyPlayerCard({ card, flag }) {
+function KeyPlayerBody({ card, flag }) {
   const p = card.impact.player
   return (
-    <li className="rounded-lg border border-white/5 bg-pitch-800 p-2.5">
+    <>
       <div className="flex flex-wrap items-center gap-1">
         {card.labels.map(l => (
           <span key={l} className="rounded bg-brand/10 px-1.5 py-0.5 font-mono text-[8.5px] font-bold uppercase tracking-wider text-brand">
@@ -53,6 +53,23 @@ export function KeyPlayerCard({ card, flag }) {
         {card.stats.join(' · ')}
       </div>
       {card.share != null && <ShareBar pct={card.share} />}
+    </>
+  )
+}
+
+export function KeyPlayerCard({ card, flag }) {
+  return (
+    <li className="rounded-lg border border-white/5 bg-pitch-800 p-2.5">
+      <KeyPlayerBody card={card} flag={flag} />
+    </li>
+  )
+}
+
+/** Same card, meant to sit inside one shared outer card instead of carrying its own border. */
+export function KeyPlayerRow({ card, flag }) {
+  return (
+    <li className="px-3.5 py-2.5">
+      <KeyPlayerBody card={card} flag={flag} />
     </li>
   )
 }
@@ -91,10 +108,6 @@ export default function KeyPlayers({ home, away, players, ctx, byCode }) {
           </div>
         ))}
       </div>
-      <p className="mt-2 font-mono text-[9px] leading-relaxed text-pitch-400">
-        Goals, their method and the positional rating, all from this tournament&apos;s record.
-        A player who answers more than one of these carries every label he earns.
-      </p>
     </div>
   )
 }

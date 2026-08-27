@@ -108,19 +108,8 @@ export default function OracleElevens({ players, byCode, matches, xi, setXi }) {
       <p className="rounded-xl border-l-2 border-white/5 bg-pitch-800 p-3.5 text-xs leading-relaxed text-pitch-300"
         style={{ borderLeftColor: accent }}>
         {showRising
-          ? <>Every shirt is filled on the component that defines it, and every player’s age is the
-            FIH entry list’s own date of birth. Under-23 from the eight nations still standing is the
-            rule this selection wants; the record does not allow it — the whole tournament has
-            {' '}{rising.tried[0].field} players aged 22 or under in the top eight, none of them a
-            goalkeeper, and only four under-23 defenders anywhere, where an XI needs four. It is
-            picked at {rising.rung.maxAge} and under across every nation, which is the first rule that
-            can field fifteen.</>
-          : <>Not the eleven highest ratings — the eleven shirts. The keeper on his side’s record while
-            he was on the pitch, two drag flickers on corners converted, two anchors on goals conceded
-            per match started, a match-winner on goals weighted by what they were worth, two engines on
-            the matches a coach trusted them with, a talisman on his share of his own side’s scoring
-            and two finishers on field goals. Every pick comes from the eight nations that reached the
-            crossover pools, and {best.semiCount} of the eleven from the four semi-finalists.</>}
+          ? 'Every shirt filled on the component that defines it.'
+          : 'Not the eleven highest ratings — the eleven shirts.'}
       </p>
       <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
         Recomputed after every completed match. No editorial overrides.

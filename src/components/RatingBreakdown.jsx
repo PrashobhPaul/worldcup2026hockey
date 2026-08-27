@@ -86,31 +86,8 @@ export default function RatingBreakdown({ player, compact = false }) {
 
       {!compact && (
         <p className="mt-2.5 font-mono text-[10px] leading-relaxed text-pitch-400">
-          Each score is this player&apos;s percentile against every other {(player.rating_group ?? 'player').toLowerCase()} at
-          this tournament; the percentage beside it is the share of the rating that component carried.
-          {' '}This rating rests on {Math.round(coverage * 100)}% of the {(player.rating_group ?? 'position').toLowerCase()} model.
-          {player.rating_group === 'Outfield' && (
-            <> The FIH names a position for 48 of the 320 players entered and marks the rest
-            &ldquo;Squad&rdquo;, so this player&apos;s line is not on the record. He is measured against the
-            other outfielders in the same position — on how much he played, what his side did while he
-            was on the pitch, and his discipline — rather than left unrated.</>
-          )}
-          {player.rating_playing_time && (
-            <> The components give a performance of {player.rating_performance}; the time-played
-            factor of {player.rating_playing_time.factor} is how much of the tournament he actually
-            started or came on for, ranked against the rest, and it can cut a rating by up to 45% — a
-            deliberately hard floor, because how much a player played is a fact about him, not an
-            indirect signal like his side&apos;s results.</>
-          )}
-          {player.rating_context && (
-            <> The match-context factor of {player.rating_context.factor} is his side&apos;s points per
-            match ranked against the rest, and it can move a rating by at most 12%, never to zero.</>
-          )}
-          {missing.length > 0 && (
-            <> The rest — {missing.length} component{missing.length === 1 ? '' : 's'} covering passing,
-            carrying, circle entries, tackles, duels and saves — needs figures the FIH does not publish
-            for this competition, so they are left out of the weighting rather than scored as zero.</>
-          )}
+          {Math.round(coverage * 100)}% model coverage.
+          {missing.length > 0 && ` ${missing.length} component${missing.length === 1 ? '' : 's'} — passing, carrying, tackles, saves — aren't published for this competition.`}
         </p>
       )}
     </div>

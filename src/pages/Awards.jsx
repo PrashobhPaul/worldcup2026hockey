@@ -106,18 +106,6 @@ function PotmRace({ byCode, race, bundle }) {
         </section>
       )}
 
-      <section className="rounded-xl border border-white/5 bg-pitch-800 p-4">
-        <h3 className="mb-2 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">How Oracle scores this</h3>
-        <ul className="space-y-1.5 text-xs leading-relaxed text-pitch-300">
-          {POTM_MODEL.terms.map(t => (
-            <li key={t.key}>
-              <strong className="text-brand">{t.label}</strong>
-              <span className="font-mono text-[11px] text-pitch-400"> ×{t.weight}</span> — {t.describe}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-2 font-mono text-[10px] leading-relaxed text-pitch-400">{POTM_MODEL.note}</p>
-      </section>
     </div>
   )
 }

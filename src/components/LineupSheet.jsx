@@ -242,8 +242,8 @@ export default function LineupSheet({ match, events = [], home, away }) {
       {!official && (
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
           {listed
-            ? 'Every player named here is on the official FIH entry list for this squad. Which eleven of them start is Hockey.AI’s call — ranked on caps, form and AI rating, deterministic per match. It is replaced by the official team sheet the moment FIH publishes one.'
-            : 'Composed from the squad Hockey.AI holds for each nation — real players only, deterministic per match. It is replaced by the official team list the moment FIH publishes one.'}
+            ? 'Every player is on the official FIH entry list; which eleven starts is Hockey.AI’s call, replaced the moment FIH publishes a team sheet.'
+            : 'Composed from real players only, replaced the moment FIH publishes a team sheet.'}
         </p>
       )}
     </section>
