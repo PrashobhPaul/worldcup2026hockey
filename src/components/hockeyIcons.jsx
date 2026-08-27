@@ -194,3 +194,21 @@ export function DerivedBadge({ derived }) {
     </span>
   )
 }
+
+/**
+ * A bench player who has actually changed a match from it. Checked match by
+ * match against that match's own official team sheet — `impact_sub_goals` is
+ * only goals scored in a match this player did not start — never a reason to
+ * start him: a coach's own team sheet decides that, this badge is what he did
+ * with the shirt he was actually given.
+ */
+export function ImpactBadge({ goals }) {
+  if (!goals) return null
+  return (
+    <span
+      className="rounded bg-live/15 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wide text-live"
+      title={`${goals} goal${goals === 1 ? '' : 's'} scored as a substitute this tournament`}>
+      Imp
+    </span>
+  )
+}

@@ -2762,6 +2762,39 @@ def on_pitch_records(fixtures):
     return out
 
 
+def impact_substitute_goals(fixtures):
+    """{player name: count} — goals scored in a match he did not start.
+
+    A player kept on the bench is not the same question as whether he can
+    change a match from it, and the record answers the second question
+    directly: the official team sheet names who started, the event ledger
+    names who scored and when, and a name that scored without being in that
+    match's own startingXI came off the bench to do it. Checked match by
+    match rather than assumed from the season total, because a player can
+    start some matches and come off the bench in others — his season starts
+    count does not say which matches were which, but the sheet for each one
+    does.
+    """
+    out = {}
+    for m in fixtures['matches']:
+        if m['status'] != 'completed':
+            continue
+        sheet = m.get('lineups') or {}
+        if sheet.get('source') != 'official':
+            continue
+        starters = set()
+        for side in ('home', 'away'):
+            for row in (sheet.get(side) or {}).get('startingXI', []):
+                starters.add(row['name'])
+        for e in (m.get('events') or []):
+            if e.get('type') != 'goal':
+                continue
+            name = e.get('player')
+            if name and name not in starters:
+                out[name] = out.get(name, 0) + 1
+    return out
+
+
 def update_player_stats(fixtures, players_doc):
     """
     Full idempotent recompute of every player's tournament numbers from the
@@ -2826,6 +2859,7 @@ def update_player_stats(fixtures, players_doc):
     # the pitch. Both come off the official team sheets and the event ledger.
     gvalue = goal_value_ledger(fixtures)
     onpitch = on_pitch_records(fixtures)
+    impact_sub = impact_substitute_goals(fixtures)
     disagreements = []
     changed = False
     for p in players:
@@ -2929,6 +2963,11 @@ def update_player_stats(fixtures, players_doc):
             'starts': seen['starts'] if seen else None,
             'appearances': seen['appearances'] if seen else None,
             'benched': seen['benched'] if seen else None,
+            # Goals scored in a match he did not start, checked match by
+            # match against that match's own official team sheet. Shown as a
+            # badge on the bench, never as a reason to start him instead — a
+            # coach's team sheet, not this figure, decides who starts.
+            'impact_sub_goals': impact_sub.get(p['name'], 0),
         }
         for k, v in new_vals.items():
             if p.get(k) != v:
@@ -2970,6 +3009,7 @@ def update_player_stats(fixtures, players_doc):
                                  # inferred from a number that moved.
                                  ('rating_performance', (result or {}).get('performance')),
                                  ('rating_context', (result or {}).get('context')),
+                                 ('rating_playing_time', (result or {}).get('playing_time')),
                                  ('rating_coverage', (result or {}).get('coverage')),
                                  ('rating_missing', (result or {}).get('components_missing'))):
                 if p.get(field) != value:
@@ -2981,7 +3021,8 @@ def update_player_stats(fixtures, players_doc):
         if p['name'] in rated_names:
             continue
         for field in ('ai_rating', 'rating_components', 'rating_performance',
-                      'rating_context', 'rating_coverage', 'rating_missing'):
+                      'rating_context', 'rating_playing_time', 'rating_coverage',
+                      'rating_missing'):
             if p.get(field) is not None:
                 p[field] = None
                 changed = True

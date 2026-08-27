@@ -15,7 +15,7 @@ import TournamentProgress from '../components/TournamentProgress'
 import {
   GoldenStickIcon, CrossedSticksIcon, KeeperPadIcon, PenaltyCornerIcon,
   PlayerIndexIcon, FinalQuarterIcon, TalismanIcon, FairPlayIcon, PodiumIcon,
-  DerivedBadge,
+  DerivedBadge, ImpactBadge,
 } from '../components/hockeyIcons'
 
 // The bracket is NOT here on purpose: the Oracle owns the one bracket view
@@ -28,7 +28,7 @@ const VIEWS = [
   { id: 'awards', label: 'Awards' },
 ]
 
-function SquadList({ rows, byCode, accent, note }) {
+function SquadList({ rows, byCode, accent, note, isBench = false }) {
   return (
     <ol className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-pitch-800">
       {rows.map(p => (
@@ -37,6 +37,7 @@ function SquadList({ rows, byCode, accent, note }) {
             style={{ color: accent }} title={p.slot.why}>{p.slot.label}</span>
           <span>{byCode.get(p.team)?.flag}</span>
           <Link to={`/teams/${p.team}`} className="min-w-0 flex-1 truncate text-sm font-semibold hover:text-brand">{p.name}</Link>
+          {isBench && <ImpactBadge goals={p.impact_sub_goals} />}
           <span className="hidden font-mono text-[10px] text-pitch-400 sm:inline">{note(p)}</span>
           <span className="font-mono text-sm font-bold text-live">{p.ai_rating}</span>
         </li>
@@ -117,7 +118,7 @@ function BestXISpace({ players, byCode, matches, xi, setXi }) {
             <h3 className="mb-1.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">
               Substitutes
             </h3>
-            <SquadList rows={active.bench} byCode={byCode} accent={accent} note={figureOf} />
+            <SquadList rows={active.bench} byCode={byCode} accent={accent} note={figureOf} isBench />
           </div>
         </div>
       </div>

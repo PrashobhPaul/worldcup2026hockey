@@ -54,8 +54,15 @@ check('component weights sum to one',
 check('every component score is a percentile in range',
   rated.every(p => Object.values(p.rating_components).every(c => c.score >= 0 && c.score <= 100)))
 
+// Performance is bounded 40-99; the two multipliers below can each only
+// shrink it, never grow it, so the rating's own floor is that scale times
+// both multipliers' own floors — not 40, once either one has bitten.
+const PLAYING_TIME_FLOOR = 0.45
+const CONTEXT_FLOOR = 0.88
 check('every rating sits inside its scale',
-  rated.every(p => p.ai_rating >= 40 && p.ai_rating <= 99))
+  rated.every(p => p.ai_rating >= 40 * PLAYING_TIME_FLOOR * CONTEXT_FLOOR - 0.15 && p.ai_rating <= 99),
+  rated.filter(p => p.ai_rating < 40 * PLAYING_TIME_FLOOR * CONTEXT_FLOOR - 0.15 || p.ai_rating > 99)
+    .slice(0, 3).map(p => `${p.name} ${p.ai_rating}`).join(','))
 
 // The published rating is the performance the components add up to, times the
 // standard it was produced against. Both halves are published, so both are
@@ -71,15 +78,17 @@ check('the performance is the weighted sum of its own components',
     return Math.abs((40 + (99 - 40) * pct / 100) - p.rating_performance) >= 0.15
   }).slice(0, 3).map(p => `${p.name} ${p.rating_performance}`).join(','))
 
-check('the rating is the performance times the match context',
+check('the rating is the performance times context times playing time',
   rated.every(p => {
-    const factor = p.rating_context ? p.rating_context.factor : 1
-    return Math.abs(p.rating_performance * factor - p.ai_rating) < 0.15
+    const ctx = p.rating_context ? p.rating_context.factor : 1
+    const pt = p.rating_playing_time ? p.rating_playing_time.factor : 1
+    return Math.abs(p.rating_performance * ctx * pt - p.ai_rating) < 0.15
   }),
   rated.filter(p => {
-    const factor = p.rating_context ? p.rating_context.factor : 1
-    return Math.abs(p.rating_performance * factor - p.ai_rating) >= 0.15
-  }).slice(0, 3).map(p => `${p.name} ${p.rating_performance}x${p.rating_context?.factor}!=${p.ai_rating}`).join(','))
+    const ctx = p.rating_context ? p.rating_context.factor : 1
+    const pt = p.rating_playing_time ? p.rating_playing_time.factor : 1
+    return Math.abs(p.rating_performance * ctx * pt - p.ai_rating) >= 0.15
+  }).slice(0, 3).map(p => `${p.name} ${p.rating_performance}x${p.rating_context?.factor}x${p.rating_playing_time?.factor}!=${p.ai_rating}`).join(','))
 
 // Context is bounded on purpose. It was tried as a weighted component and the
 // engine's redistribution of unfed components inflated a declared 12% into
@@ -88,16 +97,29 @@ check('the rating is the performance times the match context',
 // exactly how much it is allowed to matter.
 check('the match context never leaves its bounds',
   rated.every(p => !p.rating_context ||
-    (p.rating_context.factor >= 0.88 && p.rating_context.factor <= 1)),
+    (p.rating_context.factor >= CONTEXT_FLOOR && p.rating_context.factor <= 1)),
   rated.filter(p => p.rating_context &&
-    (p.rating_context.factor < 0.88 || p.rating_context.factor > 1))
+    (p.rating_context.factor < CONTEXT_FLOOR || p.rating_context.factor > 1))
     .slice(0, 3).map(p => `${p.name} ${p.rating_context.factor}`).join(','))
 
-check('the match context never outranks the performance',
+// Playing time is bounded the same way, on a lower floor: how much of the
+// tournament a player actually took part in is a fact about him, not an
+// indirect signal like his side's results, and it was chosen to move a
+// rating harder — a zero-start substitute's four bench goals used to rate
+// 6th of 31 forwards; this is the multiplier that stopped it.
+check('the playing-time factor never leaves its bounds',
+  rated.every(p => !p.rating_playing_time ||
+    (p.rating_playing_time.factor >= PLAYING_TIME_FLOOR && p.rating_playing_time.factor <= 1)),
+  rated.filter(p => p.rating_playing_time &&
+    (p.rating_playing_time.factor < PLAYING_TIME_FLOOR || p.rating_playing_time.factor > 1))
+    .slice(0, 3).map(p => `${p.name} ${p.rating_playing_time.factor}`).join(','))
+
+check('neither multiplier ever outranks the performance',
   rated.every(p => p.ai_rating <= p.rating_performance + 0.05))
 
-check('match context is not also a weighted component',
-  rated.every(p => !Object.keys(p.rating_components).includes('match_context')))
+check('match context and playing time are never also weighted components',
+  rated.every(p => !Object.keys(p.rating_components).includes('match_context') &&
+    !Object.keys(p.rating_components).includes('workload')))
 
 check('every rating declares how much of its model it stands on',
   rated.every(p => p.rating_coverage > 0 && p.rating_coverage <= 1))
@@ -144,6 +166,22 @@ check('a full starter outrates the average cameo in the same group',
     const mean = xs => xs.reduce((t, p) => t + p.ai_rating, 0) / xs.length
     return mean(s) > mean(c)
   }))
+
+// The regression this whole rebuild guards against, named: a substitute who
+// never started could still out-rate the group he was compared to, because
+// the components that measure output know nothing about how little of the
+// tournament produced it. James Hickson (NZL, 0 starts, 4 goals) rated 6th of
+// 31 forwards under the old model; Will Calnan (ENG, 0 starts, 2 goals from
+// three cameos) had the best goal value of any top-eight midfielder. Neither
+// should sit in the upper half of a group of players who mostly started.
+for (const [name, group] of [['James Hickson', 'Forward'], ['Will Calnan', 'Midfielder']]) {
+  const p = rated.find(x => x.name === name)
+  if (!p) continue
+  const peers = rated.filter(x => x.rating_group === group).sort((a, b) => b.ai_rating - a.ai_rating)
+  const rank = peers.findIndex(x => x.name === name) + 1
+  check(`${name} does not rank in the upper half of ${peers.length} ${group.toLowerCase()}s`,
+    rank > peers.length / 2, `rank ${rank}/${peers.length}, rtg ${p.ai_rating}`)
+}
 
 // A keeper is rated on his own record, not his team's. `team_defence` was a
 // team property handed to every keeper in a squad alike: Argentina's two both

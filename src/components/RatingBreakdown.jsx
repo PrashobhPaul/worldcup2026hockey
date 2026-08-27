@@ -37,18 +37,37 @@ export default function RatingBreakdown({ player, compact = false }) {
         <span className="font-mono text-[10px] text-pitch-400">of 100</span>
       </div>
 
-      {/* The rating is what he did times the standard he did it against, and
-          both halves are printed: a multiplier a reader cannot see is a
-          multiplier they have to take on trust. */}
-      {player.rating_context && (
-        <div className="mb-2.5 flex items-baseline justify-between gap-2 rounded border border-white/5 bg-pitch-800/60 px-2 py-1.5">
-          <span className="font-mono text-[10px] text-pitch-300">
-            {player.rating_performance} <span className="text-pitch-600">performance</span>
-            {' × '}{player.rating_context.factor} <span className="text-pitch-600">context</span>
-          </span>
-          <span className="font-mono text-[9px] text-pitch-400" title="His side's points per match, ranked against the rest">
-            {player.rating_context.label} {player.rating_context.score}
-          </span>
+      {/* The rating is what he did, times how much of the tournament he did it
+          in, times the standard he did it against — every multiplier printed,
+          because a multiplier a reader cannot see is one they have to take on
+          trust. */}
+      {(player.rating_context || player.rating_playing_time) && (
+        <div className="mb-2.5 space-y-1 rounded border border-white/5 bg-pitch-800/60 px-2 py-1.5">
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="font-mono text-[10px] text-pitch-300">
+              {player.rating_performance} <span className="text-pitch-600">performance</span>
+              {player.rating_playing_time && (
+                <>{' × '}{player.rating_playing_time.factor} <span className="text-pitch-600">time played</span></>
+              )}
+              {player.rating_context && (
+                <>{' × '}{player.rating_context.factor} <span className="text-pitch-600">context</span></>
+              )}
+            </span>
+          </div>
+          {player.rating_playing_time && (
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="font-mono text-[9px] text-pitch-400" title="Starts weighted well above appearances off the bench, ranked against the rest">
+                {player.rating_playing_time.label} {player.rating_playing_time.score}
+              </span>
+            </div>
+          )}
+          {player.rating_context && (
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="font-mono text-[9px] text-pitch-400" title="His side's points per match, ranked against the rest">
+                {player.rating_context.label} {player.rating_context.score}
+              </span>
+            </div>
+          )}
         </div>
       )}
 
@@ -76,10 +95,16 @@ export default function RatingBreakdown({ player, compact = false }) {
             other outfielders in the same position — on how much he played, what his side did while he
             was on the pitch, and his discipline — rather than left unrated.</>
           )}
+          {player.rating_playing_time && (
+            <> The components give a performance of {player.rating_performance}; the time-played
+            factor of {player.rating_playing_time.factor} is how much of the tournament he actually
+            started or came on for, ranked against the rest, and it can cut a rating by up to 45% — a
+            deliberately hard floor, because how much a player played is a fact about him, not an
+            indirect signal like his side&apos;s results.</>
+          )}
           {player.rating_context && (
-            <> The components give a performance of {player.rating_performance}; the match-context
-            factor of {player.rating_context.factor} is his side&apos;s points per match ranked against
-            the rest, and it can move a rating by at most 12%, never to zero.</>
+            <> The match-context factor of {player.rating_context.factor} is his side&apos;s points per
+            match ranked against the rest, and it can move a rating by at most 12%, never to zero.</>
           )}
           {missing.length > 0 && (
             <> The rest — {missing.length} component{missing.length === 1 ? '' : 's'} covering passing,
