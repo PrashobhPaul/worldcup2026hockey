@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-27T04:25:51.229234+00:00",
+  "last_updated": "2026-08-27T16:14:51.302613+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -234,7 +234,11 @@
         "score": 8.1,
         "factor": 0.495,
         "raw": 0.25
-      }
+      },
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_05",
@@ -311,7 +315,11 @@
         "score": 77.4,
         "factor": 0.876,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_01",
@@ -432,7 +440,11 @@
         "score": 77.4,
         "factor": 0.876,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_04",
@@ -991,7 +1003,11 @@
         "score": 77.4,
         "factor": 0.876,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_03",
@@ -1254,7 +1270,11 @@
         "score": 76.9,
         "factor": 0.873,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_02",
@@ -1838,7 +1858,11 @@
         "score": 81.2,
         "factor": 0.897,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ARG_05",
@@ -1902,7 +1926,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ARG_06",
@@ -1974,7 +2002,11 @@
         "score": 37.2,
         "factor": 0.654,
         "raw": 0.65
-      }
+      },
+      "games_played": 4,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ARG_07",
@@ -2046,7 +2078,11 @@
         "score": 14.1,
         "factor": 0.528,
         "raw": 0.25
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ARG_09",
@@ -3062,7 +3098,11 @@
         "score": 48.7,
         "factor": 0.718,
         "raw": 0.85
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_06",
@@ -3126,7 +3166,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_07",
@@ -3190,7 +3234,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_08",
@@ -3320,7 +3368,11 @@
         "score": 26.6,
         "factor": 0.596,
         "raw": 0.05
-      }
+      },
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_10",
@@ -3384,7 +3436,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_11",
@@ -3448,7 +3504,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_12",
@@ -3520,7 +3580,11 @@
         "score": 42.3,
         "factor": 0.683,
         "raw": 0.7
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_13",
@@ -3584,7 +3648,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 2,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_14",
@@ -3648,7 +3716,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_15",
@@ -3712,7 +3784,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_16",
@@ -3776,7 +3852,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_17",
@@ -3848,7 +3928,11 @@
         "score": 20.3,
         "factor": 0.561,
         "raw": 0.4
-      }
+      },
+      "games_played": 5,
+      "goals_official": 4,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_18",
@@ -3914,7 +3998,11 @@
         "score": 81.2,
         "factor": 0.897,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_19",
@@ -3978,7 +4066,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_20",
@@ -4042,7 +4134,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "BEL_06",
@@ -6311,7 +6407,11 @@
         "score": 3.2,
         "factor": 0.468,
         "raw": 0.2
-      }
+      },
+      "games_played": 4,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_07",
@@ -6375,7 +6475,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_08",
@@ -6439,7 +6543,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_09",
@@ -6517,7 +6625,11 @@
         "score": 77.4,
         "factor": 0.876,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_10",
@@ -6589,7 +6701,11 @@
         "score": 24.4,
         "factor": 0.584,
         "raw": 0.4
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_12",
@@ -7327,7 +7443,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_10",
@@ -7391,7 +7511,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 3,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_11",
@@ -7455,7 +7579,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_12",
@@ -7521,7 +7649,11 @@
         "score": 45.3,
         "factor": 0.699,
         "raw": 0.5
-      }
+      },
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_13",
@@ -7649,7 +7781,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 2,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_15",
@@ -7791,7 +7927,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 3,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_17",
@@ -7863,7 +8003,11 @@
         "score": 73.0,
         "factor": 0.851,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_18",
@@ -7929,7 +8073,11 @@
         "score": 53.1,
         "factor": 0.742,
         "raw": 0.7
-      }
+      },
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_19",
@@ -8057,7 +8205,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IRL_03",
@@ -11938,7 +12090,11 @@
         "score": 32.4,
         "factor": 0.628,
         "raw": 0.65
-      }
+      },
+      "games_played": 4,
+      "goals_official": 2,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_06",
@@ -12002,7 +12158,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_08",
@@ -16233,7 +16393,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_05",
@@ -16297,7 +16461,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_06",
@@ -16361,7 +16529,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_07",
@@ -16425,7 +16597,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_08",
@@ -16503,7 +16679,11 @@
         "score": 77.4,
         "factor": 0.876,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 4,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_09",
@@ -16581,7 +16761,11 @@
         "score": 17.7,
         "factor": 0.548,
         "raw": 0.25
-      }
+      },
+      "games_played": 5,
+      "goals_official": 3,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_10",
@@ -16647,7 +16831,11 @@
         "score": 81.2,
         "factor": 0.897,
         "raw": 1.0
-      }
+      },
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_11",
@@ -16677,7 +16865,11 @@
       "benched": 5,
       "ps_scored": 0,
       "fg_scored": 0,
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 0,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_12",
@@ -16741,7 +16933,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_13",
@@ -18367,7 +18563,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_06",
@@ -19070,7 +19270,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "AUS_22",
@@ -19134,7 +19338,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 4,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "BEL_15",
@@ -20206,7 +20414,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_19",
@@ -20270,7 +20482,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_20",
@@ -20342,7 +20558,11 @@
         "score": 14.1,
         "factor": 0.528,
         "raw": 0.25
-      }
+      },
+      "games_played": 5,
+      "goals_official": 1,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "GER_21",
@@ -20774,7 +20994,11 @@
         "score": 26.6,
         "factor": 0.596,
         "raw": 0.05
-      }
+      },
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_21",
@@ -21202,7 +21426,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_20",
@@ -21266,7 +21494,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ESP_21",
@@ -21596,7 +21828,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "BEL_21",
@@ -21662,7 +21898,11 @@
         "score": 26.6,
         "factor": 0.596,
         "raw": 0.05
-      }
+      },
+      "games_played": 0,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "ENG_20",
@@ -21938,7 +22178,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "IND_21",
@@ -22002,7 +22246,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 5,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "NED_23",
@@ -22214,7 +22462,11 @@
       },
       "rating_coverage": 1.0,
       "rating_missing": [],
-      "impact_sub_goals": 0
+      "impact_sub_goals": 0,
+      "games_played": 1,
+      "goals_official": 0,
+      "figures_after": 5,
+      "figures_source": "fih-tms-matchpage"
     },
     {
       "id": "WAL_20",
