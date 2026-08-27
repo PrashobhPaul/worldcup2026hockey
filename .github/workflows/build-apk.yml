@@ -38,12 +38,21 @@ jobs:
       - name: The app's host has to be live before anything is built
         run: |
           HOST=$(node -p "require('./twa-manifest.json').host")
-          CODE=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "https://$HOST/" || echo 000)
-          if [ "$CODE" = "000" ]; then
-            echo "::error::twa-manifest.json points at https://$HOST/, which does not resolve. Create the DNS record and let Pages serve it before building an APK — otherwise the build installs an app that opens nothing."
+          URL="https://$HOST/"
+          # curl's own failure and the HTTP status have to be read separately.
+          # -w always prints a code, so `|| echo 000` on an unresolvable host
+          # appends a second one and the comparison silently stops matching —
+          # the guard would wave through exactly the outage it exists to catch.
+          if ! CODE=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "$URL"); then
+            echo "::error::$URL could not be reached at all. Create the DNS record and let Pages serve it before building an APK — otherwise the build installs an app that opens nothing."
             exit 1
           fi
-          echo "::notice::https://$HOST/ answered HTTP $CODE — safe to build."
+          case "$CODE" in
+            2*|3*) echo "::notice::$URL answered HTTP $CODE — safe to build." ;;
+            *)
+              echo "::error::$URL answered HTTP $CODE, so the app would open an error page. Fix the site before building an APK."
+              exit 1 ;;
+          esac
 
       - uses: actions/setup-java@v4
         with:
