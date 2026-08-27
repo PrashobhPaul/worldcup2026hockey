@@ -30,6 +30,21 @@ jobs:
         with:
           node-version: '20'
 
+      # An APK is a thing people install and keep, so it must not be built
+      # against a host that does not exist yet. twa-manifest.json names the
+      # host the app will open; if that name does not resolve and serve, every
+      # install is a blank screen nobody can fix from their phone. Stop here
+      # instead — the same ahead-of-DNS mistake that took the web app down.
+      - name: The app's host has to be live before anything is built
+        run: |
+          HOST=$(node -p "require('./twa-manifest.json').host")
+          CODE=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "https://$HOST/" || echo 000)
+          if [ "$CODE" = "000" ]; then
+            echo "::error::twa-manifest.json points at https://$HOST/, which does not resolve. Create the DNS record and let Pages serve it before building an APK — otherwise the build installs an app that opens nothing."
+            exit 1
+          fi
+          echo "::notice::https://$HOST/ answered HTTP $CODE — safe to build."
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
