@@ -27,7 +27,7 @@ export default function RatingBreakdown({ player, compact = false }) {
     <div className="rounded-lg border border-white/5 bg-pitch-950/40 p-3">
       <div className="mb-2 flex items-baseline justify-between gap-2">
         <span className="font-mono text-[10px] uppercase tracking-widest text-pitch-400">
-          {player.position_effective ?? 'Player'} rating
+          {player.rating_group === 'Outfield' ? 'Outfield' : (player.rating_group ?? 'Player')} rating
         </span>
         <DerivedBadge derived />
       </div>
@@ -67,9 +67,15 @@ export default function RatingBreakdown({ player, compact = false }) {
 
       {!compact && (
         <p className="mt-2.5 font-mono text-[10px] leading-relaxed text-pitch-400">
-          Each score is this player&apos;s percentile against every other {(player.position_effective ?? 'player').toLowerCase()} at
+          Each score is this player&apos;s percentile against every other {(player.rating_group ?? 'player').toLowerCase()} at
           this tournament; the percentage beside it is the share of the rating that component carried.
-          {' '}This rating rests on {Math.round(coverage * 100)}% of the {(player.position_effective ?? 'position').toLowerCase()} model.
+          {' '}This rating rests on {Math.round(coverage * 100)}% of the {(player.rating_group ?? 'position').toLowerCase()} model.
+          {player.rating_group === 'Outfield' && (
+            <> The FIH names a position for 48 of the 320 players entered and marks the rest
+            &ldquo;Squad&rdquo;, so this player&apos;s line is not on the record. He is measured against the
+            other outfielders in the same position — on how much he played, what his side did while he
+            was on the pitch, and his discipline — rather than left unrated.</>
+          )}
           {player.rating_context && (
             <> The components give a performance of {player.rating_performance}; the match-context
             factor of {player.rating_context.factor} is his side&apos;s points per match ranked against
@@ -77,8 +83,8 @@ export default function RatingBreakdown({ player, compact = false }) {
           )}
           {missing.length > 0 && (
             <> The rest — {missing.length} component{missing.length === 1 ? '' : 's'} covering passing,
-            carrying, circle entries, tackles and saves — needs figures the FIH does not publish for this
-            competition, so they are left out of the weighting rather than scored as zero.</>
+            carrying, circle entries, tackles, duels and saves — needs figures the FIH does not publish
+            for this competition, so they are left out of the weighting rather than scored as zero.</>
           )}
         </p>
       )}

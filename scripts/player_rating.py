@@ -42,13 +42,14 @@ is printed.
 # `needs` names fields on the player row; a component whose fields are all
 # missing or None across the whole group is unavailable.
 
-AVAILABILITY = 'availability'
-SCORING = 'scoring'
+WORKLOAD = 'workload'
+GOAL_VALUE = 'goal_value'
+FINISHING = 'finishing'
 SET_PIECE = 'set_piece'
-OPEN_PLAY = 'open_play'
-TEAM_DEFENCE = 'team_defence'
-CLUTCH = 'clutch'
 TALISMAN = 'talisman'
+ON_PITCH_DEF = 'on_pitch_defence'
+ON_PITCH_ATT = 'on_pitch_attack'
+CLEAN_SHEETS = 'clean_sheets'
 DISCIPLINE = 'discipline'
 MATCH_CONTEXT = 'match_context'
 # Declared, not yet fed by any source.
@@ -64,13 +65,14 @@ PC_DEFENCE = 'pc_defence'
 DISTRIBUTION = 'distribution'
 
 COMPONENTS = {
-    AVAILABILITY:      {'label': 'Availability',      'needs': ['games_played']},
-    SCORING:           {'label': 'Scoring',           'needs': ['goals']},
+    WORKLOAD:          {'label': 'Workload',          'needs': ['start_share', 'app_share']},
+    GOAL_VALUE:        {'label': 'Goal value',        'needs': ['goal_value']},
+    FINISHING:         {'label': 'Finishing',         'needs': ['fg_scored']},
     SET_PIECE:         {'label': 'Set pieces',        'needs': ['pc_scored']},
-    OPEN_PLAY:         {'label': 'Open play',         'needs': ['goals', 'pc_scored']},
-    TEAM_DEFENCE:      {'label': 'Goals against',     'needs': ['team_ga_per_match']},
-    CLUTCH:            {'label': 'Fourth quarter',    'needs': ['late_goals']},
     TALISMAN:          {'label': 'Share of attack',   'needs': ['goal_share']},
+    ON_PITCH_DEF:      {'label': 'Conceded on pitch', 'needs': ['on_pitch_ga']},
+    ON_PITCH_ATT:      {'label': 'Scored on pitch',   'needs': ['on_pitch_gf']},
+    CLEAN_SHEETS:      {'label': 'Clean sheets',      'needs': ['on_pitch_cs']},
     DISCIPLINE:        {'label': 'Discipline',        'needs': ['card_points']},
     MATCH_CONTEXT:     {'label': 'Match context',     'needs': ['team_points_per_match']},
     CHANCE_CREATION:   {'label': 'Chance creation',   'needs': ['key_passes', 'assists']},
@@ -92,23 +94,37 @@ COMPONENTS = {
 
 WEIGHTS = {
     'Forward': {
-        SCORING: 0.30, CIRCLE_IMPACT: 0.15, OPEN_PLAY: 0.10, CHANCE_CREATION: 0.15,
-        POSSESSION: 0.08, PRESSING: 0.07, TALISMAN: 0.05, CLUTCH: 0.05,
-        AVAILABILITY: 0.03, DISCIPLINE: 0.02,
+        FINISHING: 0.26, GOAL_VALUE: 0.24, TALISMAN: 0.18,
+        ON_PITCH_ATT: 0.12, WORKLOAD: 0.16, DISCIPLINE: 0.04,
     },
     'Midfielder': {
-        PROGRESSION: 0.25, POSSESSION: 0.18, CHANCE_CREATION: 0.17,
-        DEFENSIVE_ACTIONS: 0.17, SCORING: 0.08, TALISMAN: 0.05, CLUTCH: 0.04,
-        AVAILABILITY: 0.03, DISCIPLINE: 0.03,
+        GOAL_VALUE: 0.24, WORKLOAD: 0.30, ON_PITCH_ATT: 0.16,
+        ON_PITCH_DEF: 0.14, DISCIPLINE: 0.16,
     },
     'Defender': {
-        DEFENSIVE_ACTIONS: 0.26, TEAM_DEFENCE: 0.18, PROGRESSION: 0.16,
-        POSSESSION: 0.12, DUELS: 0.10, SET_PIECE: 0.09, AVAILABILITY: 0.05,
-        DISCIPLINE: 0.04,
+        ON_PITCH_DEF: 0.30, WORKLOAD: 0.26, SET_PIECE: 0.18,
+        GOAL_VALUE: 0.16, DISCIPLINE: 0.10,
     },
     'Goalkeeper': {
-        SHOT_STOPPING: 0.38, PC_DEFENCE: 0.20, TEAM_DEFENCE: 0.20,
-        DISTRIBUTION: 0.10, AVAILABILITY: 0.08, DISCIPLINE: 0.04,
+        ON_PITCH_DEF: 0.40, WORKLOAD: 0.28, CLEAN_SHEETS: 0.22, DISCIPLINE: 0.10,
+    },
+    # The line the record cannot name.
+    #
+    # The FIH states a position for 48 of 320 entrants and marks the other 272
+    # "Squad", so every outfield line here is inferred from how a player's
+    # goals were scored — which says nothing at all about a player who has not
+    # scored. That left 186 travelling players unrated, 119 of whom started
+    # matches: Argentina's Matias Rey started all five as co-captain and
+    # carried no number at all.
+    #
+    # They are rated here instead, against each other, on what the record does
+    # hold about them: how much they played, what their side did while they
+    # were on the pitch, and their discipline. It is a narrower model and the
+    # coverage figure says so. What it is not is silence about half the
+    # tournament.
+    'Outfield': {
+        WORKLOAD: 0.34, GOAL_VALUE: 0.20, ON_PITCH_ATT: 0.14,
+        ON_PITCH_DEF: 0.14, DISCIPLINE: 0.18,
     },
 }
 
@@ -158,57 +174,73 @@ def _pct(values, invert=False):
 def _raw(row, comp, group_has_appearances=False):
     """The component's raw figure for one player, or None if unsupported.
 
-    Volume, efficiency and impact are combined here, per component, and each
-    returns a single comparable figure. Where a rate is the honest reading —
-    goals against, share of attack — the rate is what is returned, so a player
-    is not rewarded for his team having played more matches.
+    Every figure here is a rate, not a total. Totals reward the player whose
+    side played more matches and the one who came on for the last ten minutes
+    of six of them; the question a rating answers is what he did with the time
+    he had.
     """
-    g = row.get('goals') or 0
-    pc = row.get('pc_scored') or 0
-    ps = row.get('ps_scored') or 0
-    mp = row.get('games_played')
-    if comp == AVAILABILITY:
-        return None if mp is None else float(mp)
+    ap = row.get('appearances')
+    started = row.get('started') or 0
 
-    if comp == SCORING:
-        # Per appearance where the whole group's appearance counts are known,
-        # so a starter is not out-scored on volume alone — and totals for the
-        # whole group where they are not. Never a mix: two players measured in
-        # different units cannot be ranked against each other.
-        if not group_has_appearances:
-            return float(g)
-        return (g / mp) if mp else 0.0
+    if comp == WORKLOAD:
+        # Starting is the claim a coach makes about a player, and it is the
+        # single strongest signal the FIH publishes for someone who does not
+        # score. Appearances count for a quarter of it, so a used substitute
+        # is ahead of a man who never left the bench.
+        ss, aps = row.get('start_share'), row.get('app_share')
+        if ss is None or aps is None:
+            return None
+        return 0.75 * ss + 0.25 * aps
+
+    if comp == GOAL_VALUE:
+        v = row.get('goal_value')
+        if v is None:
+            return None
+        return (v / ap) if ap else 0.0
+
+    if comp == FINISHING:
+        fg = row.get('fg_scored')
+        if fg is None:
+            return None
+        return (fg / ap) if ap else 0.0
+
     if comp == SET_PIECE:
-        return float(pc + ps)
-    if comp == OPEN_PLAY:
-        return float(max(0, g - pc - ps))
-    if comp == TEAM_DEFENCE:
-        v = row.get('team_ga_per_match')
-        return None if v is None else float(v)
-    if comp == CLUTCH:
-        v = row.get('late_goals')
-        return None if v is None else float(v)
+        pc, ps = row.get('pc_scored'), row.get('ps_scored')
+        if pc is None or ps is None:
+            return None
+        return ((pc + ps) / ap) if ap else 0.0
+
     if comp == TALISMAN:
         v = row.get('goal_share')
         return None if v is None else float(v)
+
+    if comp == ON_PITCH_DEF:
+        # Conceded per match started — his side's record while he was on it,
+        # not the flat team figure both keepers of a squad used to share.
+        # A player with no starts has no on-pitch record; the component is
+        # unavailable for him rather than scored as though he kept a clean
+        # sheet by sitting out.
+        v = row.get('on_pitch_ga')
+        return None if v is None or not started else float(v) / started
+
+    if comp == ON_PITCH_ATT:
+        v = row.get('on_pitch_gf')
+        return None if v is None or not started else float(v) / started
+
+    if comp == CLEAN_SHEETS:
+        v = row.get('on_pitch_cs')
+        return None if v is None or not started else float(v) / started
+
     if comp == MATCH_CONTEXT:
-        # The standard a performance was produced against.
-        #
-        # Without it the model asks only "how well did he play his position",
-        # and a player carrying a side that went out in the pools outranks one
-        # in a side that reached the semi-finals — because nothing in a
-        # forward's or midfielder's model knows what his team was up against.
-        # Points per match is the record's own answer to how far a side got,
-        # and it is percentile-ranked like every other component rather than
-        # being applied as a hidden multiplier: it appears in the breakdown
-        # with its weight, so a reader can see it and disagree with it.
         v = row.get('team_points_per_match')
         return None if v is None else float(v)
+
     if comp == DISCIPLINE:
         pts = row.get('card_points')
         if pts is None:
             return None
-        return float(pts) / mp if mp else float(pts)
+        return float(pts) / ap if ap else float(pts)
+
     # Everything else needs a source the record does not carry yet.
     needs = COMPONENTS[comp]['needs']
     if any(row.get(n) is None for n in needs):
@@ -217,7 +249,26 @@ def _raw(row, comp, group_has_appearances=False):
 
 
 # Components where a lower figure is the better performance.
-LOWER_IS_BETTER = {TEAM_DEFENCE, DISCIPLINE}
+LOWER_IS_BETTER = {ON_PITCH_DEF, DISCIPLINE}
+
+# Rate components, and the count each rate is measured over. These are the
+# ones shrunk towards the group mean: a figure over one match is a weaker
+# claim than the same figure over five, and the rating should say so.
+SHRINK = {
+    ON_PITCH_DEF: 'started',
+    ON_PITCH_ATT: 'started',
+    CLEAN_SHEETS: 'started',
+    GOAL_VALUE: 'appearances',
+    FINISHING: 'appearances',
+    SET_PIECE: 'appearances',
+    DISCIPLINE: 'appearances',
+}
+
+# How many matches the group's own average is worth as a prior. Two is a
+# little under half a group stage: enough that a single match cannot carry a
+# player to the top of a board, not so much that five matches of real evidence
+# are drowned by it.
+PRIOR_MATCHES = 2.0
 
 
 def rate_group(rows, position):
@@ -241,10 +292,60 @@ def rate_group(rows, position):
     # renormalised without it ranks two halves of a position against different
     # models. A component counts for the group only when the group is complete
     # on it.
-    group_has_appearances = all(r.get('games_played') is not None for r in rows)
+    group_has_appearances = all(r.get('appearances') is not None for r in rows)
     raws = {c: [_raw(r, c, group_has_appearances) for r in rows] for c in weights}
+
+    # A player who never started has no on-pitch record, and that is a fact
+    # about him rather than a gap in the source. Left as missing it triggered
+    # the group-completeness rule below and took the two components that
+    # matter most away from every goalkeeper in the tournament, because the
+    # reserve keepers never played: a keeper's coverage fell to 38% and his
+    # rating became workload and discipline. He is ranked level with the worst
+    # on-pitch record actually observed in his group instead — conservative,
+    # inside the real range, and never better than a man who took the field.
+    for c in (ON_PITCH_DEF, ON_PITCH_ATT, CLEAN_SHEETS):
+        if c not in weights:
+            continue
+        seen_vals = [v for v in raws[c] if v is not None]
+        if not seen_vals:
+            continue
+        worst = max(seen_vals) if c in LOWER_IS_BETTER else min(seen_vals)
+        for i, r in enumerate(rows):
+            if raws[c][i] is None and not (r.get('started') or 0):
+                raws[c][i] = worst
+
+    # Completeness and shrinkage are both judged over the players who will
+    # actually be rated. Two travelling players are on no team sheet at all —
+    # they were never named in a match squad — and their blanks were dropping
+    # Workload for all 179 players in the Outfield group. A player who cannot
+    # be rated cannot decide what the rest are rated on.
+    rateable = [i for i, r in enumerate(rows) if (r.get('appearances') or 0) > 0]
+
+    # Small samples, shrunk towards the group.
+    #
+    # Every component here is a rate, and a rate over one match is not the same
+    # claim as a rate over five. Unshrunk, a defender who started once and
+    # whose side conceded one goal that day scored a better "conceded per match
+    # started" than a man who started all five — and he was picked ahead of him
+    # for it. Each rate is pulled towards the group mean in proportion to how
+    # little of it there is: with a prior worth PRIOR_MATCHES matches, one
+    # start carries a third of its own number and five carries five-sixths.
+    for c, n_of in SHRINK.items():
+        if c not in weights:
+            continue
+        obs = [(i, raws[c][i], float(rows[i].get(n_of) or 0))
+               for i in rateable if raws[c][i] is not None]
+        weighted = [v * n for _, v, n in obs]
+        total_n = sum(n for _, _, n in obs)
+        if not total_n:
+            continue
+        prior = sum(weighted) / total_n
+        for i, v, n in obs:
+            raws[c][i] = (v * n + prior * PRIOR_MATCHES) / (n + PRIOR_MATCHES)
+
     scores = {c: _pct(raws[c], invert=c in LOWER_IS_BETTER) for c in weights}
-    available = {c for c in weights if all(v is not None for v in raws[c])}
+    available = {c for c in weights
+                 if rateable and all(raws[c][i] is not None for i in rateable)}
 
     # Context is scored across the group like everything else, but it never
     # joins the weighted sum — see the note above CONTEXT_FLOOR.
@@ -254,9 +355,12 @@ def rate_group(rows, position):
 
     out = []
     for i, row in enumerate(rows):
-        mine = {c: scores[c][i] for c in available}
+        # An unrateable player can be missing a component score entirely; he
+        # is returned unrated just below, and asking for his percentile first
+        # is what raised a KeyError.
+        mine = {c: scores[c][i] for c in available if i in scores[c]}
         total_w = sum(weights[c] for c in mine)
-        if not total_w or row.get('games_played') == 0:
+        if not total_w or not (row.get('appearances') or 0):
             out.append(None)
             continue
         pct = sum(weights[c] * mine[c] for c in mine) / total_w

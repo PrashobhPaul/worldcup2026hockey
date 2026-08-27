@@ -20,7 +20,8 @@
 // It is still a simulation and every surface says so. What it is not is
 // fiction: a reader can check any figure on this page against the record.
 
-import { tournamentXI, risingXI, xiRows } from './bestXI.js'
+import { xiRows } from './bestXI.js'
+import { eliteTiers, pickSquad, pickRisingSquad } from './squad.js'
 
 /** Both XIs line up 1-4-3-3, so the pitch draws the outfield as 4-3-3. */
 export const SIM_FORMATION = '4-3-3'
@@ -253,18 +254,21 @@ export function simulate(players, matches) {
   const base = goalRate(matches)
   if (!base) return null
   const start = (matches ?? []).reduce((min, m) => (!min || m.date < min ? m.date : min), null)
-  // Both selections are merit selections over the same field, so five names
-  // came out in both elevens and the exhibition fielded Jakob Brilla against
-  // Jakob Brilla. A player picked for the Best XI is not available to the other
-  // side: the Rising Stars are the emerging players the Best XI did not take,
-  // and the page says so. The Tournament's Best tab still shows the rising XI
-  // whole — that selection answers a different question and is left alone.
-  const picked = tournamentXI(players)
-  const taken = new Set(picked.map(p => p.id))
-  const home = xiRows(picked)
-  const away = xiRows(start
-    ? risingXI(players.filter(p => !taken.has(p.id)), new Date(`${start}T00:00:00Z`))
-    : [])
+  // Both sides are the squads the Tournament's Best tab draws, picked shirt by
+  // shirt on the components that define each role. They are selected over the
+  // same field, so a name can come out in both — the Best XI picks first and
+  // the Rising Stars are the emerging players it did not take, which the page
+  // states. The Tournament's Best tab still shows the rising XV whole, because
+  // that selection answers a different question.
+  const tiers = eliteTiers(matches)
+  const bestSquad = pickSquad(players, tiers)
+  const taken = new Set(bestSquad.squad.map(p => p.id))
+  const risingSquad = start
+    ? pickRisingSquad(players.filter(p => !taken.has(p.id)),
+                      new Date(`${start}T00:00:00Z`), { ...tiers, requireBench: false })
+    : { xi: [], shortfall: true }
+  const home = xiRows(bestSquad.xi)
+  const away = xiRows(risingSquad.xi)
   if (home.length < 11 || away.length < 11) return null
 
   const hAtt = strength(home, ATTACK)

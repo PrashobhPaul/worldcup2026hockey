@@ -2664,6 +2664,104 @@ def official_appearances(fixtures):
     return out
 
 
+# ── Goal value ────────────────────────────────────────────────────────────
+# What a goal was actually worth to the side that scored it.
+#
+# Counting goals treats the fifth in a 6-0 the same as the one that breaks 2-2
+# in the last quarter. They are not the same, and every surface that named a
+# "talisman" or a "golden stick" on raw totals was saying they were. The event
+# ledger carries the minute and the method for all 201 goals of this
+# tournament, so the running score at the moment of each goal is a fact, and
+# the state it left the match in is what this weights.
+#
+# Nothing here is invented: the weights are a stated editorial scale, printed
+# beside the number wherever it is used, and the raw goal count is published
+# unchanged next to it.
+GOAL_STATE_WEIGHT = {
+    'go_ahead': 1.00,    # took the lead
+    'equaliser': 0.95,   # levelled it
+    'opener': 0.90,      # broke a goalless game
+    'extending': 0.55,   # already in front
+    'consolation': 0.35, # still behind after it
+}
+# The last quarter decides matches. A goal there is worth more than the same
+# goal in the first.
+LATE_GOAL_BONUS = 1.20
+
+
+def goal_value_ledger(fixtures):
+    """{player name: {'value': float, 'goals': int, 'by_state': {...}}}.
+
+    Replays each match in order, so the score before every goal is the real
+    one rather than the final line read backwards.
+    """
+    out = {}
+    for m in fixtures['matches']:
+        if m['status'] != 'completed' or (m.get('score') or {}).get('home') is None:
+            continue
+        goals = [e for e in (m.get('events') or []) if e.get('type') == 'goal']
+        goals.sort(key=lambda e: (e.get('minute') or 0))
+        running = {m['home']: 0, m['away']: 0}
+        for e in goals:
+            team = e.get('team')
+            if team not in running:
+                continue
+            other = m['away'] if team == m['home'] else m['home']
+            before_mine, before_theirs = running[team], running[other]
+            running[team] += 1
+            after_mine = running[team]
+            if before_mine < before_theirs and after_mine == before_theirs:
+                state = 'equaliser'
+            elif before_mine < before_theirs:
+                state = 'consolation'
+            elif before_mine == before_theirs:
+                state = 'opener' if before_mine == 0 else 'go_ahead'
+            else:
+                state = 'extending'
+            name = e.get('player')
+            if not name:
+                continue
+            row = out.setdefault(name, {'value': 0.0, 'goals': 0, 'by_state': {}})
+            w = GOAL_STATE_WEIGHT[state]
+            if (e.get('minute') or 0) >= LATE_FROM_MINUTE:
+                w *= LATE_GOAL_BONUS
+            row['value'] += w
+            row['goals'] += 1
+            row['by_state'][state] = row['by_state'].get(state, 0) + 1
+    return out
+
+
+def on_pitch_records(fixtures):
+    """{player name: {started, gf, ga, clean_sheets}} — the side's record in
+    the matches this player actually started.
+
+    The rating used to hand every player his team's goals-against rate, which
+    is a property of the team and not of him: both of Argentina's keepers
+    carried 71.9, including the one who never took the field, and it was 62.5%
+    of a keeper's rating. Read off the official team sheets instead, this is
+    the record while he was on it — the same figure a squad-mate who sat out
+    does not share.
+    """
+    out = {}
+    for m in fixtures['matches']:
+        if m['status'] != 'completed' or (m.get('score') or {}).get('home') is None:
+            continue
+        sheet = m.get('lineups') or {}
+        if sheet.get('source') != 'official':
+            continue
+        for side, opp in (('home', 'away'), ('away', 'home')):
+            gf, ga = m['score'][side], m['score'][opp]
+            for row in (sheet.get(side) or {}).get('startingXI', []):
+                r = out.setdefault(row['name'],
+                                   {'started': 0, 'gf': 0, 'ga': 0, 'clean_sheets': 0})
+                r['started'] += 1
+                r['gf'] += gf
+                r['ga'] += ga
+                if ga == 0:
+                    r['clean_sheets'] += 1
+    return out
+
+
 def update_player_stats(fixtures, players_doc):
     """
     Full idempotent recompute of every player's tournament numbers from the
@@ -2724,6 +2822,10 @@ def update_player_stats(fixtures, players_doc):
 
     max_team_mp = max(team_matches.values(), default=1)
     official = official_appearances(fixtures)
+    # What each goal was worth, and what each side did while a player was on
+    # the pitch. Both come off the official team sheets and the event ledger.
+    gvalue = goal_value_ledger(fixtures)
+    onpitch = on_pitch_records(fixtures)
     disagreements = []
     changed = False
     for p in players:
@@ -2766,17 +2868,29 @@ def update_player_stats(fixtures, players_doc):
         # not here onto boards that describe who is.
         if p.get('on_team_list') is False:
             pos, pos_source = None, None
+        gv = gvalue.get(p['name'])
+        op = onpitch.get(p['name'])
+        starts_ = seen['starts'] if seen else None
         rating_rows.append({
             'player': p,
             'position': pos,
             'goals': a['goals'],
+            'fg_scored': max(0, a['goals'] - a['pc'] - a['ps']),
             'pc_scored': a['pc'],
             'ps_scored': a['ps'],
-            'games_played': official_mp,
-            'late_goals': a['late'],
+            'appearances': official_mp,
+            'started': starts_,
+            # Workload is measured against the side's own campaign: five starts
+            # of five is a different claim from five of eight.
+            'start_share': (starts_ / tm) if (tm and starts_ is not None) else None,
+            'app_share': (official_mp / tm) if (tm and official_mp is not None) else None,
+            'goal_value': (gv['value'] if gv else 0.0),
             'goal_share': (a['goals'] / scored) if scored else 0.0,
             'card_points': a['green'] * 1 + a['yellow'] * 2 + a['red'] * 5,
-            'team_ga_per_match': ga_per_match if tm else None,
+            # The side's record in the matches he actually started.
+            'on_pitch_gf': (op['gf'] if op else None),
+            'on_pitch_ga': (op['ga'] if op else None),
+            'on_pitch_cs': (op['clean_sheets'] if op else None),
             # How far this player's side actually got, in the record's own
             # terms. Three for a win, one for a draw, over matches played.
             'team_points_per_match': (team_points.get(p['team'], 0) / tm) if tm else None,
@@ -2822,9 +2936,19 @@ def update_player_stats(fixtures, players_doc):
                 changed = True
     # ── Rate, one position group at a time ─────────────────────────────
     # Percentiles only mean something against comparable players, so a
-    # goalkeeper is ranked among goalkeepers. A player the record gives no
-    # role to is not rated: there is no position to rate him against.
-    for position in ('Goalkeeper', 'Defender', 'Midfielder', 'Forward'):
+    # goalkeeper is ranked among goalkeepers.
+    #
+    # A travelling outfielder the record gives no line to is rated in the
+    # Outfield group rather than left unrated. The FIH names a position for 48
+    # of 320 entrants and marks the rest "Squad", so the line is inferred from
+    # how a player's goals were scored — and 186 players who never scored were
+    # getting no rating at all, 119 of them men who started matches. They are
+    # measured against each other on what the record does hold, and the
+    # coverage figure states how narrow that model is.
+    for r in rating_rows:
+        if r['position'] is None and r['player'].get('on_team_list') is not False:
+            r['position'] = 'Outfield'
+    for position in ('Goalkeeper', 'Defender', 'Midfielder', 'Forward', 'Outfield'):
         group = [r for r in rating_rows if r['position'] == position]
         if not group:
             continue
@@ -2833,6 +2957,12 @@ def update_player_stats(fixtures, players_doc):
             want = (result or {}).get('rating')
             breakdown = (result or {}).get('components')
             for field, value in (('ai_rating', want),
+                                 # Which group he was ranked in. Usually his
+                                 # line; "Outfield" where the record names no
+                                 # line, so a reader is never shown a rating
+                                 # without being told what it was measured
+                                 # against.
+                                 ('rating_group', position if want is not None else None),
                                  ('rating_components', breakdown),
                                  # What he did, before the standard he did it
                                  # against is applied — both are published, so
