@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -5,7 +6,16 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // GitHub Pages project sites serve from /<repo>/ — the deploy workflow passes
 // BASE_PATH from actions/configure-pages; Cloudflare/custom-domain builds get "/".
-const base = `${process.env.BASE_PATH || ''}/`
+//
+// A CNAME settles it on its own, and has to: actions/configure-pages reports
+// the repo's *current* Pages setting, so on the very deploy that introduces
+// the domain it still answers /worldcup2026hockey/ — baking that prefix into
+// every asset URL of a build about to be served from the domain root, which
+// loads nothing at all. The file in the artifact is what decides where the
+// site lands, so it decides the base too.
+const base = existsSync(new URL('./public/CNAME', import.meta.url))
+  ? '/'
+  : `${process.env.BASE_PATH || ''}/`
 
 export default defineConfig({
   base,
@@ -59,7 +69,15 @@ export default defineConfig({
             handler: 'NetworkFirst',
             options: {
               cacheName: 'hockeyai-data',
-              networkTimeoutSeconds: 6,
+              // The app aborts its own fetch at 12s, so the handler needs room
+              // to answer from cache before the caller gives up. Six was short
+              // enough that an ordinary slow mobile response counted as a
+              // failure and lit the OFFLINE chip on a working phone.
+              networkTimeoutSeconds: 10,
+              // The feed is a fixed set of files, and sync.js no longer appends
+              // a unique `?t=` to every request. ignoreSearch keeps a stray
+              // query string from hiding the cached copy the fallback needs.
+              matchOptions: { ignoreSearch: true },
               expiration: { maxEntries: 50, maxAgeSeconds: 604800 },
               cacheableResponse: { statuses: [0, 200] }
             }

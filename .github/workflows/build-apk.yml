@@ -95,10 +95,13 @@ jobs:
           echo "APK=$APK" >> "$GITHUB_ENV"
           cp "$APK" HockeyAI.apk
 
-      # With a stable keystore, publish the Digital Asset Links file so the
-      # installed app verifies against the site and runs true full-screen
-      # (no browser chrome). Only meaningful with stable signing — an
-      # ephemeral fingerprint would break on every rebuild.
+      # Digital Asset Links is the whole difference between a full-screen app
+      # and one wearing a browser address bar. Android reads the statement
+      # from the DOMAIN ROOT — https://<host>/.well-known/assetlinks.json —
+      # and never from a sub-path. On the old project-pages URL this file
+      # deployed under /worldcup2026hockey/, where Android never looked, so
+      # every build so far installed with the bar showing. It only works now
+      # because public/CNAME serves the site at the root of its own domain.
       - name: Publish asset links (stable signing only)
         if: ${{ env.KS_STABLE == '1' }}
         run: |
@@ -122,6 +125,24 @@ jobs:
             git add public/.well-known/assetlinks.json
             git commit -m "android: publish asset links for the app signing key"
             git push origin HEAD:main
+          fi
+
+      # Say plainly what this APK will do once installed, rather than leaving
+      # a browser-headed build to be discovered on a phone. The host comes
+      # from twa-manifest.json, so this cannot drift from what was built.
+      - name: Report the asset-link state
+        run: |
+          HOST=$(node -p "require('./twa-manifest.json').host")
+          URL="https://$HOST/.well-known/assetlinks.json"
+          if [ "${KS_STABLE:-0}" != "1" ]; then
+            echo "::warning::Signed with an EPHEMERAL key, so no asset links were published. This APK will show the browser address bar and cannot update an installed copy in place. Set ANDROID_KEYSTORE_B64 and ANDROID_KEYSTORE_PASSWORD for a full-screen, updatable build."
+            exit 0
+          fi
+          CODE=$(curl -s -o /tmp/al.json -w '%{http_code}' "$URL" || echo 000)
+          if [ "$CODE" = "200" ] && grep -q "com.prashobhpaul.hockeyai" /tmp/al.json; then
+            echo "::notice::Asset links live at $URL — the installed app runs full-screen."
+          else
+            echo "::warning::$URL is not serving the statement yet (HTTP $CODE). Expected on the run that first publishes it, since the Pages deploy follows this job. Re-check after that deploy; reinstall the APK if the address bar is still showing."
           fi
 
       - name: Publish to rolling release
