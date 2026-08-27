@@ -84,7 +84,20 @@ const byDesc = (...keys) => (a, b) => {
  * that answers it. `rank` orders the candidates for that shirt; the rating
  * breaks ties, so two players level on the defining component are separated by
  * everything else they did.
+ *
+ * Every slot but the keeper's carries a starts floor. A rate stat over a
+ * handful of substitute cameos can still read as elite after shrinkage —
+ * Will Calnan started none of England's matches and came on to score two,
+ * which put his goal value ahead of every starting midfielder in the top
+ * eight — and a coach does not hand the shirt that answers "who wins us the
+ * match" to a man who has not started one. The floor is soft: a line with
+ * nobody past it falls back to the full pool rather than leaving the shirt
+ * empty, exactly as the drag-flick shirt already did for a corner nobody
+ * had scored.
  */
+const STARTED_FLOOR = 2
+const hasStarted = p => (p.starts ?? 0) >= STARTED_FLOOR
+
 export const SLOTS = [
   {
     // The one shirt where the rating IS the role measure: a keeper is rated on
@@ -100,12 +113,13 @@ export const SLOTS = [
     key: 'battery', role: 'Defender', label: 'Drag flick', count: 2,
     why: 'penalty corners and strokes converted',
     rank: byDesc(p => componentScore(p, 'set_piece'), p => p.ai_rating),
-    require: p => (componentRaw(p, 'set_piece') ?? 0) > 0,
+    require: p => hasStarted(p) && (componentRaw(p, 'set_piece') ?? 0) > 0,
   },
   {
     key: 'anchor', role: 'Defender', label: 'Defensive anchor', count: 2,
     why: 'fewest conceded per match started',
     rank: byDesc(p => componentScore(p, 'on_pitch_defence'), p => p.ai_rating),
+    require: hasStarted,
   },
   // The specialist picks before the generalist, in every line. Filling two
   // engine shirts first took the midfielder with the best goal value into one
@@ -114,21 +128,25 @@ export const SLOTS = [
     key: 'creator', role: 'Midfielder', label: 'Match winner',
     why: 'goals weighted by what they were worth',
     rank: byDesc(p => componentScore(p, 'goal_value'), p => p.ai_rating),
+    require: hasStarted,
   },
   {
     key: 'engine', role: 'Midfielder', label: 'Engine', count: 2,
     why: 'the workload a coach trusted him with',
     rank: byDesc(p => componentScore(p, 'workload'), p => p.ai_rating),
+    require: hasStarted,
   },
   {
     key: 'talisman', role: 'Forward', label: 'Talisman',
     why: 'the largest share of his own side’s goals',
     rank: byDesc(p => componentScore(p, 'talisman'), p => p.ai_rating),
+    require: hasStarted,
   },
   {
     key: 'finisher', role: 'Forward', label: 'Finisher', count: 2,
     why: 'field goals per appearance',
     rank: byDesc(p => componentScore(p, 'finishing'), p => p.ai_rating),
+    require: hasStarted,
   },
 ]
 
