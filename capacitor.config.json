@@ -1,0 +1,11 @@
+{
+  "appId": "com.prashobhpaul.hockeyai",
+  "appName": "Hockey.AI",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#0b1736"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

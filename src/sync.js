@@ -5,7 +5,25 @@
 import { db, openDb } from './db'
 import { needsResync } from './syncPolicy'
 
-const DATA_BASE = `${import.meta.env.BASE_URL}data`
+// Where the numbers come from.
+//
+// The web app reads the copy deployed beside it, so a relative path is right:
+// whatever host serves the app also holds its data.
+//
+// The Android app has no site to sit beside. It carries the interface inside
+// the APK and reads the same central files over the network, so it is handed
+// an absolute URL at build time. That is the whole reason it does not depend
+// on the website being up or on a domain resolving — the two are separate
+// clients of one source, not one wrapped around the other.
+const SHIPPED_BASE = `${import.meta.env.BASE_URL}data`
+const DATA_BASE = import.meta.env.VITE_DATA_BASE || SHIPPED_BASE
+
+// The APK also carries the data as it stood when it was built. On the web
+// these are the same path and this is a no-op; in the app it is the difference
+// between a first launch with no signal showing the tournament and showing
+// nothing at all. It is only ever a floor — the central copy is tried first
+// every time, and the moment one is reachable it replaces this.
+const SHIPPED_COPY = DATA_BASE === SHIPPED_BASE ? null : SHIPPED_BASE
 
 async function fetchJSON(path) {
   // A fetch with no timeout can hang forever on a flaky mobile connection —
@@ -26,6 +44,14 @@ async function fetchJSON(path) {
     // so the app genuinely works offline.
     const r = await fetch(`${DATA_BASE}/${path}`, { signal: ctrl.signal, cache: 'no-store' })
     if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`)
+    return await r.json()
+  } catch (err) {
+    if (!SHIPPED_COPY) throw err
+    // Unreachable central copy, and the app has its own on disk. Read that
+    // rather than open on nothing. The status still tells the truth about the
+    // network — see the end of _sync.
+    const r = await fetch(`${SHIPPED_COPY}/${path}`)
+    if (!r.ok) throw err
     return await r.json()
   } finally {
     clearTimeout(timer)
@@ -214,7 +240,13 @@ async function _sync(force) {
       if (teamRatings) await db.meta.put({ id: 'teamRatings', ...teamRatings })
     })
 
-  setStatus({ state: 'synced', version: remote.version, empty: false, error: null })
+  // Data is loaded either way, but the light reports the network, not the
+  // database: an app that just read its own shipped copy because nothing was
+  // reachable is offline, and has to say so.
+  setStatus({
+    state: isOffline() ? 'offline' : 'synced',
+    version: remote.version, empty: false, error: null,
+  })
   // Favourite-team alerts ride the sync: fresh data in, notifications out.
   // Lazy import keeps the sync path free of any Notification-API coupling.
   import('./notify.js').then(n => n.checkFavouriteAlerts()).catch(() => {})

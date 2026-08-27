@@ -32,8 +32,12 @@ const base = existsSync(new URL('./public/CNAME', import.meta.url))
   ? '/'
   : `${process.env.BASE_PATH || ''}/`
 
+// The Android build ships the interface inside the APK and is served from the
+// app's own root, so it never carries a site's base path.
+const native = process.env.VITE_NATIVE === '1'
+
 export default defineConfig({
-  base,
+  base: native ? '/' : base,
   build: {
     rollupOptions: {
       output: {
@@ -49,6 +53,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
     VitePWA({
+      // A service worker exists to make a *website* behave like an installed
+      // app — precache the shell, survive a lost connection. The Android build
+      // already is an installed app: every asset ships inside the APK, so the
+      // worker would only add a second, staler copy of files that are local
+      // anyway, and with it the whole class of "the app is showing an old
+      // build" faults. Off there; untouched on the web.
+      disable: native,
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'og.png', 'logo.png'],
       manifest: {
