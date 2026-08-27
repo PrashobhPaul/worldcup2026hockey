@@ -103,3 +103,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ErrorBoundary>
   </React.StrictMode>,
 )
+
+// Take the splash down once there is something behind it. requestAnimationFrame
+// waits for the first painted frame, so the app is never revealed mid-render.
+// The timeout is the safety net: a splash that outlives a failed start would
+// hide the error boundary behind a screen that looks like loading forever.
+function dismissSplash() {
+  const el = document.getElementById('splash')
+  if (!el || el.classList.contains('is-done')) return
+  el.classList.add('is-done')
+  setTimeout(() => el.remove(), 400)
+}
+requestAnimationFrame(() => requestAnimationFrame(dismissSplash))
+setTimeout(dismissSplash, 6000)

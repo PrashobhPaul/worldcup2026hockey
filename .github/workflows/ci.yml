@@ -163,5 +163,12 @@ jobs:
       - name: The rising XI and the simulation are picked, not written
         run: npm run test:sim
 
+      # The app runs in a browser, an installed web app and an Android app, and
+      # those three do not agree on what a notification is — Android's web view
+      # has no Notification API at all. Each path is exercised here so alerts
+      # cannot go quietly missing on one platform again.
+      - name: Alerts work in the browser, the web app and the Android app
+        run: npm run test:notifications
+
       - name: Build
         run: npm run build

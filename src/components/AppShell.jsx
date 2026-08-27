@@ -59,6 +59,7 @@ export default function AppShell() {
     index: active,
     enabled: active >= 0 && isPhone,
     priority: SWIPE_PRIORITY.shell,
+    wrap: true,          // the tab bar is a loop, so neither end is a dead stop
     onChange: i => navigate(MOBILE_TABS[i].to),
   })
 
@@ -97,7 +98,11 @@ export default function AppShell() {
           the states that would otherwise render as tab after empty tab. */}
       <DataBanner />
 
-      <main className="mx-auto max-w-5xl px-4 py-5">
+      {/* Keyed on the path so a tab change replays the entrance. Search params
+          are deliberately left out of the key: sub-tabs live there, and they
+          should slide their own content rather than re-animate the whole page
+          under them. */}
+      <main key={pathname} className="page-enter mx-auto max-w-5xl px-4 py-5">
         <Outlet />
       </main>
 

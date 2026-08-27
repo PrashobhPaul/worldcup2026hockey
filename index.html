@@ -18,6 +18,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <!-- Shown while the bundle loads and removed the moment the app renders.
+         It lives here rather than in React so it paints on the very first frame
+         — a splash that waits for the JavaScript it is covering for would be
+         pointless. Being plain markup, it is the same splash in the browser, in
+         the installed web app and inside the Android app's web view, so the
+         three no longer start differently. Inline styles only: no stylesheet has
+         loaded yet at this point. -->
+    <div id="splash" role="status" aria-label="Loading Hockey.AI">
+      <img src="/logo.png" alt="" width="88" height="88" />
+      <div id="splash-bar"><span></span></div>
+    </div>
+    <style>
+      #splash {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+        background: radial-gradient(120% 90% at 50% 15%, #16224b 0%, #0b1736 55%, #070f24 100%);
+        transition: opacity .32s ease, visibility .32s ease;
+      }
+      #splash img { filter: drop-shadow(0 10px 30px rgba(0,0,0,.55)); animation: splash-in .5s cubic-bezier(.2,.7,.3,1) both; }
+      #splash-bar { width: 132px; height: 3px; border-radius: 999px; background: rgba(255,255,255,.10); overflow: hidden; }
+      #splash-bar span { display: block; width: 40%; height: 100%; border-radius: inherit;
+        background: linear-gradient(90deg, transparent, #d8a43a, transparent); animation: splash-sweep 1.15s ease-in-out infinite; }
+      #splash.is-done { opacity: 0; visibility: hidden; }
+      @keyframes splash-in { from { opacity: 0; transform: scale(.9) } to { opacity: 1; transform: none } }
+      @keyframes splash-sweep { 0% { transform: translateX(-120%) } 100% { transform: translateX(360%) } }
+      @media (prefers-reduced-motion: reduce) {
+        #splash img, #splash-bar span { animation: none }
+        #splash { transition: none }
+      }
+    </style>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

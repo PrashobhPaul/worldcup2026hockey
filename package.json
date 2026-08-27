@@ -33,9 +33,14 @@
     "test:medalpath": "node scripts/test_medal_path.mjs",
     "test:impact": "node scripts/test_impact.mjs",
     "test:sim": "node scripts/test_sim.mjs",
-    "data:recompute": "python3 scripts/recompute.py"
+    "data:recompute": "python3 scripts/recompute.py",
+    "icons": "python3 scripts/make_icons.py",
+    "test:notifications": "node scripts/test_notifications.mjs",
+    "smoke:ui": "node scripts/smoke_ui.mjs"
   },
   "dependencies": {
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/local-notifications": "^8.3.1",
     "dexie": "^4.0.8",
     "dexie-react-hooks": "^1.1.7",
     "lucide-react": "^0.462.0",
