@@ -145,7 +145,22 @@ jobs:
           cp "$APK" HockeyAI.apk
           ls -la HockeyAI.apk
 
+      # Every run leaves an installable APK attached to itself, so a branch
+      # can be tested on a real phone before it is merged. This is the only
+      # artifact a branch run produces — see the publish step below.
+      - name: Attach the APK to this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: HockeyAI-apk
+          path: HockeyAI.apk
+          if-no-files-found: error
+
+      # The rolling release is what people download, so only main publishes to
+      # it. A branch run still builds and proves the APK above; without this
+      # gate, dispatching the workflow to test a branch would quietly replace
+      # the public download with an unreviewed build.
       - name: Publish to rolling release
+        if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
