@@ -979,9 +979,19 @@ _off_bad = [no for no, exp in _OFFICIAL.items()
                 _BY_NO[no]['date'], _BY_NO[no]['time'], _BY_NO[no]['venue']) != exp]
 check('every Stage-2 fixture matches the official schedule', not _off_bad, f'wrong: {_off_bad}')
 
+# TMS owns these slots, so this table is a snapshot of it and has to be
+# refreshed whenever FIH moves a match. The pipeline says so in its own log
+# before it writes anything, e.g.
+#
+#   SCHEDULE: POS7 IND v BEL time 17:00 -> 18:15 (fih-tms)
+#
+# which is why 46 reads 18:15. The guard is still worth keeping strict: a
+# mis-parse silently rewriting a slot is a different thing from FIH moving a
+# match, and only the second one belongs here. When this fires, read that log
+# line first — if TMS moved it, this table is what is stale.
 _SCHEDULE = {41: ('2026-08-28', '09:30', 'AMV'), 42: ('2026-08-28', '11:00', 'BRU'),
              43: ('2026-08-28', '12:30', 'AMV'), 44: ('2026-08-28', '14:00', 'BRU'),
-             45: ('2026-08-28', '15:00', 'AMV'), 46: ('2026-08-28', '17:00', 'BRU'),
+             45: ('2026-08-28', '15:00', 'AMV'), 46: ('2026-08-28', '18:15', 'BRU'),
              47: ('2026-08-28', '18:00', 'AMV'), 48: ('2026-08-28', '20:30', 'BRU'),
              49: ('2026-08-30', '14:00', 'BRU'), 50: ('2026-08-30', '16:30', 'BRU')}
 _sch_bad = [no for no, exp in _SCHEDULE.items()
