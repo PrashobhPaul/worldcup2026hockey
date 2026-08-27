@@ -138,6 +138,7 @@ export default function TeamDetailPage() {
       ga: r.ga + them,
     }
   }, { w: 0, d: 0, l: 0, gf: 0, ga: 0 })
+  const captains = players.filter(p => p.is_captain && isAtTournament(p))
   const toppers = teamToppers(players, { matchesPlayed: played.length, goalsAgainst: record.ga })
   // Measured across the whole tournament: a share of the scoring only means
   // something against every side's scoring, and a rating rank only means
@@ -178,14 +179,23 @@ export default function TeamDetailPage() {
 
         <div className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
           {[
-            ['Captain', team.captain],
+            // Read off the squad, never off a second field on the team row.
+            // teams.json carried its own `captain` string that nothing
+            // reconciled against the entry list, so Australia's page named a
+            // captain who is not at this tournament — he was a pre-tournament
+            // seed the official list does not carry, and clearing his player
+            // flag left the team row untouched. Hockey has co-captains, so
+            // this prints however many the list marks.
+            ['Captain', captains.length ? captains.map(p => p.name).join(' & ') : '—'],
             ['Coach', team.coach],
             ['World Cups', team.titles > 0 ? `${team.titles} (last ${team.last_title})` : '0'],
             ['Pool', team.pool],
           ].map(([k, v]) => (
             <div key={k} className="rounded-lg bg-pitch-950/50 p-2.5">
               <div className="font-mono text-[9px] uppercase tracking-widest text-pitch-400">{k}</div>
-              <div className="mt-0.5 truncate text-xs font-semibold">{v}</div>
+              {/* Wraps rather than truncates: a side with two captains is two
+                  names, and "Maico Casella & Matias …" named one of them. */}
+              <div className="mt-0.5 text-xs font-semibold leading-tight">{v}</div>
             </div>
           ))}
         </div>

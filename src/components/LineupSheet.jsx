@@ -22,17 +22,6 @@ function playerEvents(events, name) {
 const PARTICLES = new Set(['van', 'van der', 'van den', 'de', 'del', 'der', 'den',
   'dos', 'da', 'di', 'le', 'la', 'du', 'ter'])
 
-export function shortName(full) {
-  const parts = full.trim().split(/\s+/)
-  if (parts.length < 2) return full
-  for (let take = 3; take >= 2; take--) {
-    if (parts.length >= take) {
-      const particle = parts.slice(-take, -1).join(' ').toLowerCase()
-      if (PARTICLES.has(particle)) return parts.slice(-take).join(' ')
-    }
-  }
-  return parts[parts.length - 1]
-}
 
 const CARD_STYLE = {
   green_card: 'bg-live/15 text-live',
@@ -82,7 +71,7 @@ function pitchRows(side) {
 function LineupPitch({ side, events, color }) {
   const rows = pitchRows(side)
   return (
-    <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0e3a6e] via-[#0b2f5c] to-[#082347]">
+    <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0e3a6e] via-[#0b2f5c] to-[#082347]">
       <svg viewBox="0 0 300 400" className="absolute inset-0 h-full w-full opacity-30" fill="none" stroke="#8fd0ff" strokeWidth="1.5">
         <rect x="8" y="8" width="284" height="384" rx="4" />
         <line x1="8" y1="200" x2="292" y2="200" />
@@ -98,13 +87,13 @@ function LineupPitch({ side, events, color }) {
         {(side.formation || '4-3-3').split('').join(' ')}
       </span>
 
-      <div className="absolute inset-0 flex flex-col-reverse justify-around py-4">
+      <div className="absolute inset-0 flex flex-col-reverse justify-around py-3">
         {rows.map((row, ri) => (
           <div key={ri} className="flex justify-around">
             {row.map(p => {
               const { goals, cards } = playerEvents(events, p.name)
               return (
-                <div key={p.playerId ?? p.name} className="flex w-16 flex-col items-center gap-0.5">
+                <div key={p.playerId ?? p.name} className="flex w-[74px] flex-col items-center gap-0.5">
                   <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-pitch-950/85 font-mono text-xs font-bold text-white ring-2"
                     style={{ '--tw-ring-color': color }}>
                     {p.number ?? '–'}
@@ -124,9 +113,19 @@ function LineupPitch({ side, events, color }) {
                       }`} />
                     )}
                   </span>
-                  <span className="max-w-full truncate text-center text-[9px] font-semibold leading-tight text-white/90">
-                    {shortName(p.name)}
+                  {/* The full name, wrapped, rather than a surname — so the
+                      shirt says who it is and the list below need not repeat
+                      eleven names to answer the same question. */}
+                  <span className="line-clamp-2 max-w-full break-words text-center text-[9px] font-semibold leading-[1.15] text-white/90"
+                    title={p.name}>
+                    {p.name}
                   </span>
+                  {/* The one thing the shirt badge cannot say: when. */}
+                  {goals.length > 0 && (
+                    <span className="font-mono text-[8px] leading-none text-live">
+                      {goals.map(g => `${g.minute}'`).join(' ')}
+                    </span>
+                  )}
                 </div>
               )
             })}
@@ -212,16 +211,6 @@ export default function LineupSheet({ match, events = [], home, away }) {
       </div>
 
       <LineupPitch side={active} events={events} color={team?.color ?? 'var(--color-brand)'} />
-
-      <div className="mt-4">
-        <div className="mb-1.5 flex items-baseline justify-between">
-          <h3 className="font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">Starting XI</h3>
-          <span className="rounded bg-pitch-700 px-1.5 py-0.5 font-mono text-[10px] text-pitch-300">{active.startingXI.length}</span>
-        </div>
-        <ul className="divide-y divide-white/5 overflow-hidden rounded-xl border border-white/5 bg-pitch-950/30">
-          {active.startingXI.map(p => <PlayerRow key={p.playerId ?? p.name} p={p} events={events} />)}
-        </ul>
-      </div>
 
       {active.substitutes?.length > 0 && (
         <div className="mt-4">

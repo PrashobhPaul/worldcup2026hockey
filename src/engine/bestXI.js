@@ -15,6 +15,9 @@
 // bodies, those players fill it in index order and the shirt says the role is
 // not on the record. Nothing is invented to fill a shirt quietly.
 
+import { ageOn } from './awards.js'
+import { splitText } from './goalSplit.js'
+
 export const HOCKEY_FORMATION = '1-4-3-3'
 
 export const LINES = [
@@ -88,6 +91,71 @@ export function tournamentXI(players) {
   const boards = positionBoards(players)
   return LINES.flatMap(l => boards[l.role].slice(0, l.count)
     .map(r => ({ ...r.player, line: l, roleRank: r.rank })))
+}
+
+/**
+ * The rising XI: the emerging players of this tournament, in 1-4-3-3.
+ *
+ * The old version of this asked a different question — the best players from
+ * nations outside the FIH top six — which selected established internationals
+ * for the crime of playing for a smaller country, and it was removed. This one
+ * asks who is new, on the two facts the FIH entry list states outright: a
+ * player's date of birth and how many caps he arrived with.
+ *
+ * Either qualifies, because they catch different players. Under 24 catches the
+ * prospect a big side has blooded early; thirty caps or fewer catches the
+ * late arrival winning his first tournament place at 27. Both are emerging;
+ * neither is a judgement call.
+ *
+ * Picked by line and by rating, exactly like the best XI — a rising XI that
+ * fields four forwards is not a team.
+ */
+export const RISING = { maxAge: 24, maxCaps: 30 }
+
+export function isRising(player, startDate) {
+  const age = ageOn(player?.dob, startDate)
+  const caps = player?.caps
+  const young = age != null && age < RISING.maxAge
+  const uncapped = caps != null && caps <= RISING.maxCaps
+  if (!young && !uncapped) return null
+  return {
+    young,
+    uncapped,
+    age,
+    caps,
+    // What to print on the shirt: the more striking of the two.
+    reason: young && (!uncapped || age <= 21) ? `age ${age}` : `${caps} caps`,
+  }
+}
+
+export function risingXI(players, startDate) {
+  const eligible = (players ?? []).filter(p =>
+    isAtTournament(p) && p.ai_rating != null && isRising(p, startDate))
+  return tournamentXI(eligible).map(p => ({ ...p, rising: isRising(p, startDate) }))
+}
+
+/**
+ * One picked XI, shaped for the surfaces that draw it.
+ *
+ * The pitch, the sim and the Tournament's Best list all draw the same eleven,
+ * so they all shape it here. Two of them shaped it separately once and the sim
+ * ended up carrying a team sheet of its own — names typed in before the
+ * tournament, three of whom never travelled.
+ */
+export function xiRows(selected) {
+  return (selected ?? []).map(p => ({
+    id: p.id,
+    player: p.name,
+    nat: p.team,
+    rating: p.ai_rating,
+    role: p.line.role,
+    pos: { Goalkeeper: 'GK', Defender: 'DF', Midfielder: 'MF' }[p.line.role] ?? 'FW',
+    goals: p.goals ?? 0,
+    pcGoals: p.pc_scored ?? 0,
+    caps: p.caps ?? null,
+    stat: [`${p.goals}G`, splitText(p)].filter(Boolean).join(' \u00b7 '),
+    note: p.rising ? p.rising.reason : null,
+  }))
 }
 
 /**

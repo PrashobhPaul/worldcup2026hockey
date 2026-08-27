@@ -914,18 +914,32 @@ normalize_captaincy(doc, {'NED': [{'name': 'Thierry Brinkman', 'is_captain': Fal
 check('a squad captain survives a list that marks no captain',
       [p['name'] for p in doc['players'] if p['is_captain']] == ['Thierry Brinkman'])
 
-# When the list itself marks two, keep the first it lists rather than guessing.
+# When the list itself marks two, both keep the armband. Hockey has co-captains
+# and the FIH entry list marks them — two for Argentina, two for Wales. This
+# used to keep only the first listed, so the squad check against the entry list
+# reported the dropped second one as a difference, run after run.
 doc = _cap_doc([('WAL', 'Benjamin Francis', True, 'fih-team-list'),
                 ('WAL', 'Jacob Draper', True, 'fih-team-list')])
 normalize_captaincy(doc, {'WAL': [{'name': 'Jacob Draper', 'is_captain': True},
                                   {'name': 'Benjamin Francis', 'is_captain': True}]})
-check('two officially-marked captains resolve to the first listed',
-      [p['name'] for p in doc['players'] if p['is_captain']] == ['Jacob Draper'])
+check('two officially-marked captains both keep the armband',
+      sorted(p['name'] for p in doc['players'] if p['is_captain'])
+      == ['Benjamin Francis', 'Jacob Draper'])
 
-# Backstop: no team may ever carry two captains, whatever the sources said.
+# A co-captain the list does NOT mark is still cleared: two is only allowed when
+# the entry list says two.
+doc = _cap_doc([('ESP', 'Marc Miralles', True, 'fih-team-list'),
+                ('ESP', 'Borja Lacalle', True, 'fih-team-list')])
+normalize_captaincy(doc, {'ESP': [{'name': 'Marc Miralles', 'is_captain': True},
+                                  {'name': 'Borja Lacalle', 'is_captain': False}]})
+check('a captain the list does not mark is cleared even beside one it does',
+      [p['name'] for p in doc['players'] if p['is_captain']] == ['Marc Miralles'])
+
+# Backstop: with no official list to read, a team keeps one captain — a second
+# there has no source behind it.
 doc = _cap_doc([('IRL', 'Conor Harte', True, None), ('IRL', 'Kyle Marshall', True, None)])
 normalize_captaincy(doc, {})
-check('no team can end up with two captains',
+check('with no list to read, a team keeps one captain',
       sum(1 for p in doc['players'] if p['is_captain']) == 1)
 
 print('\nTwo-stage bracket (real FIH 2026 format)')

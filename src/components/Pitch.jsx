@@ -30,13 +30,17 @@ export default function Pitch({ players, formation, byCode, accent }) {
         {rows.map((row, ri) => (
           <div key={ri} className="flex justify-around">
             {row.map(p => (
-              <div key={p.player} className="flex w-16 flex-col items-center gap-0.5">
+              <div key={p.id ?? p.player} className="flex w-[86px] flex-col items-center gap-0.5">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-pitch-950/80 text-lg ring-2"
                   style={{ '--tw-ring-color': accent }}>
                   {byCode.get(p.nat)?.flag ?? '🏑'}
                 </span>
-                <span className="max-w-full truncate text-center text-[9px] font-semibold leading-tight text-white/90">
-                  {p.player.split(' ').slice(-1)[0]}
+                {/* The whole name, wrapped, not a surname clipped mid-word:
+                    "Louis Haertelme…" told a reader neither who it was nor
+                    that anything had been cut. */}
+                <span className="line-clamp-2 max-w-full break-words text-center text-[9px] font-semibold leading-[1.15] text-white/90"
+                  title={p.player}>
+                  {p.player}
                 </span>
                 {p.rating != null && (
                   <span className="font-mono text-[8px] font-bold text-live">{p.rating}</span>
