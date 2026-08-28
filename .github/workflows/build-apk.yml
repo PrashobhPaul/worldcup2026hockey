@@ -113,9 +113,28 @@ jobs:
       # copy only rots against the toolchain.
       - name: Generate the Android project
         run: |
-          npm i --no-save @capacitor/core @capacitor/cli @capacitor/android
+          npm i --no-save @capacitor/cli @capacitor/android
           npx cap add android
+
+          # The generated project ships Capacitor's own launcher icon, so the
+          # installed app wore a stranger's logo. These are the Hockey.AI badge
+          # at every density, generated from the source artwork by
+          # scripts/make_icons.py, plus the adaptive pair for Android 8+.
+          cp -r resources/android/res/* android/app/src/main/res/
+
           npx cap sync android
+
+          # Prove both of those took, rather than finding out from a phone.
+          test -f android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png \
+            || { echo "::error::launcher icons were not copied into the Android project"; exit 1; }
+          test -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml \
+            || { echo "::error::adaptive launcher icon missing"; exit 1; }
+          # Android's web view has no Notification API, so alerts in the app go
+          # through this plugin. If it is not registered, the app installs with
+          # its alerts quietly dead.
+          grep -q 'LocalNotifications' android/app/src/main/assets/capacitor.plugins.json \
+            || { echo "::error::local notifications plugin is not registered — alerts would not work in the app"; exit 1; }
+          echo "::notice::Hockey.AI launcher icons in place; local notifications registered."
 
       - name: Build the APK
         env:
@@ -246,4 +265,4 @@ jobs:
           git push --delete origin apk-latest 2>/dev/null || true
           gh release create apk-latest HockeyAI.apk \
             --title "Hockey.AI for Android" \
-            --notes "The Android build of Hockey.AI. Download HockeyAI.apk, allow installs from your browser when prompted, and open — it runs as its own app, with no address bar and no dependency on the website. Every match, table, rating and prediction is stored on the device and refreshes from the central data whenever there is a connection, so it keeps working in a stadium with no signal. Follow a team on its page and tap the bell on Home for start-of-match and full-time alerts while the app is open or in the background."
+            --notes "The Android build of Hockey.AI. Download HockeyAI.apk, allow installs from your browser when prompted, and open — it runs as its own app, with no address bar and no dependency on the website. Every match, table, rating and prediction is stored on the device and refreshes from the central data whenever there is a connection, so it keeps working in a stadium with no signal. Follow a team on its page and tap the bell on Home for start-of-match and full-time alerts while the app is open or in the background. IMPORTANT — if you already have an older Hockey.AI installed, uninstall it first: builds before this one were a wrapper around the website and are signed with a different key, so Android refuses to install over them, and the old one left in place is still the version showing a browser address bar."

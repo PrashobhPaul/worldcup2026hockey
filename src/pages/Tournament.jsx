@@ -347,12 +347,22 @@ export default function TournamentPage() {
   return (
     <div>
       <div className="mb-4 border-b border-white/5 pb-4">
-        <h1 className="flex items-center gap-3.5 font-display text-2xl font-bold tracking-tight">
+        {/* Title and subtitle share a column beside the emblem, so the block is
+            only as tall as the emblem itself. With the subtitle below the whole
+            heading it sat under the image instead, leaving a band of empty space
+            the width of the emblem for nothing. */}
+        <div className="flex items-center gap-3.5">
           <img src={`${import.meta.env.BASE_URL}emblem.png`} alt=""
-            className="h-[68px] w-[68px] shrink-0 rounded-lg object-contain" />
-          Men&apos;s World Cup 2026
-        </h1>
-        <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and awards — computed live from completed matches</p>
+            className="h-[68px] w-[68px] shrink-0 object-contain" />
+          <div className="min-w-0">
+            {/* Steps down on narrow phones so the title stays on one line
+                beside the emblem. At 2xl it wrapped below 430px, and a
+                two-line title made the block taller than the emblem it was
+                supposed to sit level with. */}
+            <h1 className="font-display text-xl font-bold leading-tight tracking-tight sm:text-2xl">Men&apos;s World Cup 2026</h1>
+            <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and awards — live from completed matches</p>
+          </div>
+        </div>
       </div>
 
       <div className="no-scrollbar sticky top-14 z-30 -mx-4 mb-5 flex gap-1.5 overflow-x-auto border-b border-white/5 bg-pitch-950/90 px-4 py-2 backdrop-blur-xl" role="tablist">
@@ -370,7 +380,7 @@ export default function TournamentPage() {
       {requested === 'bracket' && <Navigate to="/prediction-race?tab=bracket" replace />}
 
       {loading ? <Skeleton h={500} /> : (
-        <>
+        <div key={view} className="panel-enter">
           {view === 'standings' && (
             <div className="space-y-6">
               {/* The shape of the tournament first, then the tables that
@@ -407,7 +417,7 @@ export default function TournamentPage() {
           {view === 'best' && <OracleElevens players={players} byCode={byCode} matches={matches} xi={xi} setXi={setXi} />}
 
           {view === 'awards' && <AwardsView />}
-        </>
+        </div>
       )}
     </div>
   )

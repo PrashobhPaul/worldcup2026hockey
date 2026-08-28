@@ -261,3 +261,34 @@ body {
   .hero-accuracy-pct { font-size: 1.4rem; }
   .hero-accuracy-sub { font-size: 0.56rem; }
 }
+
+
+/* Motion
+   ---------------------------------------------------------------------------
+   Enough movement to show that something changed, little enough to stay out of
+   the way when the app is used quickly. Every rule here is switched off under
+   prefers-reduced-motion at the bottom of this file, and none of them move
+   layout — they animate opacity and transform only, so nothing reflows. */
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: none; }
+}
+.page-enter { animation: page-enter 0.24s cubic-bezier(0.22, 0.61, 0.24, 1) both; }
+
+/* Sub-tab panels within a page, so switching a board is not an instant swap. */
+@keyframes panel-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+.panel-enter { animation: panel-enter 0.2s cubic-bezier(0.22, 0.61, 0.24, 1) both; }
+
+/* Tapping a tab should feel like pressing something. */
+[role='tab'], .tab-press { transition: transform 0.12s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+[role='tab']:active, .tab-press:active { transform: scale(0.96); }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter, .panel-enter { animation: none; }
+  [role='tab'], .tab-press { transition: none; }
+  [role='tab']:active, .tab-press:active { transform: none; }
+}

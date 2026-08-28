@@ -9,7 +9,9 @@ import { useEffect, useRef } from 'react'
  * the current page (its sub-tabs) register here, and a single shared listener
  * picks one winner per swipe: the innermost registrant that can actually move
  * in that direction. So a swipe inside the Tournament tab walks its sub-tabs,
- * and swiping past the last one moves to the next top-level tab.
+ * and swiping past the last one moves to the next top-level tab. The top-level
+ * tabs are a loop — `wrap` — so the last leads back to the first either way
+ * round and a swipe never simply does nothing.
  *
  * Gestures starting inside something the user is meant to drag or scroll
  * horizontally (charts, scrollable tables, the tab bars themselves, form
@@ -60,9 +62,14 @@ function onPointerUp(e) {
   const step = dx < 0 ? 1 : -1
   const winner = [...registry]
     .filter(r => r.enabled && r.count > 1)
-    .filter(r => { const next = r.index + step; return next >= 0 && next < r.count })
+    // A registrant is in the running if the next tab exists, or if it wraps.
+    // Sub-tabs do not wrap: running out of them is what hands the gesture up
+    // to the shell, which is how swiping past the last sub-tab reaches the
+    // next section. The shell does wrap, so the tabs are a loop in both
+    // directions and no swipe is ever a dead end.
+    .filter(r => r.wrap || (r.index + step >= 0 && r.index + step < r.count))
     .sort((a, b) => b.priority - a.priority)[0]
-  if (winner) winner.onChange(winner.index + step)
+  if (winner) winner.onChange((winner.index + step + winner.count) % winner.count)
 }
 
 function onPointerCancel() { startX = null }
@@ -75,11 +82,11 @@ function attach() {
   attached = true
 }
 
-export function useSwipeTabs({ count, index, onChange, enabled = true, priority = SWIPE_PRIORITY.page }) {
+export function useSwipeTabs({ count, index, onChange, enabled = true, priority = SWIPE_PRIORITY.page, wrap = false }) {
   // A stable registry entry, refreshed on every render, so the shared listener
   // always sees the current index without re-binding.
   const entry = useRef({})
-  Object.assign(entry.current, { count, index, onChange, enabled, priority })
+  Object.assign(entry.current, { count, index, onChange, enabled, priority, wrap })
 
   useEffect(() => {
     const self = entry.current
