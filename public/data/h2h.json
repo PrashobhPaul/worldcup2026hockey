@@ -2025,6 +2025,15 @@
     ],
     "FRA-JPN": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-28",
+        "home": "JPN",
+        "away": "FRA",
+        "home_goals": 1,
+        "away_goals": 3,
+        "current": false
+      },
+      {
         "competition": "FIH Hockey Men&#039;s Nations Cup South Africa 2025-26",
         "date": "2026-06-19",
         "home": "JPN",
@@ -2139,6 +2148,15 @@
     ],
     "IRL-NZL": [
       {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-28",
+        "home": "NZL",
+        "away": "IRL",
+        "home_goals": 6,
+        "away_goals": 3,
+        "current": false
+      },
+      {
         "competition": "2024 Olympic Games (M)",
         "date": "2024-08-02",
         "home": "NZL",
@@ -2185,6 +2203,15 @@
       }
     ],
     "AUS-ENG": [
+      {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-28",
+        "home": "ENG",
+        "away": "AUS",
+        "home_goals": 0,
+        "away_goals": 1,
+        "current": false
+      },
       {
         "competition": "2025-26 FIH Hockey Pro League (M)",
         "date": "2026-06-21",
@@ -2994,5 +3021,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-28T01:33:55.706260+00:00"
+  "updated_at": "2026-08-28T14:06:30.180463+00:00"
 }

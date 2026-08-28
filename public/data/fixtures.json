@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-27T16:14:51.302613+00:00",
+ "last_updated": "2026-08-28T14:07:16.086801+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -22425,343 +22425,533 @@
    "time": "09:30",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 1,
+    "away": 3
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 17,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "Mattéo Desgouillons"
+    },
+    {
+     "minute": 20,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "Gaspard Xavier"
+    },
+    {
+     "minute": 22,
+     "team": "JPN",
+     "type": "goal",
+     "via": "PS",
+     "player": "Jun Watanabe"
+    },
+    {
+     "minute": 49,
+     "team": "FRA",
+     "type": "green_card",
+     "player": "Corentin Sellier"
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "type": "goal",
+     "via": "FG",
+     "player": "Timothée Clément"
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "type": "goal",
+     "via": "PC",
+     "player": "Victor Charlet"
+    }
+   ],
    "lineups": {
-    "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.296758+00:00",
+    "source": "official",
+    "generated_at": "2026-08-28T14:07:09.044870+00:00",
+    "report": "fih-tms-matchreport",
     "home": {
-     "formation": "1-4-3-3",
+     "team": "JPN",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "JPN_18",
-       "name": "Takumi Kitagawa",
-       "number": 29,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
+       "number": 1,
+       "playerId": "JPN_02",
+       "name": "Koji Yamasaki",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "JPN_12",
-       "name": "Raiki Fujishima",
-       "number": 14,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_06",
-       "name": "Naru Kimura",
-       "number": 6,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_14",
-       "name": "Tsubasa Tanaka",
-       "number": 18,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_10",
-       "name": "Yuma Nagai",
-       "number": 12,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_21",
-       "name": "Jun Watanabe",
-       "number": 7,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_15",
-       "name": "Ryoma Ooka",
-       "number": 19,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_17",
-       "name": "Yusuke Kawamura",
-       "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_11",
-       "name": "Manabu Yamashita",
-       "number": 13,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "JPN_05",
-       "name": "Seren Tanaka",
-       "number": 5,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 4,
        "playerId": "JPN_04",
        "name": "Yamato Kawahara",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 6,
+       "playerId": "JPN_06",
+       "name": "Naru Kimura",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 7,
+       "playerId": "JPN_21",
+       "name": "Jun Watanabe",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 8,
+       "playerId": "JPN_07",
+       "name": "Taiki Takade",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "JPN_09",
+       "name": "Kazumasa Matsumoto",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 13,
+       "playerId": "JPN_11",
+       "name": "Manabu Yamashita",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 14,
+       "playerId": "JPN_12",
+       "name": "Raiki Fujishima",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 16,
+       "playerId": "JPN_13",
+       "name": "Hiro Saito",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 22,
+       "playerId": "JPN_16",
+       "name": "Kaito Tanaka",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 29,
+       "playerId": "JPN_18",
+       "name": "Takumi Kitagawa",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "JPN_13",
-       "name": "Hiro Saito",
-       "number": 16,
-       "position": null
+       "number": 5,
+       "playerId": "JPN_05",
+       "name": "Seren Tanaka",
+       "started": false,
+       "on_minute": 6,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "JPN_07",
-       "name": "Taiki Takade",
-       "number": 8,
-       "position": null
-      },
-      {
-       "playerId": "JPN_02",
-       "name": "Koji Yamasaki",
-       "number": 1,
-       "position": null
-      },
-      {
-       "playerId": "JPN_19",
-       "name": "Takashi Yoshikawa",
-       "number": 30,
-       "position": "Goalkeeper"
-      },
-      {
-       "playerId": "JPN_16",
-       "name": "Kaito Tanaka",
-       "number": 22,
-       "position": null
-      },
-      {
-       "playerId": "JPN_09",
-       "name": "Kazumasa Matsumoto",
-       "number": 11,
-       "position": null
-      },
-      {
-       "playerId": "JPN_20",
-       "name": "Hyota Yamada",
-       "number": 38,
-       "position": null
-      },
-      {
+       "number": 9,
        "playerId": "JPN_08",
        "name": "Kosei Kawabe",
-       "number": 9,
-       "position": null
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "JPN_03",
-       "name": "Shota Yamada",
-       "number": 2,
-       "position": null
+       "number": 12,
+       "playerId": "JPN_10",
+       "name": "Yuma Nagai",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 18,
+       "playerId": "JPN_14",
+       "name": "Tsubasa Tanaka",
+       "started": false,
+       "on_minute": 2,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 23,
+       "playerId": "JPN_17",
+       "name": "Yusuke Kawamura",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 30,
+       "playerId": "JPN_19",
+       "name": "Takashi Yoshikawa",
+       "started": false,
+       "on_minute": 16,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 38,
+       "playerId": "JPN_20",
+       "name": "Hyota Yamada",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "JPN",
      "coach": "Yoshihiro Anai"
     },
     "away": {
-     "formation": "1-4-3-3",
+     "team": "FRA",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "FRA_18",
-       "name": "Corentin Saunier",
-       "number": 31,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
-      },
-      {
-       "playerId": "FRA_12",
-       "name": "François Goyet",
-       "number": 16,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_10",
-       "name": "Benjamin Marqué",
-       "number": 13,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_09",
-       "name": "Gaspard Xavier",
-       "number": 12,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_04",
-       "name": "Brieuc Delemazure",
-       "number": 4,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_05",
-       "name": "Corentin Sellier",
-       "number": 6,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "FRA_07",
-       "name": "Xavier Esmenjaud",
-       "number": 8,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 2,
        "playerId": "FRA_02",
        "name": "Aristide Michaelis",
-       "number": 2,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 3,
+       "playerId": "FRA_03",
+       "name": "Mattéo Desgouillons",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 4,
+       "playerId": "FRA_04",
+       "name": "Brieuc Delemazure",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 6,
+       "playerId": "FRA_05",
+       "name": "Corentin Sellier",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 8,
+       "playerId": "FRA_07",
+       "name": "Xavier Esmenjaud",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "FRA_08",
+       "name": "Noé Jouin",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 16,
+       "playerId": "FRA_12",
+       "name": "François Goyet",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 18,
+       "playerId": "FRA_14",
+       "name": "Eliot Curty",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 22,
        "playerId": "FRA_01",
        "name": "Victor Charlet",
-       "number": 22,
-       "line": "Forward",
-       "position": "Forward",
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "FRA_20",
-       "name": "Mathis Clément",
-       "number": 9,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 24,
+       "playerId": "FRA_16",
+       "name": "Amaury Bellenger",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "FRA_11",
-       "name": "Malo Martinache",
-       "number": 14,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 31,
+       "playerId": "FRA_18",
+       "name": "Corentin Saunier",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
       }
      ],
      "substitutes": [
       {
+       "number": 7,
        "playerId": "FRA_06",
        "name": "Lucas Montecot",
-       "number": 7,
-       "position": null
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "FRA_16",
-       "name": "Amaury Bellenger",
-       "number": 24,
-       "position": null
+       "number": 12,
+       "playerId": "FRA_09",
+       "name": "Gaspard Xavier",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "FRA_08",
-       "name": "Noé Jouin",
-       "number": 11,
-       "position": null
+       "number": 13,
+       "playerId": "FRA_10",
+       "name": "Benjamin Marqué",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "FRA_03",
-       "name": "Mattéo Desgouillons",
-       "number": 3,
-       "position": null
+       "number": 14,
+       "playerId": "FRA_11",
+       "name": "Malo Martinache",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "FRA_14",
-       "name": "Eliot Curty",
-       "number": 18,
-       "position": null
-      },
-      {
-       "playerId": "FRA_17",
-       "name": "Timothée Clément",
-       "number": 28,
-       "position": null
-      },
-      {
-       "playerId": "FRA_19",
-       "name": "Louis Haertelmeyer",
-       "number": 95,
-       "position": null
-      },
-      {
-       "playerId": "FRA_13",
-       "name": "Florent Vaal",
-       "number": 17,
-       "position": null
-      },
-      {
+       "number": 23,
        "playerId": "FRA_15",
        "name": "Marius Clément",
-       "number": 23,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": 22,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 28,
+       "playerId": "FRA_17",
+       "name": "Timothée Clément",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 95,
+       "playerId": "FRA_19",
+       "name": "Louis Haertelmeyer",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "FRA",
      "coach": "John-John Dohmen"
     }
    },
-   "tms_id": 22374
+   "tms_id": 22374,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 1,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 1,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 3,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 2,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — JPN vs FRA.",
+     "seq": 0
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: JPN 0-0 FRA.",
+     "seq": 1
+    },
+    {
+     "minute": 17,
+     "team": "FRA",
+     "text": "GOAL! Mattéo Desgouillons (FRA) scores from a field goal — JPN 0-1 FRA.",
+     "seq": 2
+    },
+    {
+     "minute": 20,
+     "team": "FRA",
+     "text": "Green Card for Gaspard Xavier (FRA) — 2-minute suspension.",
+     "seq": 3
+    },
+    {
+     "minute": 22,
+     "team": "JPN",
+     "text": "GOAL! Jun Watanabe (JPN) scores from a penalty stroke — JPN 1-1 FRA.",
+     "seq": 4
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: JPN 1-1 FRA.",
+     "seq": 5
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: JPN 1-1 FRA.",
+     "seq": 6
+    },
+    {
+     "minute": 49,
+     "team": "FRA",
+     "text": "Green Card for Corentin Sellier (FRA) — 2-minute suspension.",
+     "seq": 7
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "text": "GOAL! Timothée Clément (FRA) scores from a field goal — JPN 1-2 FRA.",
+     "seq": 8
+    },
+    {
+     "minute": 59,
+     "team": "FRA",
+     "text": "GOAL! Victor Charlet (FRA) scores from a penalty corner — JPN 1-3 FRA.",
+     "seq": 9
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: JPN 1-3 FRA.",
+     "seq": 10
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "POS15",
@@ -22778,7 +22968,7 @@
    "time": "11:00",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "scheduled",
+   "status": "live",
    "score": {
     "home": null,
     "away": null
@@ -22786,7 +22976,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.297260+00:00",
+    "generated_at": "2026-08-28T14:07:16.079907+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -22917,6 +23107,12 @@
        "position": null
       },
       {
+       "playerId": "WAL_06",
+       "name": "Sam Welsh",
+       "number": 16,
+       "position": null
+      },
+      {
        "playerId": "WAL_10",
        "name": "Hywel Jones",
        "number": 24,
@@ -22926,12 +23122,6 @@
        "playerId": "WAL_17",
        "name": "Daniel Kyriakides",
        "number": 3,
-       "position": null
-      },
-      {
-       "playerId": "WAL_06",
-       "name": "Sam Welsh",
-       "number": 16,
        "position": null
       },
       {
@@ -22973,18 +23163,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_09",
-       "name": "Ashran Hamsani",
-       "number": 20,
+       "playerId": "MAS_08",
+       "name": "Faiz Jali",
+       "number": 18,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_08",
-       "name": "Faiz Jali",
-       "number": 18,
+       "playerId": "MAS_09",
+       "name": "Ashran Hamsani",
+       "number": 20,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -23062,15 +23252,15 @@
        "position": null
       },
       {
-       "playerId": "MAS_03",
-       "name": "Syed Cholan",
-       "number": 1,
-       "position": null
-      },
-      {
        "playerId": "MAS_22",
        "name": "Akhimullah Anuar",
        "number": 11,
+       "position": null
+      },
+      {
+       "playerId": "MAS_03",
+       "name": "Syed Cholan",
+       "number": 1,
        "position": null
       },
       {
@@ -23086,15 +23276,15 @@
        "position": null
       },
       {
-       "playerId": "MAS_05",
-       "name": "Faizal Saari",
-       "number": 10,
-       "position": null
-      },
-      {
        "playerId": "MAS_18",
        "name": "Azimuddin Kamaruddin",
        "number": 31,
+       "position": null
+      },
+      {
+       "playerId": "MAS_05",
+       "name": "Faizal Saari",
+       "number": 10,
        "position": null
       },
       {
@@ -23131,7 +23321,7 @@
    "time": "12:30",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "live",
    "score": {
     "home": null,
     "away": null
@@ -23139,7 +23329,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.297666+00:00",
+    "generated_at": "2026-08-28T14:07:16.080412+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23217,18 +23407,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_11",
-       "name": "Ghazanfar Ali",
-       "number": 15,
+       "playerId": "PAK_09",
+       "name": "Adeel Latif",
+       "number": 13,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_09",
-       "name": "Adeel Latif",
-       "number": 13,
+       "playerId": "PAK_11",
+       "name": "Ghazanfar Ali",
+       "number": 15,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -23344,9 +23534,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_09",
-       "name": "Tevin Kok",
-       "number": 11,
+       "playerId": "RSA_15",
+       "name": "Damian Knott",
+       "number": 26,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -23362,6 +23552,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "RSA_09",
+       "name": "Tevin Kok",
+       "number": 11,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
@@ -23371,10 +23570,10 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_15",
-       "name": "Damian Knott",
-       "number": 26,
-       "line": "Midfielder",
+       "playerId": "RSA_02",
+       "name": "Mustaphaa Cassiem",
+       "number": 2,
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -23392,15 +23591,6 @@
        "playerId": "RSA_08",
        "name": "Hans Neethling",
        "number": 10,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_02",
-       "name": "Mustaphaa Cassiem",
-       "number": 2,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -23433,15 +23623,15 @@
        "position": null
       },
       {
-       "playerId": "RSA_04",
-       "name": "Calvin Davis",
-       "number": 4,
-       "position": null
-      },
-      {
        "playerId": "RSA_16",
        "name": "Trevor de Lora",
        "number": 28,
+       "position": null
+      },
+      {
+       "playerId": "RSA_04",
+       "name": "Calvin Davis",
+       "number": 4,
        "position": null
       },
       {
@@ -23484,343 +23674,610 @@
    "time": "14:00",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 6,
+    "away": 3
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 3,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Kane Russell"
+    },
+    {
+     "minute": 14,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Kane Russell"
+    },
+    {
+     "minute": 21,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "George Baker"
+    },
+    {
+     "minute": 24,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "Sean Murray"
+    },
+    {
+     "minute": 26,
+     "team": "NZL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Sam Lane"
+    },
+    {
+     "minute": 27,
+     "team": "IRL",
+     "type": "green_card",
+     "player": "Mark McNellis"
+    },
+    {
+     "minute": 28,
+     "team": "NZL",
+     "type": "green_card",
+     "player": "Benjamin Culhane"
+    },
+    {
+     "minute": 37,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Gregory Williams"
+    },
+    {
+     "minute": 38,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PS",
+     "player": "Lee Cole"
+    },
+    {
+     "minute": 46,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Sam Lane"
+    },
+    {
+     "minute": 58,
+     "team": "NZL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Finn Ward"
+    },
+    {
+     "minute": 60,
+     "team": "IRL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Jeremy Duncan"
+    }
+   ],
    "lineups": {
-    "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.298047+00:00",
+    "source": "official",
+    "generated_at": "2026-08-28T14:07:10.432259+00:00",
+    "report": "fih-tms-matchreport",
     "home": {
-     "formation": "1-4-3-3",
+     "team": "NZL",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "NZL_02",
-       "name": "Dominic Dixon",
-       "number": 1,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
+       "number": 2,
+       "playerId": "NZL_20",
+       "name": "Scott Boyde",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "NZL_01",
-       "name": "Sam Lane",
-       "number": 12,
-       "line": "Defender",
-       "position": "Defender",
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_19",
-       "name": "Tim Neild",
-       "number": 41,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_11",
-       "name": "Bradley Rothwell",
-       "number": 25,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_07",
-       "name": "Nic Woods",
-       "number": 17,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_15",
-       "name": "Isaac Houlbrooke",
-       "number": 37,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_14",
-       "name": "Ryan Parr",
-       "number": 35,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_06",
-       "name": "Aidan Sarikaya",
-       "number": 16,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NZL_08",
-       "name": "Joseph Morrison",
-       "number": 19,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 8,
        "playerId": "NZL_04",
        "name": "Charlie Morrison",
-       "number": 8,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 12,
+       "playerId": "NZL_01",
+       "name": "Sam Lane",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 17,
+       "playerId": "NZL_07",
+       "name": "Nic Woods",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 21,
+       "playerId": "NZL_09",
+       "name": "Kane Russell",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 23,
+       "playerId": "NZL_10",
+       "name": "Dylan Thomas",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 30,
+       "playerId": "NZL_12",
+       "name": "Finn Ward",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 37,
+       "playerId": "NZL_15",
+       "name": "Isaac Houlbrooke",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 38,
        "playerId": "NZL_16",
        "name": "Benjamin Culhane",
-       "number": 38,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 40,
+       "playerId": "NZL_18",
+       "name": "Matthew Ruetsch",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 41,
+       "playerId": "NZL_19",
+       "name": "Tim Neild",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "NZL_09",
-       "name": "Kane Russell",
-       "number": 21,
-       "position": null
+       "number": 1,
+       "playerId": "NZL_02",
+       "name": "Dominic Dixon",
+       "started": false,
+       "on_minute": 16,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
       },
       {
-       "playerId": "NZL_05",
-       "name": "Simon Yorston",
-       "number": 13,
-       "position": null
-      },
-      {
+       "number": 4,
        "playerId": "NZL_03",
        "name": "Dane Lett",
-       "number": 4,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "NZL_18",
-       "name": "Matthew Ruetsch",
-       "number": 40,
-       "position": "Goalkeeper"
+       "number": 16,
+       "playerId": "NZL_06",
+       "name": "Aidan Sarikaya",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 25,
+       "playerId": "NZL_11",
+       "name": "Bradley Rothwell",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 32,
        "playerId": "NZL_13",
        "name": "George Baker",
-       "number": 32,
-       "position": null
+       "started": false,
+       "on_minute": 1,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 35,
+       "playerId": "NZL_14",
+       "name": "Ryan Parr",
+       "started": false,
+       "on_minute": 8,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 39,
        "playerId": "NZL_17",
        "name": "James Hickson",
-       "number": 39,
-       "position": null
-      },
-      {
-       "playerId": "NZL_20",
-       "name": "Scott Boyde",
-       "number": 2,
-       "position": null
-      },
-      {
-       "playerId": "NZL_10",
-       "name": "Dylan Thomas",
-       "number": 23,
-       "position": null
-      },
-      {
-       "playerId": "NZL_12",
-       "name": "Finn Ward",
-       "number": 30,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "NZL",
      "coach": "Greg Nicol"
     },
     "away": {
-     "formation": "1-4-3-3",
+     "team": "IRL",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
+       "number": 1,
        "playerId": "IRL_03",
        "name": "Jamie Carr",
-       "number": 1,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
       },
       {
-       "playerId": "IRL_07",
-       "name": "Kyle Marshall",
-       "number": 15,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_19",
-       "name": "Gregory Williams",
-       "number": 46,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_08",
-       "name": "Sean Murray",
-       "number": 17,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_10",
-       "name": "Peter McKibbin",
-       "number": 19,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_18",
-       "name": "Fergus Gibson",
-       "number": 39,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_16",
-       "name": "Louis Rowe",
-       "number": 30,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_20",
-       "name": "Adam McAllister",
-       "number": 47,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_14",
-       "name": "Peter Brown",
-       "number": 26,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IRL_09",
-       "name": "Mark McNellis",
-       "number": 18,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 4,
        "playerId": "IRL_05",
        "name": "Luke Witherow",
-       "number": 4,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 8,
+       "playerId": "IRL_06",
+       "name": "John McKee",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 9,
+       "playerId": "IRL_22",
+       "name": "Matthew Nelson",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 15,
+       "playerId": "IRL_07",
+       "name": "Kyle Marshall",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 17,
+       "playerId": "IRL_08",
+       "name": "Sean Murray",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 19,
+       "playerId": "IRL_10",
+       "name": "Peter McKibbin",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 20,
+       "playerId": "IRL_11",
+       "name": "Jeremy Duncan",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 29,
+       "playerId": "IRL_15",
+       "name": "Lee Cole",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 30,
+       "playerId": "IRL_16",
+       "name": "Louis Rowe",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 39,
+       "playerId": "IRL_18",
+       "name": "Fergus Gibson",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "IRL_11",
-       "name": "Jeremy Duncan",
-       "number": 20,
-       "position": null
-      },
-      {
-       "playerId": "IRL_15",
-       "name": "Lee Cole",
-       "number": 29,
-       "position": null
-      },
-      {
+       "number": 2,
        "playerId": "IRL_04",
        "name": "Luke Roleston",
-       "number": 2,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
       },
       {
-       "playerId": "IRL_21",
-       "name": "Alistair Empey",
-       "number": 49,
-       "position": null
+       "number": 18,
+       "playerId": "IRL_09",
+       "name": "Mark McNellis",
+       "started": false,
+       "on_minute": 7,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "IRL_06",
-       "name": "John McKee",
-       "number": 8,
-       "position": null
-      },
-      {
-       "playerId": "IRL_13",
-       "name": "Jonathan Lynch",
-       "number": 25,
-       "position": null
-      },
-      {
+       "number": 24,
        "playerId": "IRL_12",
        "name": "Benjamin Walker",
-       "number": 24,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "IRL_17",
-       "name": "Sam Hyland",
-       "number": 36,
-       "position": null
+       "number": 25,
+       "playerId": "IRL_13",
+       "name": "Jonathan Lynch",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "IRL_22",
-       "name": "Matthew Nelson",
-       "number": 9,
-       "position": null
+       "number": 26,
+       "playerId": "IRL_14",
+       "name": "Peter Brown",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 46,
+       "playerId": "IRL_19",
+       "name": "Gregory Williams",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 49,
+       "playerId": "IRL_21",
+       "name": "Alistair Empey",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "IRL",
      "coach": "Mark Tumilty"
     }
    },
-   "tms_id": 22377
+   "tms_id": 22377,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 6,
+     "field_goals": 3,
+     "pc_goals": 3,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 3,
+     "field_goals": 0,
+     "pc_goals": 2,
+     "ps_goals": 1,
+     "green_cards": 2,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — NZL vs IRL.",
+     "seq": 0
+    },
+    {
+     "minute": 3,
+     "team": "NZL",
+     "text": "GOAL! Kane Russell (NZL) scores from a penalty corner — NZL 1-0 IRL.",
+     "seq": 1
+    },
+    {
+     "minute": 14,
+     "team": "NZL",
+     "text": "GOAL! Kane Russell (NZL) scores from a penalty corner — NZL 2-0 IRL.",
+     "seq": 2
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: NZL 2-0 IRL.",
+     "seq": 3
+    },
+    {
+     "minute": 21,
+     "team": "NZL",
+     "text": "GOAL! George Baker (NZL) scores from a field goal — NZL 3-0 IRL.",
+     "seq": 4
+    },
+    {
+     "minute": 24,
+     "team": "IRL",
+     "text": "Green Card for Sean Murray (IRL) — 2-minute suspension.",
+     "seq": 5
+    },
+    {
+     "minute": 26,
+     "team": "NZL",
+     "text": "GOAL! Sam Lane (NZL) scores from a penalty corner — NZL 4-0 IRL.",
+     "seq": 6
+    },
+    {
+     "minute": 27,
+     "team": "IRL",
+     "text": "Green Card for Mark McNellis (IRL) — 2-minute suspension.",
+     "seq": 7
+    },
+    {
+     "minute": 28,
+     "team": "NZL",
+     "text": "Green Card for Benjamin Culhane (NZL) — 2-minute suspension.",
+     "seq": 8
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: NZL 4-0 IRL.",
+     "seq": 9
+    },
+    {
+     "minute": 37,
+     "team": "IRL",
+     "text": "GOAL! Gregory Williams (IRL) scores from a penalty corner — NZL 4-1 IRL.",
+     "seq": 10
+    },
+    {
+     "minute": 38,
+     "team": "IRL",
+     "text": "GOAL! Lee Cole (IRL) scores from a penalty stroke — NZL 4-2 IRL.",
+     "seq": 11
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: NZL 4-2 IRL.",
+     "seq": 12
+    },
+    {
+     "minute": 46,
+     "team": "NZL",
+     "text": "GOAL! Sam Lane (NZL) scores from a field goal — NZL 5-2 IRL.",
+     "seq": 13
+    },
+    {
+     "minute": 58,
+     "team": "NZL",
+     "text": "GOAL! Finn Ward (NZL) scores from a field goal — NZL 6-2 IRL.",
+     "seq": 14
+    },
+    {
+     "minute": 60,
+     "team": "IRL",
+     "text": "GOAL! Jeremy Duncan (IRL) scores from a penalty corner — NZL 6-3 IRL.",
+     "seq": 15
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: NZL 6-3 IRL.",
+     "seq": 16
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "POS5",
@@ -23837,7 +24294,7 @@
    "time": "15:00",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "live",
    "score": {
     "home": null,
     "away": null
@@ -24173,7 +24630,12 @@
      "coach": "Mark Hager"
     }
    },
-   "tms_id": 22378
+   "tms_id": 22378,
+   "live_score": {
+    "home": 0,
+    "away": 1,
+    "at": "2026-08-28T14:06:30.954347+00:00"
+   }
   },
   {
    "id": "POS7",
@@ -24198,7 +24660,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.298836+00:00",
+    "generated_at": "2026-08-28T14:07:16.081302+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24240,9 +24702,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_06",
-       "name": "Jarmanpreet Singh",
-       "number": 4,
+       "playerId": "IND_16",
+       "name": "Yashdeep Siwach",
+       "number": 47,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -24258,18 +24720,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_16",
-       "name": "Yashdeep Siwach",
-       "number": 47,
+       "playerId": "IND_06",
+       "name": "Jarmanpreet Singh",
+       "number": 4,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "IND_13",
-       "name": "Jugraj Singh",
-       "number": 31,
+       "playerId": "IND_14",
+       "name": "Vivek Sagar Prasad",
+       "number": 32,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -24285,9 +24747,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "IND_14",
-       "name": "Vivek Sagar Prasad",
-       "number": 32,
+       "playerId": "IND_13",
+       "name": "Jugraj Singh",
+       "number": 31,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -24551,7 +25013,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.299231+00:00",
+    "generated_at": "2026-08-28T14:07:16.081749+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -24647,9 +25109,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_07",
-       "name": "Pepijn van der Heijden",
-       "number": 22,
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -24658,9 +25120,9 @@
      ],
      "substitutes": [
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
+       "playerId": "NED_07",
+       "name": "Pepijn van der Heijden",
+       "number": 22,
        "position": null
       },
       {
@@ -24738,6 +25200,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ESP_13",
+       "name": "Pol Cabre Verdiell",
+       "number": 22,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ESP_04",
        "name": "Alejandro Alonso",
        "number": 2,
@@ -24756,21 +25227,21 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ESP_05",
-       "name": "Jordi Bonastre",
-       "number": 5,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "ESP_01",
        "name": "Marc Miralles",
        "number": 14,
        "line": "Midfielder",
        "position": "Midfielder",
        "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_05",
+       "name": "Jordi Bonastre",
+       "number": 5,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
        "goalkeeper": false
       },
       {
@@ -24786,7 +25257,7 @@
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
        "number": 9,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -24795,15 +25266,6 @@
        "playerId": "ESP_15",
        "name": "Bruno Font",
        "number": 26,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ESP_13",
-       "name": "Pol Cabre Verdiell",
-       "number": 22,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -24904,7 +25366,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.299616+00:00",
+    "generated_at": "2026-08-28T14:07:16.082185+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -25023,15 +25485,15 @@
        "position": null
       },
       {
-       "playerId": "GER_13",
-       "name": "Hannes Müller",
-       "number": 25,
-       "position": null
-      },
-      {
        "playerId": "GER_06",
        "name": "Hugo von Montgelas",
        "number": 22,
+       "position": null
+      },
+      {
+       "playerId": "GER_13",
+       "name": "Hannes Müller",
+       "number": 25,
        "position": null
       },
       {
@@ -25154,18 +25616,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_21",
-       "name": "Martin Ferreiro",
-       "number": 32,
+       "playerId": "ARG_08",
+       "name": "Nicolas della Torre",
+       "number": 10,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_08",
-       "name": "Nicolas della Torre",
-       "number": 10,
+       "playerId": "ARG_21",
+       "name": "Martin Ferreiro",
+       "number": 32,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -25186,12 +25648,6 @@
        "position": null
       },
       {
-       "playerId": "ARG_11",
-       "name": "Joaquin Toscani",
-       "number": 16,
-       "position": null
-      },
-      {
        "playerId": "ARG_17",
        "name": "Tadeo Marcucci",
        "number": 27,
@@ -25204,15 +25660,15 @@
        "position": null
       },
       {
-       "playerId": "ARG_23",
-       "name": "Lucas Toscani",
-       "number": 11,
+       "playerId": "ARG_11",
+       "name": "Joaquin Toscani",
+       "number": 16,
        "position": null
       },
       {
-       "playerId": "ARG_06",
-       "name": "Nicolas Keenan",
-       "number": 7,
+       "playerId": "ARG_23",
+       "name": "Lucas Toscani",
+       "number": 11,
        "position": null
       },
       {
@@ -25220,6 +25676,12 @@
        "name": "Nehuen Hernando",
        "number": 12,
        "position": "Goalkeeper"
+      },
+      {
+       "playerId": "ARG_06",
+       "name": "Nicolas Keenan",
+       "number": 7,
+       "position": null
       },
       {
        "playerId": "ARG_22",

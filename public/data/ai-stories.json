@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T19:26:08.847243+00:00",
+  "updated_at": "2026-08-28T14:07:16.294496+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -240,6 +240,20 @@
       "story": "For thirty-eight minutes Brussels watched two sides cancel each other out — the only interruptions the matching green cards shown to Mattéo Desgouillons and Jonathan Lynch in the 12th, and a third for Jeremy Duncan in the 20th. It was Duncan who broke the deadlock, scoring from open play in the 39th, and for three minutes Ireland held the match they had come for.\n\nFrance's reply was immediate and familiar: Victor Charlet converted a penalty corner in the 42nd — his second set-piece goal in a week, after the one that kept France alive against South Africa. From there the game tilted, and Timothée Clément won it from open play in the 59th — France's second goal of an afternoon in which they had not led at all.\n\nThe difference from Monday is the whole story for France: against South Africa the pressure produced one goal and a defeat; here it produced two and a win, the first of their Stage 2. Ireland, who had put seven past Malaysia three days earlier, managed one, and both of these sides now stand on a win and a defeat in Pool H, chasing a South African side with two from two.",
       "generatedAt": "2026-08-24T19:26:09.049592+00:00",
       "source": "ai"
+    },
+    {
+      "matchId": "POS13",
+      "story": "France beat Japan 3-1 at the Wagener Stadion in Amstelveen, in a 13th/14th Place tie of the FIH Hockey World Cup 2026. Japan came in ranked 16th in the world, France 10th.\n\nJapan scored through Jun Watanabe (22', penalty stroke); France through Mattéo Desgouillons (17'), Timothée Clément (59') and Victor Charlet (59', penalty corner). The opener came in Q2 and the final goal in Q4.\n\nJapan won 0 penalty corners to France's 1. 2 cards were shown.",
+      "generatedAt": "2026-08-28T14:07:16.294421+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS9",
+      "story": "New Zealand ran out convincing winners over Ireland 6-3 at the Royal Leopold Club in Brussels, in a 9th/10th Place tie of the FIH Hockey World Cup 2026. New Zealand came in ranked 9th in the world, Ireland 11th.\n\nNew Zealand scored through Kane Russell (3', penalty corner), Kane Russell (14', penalty corner), George Baker (21'), Sam Lane (26', penalty corner), Sam Lane (46') and Finn Ward (58'); Ireland through Gregory Williams (37', penalty corner), Lee Cole (38', penalty stroke) and Jeremy Duncan (60', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nNew Zealand won 3 penalty corners to Ireland's 2. 3 cards were shown.",
+      "generatedAt": "2026-08-28T14:07:16.294479+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
     }
   ]
 }
