@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-28T18:14:24.911764+00:00",
+ "last_updated": "2026-08-28T23:57:38.378123+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -6675,10 +6675,10 @@
    "pool": "A",
    "home": "ARG",
    "away": "NED",
-   "date": "2026-08-18",
-   "time": "18:00",
+   "date": "2026-08-30",
+   "time": "14:00",
    "timezone": "CET",
-   "venue": "AMV",
+   "venue": "BRU",
    "status": "completed",
    "score": {
     "home": 1,
@@ -7105,7 +7105,7 @@
      "coach": "Jeroen Delmee"
     }
    },
-   "tms_id": 22349,
+   "tms_id": 22381,
    "result_source": "https://fih.altiusrt.com/matches/22349",
    "stats": {
     "home": {
@@ -15170,8 +15170,8 @@
    "slotLabel": "1st Pool B vs 2nd Pool C",
    "matchNo": 28,
    "provisional": false,
-   "date": "2026-08-21",
-   "time": "17:00",
+   "date": "2026-08-30",
+   "time": "16:30",
    "timezone": "CET",
    "venue": "BRU",
    "status": "completed",
@@ -15587,7 +15587,7 @@
      "coach": "Max Caldas"
     }
    },
-   "tms_id": 22360,
+   "tms_id": 22382,
    "result_source": "https://fih.altiusrt.com/matches/22360",
    "stats": {
     "home": {
@@ -22976,7 +22976,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T18:14:24.906518+00:00",
+    "generated_at": "2026-08-28T23:57:38.373329+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23181,18 +23181,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_15",
-       "name": "Shafiq Hassan",
-       "number": 27,
+       "playerId": "MAS_17",
+       "name": "Faris Harizan",
+       "number": 30,
        "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_17",
-       "name": "Faris Harizan",
-       "number": 30,
+       "playerId": "MAS_15",
+       "name": "Shafiq Hassan",
+       "number": 27,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -23226,18 +23226,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_21",
-       "name": "Fitri Saari",
-       "number": 7,
+       "playerId": "MAS_22",
+       "name": "Akhimullah Anuar",
+       "number": 11,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_11",
-       "name": "Norsyafiq Sumantri",
-       "number": 22,
+       "playerId": "MAS_21",
+       "name": "Fitri Saari",
+       "number": 7,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -23246,21 +23246,21 @@
      ],
      "substitutes": [
       {
-       "playerId": "MAS_22",
-       "name": "Akhimullah Anuar",
-       "number": 11,
-       "position": null
-      },
-      {
-       "playerId": "MAS_12",
-       "name": "Abu Kamal Azrai",
-       "number": 23,
+       "playerId": "MAS_11",
+       "name": "Norsyafiq Sumantri",
+       "number": 22,
        "position": null
       },
       {
        "playerId": "MAS_03",
        "name": "Syed Cholan",
        "number": 1,
+       "position": null
+      },
+      {
+       "playerId": "MAS_12",
+       "name": "Abu Kamal Azrai",
+       "number": 23,
        "position": null
       },
       {
@@ -23329,7 +23329,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T18:14:24.907014+00:00",
+    "generated_at": "2026-08-28T23:57:38.373728+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23389,6 +23389,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "PAK_11",
+       "name": "Ghazanfar Ali",
+       "number": 15,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "PAK_12",
        "name": "Ammad Butt",
        "number": 16,
@@ -23401,7 +23410,7 @@
        "playerId": "PAK_06",
        "name": "Moin Shakeel",
        "number": 7,
-       "line": "Midfielder",
+       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -23410,15 +23419,6 @@
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "PAK_11",
-       "name": "Ghazanfar Ali",
-       "number": 15,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -23635,16 +23635,16 @@
        "position": null
       },
       {
-       "playerId": "RSA_13",
-       "name": "Luke Wynford",
-       "number": 20,
-       "position": null
-      },
-      {
        "playerId": "RSA_11",
        "name": "Brendan du Toit",
        "number": 17,
        "position": "Goalkeeper"
+      },
+      {
+       "playerId": "RSA_13",
+       "name": "Luke Wynford",
+       "number": 20,
+       "position": null
       },
       {
        "playerId": "RSA_20",
@@ -25962,6 +25962,548 @@
    "time": "20:30",
    "timezone": "CET",
    "venue": "BRU",
+   "status": "completed",
+   "score": {
+    "home": 2,
+    "away": 1
+   },
+   "events": [
+    {
+     "minute": 2,
+     "team": "GER",
+     "type": "green_card",
+     "player": "Johannes Große"
+    },
+    {
+     "minute": 9,
+     "team": "ARG",
+     "type": "green_card",
+     "player": "Lucas Toscani"
+    },
+    {
+     "minute": 33,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "Justus Weigand"
+    },
+    {
+     "minute": 46,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "Tomas Domene"
+    },
+    {
+     "minute": 50,
+     "team": "ARG",
+     "type": "yellow_card",
+     "player": "Lucio Mendez"
+    },
+    {
+     "minute": 54,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "Paul-Philipp Kaufmann"
+    }
+   ],
+   "lineups": {
+    "source": "official",
+    "generated_at": "2026-08-28T23:57:32.401609+00:00",
+    "report": "fih-tms-matchreport",
+    "home": {
+     "team": "GER",
+     "formation": null,
+     "fromTeamList": true,
+     "startingXI": [
+      {
+       "number": 8,
+       "playerId": "GER_19",
+       "name": "Benedikt Schwarzhaupt",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 10,
+       "playerId": "GER_05",
+       "name": "Johannes Große",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "GER_22",
+       "name": "Thies Prinz",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 14,
+       "playerId": "GER_07",
+       "name": "Teo Hinrichs",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 15,
+       "playerId": "GER_08",
+       "name": "Tom Grambusch",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 17,
+       "playerId": "GER_02",
+       "name": "Christopher Rühr",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 19,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 22,
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 25,
+       "playerId": "GER_13",
+       "name": "Hannes Müller",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 44,
+       "playerId": "GER_18",
+       "name": "Moritz Ludwig",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 74,
+       "playerId": "GER_21",
+       "name": "Jean-Paul Danneberg",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      }
+     ],
+     "substitutes": [
+      {
+       "number": 7,
+       "playerId": "GER_04",
+       "name": "Justus Warweg",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 13,
+       "playerId": "GER_20",
+       "name": "Paul-Philipp Kaufmann",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 21,
+       "playerId": "GER_10",
+       "name": "Michel Struthoff",
+       "started": false,
+       "on_minute": 2,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 24,
+       "playerId": "GER_12",
+       "name": "Erik Kleinlein",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 34,
+       "playerId": "GER_15",
+       "name": "Jakob Brilla",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 38,
+       "playerId": "GER_16",
+       "name": "Antheus Barry",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 39,
+       "playerId": "GER_17",
+       "name": "Joshua Onyekwue Nnaji",
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
+      }
+     ],
+     "coach": "André Henning"
+    },
+    "away": {
+     "team": "ARG",
+     "formation": null,
+     "fromTeamList": true,
+     "startingXI": [
+      {
+       "number": 1,
+       "playerId": "ARG_04",
+       "name": "Tomas Santiago",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 10,
+       "playerId": "ARG_08",
+       "name": "Nicolas della Torre",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "ARG_23",
+       "name": "Lucas Toscani",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 16,
+       "playerId": "ARG_11",
+       "name": "Joaquin Toscani",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 20,
+       "playerId": "ARG_12",
+       "name": "Matias Andreotti",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 21,
+       "playerId": "ARG_13",
+       "name": "Tomas Domene",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 22,
+       "playerId": "ARG_14",
+       "name": "Matias Rey",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 26,
+       "playerId": "ARG_16",
+       "name": "Nicolas Cicileo",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 27,
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 29,
+       "playerId": "ARG_19",
+       "name": "Thomas Habif",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 31,
+       "playerId": "ARG_20",
+       "name": "Bautista Capurro",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      }
+     ],
+     "substitutes": [
+      {
+       "number": 5,
+       "playerId": "ARG_05",
+       "name": "Facundo Zarate",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 7,
+       "playerId": "ARG_06",
+       "name": "Nicolas Keenan",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 9,
+       "playerId": "ARG_07",
+       "name": "Maico Casella",
+       "started": false,
+       "on_minute": 6,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 12,
+       "playerId": "ARG_09",
+       "name": "Nehuen Hernando",
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 15,
+       "playerId": "ARG_10",
+       "name": "Tomas Ruiz",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 32,
+       "playerId": "ARG_21",
+       "name": "Martin Ferreiro",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 33,
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      }
+     ],
+     "coach": "Lucas Rey"
+    }
+   },
+   "tms_id": 22380,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 2,
+     "field_goals": 2,
+     "pc_goals": 0,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 1,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — GER vs ARG.",
+     "seq": 0
+    },
+    {
+     "minute": 2,
+     "team": "GER",
+     "text": "Green Card for Johannes Große (GER) — 2-minute suspension.",
+     "seq": 1
+    },
+    {
+     "minute": 9,
+     "team": "ARG",
+     "text": "Green Card for Lucas Toscani (ARG) — 2-minute suspension.",
+     "seq": 2
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: GER 0-0 ARG.",
+     "seq": 3
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: GER 0-0 ARG.",
+     "seq": 4
+    },
+    {
+     "minute": 33,
+     "team": "GER",
+     "text": "GOAL! Justus Weigand (GER) scores from a field goal — GER 1-0 ARG.",
+     "seq": 5
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: GER 1-0 ARG.",
+     "seq": 6
+    },
+    {
+     "minute": 46,
+     "team": "ARG",
+     "text": "GOAL! Tomas Domene (ARG) scores from a penalty corner — GER 1-1 ARG.",
+     "seq": 7
+    },
+    {
+     "minute": 50,
+     "team": "ARG",
+     "text": "Yellow Card for Lucio Mendez (ARG) — 5-minute suspension.",
+     "seq": 8
+    },
+    {
+     "minute": 54,
+     "team": "GER",
+     "text": "GOAL! Paul-Philipp Kaufmann (GER) scores from a field goal — GER 2-1 ARG.",
+     "seq": 9
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: GER 2-1 ARG.",
+     "seq": 10
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
+  },
+  {
+   "id": "BRZ",
+   "phase": "bronze-final",
+   "group": "medal",
+   "pool": null,
+   "home": "NED",
+   "away": "ARG",
+   "label": "🥉 Bronze Medal Match",
+   "slotLabel": "Loser 47 vs Loser 48",
+   "matchNo": 49,
+   "provisional": false,
+   "date": "2026-08-30",
+   "time": "14:00",
+   "timezone": "CET",
+   "venue": "BRU",
    "status": "scheduled",
    "score": {
     "home": null,
@@ -25970,8 +26512,523 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T18:14:24.907452+00:00",
+    "generated_at": "2026-08-28T23:57:38.374077+00:00",
     "home": {
+     "formation": "1-4-3-3",
+     "fromTeamList": true,
+     "startingXI": [
+      {
+       "playerId": "NED_13",
+       "name": "Derk Meijer",
+       "number": 20,
+       "line": "Goalkeeper",
+       "position": "Goalkeeper",
+       "captain": false,
+       "goalkeeper": true
+      },
+      {
+       "playerId": "NED_06",
+       "name": "Lars Balk",
+       "number": 4,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_15",
+       "name": "Jonas de Geus",
+       "number": 6,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_09",
+       "name": "Justen Blok",
+       "number": 12,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_16",
+       "name": "Derck de Vilder",
+       "number": 14,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_08",
+       "name": "Jorrit Croon",
+       "number": 10,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_11",
+       "name": "Floris Wortelboer",
+       "number": 16,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_19",
+       "name": "Floris Middendorp",
+       "number": 77,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_01",
+       "name": "Thierry Brinkman",
+       "number": 8,
+       "line": "Forward",
+       "position": "Forward",
+       "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_07",
+       "name": "Pepijn van der Heijden",
+       "number": 22,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "NED_22",
+       "name": "Terrance Pieters",
+       "number": 11,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      }
+     ],
+     "substitutes": [
+      {
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
+       "position": null
+      },
+      {
+       "playerId": "NED_21",
+       "name": "Thijs van Dam",
+       "number": 7,
+       "position": null
+      },
+      {
+       "playerId": "NED_05",
+       "name": "Jip Janssen",
+       "number": 2,
+       "position": null
+      },
+      {
+       "playerId": "NED_17",
+       "name": "Tijmen Reyenga",
+       "number": 29,
+       "position": null
+      },
+      {
+       "playerId": "NED_20",
+       "name": "Maurits Visser",
+       "number": 1,
+       "position": "Goalkeeper"
+      },
+      {
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "number": 19,
+       "position": null
+      },
+      {
+       "playerId": "NED_10",
+       "name": "Joep de Mol",
+       "number": 23,
+       "position": null
+      },
+      {
+       "playerId": "NED_23",
+       "name": "Koen Bijen",
+       "number": 9,
+       "position": null
+      },
+      {
+       "playerId": "NED_14",
+       "name": "Steijn van Heijningen",
+       "number": 24,
+       "position": null
+      }
+     ],
+     "team": "NED",
+     "coach": "Jeroen Delmee"
+    },
+    "away": {
+     "formation": "1-4-3-3",
+     "fromTeamList": true,
+     "startingXI": [
+      {
+       "playerId": "ARG_04",
+       "name": "Tomas Santiago",
+       "number": 1,
+       "line": "Goalkeeper",
+       "position": "Goalkeeper",
+       "captain": false,
+       "goalkeeper": true
+      },
+      {
+       "playerId": "ARG_14",
+       "name": "Matias Rey",
+       "number": 22,
+       "line": "Defender",
+       "position": null,
+       "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_07",
+       "name": "Maico Casella",
+       "number": 9,
+       "line": "Defender",
+       "position": null,
+       "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_16",
+       "name": "Nicolas Cicileo",
+       "number": 26,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_05",
+       "name": "Facundo Zarate",
+       "number": 5,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_10",
+       "name": "Tomas Ruiz",
+       "number": 15,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_19",
+       "name": "Thomas Habif",
+       "number": 29,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_13",
+       "name": "Tomas Domene",
+       "number": 21,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_08",
+       "name": "Nicolas della Torre",
+       "number": 10,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_12",
+       "name": "Matias Andreotti",
+       "number": 20,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_21",
+       "name": "Martin Ferreiro",
+       "number": 32,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      }
+     ],
+     "substitutes": [
+      {
+       "playerId": "ARG_18",
+       "name": "Ignacio Ibarra",
+       "number": 28,
+       "position": null
+      },
+      {
+       "playerId": "ARG_15",
+       "name": "Lucas Martinez",
+       "number": 23,
+       "position": null
+      },
+      {
+       "playerId": "ARG_17",
+       "name": "Tadeo Marcucci",
+       "number": 27,
+       "position": null
+      },
+      {
+       "playerId": "ARG_11",
+       "name": "Joaquin Toscani",
+       "number": 16,
+       "position": null
+      },
+      {
+       "playerId": "ARG_20",
+       "name": "Bautista Capurro",
+       "number": 31,
+       "position": null
+      },
+      {
+       "playerId": "ARG_23",
+       "name": "Lucas Toscani",
+       "number": 11,
+       "position": null
+      },
+      {
+       "playerId": "ARG_06",
+       "name": "Nicolas Keenan",
+       "number": 7,
+       "position": null
+      },
+      {
+       "playerId": "ARG_09",
+       "name": "Nehuen Hernando",
+       "number": 12,
+       "position": "Goalkeeper"
+      },
+      {
+       "playerId": "ARG_22",
+       "name": "Lucio Mendez",
+       "number": 33,
+       "position": null
+      }
+     ],
+     "team": "ARG",
+     "coach": "Lucas Rey"
+    }
+   }
+  },
+  {
+   "id": "GOLD",
+   "phase": "gold-final",
+   "group": "medal",
+   "pool": null,
+   "home": "ESP",
+   "away": "GER",
+   "label": "🥇 Gold Medal Final",
+   "slotLabel": "Winner 47 vs Winner 48",
+   "matchNo": 50,
+   "provisional": false,
+   "date": "2026-08-30",
+   "time": "16:30",
+   "timezone": "CET",
+   "venue": "BRU",
+   "status": "scheduled",
+   "score": {
+    "home": null,
+    "away": null
+   },
+   "events": [],
+   "lineups": {
+    "source": "estimated",
+    "generated_at": "2026-08-28T23:57:38.374333+00:00",
+    "home": {
+     "formation": "1-4-3-3",
+     "fromTeamList": true,
+     "startingXI": [
+      {
+       "playerId": "ESP_10",
+       "name": "Luis Calzado",
+       "number": 15,
+       "line": "Goalkeeper",
+       "position": "Goalkeeper",
+       "captain": false,
+       "goalkeeper": true
+      },
+      {
+       "playerId": "ESP_20",
+       "name": "Gerard Clapes",
+       "number": 11,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_04",
+       "name": "Alejandro Alonso",
+       "number": 2,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_06",
+       "name": "Xavier Gispert",
+       "number": 6,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_05",
+       "name": "Jordi Bonastre",
+       "number": 5,
+       "line": "Defender",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_01",
+       "name": "Marc Miralles",
+       "number": 14,
+       "line": "Midfielder",
+       "position": "Midfielder",
+       "captain": true,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_19",
+       "name": "Borja Lacalle",
+       "number": 9,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_15",
+       "name": "Bruno Font",
+       "number": 26,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_13",
+       "name": "Pol Cabre Verdiell",
+       "number": 22,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_08",
+       "name": "José Basterra",
+       "number": 10,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ESP_14",
+       "name": "Marc Vizcaino",
+       "number": 23,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      }
+     ],
+     "substitutes": [
+      {
+       "playerId": "ESP_17",
+       "name": "Iñaky Zaldua",
+       "number": 35,
+       "position": null
+      },
+      {
+       "playerId": "ESP_21",
+       "name": "Joaquin Menini",
+       "number": 18,
+       "position": null
+      },
+      {
+       "playerId": "ESP_18",
+       "name": "Ignacio Cobos",
+       "number": 62,
+       "position": null
+      },
+      {
+       "playerId": "ESP_22",
+       "name": "Rafael Vilallonga",
+       "number": 7,
+       "position": null
+      },
+      {
+       "playerId": "ESP_12",
+       "name": "Pepe Cunill",
+       "number": 17,
+       "position": null
+      },
+      {
+       "playerId": "ESP_07",
+       "name": "Marc Recasens",
+       "number": 8,
+       "position": null
+      },
+      {
+       "playerId": "ESP_09",
+       "name": "Marc Reyne",
+       "number": 12,
+       "position": null
+      },
+      {
+       "playerId": "ESP_16",
+       "name": "Nicolas Alvarez",
+       "number": 28,
+       "position": null
+      },
+      {
+       "playerId": "ESP_11",
+       "name": "Rafael Revilla",
+       "number": 16,
+       "position": "Goalkeeper"
+      }
+     ],
+     "team": "ESP",
+     "coach": "Max Caldas"
+    },
+    "away": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
      "startingXI": [
@@ -25991,15 +27048,6 @@
        "line": "Defender",
        "position": null,
        "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "GER_05",
-       "name": "Johannes Große",
-       "number": 10,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
        "goalkeeper": false
       },
       {
@@ -26024,7 +27072,7 @@
        "playerId": "GER_07",
        "name": "Teo Hinrichs",
        "number": 14,
-       "line": "Midfielder",
+       "line": "Defender",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -26033,6 +27081,15 @@
        "playerId": "GER_12",
        "name": "Erik Kleinlein",
        "number": 24,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "GER_05",
+       "name": "Johannes Große",
+       "number": 10,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -26083,15 +27140,15 @@
        "position": null
       },
       {
-       "playerId": "GER_06",
-       "name": "Hugo von Montgelas",
-       "number": 22,
-       "position": null
-      },
-      {
        "playerId": "GER_19",
        "name": "Benedikt Schwarzhaupt",
        "number": 8,
+       "position": null
+      },
+      {
+       "playerId": "GER_06",
+       "name": "Hugo von Montgelas",
+       "number": 22,
        "position": null
       },
       {
@@ -26133,216 +27190,8 @@
      ],
      "team": "GER",
      "coach": "André Henning"
-    },
-    "away": {
-     "formation": "1-4-3-3",
-     "fromTeamList": true,
-     "startingXI": [
-      {
-       "playerId": "ARG_04",
-       "name": "Tomas Santiago",
-       "number": 1,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
-      },
-      {
-       "playerId": "ARG_14",
-       "name": "Matias Rey",
-       "number": 22,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_07",
-       "name": "Maico Casella",
-       "number": 9,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_16",
-       "name": "Nicolas Cicileo",
-       "number": 26,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_19",
-       "name": "Thomas Habif",
-       "number": 29,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_13",
-       "name": "Tomas Domene",
-       "number": 21,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_12",
-       "name": "Matias Andreotti",
-       "number": 20,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_05",
-       "name": "Facundo Zarate",
-       "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_10",
-       "name": "Tomas Ruiz",
-       "number": 15,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_08",
-       "name": "Nicolas della Torre",
-       "number": 10,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_21",
-       "name": "Martin Ferreiro",
-       "number": 32,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      }
-     ],
-     "substitutes": [
-      {
-       "playerId": "ARG_18",
-       "name": "Ignacio Ibarra",
-       "number": 28,
-       "position": null
-      },
-      {
-       "playerId": "ARG_15",
-       "name": "Lucas Martinez",
-       "number": 23,
-       "position": null
-      },
-      {
-       "playerId": "ARG_17",
-       "name": "Tadeo Marcucci",
-       "number": 27,
-       "position": null
-      },
-      {
-       "playerId": "ARG_20",
-       "name": "Bautista Capurro",
-       "number": 31,
-       "position": null
-      },
-      {
-       "playerId": "ARG_11",
-       "name": "Joaquin Toscani",
-       "number": 16,
-       "position": null
-      },
-      {
-       "playerId": "ARG_23",
-       "name": "Lucas Toscani",
-       "number": 11,
-       "position": null
-      },
-      {
-       "playerId": "ARG_09",
-       "name": "Nehuen Hernando",
-       "number": 12,
-       "position": "Goalkeeper"
-      },
-      {
-       "playerId": "ARG_06",
-       "name": "Nicolas Keenan",
-       "number": 7,
-       "position": null
-      },
-      {
-       "playerId": "ARG_22",
-       "name": "Lucio Mendez",
-       "number": 33,
-       "position": null
-      }
-     ],
-     "team": "ARG",
-     "coach": "Lucas Rey"
     }
-   },
-   "tms_id": 22380
-  },
-  {
-   "id": "BRZ",
-   "phase": "bronze-final",
-   "group": "medal",
-   "pool": null,
-   "home": "TBD",
-   "away": "TBD",
-   "label": "🥉 Bronze Medal Match",
-   "slotLabel": "Loser 47 vs Loser 48",
-   "matchNo": 49,
-   "provisional": true,
-   "date": "2026-08-30",
-   "time": "14:00",
-   "timezone": "CET",
-   "venue": "BRU",
-   "status": "scheduled",
-   "score": {
-    "home": null,
-    "away": null
-   },
-   "events": []
-  },
-  {
-   "id": "GOLD",
-   "phase": "gold-final",
-   "group": "medal",
-   "pool": null,
-   "home": "TBD",
-   "away": "TBD",
-   "label": "🥇 Gold Medal Final",
-   "slotLabel": "Winner 47 vs Winner 48",
-   "matchNo": 50,
-   "provisional": true,
-   "date": "2026-08-30",
-   "time": "16:30",
-   "timezone": "CET",
-   "venue": "BRU",
-   "status": "scheduled",
-   "score": {
-    "home": null,
-    "away": null
-   },
-   "events": []
+   }
   }
  ]
 }
