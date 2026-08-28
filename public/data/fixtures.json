@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-28T14:07:16.086801+00:00",
+ "last_updated": "2026-08-28T18:14:24.911764+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -22976,7 +22976,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T14:07:16.079907+00:00",
+    "generated_at": "2026-08-28T18:14:24.906518+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23095,6 +23095,12 @@
        "position": null
       },
       {
+       "playerId": "WAL_06",
+       "name": "Sam Welsh",
+       "number": 16,
+       "position": null
+      },
+      {
        "playerId": "WAL_03",
        "name": "Rhodri Furlong",
        "number": 10,
@@ -23104,12 +23110,6 @@
        "playerId": "WAL_13",
        "name": "James Tyson",
        "number": 30,
-       "position": null
-      },
-      {
-       "playerId": "WAL_06",
-       "name": "Sam Welsh",
-       "number": 16,
        "position": null
       },
       {
@@ -23190,18 +23190,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_14",
-       "name": "Muhajir Abdu Rauf",
-       "number": 26,
+       "playerId": "MAS_17",
+       "name": "Faris Harizan",
+       "number": 30,
        "line": "Midfielder",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "MAS_17",
-       "name": "Faris Harizan",
-       "number": 30,
+       "playerId": "MAS_14",
+       "name": "Muhajir Abdu Rauf",
+       "number": 26,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -23246,15 +23246,15 @@
      ],
      "substitutes": [
       {
-       "playerId": "MAS_12",
-       "name": "Abu Kamal Azrai",
-       "number": 23,
-       "position": null
-      },
-      {
        "playerId": "MAS_22",
        "name": "Akhimullah Anuar",
        "number": 11,
+       "position": null
+      },
+      {
+       "playerId": "MAS_12",
+       "name": "Abu Kamal Azrai",
+       "number": 23,
        "position": null
       },
       {
@@ -23329,7 +23329,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T14:07:16.080412+00:00",
+    "generated_at": "2026-08-28T18:14:24.907014+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23371,9 +23371,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "PAK_12",
-       "name": "Ammad Butt",
-       "number": 16,
+       "playerId": "PAK_09",
+       "name": "Adeel Latif",
+       "number": 13,
        "line": "Defender",
        "position": null,
        "captain": false,
@@ -23385,6 +23385,15 @@
        "number": 5,
        "line": "Midfielder",
        "position": "Midfielder",
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "PAK_12",
+       "name": "Ammad Butt",
+       "number": 16,
+       "line": "Midfielder",
+       "position": null,
        "captain": false,
        "goalkeeper": false
       },
@@ -23401,15 +23410,6 @@
        "playerId": "PAK_16",
        "name": "Umar Mustafa",
        "number": 24,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "PAK_09",
-       "name": "Adeel Latif",
-       "number": 13,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -23579,18 +23579,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_05",
-       "name": "Senzwesihle Ngubane",
-       "number": 5,
+       "playerId": "RSA_08",
+       "name": "Hans Neethling",
+       "number": 10,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "RSA_08",
-       "name": "Hans Neethling",
-       "number": 10,
+       "playerId": "RSA_05",
+       "name": "Senzwesihle Ngubane",
+       "number": 5,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -24294,348 +24294,519 @@
    "time": "15:00",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "live",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 0,
+    "away": 2
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 27,
+     "team": "AUS",
+     "type": "green_card",
+     "player": "Joel Rintala"
+    },
+    {
+     "minute": 30,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PC",
+     "player": "Blake Govers"
+    },
+    {
+     "minute": 46,
+     "team": "ENG",
+     "type": "green_card",
+     "player": "Henry Croft"
+    },
+    {
+     "minute": 48,
+     "team": "AUS",
+     "type": "goal",
+     "via": "PC",
+     "player": "Ky Willott"
+    },
+    {
+     "minute": 48,
+     "team": "ENG",
+     "type": "yellow_card",
+     "player": "James Albery"
+    }
+   ],
    "lineups": {
-    "source": "estimated",
-    "generated_at": "2026-08-27T16:14:51.298446+00:00",
+    "source": "official",
+    "generated_at": "2026-08-28T18:14:16.029465+00:00",
+    "report": "fih-tms-matchreport",
     "home": {
-     "formation": "1-4-3-3",
+     "team": "ENG",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "ENG_11",
-       "name": "James Mazarelo",
-       "number": 16,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
+       "number": 5,
+       "playerId": "ENG_08",
+       "name": "Thomas Sorsby",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 7,
        "playerId": "ENG_20",
        "name": "Zachary Wallace",
-       "number": 7,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
       },
       {
-       "playerId": "ENG_17",
-       "name": "James Gall",
-       "number": 26,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 9,
+       "playerId": "ENG_21",
+       "name": "Henry Croft",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "ENG_06",
-       "name": "Nicholas Park",
-       "number": 2,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_12",
-       "name": "Stuart Rushmere",
-       "number": 17,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_01",
-       "name": "Will Calnan",
-       "number": 31,
-       "line": "Midfielder",
-       "position": "Midfielder",
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_07",
-       "name": "Jack Waller",
-       "number": 3,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ENG_18",
-       "name": "Liam Sanford",
-       "number": 27,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 13,
        "playerId": "ENG_02",
        "name": "Sam Ward",
-       "number": 13,
-       "line": "Forward",
-       "position": "Forward",
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 14,
+       "playerId": "ENG_09",
+       "name": "James Albery",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 16,
+       "playerId": "ENG_11",
+       "name": "James Mazarelo",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 17,
+       "playerId": "ENG_12",
+       "name": "Stuart Rushmere",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 18,
+       "playerId": "ENG_13",
+       "name": "Timothy Nurse",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 26,
+       "playerId": "ENG_17",
+       "name": "James Gall",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 30,
        "playerId": "ENG_19",
        "name": "Conor Williamson",
-       "number": 30,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 33,
        "playerId": "ENG_04",
        "name": "Samuel Hooper",
-       "number": 33,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
+       "number": 3,
+       "playerId": "ENG_07",
+       "name": "Jack Waller",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 15,
        "playerId": "ENG_10",
        "name": "Phil Roper",
-       "number": 15,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 19,
        "playerId": "ENG_14",
        "name": "David Goodfield",
-       "number": 19,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "ENG_13",
-       "name": "Timothy Nurse",
-       "number": 18,
-       "position": null
-      },
-      {
-       "playerId": "ENG_05",
-       "name": "Ben Fox",
-       "number": 47,
-       "position": null
-      },
-      {
-       "playerId": "ENG_21",
-       "name": "Henry Croft",
-       "number": 9,
-       "position": null
-      },
-      {
-       "playerId": "ENG_08",
-       "name": "Thomas Sorsby",
-       "number": 5,
-       "position": null
-      },
-      {
-       "playerId": "ENG_09",
-       "name": "James Albery",
-       "number": 14,
-       "position": null
-      },
-      {
+       "number": 20,
        "playerId": "ENG_15",
        "name": "Oliver Payne",
-       "number": 20,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": 16,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
       },
       {
+       "number": 23,
        "playerId": "ENG_16",
        "name": "Nicholas Bandurak",
-       "number": 23,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 27,
+       "playerId": "ENG_18",
+       "name": "Liam Sanford",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 47,
+       "playerId": "ENG_05",
+       "name": "Ben Fox",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "ENG",
      "coach": "Zak Jones"
     },
     "away": {
-     "formation": "1-4-3-3",
+     "team": "AUS",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "AUS_18",
-       "name": "Ashleigh Thomas",
-       "number": 28,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
-      },
-      {
-       "playerId": "AUS_10",
-       "name": "Jayden Atkinson",
-       "number": 15,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "AUS_16",
-       "name": "James Collins",
-       "number": 26,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 1,
        "playerId": "AUS_21",
        "name": "Lachlan Sharp",
-       "number": 1,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "AUS_06",
-       "name": "Nathan Ephraums",
-       "number": 7,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 2,
+       "playerId": "AUS_05",
+       "name": "Tom Craig",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "AUS_15",
-       "name": "Cambell Geddes",
-       "number": 24,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 10,
+       "playerId": "AUS_08",
+       "name": "Joshua Beltz",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "AUS_22",
-       "name": "Liam Henderson",
-       "number": 9,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "AUS_19",
-       "name": "Tim Brand",
-       "number": 29,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 13,
        "playerId": "AUS_03",
        "name": "Blake Govers",
-       "number": 13,
-       "line": "Forward",
-       "position": "Forward",
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 16,
+       "playerId": "AUS_23",
+       "name": "Tim Howard",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 20,
+       "playerId": "AUS_12",
+       "name": "Ky Willott",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 21,
        "playerId": "AUS_13",
        "name": "Jack Welch",
-       "number": 21,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "AUS_07",
-       "name": "Connar Otterbach",
-       "number": 8,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 23,
+       "playerId": "AUS_14",
+       "name": "Hayden Beltz",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 24,
+       "playerId": "AUS_15",
+       "name": "Cambell Geddes",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 28,
+       "playerId": "AUS_18",
+       "name": "Ashleigh Thomas",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 32,
+       "playerId": "AUS_20",
+       "name": "Jeremy Hayward",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "AUS_20",
-       "name": "Jeremy Hayward",
-       "number": 32,
-       "position": null
+       "number": 9,
+       "playerId": "AUS_22",
+       "name": "Liam Henderson",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "AUS_23",
-       "name": "Tim Howard",
-       "number": 16,
-       "position": null
-      },
-      {
-       "playerId": "AUS_14",
-       "name": "Hayden Beltz",
-       "number": 23,
-       "position": null
-      },
-      {
-       "playerId": "AUS_11",
-       "name": "Craig Marais",
-       "number": 19,
-       "position": null
-      },
-      {
-       "playerId": "AUS_08",
-       "name": "Joshua Beltz",
-       "number": 10,
-       "position": null
-      },
-      {
-       "playerId": "AUS_05",
-       "name": "Tom Craig",
-       "number": 2,
-       "position": null
-      },
-      {
-       "playerId": "AUS_12",
-       "name": "Ky Willott",
-       "number": 20,
-       "position": null
-      },
-      {
-       "playerId": "AUS_17",
-       "name": "Joel Rintala",
-       "number": 27,
-       "position": null
-      },
-      {
+       "number": 12,
        "playerId": "AUS_09",
        "name": "Jed Snowden",
-       "number": 12,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 15,
+       "playerId": "AUS_10",
+       "name": "Jayden Atkinson",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 19,
+       "playerId": "AUS_11",
+       "name": "Craig Marais",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 26,
+       "playerId": "AUS_16",
+       "name": "James Collins",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 27,
+       "playerId": "AUS_17",
+       "name": "Joel Rintala",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 29,
+       "playerId": "AUS_19",
+       "name": "Tim Brand",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "AUS",
      "coach": "Mark Hager"
     }
    },
    "tms_id": 22378,
-   "live_score": {
-    "home": 0,
-    "away": 1,
-    "at": "2026-08-28T14:06:30.954347+00:00"
-   }
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 0,
+     "field_goals": 0,
+     "pc_goals": 0,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 2,
+     "field_goals": 0,
+     "pc_goals": 2,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — ENG vs AUS.",
+     "seq": 0
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: ENG 0-0 AUS.",
+     "seq": 1
+    },
+    {
+     "minute": 27,
+     "team": "AUS",
+     "text": "Green Card for Joel Rintala (AUS) — 2-minute suspension.",
+     "seq": 2
+    },
+    {
+     "minute": 30,
+     "team": "AUS",
+     "text": "GOAL! Blake Govers (AUS) scores from a penalty corner — ENG 0-1 AUS.",
+     "seq": 3
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: ENG 0-1 AUS.",
+     "seq": 4
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: ENG 0-1 AUS.",
+     "seq": 5
+    },
+    {
+     "minute": 46,
+     "team": "ENG",
+     "text": "Green Card for Henry Croft (ENG) — 2-minute suspension.",
+     "seq": 6
+    },
+    {
+     "minute": 48,
+     "team": "AUS",
+     "text": "GOAL! Ky Willott (AUS) scores from a penalty corner — ENG 0-2 AUS.",
+     "seq": 7
+    },
+    {
+     "minute": 48,
+     "team": "ENG",
+     "text": "Yellow Card for James Albery (ENG) — 5-minute suspension.",
+     "seq": 8
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: ENG 0-2 AUS.",
+     "seq": 9
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "POS7",
@@ -24652,343 +24823,559 @@
    "time": "18:15",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 3,
+    "away": 3
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 6,
+     "team": "IND",
+     "type": "goal",
+     "via": "FG",
+     "player": "Abhishek"
+    },
+    {
+     "minute": 11,
+     "team": "IND",
+     "type": "yellow_card",
+     "player": "Harmanpreet Singh"
+    },
+    {
+     "minute": 22,
+     "team": "BEL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Roman Duvekot"
+    },
+    {
+     "minute": 23,
+     "team": "BEL",
+     "type": "goal",
+     "via": "PC",
+     "player": "Hugo Labouchere"
+    },
+    {
+     "minute": 31,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "Harmanpreet Singh"
+    },
+    {
+     "minute": 43,
+     "team": "IND",
+     "type": "green_card",
+     "player": "Harmanpreet Singh"
+    },
+    {
+     "minute": 47,
+     "team": "BEL",
+     "type": "goal",
+     "via": "FG",
+     "player": "Arthur de Sloover"
+    },
+    {
+     "minute": 60,
+     "team": "IND",
+     "type": "goal",
+     "via": "PC",
+     "player": "Harmanpreet Singh"
+    }
+   ],
    "lineups": {
-    "source": "estimated",
-    "generated_at": "2026-08-28T14:07:16.081302+00:00",
+    "source": "official",
+    "generated_at": "2026-08-28T18:14:17.362691+00:00",
+    "report": "fih-tms-matchreport",
     "home": {
-     "formation": "1-4-3-3",
+     "team": "IND",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "IND_18",
-       "name": "Suraj Karkera",
-       "number": 77,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
-      },
-      {
-       "playerId": "IND_01",
-       "name": "Harmanpreet Singh",
-       "number": 13,
-       "line": "Defender",
-       "position": "Defender",
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IND_04",
-       "name": "Amit Rohidas",
-       "number": 30,
-       "line": "Defender",
-       "position": "Defender",
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IND_21",
-       "name": "Mandeep Singh",
-       "number": 11,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IND_16",
-       "name": "Yashdeep Siwach",
-       "number": 47,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IND_02",
-       "name": "Manpreet Singh",
-       "number": 7,
-       "line": "Midfielder",
-       "position": "Midfielder",
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IND_06",
-       "name": "Jarmanpreet Singh",
-       "number": 4,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "IND_14",
-       "name": "Vivek Sagar Prasad",
-       "number": 32,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 5,
        "playerId": "IND_05",
        "name": "Abhishek",
-       "number": 5,
-       "line": "Forward",
-       "position": "Forward",
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "IND_13",
-       "name": "Jugraj Singh",
-       "number": 31,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 7,
+       "playerId": "IND_02",
+       "name": "Manpreet Singh",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 8,
+       "playerId": "IND_07",
+       "name": "Hardik Singh",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "IND_21",
+       "name": "Mandeep Singh",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 13,
+       "playerId": "IND_01",
+       "name": "Harmanpreet Singh",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 17,
        "playerId": "IND_09",
        "name": "Sumit",
-       "number": 17,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 30,
+       "playerId": "IND_04",
+       "name": "Amit Rohidas",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 34,
+       "playerId": "IND_15",
+       "name": "Sukhjeet Singh",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 70,
+       "playerId": "IND_17",
+       "name": "Sanjay",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 77,
+       "playerId": "IND_18",
+       "name": "Suraj Karkera",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 78,
+       "playerId": "IND_19",
+       "name": "Rajinder Singh",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "IND_19",
-       "name": "Rajinder Singh",
-       "number": 78,
-       "position": null
+       "number": 4,
+       "playerId": "IND_06",
+       "name": "Jarmanpreet Singh",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "IND_10",
-       "name": "Nilakanta Sharma",
-       "number": 18,
-       "position": null
-      },
-      {
-       "playerId": "IND_20",
-       "name": "Shilanand Lakra",
-       "number": 99,
-       "position": null
-      },
-      {
-       "playerId": "IND_11",
-       "name": "Lalage Aditya Arjun",
-       "number": 19,
-       "position": null
-      },
-      {
-       "playerId": "IND_07",
-       "name": "Hardik Singh",
-       "number": 8,
-       "position": null
-      },
-      {
-       "playerId": "IND_17",
-       "name": "Sanjay",
-       "number": 70,
-       "position": null
-      },
-      {
+       "number": 9,
        "playerId": "IND_08",
        "name": "Dilpreet Singh",
-       "number": 9,
-       "position": null
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 19,
+       "playerId": "IND_11",
+       "name": "Lalage Aditya Arjun",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 27,
        "playerId": "IND_12",
        "name": "Shashikumar Mohith Honnenahalli",
-       "number": 27,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": 16,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
       },
       {
-       "playerId": "IND_15",
-       "name": "Sukhjeet Singh",
-       "number": 34,
-       "position": null
+       "number": 31,
+       "playerId": "IND_13",
+       "name": "Jugraj Singh",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 32,
+       "playerId": "IND_14",
+       "name": "Vivek Sagar Prasad",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 99,
+       "playerId": "IND_20",
+       "name": "Shilanand Lakra",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "IND",
      "coach": "Craig Fulton"
     },
     "away": {
-     "formation": "1-4-3-3",
+     "team": "BEL",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "BEL_04",
-       "name": "Vincent Vanasch",
-       "number": 21,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
-      },
-      {
+       "number": 4,
        "playerId": "BEL_05",
        "name": "Arthur van Doren",
-       "number": 4,
-       "line": "Defender",
-       "position": null,
-       "captain": true,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
       },
       {
-       "playerId": "BEL_17",
-       "name": "Tom Boon",
-       "number": 27,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 5,
+       "playerId": "BEL_06",
+       "name": "Arno van Dessel",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "BEL_16",
-       "name": "Victor Wegnez",
-       "number": 26,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 7,
+       "playerId": "BEL_07",
+       "name": "Thibeau Stockbroekx",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "BEL_10",
-       "name": "Nicolas de Kerpel",
-       "number": 13,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "BEL_01",
-       "name": "Alexander Hendrickx",
-       "number": 16,
-       "line": "Midfielder",
-       "position": "Midfielder",
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "BEL_02",
-       "name": "Arthur de Sloover",
-       "number": 23,
-       "line": "Midfielder",
-       "position": "Midfielder",
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 9,
        "playerId": "BEL_08",
        "name": "Maxime van Oost",
-       "number": 9,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "BEL_09",
-       "name": "Tommy Willems",
-       "number": 11,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 16,
+       "playerId": "BEL_01",
+       "name": "Alexander Hendrickx",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "BEL_15",
-       "name": "Lucas Balthazar",
-       "number": 6,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 19,
+       "playerId": "BEL_13",
+       "name": "Hugo Labouchere",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "BEL_20",
-       "name": "Thomas Crols",
-       "number": 37,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 21,
+       "playerId": "BEL_04",
+       "name": "Vincent Vanasch",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 23,
+       "playerId": "BEL_02",
+       "name": "Arthur de Sloover",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 26,
+       "playerId": "BEL_16",
+       "name": "Victor Wegnez",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 27,
+       "playerId": "BEL_17",
+       "name": "Tom Boon",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 30,
+       "playerId": "BEL_18",
+       "name": "Nelson Onana",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "BEL_06",
-       "name": "Arno van Dessel",
-       "number": 5,
-       "position": null
-      },
-      {
-       "playerId": "BEL_11",
-       "name": "Guillaume Hellin",
-       "number": 17,
-       "position": null
-      },
-      {
-       "playerId": "BEL_14",
-       "name": "Victor Foubert",
-       "number": 22,
-       "position": null
-      },
-      {
-       "playerId": "BEL_19",
-       "name": "Jack Vloeberghs",
-       "number": 32,
-       "position": null
-      },
-      {
-       "playerId": "BEL_18",
-       "name": "Nelson Onana",
-       "number": 30,
-       "position": null
-      },
-      {
-       "playerId": "BEL_07",
-       "name": "Thibeau Stockbroekx",
-       "number": 7,
-       "position": null
-      },
-      {
+       "number": 1,
        "playerId": "BEL_21",
        "name": "Simon Vandenbroucke",
-       "number": 1,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
       },
       {
+       "number": 6,
+       "playerId": "BEL_15",
+       "name": "Lucas Balthazar",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "BEL_09",
+       "name": "Tommy Willems",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 13,
+       "playerId": "BEL_10",
+       "name": "Nicolas de Kerpel",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 17,
+       "playerId": "BEL_11",
+       "name": "Guillaume Hellin",
+       "started": false,
+       "on_minute": 6,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 18,
        "playerId": "BEL_12",
        "name": "Roman Duvekot",
-       "number": 18,
-       "position": null
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "BEL_13",
-       "name": "Hugo Labouchere",
-       "number": 19,
-       "position": null
+       "number": 22,
+       "playerId": "BEL_14",
+       "name": "Victor Foubert",
+       "started": false,
+       "on_minute": 3,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "BEL",
      "coach": "Shane McLeod"
     }
    },
-   "tms_id": 22383
+   "tms_id": 22383,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 3,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
+     "green_cards": 1,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 3,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — IND vs BEL.",
+     "seq": 0
+    },
+    {
+     "minute": 6,
+     "team": "IND",
+     "text": "GOAL! Abhishek (IND) scores from a field goal — IND 1-0 BEL.",
+     "seq": 1
+    },
+    {
+     "minute": 11,
+     "team": "IND",
+     "text": "Yellow Card for Harmanpreet Singh (IND) — 5-minute suspension.",
+     "seq": 2
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: IND 1-0 BEL.",
+     "seq": 3
+    },
+    {
+     "minute": 22,
+     "team": "BEL",
+     "text": "GOAL! Roman Duvekot (BEL) scores from a field goal — IND 1-1 BEL.",
+     "seq": 4
+    },
+    {
+     "minute": 23,
+     "team": "BEL",
+     "text": "GOAL! Hugo Labouchere (BEL) scores from a penalty corner — IND 1-2 BEL.",
+     "seq": 5
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: IND 1-2 BEL.",
+     "seq": 6
+    },
+    {
+     "minute": 31,
+     "team": "IND",
+     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 2-2 BEL.",
+     "seq": 7
+    },
+    {
+     "minute": 43,
+     "team": "IND",
+     "text": "Green Card for Harmanpreet Singh (IND) — 2-minute suspension.",
+     "seq": 8
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: IND 2-2 BEL.",
+     "seq": 9
+    },
+    {
+     "minute": 47,
+     "team": "BEL",
+     "text": "GOAL! Arthur de Sloover (BEL) scores from a field goal — IND 2-3 BEL.",
+     "seq": 10
+    },
+    {
+     "minute": 60,
+     "team": "IND",
+     "text": "GOAL! Harmanpreet Singh (IND) scores from a penalty corner — IND 3-3 BEL.",
+     "seq": 11
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: IND 3-3 BEL.",
+     "seq": 12
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "SF1",
@@ -25005,343 +25392,560 @@
    "time": "18:00",
    "timezone": "CET",
    "venue": "AMV",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 3,
+    "away": 4
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 22,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "Koen Bijen"
+    },
+    {
+     "minute": 41,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "José Basterra"
+    },
+    {
+     "minute": 49,
+     "team": "NED",
+     "type": "yellow_card",
+     "player": "Duco Telgenkamp"
+    },
+    {
+     "minute": 50,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "José Basterra"
+    },
+    {
+     "minute": 51,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PC",
+     "player": "Pepe Cunill"
+    },
+    {
+     "minute": 55,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PS",
+     "player": "José Basterra"
+    },
+    {
+     "minute": 57,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "Jip Janssen"
+    },
+    {
+     "minute": 59,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "Joep de Mol"
+    }
+   ],
    "lineups": {
-    "source": "estimated",
-    "generated_at": "2026-08-28T14:07:16.081749+00:00",
+    "source": "official",
+    "generated_at": "2026-08-28T18:14:18.694893+00:00",
+    "report": "fih-tms-matchreport",
     "home": {
-     "formation": "1-4-3-3",
+     "team": "NED",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "NED_13",
-       "name": "Derk Meijer",
-       "number": 20,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
+       "number": 2,
+       "playerId": "NED_05",
+       "name": "Jip Janssen",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 4,
        "playerId": "NED_06",
        "name": "Lars Balk",
-       "number": 4,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 6,
        "playerId": "NED_15",
        "name": "Jonas de Geus",
-       "number": 6,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "NED_09",
-       "name": "Justen Blok",
-       "number": 12,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 7,
+       "playerId": "NED_21",
+       "name": "Thijs van Dam",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "NED_16",
-       "name": "Derck de Vilder",
-       "number": 14,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NED_11",
-       "name": "Floris Wortelboer",
-       "number": 16,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NED_19",
-       "name": "Floris Middendorp",
-       "number": 77,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "NED_10",
-       "name": "Joep de Mol",
-       "number": 23,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 8,
        "playerId": "NED_01",
        "name": "Thierry Brinkman",
-       "number": 8,
-       "line": "Forward",
-       "position": "Forward",
-       "captain": true,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
       },
       {
-       "playerId": "NED_08",
-       "name": "Jorrit Croon",
-       "number": 10,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 12,
+       "playerId": "NED_09",
+       "name": "Justen Blok",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 14,
+       "playerId": "NED_16",
+       "name": "Derck de Vilder",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 16,
+       "playerId": "NED_11",
+       "name": "Floris Wortelboer",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 20,
+       "playerId": "NED_13",
+       "name": "Derk Meijer",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 51,
        "playerId": "NED_18",
        "name": "Duco Telgenkamp",
-       "number": 51,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 77,
+       "playerId": "NED_19",
+       "name": "Floris Middendorp",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "NED_07",
-       "name": "Pepijn van der Heijden",
-       "number": 22,
-       "position": null
-      },
-      {
-       "playerId": "NED_22",
-       "name": "Terrance Pieters",
-       "number": 11,
-       "position": null
-      },
-      {
-       "playerId": "NED_21",
-       "name": "Thijs van Dam",
-       "number": 7,
-       "position": null
-      },
-      {
-       "playerId": "NED_05",
-       "name": "Jip Janssen",
-       "number": 2,
-       "position": null
-      },
-      {
-       "playerId": "NED_17",
-       "name": "Tijmen Reyenga",
-       "number": 29,
-       "position": null
-      },
-      {
+       "number": 1,
        "playerId": "NED_20",
        "name": "Maurits Visser",
-       "number": 1,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
       },
       {
-       "playerId": "NED_12",
-       "name": "Tjep Hoedemakers",
-       "number": 19,
-       "position": null
-      },
-      {
+       "number": 9,
        "playerId": "NED_23",
        "name": "Koen Bijen",
-       "number": 9,
-       "position": null
+       "started": false,
+       "on_minute": 7,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "NED_14",
-       "name": "Steijn van Heijningen",
-       "number": 24,
-       "position": null
+       "number": 10,
+       "playerId": "NED_08",
+       "name": "Jorrit Croon",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "NED_22",
+       "name": "Terrance Pieters",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 19,
+       "playerId": "NED_12",
+       "name": "Tjep Hoedemakers",
+       "started": false,
+       "on_minute": 7,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 23,
+       "playerId": "NED_10",
+       "name": "Joep de Mol",
+       "started": false,
+       "on_minute": 6,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 29,
+       "playerId": "NED_17",
+       "name": "Tijmen Reyenga",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "NED",
      "coach": "Jeroen Delmee"
     },
     "away": {
-     "formation": "1-4-3-3",
+     "team": "ESP",
+     "formation": null,
      "fromTeamList": true,
      "startingXI": [
       {
-       "playerId": "ESP_10",
-       "name": "Luis Calzado",
-       "number": 15,
-       "line": "Goalkeeper",
-       "position": "Goalkeeper",
-       "captain": false,
-       "goalkeeper": true
-      },
-      {
-       "playerId": "ESP_20",
-       "name": "Gerard Clapes",
-       "number": 11,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ESP_13",
-       "name": "Pol Cabre Verdiell",
-       "number": 22,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
+       "number": 2,
        "playerId": "ESP_04",
        "name": "Alejandro Alonso",
-       "number": 2,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "ESP_06",
-       "name": "Xavier Gispert",
-       "number": 6,
-       "line": "Defender",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ESP_01",
-       "name": "Marc Miralles",
-       "number": 14,
-       "line": "Midfielder",
-       "position": "Midfielder",
-       "captain": true,
-       "goalkeeper": false
-      },
-      {
+       "number": 5,
        "playerId": "ESP_05",
        "name": "Jordi Bonastre",
-       "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "ESP_12",
-       "name": "Pepe Cunill",
-       "number": 17,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "number": 6,
+       "playerId": "ESP_06",
+       "name": "Xavier Gispert",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 8,
+       "playerId": "ESP_07",
+       "name": "Marc Recasens",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 9,
        "playerId": "ESP_19",
        "name": "Borja Lacalle",
-       "number": 9,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
+       "number": 10,
+       "playerId": "ESP_08",
+       "name": "José Basterra",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 11,
+       "playerId": "ESP_20",
+       "name": "Gerard Clapes",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 14,
+       "playerId": "ESP_01",
+       "name": "Marc Miralles",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": true
+      },
+      {
+       "number": 15,
+       "playerId": "ESP_10",
+       "name": "Luis Calzado",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 17,
+       "playerId": "ESP_12",
+       "name": "Pepe Cunill",
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 26,
        "playerId": "ESP_15",
        "name": "Bruno Font",
-       "number": 26,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ESP_14",
-       "name": "Marc Vizcaino",
-       "number": 23,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
+       "started": true,
+       "on_minute": null,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
      "substitutes": [
       {
-       "playerId": "ESP_08",
-       "name": "José Basterra",
-       "number": 10,
-       "position": null
-      },
-      {
-       "playerId": "ESP_17",
-       "name": "Iñaky Zaldua",
-       "number": 35,
-       "position": null
-      },
-      {
-       "playerId": "ESP_21",
-       "name": "Joaquin Menini",
-       "number": 18,
-       "position": null
-      },
-      {
-       "playerId": "ESP_18",
-       "name": "Ignacio Cobos",
-       "number": 62,
-       "position": null
-      },
-      {
-       "playerId": "ESP_22",
-       "name": "Rafael Vilallonga",
-       "number": 7,
-       "position": null
-      },
-      {
-       "playerId": "ESP_07",
-       "name": "Marc Recasens",
-       "number": 8,
-       "position": null
-      },
-      {
+       "number": 12,
        "playerId": "ESP_09",
        "name": "Marc Reyne",
-       "number": 12,
-       "position": null
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       },
       {
-       "playerId": "ESP_16",
-       "name": "Nicolas Alvarez",
-       "number": 28,
-       "position": null
-      },
-      {
+       "number": 16,
        "playerId": "ESP_11",
        "name": "Rafael Revilla",
-       "number": 16,
-       "position": "Goalkeeper"
+       "started": false,
+       "on_minute": null,
+       "played": false,
+       "goalkeeper": true,
+       "captain": false
+      },
+      {
+       "number": 18,
+       "playerId": "ESP_21",
+       "name": "Joaquin Menini",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 22,
+       "playerId": "ESP_13",
+       "name": "Pol Cabre Verdiell",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 23,
+       "playerId": "ESP_14",
+       "name": "Marc Vizcaino",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 28,
+       "playerId": "ESP_16",
+       "name": "Nicolas Alvarez",
+       "started": false,
+       "on_minute": 4,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
+      },
+      {
+       "number": 35,
+       "playerId": "ESP_17",
+       "name": "Iñaky Zaldua",
+       "started": false,
+       "on_minute": 5,
+       "played": true,
+       "goalkeeper": false,
+       "captain": false
       }
      ],
-     "team": "ESP",
      "coach": "Max Caldas"
     }
    },
-   "tms_id": 22379
+   "tms_id": 22379,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 3,
+     "field_goals": 1,
+     "pc_goals": 2,
+     "ps_goals": 0,
+     "green_cards": 0,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 4,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 1,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — NED vs ESP.",
+     "seq": 0
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: NED 0-0 ESP.",
+     "seq": 1
+    },
+    {
+     "minute": 22,
+     "team": "NED",
+     "text": "GOAL! Koen Bijen (NED) scores from a field goal — NED 1-0 ESP.",
+     "seq": 2
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: NED 1-0 ESP.",
+     "seq": 3
+    },
+    {
+     "minute": 41,
+     "team": "ESP",
+     "text": "GOAL! José Basterra (ESP) scores from a field goal — NED 1-1 ESP.",
+     "seq": 4
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: NED 1-1 ESP.",
+     "seq": 5
+    },
+    {
+     "minute": 49,
+     "team": "NED",
+     "text": "Yellow Card for Duco Telgenkamp (NED) — 5-minute suspension.",
+     "seq": 6
+    },
+    {
+     "minute": 50,
+     "team": "ESP",
+     "text": "GOAL! José Basterra (ESP) scores from a field goal — NED 1-2 ESP.",
+     "seq": 7
+    },
+    {
+     "minute": 51,
+     "team": "ESP",
+     "text": "GOAL! Pepe Cunill (ESP) scores from a penalty corner — NED 1-3 ESP.",
+     "seq": 8
+    },
+    {
+     "minute": 55,
+     "team": "ESP",
+     "text": "GOAL! José Basterra (ESP) scores from a penalty stroke — NED 1-4 ESP.",
+     "seq": 9
+    },
+    {
+     "minute": 57,
+     "team": "NED",
+     "text": "GOAL! Jip Janssen (NED) scores from a penalty corner — NED 2-4 ESP.",
+     "seq": 10
+    },
+    {
+     "minute": 59,
+     "team": "NED",
+     "text": "GOAL! Joep de Mol (NED) scores from a penalty corner — NED 3-4 ESP.",
+     "seq": 11
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: NED 3-4 ESP.",
+     "seq": 12
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "SF2",
@@ -25366,7 +25970,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T14:07:16.082185+00:00",
+    "generated_at": "2026-08-28T18:14:24.907452+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -25435,9 +26039,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_16",
-       "name": "Antheus Barry",
-       "number": 38,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -25453,9 +26057,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_16",
+       "name": "Antheus Barry",
+       "number": 38,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -25479,15 +26083,15 @@
        "position": null
       },
       {
-       "playerId": "GER_19",
-       "name": "Benedikt Schwarzhaupt",
-       "number": 8,
-       "position": null
-      },
-      {
        "playerId": "GER_06",
        "name": "Hugo von Montgelas",
        "number": 22,
+       "position": null
+      },
+      {
+       "playerId": "GER_19",
+       "name": "Benedikt Schwarzhaupt",
+       "number": 8,
        "position": null
       },
       {
@@ -25580,18 +26184,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_05",
-       "name": "Facundo Zarate",
-       "number": 5,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_10",
-       "name": "Tomas Ruiz",
-       "number": 15,
+       "playerId": "ARG_13",
+       "name": "Tomas Domene",
+       "number": 21,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -25607,9 +26202,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_13",
-       "name": "Tomas Domene",
-       "number": 21,
+       "playerId": "ARG_05",
+       "name": "Facundo Zarate",
+       "number": 5,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_10",
+       "name": "Tomas Ruiz",
+       "number": 15,
        "line": "Forward",
        "position": null,
        "captain": false,

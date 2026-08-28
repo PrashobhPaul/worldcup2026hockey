@@ -26,12 +26,12 @@
       "intro": "Three-time world champions and the most decorated side never to stop rebuilding, the Netherlands arrive as hosts of half the tournament and as the team the draw was arranged around. Oranje's last world title came in 2004, an absence that sits uneasily with a nation that treats hockey as a birthright. Thierry Brinkman captains a squad built on relentless circle entries, with Maurits Visser and Derk Meijer sharing the goalkeeping. In Pool A they should have room to find rhythm early.",
       "fih_points": 3731.83,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 4,
         "draws": 1,
-        "losses": 0,
-        "gf": 17,
-        "ga": 6
+        "losses": 1,
+        "gf": 20,
+        "ga": 10
       }
     },
     {
@@ -150,12 +150,12 @@
       "intro": "The Red Lions are the modern era's great overachievers: Olympic champions, world champions in 2018, and co-hosts here with a home crowd in Brussels for the knockout nights. Belgium have no World Cup title from before their golden generation and everything since. Alexander Hendrickx remains the most feared drag-flicker in the game, Vincent Vanasch one of its best goalkeepers, and Arthur van Doren captains a side that treats structure as a weapon. Anything less than the medal rounds would count as failure.",
       "fih_points": 3671.8,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 2,
-        "draws": 2,
+        "draws": 3,
         "losses": 1,
-        "gf": 10,
-        "ga": 8
+        "gf": 13,
+        "ga": 11
       }
     },
     {
@@ -274,11 +274,11 @@
       "intro": "The Kookaburras are a fixture at the top of the world rankings, and the position flatters nobody who has watched them at a World Cup: three titles, the most recent in 2010, and two decades of the same relentless, high-tempo hockey no matter who is in the shirt. Blake Govers' flick leads the scoring threat. Pool C brings Spain and Ireland, both capable of a low-scoring ambush — but Australia's tournament has always been decided once the crossover stage begins.",
       "fih_points": 3477.21,
       "form": {
-        "played": 5,
-        "wins": 2,
+        "played": 6,
+        "wins": 3,
         "draws": 2,
         "losses": 1,
-        "gf": 9,
+        "gf": 11,
         "ga": 8
       }
     },
@@ -305,12 +305,12 @@
       "intro": "World champions in 1998 and perennial spoilers ever since, Los Redsticks are the side that ends other nations' tournaments. Spain's strength is a settled defensive shape and a corner battery built around captain Marc Miralles. Drawn with Australia in Pool C, they will fancy second place and a Stage-2 draw where their patience and set-piece accuracy can outlast a more expansive opponent.",
       "fih_points": 3437.73,
       "form": {
-        "played": 5,
-        "wins": 3,
+        "played": 6,
+        "wins": 4,
         "draws": 1,
         "losses": 1,
-        "gf": 9,
-        "ga": 5
+        "gf": 13,
+        "ga": 8
       }
     },
     {
@@ -398,12 +398,12 @@
       "intro": "India's two world titles came in 1975 and before, but the last decade has been a genuine renaissance: Olympic medals, a settled core, and the best drag-flicker in the world in captain Harmanpreet Singh. Playing with the noise of the largest travelling support in the sport, the Men in Blue combine sharp transition hockey with a penalty corner that turns pressure into goals. Pool D looks navigable, and India's ambition here is not merely the crossover round.",
       "fih_points": 3093.78,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 2,
-        "draws": 0,
+        "draws": 1,
         "losses": 3,
-        "gf": 14,
-        "ga": 16
+        "gf": 17,
+        "ga": 19
       }
     },
     {
@@ -429,12 +429,12 @@
       "intro": "England have never won a World Cup, a fact that sits alongside a consistent presence in the last eight and a domestic system that keeps producing forwards. Sam Ward's finishing and Will Calnan's captaincy give them a spine, and their pressing game is among the most organised in Europe. Pool D pairs them with India in what may be the tie of the first round, with Pakistan and Wales offering no free points.",
       "fih_points": 3537.61,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 3,
         "draws": 1,
-        "losses": 1,
+        "losses": 2,
         "gf": 19,
-        "ga": 10
+        "ga": 12
       }
     },
     {

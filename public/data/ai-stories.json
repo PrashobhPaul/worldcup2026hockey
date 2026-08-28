@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28T14:07:16.294496+00:00",
+  "updated_at": "2026-08-28T18:14:25.105307+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -252,6 +252,27 @@
       "matchId": "POS9",
       "story": "New Zealand ran out convincing winners over Ireland 6-3 at the Royal Leopold Club in Brussels, in a 9th/10th Place tie of the FIH Hockey World Cup 2026. New Zealand came in ranked 9th in the world, Ireland 11th.\n\nNew Zealand scored through Kane Russell (3', penalty corner), Kane Russell (14', penalty corner), George Baker (21'), Sam Lane (26', penalty corner), Sam Lane (46') and Finn Ward (58'); Ireland through Gregory Williams (37', penalty corner), Lee Cole (38', penalty stroke) and Jeremy Duncan (60', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nNew Zealand won 3 penalty corners to Ireland's 2. 3 cards were shown.",
       "generatedAt": "2026-08-28T14:07:16.294479+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS5",
+      "story": "Australia beat England 2-0 at the Wagener Stadion in Amstelveen, in a 5th/6th Place tie of the FIH Hockey World Cup 2026. England came in ranked 3rd in the world, Australia 6th.\n\nAustralia through Blake Govers (30', penalty corner) and Ky Willott (48', penalty corner). The opener came in Q2 and the final goal in Q4.\n\nEngland won 0 penalty corners to Australia's 2. 3 cards were shown.",
+      "generatedAt": "2026-08-28T18:14:25.105173+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS7",
+      "story": "India and Belgium shared a 3-3 draw at the Royal Leopold Club in Brussels, in a 7th/8th Place tie of the FIH Hockey World Cup 2026. India came in ranked 8th in the world, Belgium 2nd.\n\nIndia scored through Abhishek (6'), Harmanpreet Singh (31', penalty corner) and Harmanpreet Singh (60', penalty corner); Belgium through Roman Duvekot (22'), Hugo Labouchere (23', penalty corner) and Arthur de Sloover (47'). The opener came in Q1 and the final goal in Q4.\n\nIndia won 2 penalty corners to Belgium's 1. 2 cards were shown.",
+      "generatedAt": "2026-08-28T18:14:25.105262+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "SF1",
+      "story": "Spain edged Netherlands 4-3 at the Wagener Stadion in Amstelveen, in a Semi-Final tie of the FIH Hockey World Cup 2026. Netherlands came in ranked 1st in the world, Spain 7th.\n\nNetherlands scored through Koen Bijen (22'), Jip Janssen (57', penalty corner) and Joep de Mol (59', penalty corner); Spain through José Basterra (41'), José Basterra (50'), Pepe Cunill (51', penalty corner) and José Basterra (55', penalty stroke). The opener came in Q2 and the final goal in Q4.\n\nNetherlands won 2 penalty corners to Spain's 1. 1 card was shown.",
+      "generatedAt": "2026-08-28T18:14:25.105294+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }
