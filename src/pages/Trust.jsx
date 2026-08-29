@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { oracleRecord, publishedAccuracy } from '../engine/prediction'
+import StageSplit from '../components/StageSplit'
 
 function Section({ title, children }) {
   return (
@@ -31,7 +32,8 @@ function ModelAccuracy() {
           {rec.drawsCalled != null && <span className="text-sm font-normal text-pitch-300"> · {rec.drawsCalled}/{rec.draws} draws</span>}
           {rec.brier != null && <span className="text-sm font-normal text-pitch-300"> · Brier {rec.brier}</span>}
         </div>
-        <p className="mt-1 text-xs text-pitch-400">
+        <StageSplit stages={rec.stages} />
+        <p className="mt-2 text-xs text-pitch-400">
           Every completed match, scored with the model using only the information available before its
           push-back. Recomputed after every result and reproducible from the open repository:
           <span className="font-mono"> python3 scripts/backtest_model.py</span>.

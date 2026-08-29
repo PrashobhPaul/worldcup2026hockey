@@ -39,6 +39,18 @@ import model_non_knockout as nkm  # noqa: E402
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'public', 'data')
 NON_KNOCKOUT_PHASES = ('pool', 'stage2')
+# The three stages the tournament is actually read in. A single 36-of-48 hides
+# which part of the competition the model is good at: the pool round is
+# sixteen sides finding their level, stage 2 is the seeded half, and the
+# knockouts are one-off matches where a shoot-out can decide it. Every
+# knockout round counts as one stage — the classification places, the semis
+# and the two medal finals — so the split is 24 + 16 + 10 across the fifty.
+STAGE_OF_PHASE = {'pool': 'stage1', 'stage2': 'stage2'}
+STAGE_KEYS = ('stage1', 'stage2', 'knockout')
+
+
+def stage_of(phase):
+    return STAGE_OF_PHASE.get(phase, 'knockout')
 
 
 def load(name):
@@ -258,6 +270,7 @@ def ledger_tally(fixtures=None, predictions=None):
     predictions = predictions or load('predictions.json')
     active = {p['matchId']: p for p in predictions['predictions'] if not p.get('superseded')}
     hits = graded = draws = draws_called = 0
+    by_stage = {k: {'correct': 0, 'matches': 0} for k in STAGE_KEYS}
     for m in fixtures['matches']:
         if m['status'] != 'completed' or (m.get('score') or {}).get('home') is None:
             continue
@@ -265,6 +278,8 @@ def ledger_tally(fixtures=None, predictions=None):
         if not p:
             continue
         graded += 1
+        stage = by_stage[stage_of(m['phase'])]
+        stage['matches'] += 1
         h, a = m['score']['home'], m['score']['away']
         actual = 'HOME' if h > a else 'AWAY' if a > h else 'DRAW'
         # The draws breakdown ("called five of nine draws") is about draws the
@@ -285,10 +300,13 @@ def ledger_tally(fixtures=None, predictions=None):
             so = m.get('shootout')
             if not so:
                 graded -= 1
+                stage['matches'] -= 1
                 continue
             hit = p['pick'] == ('HOME' if so['home'] > so['away'] else 'AWAY')
         hits += hit
-    return {'correct': hits, 'matches': graded, 'draws': draws, 'draws_called': draws_called}
+        stage['correct'] += hit
+    return {'correct': hits, 'matches': graded, 'draws': draws,
+            'draws_called': draws_called, 'by_stage': by_stage}
 
 
 def report(label, stats):
@@ -331,6 +349,10 @@ def main():
             'accuracy_pct': round(100 * led['correct'] / led['matches']) if led['matches'] else 0,
             'draws': led['draws'],
             'draws_called': led['draws_called'],
+            # The same record, split the way the tournament is played. The
+            # denominators grow as matches finish: the knockouts read out of
+            # eight until the two medal finals are played and it becomes ten.
+            'by_stage': led['by_stage'],
             'brier': round(stats['brier'], 4),
             'log_loss': round(stats['log_loss'], 4),
             'model': nkm.MODEL_VERSION,

@@ -4,6 +4,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { activePredictions, derivePrediction, gradePrediction, oracleRecord, publishedAccuracy } from '../engine/prediction'
+import StageSplit from '../components/StageSplit'
 import { useOracleBundle, buildRaceSeries } from '../engine/oracleBundle'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { formatProbability } from '../engine/probability.js'
@@ -441,6 +442,7 @@ export default function OraclePage() {
           {SUBTITLES[tab]}
           {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.pct}%</span>}
         </p>
+        {rec.graded > 0 && <StageSplit stages={rec.stages} />}
       </div>
 
       <RaceLeader bundle={bundle} teams={teams} matches={matches} />

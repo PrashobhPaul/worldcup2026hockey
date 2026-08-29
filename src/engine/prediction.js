@@ -146,20 +146,36 @@ export function gradePrediction(match, row) {
 // must never be shown as current or graded.
 export const activePredictions = predictions => predictions.filter(p => !p.superseded)
 
+// Which of the three stages a match belongs to. Every knockout round is one
+// stage — the classification places, the semi-finals and the two medal finals
+// — so the tournament reads 24 + 16 + 10, and the knockout denominator grows
+// from eight to ten as the medal finals are played.
+export const stageOf = phase =>
+  phase === 'pool' ? 'stage1' : phase === 'stage2' ? 'stage2' : 'knockout'
+
+export const STAGE_LABELS = { stage1: 'Stage 1', stage2: 'Stage 2', knockout: 'Knockouts' }
+
 // Oracle running record across all predictions (header chip: 🏑 5/24 · 71%)
 export function oracleRecord(matches, predictions) {
   const bySource = activePredictions(predictions).filter(p => p.source === 'oracle-v1' || !p.source)
   let graded = 0, correct = 0
+  const byStage = {
+    stage1: { correct: 0, matches: 0 },
+    stage2: { correct: 0, matches: 0 },
+    knockout: { correct: 0, matches: 0 },
+  }
   for (const p of bySource) {
     const m = matches.find(x => x.id === p.matchId)
     if (!m || m.status !== 'completed') continue
     const g = gradePrediction(m, p)
     if (g === 'pending') continue   // a shoot-out not yet on record grades nobody
     graded++
-    if (g === 'correct') correct++
+    const stage = byStage[stageOf(m.phase)]
+    stage.matches++
+    if (g === 'correct') { correct++; stage.correct++ }
   }
   return {
-    graded, correct,
+    graded, correct, byStage,
     total: bySource.length,
     accuracyPct: graded ? Math.round((correct / graded) * 100) : null,
   }
@@ -193,6 +209,11 @@ export function publishedAccuracy(calibration, fallback) {
       draws: cal.draws ?? null,
       drawsCalled: cal.draws_called ?? null,
       brier: cal.brier ?? null,
+      // The same record split by stage. A published file from before the
+      // split carries none, and the client's own tally stands in — so a
+      // reader on yesterday's cache sees a coherent breakdown rather than
+      // three empty slots.
+      stages: cal.by_stage ?? fallback?.byStage ?? null,
       basis: 'all-matches',
     }
   }
@@ -200,6 +221,16 @@ export function publishedAccuracy(calibration, fallback) {
     correct: fallback?.correct ?? 0,
     graded: fallback?.graded ?? 0,
     pct: fallback?.accuracyPct ?? null,
-    draws: null, drawsCalled: null, brier: null, basis: 'client-tally',
+    draws: null, drawsCalled: null, brier: null,
+    stages: fallback?.byStage ?? null, basis: 'client-tally',
   }
+}
+
+// The stage split as rows, ready to render: label, correct, played. Stages
+// with nothing played yet are dropped rather than shown as 0/0.
+export function stageRows(stages) {
+  if (!stages) return []
+  return ['stage1', 'stage2', 'knockout']
+    .map(k => ({ key: k, label: STAGE_LABELS[k], ...(stages[k] || {}) }))
+    .filter(r => (r.matches ?? 0) > 0)
 }

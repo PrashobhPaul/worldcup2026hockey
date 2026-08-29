@@ -6,6 +6,7 @@ import { db } from '../db'
 import MatchCard, { formatDate } from '../components/MatchCard'
 import { Skeleton } from '../components/shared'
 import { oracleRecord, publishedAccuracy } from '../engine/prediction'
+import StageSplit from '../components/StageSplit'
 import { effectiveStatus } from '../engine/clock'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { useNowTick } from '../hooks/useNowTick'
@@ -173,6 +174,9 @@ export default function MatchesPage() {
         <p className="mt-1 text-xs text-pitch-400">
           {counts.results} of {all.length} fixtures{counts.live > 0 && <span className="text-live"> · {counts.live} LIVE</span>}
           {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.pct}%</span>}
+          {rec.graded > 0 && rec.stages && (
+            <> · <StageSplit stages={rec.stages} variant="inline" className="text-pitch-400" /></>
+          )}
         </p>
       </div>
 
