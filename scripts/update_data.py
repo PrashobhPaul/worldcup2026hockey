@@ -461,12 +461,16 @@ TEAM_CODES = set(TEAM_CODE_MAP.values())
 PAIR_ROW = re.compile(r'^([A-Z]{3})\s*-\s*([A-Z]{3})$')
 SCORE_ROW = re.compile(
     r'^(\d{1,2})\s*-\s*(\d{1,2})'                       # regulation score
-    r'(?:\s*(?:SO|s\.?o\.?)?\s*\(\s*(\d{1,2})\s*-\s*(\d{1,2})\s*\)\s*(?:SO|s\.?o\.?)?)?$',
+    r'(?:\s*(?:SO|s\.?o\.?)?\s*\(\s*(\d{1,2})\s*-\s*(\d{1,2})\s*(?:SO|s\.?o\.?)?\s*\)\s*(?:SO|s\.?o\.?)?)?$',
     re.I)                                               # optional folded shoot-out
-# A shoot-out rendered on its own line after the score: "(3 - 4)", "SO (3 - 4)"
-# or "SO 3 - 4". A bare pool letter or a relative time never matches this.
+# The classification weekend showed the SO tag INSIDE the parens — the page
+# renders "2 - 2 (2 - 1 SO)", not "2 - 2 (2 - 1) SO" — so the tag is optional
+# on either side of the closing paren. That one-token placement difference is
+# what left the 15/16th and 11/12th results unread while the page carried them.
+# A shoot-out rendered on its own line after the score: "(3 - 4)", "SO (3 - 4)",
+# "(3 - 4 SO)" or "SO 3 - 4". A bare pool letter or relative time never matches.
 SO_ROW = re.compile(
-    r'^(?:SO|s\.?o\.?)?\s*\(?\s*(\d{1,2})\s*-\s*(\d{1,2})\s*\)?\s*(?:SO|s\.?o\.?)?$', re.I)
+    r'^(?:SO|s\.?o\.?)?\s*\(?\s*(\d{1,2})\s*-\s*(\d{1,2})\s*(?:SO|s\.?o\.?)?\s*\)?\s*(?:SO|s\.?o\.?)?$', re.I)
 
 def parse_tms_results(lines, shootouts_out=None):
     """{(home, away): (home_goals, away_goals)} from the TMS matches page.

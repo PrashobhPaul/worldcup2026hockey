@@ -360,6 +360,19 @@ check('a shoot-out on its own line is attached to its match',
 check('a decisive score gains no phantom shoot-out',
       _r.get(('IND', 'ENG')) == (2, 4) and ('IND', 'ENG') not in _so)
 
+# The live page's actual classification rows, verbatim from a branch probe of
+# 29 Aug: the SO tag sits INSIDE the parens — "2 - 2 (2 - 1 SO)" — a one-token
+# placement no earlier pattern read, which is what left the 15/16th and
+# 11/12th places unscored while the listing carried them all along.
+_so_in = {}
+_r_in = parse_tms_results(['WAL - MAS', '&nbsp;', '2 - 2 (2 - 1 SO)', '15/16',
+                           'PAK - RSA', '&nbsp;', '4 - 4 (4 - 3 SO)', '11/12',
+                           'IND - BEL', '&nbsp;', '3 - 3 (3 - 4 SO)', '7/8'],
+                          shootouts_out=_so_in)
+check('the SO tag inside the parens still yields regulation score + shoot-out',
+      _r_in == {('WAL', 'MAS'): (2, 2), ('PAK', 'RSA'): (4, 4), ('IND', 'BEL'): (3, 3)}
+      and _so_in == {('WAL', 'MAS'): (2, 1), ('PAK', 'RSA'): (4, 3), ('IND', 'BEL'): (3, 4)})
+
 # A completed drawn knockout with no shoot-out on file cannot say who
 # advanced; the listing still shows it, so any later run may attach it.
 _fk = {'matches': [{'id': 'POS7', 'home': 'IND', 'away': 'BEL', 'phase': 'classification',
