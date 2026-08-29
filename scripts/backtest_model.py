@@ -35,7 +35,9 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from update_data import predict, form_delta, h2h_delta  # noqa: E402
-import model_non_knockout as nkm  # noqa: E402
+import model_non_knockout as nkm
+import model_knockout as km
+from team_rating import rate_teams  # noqa: E402
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'public', 'data')
 NON_KNOCKOUT_PHASES = ('pool', 'stage2')
@@ -179,12 +181,30 @@ def replay(mode):
 
         probs = predict(eff[home], eff[away], knockout=knockout)
         if knockout:
-            # The triple is regulation; the pick is who advances, and the
-            # drawn third of the outcome space resolves through the shoot-out
-            # at even odds — the same fold every publisher applies.
-            adv_h = probs[0] + probs[1] / 2
-            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
-            drivers = [f'regulation triple, shoot-out fold (advance {adv_h:.0%})']
+            # KNOCKOUT_MODEL_V1, replayed as of this match: the defensive
+            # record of both sides across every match dated earlier, and
+            # nothing that only exists once this one is over. The ranking
+            # triple above is not used for a knockout at all — that engine is
+            # for matches that can be drawn.
+            hist = [x for x in done[:i]
+                    if (x.get('score') or {}).get('home') is not None]
+            rated = rate_teams(hist) if hist else {}
+
+            def _def_pct(code):
+                row = rated.get(code)
+                comp = (row.get('components') or {}).get('defence') if row else None
+                return comp['score'] if comp else None
+
+            def _played(code):
+                return sum(1 for x in hist if code in (x['home'], x['away']))
+
+            out = km.predict(km.build_features(
+                _def_pct(home), _def_pct(away),
+                evidence_n=min(_played(home), _played(away))))
+            pick = out['prediction']
+            probs = (out['regulation']['HOME'], out['regulation']['LEVEL'],
+                     out['regulation']['AWAY'])
+            drivers = out['drivers']
         else:
             und = away if probs[0] >= probs[2] else home
             f = nkm.build_features(

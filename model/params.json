@@ -29,6 +29,25 @@
       "underdog_gd_max": -9
     }
   },
+  "knockout_model": {
+    "comment": "KNOCKOUT_MODEL_V1 \u2014 the pick rule for classification, semi-finals and the two medal finals: the matches that cannot be drawn. A separate model from the non-knockout one, not the same engine with the draw folded away. Every constant below is measured on this tournament's own record, and the derivation is in scripts/model_knockout.py.",
+    "version": "KNOCKOUT_MODEL_V1",
+    "def_weight": 1.07,
+    "def_weight_comment": "Log-odds per unit of defensive-percentile gap. Fitted on the 22 decisive pool and stage-2 matches with NO bias term, which is the whole point: a home term is worth +0.40 there and is a fixture-listing artifact in a knockout, where the bracket decides which name is printed first. Defence alone calls 16 of those 22; every other candidate feature was tested on the same training half and made the knockout score worse.",
+    "bracket_compression": 0.58,
+    "bracket_compression_comment": "Mean winning margin 1.12 goals in the knockouts against 1.93 in the pool round: 1.12/1.93 = 0.58. Sides that reach the same knockout are close by construction, so the same evidence gap means less here than it does in a pool fixture. Measured, not tuned.",
+    "level_base": 0.38,
+    "level_base_comment": "Level after sixty minutes in 3 of the 8 played knockouts (38%), against 20% of pool and stage-2 matches and half of the six classification matches. The model it replaces published p_draw 0.00 on every one of them.",
+    "level_width": 0.75,
+    "level_floor": 0.12,
+    "level_cap": 0.45,
+    "shootout_home_share": 0.5,
+    "shootout_comment": "A shoot-out is scored at exactly one half. Three shoot-outs is no basis for claiming any side is better at them; a tilt we cannot evidence is a tilt we invent.",
+    "full_evidence_matches": 3,
+    "high_confidence": 0.62,
+    "medium_confidence": 0.54,
+    "confidence_comment": "Deliberately low thresholds. Compression plus a live level-after-60 branch bound how far this model can go, and that is the intent: the record it inherits is a mean stated confidence of 76% for a log-loss of 0.861, where a coin flip scores 0.693."
+  },
   "form": {
     "ppm_weight": 60.0,
     "gd_weight": 35.0,
