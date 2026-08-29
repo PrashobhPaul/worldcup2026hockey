@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-29T09:24:26.299035+00:00",
+  "last_updated": "2026-08-29T12:21:07.558843+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -22773,5 +22773,14 @@
       "rating_missing": [],
       "impact_sub_goals": 0
     }
-  ]
+  ],
+  "official_figures_check": {
+    "reports": [
+      "scorers",
+      "cards"
+    ],
+    "players_checked": 212,
+    "disagreements": [],
+    "checked_at": "2026-08-29T12:21:07.555430+00:00"
+  }
 }

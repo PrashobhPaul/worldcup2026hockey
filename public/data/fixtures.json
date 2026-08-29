@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-29T09:24:26.299035+00:00",
+ "last_updated": "2026-08-29T12:21:07.558843+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -27019,7 +27019,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-29T09:12:47.415906+00:00",
+    "generated_at": "2026-08-29T12:21:07.555761+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -27233,6 +27233,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "ARG_19",
+       "name": "Thomas Habif",
+       "number": 29,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "ARG_05",
        "name": "Facundo Zarate",
        "number": 5,
@@ -27245,15 +27254,6 @@
        "playerId": "ARG_10",
        "name": "Tomas Ruiz",
        "number": 15,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_19",
-       "name": "Thomas Habif",
-       "number": 29,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -27372,7 +27372,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-29T09:24:26.294239+00:00",
+    "generated_at": "2026-08-29T12:21:07.556067+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -27604,9 +27604,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_16",
-       "name": "Antheus Barry",
-       "number": 38,
+       "playerId": "GER_05",
+       "name": "Johannes Große",
+       "number": 10,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -27622,9 +27622,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_05",
-       "name": "Johannes Große",
-       "number": 10,
+       "playerId": "GER_16",
+       "name": "Antheus Barry",
+       "number": 38,
        "line": "Forward",
        "position": null,
        "captain": false,
