@@ -192,38 +192,26 @@ jobs:
       # unscored even from a runner that reaches TMS, and this sandbox cannot
       # download job logs to see why. Surface the evidence as annotations —
       # the raw listing lines around each stuck pairing, verbatim.
-      - name: Show the listing rows for the stuck matches
+      - name: Show the report rows for the 7/8th place goals
         if: always()
         run: |
           python3 - <<'EOF'
-          import sys
+          import sys, re
           sys.path.insert(0, 'scripts')
-          from update_data import _tms_get, _tms_lines, TMS_BASE, parse_tms_results
-          body, _ = _tms_get(TMS_BASE + '/matches', referer=TMS_BASE)
-          if not body:
-              print('::error::the matches listing itself did not load')
+          from update_data import _tms_get, _pdf_lines, TMS_HOST
+          body, _ = _tms_get(f'{TMS_HOST}/matches/22383/reports/matchreport',
+                             referer=f'{TMS_HOST}/matches/22383')
+          if not body or not body.startswith(b'%PDF'):
+              print('::error::report 22383 did not load as a PDF')
               raise SystemExit
-          lines = [l.strip() for l in _tms_lines(body)]
-          # GitHub caps annotations at ten a step, so only the three pairings
-          # in question — both orientations — with their surrounding lines.
-          pairs = [('WAL', 'MAS'), ('PAK', 'RSA'), ('IND', 'BEL')]
+          lines = _pdf_lines(body)
           shown = 0
           for i, ln in enumerate(lines):
-              if shown >= 6:
+              if shown >= 9:
                   break
-              if any(a in ln and b in ln for a, b in pairs):
-                  ctx = ' | '.join(lines[max(0, i - 1):i + 5])[:400]
-                  print(f'::notice::row {i}: {ctx}')
+              if re.search(r'\b(FG|PC|PS)\b', ln) or 'KERPEL' in ln.upper() or 'SLOOVER' in ln.upper():
+                  print(f'::notice::R{i}: {ln.strip()[:380]}')
                   shown += 1
-          if not shown:
-              print('::notice::NO row on the listing pairs those teams at all '
-                    f'({len(lines)} lines) — the classification results are not on this page.')
-              tail = ' | '.join(x for x in lines[-40:] if x and x != '&nbsp;')[:800]
-              print(f'::notice::page tail: {tail}')
-          so = {}
-          res = parse_tms_results(lines, shootouts_out=so) or {}
-          hits = {k: v for k, v in res.items() if set(k) in [set(p) for p in pairs]}
-          print(f'::notice::parsed for those pairs: {hits} | shootouts: {so}')
           EOF
 
       - name: Stamp the data fingerprint
