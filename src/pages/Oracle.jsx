@@ -459,11 +459,22 @@ export default function OraclePage() {
         <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
         {/* The live record is the Oracle's transparency headline — every tab,
             same one-line subtitle treatment as the Matches page. */}
-        <p className="mt-1 text-xs text-pitch-400">
-          {SUBTITLES[tab]}
-          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.pct}%</span>}
-        </p>
-        {rec.graded > 0 && <StageSplit stages={rec.stages} />}
+        <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
+        {/* The record lives here, not on the home page: the Oracle owns the
+            predictions, and every other surface reads this same figure rather
+            than deriving one of its own. Headline and stage cells share a
+            grid so the numbers sit on one baseline. */}
+        {rec.graded > 0 && (
+          <div className="mt-3 grid grid-cols-4 gap-2">
+            <div className="rounded-lg border border-brand/25 bg-brand/10 px-2 py-1.5 text-center">
+              <div className="font-mono text-base font-bold text-brand">{rec.pct}%</div>
+              <div className="mt-0.5 text-[10px] uppercase tracking-wide text-pitch-400">
+                {rec.correct}/{rec.graded} called
+              </div>
+            </div>
+            <StageSplit stages={rec.stages} className="col-span-3 mt-0" />
+          </div>
+        )}
       </div>
 
       <RaceLeader bundle={bundle} teams={teams} matches={matches} />

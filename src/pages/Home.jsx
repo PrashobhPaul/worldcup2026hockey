@@ -5,7 +5,6 @@ import { db } from '../db'
 import MatchCard, { formatDate, phaseTag } from '../components/MatchCard'
 import { SectionHead, Skeleton, TierBadge } from '../components/shared'
 import { derivePrediction, publishedAccuracy } from '../engine/prediction'
-import StageSplit from '../components/StageSplit'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
@@ -25,27 +24,21 @@ const heroTiles = [
   { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
 ]
 
-// The model's record, given the top line of the app: how many of the
-// non-knockout matches it called. The denominator is on the badge, so the
-// figure states its own scope and needs nothing added to it.
+// The model's record on the hero: one quiet line, and a link to where it is
+// argued. The full account — the stage split, the draws, the Brier score —
+// belongs on Oracle, which owns the predictions and is the single source every
+// other surface reads. Stacking all of it here made the home page shout a
+// claim it does not itself explain, and wrapped three ways on a phone.
 function ModelBadge() {
   const cal = useLiveQuery(() => db.meta.get('calibration'), [])
   const rec = publishedAccuracy(cal, null)
   if (!rec.pct || !rec.graded) return null
   return (
-    <Link to="/trust" className="hero-accuracy">
+    <Link to="/prediction-race" className="hero-accuracy">
       <span className="hero-accuracy-pct">{rec.pct}%</span>
       <span className="hero-accuracy-label">
         matches called
-        <span className="hero-accuracy-sub">
-          {rec.correct} of {rec.graded} matches
-          {rec.drawsCalled ? ` · ${rec.drawsCalled}/${rec.draws} draws` : ''}
-        </span>
-        {rec.stages && (
-          <span className="hero-accuracy-sub">
-            <StageSplit stages={rec.stages} variant="inline" />
-          </span>
-        )}
+        <span className="hero-accuracy-sub">{rec.correct} of {rec.graded}</span>
       </span>
     </Link>
   )
