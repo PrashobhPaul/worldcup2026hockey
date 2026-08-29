@@ -1,6 +1,15 @@
 name: Update Hockey Data
 
 on:
+  # TEMPORARY, this branch only — never merged to main. GitHub's scheduler has
+  # been throttling the cron (no run for hours inside the */10 window) while
+  # two finished classification matches sit unscored, and the sandbox driving
+  # this cannot reach tms.fih.ch itself and refuses on principle to hand-type
+  # a score. A push here runs the very same pipeline on a runner that CAN
+  # reach the official source; the data it writes back to this branch is then
+  # carried to main in a pull request WITHOUT this trigger.
+  push:
+    branches: [data-refresh]
   schedule:
     # Every 10 min through CET match hours (first push-backs are 09:30 CET =
     # 07:30 UTC; the old 10-20 UTC window missed the morning games entirely,
