@@ -153,9 +153,14 @@ export default function MatchCard({ match, compact = false, projection = null })
           {done || live || waiting ? (
             <div className="font-mono text-2xl font-bold tracking-wider">
               {/* In play, the card shows the last value the feed confirmed —
-                  0-0 from push-back until the first update lands. */}
+                  0-0 from push-back until the first update lands. A tie broken
+                  in a shoot-out carries the shoot-out inline: 3 (3) – (4) 3,
+                  regulation first, because the 3-3 is the hockey and the
+                  bracketed pair is how the tie was settled. */}
               <span className={live ? 'text-live' : winner === 'H' ? 'text-white' : 'text-pitch-300'}>{match.score?.home ?? 0}</span>
+              {res?.homeSO != null && <span className="ml-1 text-sm font-semibold text-brand">({res.homeSO})</span>}
               <span className="mx-1 text-pitch-400">–</span>
+              {res?.awaySO != null && <span className="mr-1 text-sm font-semibold text-brand">({res.awaySO})</span>}
               <span className={live ? 'text-live' : winner === 'A' ? 'text-white' : 'text-pitch-300'}>{match.score?.away ?? 0}</span>
             </div>
           ) : (

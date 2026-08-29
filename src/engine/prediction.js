@@ -53,7 +53,7 @@ export function resultDisplay(match, homeTeam, awayTeam) {
     const winnerName = so.home > so.away
       ? (homeTeam?.name ?? match.home)
       : (awayTeam?.name ?? match.away)
-    decisiveLine = `${winnerName} win ${Math.max(so.home, so.away)}-${Math.min(so.home, so.away)} on shootout`
+    decisiveLine = `* Shoot-out — ${winnerName} take it ${Math.max(so.home, so.away)}-${Math.min(so.home, so.away)}`
   }
   return {
     homeReg: reg.h,
@@ -116,13 +116,26 @@ export function derivePrediction({ match, row }) {
   }
 }
 
-// Grade a prediction against a finished match
+// Grade a prediction against a finished match.
+//
+// A knockout pick is a claim about who ADVANCES, never about the sixty
+// minutes: level at the hooter goes to a shoot-out, so the tie always has a
+// winner and the pick is judged against that winner — a regulation win and a
+// shoot-out win count exactly the same. A drawn knockout whose shoot-out the
+// record has not carried yet is therefore UNGRADED, not wrong: IND v BEL
+// finished 3-3, Belgium took the shoot-out, and the Belgium pick spent a day
+// wearing ✗ because this function read the draw as the outcome. Only pool
+// and stage-2 matches can end in a draw, and only there is DRAW a gradable
+// result.
 export function gradePrediction(match, row) {
   if (!row || match.status !== 'completed') return 'pending'
   const res = matchResult(match)
   const derived = derivePrediction({ match, row })
   if (!derived.pick) return 'pending'
-  if (res.winnerSide === 'D') return derived.pick === 'DRAW' ? 'correct' : 'wrong'
+  if (res.winnerSide === 'D') {
+    if (isKnockout(match)) return 'pending'   // tie broken in a shoot-out not yet on record
+    return derived.pick === 'DRAW' ? 'correct' : 'wrong'
+  }
   if (res.winnerSide === 'H') return derived.pick === 'HOME' ? 'correct' : 'wrong'
   if (res.winnerSide === 'A') return derived.pick === 'AWAY' ? 'correct' : 'wrong'
   return 'pending'
@@ -140,8 +153,10 @@ export function oracleRecord(matches, predictions) {
   for (const p of bySource) {
     const m = matches.find(x => x.id === p.matchId)
     if (!m || m.status !== 'completed') continue
+    const g = gradePrediction(m, p)
+    if (g === 'pending') continue   // a shoot-out not yet on record grades nobody
     graded++
-    if (gradePrediction(m, p) === 'correct') correct++
+    if (g === 'correct') correct++
   }
   return {
     graded, correct,
