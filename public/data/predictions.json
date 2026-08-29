@@ -4405,6 +4405,27 @@
       "publishedAt": "2026-08-29T14:46:54.236824+00:00",
       "reason_original": "ESP favoured to advance. Rationale being rewritten for the revised pick.",
       "reason_revised_at": "2026-08-29T14:55:15.361381+00:00",
+      "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-29T15:03:01.020991+00:00",
+      "superseded_reason": "Rescored pre-match by KNOCKOUT_MODEL_V1, which reads this tournament's defensive record rather than the pre-tournament ranking table, carries no home term at a neutral venue, and keeps level-after-sixty as a real branch."
+    },
+    {
+      "id": "oracle-v1:GOLD:r4",
+      "matchId": "GOLD",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:GOLD:r3",
+      "p_home_win": 0.3161,
+      "p_draw": 0.3535,
+      "p_away_win": 0.3304,
+      "pick": "AWAY",
+      "pick_confidence": 0.507,
+      "pick_team": "GER",
+      "reason": "Germany arrive with 4 wins from 6 matches this tournament, scoring 14 and conceding 7; Spain have won 4 of 6, 13 for and 8 against. The sides have already met once here — Germany 1-2 Spain, Spain taking it. Germany beat Argentina 2-1 in the semi-final. The goal difference between them across the tournament runs 2 in Germany's favour, which is the margin the pick leans on.",
+      "publishedAt": "2026-08-29T15:03:01.020991+00:00",
+      "reason_original": "GER favoured to advance — the second-named side holds the matchup on defence 9 percentile points, compressed 0.58x for a knockout field; level after 60 at 35%, the shoot-out at even (learned from 48 completed matches). Revised pre-match under KNOCKOUT_MODEL_V1; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-29T15:03:01.397546+00:00",
       "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged"
     }
   ]

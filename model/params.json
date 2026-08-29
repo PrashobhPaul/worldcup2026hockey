@@ -32,6 +32,11 @@
   "knockout_model": {
     "comment": "KNOCKOUT_MODEL_V2 \u2014 classification, semi-finals and the two medal finals: the matches that cannot be drawn. The model carries no learned constant. It re-derives its weights, its compression and its level rate from the matches already completed on every run, so each match is predicted from everything played before its kickoff. What follows is structure and priors for the opening matches only; scripts/model_knockout.py does the learning.",
     "version": "KNOCKOUT_MODEL_V2",
+    "learn_components": [
+      "attack",
+      "defence"
+    ],
+    "learn_components_comment": "The strengths the learner may weigh. Short on purpose: offering all nine rating components scores 3/8 at log-loss 0.713 walked forward over the played knockouts \u2014 losing to a coin flip \u2014 because nine weights on thirty-odd decisive matches fit noise. These two score 5/8 at 0.678. Widen as the record grows, and re-run the walk-forward.",
     "prior_weight": {
       "attack": 0.2,
       "defence": 1.0
