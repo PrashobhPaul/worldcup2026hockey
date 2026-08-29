@@ -93,5 +93,41 @@ ok('every active row has exactly one pick per match',
    new Set(rows.map(r => r.matchId)).size === rows.length,
    'duplicate active rows for a match')
 
+
+// ── Grading is about who advanced ──────────────────────────────────────────
+// A knockout level after sixty minutes is decided in the shoot-out, and the
+// pick is judged against that winner — a regulation win and a shoot-out win
+// grade the same. Until the shoot-out is on record the tie grades NOBODY:
+// the Belgium pick for IND v BEL was right, and still wore a ✗ for a day
+// because the grader read 3-3 as the outcome of a knockout.
+{
+  const { gradePrediction } = await import('../src/engine/prediction.js')
+  const row = { pick: 'AWAY', p_home_win: 0.28, p_draw: 0.38, p_away_win: 0.34, pick_confidence: 0.53 }
+  const ko = { id: 'X', home: 'IND', away: 'BEL', phase: 'classification', status: 'completed', score: { home: 3, away: 3 } }
+  ok('a drawn knockout with no shoot-out on record grades nobody',
+     gradePrediction(ko, row) === 'pending', gradePrediction(ko, row))
+  ok('the shoot-out winner vindicates the pick',
+     gradePrediction({ ...ko, shootout: { home: 3, away: 4 } }, row) === 'correct')
+  ok('the shoot-out loser is a miss, same as a regulation loss',
+     gradePrediction({ ...ko, shootout: { home: 4, away: 3 } }, row) === 'wrong')
+  ok('a regulation knockout win grades normally',
+     gradePrediction({ ...ko, score: { home: 1, away: 3 } }, row) === 'correct')
+  ok('a pool draw is still a callable, gradable outcome',
+     gradePrediction({ ...ko, phase: 'pool' }, { ...row, pick: 'DRAW' }) === 'correct')
+}
+
+// The scoreline for a shoot-out tie carries the shoot-out inline.
+{
+  const { resultDisplay } = await import('../src/engine/prediction.js')
+  const m = { id: 'X', home: 'IND', away: 'BEL', phase: 'classification', status: 'completed',
+              score: { home: 3, away: 3 }, shootout: { home: 3, away: 4 } }
+  const r = resultDisplay(m, { name: 'India' }, { name: 'Belgium' })
+  ok('regulation and shoot-out are both on the board: 3 (3) – (4) 3',
+     r.homeReg === 3 && r.awayReg === 3 && r.homeSO === 3 && r.awaySO === 4, JSON.stringify(r))
+  ok('the board names the shoot-out and its winner',
+     /shoot-out/i.test(r.decisiveLine) && r.decisiveLine.includes('Belgium'), r.decisiveLine)
+  ok('the status tag says the tie went past sixty minutes', r.statusTag === 'FT (SO)')
+}
+
 console.log(fail ? `\n${fail} FAILED` : '\nAll pick-coherence checks passed.')
 process.exit(fail ? 1 : 0)

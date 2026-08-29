@@ -423,8 +423,13 @@ export default function MatchDetailPage() {
               <>
                 <div className={`font-mono text-4xl font-bold tracking-widest ${live ? 'text-live' : ''}`}>
                   {/* In play, the board holds the last value the feed confirmed
-                      — 0-0 from push-back until the first update lands. */}
-                  {match.score?.home ?? 0}–{match.score?.away ?? 0}
+                      — 0-0 from push-back until the first update lands. A tie
+                      settled in a shoot-out shows it inline: 3 (3)–(4) 3. */}
+                  {match.score?.home ?? 0}
+                  {res?.homeSO != null && <span className="text-xl text-brand"> ({res.homeSO})</span>}
+                  –
+                  {res?.awaySO != null && <span className="text-xl text-brand">({res.awaySO}) </span>}
+                  {match.score?.away ?? 0}
                 </div>
                 <span className={`mt-1 rounded px-2 py-0.5 font-mono text-[11px] font-bold ${
                   live ? 'border border-live/30 bg-live/10 text-live' : 'bg-pitch-700 text-pitch-300'
@@ -492,12 +497,24 @@ export default function MatchDetailPage() {
                 {pred.isKnockout ? ' to advance' : ' to win'}
               </div>
               {prediction.reason && <p className="mt-1 text-xs leading-relaxed text-pitch-300">{prediction.reason}</p>}
-              <div className="mt-2 flex gap-3 font-mono text-[10px] text-pitch-400">
-                <span>{home?.code} {Math.round(pred.reg.home * 100)}%</span>
-                <span>Draw {Math.round(pred.reg.draw * 100)}%</span>
-                <span>{away?.code} {Math.round(pred.reg.away * 100)}%</span>
-                {pred.isKnockout && <span className="text-brand">SO path {Math.round(pred.paths.shootout * 100)}%</span>}
-              </div>
+              {/* A knockout has no draw to pick — level after sixty goes to a
+                  shoot-out, so the outcomes on offer are the two ways to
+                  advance. The draw mass appears as what it really is there:
+                  the chance the tie needs the shoot-out at all. Pool and
+                  stage-2 matches keep the honest three-way. */}
+              {pred.isKnockout ? (
+                <div className="mt-2 flex gap-3 font-mono text-[10px] text-pitch-400">
+                  <span>{home?.code} advance {Math.round(pred.advance.home * 100)}%</span>
+                  <span>{away?.code} advance {Math.round(pred.advance.away * 100)}%</span>
+                  <span className="text-brand">level after 60&apos; {Math.round(pred.paths.shootout * 100)}% → shoot-out</span>
+                </div>
+              ) : (
+                <div className="mt-2 flex gap-3 font-mono text-[10px] text-pitch-400">
+                  <span>{home?.code} {Math.round(pred.reg.home * 100)}%</span>
+                  <span>Draw {Math.round(pred.reg.draw * 100)}%</span>
+                  <span>{away?.code} {Math.round(pred.reg.away * 100)}%</span>
+                </div>
+              )}
             </div>
           </div>
         </div>

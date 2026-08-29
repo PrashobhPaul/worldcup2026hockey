@@ -267,13 +267,26 @@ def ledger_tally(fixtures=None, predictions=None):
         graded += 1
         h, a = m['score']['home'], m['score']['away']
         actual = 'HOME' if h > a else 'AWAY' if a > h else 'DRAW'
-        if actual == 'DRAW':
+        # The draws breakdown ("called five of nine draws") is about draws the
+        # model could have CALLED — a pickable outcome only outside the
+        # knockout rounds, where level-after-sixty is a route to the shoot-out
+        # and never a result anyone predicts.
+        if actual == 'DRAW' and m['phase'] in NON_KNOCKOUT_PHASES:
             draws += 1
             draws_called += p['pick'] == 'DRAW'
         hit = p['pick'] == actual
         if actual == 'DRAW' and m['phase'] not in NON_KNOCKOUT_PHASES:
+            # A knockout pick is about who advances, and level-after-sixty is
+            # decided in the shoot-out — a regulation win and a shoot-out win
+            # grade exactly the same. Until the record carries the shoot-out,
+            # the tie has graded NOBODY: it leaves the denominator rather than
+            # counting as a miss, exactly as the app grades the same card
+            # (IND v BEL spent a day as a ✗ against a pick that had won).
             so = m.get('shootout')
-            hit = bool(so) and p['pick'] == ('HOME' if so['home'] > so['away'] else 'AWAY')
+            if not so:
+                graded -= 1
+                continue
+            hit = p['pick'] == ('HOME' if so['home'] > so['away'] else 'AWAY')
         hits += hit
     return {'correct': hits, 'matches': graded, 'draws': draws, 'draws_called': draws_called}
 

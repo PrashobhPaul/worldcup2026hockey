@@ -108,6 +108,32 @@ def main():
     import backtest_model as bt
     led = bt.ledger_tally()
     cal = bt.load('model-calibration.json')
+    # The tally's knockout rules, held to synthetic cases: a shoot-out win
+    # grades exactly like a regulation win, and a drawn knockout whose
+    # shoot-out is not on record grades NOBODY — it leaves the denominator
+    # rather than standing as a miss against a pick that may well have won.
+    def _tfx(so=None, phase='classification', score=(3, 3)):
+        m = {'id': 'T', 'home': 'IND', 'away': 'BEL', 'phase': phase, 'status': 'completed',
+             'score': {'home': score[0], 'away': score[1]}}
+        if so:
+            m['shootout'] = {'home': so[0], 'away': so[1]}
+        return {'matches': [m]}
+    _tp = {'predictions': [{'matchId': 'T', 'pick': 'AWAY', 'p_home_win': .28,
+                            'p_draw': .38, 'p_away_win': .34}]}
+    t = bt.ledger_tally(_tfx(so=(3, 4)), _tp)
+    check('a shoot-out win grades like a regulation win',
+          (t['correct'], t['matches']) == (1, 1), str(t))
+    t = bt.ledger_tally(_tfx(), _tp)
+    check('a drawn knockout with no shoot-out on record grades nobody',
+          (t['correct'], t['matches']) == (0, 0), str(t))
+    t = bt.ledger_tally(_tfx(so=(4, 3)), _tp)
+    check('the shoot-out loser is a miss, same as any loss',
+          (t['correct'], t['matches']) == (0, 1), str(t))
+    t = bt.ledger_tally(_tfx(phase='pool'), dict(_tp, predictions=[
+        dict(_tp['predictions'][0], pick='DRAW')]))
+    check('a pool draw is still a callable, gradable outcome',
+          (t['correct'], t['matches'], t['draws'], t['draws_called']) == (1, 1, 1, 1), str(t))
+
     check('the published figure is the number the match cards add up to',
           (cal['correct'], cal['matches']) == (led['correct'], led['matches']),
           f"calibration {cal['correct']}/{cal['matches']} vs cards {led['correct']}/{led['matches']}")
