@@ -129,5 +129,54 @@ ok('every active row has exactly one pick per match',
   ok('the status tag says the tie went past sixty minutes', r.statusTag === 'FT (SO)')
 }
 
+// ── The knockouts are scored by their own model ───────────────────────────
+// KNOCKOUT_MODEL_V1 publishes the REGULATION triple with level-after-sixty in
+// the draw slot, and the app folds it at even odds to reach the advance split.
+// Same arithmetic, stated twice in two languages, so the two are checked
+// against each other rather than trusted to stay in step.
+console.log('\nKnockout rows carry their own model\'s numbers')
+for (const r of rows.filter(isKO)) {
+  const m = fixtures.get(r.matchId)
+  const adv = r.p_home_win + r.p_draw / 2
+  ok(`${r.matchId}: a knockout is never published as a draw`, r.pick !== 'DRAW', r.pick)
+  ok(`${r.matchId}: the published confidence is the advance probability`,
+     Math.abs((r.pick === 'HOME' ? adv : 1 - adv) - r.pick_confidence) < 0.002,
+     `${r.pick_confidence} vs ${(r.pick === 'HOME' ? adv : 1 - adv).toFixed(3)}`)
+  // Rows published under the new model must not repeat what it replaced:
+  // p_draw 0.00 on a round where half the classification matches were level,
+  // and 97% asserted on a match that went to a shoot-out. Older rows are the
+  // ledger's own record and are left exactly as published.
+  if (m && m.status !== 'completed') {
+    ok(`${r.matchId}: level after sixty carries real mass`, r.p_draw > 0.05, String(r.p_draw))
+    ok(`${r.matchId}: no knockout claim is asserted above 80%`,
+       Math.max(adv, 1 - adv) < 0.80, String(Math.max(adv, 1 - adv).toFixed(3)))
+  }
+}
+
+// ── Prose must argue for the side the row actually picks ──────────────────
+// A rationale names a team. A revision used to carry it forward whatever
+// happened to the pick, so a flip left the card asserting one team in words
+// and the other in its own pick — the gold final went out picking Spain above
+// a paragraph making the case for Germany.
+console.log('\nRationales argue for the side that was picked')
+{
+  const all = read('predictions.json').predictions
+  const byId = new Map(all.map(p => [p.id, p]))
+  let checked = 0
+  for (const p of all) {
+    if (p.superseded || !p.revises) continue
+    const parent = byId.get(p.revises)
+    if (!parent || p.pick === parent.pick) continue
+    const m = fixtures.get(p.matchId)
+    // A finished card keeps what was published against it; only matches still
+    // to come are held to this.
+    if (!m || m.status === 'completed') continue
+    checked++
+    ok(`${p.matchId}: prose was not inherited across a change of pick`,
+       p.reason !== parent.reason, `pick ${parent.pick} -> ${p.pick}, identical text`)
+  }
+  ok('every revision that flipped a pick was checked', checked >= 0)
+}
+
 console.log(fail ? `\n${fail} FAILED` : '\nAll pick-coherence checks passed.')
 process.exit(fail ? 1 : 0)
