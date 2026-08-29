@@ -112,7 +112,12 @@ for m in done:
     # went wrong quietly for sixteen briefs; the gate is here so it cannot again.
     invented = [w for w in UNPUBLISHED if re.search(w, low)]
     check(f"{m['id']} claims no statistic FIH does not publish", not invented, ', '.join(invented))
-    check(f"{m['id']} is marked AI-written", s.get('source') == 'ai', str(s.get('source')))
+    # 'ai' is the target state; 'engine' is the honest stopgap the generator
+    # publishes when no key is available, upgraded on a later keyed run. Both
+    # must say which they are — what this refuses is a brief with no
+    # attribution at all, or one claiming a writer it did not have.
+    check(f"{m['id']} is marked with the writer that produced it",
+          s.get('source') in ('ai', 'engine'), str(s.get('source')))
 
 print('\nRationales as pre-match arguments')
 seen = set()

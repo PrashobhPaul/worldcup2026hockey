@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ai_provider  # noqa: E402
-from update_data import kickoff, now_utc  # noqa: E402
+from update_data import kickoff, now_utc, team_form  # noqa: E402
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'public', 'data')
 
@@ -53,11 +53,63 @@ def team_record(code, fixtures, teams):
     return f"{name} ({code}) results this tournament:\n" + ('\n'.join(lines) or '  none yet')
 
 
+def engine_rationale(m, pick_code, fixtures, teams):
+    """A pre-match case argued from the ledger alone — the stopgap tier.
+
+    Same contract as the engine match brief: published when no AI provider is
+    configured, honest about every number it uses, upgraded by the AI writer
+    on a later keyed run. It must clear the same gate as an AI rationale —
+    argue from this tournament with real figures, never from a ranking gap —
+    because the reader is not told which tier wrote the sentence next to a
+    pick they can still act on. The 29 Aug outage left two medal-match picks
+    wearing bare model boilerplate for exactly the lack of this tier.
+    """
+    names = {t['code']: t['name'] for t in teams['teams']}
+    other = m['away'] if pick_code == m['home'] else m['home']
+    pn, on = names.get(pick_code, pick_code), names.get(other, other)
+
+    f_pick = team_form(pick_code, fixtures)
+    f_oth = team_form(other, fixtures)
+    bits = [f"{pn} arrive with {f_pick['wins']} wins from {f_pick['played']} matches "
+            f"this tournament, scoring {f_pick['gf']} and conceding {f_pick['ga']};"
+            f" {on} have won {f_oth['wins']} of {f_oth['played']}, "
+            f"{f_oth['gf']} for and {f_oth['ga']} against."]
+
+    meeting = next((x for x in fixtures['matches']
+                    if x['status'] == 'completed' and (x.get('score') or {}).get('home') is not None
+                    and {x['home'], x['away']} == {m['home'], m['away']}), None)
+    if meeting:
+        ms = meeting['score']
+        w = meeting['home'] if ms['home'] > ms['away'] else meeting['away'] if ms['away'] > ms['home'] else None
+        met = (f"The sides have already met once here — "
+               f"{names.get(meeting['home'], meeting['home'])} "
+               f"{ms['home']}-{ms['away']} {names.get(meeting['away'], meeting['away'])}")
+        met += f", {names.get(w, w)} taking it." if w else ", a draw."
+        bits.append(met)
+
+    if m['phase'] in ('bronze-final', 'gold-final'):
+        for sf_id in ('SF1', 'SF2'):
+            sf = next((x for x in fixtures['matches'] if x['id'] == sf_id), None)
+            if sf and sf['status'] == 'completed' and pick_code in (sf['home'], sf['away']):
+                ss = sf['score']
+                won = (ss['home'] > ss['away']) == (sf['home'] == pick_code)
+                opp = sf['away'] if sf['home'] == pick_code else sf['home']
+                mine = ss['home'] if sf['home'] == pick_code else ss['away']
+                theirs = ss['away'] if sf['home'] == pick_code else ss['home']
+                bits.append(f"{pn} {'beat' if won else 'lost to'} "
+                            f"{names.get(opp, opp)} {mine}-{theirs} in the semi-final.")
+    gd = (f_pick['gf'] - f_pick['ga']) - (f_oth['gf'] - f_oth['ga'])
+    if gd > 0:
+        bits.append(f"The goal difference between them across the tournament runs "
+                    f"{gd} in {pn}'s favour, which is the margin the pick leans on.")
+    else:
+        bits.append(f"The records give the pick little to spare — this one rests on "
+                    f"how {pn} have finished their chances rather than any daylight in the numbers.")
+    return ' '.join(bits)
+
+
 def main():
     name, _, model = ai_provider.provider()
-    if not name:
-        print('No AI provider configured — deterministic rationales stand.')
-        return 0
 
     fixtures = load('fixtures.json')
     preds = load('predictions.json')
@@ -68,7 +120,11 @@ def main():
 
     wrote = 0
     for row in preds['predictions']:
-        if row.get('superseded') or row.get('reason_original'):
+        # A row is done when it carries an authored rationale — unless the
+        # author was the engine stopgap, which a keyed run upgrades to AI.
+        authored = bool(row.get('reason_original'))
+        engine_authored = 'engine' in (row.get('reason_revision') or '')
+        if row.get('superseded') or (authored and not (engine_authored and name)):
             continue
         m = matches.get(row['matchId'])
         if not m or m['home'] == 'TBD':
@@ -86,17 +142,24 @@ def main():
             f"{team_record(m['home'], fixtures, teams)}\n\n"
             f"{team_record(m['away'], fixtures, teams)}\n\n"
             'Write the pre-match rationale for the pick.')
-        try:
-            text = (ai_provider.complete(SYSTEM, prompt, max_tokens=300) or '').strip()
-        except Exception as e:  # a provider hiccup must never fail the run
-            print(f'AI rationale failed for {row["matchId"]}: {e}')
-            continue
+        text, author = '', None
+        if name:
+            try:
+                text = (ai_provider.complete(SYSTEM, prompt, max_tokens=300) or '').strip()
+                author = f'rationale authored by {model} from the tournament record; pick and probabilities unchanged'
+            except Exception as e:  # a provider hiccup must never fail the run
+                print(f'AI rationale failed for {row["matchId"]}: {e}')
+        if not text and not authored:
+            text = engine_rationale(m, pick_code, fixtures, teams) if pick_code else ''
+            author = ('rationale composed by the engine from the tournament record; '
+                      'upgraded to an AI-authored one on a later run; pick and probabilities unchanged')
         if not text:
             continue
-        row['reason_original'] = row['reason']
+        if not authored:
+            row['reason_original'] = row['reason']
         row['reason'] = text
         row['reason_revised_at'] = stamp
-        row['reason_revision'] = f'rationale authored by {model} from the tournament record; pick and probabilities unchanged'
+        row['reason_revision'] = author
         wrote += 1
         print(f'RATIONALE ({model}): {row["matchId"]}')
 
