@@ -93,12 +93,13 @@ export function canonicalMatches(matches) {
     (a.kickoffUtc ?? 0) - (b.kickoffUtc ?? 0) || a.id.localeCompare(b.id))
 }
 
-function buildSnapshot(teams, matches, k, results) {
+function buildSnapshot(teams, matches, k, results, published) {
   const roster = canonicalTeams(teams)
   const sim = simulateTournament(roster, canonicalMatches(matches), {
     runs: SIMULATION_COUNT,
     seed: snapshotSeed(k),
     truncateAfter: k,
+    published,
   })
 
   // Central normalization: the champion column is a probability distribution
@@ -165,11 +166,18 @@ function resultsKey(results, k) {
   return results.slice(0, k).map(m => `${m.id}${m.score.home}-${m.score.away}`).join(',')
 }
 
-export function getSnapshot(teams, matches, k, results = orderedResults(matches)) {
-  const key = `${MODEL_VERSION}|${SIMULATION_COUNT}|${k}|${teamsKey(teams)}|${resultsKey(results, k)}`
+export function getSnapshot(teams, matches, k, results = orderedResults(matches), published) {
+  // The published picks are part of the snapshot's identity. Leaving them out
+  // of the key meant the first caller to ask without them cached a snapshot
+  // built on the rating model alone, and every later caller — including the
+  // ones that did pass the ledger — was handed that same stale answer.
+  const pubKey = published && published.size
+    ? [...published.entries()].map(([k2, v]) => `${k2}${v.home}${v.p.toFixed(4)}`).join(',')
+    : ''
+  const key = `${MODEL_VERSION}|${SIMULATION_COUNT}|${k}|${teamsKey(teams)}|${resultsKey(results, k)}|${pubKey}`
   const hit = _memo.get(key)
   if (hit) return hit
-  const snap = buildSnapshot(teams, matches, k, results)
+  const snap = buildSnapshot(teams, matches, k, results, published)
   if (_memo.size >= MEMO_LIMIT) _memo.clear()
   _memo.set(key, snap)
   return snap
@@ -180,10 +188,10 @@ export function getSnapshot(teams, matches, k, results = orderedResults(matches)
  * The last element is the current state — the Oracle race chart and the
  * Tournament win-probability tab are two views of this one array.
  */
-export function buildSnapshotSeries(teams, matches) {
+export function buildSnapshotSeries(teams, matches, published) {
   const results = orderedResults(matches)
   const series = []
-  for (let k = 0; k <= results.length; k++) series.push(getSnapshot(teams, matches, k, results))
+  for (let k = 0; k <= results.length; k++) series.push(getSnapshot(teams, matches, k, results, published))
   return series
 }
 

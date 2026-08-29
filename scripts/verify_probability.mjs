@@ -16,7 +16,7 @@ import {
   buildSnapshotSeries, getSnapshot, probabilityMass, classifyProbability,
   formatProbability, MODEL_VERSION, SIMULATION_COUNT, makeSnapshotId,
 } from '../src/engine/probability.js'
-import { computeOracleBundle, buildRaceSeries } from '../src/engine/oracleBundle.js'
+import { computeOracleBundle, buildRaceSeries, publishedAdvanceMap } from '../src/engine/oracleBundle.js'
 import { orderedResults } from '../src/engine/simulate.js'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -30,6 +30,14 @@ const teams = (rawTeams.teams ?? rawTeams).map(t => ({
 const matches = readJson('fixtures.json').matches.map(m => ({
   ...m, kickoffUtc: Date.parse(`${m.date}T${m.time}:00+02:00`),
 }))
+// The bundle is built with the ledger, as every page builds it. Without it the
+// simulation falls back to its own rating model and this file would verify a
+// bundle no screen actually shows.
+const predictions = readJson('predictions.json').predictions
+const activeRows = predictions.filter(p => !p.superseded)
+// The same map the app builds, from the one definition, so every snapshot
+// compared below is built on the ledger the screens are built on.
+const published = publishedAdvanceMap(matches, predictions)
 
 let failures = 0
 let checks = 0
@@ -49,7 +57,7 @@ console.log(`Model: ${MODEL_VERSION} · ${SIMULATION_COUNT.toLocaleString()} sim
 
 // ── 1. Snapshot integrity ─────────────────────────────────────────────────
 section('1. Snapshot integrity')
-const series = buildSnapshotSeries(teams, matches)
+const series = buildSnapshotSeries(teams, matches, published)
 ok('series covers 0…N', series.length === N + 1, `got ${series.length}, want ${N + 1}`)
 for (const snap of series) {
   const k = snap.completedMatches
@@ -70,7 +78,7 @@ for (const snap of series) {
 
 // ── 2. Determinism (refresh / re-navigation must not move numbers) ────────
 section('2. Determinism across rebuilds')
-const seriesAgain = buildSnapshotSeries(teams, matches)
+const seriesAgain = buildSnapshotSeries(teams, matches, published)
 for (let k = 0; k <= N; k++) {
   ok(`snapshot ${k} reproducible`,
     series[k].probabilities.every((p, i) =>
@@ -79,7 +87,7 @@ for (let k = 0; k <= N; k++) {
 }
 // Built out of order and in isolation, a snapshot is still identical.
 for (const k of [0, 1, 4, Math.min(8, N), N].filter(k => k <= N)) {
-  const isolated = getSnapshot(teams, matches, k)
+  const isolated = getSnapshot(teams, matches, k, undefined, published)
   ok(`snapshot ${k} build-order-independent`,
     isolated.probabilities.every((p, i) => p.champion === series[k].probabilities[i].champion))
 }
@@ -99,7 +107,7 @@ const shuffle = (arr, seed) => {
   }
   return a
 }
-const shuffled = buildSnapshotSeries(shuffle(teams, 7), shuffle(matches, 13))
+const shuffled = buildSnapshotSeries(shuffle(teams, 7), shuffle(matches, 13), published)
 for (let k = 0; k <= N; k++) {
   for (const t of teams) {
     ok(`snapshot ${k}: ${t.code} independent of input order`,
@@ -110,7 +118,7 @@ for (let k = 0; k <= N; k++) {
 
 // ── 3. Historical snapshots vs the app bundle ─────────────────────────────
 section('3. Bundle wiring (Oracle / Tournament / Home / Team)')
-const bundle = computeOracleBundle(teams, matches)
+const bundle = computeOracleBundle(teams, matches, predictions)
 ok('bundle.current is the last snapshot object', bundle.current === bundle.snapshots[N])
 ok('bundle.current completedMatches', bundle.current.completedMatches === N)
 
@@ -256,6 +264,35 @@ console.log(`  checked ${teams.length} intros against fih_rank`)
   } else {
     ok('once the final is played, exactly one champion carries certainty',
       last.probabilities.filter(p => p.champion === 1).length <= 1)
+  }
+}
+
+// ── The champion race and the bracket answer with one voice ───────────────
+// Once the gold final is the only match left, "wins the final" and "is
+// champion" are the same question. The race used to run a rating Elo while
+// the board read the published pick, and they differed by ten points in
+// public — Germany 53% on the board against 63.8% in the race. Both now read
+// the ledger, and this holds them together.
+{
+  const unplayed = matches.filter(m => m.phase === 'gold-final'
+    && (m.score?.home == null || m.status !== 'completed'))
+  if (unplayed.length === 1) {
+    const gold = unplayed[0]
+    const row = activeRows.find(p => p.matchId === gold.id)
+    if (row && row.p_home_win != null) {
+      const advHome = row.p_home_win + (row.p_draw ?? 0) / 2
+      const champ = new Map(bundle.current.probabilities.map(p => [p.teamId, p.champion]))
+      for (const [code, want] of [[gold.home, advHome], [gold.away, 1 - advHome]]) {
+        const got = champ.get(code) ?? 0
+        ok(`${code}: the champion race matches the published final pick`,
+              Math.abs(got - want) < 0.03,
+              `race ${(got * 100).toFixed(1)}% vs published ${(want * 100).toFixed(1)}%`)
+      }
+      const others = bundle.current.probabilities
+        .filter(p => p.teamId !== gold.home && p.teamId !== gold.away && p.champion > 0.001)
+      ok('nobody outside the final carries champion probability',
+            others.length === 0, others.map(p => p.teamId).join(', '))
+    }
   }
 }
 

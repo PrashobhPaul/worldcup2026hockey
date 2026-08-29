@@ -9,6 +9,9 @@
 // bundle.current      — snapshots[N]; the same object, not a second run
 
 import { useMemo } from 'react'
+import { useLiveQuery } from 'dexie-react-hooks'
+import { db } from '../db.js'
+import { activePredictions } from './prediction.js'
 import { projectBracket, orderedResults } from './simulate.js'
 import { buildSnapshotSeries, toPercent, describeSnapshot } from './probability.js'
 import { computeStandings } from './standings.js'
@@ -16,12 +19,31 @@ import { assignTiers } from './tiers.js'
 
 let _cache = { key: null, value: null }
 
-export function computeOracleBundle(teams, matches) {
+// The ledger's advance probability for every tie still to be played, keyed the
+// way the simulation keys a knockout. This is what makes the champion race and
+// the bracket board one claim rather than two: both read the published pick,
+// and neither runs a model of its own on top of it.
+export function publishedAdvanceMap(matches, predictions) {
+  const byId = new Map(matches.map(m => [m.id, m]))
+  const out = new Map()
+  for (const row of activePredictions(predictions ?? [])) {
+    const m = byId.get(row.matchId)
+    if (!m || m.home === 'TBD' || m.away === 'TBD') continue
+    if (row.p_home_win == null || m.phase === 'pool' || m.phase === 'stage2') continue
+    const pair = m.home < m.away ? `${m.home}|${m.away}` : `${m.away}|${m.home}`
+    out.set(`${m.phase}:${pair}`, { home: m.home, p: row.p_home_win + (row.p_draw ?? 0) / 2 })
+  }
+  return out
+}
+
+export function computeOracleBundle(teams, matches, predictions) {
   const results = orderedResults(matches)
-  const key = `${teams.length}:${matches.length}:${results.map(m => `${m.id}${m.score.home}-${m.score.away}`).join(',')}`
+  const published = publishedAdvanceMap(matches, predictions)
+  const pkey = [...published.entries()].map(([k, v]) => `${k}${v.home}${v.p.toFixed(4)}`).join(',')
+  const key = `${teams.length}:${matches.length}:${results.map(m => `${m.id}${m.score.home}-${m.score.away}`).join(',')}|${pkey}`
   if (_cache.key === key) return _cache.value
 
-  const snapshots = buildSnapshotSeries(teams, matches)
+  const snapshots = buildSnapshotSeries(teams, matches, published)
   const current = snapshots[snapshots.length - 1]
   const standings = computeStandings(teams, matches)
   const bracket = projectBracket(teams, matches, standings)
@@ -116,10 +138,14 @@ export function computeOracleBundle(teams, matches) {
 }
 
 export function useOracleBundle(teams, matches) {
+  // The hook reads the ledger itself rather than making every page pass it in.
+  // Seven pages call this; one of them forgetting the argument would put that
+  // page back on a second opinion, which is the failure this exists to end.
+  const predictions = useLiveQuery(() => db.predictions.toArray(), [], [])
   return useMemo(() => {
     if (!teams?.length || !matches?.length) return null
-    return computeOracleBundle(teams, matches)
-  }, [teams, matches])
+    return computeOracleBundle(teams, matches, predictions)
+  }, [teams, matches, predictions])
 }
 
 /** Race series for the worm chart: one row per snapshot, straight from it. */

@@ -120,6 +120,17 @@ export function simulateTournament(teams, matches, opts = {}) {
   // their stage-2 meeting: a match already played answering for one that was
   // not, and the app told its readers Spain were 100% champions. A pairing
   // names a fixture only within its phase.
+  // Where the ledger has published an advance probability for a tie, that is
+  // the number this simulation uses. Running a rating Elo of its own instead
+  // is how the board came to read Germany 53% to win the final while the race
+  // read Germany 63.8% to be champion — with only the final left, those are
+  // the same question and cannot differ.
+  //
+  // Pool and stage-2 matches still sample scorelines from the rating model: a
+  // pool table needs goals, and the ledger publishes a result probability, not
+  // a scoreline. Every knockout goes through the published number.
+  const publishedAdvance = opts.published instanceof Map ? opts.published : new Map()
+
   const realScore = new Map()   // phase:pair -> { [code]: goals }
   const realWinner = new Map()  // phase:pair -> winning code (shootout-aware)
   for (const m of matches) {
@@ -154,6 +165,12 @@ export function simulateTournament(teams, matches, opts = {}) {
   const resolveKO = (codeH, codeA, phase) => {
     const real = realWinner.get(`${phase}:${pairKey(codeH, codeA)}`)
     if (real) return real
+    const pub = publishedAdvance.get(`${phase}:${pairKey(codeH, codeA)}`)
+    if (pub != null) {
+      // Stored in the pairing's published orientation; flip it when the
+      // bracket sends the sides through the other way round.
+      return rng() < (pub.home === codeH ? pub.p : 1 - pub.p) ? codeH : codeA
+    }
     const { lambdaH, lambdaA } = goalRates(rating(codeH), rating(codeA))
     const h = samplePoisson(lambdaH, rng), a = samplePoisson(lambdaA, rng)
     if (h !== a) return h > a ? codeH : codeA
