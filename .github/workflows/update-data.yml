@@ -190,7 +190,15 @@ jobs:
       # sat unexecuted while the corrupt files shipped to every reader. Data
       # that cannot pass its own invariants does not publish, on main first.
       - name: Refuse to publish data that fails its own invariants
-        run: python3 scripts/test_parsers.py
+        run: |
+          python3 scripts/test_parsers.py
+          # The published player figures are checked here too, against the
+          # event ledger they are derived from. A tournament total can balance
+          # while an individual player's row is wrong — two goals swapped
+          # between team-mates net out, and a dropped card is invisible in a
+          # sum — and those rows are what the players boards, the team pages
+          # and the match cards actually show.
+          python3 scripts/test_individual_stats.py
 
       - name: Commit & push if changed
         id: commit
