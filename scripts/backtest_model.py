@@ -167,8 +167,12 @@ def replay(mode):
 
         probs = predict(eff[home], eff[away], knockout=knockout)
         if knockout:
-            pick = 'HOME' if probs[0] >= probs[2] else 'AWAY'
-            drivers = ['two-way knockout split']
+            # The triple is regulation; the pick is who advances, and the
+            # drawn third of the outcome space resolves through the shoot-out
+            # at even odds — the same fold every publisher applies.
+            adv_h = probs[0] + probs[1] / 2
+            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
+            drivers = [f'regulation triple, shoot-out fold (advance {adv_h:.0%})']
         else:
             und = away if probs[0] >= probs[2] else home
             f = nkm.build_features(
@@ -205,9 +209,19 @@ def replay(mode):
 
         h, a = m['score']['home'], m['score']['away']
         actual = 'HOME' if h > a else 'AWAY' if a > h else 'DRAW'
+        hit = pick == actual
+        if knockout and actual == 'DRAW':
+            # Level after sixty: the knockout pick was about who advances, so
+            # it is judged against the shoot-out where the record has one. A
+            # drawn knockout with no shoot-out on file cannot vindicate a
+            # pick and stays a miss — the burden of proof is the record's.
+            so = m.get('shootout')
+            if so:
+                so_winner = 'HOME' if so['home'] > so['away'] else 'AWAY'
+                hit = pick == so_winner
         rows.append({'id': m['id'], 'knockout': knockout, 'pick': pick,
                      'actual': actual, 'probs': probs, 'drivers': drivers,
-                     'hit': pick == actual})
+                     'hit': hit})
 
     n = len(rows)
     brier = logloss = 0.0
@@ -225,6 +239,43 @@ def replay(mode):
         'before_capture': ranks.before_capture,
     }
     return rows, stats
+
+
+def ledger_tally(fixtures=None, predictions=None):
+    """Score the picks AS PUBLISHED — the cards, not a replay.
+
+    The published accuracy figure used to be the current model replayed
+    as-of-then. That definition quietly rewrites the record every time the
+    model is recalibrated: the replay flips a pick the public never saw
+    flipped, and the headline stops being the number the match cards add up
+    to. The promise on the Trust page is about the picks that were actually
+    published, so this counts exactly those — each match's active
+    (non-superseded) row, graded like the cards grade: a knockout level after
+    sixty falls to the shoot-out winner where the record has one, and to a
+    miss where it does not.
+    """
+    fixtures = fixtures or load('fixtures.json')
+    predictions = predictions or load('predictions.json')
+    active = {p['matchId']: p for p in predictions['predictions'] if not p.get('superseded')}
+    hits = graded = draws = draws_called = 0
+    for m in fixtures['matches']:
+        if m['status'] != 'completed' or (m.get('score') or {}).get('home') is None:
+            continue
+        p = active.get(m['id'])
+        if not p:
+            continue
+        graded += 1
+        h, a = m['score']['home'], m['score']['away']
+        actual = 'HOME' if h > a else 'AWAY' if a > h else 'DRAW'
+        if actual == 'DRAW':
+            draws += 1
+            draws_called += p['pick'] == 'DRAW'
+        hit = p['pick'] == actual
+        if actual == 'DRAW' and m['phase'] not in NON_KNOCKOUT_PHASES:
+            so = m.get('shootout')
+            hit = bool(so) and p['pick'] == ('HOME' if so['home'] > so['away'] else 'AWAY')
+        hits += hit
+    return {'correct': hits, 'matches': graded, 'draws': draws, 'draws_called': draws_called}
 
 
 def report(label, stats):
@@ -260,20 +311,27 @@ def main():
         # different denominator is how the app came to print two records of
         # the same model on the same screen, so only this one is published.
         # The draws are carried as a breakdown of it, not as a rival to it.
-        drawn = [r for r in rows if r['actual'] == 'DRAW']
+        led = ledger_tally()
         payload = {
-            'matches': n,
-            'correct': stats['correct'],
-            'accuracy_pct': round(100 * stats['correct'] / n),
-            'draws': len(drawn),
-            'draws_called': sum(1 for r in drawn if r['pick'] == 'DRAW'),
+            'matches': led['matches'],
+            'correct': led['correct'],
+            'accuracy_pct': round(100 * led['correct'] / led['matches']) if led['matches'] else 0,
+            'draws': led['draws'],
+            'draws_called': led['draws_called'],
             'brier': round(stats['brier'], 4),
             'log_loss': round(stats['log_loss'], 4),
             'model': nkm.MODEL_VERSION,
             'mode': mode,
-            'method': ('as-of-then replay: every completed match re-scored with only the form, '
-                       'head-to-head and world-ranking table that existed before its own push-back'),
+            'method': ('accuracy counts the picks as published — each match\'s active ledger row, '
+                       'graded like the match cards (a drawn knockout falls to the shoot-out '
+                       'winner where recorded, and to a miss where not). Brier and log-loss are '
+                       'the current model replayed as-of-then, with only the form, head-to-head '
+                       'and world-ranking table that existed before each push-back. The split '
+                       'matters: a recalibration may sharpen the model, but it must never move '
+                       'the public record of what was picked.'),
         }
+        print(f"  ledger (as published)      {led['correct']}/{led['matches']} = "
+              f"{led['correct'] / led['matches']:.0%}" if led['matches'] else '')
         try:
             with open(out_path) as fh:
                 previous = {k: v for k, v in json.load(fh).items() if k != 'updated_at'}

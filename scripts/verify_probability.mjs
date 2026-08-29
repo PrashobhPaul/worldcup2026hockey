@@ -234,6 +234,31 @@ for (const t of teams) {
 }
 console.log(`  checked ${teams.length} intros against fih_rank`)
 
+// ── Certainty needs a played final ─────────────────────────────────────────
+// On 29 Aug the app said Spain were 100% to win the cup, two days before the
+// final — a corrupted record had marked the gold final completed with a score
+// borrowed from a stage-2 match. Whatever the data says, the engine must
+// never assert a champion while the final is unplayed; certainty is earned on
+// the pitch, never computed.
+{
+  const gold = matches.find(m => m.phase === 'gold-final')
+  const finalPlayed = gold && gold.status === 'completed' && gold.score?.home != null
+  const snaps = Object.values(series)
+  const last = snaps[snaps.length - 1]
+  const top = last.probabilities[0]
+  if (!finalPlayed) {
+    ok('no champion probability reaches certainty before the final is played',
+      last.probabilities.every(p => p.champion < 1 && p.champion >= 0),
+      `${top?.teamId} at ${top?.champion}`)
+    const alive = last.probabilities.filter(p => p.champion > 0)
+    ok('while the final is unplayed, both finalists still carry championship mass',
+      alive.length >= 2, alive.map(p => p.teamId).join(','))
+  } else {
+    ok('once the final is played, exactly one champion carries certainty',
+      last.probabilities.filter(p => p.champion === 1).length <= 1)
+  }
+}
+
 // ── Summary ───────────────────────────────────────────────────────────────
 const top = bundle.current.probabilities.slice(0, 5)
   .map(p => `${p.teamId} ${formatProbability(p.champion)}`).join(' · ')

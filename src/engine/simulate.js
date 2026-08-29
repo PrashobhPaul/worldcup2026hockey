@@ -113,17 +113,21 @@ export function simulateTournament(teams, matches, opts = {}) {
 
   const poolFixtures = matches.filter(m => m.phase === 'pool' && m.home !== 'TBD')
 
-  // Real, completed non-pool results, indexed by team pair. This honors any
-  // played Stage-2 / knockout / classification match without needing to know
-  // its dynamic id — the pairing itself is the key.
-  const realScore = new Map()   // pair -> { [code]: goals }
-  const realWinner = new Map()  // pair -> winning code (shootout-aware)
+  // Real, completed non-pool results, indexed by PHASE and team pair. The
+  // pairing alone was the key until the medal round produced the
+  // tournament's first re-matches, and the gold final — Spain v Germany,
+  // still two days away — resolved in all four thousand simulations from
+  // their stage-2 meeting: a match already played answering for one that was
+  // not, and the app told its readers Spain were 100% champions. A pairing
+  // names a fixture only within its phase.
+  const realScore = new Map()   // phase:pair -> { [code]: goals }
+  const realWinner = new Map()  // phase:pair -> winning code (shootout-aware)
   for (const m of matches) {
     if (m.phase === 'pool' || !hasResult(m) || !countedIds.has(m.id)) continue
     if (m.home === 'TBD' || m.away === 'TBD') continue
-    realScore.set(pairKey(m.home, m.away), { [m.home]: m.score.home, [m.away]: m.score.away })
+    realScore.set(`${m.phase}:${pairKey(m.home, m.away)}`, { [m.home]: m.score.home, [m.away]: m.score.away })
     const w = realKnockoutWinner(m)
-    if (w) realWinner.set(pairKey(m.home, m.away), w)
+    if (w) realWinner.set(`${m.phase}:${pairKey(m.home, m.away)}`, w)
   }
 
   const counts = new Map(teams.map(t => [t.code, { top8: 0, sf: 0, final: 0, bronze: 0, champion: 0 }]))
@@ -139,16 +143,16 @@ export function simulateTournament(teams, matches, opts = {}) {
     })
 
   // A match between two known teams: real score if played, else sampled goals.
-  const playMatch = (codeH, codeA) => {
-    const real = realScore.get(pairKey(codeH, codeA))
+  const playMatch = (codeH, codeA, phase) => {
+    const real = realScore.get(`${phase}:${pairKey(codeH, codeA)}`)
     if (real) return { home: codeH, away: codeA, h: real[codeH], a: real[codeA] }
     const { lambdaH, lambdaA } = goalRates(rating(codeH), rating(codeA))
     return { home: codeH, away: codeA, h: samplePoisson(lambdaH, rng), a: samplePoisson(lambdaA, rng) }
   }
 
   // A knockout tie: real winner if played, else sample regulation + shootout.
-  const resolveKO = (codeH, codeA) => {
-    const real = realWinner.get(pairKey(codeH, codeA))
+  const resolveKO = (codeH, codeA, phase) => {
+    const real = realWinner.get(`${phase}:${pairKey(codeH, codeA)}`)
     if (real) return real
     const { lambdaH, lambdaA } = goalRates(rating(codeH), rating(codeA))
     const h = samplePoisson(lambdaH, rng), a = samplePoisson(lambdaA, rng)
@@ -186,7 +190,7 @@ export function simulateTournament(teams, matches, opts = {}) {
         for (let j = i + 1; j < codes.length; j++) {
           const carried = stage1By.get(pairKey(codes[i], codes[j]))
           if (carried) played.push(carried)
-          else played.push(playMatch(codes[i], codes[j]))
+          else played.push(playMatch(codes[i], codes[j], 'stage2'))
         }
       }
       place2.set(s2, poolPlacement(codes, played, tb))
@@ -202,13 +206,13 @@ export function simulateTournament(teams, matches, opts = {}) {
     for (const s of SEMIS) {
       const h = at(s.home[0], s.home[1]), a = at(s.away[0], s.away[1])
       counts.get(h).sf++; counts.get(a).sf++
-      const w = resolveKO(h, a)
+      const w = resolveKO(h, a, 'semi-final')
       sfWinners.push(w); sfLosers.push(w === h ? a : h)
     }
     counts.get(sfWinners[0]).final++; counts.get(sfWinners[1]).final++
-    const champ = resolveKO(sfWinners[0], sfWinners[1])
+    const champ = resolveKO(sfWinners[0], sfWinners[1], 'gold-final')
     counts.get(champ).champion++
-    const bronze = resolveKO(sfLosers[0], sfLosers[1])
+    const bronze = resolveKO(sfLosers[0], sfLosers[1], 'bronze-final')
     counts.get(bronze).bronze++
   }
 
