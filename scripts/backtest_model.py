@@ -35,9 +35,7 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from update_data import predict, form_delta, h2h_delta  # noqa: E402
-import model_non_knockout as nkm
-import model_knockout as km
-from team_rating import rate_teams  # noqa: E402
+import model_non_knockout as nkm  # noqa: E402
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'public', 'data')
 NON_KNOCKOUT_PHASES = ('pool', 'stage2')
@@ -181,14 +179,12 @@ def replay(mode):
 
         probs = predict(eff[home], eff[away], knockout=knockout)
         if knockout:
-            # The same one call the pipeline makes. Replaying a knockout means
-            # replaying the model's own learning: it sees exactly the matches
-            # completed before this kickoff and nothing after it.
-            out = km.predict_match(m, done, rate_teams)
-            pick = out['prediction']
-            probs = (out['regulation']['HOME'], out['regulation']['LEVEL'],
-                     out['regulation']['AWAY'])
-            drivers = out['drivers']
+            # The triple is regulation; the pick is who advances, and the
+            # drawn third of the outcome space resolves through the shoot-out
+            # at even odds — the same fold every publisher applies.
+            adv_h = probs[0] + probs[1] / 2
+            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
+            drivers = [f'regulation triple, shoot-out fold (advance {adv_h:.0%})']
         else:
             und = away if probs[0] >= probs[2] else home
             f = nkm.build_features(

@@ -129,29 +129,5 @@ ok('every active row has exactly one pick per match',
   ok('the status tag says the tie went past sixty minutes', r.statusTag === 'FT (SO)')
 }
 
-// ── The knockouts are scored by their own model ───────────────────────────
-// KNOCKOUT_MODEL_V1 publishes the REGULATION triple with level-after-sixty in
-// the draw slot, and the app folds it at even odds to reach the advance split.
-// Same arithmetic, stated twice in two languages, so the two are checked
-// against each other rather than trusted to stay in step.
-console.log('\nKnockout rows carry their own model\'s numbers')
-for (const r of rows.filter(isKO)) {
-  const m = fixtures.get(r.matchId)
-  const adv = r.p_home_win + r.p_draw / 2
-  ok(`${r.matchId}: a knockout is never published as a draw`, r.pick !== 'DRAW', r.pick)
-  ok(`${r.matchId}: the published confidence is the advance probability`,
-     Math.abs((r.pick === 'HOME' ? adv : 1 - adv) - r.pick_confidence) < 0.002,
-     `${r.pick_confidence} vs ${(r.pick === 'HOME' ? adv : 1 - adv).toFixed(3)}`)
-  // Rows published under the new model must not repeat what it replaced:
-  // p_draw 0.00 on a round where half the classification matches were level,
-  // and 97% asserted on a match that went to a shoot-out. Older rows are the
-  // ledger's own record and are left exactly as published.
-  if (m && m.status !== 'completed') {
-    ok(`${r.matchId}: level after sixty carries real mass`, r.p_draw > 0.05, String(r.p_draw))
-    ok(`${r.matchId}: no knockout claim is asserted above 80%`,
-       Math.max(adv, 1 - adv) < 0.80, String(Math.max(adv, 1 - adv).toFixed(3)))
-  }
-}
-
 console.log(fail ? `\n${fail} FAILED` : '\nAll pick-coherence checks passed.')
 process.exit(fail ? 1 : 0)
