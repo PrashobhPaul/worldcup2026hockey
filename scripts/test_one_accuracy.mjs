@@ -12,7 +12,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { publishedAccuracy } from '../src/engine/prediction.js'
+import { publishedAccuracy, stageOf, stageRows } from '../src/engine/prediction.js'
 
 const SRC = fileURLToPath(new URL('../src', import.meta.url))
 const OWNER = 'engine/prediction.js'      // the one file allowed to read them
@@ -71,6 +71,47 @@ ok('an older calibration still yields one coherent figure',
 const none = publishedAccuracy(null, { correct: 9, graded: 12, accuracyPct: 75 })
 ok('with no calibration at all it falls back to the graded tally',
    none.basis === 'client-tally' && none.pct === 75, JSON.stringify(none))
+
+// ── The stage split is the same record, cut three ways ───────────────────
+// A breakdown beside a headline is a second chance to print two records of
+// one model, so it has to reconcile with the figure it sits under.
+const rows = stageRows(r.stages)
+ok('the split is published alongside the headline', rows.length > 0,
+   JSON.stringify(r.stages))
+ok('the stage split sums to the published figure',
+   rows.reduce((n, x) => n + x.matches, 0) === r.graded
+   && rows.reduce((n, x) => n + x.correct, 0) === r.correct,
+   `${JSON.stringify(rows)} vs ${r.correct}/${r.graded}`)
+ok('no stage claims more hits than it played',
+   rows.every(x => x.correct <= x.matches), JSON.stringify(rows))
+
+// The phase-to-stage map must be the one the pipeline publishes with, or the
+// client would relabel a match the published split counted somewhere else.
+ok('every phase lands in the stage the published split put it in',
+   [['pool', 'stage1'], ['stage2', 'stage2'], ['classification', 'knockout'],
+    ['semi-final', 'knockout'], ['bronze-final', 'knockout'], ['gold-final', 'knockout']]
+     .every(([phase, want]) => stageOf(phase) === want))
+
+// The tournament is 24 + 16 + 10. A denominator past a stage's own size means
+// the map or the ledger has drifted.
+const CEILING = { stage1: 24, stage2: 16, knockout: 10 }
+ok('no stage reports more matches than the tournament holds',
+   rows.every(x => x.matches <= CEILING[x.key]), JSON.stringify(rows))
+
+// A stage nobody has played yet is left out rather than shown as 0/0 — the
+// knockouts read out of 8 today and out of 10 once the medal finals are in.
+ok('a stage with nothing played is not shown',
+   stageRows({ stage1: { correct: 2, matches: 3 }, stage2: { correct: 0, matches: 0 },
+               knockout: { correct: 0, matches: 0 } }).length === 1)
+
+// A client on a calibration from before the split still gets one: its own
+// tally stands in, so the breakdown is never three empty slots.
+const older = publishedAccuracy({ correct: 25, matches: 40, accuracy_pct: 62 },
+                                { byStage: { stage1: { correct: 20, matches: 30 },
+                                             stage2: { correct: 5, matches: 10 },
+                                             knockout: { correct: 0, matches: 0 } } })
+ok('a calibration from before the split falls back to the client tally',
+   stageRows(older.stages).length === 2, JSON.stringify(older.stages))
 
 console.log(fail ? `\n${fail} FAILED` : '\nAll accuracy-consistency checks passed.')
 process.exit(fail ? 1 : 0)

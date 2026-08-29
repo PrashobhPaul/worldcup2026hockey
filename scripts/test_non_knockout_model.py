@@ -134,6 +134,34 @@ def main():
     check('a pool draw is still a callable, gradable outcome',
           (t['correct'], t['matches'], t['draws'], t['draws_called']) == (1, 1, 1, 1), str(t))
 
+    # The stage split shown beside the headline is the SAME record, cut three
+    # ways. Two numbers on one screen that do not add up is the bug this app
+    # has already shipped twice, so the split must reconcile exactly: the
+    # parts sum to the whole, and each stage's hits never exceed its matches.
+    stages = led['by_stage']
+    check('the stage split sums to the published headline',
+          (sum(v['matches'] for v in stages.values()) == led['matches']
+           and sum(v['correct'] for v in stages.values()) == led['correct']),
+          f"{stages} vs {led['correct']}/{led['matches']}")
+    check('no stage claims more hits than it played',
+          all(v['correct'] <= v['matches'] for v in stages.values()), str(stages))
+    check('the published calibration carries the same split it was built from',
+          cal.get('by_stage') == stages, f"{cal.get('by_stage')} vs {stages}")
+    # A knockout round is one stage of ten, so the classification places, the
+    # semi-finals and the medal finals all land in the same bucket — and the
+    # pool round and stage 2 keep their own.
+    check('every phase lands in the stage a reader would put it in',
+          (bt.stage_of('pool'), bt.stage_of('stage2'), bt.stage_of('classification'),
+           bt.stage_of('semi-final'), bt.stage_of('bronze-final'), bt.stage_of('gold-final'))
+          == ('stage1', 'stage2', 'knockout', 'knockout', 'knockout', 'knockout'))
+    # The denominators are matches PLAYED, and the tournament is 24 + 16 + 10,
+    # so no stage may ever report more than its own size.
+    ceilings = {'stage1': 24, 'stage2': 16, 'knockout': 10}
+    over = [f"{k} {stages[k]['matches']}/{ceilings[k]}"
+            for k in ceilings if stages[k]['matches'] > ceilings[k]]
+    check('no stage reports more matches than the tournament holds',
+          not over, ', '.join(over))
+
     check('the published figure is the number the match cards add up to',
           (cal['correct'], cal['matches']) == (led['correct'], led['matches']),
           f"calibration {cal['correct']}/{cal['matches']} vs cards {led['correct']}/{led['matches']}")

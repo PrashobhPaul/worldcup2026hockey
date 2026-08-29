@@ -5,6 +5,7 @@ import { db } from '../db'
 import MatchCard, { formatDate, phaseTag } from '../components/MatchCard'
 import { SectionHead, Skeleton, TierBadge } from '../components/shared'
 import { derivePrediction, publishedAccuracy } from '../engine/prediction'
+import StageSplit from '../components/StageSplit'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import { SIM_ID } from '../content/sim'
@@ -40,6 +41,11 @@ function ModelBadge() {
           {rec.correct} of {rec.graded} matches
           {rec.drawsCalled ? ` · ${rec.drawsCalled}/${rec.draws} draws` : ''}
         </span>
+        {rec.stages && (
+          <span className="hero-accuracy-sub">
+            <StageSplit stages={rec.stages} variant="inline" />
+          </span>
+        )}
       </span>
     </Link>
   )
