@@ -3868,9 +3868,7 @@
       "reason_original": "FIH #4 ARG favoured over #5 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
       "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged",
-      "superseded": true,
-      "superseded_at": "2026-08-27T16:14:51.300242+00:00",
-      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
+      "reinstated_reason": "The pick of record: announced publicly on 25 August and held to."
     },
     {
       "id": "oracle-v1:POS13:r3",
@@ -4217,7 +4215,10 @@
       "reason_original": "FIH #4 ARG favoured over #5 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-25T13:06:02.515375+00:00",
       "reason_revision": "rationale rewritten from this tournament only; pick and probabilities unchanged",
-      "pick_team": "GER"
+      "pick_team": "GER",
+      "superseded": true,
+      "superseded_at": "2026-08-27T16:14:51.300242+00:00",
+      "superseded_reason": "Withdrawn in favour of the pick announced publicly on 25 August. This row reversed a semi-final call already published outside the app; a pick made in public is not revised behind it. Retained as the erratum it is."
     },
     {
       "id": "oracle-v1:A3:r5",
