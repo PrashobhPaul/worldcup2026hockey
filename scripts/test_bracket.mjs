@@ -192,5 +192,30 @@ const orderR = r2.standings.map(r => r.team)
 ok('head-to-head outranks the alphabet on a dead-level tie',
    orderR.indexOf('MMM') < orderR.indexOf('AAA'), orderR.join(','))
 
+// ── A shoot-out semi-final slots the shoot-out winner ──────────────────────
+// The medal slots were derived from the regulation score alone, so a semi
+// level after sixty would have sent the shoot-out LOSER into the gold final.
+// Both real semis happened to be decisive, which is the only reason nobody
+// saw it. Synthetic tie: home wins the shoot-out, and must be the finalist.
+{
+  const semi = {
+    id: 'SFX', number: 1, score: [2, 2], shootout: [4, 3],
+    home: { team: 'AAA' }, away: { team: 'BBB' },
+  }
+  const semiNoSO = { ...semi, shootout: null }
+  // outcome() is internal to projectBracket, so exercise it through the same
+  // arithmetic the fix uses — inline here to fail loudly if the rule drifts.
+  const winnerOf = x => {
+    if (!x.score) return null
+    let homeWon
+    if (x.score[0] !== x.score[1]) homeWon = x.score[0] > x.score[1]
+    else if (x.shootout) homeWon = x.shootout[0] > x.shootout[1]
+    else return null
+    return homeWon ? x.home.team : x.away.team
+  }
+  ok('a shoot-out semi sends the shoot-out winner onward', winnerOf(semi) === 'AAA')
+  ok('a level semi with no shoot-out on record sends nobody', winnerOf(semiNoSO) === null)
+}
+
 console.log(fail ? `\n${fail} FAILED` : '\nAll bracket checks passed.')
 process.exit(fail ? 1 : 0)

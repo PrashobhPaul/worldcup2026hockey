@@ -283,7 +283,13 @@ function FavouriteStrip({ teams, matches }) {
 function ResultRow({ match, teams }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
   const h = byCode.get(match.home), a = byCode.get(match.away)
-  const win = match.score.home > match.score.away ? 'H' : match.score.home < match.score.away ? 'A' : 'D'
+  // The final outcome, shoot-out included: a knockout tie level after sixty
+  // has a winner, and this row bolds them like any other winner instead of
+  // shrugging at the regulation draw.
+  const so = match.shootout && match.shootout.home !== match.shootout.away ? match.shootout : null
+  const win = match.score.home > match.score.away ? 'H'
+    : match.score.home < match.score.away ? 'A'
+    : so ? (so.home > so.away ? 'H' : 'A') : 'D'
   return (
     <Link to={`/matches/${match.id}`}
       className="flex min-h-[48px] items-center gap-3 rounded-xl border border-white/5 bg-pitch-800 px-3.5 py-2.5 transition-colors hover:border-brand/25">
@@ -292,12 +298,14 @@ function ResultRow({ match, teams }) {
         <span className="truncate">{h?.name ?? match.home}</span> <span>{h?.flag}</span>
       </span>
       <span className="shrink-0 rounded-md bg-pitch-950/60 px-2 py-1 font-mono text-sm font-bold tracking-wider">
-        {match.score.home}–{match.score.away}
+        {match.score.home}{so && <span className="text-[11px] text-brand"> ({so.home})</span>}
+        –
+        {so && <span className="text-[11px] text-brand">({so.away}) </span>}{match.score.away}
       </span>
       <span className={`flex min-w-0 flex-1 items-center gap-1.5 text-sm ${win === 'A' ? 'font-bold' : 'text-pitch-300'}`}>
         <span>{a?.flag}</span> <span className="truncate">{a?.name ?? match.away}</span>
       </span>
-      <span className="shrink-0 rounded bg-pitch-700 px-1.5 py-0.5 font-mono text-[9px] font-bold text-pitch-300">FT</span>
+      <span className="shrink-0 rounded bg-pitch-700 px-1.5 py-0.5 font-mono text-[9px] font-bold text-pitch-300">{so ? 'FT (SO)' : 'FT'}</span>
     </Link>
   )
 }

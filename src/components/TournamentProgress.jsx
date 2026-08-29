@@ -185,21 +185,29 @@ function QualNode({ qual, x, y, byCode }) {
 
 /** A tie: two slots, each captioned with where its side comes from. */
 function MatchNode({ match, x, y, w, byCode, accent = false }) {
-  const row = (slot, score) => (
+  const row = (slot, score, so) => (
     <div className="flex h-[34px] items-center gap-1.5 text-[11px]">
       <span className="w-[60px] shrink-0 font-mono text-[8px] uppercase leading-tight tracking-wide text-pitch-400">
         {slot.label}
       </span>
       <Nation code={slot.team} byCode={byCode} fallback="—" bold />
-      {score != null && <span className="w-4 shrink-0 text-right font-mono text-xs font-bold">{score}</span>}
+      {score != null && (
+        <span className="shrink-0 text-right font-mono text-xs font-bold">
+          {score}
+          {/* A tie level after sixty carries its shoot-out on the board —
+              3 (3) over 3 (4) — or the bracket claims a result it cannot name
+              a winner for. */}
+          {so != null && <span className="text-brand"> ({so})</span>}
+        </span>
+      )}
     </div>
   )
   const body = (
     <>
-      <Head accent={accent} sub={match.score ? 'played' : shortDate(match.date)}>{match.title}</Head>
+      <Head accent={accent} sub={match.score ? (match.shootout ? 'shoot-out' : 'played') : shortDate(match.date)}>{match.title}</Head>
       <div className="px-2 py-0.5">
-        {row(match.home, match.score?.[0])}
-        {row(match.away, match.score?.[1])}
+        {row(match.home, match.score?.[0], match.shootout?.[0])}
+        {row(match.away, match.score?.[1], match.shootout?.[1])}
       </div>
     </>
   )

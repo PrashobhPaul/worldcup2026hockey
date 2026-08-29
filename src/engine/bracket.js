@@ -161,6 +161,9 @@ export function buildBracket(teams, matches) {
     const score = done && goalsFor(home) != null && goalsFor(away) != null
       ? [goalsFor(home), goalsFor(away)]
       : (done ? [fixture.score.home, fixture.score.away] : null)
+    const shootout = done && fixture?.shootout
+      && fixture.shootout.home !== fixture.shootout.away
+      ? [fixture.shootout.home, fixture.shootout.away] : null
     return {
       id: fixture?.id ?? `SF${i + 1}`,
       type: 'SEMIFINAL',
@@ -169,6 +172,7 @@ export function buildBracket(teams, matches) {
       home: { ...home, status: done ? STATUS.COMPLETED : home.status },
       away: { ...away, status: done ? STATUS.COMPLETED : away.status },
       score,
+      shootout,
       date: fixture?.date ?? null,
       // The fixture is the FIH's own statement of the same pairing. Where it
       // names a side, it and the derivation must agree; test:medalpath fails
@@ -180,7 +184,15 @@ export function buildBracket(teams, matches) {
 
   const outcome = (semi, want) => {
     if (!semi.score) return null
-    const homeWon = semi.score[0] > semi.score[1]
+    // A knockout level after sixty is decided in the shoot-out. Deriving the
+    // winner from the regulation score alone would have slotted the LOSER of
+    // a shoot-out semi-final into the gold final — it never fired only
+    // because both semis happened to be decisive. Level with no shoot-out on
+    // record decides nobody, and the slot stays open rather than guessed.
+    let homeWon
+    if (semi.score[0] !== semi.score[1]) homeWon = semi.score[0] > semi.score[1]
+    else if (semi.shootout) homeWon = semi.shootout[0] > semi.shootout[1]
+    else return null
     const side = want === 'winner' ? (homeWon ? 'home' : 'away') : (homeWon ? 'away' : 'home')
     return semi[side].team
   }
@@ -208,6 +220,9 @@ export function buildBracket(teams, matches) {
       home: slots[0],
       away: slots[1],
       score: done ? [fixture.score.home, fixture.score.away] : null,
+      shootout: done && fixture?.shootout
+        && fixture.shootout.home !== fixture.shootout.away
+        ? [fixture.shootout.home, fixture.shootout.away] : null,
       date: fixture?.date ?? null,
       stated: fixture ? [named(fixture.home), named(fixture.away)] : [null, null],
     }

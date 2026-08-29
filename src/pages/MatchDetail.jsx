@@ -569,7 +569,13 @@ export default function MatchDetailPage() {
             {h2h.map(m => (
               <Link key={m.id} to={`/matches/${m.id}`}
                 className="flex items-center justify-between rounded-lg border border-white/5 bg-pitch-950/40 px-3 py-2 font-mono text-xs transition-colors hover:border-brand/20">
-                <span className="font-bold">{m.home} {m.score.home} – {m.score.away} {m.away}</span>
+                <span className="font-bold">
+                  {m.home} {m.score.home}
+                  {m.shootout && m.shootout.home !== m.shootout.away && <span className="text-brand"> ({m.shootout.home})</span>}
+                  {' – '}
+                  {m.shootout && m.shootout.home !== m.shootout.away && <span className="text-brand">({m.shootout.away}) </span>}
+                  {m.score.away} {m.away}
+                </span>
                 <span className="text-[10px] text-pitch-400">{phaseTag(m)} · {formatDate(m.date)}</span>
               </Link>
             ))}
