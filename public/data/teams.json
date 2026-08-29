@@ -243,12 +243,12 @@
       "intro": "The Tigers arrive as Asia's most improved side and the team most likely to make the pool stage uncomfortable for somebody. Malaysia's hockey is played at pace, with Marhan Jalil leading a squad that has closed the gap on the European sides in recent seasons. In Pool B with Belgium, Germany and France, they will need to take at least one scalp — and they have taken them before.",
       "fih_points": 2346.77,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 0,
-        "draws": 2,
+        "draws": 3,
         "losses": 3,
-        "gf": 14,
-        "ga": 23
+        "gf": 16,
+        "ga": 25
       }
     },
     {
@@ -367,12 +367,12 @@
       "intro": "Amabhungane arrive as Africa's representatives and the lowest-ranked side in Pool C, a position South Africa have turned into an identity. Austin Smith's experience anchors a squad that plays with more freedom than its ranking implies, and their tournament will hinge on the fixture against Ireland. South Africa have never got out of a World Cup pool; this is a group where the arithmetic at least allows the conversation.",
       "fih_points": 2531.46,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 1,
-        "draws": 2,
+        "draws": 3,
         "losses": 2,
-        "gf": 10,
-        "ga": 13
+        "gf": 14,
+        "ga": 17
       }
     },
     {
@@ -460,12 +460,12 @@
       "intro": "Four world titles — level with Germany for the most in the tournament's history — and none since 1994. Pakistan's return to this stage is the sport's most emotive storyline: a nation that invented much of hockey's attacking vocabulary, back among the sixteen. Abu Mahmood leads a young squad in which Sufyan Khan's corner threat carries much of the scoring burden. Pool D is unforgiving, and Pakistan have never needed a reason to raise their game.",
       "fih_points": 2561.59,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 1,
-        "draws": 1,
+        "draws": 2,
         "losses": 3,
-        "gf": 13,
-        "ga": 19
+        "gf": 17,
+        "ga": 23
       }
     },
     {
@@ -491,12 +491,12 @@
       "intro": "The Dragons arrive ranked sixteenth of sixteen, at their second World Cup, and with nothing to lose in the most literal sense. Wales defend deep, break through Rupert Shipperley, and treat every corner won as a genuine event. Drawn with India, England and Pakistan in Pool D, they will be underdogs in all three matches — which, as Wales have shown before, is the situation in which they are hardest to beat.",
       "fih_points": 2299.73,
       "form": {
-        "played": 5,
+        "played": 6,
         "wins": 0,
-        "draws": 1,
+        "draws": 2,
         "losses": 4,
-        "gf": 10,
-        "ga": 24
+        "gf": 12,
+        "ga": 26
       }
     }
   ],

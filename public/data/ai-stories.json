@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T08:09:38.784902+00:00",
+  "updated_at": "2026-08-29T09:12:47.641774+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -264,8 +264,8 @@
     },
     {
       "matchId": "POS7",
-      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Arthur de Sloover (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T08:09:38.784644+00:00",
+      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. Belgium took the tie 4-3 in the shoot-out. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Arthur de Sloover (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:12:47.641613+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },
@@ -280,6 +280,20 @@
       "matchId": "SF2",
       "story": "Germany edged Argentina 2-1 at the Royal Leopold Club in Brussels on 28 August, in the Semi-Final tie of the FIH Hockey World Cup 2026. Germany came into the match ranked 2nd in the world, Argentina 7th — 5 places between them on the FIH table.\n\nGermany scored through Justus Weigand (33rd minute) and Paul-Philipp Kaufmann (54th minute); Argentina replied through Tomas Domene (46th minute, penalty corner). It stood 0-0 at half-time. The opening goal came in the 33rd minute and the final goal in the 54th, from the 3rd quarter to the 4th. Paul-Philipp Kaufmann's 54th-minute goal stood as the difference.\n\nOf the 3 goals, 2 came in open play and 1 from the set piece. The 4th quarter was the busiest, with 2 of them. The sides were level at the interval, and Germany won the second half. 2 green cards and 1 yellow card were shown. The goals were spread across 3 different scorers. This was match 48 of the tournament's fifty.",
       "generatedAt": "2026-08-29T08:09:38.784832+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS15",
+      "story": "Wales and Malaysia finished level at 2-2 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 15th/16th Place tie of the FIH Hockey World Cup 2026. Wales took the tie 2-1 in the shoot-out. Wales came into the match ranked 18th in the world, Malaysia 15th — 3 places between them on the FIH table.\n\nWales scored through Benjamin Francis (29th minute) and Liam Barker (53rd minute); Malaysia replied through Faizal Saari (41st minute) and Akhimullah Anuar (52nd minute). It stood 1-0 at half-time. The opening goal came in the 29th minute and the final goal in the 53rd, from the 2nd quarter to the 4th.\n\nEvery goal came in open play. The 4th quarter was the busiest, with 2 of them. 2 green cards were shown. The goals were spread across 4 different scorers. This was match 42 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:12:47.641261+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS11",
+      "story": "Pakistan and South Africa finished level at 4-4 after sixty minutes at the Wagener Stadion in Amstelveen on 28 August, in the 11th/12th Place tie of the FIH Hockey World Cup 2026. Pakistan took the tie 4-3 in the shoot-out. Pakistan came into the match ranked 12th in the world, South Africa 13th — 1 place between them on the FIH table.\n\nSouth Africa scored through Trevor de Lora (8th minute, penalty corner), Dayaan Cassiem (18th minute), Mustaphaa Cassiem (40th minute, penalty corner) and Mustaphaa Cassiem (55th minute, penalty stroke); Pakistan replied through Afraz (21st minute), Muhammad Ammad (22nd minute, penalty corner), Waheed Ashraf Rana (32nd minute, penalty corner) and Muhammad Hammadudin (60th minute). It stood 2-2 at half-time. The opening goal came in the 8th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 8 goals, 3 came in open play and 5 from the set piece. The 2nd quarter was the busiest, with 3 of them. 4 green cards and 2 yellow cards were shown. The goals were spread across 7 different scorers. This was match 43 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:12:47.641372+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }
