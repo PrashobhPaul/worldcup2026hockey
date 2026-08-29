@@ -3487,6 +3487,21 @@ def predict(home_pts, away_pts, knockout=False):
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
 import model_non_knockout as _nkm
+import model_knockout as _km
+from team_rating import rate_teams as _rate_teams
+
+
+def knockout_pick(m, fixtures):
+    """One single-match round through KNOCKOUT_MODEL_V2.
+
+    The model does the whole chain itself — evidence completed before this
+    kickoff, weights re-learned from it, the bracket matchup, the pick — so
+    the pipeline, the backtest and the tests cannot produce a prediction three
+    different ways.
+    """
+    return _km.predict_match(m, fixtures['matches'], _rate_teams)
+
+
 
 _FROZEN_RANKINGS = None
 
@@ -3576,9 +3591,22 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs),
             knockout=knockout)
         if knockout:
-            adv_h = ph + pd / 2
-            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
-            conf = round(max(adv_h, 1 - adv_h), 3)
+            # KNOCKOUT_MODEL_V1 — its own model, not the ranking base with the
+            # draw folded away. It reads this tournament's defensive record
+            # rather than the pre-tournament table, carries no home term (the
+            # bracket decides which name is printed first, and every match is
+            # at a neutral venue), and keeps level-after-sixty as a real branch
+            # instead of asserting it cannot happen.
+            out = knockout_pick(m, fixtures)
+            pick = out['prediction']
+            ph = out['regulation']['HOME']
+            pd = out['regulation']['LEVEL']
+            pa = out['regulation']['AWAY']
+            # The published confidence is the ADVANCE probability, because
+            # advancing is what a knockout pick claims — a side that wins the
+            # shoot-out has gone through exactly as if it had won in sixty.
+            conf = round(out['advance'][pick], 3)
+            ko_drivers = out['drivers']
         else:
             # Pool and stage-2 matches can be drawn, so they go through the
             # non-knockout model: the same ranking-points base, plus its one
@@ -3603,7 +3631,14 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         p['superseded'] = True
         p['superseded_at'] = now.isoformat()
-        p['superseded_reason'] = 'Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model.'
+        p['superseded_reason'] = (
+            'Rescored pre-match by KNOCKOUT_MODEL_V1, which reads this '
+            'tournament\'s defensive record rather than the pre-tournament '
+            'ranking table, carries no home term at a neutral venue, and keeps '
+            'level-after-sixty as a real branch.'
+            if knockout else
+            'Inputs refreshed pre-match: current FIH ranking points and the '
+            'calibrated draw-aware model.')
         new_row = {
             'id': f"oracle-v1:{mid}:r{rev}",
             'matchId': mid,
@@ -3615,9 +3650,13 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             # The card names the team, not the side — a revision without
             # pick_team rendered as a pick of nobody.
             'pick_team': {'HOME': m['home'], 'AWAY': m['away'], 'DRAW': None}[pick],
-            'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
-                       f"Elo with a full draw model. Revised pre-match; the original pick "
-                       f"stays in the ledger."),
+            'reason': ((f"{fav} favoured to advance — {'; '.join(ko_drivers)}. Revised "
+                        f"pre-match under KNOCKOUT_MODEL_V1; the original pick stays in "
+                        f"the ledger.")
+                       if knockout else
+                       (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
+                        f"Elo with a full draw model. Revised pre-match; the original pick "
+                        f"stays in the ledger.")),
             'publishedAt': now.isoformat(),
         }
         if p.get('reason_original'):
@@ -3711,7 +3750,9 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
             'basis': 'pre-match' if pre_match else 'model-backfill',
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': pick, 'pick_confidence': conf,
-            'reason': f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model from world rankings.{stage_note}{basis_note}",
+            'reason': ((f"{fav} favoured to advance — {'; '.join(ko_drivers)}.{stage_note}{basis_note}")
+                       if knockout else
+                       f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model from world rankings.{stage_note}{basis_note}"),
             'publishedAt': now.isoformat(),
         })
         changed = True
