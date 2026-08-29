@@ -97,21 +97,32 @@ def main():
           abs(sum(aligned['probs'].values()) - 1.0) < 0.005,
           str(sum(aligned['probs'].values())))
 
-    # The app prints one accuracy figure, computed by replaying the model over
-    # every completed match. The match cards show the picks in the ledger. If
-    # those two ever disagree, the number above the cards is not the number the
-    # cards add up to — which is exactly what happened when the model changed
-    # and the played matches kept the old model's picks (24/39 on the cards,
-    # 26/39 on the page).
+    # The app prints one accuracy figure above match cards that show the
+    # ledger's picks. The figure must be the number the cards add up to — and
+    # the cards are the picks AS PUBLISHED, which a model recalibration never
+    # touches once a match has kicked off (that is the promise). So the check
+    # is not "does today's model reproduce every old pick" — a recalibration
+    # exists precisely because it would not — but two things that must hold at
+    # all times: the headline equals the card count, and every pick for a
+    # match still to come is what the current model says today.
     import backtest_model as bt
-    replayed, _ = bt.replay(nkm.DEFAULT_MODE)
-    ledger = {r['matchId']: r for r in bt.load('predictions.json')['predictions']
-              if not r.get('superseded')}
-    drift = [f"{r['id']}: ledger {ledger[r['id']]['pick']} vs model {r['pick']}"
-             for r in replayed
-             if r['id'] in ledger and ledger[r['id']]['pick'] != r['pick']]
-    check('every published pick matches the model replayed as-of-then',
-          not drift, '; '.join(drift))
+    led = bt.ledger_tally()
+    cal = bt.load('model-calibration.json')
+    check('the published figure is the number the match cards add up to',
+          (cal['correct'], cal['matches']) == (led['correct'], led['matches']),
+          f"calibration {cal['correct']}/{cal['matches']} vs cards {led['correct']}/{led['matches']}")
+
+    # If the model would revise any not-yet-started pick, the ledger is stale:
+    # the reviser (which respects kicked-off matches) must be a no-op.
+    import copy as _copy
+    from update_data import generate_predictions
+    _fx = bt.load('fixtures.json')
+    _tm = bt.load('teams.json')
+    _pr = _copy.deepcopy(bt.load('predictions.json'))
+    _h2h = bt.load('h2h.json')['pairs']
+    check('no future pick is out of line with the current model',
+          not generate_predictions(_fx, _tm, _pr, _h2h),
+          'generate_predictions would publish revisions — regenerate before shipping')
 
     print(f"\n{len(FAILED)} check(s) FAILED: {', '.join(FAILED)}" if FAILED
           else '\nAll non-knockout model checks passed.')

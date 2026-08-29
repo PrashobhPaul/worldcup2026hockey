@@ -459,17 +459,36 @@ def parse_player_rows(lines):
 # kickoff times: those live on the per-match pages, which are probed separately.
 TEAM_CODES = set(TEAM_CODE_MAP.values())
 PAIR_ROW = re.compile(r'^([A-Z]{3})\s*-\s*([A-Z]{3})$')
-SCORE_ROW = re.compile(r'^(\d{1,2})\s*-\s*(\d{1,2})$')
+SCORE_ROW = re.compile(
+    r'^(\d{1,2})\s*-\s*(\d{1,2})'                       # regulation score
+    r'(?:\s*(?:SO|s\.?o\.?)?\s*\(\s*(\d{1,2})\s*-\s*(\d{1,2})\s*\)\s*(?:SO|s\.?o\.?)?)?$',
+    re.I)                                               # optional folded shoot-out
+# A shoot-out rendered on its own line after the score: "(3 - 4)", "SO (3 - 4)"
+# or "SO 3 - 4". A bare pool letter or a relative time never matches this.
+SO_ROW = re.compile(
+    r'^(?:SO|s\.?o\.?)?\s*\(?\s*(\d{1,2})\s*-\s*(\d{1,2})\s*\)?\s*(?:SO|s\.?o\.?)?$', re.I)
 
-def parse_tms_results(lines):
+def parse_tms_results(lines, shootouts_out=None):
     """{(home, away): (home_goals, away_goals)} from the TMS matches page.
 
     Only a pair row immediately answered by a score row counts — an upcoming
-    match's "2 hours from now" matches nothing, so it yields no result. A pair
-    appearing twice with different scores marks the page misread and returns
-    None rather than a coin-flip.
+    match's "2 hours from now" matches nothing, so it yields no result.
+
+    Knockout rounds go to a shoot-out when level after sixty minutes, and the
+    page carries that result too — inline after the score or on its own line.
+    The regulation score is the score (a shoot-out is not goals); the shoot-out
+    lands in shootouts_out so the fixture can say who advanced. This is what
+    left WAL v MAS and PAK v RSA "live" for a day: their rows carried an
+    annotation no pattern here recognised, so no score was ever read at all.
+
+    A pair repeated with different scores drops THAT PAIR, not the page. The
+    medal round is a genuine re-match weekend — bronze and gold repeat pool
+    pairings — so one ambiguous pairing must not blind the backfill to every
+    other result on the page (returning None here is exactly how finals day
+    would have gone dark).
     """
-    results, pending = {}, None
+    results, pending, poisoned = {}, None, set()
+    just_scored = None
     for ln in lines:
         ln = ln.strip()
         if ln in ('', '&nbsp;'):
@@ -477,15 +496,39 @@ def parse_tms_results(lines):
         pair = PAIR_ROW.match(ln)
         if pair and pair.group(1) in TEAM_CODES and pair.group(2) in TEAM_CODES:
             pending = (pair.group(1), pair.group(2))
+            just_scored = None
             continue
         score = SCORE_ROW.match(ln)
         if score and pending:
             value = (int(score.group(1)), int(score.group(2)))
             if pending in results and results[pending] != value:
-                print(f'RESULTS: {pending} appears twice with different scores — page misread.')
-                return None
+                print(f'RESULTS: {pending} appears twice with different scores — dropping the pair.')
+                poisoned.add(pending)
             results[pending] = value
+            if score.group(3) is not None and shootouts_out is not None:
+                shootouts_out[pending] = (int(score.group(3)), int(score.group(4)))
+            just_scored = pending
+            pending = None
+            continue
+        if just_scored and shootouts_out is not None:
+            so = SO_ROW.match(ln)
+            # Require an explicit shoot-out marker or parentheses: a bare
+            # "3 - 4" after a score row could be the next column of anything.
+            if so and (ln.upper().startswith('SO') or '(' in ln):
+                shootouts_out.setdefault(just_scored, (int(so.group(1)), int(so.group(2))))
+                just_scored = None
+                continue
+        if pending and any(c.isdigit() for c in ln) and '-' in ln and 'from now' not in ln:
+            # A pair row answered by something digit-and-dash shaped that no
+            # pattern here reads: say so, bounded, so the next stuck match
+            # names its own layout instead of failing silently for a day.
+            print(f'RESULTS PROBE: {pending} followed by unparsed {ln[:60]!r}')
         pending = None
+        just_scored = None
+    for pr in poisoned:
+        results.pop(pr, None)
+        if shootouts_out is not None:
+            shootouts_out.pop(pr, None)
     return results
 
 def probe_tms_match_page(links):
@@ -954,6 +997,40 @@ def parse_h2h(lines, current_competition=None):
     return rows
 
 
+def resolve_fixture_for_page(fixtures, info):
+    """Which fixture is a TMS match page about? None rather than a guess.
+
+    Matching by team pair alone corrupted the record the day the medal round
+    produced the tournament's first re-matches: the bronze final repeats a
+    pool pairing and the gold final a stage-2 one, so a pair suddenly named
+    two fixtures, a dict kept whichever came last, and the gold final's page
+    re-dated a pool match while the pool result "completed" the final. The
+    pair is only the start of the answer; the date decides between namesakes,
+    and a finished fixture is never re-targeted by a page from another day.
+    """
+    pair = set(info['pair'])
+    cands = [m for m in fixtures['matches']
+             if m['home'] != 'TBD' and {m['home'], m['away']} == pair]
+    if not cands:
+        return None
+    if len(cands) == 1:
+        m = cands[0]
+        if m['status'] == 'completed' and info.get('date') and m.get('date') != info['date']:
+            print(f"SCHEDULE: page for {'/'.join(sorted(pair))} on {info['date']} does not "
+                  f"match completed {m['id']} ({m.get('date')}) — not retargeting a finished match.")
+            return None
+        return m
+    if info.get('date'):
+        dated = [m for m in cands if m.get('date') == info['date']]
+        if len(dated) == 1:
+            return dated[0]
+    open_ = [m for m in cands if m['status'] != 'completed']
+    if len(open_) == 1:
+        return open_[0]
+    print(f"SCHEDULE: {'/'.join(sorted(pair))} names {len(cands)} fixtures and the page "
+          f"date decides nothing — skipped rather than guessed.")
+    return None
+
 def sync_schedule_from_match_pages(fixtures, links, h2h_out=None):
     """
     Correct kickoff date, time and venue against each TMS match page.
@@ -965,8 +1042,6 @@ def sync_schedule_from_match_pages(fixtures, links, h2h_out=None):
     for matches already completed, and the official line-ups on those pages
     have an address when they are wired in.
     """
-    by_pair = {frozenset((m['home'], m['away'])): m for m in fixtures['matches']
-               if m['home'] != 'TBD' and m['away'] != 'TBD'}
     known = {str(m.get('tms_id')): m for m in fixtures['matches'] if m.get('tms_id')}
     changed = False
     for mid in sorted(links, key=int):
@@ -981,7 +1056,7 @@ def sync_schedule_from_match_pages(fixtures, links, h2h_out=None):
         if not info:
             print(f'SCHEDULE: match page {mid} did not parse — skipped.')
             continue
-        m = by_pair.get(frozenset(info['pair']))
+        m = prior or resolve_fixture_for_page(fixtures, info)
         if not m:
             continue
         # The same page carries the pair's meeting history. Harvest it here
@@ -2047,8 +2122,7 @@ def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
         # standings row only absorbs a match once it is final, so requiring
         # both teams' rows to have absorbed every pending match guarantees the
         # page score is a final, never a live one caught mid-match.
-        page = page_results.get((h, a)) or (
-            page_results.get((a, h)) and page_results[(a, h)][::-1])
+        page = page_score_for(m, page_results, fixtures)
         if page and dh >= pending_count[h] and da >= pending_count[a]:
             sh, sa = page
             if dh == 1 and da == 1 and (rh['gf'] - lh['gf'], ra['gf'] - la['gf']) != (sh, sa):
@@ -2082,6 +2156,30 @@ def backfill_scores_from_tms(fixtures, tms, page_results=None, now=None):
         changed = True
         print(f"BACKFILL: {m['id']} {h} {sh}-{sa} {a} (from TMS standings deltas)")
     return changed
+
+def page_score_for(m, page_results, fixtures):
+    """The page entry for THIS fixture, orientation-aware.
+
+    The reversed lookup exists because TMS may list a single meeting the other
+    way round. But the medal round repeats earlier pairings, and there the
+    reversed fallback reads the EARLIER match's row as this one's — which is
+    how a pool result from twelve days before was "witnessed" into the bronze
+    final. When the pair is a re-match, only the fixture's own orientation
+    counts; a page that flips it yields nothing, and the report witness picks
+    the match up instead. Missing a score for a run is recoverable; writing
+    the wrong one is not supposed to be possible here.
+    """
+    own = page_results.get((m['home'], m['away']))
+    if own:
+        return own
+    rev = page_results.get((m['away'], m['home']))
+    if not rev:
+        return None
+    twins = sum(1 for x in fixtures['matches']
+                if {x['home'], x['away']} == {m['home'], m['away']} and x['home'] != 'TBD')
+    if twins > 1:
+        return None
+    return rev[::-1]
 
 # ── Live scores, mid-match ────────────────────────────────────────────────
 # The matches page shows the RUNNING score while a match is in play — the
@@ -2120,8 +2218,7 @@ def update_live_scores(fixtures, page_results, now=None):
             if now < ko and m.pop('live_score', None) is not None:
                 changed = True
             continue
-        page = page_results.get((m['home'], m['away'])) or (
-            page_results.get((m['away'], m['home'])) and page_results[(m['away'], m['home'])][::-1])
+        page = page_score_for(m, page_results, fixtures)
         if not page:
             continue
         prev = m.get('live_score') or {}
@@ -2155,7 +2252,32 @@ def _report_goal_tally(m):
     return (sum(1 for g in goals if g['team'] == m['home']),
             sum(1 for g in goals if g['team'] == m['away']))
 
-def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None):
+def attach_missing_shootouts(fixtures, shootouts):
+    """A drawn knockout with no shoot-out on record cannot say who advanced.
+
+    POS7 completed as 3-3 before the parser could read shoot-out notation, so
+    the fixture knows the score but not the outcome. The listing still shows
+    the shoot-out; every run may attach what is missing. Only drawn knockout
+    matches qualify — a decisive score needs no tie-breaker, and a pool draw
+    is simply a draw.
+    """
+    changed = False
+    for m in fixtures['matches']:
+        if (m['phase'] in ('pool', 'stage2') or m['status'] != 'completed'
+                or not has_score(m) or m.get('shootout')
+                or m['score']['home'] != m['score']['away']):
+            continue
+        so = (shootouts or {}).get((m['home'], m['away']))
+        if so is None:
+            rev = (shootouts or {}).get((m['away'], m['home']))
+            so = rev[::-1] if rev else None
+        if so:
+            m['shootout'] = {'home': so[0], 'away': so[1]}
+            changed = True
+            print(f"SHOOTOUT ATTACHED: {m['id']} {m['home']} v {m['away']} SO {so[0]}-{so[1]}")
+    return changed
+
+def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None, shootouts=None):
     """Final scores for Stage 2, classification and knockout matches.
 
     The pool backfill's witness is the standings table: a row only absorbs a
@@ -2191,8 +2313,7 @@ def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None):
             continue
         if not over:
             continue
-        page = page_results.get((m['home'], m['away'])) or (
-            page_results.get((m['away'], m['home'])) and page_results[(m['away'], m['home'])][::-1])
+        page = page_score_for(m, page_results, fixtures)
         if not page:
             continue
         sh, sa = page
@@ -2229,12 +2350,22 @@ def backfill_stage_scores(fixtures, page_results, now=None, report_tally=None):
 
         if confirmed_by:
             m['score'] = {'home': sh, 'away': sa}
+            # A drawn knockout is decided in the shoot-out; the page carries
+            # that result and the fixture keeps it, or the app can never say
+            # who went through — the winner is not derivable from 2-2.
+            so = (shootouts or {}).get((m['home'], m['away']))
+            if so is None:
+                rev = (shootouts or {}).get((m['away'], m['home']))
+                so = rev[::-1] if rev else None
+            if so and sh == sa:
+                m['shootout'] = {'home': so[0], 'away': so[1]}
             m['result_source'] = 'fih-tms-matches'
             m['status'] = 'completed'
             m.pop('score_seen', None)
             m.pop('live_score', None)
             changed = True
-            print(f"BACKFILL: {m['id']} {m['home']} {sh}-{sa} {m['away']} "
+            so_note = f" SO {so[0]}-{so[1]}" if so and sh == sa else ''
+            print(f"BACKFILL: {m['id']} {m['home']} {sh}-{sa} {m['away']}{so_note} "
                   f"(TMS matches page, confirmed by {confirmed_by})")
         elif (m.get('score_seen') or {}).get('home') != sh or (m.get('score_seen') or {}).get('away') != sa:
             m['score_seen'] = {'home': sh, 'away': sa, 'at': now.isoformat()}
@@ -3301,36 +3432,45 @@ def effective_points(code, opponent, base_points, fixtures, h2h_pairs=None):
     return pts
 
 def predict(home_pts, away_pts, knockout=False):
-    """(p_home, p_draw, p_away) from official FIH ranking points.
+    """(p_home, p_draw, p_away) for the sixty minutes, from FIH ranking points.
 
     All constants live in model/params.json. Calibrated against the
     tournament's own completed matches, scored as-of-then (only the form
     and rankings available before each push-back) — the harness is
     scripts/backtest_model.py, re-runnable at any time:
 
-      - no confidence temper: the tempered v2 favourites were measurably
-        under-confident (log-loss improved ~8% on removal).
       - the draw window (draw_width) concentrates draw probability on
         genuinely close matchups rather than medium ranking gaps.
       - near-equal sides (gap under close_gap_points, roughly two places)
-        carry an additional draw allowance (close_gap_draw_delta): group
-        hockey between neighbours in the rankings draws far more often
-        than a smooth curve admits, and the backtest confirms the bump
-        improves every scoring metric.
+        carry an additional draw allowance (close_gap_draw_delta): hockey
+        between neighbours in the rankings draws far more often than a
+        smooth curve admits, and the backtest confirms the bump improves
+        every scoring metric.
 
-    Knockout rounds have no draws — level after sixty minutes goes to a
-    shootout — so a knockout prediction is a clean two-way split.
+    The triple always describes REGULATION — the sixty minutes — in every
+    phase. A knockout match level at the hooter goes to a shoot-out, so its
+    draw mass belongs to a near coin-flip, and every consumer resolves it
+    that way: advance probability = p_home + p_draw / 2 (the app engine has
+    done exactly this in prediction.js from the start).
 
-    v2 history, kept for the record: recalibrated after PAK v WAL when the
-    rank-position Elo read near-equals as 75/25 and the match finished 3-3
-    — ranking points, not positions, are the currency, and the draw is a
-    full outcome, not a residue.
+    v3 history, kept for the record: knockouts previously returned a raw
+    two-way logistic — the draw simply deleted, all of its mass handed to
+    the favourite. The tournament's own knockout rounds refuted that: three
+    of the first six were level after sixty minutes, matches this model had
+    called impossible (a certainty scored at −log(0) in its own backtest),
+    and it sent a 92% favourite into a semi-final that was lost. Sixty
+    minutes of knockout hockey is the same sport the draw model was
+    calibrated on; the shoot-out is where the tie is broken, not a reason
+    to pretend ties cannot happen.
+
+    v2 history: recalibrated after PAK v WAL when the rank-position Elo
+    read near-equals as 75/25 and the match finished 3-3 — ranking points,
+    not positions, are the currency, and the draw is a full outcome, not a
+    residue.
     """
     mm = MATCH_MODEL
     dr = home_pts - away_pts
     e = 1 / (1 + 10 ** (-dr / mm['slope']))
-    if knockout:
-        return round(e, 3), 0.0, round(1 - e, 3)
     p_draw = mm['draw_scale'] * math.exp(-(dr / mm['draw_width']) ** 2)
     if abs(dr) < mm['close_gap_points']:
         p_draw += mm['close_gap_draw_delta']
@@ -3465,6 +3605,9 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             'revises': p['id'],
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': pick, 'pick_confidence': conf,
+            # The card names the team, not the side — a revision without
+            # pick_team rendered as a pick of nobody.
+            'pick_team': {'HOME': m['home'], 'AWAY': m['away'], 'DRAW': None}[pick],
             'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
                        f"Elo with a full draw model. Revised pre-match; the original pick "
                        f"stays in the ledger."),
@@ -3602,7 +3745,9 @@ def main():
     # The matches page carries every final score by team-code pair — the
     # primary result source, consumed by the backfill below.
     page_body, _ = _tms_get(TMS_BASE + '/matches')
-    page_results = parse_tms_results(_tms_lines(page_body)) if page_body else {}
+    page_shootouts = {}
+    page_results = (parse_tms_results(_tms_lines(page_body), shootouts_out=page_shootouts)
+                    if page_body else {})
     if page_results:
         print(f'RESULTS: matches page carries {len(page_results)} final scores.')
     # Running scores for in-window matches — display-only, never a final.
@@ -3637,7 +3782,8 @@ def main():
     # Stage 2 and knockout matches have no pool table to witness them; their
     # scores come from the matches page with their own confirmation rules —
     # and must not be gated on the standings PDF parsing.
-    changed |= backfill_stage_scores(fixtures, page_results)
+    changed |= backfill_stage_scores(fixtures, page_results, shootouts=page_shootouts)
+    changed |= attach_missing_shootouts(fixtures, page_shootouts)
 
     # Real timeline from the TMS match report first; estimation only fills the
     # matches a report hasn't been published for yet.

@@ -10,8 +10,13 @@
 // These checks hold the published ledger to the three things a reader assumes
 // without being told:
 //
-//   1. the pick is the outcome the distribution ranks first
-//   2. the confidence shown is the pick's own probability
+//   1. the pick is the outcome the distribution ranks first — and in a
+//      knockout, where nobody goes home on a draw, the outcomes being ranked
+//      are the two ways to advance: regulation draw mass falls half to each
+//      side through the shoot-out, exactly as the app engine folds it
+//      (prediction.js). "Draw ranks first" is not a pickable outcome there.
+//   2. the confidence shown is the pick's own probability — for a knockout,
+//      the pick's probability OF ADVANCING.
 //   3. the distribution is a distribution
 //
 // and, because a pick is also argued in words, that the named team in
@@ -33,7 +38,18 @@ const scored = rows.filter(r => Object.values(probsOf(r)).every(v => typeof v ==
 ok('every active row carries a full distribution', scored.length === rows.length,
    rows.filter(r => !scored.includes(r)).map(r => r.matchId).join(', '))
 
+const KO_PHASES = new Set(['semi-final', 'bronze-final', 'gold-final', 'classification'])
+const isKO = r => KO_PHASES.has(fixtures.get(r.matchId)?.phase)
+// A knockout row published before the regulation-honest model carries a flat
+// two-way split (p_draw 0); the fold is then the identity, so one rule covers
+// both eras of the ledger.
+const advOf = r => ({ HOME: r.p_home_win + r.p_draw / 2, AWAY: r.p_away_win + r.p_draw / 2 })
+
 const disagree = scored.filter(r => {
+  if (isKO(r)) {
+    const a = advOf(r)
+    return r.pick !== (a.HOME >= a.AWAY ? 'HOME' : 'AWAY')
+  }
   const p = probsOf(r)
   const top = Object.keys(p).reduce((a, b) => (p[b] > p[a] ? b : a))
   return r.pick !== top
@@ -41,10 +57,13 @@ const disagree = scored.filter(r => {
 ok('the pick is the outcome its own distribution ranks first', disagree.length === 0,
    disagree.map(r => `${r.matchId}: pick ${r.pick} but ${JSON.stringify(probsOf(r))}`).join(' | '))
 
-const wrongConf = scored.filter(r =>
-  r.pick_confidence != null && Math.abs(r.pick_confidence - probsOf(r)[r.pick]) > 0.0015)
+const wrongConf = scored.filter(r => {
+  if (r.pick_confidence == null) return false
+  const want = isKO(r) ? advOf(r)[r.pick] : probsOf(r)[r.pick]
+  return Math.abs(r.pick_confidence - want) > 0.0015
+})
 ok('the confidence shown is the probability of the pick', wrongConf.length === 0,
-   wrongConf.map(r => `${r.matchId}: shows ${r.pick_confidence}, pick prob ${probsOf(r)[r.pick]}`).join(' | '))
+   wrongConf.map(r => `${r.matchId}: shows ${r.pick_confidence}`).join(' | '))
 
 const badSum = scored.filter(r => {
   const s = r.p_home_win + r.p_draw + r.p_away_win

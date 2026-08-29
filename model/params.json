@@ -1,13 +1,14 @@
 {
   "comment": "Single source of model constants, shared by the data pipeline (Python) and the app engine (JavaScript). Edit here, never inline.",
   "match_model": {
-    "slope": 500,
+    "slope": 900,
     "draw_scale": 0.33,
     "draw_width": 450,
     "draw_floor": 0.05,
     "draw_cap": 0.4,
     "close_gap_points": 150,
-    "close_gap_draw_delta": 0.06
+    "close_gap_draw_delta": 0.06,
+    "comment": "slope recalibrated 500 -> 900 on the as-of-then replay of all 46 completed matches (scripts/backtest_model.py): minimum expected calibration error (0.201 -> 0.124), log-loss 0.6988 -> 0.6533, pick accuracy unchanged at 37/46. An interior optimum, not a grid edge: log-loss alone keeps paying flatter models all the way to uninformative, calibration does not. The steeper slope was writing 92% on a semi-final that was lost."
   },
   "non_knockout_model": {
     "comment": "Pick rule for pool and stage-2 matches (the ones that can be drawn). Layered on top of match_model, which still produces the probabilities. Knockouts are untouched. 'mode' selects the published rule set: 'validated' is the base plus the parity-convergence draw rule (reference replay 24/36); 'tournament' adds the five switches in tournament_mode (reference replay 34/36). See reference/model_v3/non_knockout_model_v2.py for the author's original.",

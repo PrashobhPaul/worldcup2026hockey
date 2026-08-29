@@ -16,6 +16,7 @@ An engine brief is upgraded to an AI brief on a later run once the key is
 available. An AI brief is never downgraded or rewritten.
 """
 import json
+import re
 import os
 import sys
 from datetime import datetime, timezone
@@ -50,7 +51,12 @@ def quarter_of(minute):
     return min(4, max(1, (int(minute) - 1) // 15 + 1))
 
 def describe_goals(events, code, teams):
-    """'Harmanpreet Singh (12', PC) and Abhishek (44')' from the event ledger."""
+    """'Harmanpreet Singh (12th minute, penalty corner)' from the event ledger.
+
+    Minutes are written as ordinals because that is how the fact gate reads
+    them back: every goal minute in the record must appear in the brief, and
+    "17'" is a notation, not a word.
+    """
     parts = []
     for e in events:
         if e.get('type') != 'goal' or e.get('team') != code:
@@ -58,7 +64,7 @@ def describe_goals(events, code, teams):
         via = e.get('via')
         tag = {'PC': 'penalty corner', 'PS': 'penalty stroke'}.get(via)
         who = e.get('player') or teams.get(code, {}).get('name', code)
-        parts.append(f"{who} ({e.get('minute')}'{', ' + tag if tag else ''})")
+        parts.append(f"{who} ({ordinal(int(e.get('minute')))} minute{', ' + tag if tag else ''})")
     return parts
 
 def join_list(items):
@@ -79,65 +85,180 @@ def possessive(name):
 
 
 def engine_brief(m, teams):
-    """A factual brief built only from data already in the ledger."""
+    """A factual brief built only from data already in the ledger.
+
+    A stopgap, not a lesser truth: it is published when the AI writer is
+    unavailable and replaced by an AI brief on a later run, and while it
+    stands it is held to every rule the fact gate holds an AI brief to —
+    every scorer named, every goal minute cited as an ordinal, three
+    paragraphs of real length, and not one statistic the FIH does not
+    publish. The 29 Aug outage published stopgaps that quoted "corners won",
+    a number nobody measured (it was counting corner GOALS), and ran to
+    seventy-seven words; the gate caught them a day late because nothing on
+    main was running it. Facts only, from the ledger only.
+    """
     h, a = teams.get(m['home'], {}), teams.get(m['away'], {})
     hn = h.get('name', m['home'])
     an = a.get('name', m['away'])
     sh, sa = m['score']['home'], m['score']['away']
     events = m.get('events', []) or []
-    pc = m.get('penalty_corners', {}) or {}
     venue = VENUES.get(m.get('venue'), 'the tournament venue')
     stage = f"Pool {m['pool']}" if m.get('pool') else m.get('label', m['phase'])
+    goals = sorted((e for e in events if e.get('type') == 'goal'),
+                   key=lambda e: int(e.get('minute', 0)))
 
+    # Paragraph 1 — the result, and what it settles.
     if sh > sa:
         winner, loser, wg, lg = hn, an, sh, sa
     elif sa > sh:
         winner, loser, wg, lg = an, hn, sa, sh
     else:
         winner = None
-
-    # Paragraph 1 — the result.
     if winner:
         margin = wg - lg
-        verb = ('edged' if margin == 1 else 'beat' if margin == 2 else 'ran out convincing winners over')
+        verb = ('edged' if margin == 1 else 'beat' if margin == 2
+                else 'ran out convincing winners over')
         p1 = (f"{winner} {verb} {loser} {wg}-{lg} at {venue}, "
-              f"in a {stage} tie of the FIH Hockey World Cup 2026.")
+              f"in the {stage} tie of the FIH Hockey World Cup 2026.")
     else:
-        p1 = (f"{hn} and {an} shared a {sh}-{sa} draw at {venue}, "
-              f"in a {stage} tie of the FIH Hockey World Cup 2026.")
+        p1 = (f"{hn} and {an} finished level at {sh}-{sa} after sixty minutes "
+              f"at {venue}, in the {stage} tie of the FIH Hockey World Cup 2026.")
+        so = m.get('shootout')
+        if so:
+            so_w = hn if so['home'] > so['away'] else an
+            p1 += (f" {so_w} took the tie {max(so['home'], so['away'])}-"
+                   f"{min(so['home'], so['away'])} in the shoot-out.")
+    if winner and isinstance(stage, str):
+        placing = re.match(r'(\d+)[a-z]{2}/(\d+)[a-z]{2} Place', stage)
+        if placing:
+            p1 += (f" The result settles {ordinal(int(placing.group(1)))} place for "
+                   f"{winner}; {loser} finish {ordinal(int(placing.group(2)))}.")
     if h.get('fih_rank') and a.get('fih_rank'):
-        p1 += (f" {hn} came in ranked {ordinal(h['fih_rank'])} in the world, "
-               f"{an} {ordinal(a['fih_rank'])}.")
+        p1 += (f" {hn} came into the match ranked {ordinal(h['fih_rank'])} in the "
+               f"world, {an} {ordinal(a['fih_rank'])}")
+        gap = abs(h['fih_rank'] - a['fih_rank'])
+        p1 += (f" — {plural(gap, 'place')} between them on the FIH table." if gap
+               else ' — level pegging on the FIH table.')
+    try:
+        played_on = datetime.strptime(m['date'], '%Y-%m-%d').strftime('%-d %B')
+        p1 = p1.replace(' at ' + venue + ',', f" at {venue} on {played_on},", 1)
+    except (KeyError, ValueError):
+        pass
 
-    # Paragraph 2 — who scored, and when.
+    # Paragraph 2 — who scored, and when. Every name and every minute in the
+    # record appears here; the gate reads them back one by one.
     hg, ag = describe_goals(events, m['home'], teams), describe_goals(events, m['away'], teams)
     if hg or ag:
+        # Whoever scored first is narrated first — "replied" must follow an
+        # actual opener, not the home column of a table.
+        first_scorer = goals[0].get('team') if goals else m['home']
+        order = [(hn, hg), (an, ag)] if first_scorer == m['home'] else [(an, ag), (hn, hg)]
         bits = []
-        if hg:
-            bits.append(f"{hn} scored through {join_list(hg)}")
-        if ag:
-            bits.append(f"{an} through {join_list(ag)}")
+        for i, (name, gl) in enumerate(order):
+            if not gl:
+                continue
+            verb = 'scored through' if not bits else 'replied through'
+            bits.append(f"{name} {verb} {join_list(gl)}")
         p2 = '; '.join(bits) + '.'
-        goals = sorted((e for e in events if e.get('type') == 'goal'),
-                       key=lambda e: int(e.get('minute', 0)))
-        if goals:
-            first, last = goals[0], goals[-1]
-            p2 += (f" The opener came in Q{quarter_of(first['minute'])} and the final goal"
-                   f" in Q{quarter_of(last['minute'])}.")
+        if len(goals) == sh + sa:
+            half = [g for g in goals if int(g.get('minute', 0)) <= 30]
+            hh = sum(1 for g in half if g.get('team') == m['home'])
+            ha = len(half) - hh
+            p2 += f" It stood {hh}-{ha} at half-time."
+        first, last = goals[0], goals[-1]
+        if len(goals) == 1:
+            p2 += (f" The only goal on the official record came in the "
+                   f"{ordinal(int(first['minute']))} minute, in the "
+                   f"{ordinal(quarter_of(first['minute']))} quarter.")
+        else:
+            p2 += (f" The opening goal came in the {ordinal(int(first['minute']))} minute"
+                   f" and the final goal in the {ordinal(int(last['minute']))},"
+                   f" from the {ordinal(quarter_of(first['minute']))} quarter"
+                   f" to the {ordinal(quarter_of(last['minute']))}.")
+        # Claims about the whole of the scoring key off the SCORE, and are only
+        # made when the event feed carries every goal the score claims — a
+        # partial feed once had this composer calling a 3-1 a one-goal
+        # afternoon.
+        if len(goals) != sh + sa:
+            p2 += (f" The official record so far details {plural(len(goals), 'goal')} of the "
+                   f"{sh + sa}; the rest are added the moment the FIH publishes them.")
+        elif sh + sa <= 2:
+            p2 += (f" Goals were scarce all afternoon — "
+                   f"{plural(sh + sa, 'goal')} in the sixty minutes was the whole of the scoring.")
+        if winner and wg - lg == 1 and goals:
+            decider = goals[-1] if (goals[-1].get('team') == m['home']) == (winner == hn) else None
+            if decider and decider.get('player'):
+                p2 += (f" {possessive(decider['player'])} {ordinal(int(decider['minute']))}-minute "
+                       f"goal stood as the difference.")
+    elif sh == 0 and sa == 0:
+        p2 = ('Neither side found a way through in the sixty minutes: sixty minutes '
+              'of hockey, four quarters, and not one goal on the official record. '
+              'The point apiece is what the scoreline says it is.')
     else:
-        p2 = 'The goal-by-goal detail for this match has not been published yet.'
+        p2 = ('The goal-by-goal detail for this match has not been published by the '
+              'FIH yet; the scoreline above is the confirmed final. Scorers and '
+              'minutes are added to this brief the moment the official record '
+              'carries them.')
 
-    # Paragraph 3 — the shape of the game.
+    # Paragraph 3 — the shape of the game, from published facts only: the goal
+    # split by type and quarter, and the cards. Nothing here quotes a count
+    # the FIH does not publish.
     p3_bits = []
-    if pc.get('home') is not None and pc.get('away') is not None:
-        p3_bits.append(f"{hn} won {plural(pc['home'], 'penalty corner')} to {possessive(an)} {pc['away']}")
+    feed_complete = bool(goals) and len(goals) == sh + sa
+    if feed_complete:
+        # A set piece is a penalty corner or a stroke; 'FG' in the record is a
+        # field goal, i.e. open play — testing the field for truthiness once
+        # called every goal in a match a set piece. Every claim in this block
+        # describes the whole of the scoring, so none is made off a partial
+        # feed.
+        set_piece = sum(1 for g in goals if g.get('via') in ('PC', 'PS'))
+        open_play = len(goals) - set_piece
+        if set_piece and open_play:
+            p3_bits.append(f"of the {plural(len(goals), 'goal')}, {open_play} came in open play "
+                           f"and {set_piece} from the set piece")
+        elif set_piece:
+            p3_bits.append("every goal came from the set piece")
+        else:
+            p3_bits.append("every goal came in open play")
+        by_q = {}
+        for g in goals:
+            by_q[quarter_of(g['minute'])] = by_q.get(quarter_of(g['minute']), 0) + 1
+        top = max(by_q.values())
+        leaders = [q for q, n in by_q.items() if n == top]
+        # "Busiest" is a superlative; a tie has no busiest quarter.
+        if top > 1 and len(leaders) == 1:
+            p3_bits.append(f"the {ordinal(leaders[0])} quarter was the busiest, "
+                           f"with {top} of them")
+    if feed_complete and winner:
+        half_h = sum(1 for x in goals if int(x.get('minute', 0)) <= 30 and x.get('team') == m['home'])
+        half_a = sum(1 for x in goals if int(x.get('minute', 0)) <= 30 and x.get('team') != m['home'])
+        w_half, l_half = (half_h, half_a) if winner == hn else (half_a, half_h)
+        if w_half < l_half:
+            p3_bits.append(f"{winner} trailed at the interval and turned the match "
+                           f"around in the second half")
+        elif w_half == l_half:
+            p3_bits.append(f"the sides were level at the interval, and {winner} "
+                           f"won the second half")
+        else:
+            p3_bits.append(f"{winner} led at the interval and were not caught")
+    if winner and lg == 0:
+        p3_bits.append(f"{winner}'s defence kept {loser} off the scoresheet entirely")
     cards = [e for e in events if e.get('type') in ('yellow_card', 'green_card', 'red_card')]
     if cards:
-        n = len(cards)
-        p3_bits.append(f"{n} card{'s were' if n != 1 else ' was'} shown")
-    # Nothing about how this was assembled belongs in it. A reader wants the
-    # match; the machinery behind the sentence is our business, not theirs.
-    p3 = ('. '.join(s[0].upper() + s[1:] for s in p3_bits) + '.') if p3_bits else ''
+        colours = {'green_card': 0, 'yellow_card': 0, 'red_card': 0}
+        for c in cards:
+            colours[c['type']] += 1
+        parts = [plural(n, colour.split('_')[0] + ' card')
+                 for colour, n in colours.items() if n]
+        p3_bits.append(f"{join_list(parts)} {'were' if len(cards) != 1 else 'was'} shown")
+    else:
+        p3_bits.append('no cards were shown')
+    scorers = {g.get('player') for g in goals if g.get('player')}
+    if feed_complete and len(scorers) > 2:
+        p3_bits.append(f"the goals were spread across {len(scorers)} different scorers")
+    if m.get('matchNo'):
+        p3_bits.append(f"this was match {m['matchNo']} of the tournament's fifty")
+    p3 = ('. '.join(b[0].upper() + b[1:] for b in p3_bits) + '.') if p3_bits else ''
 
     return '\n\n'.join(p for p in (p1, p2, p3) if p)
 
@@ -170,13 +291,26 @@ def main():
                 if m['status'] == 'completed' and (m.get('score') or {}).get('home') is not None]
     changed = False
 
-    # Tier 2 first: guarantee every finished match has a brief.
+    # Tier 2 first: guarantee every finished match has a brief. An engine
+    # brief is a deterministic derivation of the ledger, not a published
+    # opinion — so an existing one that no longer matches what the composer
+    # derives today (the events arrived late, or the composer was fixed) is
+    # re-derived rather than left stale. AI stories are never touched here.
     for m in finished:
-        if m['id'] in by_id:
+        existing = by_id.get(m['id'])
+        if existing and existing.get('source', 'ai') == 'ai':
+            continue
+        text = engine_brief(m, teams)
+        if existing:
+            if existing.get('story') != text:
+                existing.update({'story': text,
+                                 'generatedAt': datetime.now(timezone.utc).isoformat()})
+                changed = True
+                print(f"BRIEF (engine, re-derived): {m['id']}")
             continue
         entry = {
             'matchId': m['id'],
-            'story': engine_brief(m, teams),
+            'story': text,
             'generatedAt': datetime.now(timezone.utc).isoformat(),
             'model': 'hockey-ai-engine',
             'source': 'engine',

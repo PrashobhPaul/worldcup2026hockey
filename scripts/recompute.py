@@ -30,6 +30,18 @@ def main():
 
     changed = ud.dedupe_player_ids(players)
     changed |= ud.update_player_stats(fixtures, players)
+    # The reconciliation stamp is a statement about one specific build of the
+    # figures against one specific fetch of the FIH reports. Rebuilding the
+    # figures makes it a verdict about nothing — the 29 Aug repair shipped a
+    # clean players.json still carrying the corrupted build's 28 disagreements
+    # — so a rebuild always drops it, and the pipeline re-stamps against
+    # freshly fetched reports on its next run. The stats gate treats an absent
+    # audit as fine and a present-but-unhappy one as a failure, which is
+    # exactly the distinction being kept truthful here.
+    if players.pop('official_figures_check', None) is not None:
+        changed = True
+        print('official-figures audit dropped — it described the previous build; '
+              'CI re-stamps it against fresh FIH reports.')
     if changed:
         ud.save('players.json', players)
         print('players.json recomputed.')
