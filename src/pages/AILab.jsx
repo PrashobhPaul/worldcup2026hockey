@@ -174,7 +174,13 @@ function StoriesPanel({ matches, byCode }) {
           return (
             <div key={m.id} className="rounded-xl border border-white/5 bg-pitch-800">
               <button onClick={() => setOpenId(open ? null : m.id)} className="flex w-full items-center gap-3 p-3.5 text-left">
-                <span className="text-sm font-bold">{h?.flag} {m.home} {m.score.home} – {m.score.away} {m.away} {a?.flag}</span>
+                <span className="text-sm font-bold">
+                  {h?.flag} {m.home} {m.score.home}
+                  {m.shootout && m.shootout.home !== m.shootout.away && <span className="text-brand"> ({m.shootout.home})</span>}
+                  {' – '}
+                  {m.shootout && m.shootout.home !== m.shootout.away && <span className="text-brand">({m.shootout.away}) </span>}
+                  {m.score.away} {m.away} {a?.flag}
+                </span>
                 <span className="ml-auto font-mono text-[10px] text-pitch-400">{formatDate(m.date)} · AI Story {s ? '✨' : '⏳'}</span>
               </button>
               {open && (
