@@ -188,6 +188,32 @@ jobs:
       # after the last writer and before the commit, describes whatever the
       # job actually produced and does not depend on remembering to add a
       # stamp to the next script that joins the pipeline.
+      # TEMPORARY, this branch only: the two shoot-out matches still read as
+      # unscored even from a runner that reaches TMS, and this sandbox cannot
+      # download job logs to see why. Surface the evidence as annotations —
+      # the raw listing lines around each stuck pairing, verbatim.
+      - name: Show the listing rows for the stuck matches
+        if: always()
+        run: |
+          python3 - <<'EOF'
+          import sys
+          sys.path.insert(0, 'scripts')
+          from update_data import _tms_get, _tms_lines, TMS_BASE, parse_tms_results
+          body, _ = _tms_get(TMS_BASE + '/matches', referer=TMS_BASE)
+          if not body:
+              print('::error::the matches listing itself did not load')
+              raise SystemExit
+          lines = [l.strip() for l in _tms_lines(body)]
+          for i, ln in enumerate(lines):
+              if any(k in ln for k in ('WAL', 'MAS', 'PAK', 'RSA', 'IND', 'BEL')):
+                  ctx = ' | '.join(lines[max(0, i-1):i+4])[:400]
+                  print(f'::notice::row {i}: {ctx}')
+          so = {}
+          res = parse_tms_results(lines, shootouts_out=so)
+          print(f'::notice::parsed results: { {k: v for k, v in (res or {}).items()} }'[:900])
+          print(f'::notice::parsed shootouts: {so}'[:400])
+          EOF
+
       - name: Stamp the data fingerprint
         run: python3 scripts/data_fingerprint.py --write
 
