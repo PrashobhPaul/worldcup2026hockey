@@ -192,28 +192,6 @@ jobs:
       # unscored even from a runner that reaches TMS, and this sandbox cannot
       # download job logs to see why. Surface the evidence as annotations —
       # the raw listing lines around each stuck pairing, verbatim.
-      - name: Show the report rows for the 7/8th place goals
-        if: always()
-        run: |
-          python3 - <<'EOF'
-          import sys, re
-          sys.path.insert(0, 'scripts')
-          from update_data import _tms_get, _pdf_lines, TMS_HOST
-          body, _ = _tms_get(f'{TMS_HOST}/matches/22383/reports/matchreport',
-                             referer=f'{TMS_HOST}/matches/22383')
-          if not body or not body.startswith(b'%PDF'):
-              print('::error::report 22383 did not load as a PDF')
-              raise SystemExit
-          lines = _pdf_lines(body)
-          shown = 0
-          for i, ln in enumerate(lines):
-              if shown >= 9:
-                  break
-              if re.search(r'\b(FG|PC|PS)\b', ln) or 'KERPEL' in ln.upper() or 'SLOOVER' in ln.upper():
-                  print(f'::notice::R{i}: {ln.strip()[:380]}')
-                  shown += 1
-          EOF
-
       - name: Stamp the data fingerprint
         run: python3 scripts/data_fingerprint.py --write
 
