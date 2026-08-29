@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T09:12:47.641774+00:00",
+  "updated_at": "2026-08-29T09:24:26.522129+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -264,8 +264,8 @@
     },
     {
       "matchId": "POS7",
-      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. Belgium took the tie 4-3 in the shoot-out. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Arthur de Sloover (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T09:12:47.641613+00:00",
+      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. Belgium took the tie 4-3 in the shoot-out. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Nicolas de Kerpel (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:24:26.521979+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },

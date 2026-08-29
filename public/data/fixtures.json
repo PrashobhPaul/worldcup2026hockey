@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-29T09:12:47.421274+00:00",
+ "last_updated": "2026-08-29T09:24:26.299035+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -536,7 +536,7 @@
    },
    "tms_id": 22334,
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22334",
    "result_source": "https://fih.altiusrt.com/matches/22334"
   },
@@ -1077,7 +1077,7 @@
     }
    },
    "tms_id": 22336,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22336"
   },
   {
@@ -1642,7 +1642,7 @@
     }
    },
    "tms_id": 22335,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22335"
   },
   {
@@ -2194,7 +2194,7 @@
     }
    },
    "tms_id": 22337,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22337"
   },
   {
@@ -2696,7 +2696,7 @@
     }
    },
    "tms_id": 22341,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22341"
   },
   {
@@ -3249,7 +3249,7 @@
     }
    },
    "tms_id": 22340,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22340"
   },
   {
@@ -3788,7 +3788,7 @@
     }
    },
    "tms_id": 22338,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22338"
   },
   {
@@ -4327,7 +4327,7 @@
     }
    },
    "tms_id": 22339,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22339"
   },
   {
@@ -4928,7 +4928,7 @@
    ],
    "enrichment": "official",
    "tms_id": 22344,
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22344"
   },
   {
@@ -5553,7 +5553,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22342"
   },
   {
@@ -6065,7 +6065,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22345"
   },
   {
@@ -6666,7 +6666,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22343"
   },
   {
@@ -7193,7 +7193,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22349"
   },
   {
@@ -7694,7 +7694,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22346"
   },
   {
@@ -8242,7 +8242,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22347"
   },
   {
@@ -8818,7 +8818,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22348"
   },
   {
@@ -9435,7 +9435,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22350"
   },
   {
@@ -10062,7 +10062,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22351"
   },
   {
@@ -10665,7 +10665,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22353"
   },
   {
@@ -11178,7 +11178,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22352"
   },
   {
@@ -11730,7 +11730,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22357"
   },
   {
@@ -12369,7 +12369,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22355"
   },
   {
@@ -12944,7 +12944,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22354"
   },
   {
@@ -13483,7 +13483,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22356"
   },
   {
@@ -14039,7 +14039,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22358"
   },
   {
@@ -14662,7 +14662,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22359"
   },
   {
@@ -15156,7 +15156,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22361"
   },
   {
@@ -15663,7 +15663,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22360"
   },
   {
@@ -16272,7 +16272,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22362"
   },
   {
@@ -16859,7 +16859,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22363"
   },
   {
@@ -17403,7 +17403,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22364"
   },
   {
@@ -17935,7 +17935,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22365"
   },
   {
@@ -18541,7 +18541,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22366"
   },
   {
@@ -19084,7 +19084,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22367"
   },
   {
@@ -19654,7 +19654,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22368"
   },
   {
@@ -20160,7 +20160,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "fih_match_id": "22369"
   },
   {
@@ -20741,7 +20741,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "S2G4",
@@ -21290,7 +21290,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "S2E3",
@@ -21873,7 +21873,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "S2E4",
@@ -22408,7 +22408,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "POS13",
@@ -22951,7 +22951,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "POS15",
@@ -23503,7 +23503,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "POS11",
@@ -24155,7 +24155,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "POS9",
@@ -24775,7 +24775,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "POS5",
@@ -25304,7 +25304,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "POS7",
@@ -25372,7 +25372,7 @@
      "team": "BEL",
      "type": "goal",
      "via": "FG",
-     "player": "Arthur de Sloover"
+     "player": "Nicolas de Kerpel"
     },
     {
      "minute": 60,
@@ -25857,7 +25857,7 @@
     {
      "minute": 47,
      "team": "BEL",
-     "text": "GOAL! Arthur de Sloover (BEL) scores from a field goal — IND 2-3 BEL.",
+     "text": "GOAL! Nicolas de Kerpel (BEL) scores from a field goal — IND 2-3 BEL.",
      "seq": 10
     },
     {
@@ -25878,7 +25878,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2,
+   "events_rev": 3,
    "shootout": {
     "home": 3,
     "away": 4
@@ -26452,7 +26452,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "SF2",
@@ -26994,7 +26994,7 @@
     }
    ],
    "enrichment": "official",
-   "events_rev": 2
+   "events_rev": 3
   },
   {
    "id": "BRZ",
@@ -27372,7 +27372,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-29T09:12:47.416448+00:00",
+    "generated_at": "2026-08-29T09:24:26.294239+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -27604,9 +27604,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_05",
-       "name": "Johannes Große",
-       "number": 10,
+       "playerId": "GER_16",
+       "name": "Antheus Barry",
+       "number": 38,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -27622,9 +27622,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_16",
-       "name": "Antheus Barry",
-       "number": 38,
+       "playerId": "GER_05",
+       "name": "Johannes Große",
+       "number": 10,
        "line": "Forward",
        "position": null,
        "captain": false,

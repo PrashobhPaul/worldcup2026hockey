@@ -1,6 +1,6 @@
 {
   "model": "hockey-ai-team-components-1",
-  "generated_at": "2026-08-29T09:12:47.417631+00:00",
+  "generated_at": "2026-08-29T09:24:26.295417+00:00",
   "source": "Hockey.AI, derived from the FIH match record",
   "teams": {
     "ARG": {
@@ -276,7 +276,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 71.9,
+          "score": 68.8,
           "weight": 0.03,
           "figure": 1.167
         }
@@ -354,7 +354,7 @@
       "coverage": 1.0
     },
     "FRA": {
-      "rating": 64.1,
+      "rating": 64.0,
       "matches": 6,
       "components": {
         "attack": {
@@ -416,7 +416,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 56.2,
+          "score": 50.0,
           "weight": 0.03,
           "figure": 1.333
         }
@@ -564,7 +564,7 @@
       "coverage": 1.0
     },
     "IRL": {
-      "rating": 68.1,
+      "rating": 68.0,
       "matches": 6,
       "components": {
         "attack": {
@@ -626,7 +626,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 56.2,
+          "score": 50.0,
           "weight": 0.03,
           "figure": 1.333
         }
@@ -704,7 +704,7 @@
       "coverage": 1.0
     },
     "MAS": {
-      "rating": 61.2,
+      "rating": 61.1,
       "matches": 6,
       "components": {
         "attack": {
@@ -766,7 +766,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 56.2,
+          "score": 50.0,
           "weight": 0.03,
           "figure": 1.333
         }
@@ -774,7 +774,7 @@
       "coverage": 1.0
     },
     "NED": {
-      "rating": 86.1,
+      "rating": 86.0,
       "matches": 6,
       "components": {
         "attack": {
@@ -836,7 +836,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 56.2,
+          "score": 50.0,
           "weight": 0.03,
           "figure": 1.333
         }
@@ -844,7 +844,7 @@
       "coverage": 1.0
     },
     "NZL": {
-      "rating": 78.9,
+      "rating": 79.4,
       "matches": 6,
       "components": {
         "attack": {
@@ -906,9 +906,9 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 40.6,
+          "score": 68.8,
           "weight": 0.03,
-          "figure": 1.5
+          "figure": 1.167
         }
       },
       "coverage": 1.0
