@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-29T12:21:07.558843+00:00",
+  "updated_at": "2026-08-29T16:52:04.141758+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -3995,14 +3995,14 @@
       "pick": "AWAY",
       "pick_team": "RSA",
       "pick_confidence": 0.632,
-      "reason": "France have taken two draws from three and have not won yet, a 1-1 with Germany the best of it, and five of their six goals have come from open play with one from a penalty corner. South Africa's record is worse and the 1-4 against Ireland is the heaviest defeat either side has taken, but three of their four goals have come from penalty corners. A side that scores from set pieces carries a route that does not depend on the run of play, and against a French attack with a single corner goal in three matches, the repeatable method is South Africa's.",
+      "reason": "France left Pool B unbeaten against Germany and Malaysia and lost to Belgium by a single goal, conceding seven in three matches against far stronger opposition than South Africa met. South Africa bring one point from three into Stage 2, with nine conceded in the pool — seven of them to Spain and Ireland — and the Cassiem set-piece threat as their clearest route to goal. The steadier pool evidence favours France.",
       "reason_original": "FIH #9 FRA favoured over #13 RSA — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
       "revises": "oracle-v2:S2H1",
       "reissued_at": "2026-08-25T05:31:06.013167+00:00",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged."
+      "reason_revised_at": "2026-08-29T16:52:04.583429+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "coherent:oracle-v2:S2F2",
@@ -4058,14 +4058,14 @@
       "pick": "HOME",
       "pick_team": "FRA",
       "pick_confidence": 0.504,
-      "reason": "Ireland arrive from the tournament's highest-scoring match, a 7-4 against Malaysia that accounts for more than half of their thirteen goals. Against the two sides that have beaten them, Australia and Spain, they scored once each time and conceded three in both. France have won none of four, but the shape of their defeats is different — one goal short against Belgium, a draw held against Germany — and across the same four matches they have conceded ten to Ireland's eleven. The win columns separate these two further than the pool evidence does.",
+      "reason": "Ireland arrive from the tournament's highest-scoring match, a 7-4 win built on a first-half Lynch hat-trick — the afternoon their finishing finally matched their chances. France are winless in four: two pool draws, a one-goal loss to Belgium, and a Stage 2 defeat to South Africa in which they managed a single goal. Ireland's far sharper finishing favours them.",
       "reason_original": "FIH #9 IRL favoured over #11 FRA — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
       "revises": "oracle-v2:S2H4",
       "reissued_at": "2026-08-25T05:31:06.013167+00:00",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged."
+      "reason_revised_at": "2026-08-29T16:52:04.583429+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "coherent:oracle-v2:S2F3",
@@ -4078,14 +4078,14 @@
       "pick": "HOME",
       "pick_team": "GER",
       "pick_confidence": 0.402,
-      "reason": "Australia are the only side in this pool yet to lose — two wins and two draws, and a 1-0 over Spain that is the best single result either side holds. The qualification is where the goals come from: two of their seven have been scored in open play, the rest from penalty corners and a stroke. Germany have scored six of their eight in open play and kept Belgium out entirely, and against a defence that has conceded four in four, the side that can score without needing a set piece has more ways through.",
+      "reason": "Australia are the only side left in Pool F yet to lose a match this tournament — two wins and two draws around the pool's stingiest defence, four conceded in four. Germany's scoring has thinned since the five they put past Malaysia: one goal per match in the three games since, and Spain have just ended their unbeaten run. An attack producing once a game against the steadiest defence in the pool is the harder road; Australia are favoured to stay unbeaten.",
       "reason_original": "FIH #3 AUS favoured over #6 GER — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
       "revises": "oracle-v2:S2F3",
       "reissued_at": "2026-08-25T05:31:06.013167+00:00",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged."
+      "reason_revised_at": "2026-08-29T16:52:04.583429+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "coherent:oracle-v2:S2G4",
@@ -4098,14 +4098,14 @@
       "pick": "AWAY",
       "pick_team": "PAK",
       "pick_confidence": 0.769,
-      "reason": "New Zealand's two wins are emphatic — seven against Wales and a clean sheet over Japan — but their eleven goals are concentrated in them: against the Netherlands and Argentina they managed one apiece while conceding twelve across the two. Pakistan have also lost twice, yet have scored three or more in three of their four matches, four of them against Japan. The sides are level on goals scored and separated by one at the other end, and the one that has scored steadily rather than in bursts is Pakistan.",
+      "reason": "New Zealand's defeats have come only against the Netherlands and Argentina; outside the top eight they have won both matches by a combined nine goals to two, the Wales rout showing an attack that punishes soft defences. Pakistan's eleven goals in four matches say they will score, but they have conceded at least three in every game, and their only win came against a Japan side that had scored once all tournament before that afternoon. New Zealand's edge at both ends is favoured.",
       "reason_original": "FIH #9 NZL favoured over #12 PAK — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
       "revises": "oracle-v2:S2G4",
       "reissued_at": "2026-08-25T05:31:06.013167+00:00",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged."
+      "reason_revised_at": "2026-08-29T16:52:04.583429+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "coherent:oracle-v2:S2E3",
@@ -4118,14 +4118,14 @@
       "pick": "AWAY",
       "pick_team": "IND",
       "pick_confidence": 0.719,
-      "reason": "Argentina's record is the stronger — three wins from four, fourteen scored and five conceded, with a 7-1 against New Zealand and a 3-1 over England. India's case is narrower and it is a set-piece case: seven of their eleven goals have come from penalty corners against Argentina's five. Argentina's only defeat came against the Netherlands, and a side that manufactures its chances from corners rather than from open play is the kind of opponent that does not need to out-play them to score.",
+      "reason": "Argentina's only defeat in four matches this tournament is to the Netherlands, and they arrive from beating England 3-1, every goal of it scored by Tomas Domene. India's four matches split the other way: wins over Wales and Pakistan, defeats in both meetings with top-eight opposition, and eleven conceded overall — nearly three a match. Argentina's corner battery against the tournament's most breached top-eight defence favours Los Leones.",
       "reason_original": "FIH #7 ARG favoured over #8 IND — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
       "revises": "oracle-v2:S2E3",
       "reissued_at": "2026-08-25T05:31:06.013167+00:00",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged."
+      "reason_revised_at": "2026-08-29T16:52:04.583429+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "coherent:oracle-v2:S2E4",
@@ -4138,14 +4138,14 @@
       "pick": "AWAY",
       "pick_team": "ENG",
       "pick_confidence": 0.792,
-      "reason": "The Netherlands are the only side with four wins from four — fifteen scored, four conceded, and no winning margin under two. England's single defeat came against Argentina and cost them a 1-3. But England have scored seventeen to the Dutch fifteen across the same four matches, eleven of those in open play to the Netherlands' nine, and their eight against Wales is the most any side has scored in a match at this tournament. Against a defence that has conceded four in four, the deeper attack is England's.",
+      "reason": "The Netherlands are the tournament's only side with four wins from four — fifteen scored, four conceded, and never a winning margin under two. England's sixteen pool goals came against Pakistan, India and Wales; against the first top-eight defence they met, the attack managed a single goal. The Dutch have already beaten Argentina and India by that same controlled pattern, and the pool's deepest defence is favoured over its streakiest attack.",
       "reason_original": "FIH #1 NED favoured over #4 ENG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "model": "NON_KNOCKOUT_MODEL_V2",
       "publishedAt": "2026-08-25T04:08:14.340016+00:00",
       "revises": "oracle-v2:S2E4",
       "reissued_at": "2026-08-25T05:31:06.013167+00:00",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged."
+      "reason_revised_at": "2026-08-29T16:52:04.583429+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     },
     {
       "id": "oracle-v1:POS5:r3",
@@ -4305,11 +4305,11 @@
       "p_away_win": 0.204,
       "pick": "HOME",
       "pick_confidence": 0.755,
-      "reason": "The Netherlands opened with five against New Zealand, three from open play and two from penalty corners, and conceded once. Argentina's opening win was narrower but cleaner: three scored, none conceded, and all three from open play. One match each is thin evidence and the Dutch scoring is the louder number, but the only clean sheet between them is Argentina's, and with a single match apiece to go on, the defence that has not yet been breached is the firmer ground.",
+      "reason": "The Netherlands have scored five and conceded one, and did their scoring in an eighteen-minute burst after falling behind, which is the profile of a side that does not panic. Argentina's clean sheet against Japan is the counter-evidence and a good one — they conceded nothing and controlled the middle quarters — but all three of their goals came from open play and none from a set piece, so a tighter game leaves them fewer ways to score.",
       "publishedAt": "2026-08-29T01:48:32.018406+00:00",
       "reason_original": "FIH #3 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
-      "reason_revised_at": "2026-08-29T16:27:58.234367+00:00",
-      "reason_revision": "rationale rewritten to argue for the side the row picks; the earlier text made the case for the opponent. Pick and probabilities unchanged.",
+      "reason_revised_at": "2026-08-29T16:52:04.547714+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
       "pick_team": "ARG"
     },
     {
@@ -4387,7 +4387,10 @@
       "publishedAt": "2026-08-29T14:46:54.236824+00:00",
       "reason_original": "FIH #3 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-29T08:11:03.258454+00:00",
-      "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged"
+      "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-29T16:52:04.139897+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
     },
     {
       "id": "oracle-v1:GOLD:r3",
@@ -4405,6 +4408,45 @@
       "publishedAt": "2026-08-29T14:46:54.236824+00:00",
       "reason_original": "FIH #2 GER favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-29T08:11:03.258454+00:00",
+      "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-29T16:52:04.139897+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
+    },
+    {
+      "id": "oracle-v1:BRZ:r4",
+      "matchId": "BRZ",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:BRZ:r3",
+      "p_home_win": 0.588,
+      "p_draw": 0.176,
+      "p_away_win": 0.236,
+      "pick": "HOME",
+      "pick_confidence": 0.676,
+      "pick_team": "NED",
+      "reason": "Netherlands arrive with 4 wins from 6 matches this tournament, scoring 20 and conceding 10; Argentina have won 4 of 6, 20 for and 10 against. The sides have already met once here — Argentina 1-3 Netherlands, Netherlands taking it. Netherlands lost to Spain 3-4 in the semi-final. The records give the pick little to spare — this one rests on how Netherlands have finished their chances rather than any daylight in the numbers.",
+      "publishedAt": "2026-08-29T16:52:04.139897+00:00",
+      "reason_original": "FIH #3 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-29T08:11:03.258454+00:00",
+      "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged"
+    },
+    {
+      "id": "oracle-v1:GOLD:r4",
+      "matchId": "GOLD",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:GOLD:r3",
+      "p_home_win": 0.281,
+      "p_draw": 0.382,
+      "p_away_win": 0.337,
+      "pick": "AWAY",
+      "pick_confidence": 0.528,
+      "pick_team": "GER",
+      "reason": "Germany arrive with 4 wins from 6 matches this tournament, scoring 14 and conceding 7; Spain have won 4 of 6, 13 for and 8 against. The sides have already met once here — Germany 1-2 Spain, Spain taking it. Germany beat Argentina 2-1 in the semi-final. The goal difference between them across the tournament runs 2 in Germany's favour, which is the margin the pick leans on.",
+      "publishedAt": "2026-08-29T16:52:04.139897+00:00",
+      "reason_original": "FIH #2 GER favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-29T16:52:04.466367+00:00",
       "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged"
     }
   ]
