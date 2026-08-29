@@ -3685,10 +3685,20 @@ def repair_stale_rationales(predictions, fixtures, now):
                 continue
         except ValueError:
             continue
-        parent = by_id.get(p['revises'])
-        if not parent or p['pick'] == parent['pick']:
+        # Which pick was this prose written for? Walk back while the text is
+        # unchanged; the row where it first appears is the one it argues for.
+        # Comparing against the immediate parent alone is not enough: a pick
+        # that goes Germany -> Spain -> Germany carries Germany's prose the
+        # whole way, and the last row is right even though its parent differs.
+        origin = p
+        while origin.get('revises'):
+            up = by_id.get(origin['revises'])
+            if not up or up.get('reason') != p.get('reason'):
+                break
+            origin = up
+        if origin is p or p['pick'] == origin['pick']:
             continue
-        if p.get('reason') and p.get('reason') == parent.get('reason'):
+        if p.get('reason'):
             for k in ('reason_original', 'reason_revised_at', 'reason_revision'):
                 p.pop(k, None)
             p['reason'] = (f"{p.get('pick_team') or p['pick']} favoured to advance. "

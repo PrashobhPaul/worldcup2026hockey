@@ -165,15 +165,25 @@ console.log('\nRationales argue for the side that was picked')
   let checked = 0
   for (const p of all) {
     if (p.superseded || !p.revises) continue
-    const parent = byId.get(p.revises)
-    if (!parent || p.pick === parent.pick) continue
     const m = fixtures.get(p.matchId)
     // A finished card keeps what was published against it; only matches still
     // to come are held to this.
     if (!m || m.status === 'completed') continue
+    // Trace the prose to the row where it was authored. A pick that goes
+    // Germany -> Spain -> Germany carries Germany's prose throughout, and the
+    // last row is right even though its parent disagrees; only the pick the
+    // text was written for settles it.
+    let origin = p
+    while (origin.revises) {
+      const up = byId.get(origin.revises)
+      if (!up || up.reason !== p.reason) break
+      origin = up
+    }
+    if (origin === p) continue
     checked++
-    ok(`${p.matchId}: prose was not inherited across a change of pick`,
-       p.reason !== parent.reason, `pick ${parent.pick} -> ${p.pick}, identical text`)
+    ok(`${p.matchId}: prose argues for the side the row picks`,
+       p.pick === origin.pick,
+       `text was written for ${origin.pick}, row picks ${p.pick}`)
   }
   ok('every revision that flipped a pick was checked', checked >= 0)
 }
