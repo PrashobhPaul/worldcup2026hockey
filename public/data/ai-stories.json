@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28T23:57:38.554623+00:00",
+  "updated_at": "2026-08-29T01:48:32.240567+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -280,6 +280,20 @@
       "matchId": "SF2",
       "story": "Germany edged Argentina 2-1 at the Royal Leopold Club in Brussels, in a Semi-Final tie of the FIH Hockey World Cup 2026. Germany came in ranked 4th in the world, Argentina 5th.\n\nGermany scored through Justus Weigand (33') and Paul-Philipp Kaufmann (54'); Argentina through Tomas Domene (46', penalty corner). The opener came in Q3 and the final goal in Q4.\n\nGermany won 0 penalty corners to Argentina's 1. 3 cards were shown.",
       "generatedAt": "2026-08-28T23:57:38.554590+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "BRZ",
+      "story": "Netherlands beat Argentina 3-1 at the Wagener Stadion in Amstelveen, in a 🥉 Bronze Medal Match tie of the FIH Hockey World Cup 2026. Netherlands came in ranked 3rd in the world, Argentina 7th.\n\nNetherlands scored through Thierry Brinkman (7'), Tijmen Reyenga (34', penalty corner) and Duco Telgenkamp (42'); Argentina through Nicolas della Torre (11', penalty corner). The opener came in Q1 and the final goal in Q3.\n\nNetherlands won 1 penalty corner to Argentina's 1. 1 card was shown.",
+      "generatedAt": "2026-08-29T01:48:32.240502+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "GOLD",
+      "story": "Spain edged Germany 2-1 at the Royal Leopold Club in Brussels, in a 🥇 Gold Medal Final tie of the FIH Hockey World Cup 2026. Spain came in ranked 5th in the world, Germany 2nd.\n\nSpain scored through José Basterra (30', penalty stroke) and José Basterra (50'); Germany through Justus Weigand (26'). The opener came in Q2 and the final goal in Q4.\n\nSpain won 0 penalty corners to Germany's 0.",
+      "generatedAt": "2026-08-29T01:48:32.240550+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }

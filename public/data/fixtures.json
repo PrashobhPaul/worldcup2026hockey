@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-28T23:57:38.378123+00:00",
+ "last_updated": "2026-08-29T01:48:32.025315+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -6678,7 +6678,7 @@
    "date": "2026-08-30",
    "time": "14:00",
    "timezone": "CET",
-   "venue": "BRU",
+   "venue": "AMV",
    "status": "completed",
    "score": {
     "home": 1,
@@ -22976,7 +22976,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T23:57:38.373329+00:00",
+    "generated_at": "2026-08-29T01:48:32.015739+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23252,15 +23252,15 @@
        "position": null
       },
       {
-       "playerId": "MAS_03",
-       "name": "Syed Cholan",
-       "number": 1,
-       "position": null
-      },
-      {
        "playerId": "MAS_12",
        "name": "Abu Kamal Azrai",
        "number": 23,
+       "position": null
+      },
+      {
+       "playerId": "MAS_03",
+       "name": "Syed Cholan",
+       "number": 1,
        "position": null
       },
       {
@@ -23329,7 +23329,7 @@
    "events": [],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T23:57:38.373728+00:00",
+    "generated_at": "2026-08-29T01:48:32.016263+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -23543,6 +23543,15 @@
        "goalkeeper": false
       },
       {
+       "playerId": "RSA_02",
+       "name": "Mustaphaa Cassiem",
+       "number": 2,
+       "line": "Midfielder",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
        "playerId": "RSA_06",
        "name": "Jamie Seale",
        "number": 6,
@@ -23564,15 +23573,6 @@
        "playerId": "RSA_07",
        "name": "Jared Cass",
        "number": 9,
-       "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "RSA_02",
-       "name": "Mustaphaa Cassiem",
-       "number": 2,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -26500,19 +26500,54 @@
    "slotLabel": "Loser 47 vs Loser 48",
    "matchNo": 49,
    "provisional": false,
-   "date": "2026-08-30",
-   "time": "14:00",
+   "date": "2026-08-18",
+   "time": "18:00",
    "timezone": "CET",
-   "venue": "BRU",
-   "status": "scheduled",
+   "venue": "AMV",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 3,
+    "away": 1
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 7,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "Thierry Brinkman"
+    },
+    {
+     "minute": 11,
+     "team": "ARG",
+     "type": "goal",
+     "via": "PC",
+     "player": "Nicolas della Torre"
+    },
+    {
+     "minute": 27,
+     "team": "ARG",
+     "type": "yellow_card",
+     "player": "Matias Andreotti"
+    },
+    {
+     "minute": 34,
+     "team": "NED",
+     "type": "goal",
+     "via": "PC",
+     "player": "Tijmen Reyenga"
+    },
+    {
+     "minute": 42,
+     "team": "NED",
+     "type": "goal",
+     "via": "FG",
+     "player": "Duco Telgenkamp"
+    }
+   ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T23:57:38.374077+00:00",
+    "generated_at": "2026-08-29T01:48:32.016723+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -26608,9 +26643,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "NED_22",
-       "name": "Terrance Pieters",
-       "number": 11,
+       "playerId": "NED_18",
+       "name": "Duco Telgenkamp",
+       "number": 51,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -26619,15 +26654,9 @@
      ],
      "substitutes": [
       {
-       "playerId": "NED_18",
-       "name": "Duco Telgenkamp",
-       "number": 51,
-       "position": null
-      },
-      {
-       "playerId": "NED_21",
-       "name": "Thijs van Dam",
-       "number": 7,
+       "playerId": "NED_22",
+       "name": "Terrance Pieters",
+       "number": 11,
        "position": null
       },
       {
@@ -26640,6 +26669,12 @@
        "playerId": "NED_17",
        "name": "Tijmen Reyenga",
        "number": 29,
+       "position": null
+      },
+      {
+       "playerId": "NED_21",
+       "name": "Thijs van Dam",
+       "number": 7,
        "position": null
       },
       {
@@ -26744,19 +26779,10 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_13",
-       "name": "Tomas Domene",
-       "number": 21,
+       "playerId": "ARG_21",
+       "name": "Martin Ferreiro",
+       "number": 32,
        "line": "Midfielder",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
-       "playerId": "ARG_08",
-       "name": "Nicolas della Torre",
-       "number": 10,
-       "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
@@ -26771,9 +26797,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ARG_21",
-       "name": "Martin Ferreiro",
-       "number": 32,
+       "playerId": "ARG_18",
+       "name": "Ignacio Ibarra",
+       "number": 28,
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      },
+      {
+       "playerId": "ARG_15",
+       "name": "Lucas Martinez",
+       "number": 23,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -26782,15 +26817,15 @@
      ],
      "substitutes": [
       {
-       "playerId": "ARG_18",
-       "name": "Ignacio Ibarra",
-       "number": 28,
+       "playerId": "ARG_08",
+       "name": "Nicolas della Torre",
+       "number": 10,
        "position": null
       },
       {
-       "playerId": "ARG_15",
-       "name": "Lucas Martinez",
-       "number": 23,
+       "playerId": "ARG_13",
+       "name": "Tomas Domene",
+       "number": 21,
        "position": null
       },
       {
@@ -26812,15 +26847,15 @@
        "position": null
       },
       {
-       "playerId": "ARG_23",
-       "name": "Lucas Toscani",
-       "number": 11,
-       "position": null
-      },
-      {
        "playerId": "ARG_06",
        "name": "Nicolas Keenan",
        "number": 7,
+       "position": null
+      },
+      {
+       "playerId": "ARG_23",
+       "name": "Lucas Toscani",
+       "number": 11,
        "position": null
       },
       {
@@ -26839,7 +26874,96 @@
      "team": "ARG",
      "coach": "Lucas Rey"
     }
-   }
+   },
+   "tms_id": 22349,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 3,
+     "field_goals": 2,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 1,
+     "field_goals": 0,
+     "pc_goals": 1,
+     "ps_goals": 0,
+     "green_cards": 0,
+     "yellow_cards": 1,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — NED vs ARG.",
+     "seq": 0
+    },
+    {
+     "minute": 7,
+     "team": "NED",
+     "text": "GOAL! Thierry Brinkman (NED) scores from a field goal — NED 1-0 ARG.",
+     "seq": 1
+    },
+    {
+     "minute": 11,
+     "team": "ARG",
+     "text": "GOAL! Nicolas della Torre (ARG) scores from a penalty corner — NED 1-1 ARG.",
+     "seq": 2
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: NED 1-1 ARG.",
+     "seq": 3
+    },
+    {
+     "minute": 27,
+     "team": "ARG",
+     "text": "Yellow Card for Matias Andreotti (ARG) — 5-minute suspension.",
+     "seq": 4
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: NED 1-1 ARG.",
+     "seq": 5
+    },
+    {
+     "minute": 34,
+     "team": "NED",
+     "text": "GOAL! Tijmen Reyenga (NED) scores from a penalty corner — NED 2-1 ARG.",
+     "seq": 6
+    },
+    {
+     "minute": 42,
+     "team": "NED",
+     "text": "GOAL! Duco Telgenkamp (NED) scores from a field goal — NED 3-1 ARG.",
+     "seq": 7
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: NED 3-1 ARG.",
+     "seq": 8
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: NED 3-1 ARG.",
+     "seq": 9
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   },
   {
    "id": "GOLD",
@@ -26852,19 +26976,41 @@
    "slotLabel": "Winner 47 vs Winner 48",
    "matchNo": 50,
    "provisional": false,
-   "date": "2026-08-30",
-   "time": "16:30",
+   "date": "2026-08-21",
+   "time": "17:00",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "scheduled",
+   "status": "completed",
    "score": {
-    "home": null,
-    "away": null
+    "home": 2,
+    "away": 1
    },
-   "events": [],
+   "events": [
+    {
+     "minute": 26,
+     "team": "GER",
+     "type": "goal",
+     "via": "FG",
+     "player": "Justus Weigand"
+    },
+    {
+     "minute": 30,
+     "team": "ESP",
+     "type": "goal",
+     "via": "PS",
+     "player": "José Basterra"
+    },
+    {
+     "minute": 50,
+     "team": "ESP",
+     "type": "goal",
+     "via": "FG",
+     "player": "José Basterra"
+    }
+   ],
    "lineups": {
     "source": "estimated",
-    "generated_at": "2026-08-28T23:57:38.374333+00:00",
+    "generated_at": "2026-08-29T01:48:32.017314+00:00",
     "home": {
      "formation": "1-4-3-3",
      "fromTeamList": true,
@@ -26951,15 +27097,6 @@
        "goalkeeper": false
       },
       {
-       "playerId": "ESP_08",
-       "name": "José Basterra",
-       "number": 10,
-       "line": "Forward",
-       "position": null,
-       "captain": false,
-       "goalkeeper": false
-      },
-      {
        "playerId": "ESP_14",
        "name": "Marc Vizcaino",
        "number": 23,
@@ -26967,15 +27104,18 @@
        "position": null,
        "captain": false,
        "goalkeeper": false
-      }
-     ],
-     "substitutes": [
+      },
       {
        "playerId": "ESP_17",
        "name": "Iñaky Zaldua",
        "number": 35,
-       "position": null
-      },
+       "line": "Forward",
+       "position": null,
+       "captain": false,
+       "goalkeeper": false
+      }
+     ],
+     "substitutes": [
       {
        "playerId": "ESP_21",
        "name": "Joaquin Menini",
@@ -26989,21 +27129,27 @@
        "position": null
       },
       {
+       "playerId": "ESP_08",
+       "name": "José Basterra",
+       "number": 10,
+       "position": null
+      },
+      {
        "playerId": "ESP_22",
        "name": "Rafael Vilallonga",
        "number": 7,
        "position": null
       },
       {
-       "playerId": "ESP_12",
-       "name": "Pepe Cunill",
-       "number": 17,
-       "position": null
-      },
-      {
        "playerId": "ESP_07",
        "name": "Marc Recasens",
        "number": 8,
+       "position": null
+      },
+      {
+       "playerId": "ESP_12",
+       "name": "Pepe Cunill",
+       "number": 17,
        "position": null
       },
       {
@@ -27096,9 +27242,9 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_09",
-       "name": "Justus Weigand",
-       "number": 19,
+       "playerId": "GER_16",
+       "name": "Antheus Barry",
+       "number": 38,
        "line": "Midfielder",
        "position": null,
        "captain": false,
@@ -27114,18 +27260,18 @@
        "goalkeeper": false
       },
       {
-       "playerId": "GER_16",
-       "name": "Antheus Barry",
-       "number": 38,
+       "playerId": "GER_14",
+       "name": "Malte Hellwig",
+       "number": 29,
        "line": "Forward",
        "position": null,
        "captain": false,
        "goalkeeper": false
       },
       {
-       "playerId": "GER_14",
-       "name": "Malte Hellwig",
-       "number": 29,
+       "playerId": "GER_19",
+       "name": "Benedikt Schwarzhaupt",
+       "number": 8,
        "line": "Forward",
        "position": null,
        "captain": false,
@@ -27140,9 +27286,9 @@
        "position": null
       },
       {
-       "playerId": "GER_19",
-       "name": "Benedikt Schwarzhaupt",
-       "number": 8,
+       "playerId": "GER_09",
+       "name": "Justus Weigand",
+       "number": 19,
        "position": null
       },
       {
@@ -27191,7 +27337,84 @@
      "team": "GER",
      "coach": "André Henning"
     }
-   }
+   },
+   "tms_id": 22360,
+   "result_source": "fih-tms-matches",
+   "stats": {
+    "home": {
+     "goals": 2,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 1,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    },
+    "away": {
+     "goals": 1,
+     "field_goals": 1,
+     "pc_goals": 0,
+     "ps_goals": 0,
+     "green_cards": 0,
+     "yellow_cards": 0,
+     "red_cards": 0,
+     "shots": null,
+     "circle_entries": null,
+     "possession": null,
+     "penalty_corners": null
+    }
+   },
+   "commentary": [
+    {
+     "minute": 0,
+     "text": "We're under way — ESP vs GER.",
+     "seq": 0
+    },
+    {
+     "minute": 15,
+     "text": "End of Q1: ESP 0-0 GER.",
+     "seq": 1
+    },
+    {
+     "minute": 26,
+     "team": "GER",
+     "text": "GOAL! Justus Weigand (GER) scores from a field goal — ESP 0-1 GER.",
+     "seq": 2
+    },
+    {
+     "minute": 30,
+     "team": "ESP",
+     "text": "GOAL! José Basterra (ESP) scores from a penalty stroke — ESP 1-1 GER.",
+     "seq": 3
+    },
+    {
+     "minute": 30,
+     "text": "Half-time: ESP 1-1 GER.",
+     "seq": 4
+    },
+    {
+     "minute": 45,
+     "text": "End of Q3: ESP 1-1 GER.",
+     "seq": 5
+    },
+    {
+     "minute": 50,
+     "team": "ESP",
+     "text": "GOAL! José Basterra (ESP) scores from a field goal — ESP 2-1 GER.",
+     "seq": 6
+    },
+    {
+     "minute": 60,
+     "text": "Full-time: ESP 2-1 GER.",
+     "seq": 7
+    }
+   ],
+   "enrichment": "official",
+   "events_rev": 2
   }
  ]
 }

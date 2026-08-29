@@ -1,6 +1,6 @@
 {
   "source": "oracle-v1",
-  "updated_at": "2026-08-28T23:57:38.378123+00:00",
+  "updated_at": "2026-08-29T01:48:32.025315+00:00",
   "predictions": [
     {
       "id": "oracle-v1:D1",
@@ -4235,7 +4235,10 @@
       "reason_original": "FIH #3 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-24T19:26:09.005068+00:00",
       "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
-      "pick_team": "ARG"
+      "pick_team": "ARG",
+      "superseded": true,
+      "superseded_at": "2026-08-29T01:48:32.018406+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
     },
     {
       "id": "oracle-v1:S2F2:r8",
@@ -4252,7 +4255,10 @@
       "publishedAt": "2026-08-28T23:57:38.374811+00:00",
       "reason_original": "FIH #5 GER favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
       "reason_revised_at": "2026-08-25T06:42:53.673669+00:00",
-      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
+      "superseded": true,
+      "superseded_at": "2026-08-29T01:48:32.018406+00:00",
+      "superseded_reason": "Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model."
     },
     {
       "id": "oracle-v1:BRZ",
@@ -4281,6 +4287,41 @@
       "reason": "FIH #4 GER favoured over #7 ESP — Elo model from world rankings. Gold Final slot decided by pool standings. Published pre-match.",
       "publishedAt": "2026-08-28T23:57:38.374811+00:00",
       "pick_team": "GER"
+    },
+    {
+      "id": "oracle-v1:A3:r6",
+      "matchId": "A3",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:A3:r5",
+      "p_home_win": 0.755,
+      "p_draw": 0.041,
+      "p_away_win": 0.204,
+      "pick": "HOME",
+      "pick_confidence": 0.755,
+      "reason": "The Netherlands have scored five and conceded one, and did their scoring in an eighteen-minute burst after falling behind, which is the profile of a side that does not panic. Argentina's clean sheet against Japan is the counter-evidence and a good one — they conceded nothing and controlled the middle quarters — but all three of their goals came from open play and none from a set piece, so a tighter game leaves them fewer ways to score.",
+      "publishedAt": "2026-08-29T01:48:32.018406+00:00",
+      "reason_original": "FIH #3 NED favoured over #7 ARG — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-24T19:26:09.005068+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged",
+      "pick_team": "ARG"
+    },
+    {
+      "id": "oracle-v1:S2F2:r9",
+      "matchId": "S2F2",
+      "source": "oracle-v1",
+      "basis": "pre-match",
+      "revises": "oracle-v1:S2F2:r8",
+      "p_home_win": 0.329,
+      "p_draw": 0.388,
+      "p_away_win": 0.282,
+      "pick": "DRAW",
+      "pick_confidence": 0.388,
+      "reason": "Germany came through Pool B unbeaten with seven scored and only two conceded in three matches, the win over Belgium built on exactly the kind of defending this fixture rewards. Spain won twice by 3-1 in Pool C either side of a single-goal loss to Australia, so both arrive in form — but Spain's chances have come at a goal-a-game cost, and in a match likely to be tight and low-scoring, the side that has defended better all tournament is favoured.",
+      "publishedAt": "2026-08-29T01:48:32.018406+00:00",
+      "reason_original": "FIH #5 GER favoured over #6 ESP — points-based Elo with a full draw model. Revised before push-back; the original pick stays in the ledger.",
+      "reason_revised_at": "2026-08-25T06:42:53.673669+00:00",
+      "reason_revision": "rationale rewritten from pre-match tournament evidence; pick and probabilities unchanged"
     }
   ]
 }

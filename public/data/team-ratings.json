@@ -1,60 +1,60 @@
 {
   "model": "hockey-ai-team-components-1",
-  "generated_at": "2026-08-28T23:57:38.375490+00:00",
+  "generated_at": "2026-08-29T01:48:32.019443+00:00",
   "source": "Hockey.AI, derived from the FIH match record",
   "teams": {
     "ARG": {
-      "rating": 86.1,
-      "matches": 6,
+      "rating": 81.5,
+      "matches": 7,
       "components": {
         "attack": {
           "label": "Attack",
           "unit": "goals scored per match",
-          "score": 87.5,
+          "score": 78.1,
           "weight": 0.2,
-          "figure": 3.333
+          "figure": 3.0
         },
         "defence": {
           "label": "Defence",
           "unit": "goals conceded per match",
-          "score": 75.0,
+          "score": 65.6,
           "weight": 0.2,
-          "figure": 1.667
+          "figure": 1.857
         },
         "control": {
           "label": "Match control",
           "unit": "points won per match",
-          "score": 75.0,
+          "score": 65.6,
           "weight": 0.18,
-          "figure": 2.0
+          "figure": 1.714
         },
         "set_piece": {
           "label": "Set pieces",
           "unit": "penalty-corner and stroke goals per match",
-          "score": 78.1,
+          "score": 75.0,
           "weight": 0.12,
-          "figure": 1.5
+          "figure": 1.429
         },
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
-          "score": 78.1,
+          "score": 65.6,
           "weight": 0.1,
-          "figure": 1.833
+          "figure": 1.571
         },
         "clean_sheets": {
           "label": "Clean sheets",
           "unit": "share of matches without conceding",
-          "score": 84.4,
+          "score": 81.2,
           "weight": 0.08,
-          "figure": 0.167
+          "figure": 0.143
         },
         "closing": {
           "label": "Fourth quarter",
           "unit": "goal difference from the 46th minute",
-          "score": 93.8,
+          "score": 90.6,
           "weight": 0.06,
-          "figure": 0.833
+          "figure": 0.714
         },
         "starting": {
           "label": "First quarter",
@@ -66,15 +66,15 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 28.1,
+          "score": 21.9,
           "weight": 0.03,
-          "figure": 1.667
+          "figure": 1.714
         }
       },
       "coverage": 1.0
     },
     "AUS": {
-      "rating": 70.6,
+      "rating": 70.9,
       "matches": 6,
       "components": {
         "attack": {
@@ -87,14 +87,14 @@
         "defence": {
           "label": "Defence",
           "unit": "goals conceded per match",
-          "score": 87.5,
+          "score": 84.4,
           "weight": 0.2,
           "figure": 1.333
         },
         "control": {
           "label": "Match control",
           "unit": "points won per match",
-          "score": 65.6,
+          "score": 71.9,
           "weight": 0.18,
           "figure": 1.833
         },
@@ -129,14 +129,14 @@
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 40.6,
+          "score": 37.5,
           "weight": 0.03,
           "figure": -0.167
         },
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 28.1,
+          "score": 31.2,
           "weight": 0.03,
           "figure": 1.667
         }
@@ -144,20 +144,20 @@
       "coverage": 1.0
     },
     "BEL": {
-      "rating": 68.9,
+      "rating": 70.6,
       "matches": 6,
       "components": {
         "attack": {
           "label": "Attack",
           "unit": "goals scored per match",
-          "score": 37.5,
+          "score": 46.9,
           "weight": 0.2,
           "figure": 2.167
         },
         "defence": {
           "label": "Defence",
           "unit": "goals conceded per match",
-          "score": 65.6,
+          "score": 71.9,
           "weight": 0.2,
           "figure": 1.833
         },
@@ -199,7 +199,7 @@
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 40.6,
+          "score": 37.5,
           "weight": 0.03,
           "figure": -0.167
         },
@@ -214,13 +214,13 @@
       "coverage": 1.0
     },
     "ENG": {
-      "rating": 78.9,
+      "rating": 79.5,
       "matches": 6,
       "components": {
         "attack": {
           "label": "Attack",
           "unit": "goals scored per match",
-          "score": 78.1,
+          "score": 84.4,
           "weight": 0.2,
           "figure": 3.167
         },
@@ -276,7 +276,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 71.9,
+          "score": 65.6,
           "weight": 0.03,
           "figure": 1.167
         }
@@ -284,43 +284,43 @@
       "coverage": 1.0
     },
     "ESP": {
-      "rating": 76.7,
-      "matches": 6,
+      "rating": 77.6,
+      "matches": 7,
       "components": {
         "attack": {
           "label": "Attack",
           "unit": "goals scored per match",
           "score": 37.5,
           "weight": 0.2,
-          "figure": 2.167
+          "figure": 2.143
         },
         "defence": {
           "label": "Defence",
           "unit": "goals conceded per match",
-          "score": 87.5,
+          "score": 93.8,
           "weight": 0.2,
-          "figure": 1.333
+          "figure": 1.286
         },
         "control": {
           "label": "Match control",
           "unit": "points won per match",
-          "score": 90.6,
+          "score": 93.8,
           "weight": 0.18,
-          "figure": 2.167
+          "figure": 2.286
         },
         "set_piece": {
           "label": "Set pieces",
           "unit": "penalty-corner and stroke goals per match",
           "score": 21.9,
           "weight": 0.12,
-          "figure": 0.833
+          "figure": 0.857
         },
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
-          "score": 53.1,
+          "score": 46.9,
           "weight": 0.1,
-          "figure": 1.333
+          "figure": 1.286
         },
         "clean_sheets": {
           "label": "Clean sheets",
@@ -332,29 +332,29 @@
         "closing": {
           "label": "Fourth quarter",
           "unit": "goal difference from the 46th minute",
-          "score": 84.4,
+          "score": 90.6,
           "weight": 0.06,
-          "figure": 0.667
+          "figure": 0.714
         },
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 68.8,
+          "score": 65.6,
           "weight": 0.03,
-          "figure": 0.333
+          "figure": 0.286
         },
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
           "score": 96.9,
           "weight": 0.03,
-          "figure": 0.5
+          "figure": 0.429
         }
       },
       "coverage": 1.0
     },
     "FRA": {
-      "rating": 64.7,
+      "rating": 64.8,
       "matches": 6,
       "components": {
         "attack": {
@@ -388,7 +388,7 @@
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
-          "score": 53.1,
+          "score": 56.2,
           "weight": 0.1,
           "figure": 1.333
         },
@@ -416,7 +416,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 59.4,
+          "score": 56.2,
           "weight": 0.03,
           "figure": 1.333
         }
@@ -424,71 +424,71 @@
       "coverage": 1.0
     },
     "GER": {
-      "rating": 79.8,
-      "matches": 6,
+      "rating": 76.8,
+      "matches": 7,
       "components": {
         "attack": {
           "label": "Attack",
           "unit": "goals scored per match",
-          "score": 46.9,
+          "score": 37.5,
           "weight": 0.2,
-          "figure": 2.333
+          "figure": 2.143
         },
         "defence": {
           "label": "Defence",
           "unit": "goals conceded per match",
-          "score": 96.9,
+          "score": 93.8,
           "weight": 0.2,
-          "figure": 1.167
+          "figure": 1.286
         },
         "control": {
           "label": "Match control",
           "unit": "points won per match",
-          "score": 90.6,
+          "score": 78.1,
           "weight": 0.18,
-          "figure": 2.167
+          "figure": 1.857
         },
         "set_piece": {
           "label": "Set pieces",
           "unit": "penalty-corner and stroke goals per match",
           "score": 3.1,
           "weight": 0.12,
-          "figure": 0.5
+          "figure": 0.429
         },
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
           "score": 78.1,
           "weight": 0.1,
-          "figure": 1.833
+          "figure": 1.714
         },
         "clean_sheets": {
           "label": "Clean sheets",
           "unit": "share of matches without conceding",
-          "score": 84.4,
+          "score": 81.2,
           "weight": 0.08,
-          "figure": 0.167
+          "figure": 0.143
         },
         "closing": {
           "label": "Fourth quarter",
           "unit": "goal difference from the 46th minute",
           "score": 34.4,
           "weight": 0.06,
-          "figure": -0.167
+          "figure": -0.286
         },
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 87.5,
+          "score": 84.4,
           "weight": 0.03,
-          "figure": 0.667
+          "figure": 0.571
         },
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
           "score": 90.6,
           "weight": 0.03,
-          "figure": 0.833
+          "figure": 0.714
         }
       },
       "coverage": 1.0
@@ -556,7 +556,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 28.1,
+          "score": 31.2,
           "weight": 0.03,
           "figure": 1.667
         }
@@ -564,7 +564,7 @@
       "coverage": 1.0
     },
     "IRL": {
-      "rating": 68.4,
+      "rating": 69.0,
       "matches": 6,
       "components": {
         "attack": {
@@ -591,14 +591,14 @@
         "set_piece": {
           "label": "Set pieces",
           "unit": "penalty-corner and stroke goals per match",
-          "score": 78.1,
+          "score": 84.4,
           "weight": 0.12,
           "figure": 1.5
         },
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
-          "score": 53.1,
+          "score": 56.2,
           "weight": 0.1,
           "figure": 1.333
         },
@@ -626,7 +626,7 @@
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 59.4,
+          "score": 56.2,
           "weight": 0.03,
           "figure": 1.333
         }
@@ -634,7 +634,7 @@
       "coverage": 1.0
     },
     "JPN": {
-      "rating": 52.6,
+      "rating": 52.7,
       "matches": 6,
       "components": {
         "attack": {
@@ -689,7 +689,7 @@
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 68.8,
+          "score": 71.9,
           "weight": 0.03,
           "figure": 0.333
         },
@@ -774,43 +774,43 @@
       "coverage": 1.0
     },
     "NED": {
-      "rating": 85.8,
-      "matches": 6,
+      "rating": 87.2,
+      "matches": 7,
       "components": {
         "attack": {
           "label": "Attack",
           "unit": "goals scored per match",
-          "score": 87.5,
+          "score": 90.6,
           "weight": 0.2,
-          "figure": 3.333
+          "figure": 3.286
         },
         "defence": {
           "label": "Defence",
           "unit": "goals conceded per match",
-          "score": 75.0,
+          "score": 78.1,
           "weight": 0.2,
-          "figure": 1.667
+          "figure": 1.571
         },
         "control": {
           "label": "Match control",
           "unit": "points won per match",
-          "score": 90.6,
+          "score": 93.8,
           "weight": 0.18,
-          "figure": 2.167
+          "figure": 2.286
         },
         "set_piece": {
           "label": "Set pieces",
           "unit": "penalty-corner and stroke goals per match",
-          "score": 78.1,
+          "score": 75.0,
           "weight": 0.12,
-          "figure": 1.5
+          "figure": 1.429
         },
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
-          "score": 78.1,
+          "score": 84.4,
           "weight": 0.1,
-          "figure": 1.833
+          "figure": 1.857
         },
         "clean_sheets": {
           "label": "Clean sheets",
@@ -822,29 +822,29 @@
         "closing": {
           "label": "Fourth quarter",
           "unit": "goal difference from the 46th minute",
-          "score": 93.8,
+          "score": 90.6,
           "weight": 0.06,
-          "figure": 0.833
+          "figure": 0.714
         },
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 40.6,
+          "score": 46.9,
           "weight": 0.03,
-          "figure": -0.167
+          "figure": -0.143
         },
         "discipline": {
           "label": "Discipline",
           "unit": "card points per match",
-          "score": 59.4,
+          "score": 71.9,
           "weight": 0.03,
-          "figure": 1.333
+          "figure": 1.143
         }
       },
       "coverage": 1.0
     },
     "NZL": {
-      "rating": 79.7,
+      "rating": 81.0,
       "matches": 6,
       "components": {
         "attack": {
@@ -864,7 +864,7 @@
         "control": {
           "label": "Match control",
           "unit": "points won per match",
-          "score": 75.0,
+          "score": 84.4,
           "weight": 0.18,
           "figure": 2.0
         },
@@ -885,7 +885,7 @@
         "clean_sheets": {
           "label": "Clean sheets",
           "unit": "share of matches without conceding",
-          "score": 84.4,
+          "score": 90.6,
           "weight": 0.08,
           "figure": 0.167
         },
@@ -899,7 +899,7 @@
         "starting": {
           "label": "First quarter",
           "unit": "goal difference in the opening 15",
-          "score": 87.5,
+          "score": 90.6,
           "weight": 0.03,
           "figure": 0.667
         },
@@ -914,7 +914,7 @@
       "coverage": 1.0
     },
     "PAK": {
-      "rating": 61.1,
+      "rating": 61.5,
       "matches": 5,
       "components": {
         "attack": {
@@ -948,7 +948,7 @@
         "finishing": {
           "label": "Open play",
           "unit": "field goals per match",
-          "score": 65.6,
+          "score": 71.9,
           "weight": 0.1,
           "figure": 1.6
         },
