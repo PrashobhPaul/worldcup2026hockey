@@ -178,5 +178,33 @@ console.log('\nRationales argue for the side that was picked')
   ok('every revision that flipped a pick was checked', checked >= 0)
 }
 
+// ── The bracket board and the match card answer with one voice ────────────
+// The board used to run a rating Elo of its own while the card read the
+// published ledger, and the two disagreed in public: the board called
+// Argentina to advance from a semi-final at 53% while the card called Germany
+// at 58%. Different models, one question, both on screen. The board now reads
+// the published row, and this holds it there.
+console.log('\nThe bracket shows the published pick, not a second opinion')
+{
+  const src = fs.readFileSync(new URL('../src/pages/Oracle.jsx', import.meta.url), 'utf8')
+  ok('the bracket resolves a published row for each tie',
+     /publishedFor\.set\(/.test(src) && /activePredictions\(predictions/.test(src))
+  ok('the tie card prefers the published advance probability',
+     /published\?\.pHomeAdvance \?\? tie\.pHomeAdvance/.test(src))
+  ok('the tie card prefers the published pick',
+     /published\?\.predicted \?\? tie\.predicted/.test(src))
+  ok('no tie card reads the simulated pick directly any more',
+     !/tie\.predicted === (code|tie\.home)/.test(src),
+     'a card still compares against tie.predicted')
+  // The fold the board applies must be the one the card applies.
+  for (const r of rows.filter(isKO)) {
+    const adv = r.p_home_win + r.p_draw / 2
+    const shown = r.pick === 'HOME' ? adv : 1 - adv
+    ok(`${r.matchId}: the board would show the pick's own probability`,
+       Math.abs(shown - r.pick_confidence) < 0.002,
+       `${shown.toFixed(3)} vs ${r.pick_confidence}`)
+  }
+}
+
 console.log(fail ? `\n${fail} FAILED` : '\nAll pick-coherence checks passed.')
 process.exit(fail ? 1 : 0)
