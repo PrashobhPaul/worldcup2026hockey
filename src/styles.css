@@ -213,14 +213,15 @@ body {
 }
 
 
-/* The model's record, given the top line of the hero: large enough to read as
-   the app's headline claim, restrained enough not to shout over the emblem. */
+/* The model's record on the hero: a quiet chip, not the app's headline. The
+   figure and its denominator sit on one baseline so nothing wraps; the full
+   account lives on Oracle, which owns the predictions. */
 .hero-accuracy {
   margin-top: 0.9rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 1rem 0.5rem 0.85rem;
+  gap: 0.55rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.75rem;
   border-radius: 999px;
   border: 1px solid rgba(150, 180, 255, 0.22);
   background: rgba(10, 25, 60, 0.42);
@@ -231,7 +232,7 @@ body {
 }
 .hero-accuracy:hover { border-color: rgba(150, 180, 255, 0.42); background: rgba(10, 25, 60, 0.58); }
 .hero-accuracy-pct {
-  font-size: 1.65rem;
+  font-size: 1.25rem;
   font-weight: 800;
   line-height: 1;
   color: #7fb0ff;
@@ -241,14 +242,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(226, 232, 240, 0.94);
 }
 .hero-accuracy-sub {
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.61rem;
   font-weight: 400;
@@ -257,9 +258,9 @@ body {
   color: rgba(148, 163, 184, 0.95);
 }
 @media (max-width: 380px) {
-  .hero-accuracy { gap: 0.5rem; padding: 0.45rem 0.85rem; }
-  .hero-accuracy-pct { font-size: 1.4rem; }
-  .hero-accuracy-sub { font-size: 0.56rem; }
+  .hero-accuracy { gap: 0.45rem; padding: 0.35rem 0.75rem; }
+  .hero-accuracy-pct { font-size: 1.1rem; }
+  .hero-accuracy-sub { font-size: 0.55rem; }
 }
 
 

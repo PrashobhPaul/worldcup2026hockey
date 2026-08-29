@@ -223,11 +223,18 @@ function OddsTab({ bundle, teams }) {
   )
 }
 
-function TieCard({ tie, byCode }) {
+function TieCard({ tie, byCode, published }) {
   const [open, setOpen] = useState(false)
   const h = byCode.get(tie.home), a = byCode.get(tie.away)
   const state = tie.played ? 'FINISHED' : tie.locked ? 'CONFIRMED' : 'PROJECTED'
-  const pH = tie.pHomeAdvance
+  // The published pick, where the ledger has one, in preference to the
+  // bracket's own simulation. Those are two different models — the ledger is
+  // the Oracle's ranking-based pick, the bracket ran a rating Elo of its own —
+  // and they answered the same question differently in public: this board
+  // called Argentina to advance at 53% while the Oracle card called Germany
+  // at 58%. Whatever is published as the pick is what the bracket shows.
+  const pH = published?.pHomeAdvance ?? tie.pHomeAdvance
+  const predicted = published?.predicted ?? tie.predicted
 
   if (tie.played) {
     return (
@@ -260,12 +267,12 @@ function TieCard({ tie, byCode }) {
           rather than one the results have put there, so the notation matches
           the Matches card and a prediction is never read as a confirmed
           line-up. The Locked/Projected label says the same thing in words. */}
-      <span className={`flex-1 text-sm ${tie.predicted === code ? 'font-bold' : 'text-pitch-300'}`}>
+      <span className={`flex-1 text-sm ${predicted === code ? 'font-bold' : 'text-pitch-300'}`}>
         {tie.locked
           ? (team?.name ?? code ?? 'TBD')
           : `[${team?.name ?? code ?? 'TBD'}]`}
       </span>
-      {prob != null && tie.predicted === code && (
+      {prob != null && predicted === code && (
         <span className="font-mono text-xs font-bold text-brand">{Math.round(prob * 100)}%</span>
       )}
     </div>
@@ -285,7 +292,7 @@ function TieCard({ tie, byCode }) {
         {pH != null && tie.home && tie.away && (
           <div className="flex justify-center">
             <span className="rounded bg-pitch-700 px-2 py-0.5 font-mono text-[10px] text-pitch-300">
-              vs · {Math.round((tie.predicted === tie.home ? pH : 1 - pH) * 100)}% {tie.predicted}
+              vs · {Math.round((predicted === tie.home ? pH : 1 - pH) * 100)}% {predicted}
             </span>
           </div>
         )}
@@ -300,8 +307,21 @@ function TieCard({ tie, byCode }) {
   )
 }
 
-function BracketTab({ bundle, teams }) {
+function BracketTab({ bundle, teams, predictions }) {
   const byCode = new Map(teams.map(t => [t.code, t]))
+  // One published row per match, folded to an advance probability the same way
+  // the match cards fold it, so the board and the card cannot disagree.
+  const publishedFor = new Map()
+  for (const row of activePredictions(predictions ?? [])) {
+    const tie = bundle.bracket.byId.get(row.matchId)
+    if (!tie || row.p_home_win == null) continue
+    const pHomeAdvance = row.p_home_win + (row.p_draw ?? 0) / 2
+    publishedFor.set(row.matchId, {
+      pHomeAdvance,
+      predicted: row.pick === 'HOME' ? tie.home : row.pick === 'AWAY' ? tie.away
+                 : pHomeAdvance >= 0.5 ? tie.home : tie.away,
+    })
+  }
   const groups = [
     ['Semi-Finals', bundle.bracket.ties.filter(t => t.group === 'semi')],
     ['Medal Matches', bundle.bracket.ties.filter(t => t.group === 'medal')],
@@ -322,7 +342,8 @@ function BracketTab({ bundle, teams }) {
         <div key={label}>
           <h2 className="mb-2.5 font-mono text-[11px] font-bold uppercase tracking-widest text-pitch-400">{label}</h2>
           <div className="grid gap-2.5 sm:grid-cols-2">
-            {ties.map(tie => <TieCard key={tie.id} tie={tie} byCode={byCode} />)}
+            {ties.map(tie => <TieCard key={tie.id} tie={tie} byCode={byCode}
+                                       published={publishedFor.get(tie.id)} />)}
           </div>
         </div>
       ))}
@@ -438,11 +459,22 @@ export default function OraclePage() {
         <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
         {/* The live record is the Oracle's transparency headline — every tab,
             same one-line subtitle treatment as the Matches page. */}
-        <p className="mt-1 text-xs text-pitch-400">
-          {SUBTITLES[tab]}
-          {rec.graded > 0 && <span className="text-brand"> · 🎯 {rec.correct}/{rec.graded} correct · {rec.pct}%</span>}
-        </p>
-        {rec.graded > 0 && <StageSplit stages={rec.stages} />}
+        <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
+        {/* The record lives here, not on the home page: the Oracle owns the
+            predictions, and every other surface reads this same figure rather
+            than deriving one of its own. Headline and stage cells share a
+            grid so the numbers sit on one baseline. */}
+        {rec.graded > 0 && (
+          <div className="mt-3 grid grid-cols-4 gap-2">
+            <div className="rounded-lg border border-brand/25 bg-brand/10 px-2 py-1.5 text-center">
+              <div className="font-mono text-base font-bold text-brand">{rec.pct}%</div>
+              <div className="mt-0.5 text-[10px] uppercase tracking-wide text-pitch-400">
+                {rec.correct}/{rec.graded} called
+              </div>
+            </div>
+            <StageSplit stages={rec.stages} className="col-span-3 mt-0" />
+          </div>
+        )}
       </div>
 
       <RaceLeader bundle={bundle} teams={teams} matches={matches} />
@@ -464,7 +496,7 @@ export default function OraclePage() {
           <>
             {tab === 'race' && <RaceTab bundle={bundle} teams={teams} />}
             {tab === 'odds' && <OddsTab bundle={bundle} teams={teams} />}
-            {tab === 'bracket' && <BracketTab bundle={bundle} teams={teams} />}
+            {tab === 'bracket' && <BracketTab bundle={bundle} teams={teams} predictions={predictions} />}
             {tab === 'picks' && <PicksTab matches={matches} predictions={predictions} teams={teams} />}
           </>
         )}

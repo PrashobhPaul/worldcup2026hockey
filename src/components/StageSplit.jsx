@@ -13,7 +13,7 @@ import { stageRows } from '../engine/prediction'
 // `variant`:
 //   'chips'  — a row of bordered cells, for a page with room (Trust, Oracle)
 //   'inline' — one line of text, for a header line already in flow (Matches)
-export default function StageSplit({ stages, variant = 'chips', className = '' }) {
+export default function StageSplit({ stages, variant = 'chips', className = 'mt-2.5' }) {
   const rows = stageRows(stages)
   if (!rows.length) return null
 
@@ -31,7 +31,8 @@ export default function StageSplit({ stages, variant = 'chips', className = '' }
   }
 
   return (
-    <div className={`mt-2.5 grid grid-cols-3 gap-2 ${className}`}>
+    <div className={`grid gap-2 ${className}`}
+         style={{ gridTemplateColumns: `repeat(${rows.length}, minmax(0, 1fr))` }}>
       {rows.map(r => (
         <div key={r.key} className="rounded-lg border border-white/5 bg-pitch-900/40 px-2 py-1.5 text-center">
           <div className="font-mono text-base font-bold text-brand">

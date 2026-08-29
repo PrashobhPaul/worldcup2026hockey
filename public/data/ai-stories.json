@@ -146,6 +146,48 @@
       "source": "ai"
     },
     {
+      "matchId": "POS11",
+      "story": "Pakistan and South Africa finished level at 4-4 after sixty minutes at the Wagener Stadion in Amstelveen on 28 August, in the 11th/12th Place tie of the FIH Hockey World Cup 2026. Pakistan took the tie 4-3 in the shoot-out. Pakistan came into the match ranked 12th in the world, South Africa 13th — 1 place between them on the FIH table.\n\nSouth Africa scored through Trevor de Lora (8th minute, penalty corner), Dayaan Cassiem (18th minute), Mustaphaa Cassiem (40th minute, penalty corner) and Mustaphaa Cassiem (55th minute, penalty stroke); Pakistan replied through Afraz (21st minute), Muhammad Ammad (22nd minute, penalty corner), Waheed Ashraf Rana (32nd minute, penalty corner) and Muhammad Hammadudin (60th minute). It stood 2-2 at half-time. The opening goal came in the 8th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 8 goals, 3 came in open play and 5 from the set piece. The 2nd quarter was the busiest, with 3 of them. 4 green cards and 2 yellow cards were shown. The goals were spread across 7 different scorers. This was match 43 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:12:47.641372+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS13",
+      "story": "France beat Japan 3-1 at the Wagener Stadion in Amstelveen on 28 August, in the 13th/14th Place tie of the FIH Hockey World Cup 2026. The result settles 13th place for France; Japan finish 14th. Japan came into the match ranked 17th in the world, France 10th — 7 places between them on the FIH table.\n\nFrance scored through Mattéo Desgouillons (17th minute), Timothée Clément (59th minute) and Victor Charlet (59th minute, penalty corner); Japan replied through Jun Watanabe (22nd minute, penalty stroke). It stood 1-1 at half-time. The opening goal came in the 17th minute and the final goal in the 59th, from the 2nd quarter to the 4th.\n\nOf the 4 goals, 2 came in open play and 2 from the set piece. The sides were level at the interval, and France won the second half. 2 green cards were shown. The goals were spread across 4 different scorers. This was match 41 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784218+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS15",
+      "story": "Wales and Malaysia finished level at 2-2 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 15th/16th Place tie of the FIH Hockey World Cup 2026. Wales took the tie 2-1 in the shoot-out. Wales came into the match ranked 18th in the world, Malaysia 15th — 3 places between them on the FIH table.\n\nWales scored through Benjamin Francis (29th minute) and Liam Barker (53rd minute); Malaysia replied through Faizal Saari (41st minute) and Akhimullah Anuar (52nd minute). It stood 1-0 at half-time. The opening goal came in the 29th minute and the final goal in the 53rd, from the 2nd quarter to the 4th.\n\nEvery goal came in open play. The 4th quarter was the busiest, with 2 of them. 2 green cards were shown. The goals were spread across 4 different scorers. This was match 42 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:12:47.641261+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS5",
+      "story": "Australia beat England 2-0 at the Wagener Stadion in Amstelveen on 28 August, in the 5th/6th Place tie of the FIH Hockey World Cup 2026. The result settles 5th place for Australia; England finish 6th. England came into the match ranked 6th in the world, Australia 4th — 2 places between them on the FIH table.\n\nAustralia scored through Blake Govers (30th minute, penalty corner) and Ky Willott (48th minute, penalty corner). It stood 0-1 at half-time. The opening goal came in the 30th minute and the final goal in the 48th, from the 2nd quarter to the 4th. Goals were scarce all afternoon — 2 goals in the sixty minutes was the whole of the scoring.\n\nEvery goal came from the set piece. Australia led at the interval and were not caught. Australia's defence kept England off the scoresheet entirely. 2 green cards and 1 yellow card were shown. This was match 45 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784550+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS7",
+      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. Belgium took the tie 4-3 in the shoot-out. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Nicolas de Kerpel (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T09:24:26.521979+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "POS9",
+      "story": "New Zealand ran out convincing winners over Ireland 6-3 at the Royal Leopold Club in Brussels on 28 August, in the 9th/10th Place tie of the FIH Hockey World Cup 2026. The result settles 9th place for New Zealand; Ireland finish 10th. New Zealand came into the match ranked 9th in the world, Ireland 11th — 2 places between them on the FIH table.\n\nNew Zealand scored through Kane Russell (3rd minute, penalty corner), Kane Russell (14th minute, penalty corner), George Baker (21st minute), Sam Lane (26th minute, penalty corner), Sam Lane (46th minute) and Finn Ward (58th minute); Ireland replied through Gregory Williams (37th minute, penalty corner), Lee Cole (38th minute, penalty stroke) and Jeremy Duncan (60th minute, penalty corner). It stood 4-0 at half-time. The opening goal came in the 3rd minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 9 goals, 3 came in open play and 6 from the set piece. The 4th quarter was the busiest, with 3 of them. New Zealand led at the interval and were not caught. 3 green cards were shown. The goals were spread across 7 different scorers. This was match 44 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784435+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
       "matchId": "S2E1",
       "story": "For forty minutes India did to the world's number-one side what nobody in Pool A had managed: nothing happened. Three quarters came and went scoreless in Amstelveen, India absorbing everything the Dutch brought without conceding, and the Wagener crowd was still waiting when Duco Telgenkamp finally broke through from open play in the 41st, with Shilanand Lakra's green card following a minute later.\n\nThe last twenty minutes delivered everything the first forty withheld. Tjep Hoedemakers doubled the lead from open play in the 51st — Koen Bijen was shown a green in the same minute — and India's reply was immediate: Harmanpreet Singh converted a penalty corner in the 52nd, and at 2-1 with eight minutes left the upset was alive. Thijs van Dam ended it in the 55th, a third Dutch field goal, and the margin held to the final whistle.\n\nThe scoring routes are the story inside the story: all three Dutch goals were carved from open play, against the side whose tournament had been built on the set piece, and India's one reply came from the corner Harmanpreet converted. The Dutch top Pool E on six points, four wins from four without dropping a point this tournament; India, carrying the two-goal defeat to England, are left needing to win out and hope the table breaks their way.",
       "generatedAt": "2026-08-24T19:26:09.049592+00:00",
@@ -242,34 +284,6 @@
       "source": "ai"
     },
     {
-      "matchId": "POS13",
-      "story": "France beat Japan 3-1 at the Wagener Stadion in Amstelveen on 28 August, in the 13th/14th Place tie of the FIH Hockey World Cup 2026. The result settles 13th place for France; Japan finish 14th. Japan came into the match ranked 17th in the world, France 10th — 7 places between them on the FIH table.\n\nFrance scored through Mattéo Desgouillons (17th minute), Timothée Clément (59th minute) and Victor Charlet (59th minute, penalty corner); Japan replied through Jun Watanabe (22nd minute, penalty stroke). It stood 1-1 at half-time. The opening goal came in the 17th minute and the final goal in the 59th, from the 2nd quarter to the 4th.\n\nOf the 4 goals, 2 came in open play and 2 from the set piece. The sides were level at the interval, and France won the second half. 2 green cards were shown. The goals were spread across 4 different scorers. This was match 41 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T08:09:38.784218+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "POS9",
-      "story": "New Zealand ran out convincing winners over Ireland 6-3 at the Royal Leopold Club in Brussels on 28 August, in the 9th/10th Place tie of the FIH Hockey World Cup 2026. The result settles 9th place for New Zealand; Ireland finish 10th. New Zealand came into the match ranked 9th in the world, Ireland 11th — 2 places between them on the FIH table.\n\nNew Zealand scored through Kane Russell (3rd minute, penalty corner), Kane Russell (14th minute, penalty corner), George Baker (21st minute), Sam Lane (26th minute, penalty corner), Sam Lane (46th minute) and Finn Ward (58th minute); Ireland replied through Gregory Williams (37th minute, penalty corner), Lee Cole (38th minute, penalty stroke) and Jeremy Duncan (60th minute, penalty corner). It stood 4-0 at half-time. The opening goal came in the 3rd minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 9 goals, 3 came in open play and 6 from the set piece. The 4th quarter was the busiest, with 3 of them. New Zealand led at the interval and were not caught. 3 green cards were shown. The goals were spread across 7 different scorers. This was match 44 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T08:09:38.784435+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "POS5",
-      "story": "Australia beat England 2-0 at the Wagener Stadion in Amstelveen on 28 August, in the 5th/6th Place tie of the FIH Hockey World Cup 2026. The result settles 5th place for Australia; England finish 6th. England came into the match ranked 6th in the world, Australia 4th — 2 places between them on the FIH table.\n\nAustralia scored through Blake Govers (30th minute, penalty corner) and Ky Willott (48th minute, penalty corner). It stood 0-1 at half-time. The opening goal came in the 30th minute and the final goal in the 48th, from the 2nd quarter to the 4th. Goals were scarce all afternoon — 2 goals in the sixty minutes was the whole of the scoring.\n\nEvery goal came from the set piece. Australia led at the interval and were not caught. Australia's defence kept England off the scoresheet entirely. 2 green cards and 1 yellow card were shown. This was match 45 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T08:09:38.784550+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "POS7",
-      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. Belgium took the tie 4-3 in the shoot-out. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Nicolas de Kerpel (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T09:24:26.521979+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
       "matchId": "SF1",
       "story": "Spain edged Netherlands 4-3 at the Wagener Stadion in Amstelveen on 28 August, in the Semi-Final tie of the FIH Hockey World Cup 2026. Netherlands came into the match ranked 3rd in the world, Spain 5th — 2 places between them on the FIH table.\n\nNetherlands scored through Koen Bijen (22nd minute), Jip Janssen (57th minute, penalty corner) and Joep de Mol (59th minute, penalty corner); Spain replied through José Basterra (41st minute), José Basterra (50th minute), Pepe Cunill (51st minute, penalty corner) and José Basterra (55th minute, penalty stroke). It stood 1-0 at half-time. The opening goal came in the 22nd minute and the final goal in the 59th, from the 2nd quarter to the 4th.\n\nOf the 7 goals, 3 came in open play and 4 from the set piece. The 4th quarter was the busiest, with 5 of them. Spain trailed at the interval and turned the match around in the second half. 1 yellow card was shown. The goals were spread across 5 different scorers. This was match 47 of the tournament's fifty.",
       "generatedAt": "2026-08-29T08:09:38.784740+00:00",
@@ -280,20 +294,6 @@
       "matchId": "SF2",
       "story": "Germany edged Argentina 2-1 at the Royal Leopold Club in Brussels on 28 August, in the Semi-Final tie of the FIH Hockey World Cup 2026. Germany came into the match ranked 2nd in the world, Argentina 7th — 5 places between them on the FIH table.\n\nGermany scored through Justus Weigand (33rd minute) and Paul-Philipp Kaufmann (54th minute); Argentina replied through Tomas Domene (46th minute, penalty corner). It stood 0-0 at half-time. The opening goal came in the 33rd minute and the final goal in the 54th, from the 3rd quarter to the 4th. Paul-Philipp Kaufmann's 54th-minute goal stood as the difference.\n\nOf the 3 goals, 2 came in open play and 1 from the set piece. The 4th quarter was the busiest, with 2 of them. The sides were level at the interval, and Germany won the second half. 2 green cards and 1 yellow card were shown. The goals were spread across 3 different scorers. This was match 48 of the tournament's fifty.",
       "generatedAt": "2026-08-29T08:09:38.784832+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "POS15",
-      "story": "Wales and Malaysia finished level at 2-2 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 15th/16th Place tie of the FIH Hockey World Cup 2026. Wales took the tie 2-1 in the shoot-out. Wales came into the match ranked 18th in the world, Malaysia 15th — 3 places between them on the FIH table.\n\nWales scored through Benjamin Francis (29th minute) and Liam Barker (53rd minute); Malaysia replied through Faizal Saari (41st minute) and Akhimullah Anuar (52nd minute). It stood 1-0 at half-time. The opening goal came in the 29th minute and the final goal in the 53rd, from the 2nd quarter to the 4th.\n\nEvery goal came in open play. The 4th quarter was the busiest, with 2 of them. 2 green cards were shown. The goals were spread across 4 different scorers. This was match 42 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T09:12:47.641261+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "POS11",
-      "story": "Pakistan and South Africa finished level at 4-4 after sixty minutes at the Wagener Stadion in Amstelveen on 28 August, in the 11th/12th Place tie of the FIH Hockey World Cup 2026. Pakistan took the tie 4-3 in the shoot-out. Pakistan came into the match ranked 12th in the world, South Africa 13th — 1 place between them on the FIH table.\n\nSouth Africa scored through Trevor de Lora (8th minute, penalty corner), Dayaan Cassiem (18th minute), Mustaphaa Cassiem (40th minute, penalty corner) and Mustaphaa Cassiem (55th minute, penalty stroke); Pakistan replied through Afraz (21st minute), Muhammad Ammad (22nd minute, penalty corner), Waheed Ashraf Rana (32nd minute, penalty corner) and Muhammad Hammadudin (60th minute). It stood 2-2 at half-time. The opening goal came in the 8th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 8 goals, 3 came in open play and 5 from the set piece. The 2nd quarter was the busiest, with 3 of them. 4 green cards and 2 yellow cards were shown. The goals were spread across 7 different scorers. This was match 43 of the tournament's fifty.",
-      "generatedAt": "2026-08-29T09:12:47.641372+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }

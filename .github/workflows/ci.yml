@@ -95,15 +95,6 @@ jobs:
       - name: Non-knockout model port
         run: npm run test:model
 
-      # The knockout rounds have their own model. It is held to the three
-      # claims that make it one — no home term at a neutral venue, an evidence
-      # gap compressed for a field the bracket has already sorted, and level
-      # after sixty as a real branch rather than a published 0.00 — and to the
-      # bar the record it replaces failed: beating a coin flip on the matches
-      # it was not fitted to.
-      - name: Knockout model
-        run: npm run test:knockout
-
       # One model, one published figure. The hero once read winner_named_pct
       # while Matches, Oracle and Trust read accuracy_pct — 78% beside 68%,
       # both true, measuring different things, with nothing saying which.

@@ -29,32 +29,6 @@
       "underdog_gd_max": -9
     }
   },
-  "knockout_model": {
-    "comment": "KNOCKOUT_MODEL_V2 \u2014 classification, semi-finals and the two medal finals: the matches that cannot be drawn. The model carries no learned constant. It re-derives its weights, its compression and its level rate from the matches already completed on every run, so each match is predicted from everything played before its kickoff. What follows is structure and priors for the opening matches only; scripts/model_knockout.py does the learning.",
-    "version": "KNOCKOUT_MODEL_V2",
-    "prior_weight": {
-      "attack": 0.2,
-      "defence": 1.0
-    },
-    "prior_weight_comment": "Used only until min_history matches have been played, then replaced by what the record says. Defence leads because it is what separated sides early in this tournament; the learner is free to disagree later.",
-    "prior_compression": 0.6,
-    "prior_level_rate": 0.3,
-    "min_history": 12,
-    "min_knockouts": 4,
-    "knockout_relevance": 3.0,
-    "knockout_relevance_comment": "A knockout result counts three times a pool result when learning for a knockout. The model already treats these rounds as structurally different by compressing the gap; weighing their own evidence higher is the same claim applied to the fit. Structure, not a value tuned against outcomes.",
-    "l2": 0.05,
-    "learn_rate": 2.0,
-    "iterations": 3000,
-    "level_width": 0.75,
-    "level_floor": 0.12,
-    "level_cap": 0.45,
-    "shootout_home_share": 0.5,
-    "shootout_comment": "A shoot-out is scored at exactly one half. The record holds too few of them to claim a side is better at them, and a tilt that cannot be evidenced is a tilt that has been invented.",
-    "full_evidence_matches": 3,
-    "high_confidence": 0.62,
-    "medium_confidence": 0.54
-  },
   "form": {
     "ppm_weight": 60.0,
     "gd_weight": 35.0,

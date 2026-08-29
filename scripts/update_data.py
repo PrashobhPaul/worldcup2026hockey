@@ -3487,21 +3487,6 @@ def predict(home_pts, away_pts, knockout=False):
     return round(p_home, 3), round(p_draw, 3), round(p_away, 3)
 
 import model_non_knockout as _nkm
-import model_knockout as _km
-from team_rating import rate_teams as _rate_teams
-
-
-def knockout_pick(m, fixtures):
-    """One single-match round through KNOCKOUT_MODEL_V2.
-
-    The model does the whole chain itself — evidence completed before this
-    kickoff, weights re-learned from it, the bracket matchup, the pick — so
-    the pipeline, the backtest and the tests cannot produce a prediction three
-    different ways.
-    """
-    return _km.predict_match(m, fixtures['matches'], _rate_teams)
-
-
 
 _FROZEN_RANKINGS = None
 
@@ -3591,22 +3576,9 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             effective_points(m['away'], m['home'], points_of[m['away']], fixtures, h2h_pairs),
             knockout=knockout)
         if knockout:
-            # KNOCKOUT_MODEL_V1 — its own model, not the ranking base with the
-            # draw folded away. It reads this tournament's defensive record
-            # rather than the pre-tournament table, carries no home term (the
-            # bracket decides which name is printed first, and every match is
-            # at a neutral venue), and keeps level-after-sixty as a real branch
-            # instead of asserting it cannot happen.
-            out = knockout_pick(m, fixtures)
-            pick = out['prediction']
-            ph = out['regulation']['HOME']
-            pd = out['regulation']['LEVEL']
-            pa = out['regulation']['AWAY']
-            # The published confidence is the ADVANCE probability, because
-            # advancing is what a knockout pick claims — a side that wins the
-            # shoot-out has gone through exactly as if it had won in sixty.
-            conf = round(out['advance'][pick], 3)
-            ko_drivers = out['drivers']
+            adv_h = ph + pd / 2
+            pick = 'HOME' if adv_h >= 0.5 else 'AWAY'
+            conf = round(max(adv_h, 1 - adv_h), 3)
         else:
             # Pool and stage-2 matches can be drawn, so they go through the
             # non-knockout model: the same ranking-points base, plus its one
@@ -3631,14 +3603,7 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
         fav, dog = (m['home'], m['away']) if pick != 'AWAY' else (m['away'], m['home'])
         p['superseded'] = True
         p['superseded_at'] = now.isoformat()
-        p['superseded_reason'] = (
-            'Rescored pre-match by KNOCKOUT_MODEL_V1, which reads this '
-            'tournament\'s defensive record rather than the pre-tournament '
-            'ranking table, carries no home term at a neutral venue, and keeps '
-            'level-after-sixty as a real branch.'
-            if knockout else
-            'Inputs refreshed pre-match: current FIH ranking points and the '
-            'calibrated draw-aware model.')
+        p['superseded_reason'] = 'Inputs refreshed pre-match: current FIH ranking points and the calibrated draw-aware model.'
         new_row = {
             'id': f"oracle-v1:{mid}:r{rev}",
             'matchId': mid,
@@ -3650,19 +3615,22 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
             # The card names the team, not the side — a revision without
             # pick_team rendered as a pick of nobody.
             'pick_team': {'HOME': m['home'], 'AWAY': m['away'], 'DRAW': None}[pick],
-            'reason': ((f"{fav} favoured to advance — {'; '.join(ko_drivers)}. Revised "
-                        f"pre-match under KNOCKOUT_MODEL_V1; the original pick stays in "
-                        f"the ledger.")
-                       if knockout else
-                       (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
-                        f"Elo with a full draw model. Revised pre-match; the original pick "
-                        f"stays in the ledger.")),
+            'reason': (f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — points-based "
+                       f"Elo with a full draw model. Revised pre-match; the original pick "
+                       f"stays in the ledger."),
             'publishedAt': now.isoformat(),
         }
-        if p.get('reason_original'):
+        if p.get('reason_original') and pick == p['pick']:
             # An authored rationale (written from the tournament record, marked
             # by reason_original) outlives a probability refresh: the template
             # never overwrites prose.
+            #
+            # It does NOT outlive a change of pick. Prose argues for a side by
+            # name, so carrying it across a flip leaves the card asserting one
+            # team in words and the other in its own pick — the gold final was
+            # published picking Spain above a paragraph making the case for
+            # Germany. When the pick moves, the model's own sentence goes out
+            # instead and the rationale writer re-authors it on a later run.
             new_row['reason'] = p['reason']
             new_row['reason_original'] = p['reason_original']
             for k in ('reason_revised_at', 'reason_revision'):
@@ -3687,6 +3655,60 @@ def fix_venues(fixtures):
             changed = True
     return changed
 
+def repair_stale_rationales(predictions, fixtures, now):
+    """Drop prose that a revision inherited across a change of pick.
+
+    A rationale argues for a side by name. A revision used to carry the
+    authored prose forward whatever happened to the pick, so a flip left the
+    card asserting one team in words and the other in its own pick.
+
+    Rows already published carrying the fault are identifiable without
+    guesswork: a revision whose reason is character-for-character its parent's
+    while its pick is not. Clearing the authored markers hands the row back to
+    the rationale writer. Nothing is invented and no probability moves.
+    """
+    by_id = {p['id']: p for p in predictions['predictions']}
+    by_match = {m['id']: m for m in fixtures['matches']}
+    changed = False
+    for p in predictions['predictions']:
+        if p.get('superseded') or not p.get('revises'):
+            continue
+        # Only a match still to be played. A finished card keeps exactly what
+        # was published against it, and the rationale writer will not touch a
+        # played match either, so repairing one would strip its prose and leave
+        # a placeholder standing for good.
+        m = by_match.get(p['matchId'])
+        if not m:
+            continue
+        try:
+            if kickoff(m) <= now:
+                continue
+        except ValueError:
+            continue
+        # Which pick was this prose written for? Walk back while the text is
+        # unchanged; the row where it first appears is the one it argues for.
+        # Comparing against the immediate parent alone is not enough: a pick
+        # that goes Germany -> Spain -> Germany carries Germany's prose the
+        # whole way, and the last row is right even though its parent differs.
+        origin = p
+        while origin.get('revises'):
+            up = by_id.get(origin['revises'])
+            if not up or up.get('reason') != p.get('reason'):
+                break
+            origin = up
+        if origin is p or p['pick'] == origin['pick']:
+            continue
+        if p.get('reason'):
+            for k in ('reason_original', 'reason_revised_at', 'reason_revision'):
+                p.pop(k, None)
+            p['reason'] = (f"{p.get('pick_team') or p['pick']} favoured to advance. "
+                           'Rationale being rewritten for the revised pick.')
+            changed = True
+            print(f"RATIONALE REPAIR: {p['matchId']} prose argued for the superseded "
+                  f"pick ({parent['pick']}), now {p['pick']} — handed back to the writer.")
+    return changed
+
+
 def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
     """
     Every fixture with both teams known carries an engine pick — including
@@ -3704,6 +3726,7 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
     now = now_utc()
 
     changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs)
+    changed |= repair_stale_rationales(predictions, fixtures, now)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':
@@ -3750,9 +3773,7 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
             'basis': 'pre-match' if pre_match else 'model-backfill',
             'p_home_win': ph, 'p_draw': pd, 'p_away_win': pa,
             'pick': pick, 'pick_confidence': conf,
-            'reason': ((f"{fav} favoured to advance — {'; '.join(ko_drivers)}.{stage_note}{basis_note}")
-                       if knockout else
-                       f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model from world rankings.{stage_note}{basis_note}"),
+            'reason': f"FIH #{min(hr, ar)} {fav} favoured over #{max(hr, ar)} {dog} — Elo model from world rankings.{stage_note}{basis_note}",
             'publishedAt': now.isoformat(),
         })
         changed = True
