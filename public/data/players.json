@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-29T01:48:32.025315+00:00",
+  "last_updated": "2026-08-29T08:57:54.877592+00:00",
   "players": [
     {
       "id": "IND_01",
@@ -22679,5 +22679,36 @@
       "rating_missing": [],
       "impact_sub_goals": 0
     }
-  ]
+  ],
+  "official_figures_check": {
+    "reports": [
+      "scorers",
+      "cards"
+    ],
+    "players_checked": 212,
+    "disagreements": [
+      "Mustaphaa Cassiem (RSA): we have 1F/5PC/0PS, the FIH states 1F/6PC/1PS",
+      "Afraz (PAK): we have 1F/1PC/0PS, the FIH states 2F/1PC/0PS",
+      "Akhimullah Anuar (MAS): we have 2F/0PC/0PS, the FIH states 3F/0PC/0PS",
+      "Waheed Ashraf Rana (PAK): we have 1F/1PC/0PS, the FIH states 1F/2PC/0PS",
+      "Faizal Saari (MAS): we have 2F/0PC/0PS, the FIH states 3F/0PC/0PS",
+      "Dayaan Cassiem (RSA): we have 1F/0PC/0PS, the FIH states 2F/0PC/0PS",
+      "Muhammad Hammadudin (PAK): we have 1F/0PC/0PS, the FIH states 2F/0PC/0PS",
+      "Muhammad Ammad (PAK): we have 0F/0PC/0PS, the FIH states 0F/1PC/0PS",
+      "Liam Barker (WAL): we have 0F/0PC/0PS, the FIH states 1F/0PC/0PS",
+      "Nicolas de Kerpel (BEL): we have 0F/0PC/0PS, the FIH states 1F/0PC/0PS",
+      "Trevor de Lora (RSA): we have 0F/0PC/0PS, the FIH states 0F/1PC/0PS",
+      "Benjamin Francis (WAL): we have 0F/0PC/0PS, the FIH states 1F/0PC/0PS",
+      "Arthur de Sloover (BEL): we credit 1 goal(s); the FIH scorers report does not list him",
+      "Norsyafiq Sumantri (MAS): we have 0R/0Y/2G, the FIH states 0R/0Y/3G",
+      "Ghazanfar Ali (PAK): we have 0R/0Y/0G, the FIH states 0R/0Y/1G",
+      "Muhammad Hammadudin (PAK): we have 0R/0Y/2G, the FIH states 0R/0Y/3G",
+      "Umar Mustafa (PAK): we have 0R/0Y/0G, the FIH states 0R/1Y/0G",
+      "Mustaphaa Cassiem (RSA): we have 0R/1Y/1G, the FIH states 0R/1Y/2G",
+      "Senzwesihle Ngubane (RSA): we have 0R/0Y/1G, the FIH states 0R/0Y/2G",
+      "Nicholas Spooner (RSA): we have 0R/0Y/0G, the FIH states 0R/1Y/0G",
+      "Benjamin Francis (WAL): we have 0R/0Y/1G, the FIH states 0R/0Y/2G"
+    ],
+    "checked_at": "2026-08-29T08:57:54.871056+00:00"
+  }
 }
