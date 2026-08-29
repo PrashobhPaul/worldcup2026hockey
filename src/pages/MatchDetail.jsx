@@ -9,6 +9,7 @@ import { Skeleton } from '../components/shared'
 import { deriveClock, effectiveStatus, isLiveClock, phaseLabel } from '../engine/clock'
 import { useClockTick } from '../hooks/useClockTick'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
+import { formatProbability } from '../engine/probability.js'
 import { buildPreview, h2hKey } from '../engine/preview'
 import { impactContext } from '../engine/impact'
 import { isAtTournament } from '../engine/bestXI'
@@ -16,6 +17,7 @@ import KeyPlayers from '../components/KeyPlayers'
 import { ArrowLeft } from 'lucide-react'
 import { EventIcon } from '../components/eventIcons'
 import MatchIntelligence from '../components/MatchIntelligence'
+import PredictionSplit from '../components/PredictionSplit'
 import { MatchupEdge } from '../components/TeamRatingCard'
 
 function EventRow({ ev, homeCode, homeFlag, awayFlag }) {
@@ -488,8 +490,8 @@ export default function MatchDetailPage() {
           </div>
           <div className="flex items-center gap-4">
             <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full font-mono text-sm font-bold text-brand"
-              style={{ background: `conic-gradient(var(--color-brand) ${pred.pickConfidencePct}%, var(--color-pitch-600) 0)` }}>
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-pitch-800">{pred.pickConfidencePct}%</span>
+              style={{ background: `conic-gradient(var(--color-brand) ${pred.confidencePct}%, var(--color-pitch-600) 0)` }}>
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-pitch-800">{formatProbability(pred.confidence)}</span>
             </div>
             <div className="flex-1">
               <div className="text-sm font-bold">
@@ -497,24 +499,8 @@ export default function MatchDetailPage() {
                 {pred.isKnockout ? ' to advance' : ' to win'}
               </div>
               {prediction.reason && <p className="mt-1 text-xs leading-relaxed text-pitch-300">{prediction.reason}</p>}
-              {/* A knockout has no draw to pick — level after sixty goes to a
-                  shoot-out, so the outcomes on offer are the two ways to
-                  advance. The draw mass appears as what it really is there:
-                  the chance the tie needs the shoot-out at all. Pool and
-                  stage-2 matches keep the honest three-way. */}
-              {pred.isKnockout ? (
-                <div className="mt-2 flex gap-3 font-mono text-[10px] text-pitch-400">
-                  <span>{home?.code} advance {Math.round(pred.advance.home * 100)}%</span>
-                  <span>{away?.code} advance {Math.round(pred.advance.away * 100)}%</span>
-                  <span className="text-brand">level after 60&apos; {Math.round(pred.paths.shootout * 100)}% → shoot-out</span>
-                </div>
-              ) : (
-                <div className="mt-2 flex gap-3 font-mono text-[10px] text-pitch-400">
-                  <span>{home?.code} {Math.round(pred.reg.home * 100)}%</span>
-                  <span>Draw {Math.round(pred.reg.draw * 100)}%</span>
-                  <span>{away?.code} {Math.round(pred.reg.away * 100)}%</span>
-                </div>
-              )}
+              <PredictionSplit pred={pred} home={home?.code ?? match.home}
+                               away={away?.code ?? match.away} className="mt-2" />
             </div>
           </div>
         </div>

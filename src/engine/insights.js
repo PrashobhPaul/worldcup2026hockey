@@ -6,6 +6,7 @@
 
 import { deriveClock } from './clock.js'
 import { teamRating } from './strength.js'
+import { formatProbability, toPercent } from './probability.js'
 
 const clamp = (v, lo = 0, hi = 100) => Math.max(lo, Math.min(hi, v))
 
@@ -144,7 +145,7 @@ export function buildProbSeries({ match, events, pred }) {
     const p = conditionalOutcome(sh - sa, lH, lA)
     return [
       { min: 0, ...anchorPoint(pred) },
-      { min: horizon, home: Math.round(p.home * 100), draw: Math.round(p.draw * 100), away: Math.round(p.away * 100) },
+      { min: horizon, home: toPercent(p.home, 1), draw: toPercent(p.draw, 1), away: toPercent(p.away, 1) },
     ]
   }
 
@@ -168,9 +169,9 @@ export function buildProbSeries({ match, events, pred }) {
     const p = conditionalOutcome(h - a, lH, lA)
     series.push({
       min: m,
-      home: Math.round(p.home * 100),
-      draw: Math.round(p.draw * 100),
-      away: Math.round(p.away * 100),
+      home: toPercent(p.home, 1),
+      draw: toPercent(p.draw, 1),
+      away: toPercent(p.away, 1),
     })
   }
   // Anchor: minute 0 must equal the frozen triple exactly
@@ -178,11 +179,15 @@ export function buildProbSeries({ match, events, pred }) {
   return series
 }
 
+// Minute zero of the evolution chart IS the published pick, so it is carried
+// at the precision the pick is published at. Rounded to whole numbers here,
+// the same claim appeared as "58%" on the chart's own read-out and "58.0%" in
+// the confidence dial an inch below it.
 function anchorPoint(pred) {
   return {
-    home: Math.round(pred.reg.home * 100),
-    draw: Math.round(pred.reg.draw * 100),
-    away: Math.round(pred.reg.away * 100),
+    home: toPercent(pred.reg.home, 1),
+    draw: toPercent(pred.reg.draw, 1),
+    away: toPercent(pred.reg.away, 1),
   }
 }
 
@@ -295,9 +300,9 @@ export function buildInsights({ match, home, away, events, pred, tele }) {
     const gap = Math.abs(pred.reg.home - pred.reg.away)
     if (gap >= 0.18) {
       const fav = pred.reg.home > pred.reg.away ? hName : aName
-      out.push(`${fav} clear favourites at ${Math.round(Math.max(pred.reg.home, pred.reg.away) * 100)}%.`)
+      out.push(`${fav} clear favourites at ${formatProbability(Math.max(pred.reg.home, pred.reg.away))}.`)
     } else {
-      out.push(`Tight matchup — ${Math.round(pred.reg.home * 100)} / ${Math.round(pred.reg.draw * 100)} / ${Math.round(pred.reg.away * 100)} split; conceding first widens the gap sharply.`)
+      out.push(`Tight matchup — ${toPercent(pred.reg.home, 1)} / ${toPercent(pred.reg.draw, 1)} / ${toPercent(pred.reg.away, 1)} split; conceding first widens the gap sharply.`)
     }
     const rankGap = (away?.fihRank ?? 8) - (home?.fihRank ?? 8)
     if (Math.abs(rankGap) >= 5) {
@@ -358,7 +363,7 @@ export function buildDrivers({ match, home, away, pred, allEvents = [] }) {
     out.push({
       tone: 'neutral',
       title: 'Shootout path',
-      text: `${Math.round(pred.paths.shootout * 100)}% chance this goes to a shootout — fine margins.`,
+      text: `${formatProbability(pred.paths.shootout)} chance this goes to a shootout — fine margins.`,
     })
   }
   return out.slice(0, 5)

@@ -5,6 +5,8 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { derivePrediction } from '../engine/prediction'
+import { formatProbability } from '../engine/probability.js'
+import PredictionSplit from '../components/PredictionSplit'
 import { deriveClock } from '../engine/clock'
 import { formatDate, phaseTag } from '../components/MatchCard'
 import SiblingNav from '../components/SiblingNav'
@@ -113,20 +115,11 @@ function PreviewsPanel({ matches, teams, byCode }) {
               </div>
               {d?.status === 'ready' ? (
                 <>
-                  <div className="mb-1 flex h-2 overflow-hidden rounded-full">
-                    <div style={{ width: `${d.reg.home * 100}%` }} className="bg-brand" />
-                    <div style={{ width: `${d.reg.draw * 100}%` }} className="bg-pitch-600" />
-                    <div style={{ width: `${d.reg.away * 100}%` }} className="bg-sky-400" />
-                  </div>
-                  <div className="flex justify-between font-mono text-[10px] text-pitch-400">
-                    <span className="text-brand">{m.home} {Math.round(d.reg.home * 100)}%</span>
-                    <span>Draw {Math.round(d.reg.draw * 100)}%</span>
-                    <span className="text-sky-400">{Math.round(d.reg.away * 100)}% {m.away}</span>
-                  </div>
+                  <PredictionSplit pred={d} home={m.home} away={m.away} bar="h-2" />
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-mono text-xs">
                       Pick: <span className="font-bold text-brand">
-                        {d.pick === 'HOME' ? h?.name : d.pick === 'AWAY' ? a?.name : 'Draw'} ({d.pickConfidencePct}%)
+                        {d.pick === 'HOME' ? h?.name : d.pick === 'AWAY' ? a?.name : 'Draw'} ({formatProbability(d.confidence)})
                       </span>
                     </span>
                     <Link to={`/matches/${m.id}`} className="font-mono text-[11px] text-brand hover:underline">Open match →</Link>

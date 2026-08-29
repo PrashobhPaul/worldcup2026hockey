@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import { derivePrediction } from '../engine/prediction'
+import { formatProbability } from '../engine/probability.js'
 import { phaseLabel } from '../engine/clock'
 import {
   deriveTelemetry, buildMomentumSeries, buildProbSeries,
   deriveComeback, buildInsights, buildDrivers, buildMatchDNA,
 } from '../engine/insights'
 import { formatDate, phaseTag } from './MatchCard'
+import PredictionSplit from './PredictionSplit'
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ReferenceLine, ResponsiveContainer,
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
@@ -121,7 +123,7 @@ export default function MatchIntelligence({ match, matches, byCode, linkToMatch 
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <StatBlock label="Overall Score" value={`${tele.overallScore} / 100`} />
-          <StatBlock label="AI Confidence" value={pred?.status === 'ready' ? `${pred.pickConfidencePct}%` : '—'} />
+          <StatBlock label="AI Confidence" value={pred?.status === 'ready' ? formatProbability(pred.confidence) : '—'} />
           <StatBlock label="Current State" value={
             done ? `FT · ${match.score?.home}-${match.score?.away}`
               : live ? (match.score?.home == null ? 'Awaiting score'
@@ -188,11 +190,7 @@ export default function MatchIntelligence({ match, matches, byCode, linkToMatch 
               </div>
             </>
           ) : pred?.status === 'ready' ? (
-            <div className="flex gap-3 py-4 font-mono text-sm">
-              <span className="text-brand">{match.home} {Math.round(pred.reg.home * 100)}%</span>
-              <span className="text-pitch-400">Draw {Math.round(pred.reg.draw * 100)}%</span>
-              <span className="text-sky-400">{match.away} {Math.round(pred.reg.away * 100)}%</span>
-            </div>
+            <PredictionSplit pred={pred} home={match.home} away={match.away} className="py-4" />
           ) : (
             <p className="rounded-lg border border-dashed border-white/10 py-4 text-center text-xs text-pitch-400">Computing prediction…</p>
           )}
@@ -218,19 +216,19 @@ export default function MatchIntelligence({ match, matches, byCode, linkToMatch 
           <LabCard title="AI Confidence" icon="✨" accent="#60a5fa">
             <div className="flex items-center gap-4">
               <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full font-mono text-base font-bold text-brand"
-                style={{ background: `conic-gradient(var(--color-brand) ${pred.pickConfidencePct}%, var(--color-pitch-600) 0)` }}>
-                <span className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-pitch-800">{pred.pickConfidencePct}%</span>
+                style={{ background: `conic-gradient(var(--color-brand) ${pred.confidencePct}%, var(--color-pitch-600) 0)` }}>
+                <span className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-pitch-800">{formatProbability(pred.confidence)}</span>
               </div>
               <div>
                 <div className="text-sm font-bold">
                   {(pred.pick === 'HOME' ? home : pred.pick === 'AWAY' ? away : null)?.name ?? 'Draw'} {pred.isKnockout ? 'advance' : 'win'}
                 </div>
                 <div className="mt-0.5 font-mono text-[10px] text-pitch-400">
-                  {pred.pickConfidencePct >= 70 ? 'High confidence · stable model' : pred.pickConfidencePct >= 55 ? 'Moderate confidence' : 'Coin-flip territory'}
+                  {pred.confidence >= 0.70 ? 'High confidence · stable model' : pred.confidence >= 0.55 ? 'Moderate confidence' : 'Coin-flip territory'}
                 </div>
                 {pred.isKnockout && (
                   <div className="mt-1.5 font-mono text-[10px] text-pitch-300">
-                    Regulation path {Math.round(pred.paths.regulation * 100)}% · Shootout path {Math.round(pred.paths.shootout * 100)}%
+                    Regulation path {formatProbability(pred.paths.regulation)} · Shootout path {formatProbability(pred.paths.shootout)}
                   </div>
                 )}
                 {prediction?.reason && <p className="mt-1.5 text-[11px] leading-snug text-pitch-300">{prediction.reason}</p>}

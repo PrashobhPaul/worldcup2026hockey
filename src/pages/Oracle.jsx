@@ -23,12 +23,17 @@ const TABS = [
 
 const RACE_COLORS = ['#22d3ee', '#f472b6', '#a3e635', '#facc15', '#60a5fa', '#fb923c', '#34d399', '#c084fc', '#f87171', '#e879f9']
 
-const SUBTITLES = {
-  race: 'Champion-probability race · one simulation snapshot per completed match (0 → 32).',
+// The race axis runs from the pre-tournament snapshot to the last fixture on
+// the calendar, so it is read off the fixture list rather than written down.
+// It said "0 → 32" for as long as the app has been live — a leftover from an
+// earlier, smaller format — while the schedule it was plotting had fifty
+// matches in it.
+const subtitles = total => ({
+  race: `Champion-probability race · one simulation snapshot per completed match (0 → ${total}).`,
   odds: 'Per-team stage odds · same engine snapshot as the race and bracket.',
   bracket: 'Live knockout bracket · pool standings drive every slot · engine predicts forward to the Gold Final.',
   picks: 'Every pick published before the match starts · graded publicly · no edits, no deletions.',
-}
+})
 
 // The race leader, not the model's own report card — the header chip already
 // carries the accuracy record, so the hero answers the reader's actual
@@ -108,7 +113,7 @@ function RaceTooltip({ active, payload, label, byCode }) {
   )
 }
 
-function RaceTab({ bundle, teams }) {
+function RaceTab({ bundle, teams, total }) {
   const { data, top, eliminated, byCode } = useMemo(() => buildRaceSeries(bundle, teams), [bundle, teams])
   const [focus, setFocus] = useState(null)
   if (!data.length) return <div className="rounded-xl border border-white/5 bg-pitch-800 p-5 text-sm text-pitch-400">No completed matches yet — the race starts after the first result.</div>
@@ -131,7 +136,7 @@ function RaceTab({ bundle, teams }) {
       <div className="rounded-xl border border-white/5 bg-pitch-800 p-3">
         <ResponsiveContainer width="100%" height={360}>
           <LineChart data={data} margin={{ top: 8, right: 42, bottom: 4, left: -18 }}>
-            <XAxis dataKey="match" type="number" domain={[0, 32]}
+            <XAxis dataKey="match" type="number" domain={[0, total]}
               tick={{ fill: '#5b75a8', fontSize: 9, fontFamily: 'JetBrains Mono' }} tickLine={false} axisLine={false} />
             <YAxis tickFormatter={v => `${v}%`}
               tick={{ fill: '#5b75a8', fontSize: 9, fontFamily: 'JetBrains Mono' }} tickLine={false} axisLine={false} />
@@ -164,7 +169,7 @@ function RaceTab({ bundle, teams }) {
         </div>
       )}
       <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-        X-axis: completed matches (0–32, Gold Final). Y-axis: model probability of the trophy — the
+        X-axis: completed matches (0–{total}, Gold Final). Y-axis: model probability of the trophy — the
         right-hand end of every line is the same number the Tournament tab and Odds table show.
       </p>
     </div>
@@ -245,7 +250,10 @@ function TieCard({ tie, byCode, published }) {
         </div>
         <div className="flex items-center gap-2 text-sm font-bold">
           {byCode.get(tie.winner)?.flag} {byCode.get(tie.winner)?.name ?? tie.winner}
-          <span className="font-mono text-[10px] font-normal text-live">100%</span>
+          {/* Certainty, printed the one way the app prints a probability: the
+              odds table already gives a settled tie 100.0%, and a bare "100%"
+              here was the same claim wearing a second rounding. */}
+          <span className="font-mono text-[10px] font-normal text-live">{formatProbability(1)}</span>
         </div>
         {tie.loser && (
           <div className="mt-1 text-xs text-pitch-400 line-through">
@@ -273,7 +281,7 @@ function TieCard({ tie, byCode, published }) {
           : `[${team?.name ?? code ?? 'TBD'}]`}
       </span>
       {prob != null && predicted === code && (
-        <span className="font-mono text-xs font-bold text-brand">{Math.round(prob * 100)}%</span>
+        <span className="font-mono text-xs font-bold text-brand">{formatProbability(prob)}</span>
       )}
     </div>
   )
@@ -292,7 +300,7 @@ function TieCard({ tie, byCode, published }) {
         {pH != null && tie.home && tie.away && (
           <div className="flex justify-center">
             <span className="rounded bg-pitch-700 px-2 py-0.5 font-mono text-[10px] text-pitch-300">
-              vs · {Math.round((predicted === tie.home ? pH : 1 - pH) * 100)}% {predicted}
+              vs · {formatProbability(predicted === tie.home ? pH : 1 - pH)} {predicted}
             </span>
           </div>
         )}
@@ -401,7 +409,7 @@ function PicksTab({ matches, predictions, teams }) {
         </div>
         <div className="shrink-0 text-right">
           <div className="text-xs font-bold text-brand">{pickName}</div>
-          <div className="font-mono text-[10px] text-pitch-400">{d.pickConfidencePct}% conf</div>
+          <div className="font-mono text-[10px] text-pitch-400">{formatProbability(d.confidence)} conf</div>
         </div>
       </Link>
     )
@@ -459,7 +467,7 @@ export default function OraclePage() {
         <h1 className="font-display text-2xl font-bold tracking-tight">🎯 Oracle</h1>
         {/* The live record is the Oracle's transparency headline — every tab,
             same one-line subtitle treatment as the Matches page. */}
-        <p className="mt-1 text-xs text-pitch-400">{SUBTITLES[tab]}</p>
+        <p className="mt-1 text-xs text-pitch-400">{subtitles(matches.length)[tab]}</p>
         {/* The record lives here, not on the home page: the Oracle owns the
             predictions, and every other surface reads this same figure rather
             than deriving one of its own. Headline and stage cells share a
@@ -494,7 +502,7 @@ export default function OraclePage() {
         ? <Skeleton h={400} />
         : (
           <>
-            {tab === 'race' && <RaceTab bundle={bundle} teams={teams} />}
+            {tab === 'race' && <RaceTab bundle={bundle} teams={teams} total={matches.length} />}
             {tab === 'odds' && <OddsTab bundle={bundle} teams={teams} />}
             {tab === 'bracket' && <BracketTab bundle={bundle} teams={teams} predictions={predictions} />}
             {tab === 'picks' && <PicksTab matches={matches} predictions={predictions} teams={teams} />}

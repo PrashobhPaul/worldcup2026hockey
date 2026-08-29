@@ -10,6 +10,8 @@
 // `winner` stays null until the pipeline fills it in. These are Hockey.AI's
 // standings for the same categories, and every surface that shows them says so.
 
+import { formatProbability } from './probability.js'
+
 /**
  * Cards weighted by severity, per match played — lower is cleaner.
  *
@@ -110,7 +112,7 @@ export function liveAwardLeaders({ players, matches, potmRanked, tournamentStart
   // race table renders, so the two can never disagree.
   const top = (potmRanked ?? [])[0]
   out.best_player = top
-    ? { status: 'leading', player: top, stat: `${top.prob.toFixed(1)}% of the race`,
+    ? { status: 'leading', player: top, stat: `${formatProbability(top.prob)} of the race`,
         chasers: (potmRanked ?? []).slice(1, 3) }
     : none
 

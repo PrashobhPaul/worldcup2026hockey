@@ -10,7 +10,7 @@
 // from the strength model. Fully deterministic: same seed, same tournament.
 
 import {
-  MODEL_PARAMS, teamRating, goalRates, matchProbabilities,
+  MODEL_PARAMS, teamRating, goalRates, matchProbabilities, resolveKnockoutTie,
   mulberry32, samplePoisson,
 } from './strength.js'
 
@@ -161,21 +161,27 @@ export function simulateTournament(teams, matches, opts = {}) {
     return { home: codeH, away: codeA, h: samplePoisson(lambdaH, rng), a: samplePoisson(lambdaA, rng) }
   }
 
-  // A knockout tie: real winner if played, else sample regulation + shootout.
-  const resolveKO = (codeH, codeA, phase) => {
+  // A knockout tie, as a PROBABILITY rather than a coin toss.
+  //
+  // The knockout tail is a four-team tree — two semi-finals, then the gold and
+  // bronze finals — so once a run has named its semi-finalists the rest can be
+  // summed exactly instead of sampled. Doing that is what removes the last
+  // disagreement between surfaces: sampling a published 52.8% four thousand
+  // times lands near 52% but not on it, and the app then showed 52.8% on the
+  // pick card and 52.0% in the champion race for the one question that has a
+  // single answer. Weighting every branch by its probability makes those the
+  // same number, exactly, at any simulation count.
+  //
+  // A played tie is certainty (1 or 0); a published tie is the ledger's number;
+  // anything the ledger has not spoken on falls back to the strength model.
+  const koAdvanceProb = (codeH, codeA, phase) => {
     const real = realWinner.get(`${phase}:${pairKey(codeH, codeA)}`)
-    if (real) return real
+    if (real) return real === codeH ? 1 : 0
+    // Stored in the pairing's published orientation; flip it when the bracket
+    // sends the sides through the other way round.
     const pub = publishedAdvance.get(`${phase}:${pairKey(codeH, codeA)}`)
-    if (pub != null) {
-      // Stored in the pairing's published orientation; flip it when the
-      // bracket sends the sides through the other way round.
-      return rng() < (pub.home === codeH ? pub.p : 1 - pub.p) ? codeH : codeA
-    }
-    const { lambdaH, lambdaA } = goalRates(rating(codeH), rating(codeA))
-    const h = samplePoisson(lambdaH, rng), a = samplePoisson(lambdaA, rng)
-    if (h !== a) return h > a ? codeH : codeA
-    const edge = 0.5 + Math.max(-0.06, Math.min(0.06, (rating(codeH) - rating(codeA)) / MODEL_PARAMS.shootoutSlope))
-    return rng() < edge ? codeH : codeA
+    if (pub != null) return pub.home === codeH ? pub.p : 1 - pub.p
+    return resolveKnockoutTie(rating(codeH), rating(codeA)).pHomeAdvance
   }
 
   for (let run = 0; run < runs; run++) {
@@ -219,18 +225,37 @@ export function simulateTournament(teams, matches, opts = {}) {
     for (const p of CHAMPIONSHIP_POOLS) for (const c of members2.get(p)) counts.get(c).top8++
 
     // ── Semis → medals ──────────────────────────────────────────────────────
-    const sfWinners = [], sfLosers = []
-    for (const s of SEMIS) {
+    // Enumerated, not sampled: the run contributes a fractional share to each
+    // of the four semi-final outcomes and to the medal matches that follow
+    // from them. Every branch is visited every run, so the medal columns carry
+    // no sampling error of their own — the pool phase upstream is the only
+    // thing left being sampled.
+    const semis = SEMIS.map(s => {
       const h = at(s.home[0], s.home[1]), a = at(s.away[0], s.away[1])
       counts.get(h).sf++; counts.get(a).sf++
-      const w = resolveKO(h, a, 'semi-final')
-      sfWinners.push(w); sfLosers.push(w === h ? a : h)
+      return { h, a, pHome: koAdvanceProb(h, a, 'semi-final') }
+    })
+
+    for (const [w1, l1, q1] of [
+      [semis[0].h, semis[0].a, semis[0].pHome],
+      [semis[0].a, semis[0].h, 1 - semis[0].pHome],
+    ]) {
+      if (q1 <= 0) continue
+      for (const [w2, l2, q2] of [
+        [semis[1].h, semis[1].a, semis[1].pHome],
+        [semis[1].a, semis[1].h, 1 - semis[1].pHome],
+      ]) {
+        const w = q1 * q2
+        if (w <= 0) continue
+        counts.get(w1).final += w; counts.get(w2).final += w
+        const pGold = koAdvanceProb(w1, w2, 'gold-final')
+        counts.get(w1).champion += w * pGold
+        counts.get(w2).champion += w * (1 - pGold)
+        const pBronze = koAdvanceProb(l1, l2, 'bronze-final')
+        counts.get(l1).bronze += w * pBronze
+        counts.get(l2).bronze += w * (1 - pBronze)
+      }
     }
-    counts.get(sfWinners[0]).final++; counts.get(sfWinners[1]).final++
-    const champ = resolveKO(sfWinners[0], sfWinners[1], 'gold-final')
-    counts.get(champ).champion++
-    const bronze = resolveKO(sfLosers[0], sfLosers[1], 'bronze-final')
-    counts.get(bronze).bronze++
   }
 
   const out = new Map()
