@@ -20,7 +20,7 @@ export function usePotmRace(players, bundle) {
     let z = 0
     for (const p of scored) { p.exp = Math.exp((p.score - maxScore) / T); z += p.exp }
     return scored
-      .map(p => ({ ...p, prob: (p.exp / z) * 100 }))
+      .map(p => ({ ...p, prob: p.exp / z }))
       .sort((a, b) => b.prob - a.prob || a.name.localeCompare(b.name))
   }, [players, bundle])
 }
@@ -48,7 +48,7 @@ function PotmRace({ byCode, race, bundle }) {
               {p.team} · {roleOf(p).role ?? 'role not on the record'}
             </div>
           </div>
-          <span className="font-mono text-sm font-bold text-brand">{p.prob.toFixed(1)}%</span>
+          <span className="font-mono text-sm font-bold text-brand">{formatProbability(p.prob)}</span>
           <span className={`text-pitch-400 transition-transform ${open ? 'rotate-90' : ''}`}>›</span>
         </button>
         {open && (

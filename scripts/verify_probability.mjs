@@ -195,9 +195,30 @@ walk(path.join(ROOT, 'src/pages'))
 walk(path.join(ROOT, 'src/components'))
 for (const f of uiFiles) {
   const src = fs.readFileSync(f, 'utf8')
-  ok(`${path.relative(ROOT, f)} runs no simulation`,
+  const rel = path.relative(ROOT, f)
+  ok(`${rel} runs no simulation`,
     !/simulateTournament|championProgression|mulberry32|samplePoisson/.test(src))
+
+  // One rounding rule. A screen that rounds a probability itself is a second
+  // presentation of a number the app already prints elsewhere — that is how
+  // the gold final came to read 53% on the match card, 53% on the Oracle pick
+  // and 52.8% in the champion race, three renderings of one published claim.
+  // formatProbability is the only place a probability may be rounded.
+  const selfRounded = [...src.matchAll(/(?:Math\.round|Number)\(([^\n]{0,90}?)\s*\*\s*100\s*\)|([\w.?[\]]*(?:champion|confidence|advance|prob|pHome|pAway)[\w.?[\]]*)\.toFixed\(/gi)]
+    .map(m => (m[1] ?? m[2]).trim())
+    .filter(e => /pred\b|\.reg\b|advance|champion|confidence|prob|pHome|pAway|p_home|p_away|p_draw/i.test(e))
+  ok(`${rel} leaves probability rounding to formatProbability`,
+    selfRounded.length === 0, selfRounded.join(' | '))
 }
+
+// The race axis and its caption span the real fixture list. Both were written
+// down as 32 — a leftover from an earlier, smaller format — and stayed wrong
+// on screen through every schedule change since.
+const oracleSrc = fs.readFileSync(path.join(ROOT, 'src/pages/Oracle.jsx'), 'utf8')
+ok('the race axis domain is read from the fixture list',
+  !/domain=\{\[\s*0\s*,\s*\d+\s*\]\}/.test(oracleSrc))
+ok('the race caption states no hardcoded match total',
+  !/\(0\s*(?:→|–|-)\s*\d+/.test(oracleSrc))
 
 // ── 8. Team intros must not contradict the official rankings ─────────────
 // The pipeline rewrites fih_rank from fih.hockey on every run, and an intro
@@ -284,9 +305,16 @@ console.log(`  checked ${teams.length} intros against fih_rank`)
       const champ = new Map(bundle.current.probabilities.map(p => [p.teamId, p.champion]))
       for (const [code, want] of [[gold.home, advHome], [gold.away, 1 - advHome]]) {
         const got = champ.get(code) ?? 0
-        ok(`${code}: the champion race matches the published final pick`,
-              Math.abs(got - want) < 0.03,
-              `race ${(got * 100).toFixed(1)}% vs published ${(want * 100).toFixed(1)}%`)
+        // Exact, not close. With only the final left these are the same
+        // question, and the knockout tail is summed rather than sampled, so
+        // any daylight between them is a wiring fault and not simulation noise.
+        ok(`${code}: the champion race equals the published final pick`,
+              Math.abs(got - want) < 1e-9,
+              `race ${(got * 100).toFixed(4)}% vs published ${(want * 100).toFixed(4)}%`)
+        // And the reader sees one value, not two roundings of one value.
+        ok(`${code}: race and pick print the same figure`,
+              formatProbability(got) === formatProbability(want),
+              `${formatProbability(got)} vs ${formatProbability(want)}`)
       }
       const others = bundle.current.probabilities
         .filter(p => p.teamId !== gold.home && p.teamId !== gold.away && p.champion > 0.001)

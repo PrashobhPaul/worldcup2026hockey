@@ -79,10 +79,16 @@ export function derivePrediction({ match, row }) {
     return {
       status: 'computing', isKnockout: knockout,
       reg: { home: 0, draw: 0, away: 0 },
-      pick: null, confidence: 0, pickConfidencePct: 0,
+      pick: null, confidence: 0, confidencePct: 0,
     }
   }
 
+  // `confidence` is the canonical fraction and `confidencePct` the same value
+  // as a bare number for bar and dial geometry. Neither is rounded here: this
+  // used to hand the UI a whole-number percent, so the gold final's published
+  // 52.8% reached the match card as 53% while the champion race — reading the
+  // canonical fraction — said 52.8%. One quantity, two printed values. All
+  // display rounding now happens in formatProbability and nowhere else.
   const h = Number(row.p_home_win)
   const d = Number(row.p_draw)
   const a = Number(row.p_away_win)
@@ -100,7 +106,7 @@ export function derivePrediction({ match, row }) {
     const confidence = Number(row.pick_confidence ?? pickProb)
     return {
       status: 'ready', isKnockout: false, reg,
-      pick, confidence, pickConfidencePct: Math.round(confidence * 100),
+      pick, confidence, confidencePct: confidence * 100,
     }
   }
 
@@ -112,7 +118,7 @@ export function derivePrediction({ match, row }) {
     status: 'ready', isKnockout: true, reg,
     advance: adv,
     paths: { regulation: 1 - reg.draw, shootout: reg.draw },
-    pick, confidence, pickConfidencePct: Math.round(confidence * 100),
+    pick, confidence, confidencePct: confidence * 100,
   }
 }
 

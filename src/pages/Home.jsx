@@ -7,6 +7,7 @@ import { SectionHead, Skeleton, TierBadge } from '../components/shared'
 import { derivePrediction, publishedAccuracy } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
+import PredictionSplit from '../components/PredictionSplit'
 import { SIM_ID } from '../content/sim'
 import { useFavourite } from '../hooks/useFavourite'
 import { useNowTick } from '../hooks/useNowTick'
@@ -156,18 +157,7 @@ function NextMatchCard({ match, teams }) {
         </div>
       </div>
       {pred?.status === 'ready' ? (
-        <div className="mt-4">
-          <div className="mb-1 flex h-1.5 overflow-hidden rounded-full">
-            <div style={{ width: `${pred.reg.home * 100}%` }} className="bg-brand" />
-            <div style={{ width: `${pred.reg.draw * 100}%` }} className="bg-pitch-600" />
-            <div style={{ width: `${pred.reg.away * 100}%` }} className="bg-sky-400" />
-          </div>
-          <div className="flex justify-between font-mono text-[10px] text-pitch-400">
-            <span className="text-brand">{match.home} {Math.round(pred.reg.home * 100)}%</span>
-            <span>Draw {Math.round(pred.reg.draw * 100)}%</span>
-            <span className="text-sky-400">{Math.round(pred.reg.away * 100)}% {match.away}</span>
-          </div>
-        </div>
+        <PredictionSplit pred={pred} home={match.home} away={match.away} className="mt-4" />
       ) : (
         <div className="mt-4 rounded-lg border border-dashed border-white/10 py-2 text-center font-mono text-[10px] text-pitch-400">
           Computing prediction…

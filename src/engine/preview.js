@@ -19,6 +19,8 @@
 //  • Nothing is inferred beyond what the two sources say. A pair TMS has no
 //    table for simply gets no record card.
 
+import { toPercent } from './probability.js'
+
 const PLAYED = m => m.status === 'completed' && m.score?.home != null
 
 /** Everything we know about one team's tournament so far. */
@@ -262,9 +264,12 @@ export function buildPreview({ match, home, away, matches, events, pred, h2h }) 
 
   // ── The pick, argued from the evidence above ─────────────────────────────
   if (pred?.status === 'ready') {
-    const pH = Math.round(pred.reg.home * 100)
-    const pD = Math.round(pred.reg.draw * 100)
-    const pA = Math.round(pred.reg.away * 100)
+    // One decimal, the same as every card and table that prints these three
+    // numbers, so the prose under a match cannot quote a different split from
+    // the one shown above it.
+    const pH = toPercent(pred.reg.home, 1)
+    const pD = toPercent(pred.reg.draw, 1)
+    const pA = toPercent(pred.reg.away, 1)
     const favCode = pH >= pA ? hCode : aCode
     const favName = favCode === hCode ? hName : aName
     const dogName = favCode === hCode ? aName : hName

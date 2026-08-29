@@ -172,3 +172,21 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # The checks above prove the numbers agree in memory. They cannot see
+      # what a reader sees, and that is where the app kept failing: the gold
+      # final's published pick reached the match card as 53%, the Oracle pick
+      # list as 53% conf and the champion race as 52.0% — three renderings of
+      # one claim, on three screens of one app. This one opens the built site
+      # in a browser and holds every figure it prints against the ledger.
+      - name: One value per quantity, on the running app
+        run: |
+          npm i --no-save playwright@1.49.1
+          npx playwright install --with-deps chromium
+          npx vite preview --port 4181 --host 127.0.0.1 &
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null http://127.0.0.1:4181/ && break
+            sleep 1
+          done
+          CHROMIUM_PATH="$(node -e "console.log(require('playwright').chromium.executablePath())")" \
+            npm run smoke:onevalue

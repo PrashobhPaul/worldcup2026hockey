@@ -4,6 +4,7 @@ import { db } from '../db'
 import { deriveClock, isLiveClock } from '../engine/clock'
 import { useClockTick } from '../hooks/useClockTick'
 import { derivePrediction, gradePrediction, resultDisplay } from '../engine/prediction'
+import { formatProbability } from '../engine/probability.js'
 
 export function useTeam(code) {
   return useLiveQuery(() => code ? db.teams.get(code) : undefined, [code])
@@ -64,7 +65,7 @@ function PredictionChip({ match }) {
 
   return (
     <span className={`inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[10px] font-bold ${gradeStyle}`}>
-      🎯 {pickTeam} · {d.pickConfidencePct}%
+      🎯 {pickTeam} · {formatProbability(d.confidence)}
       {grade === 'correct' && ' ✓'}
       {grade === 'wrong' && ' ✗'}
     </span>

@@ -8,6 +8,7 @@
 import fs from 'node:fs'
 import { buildMomentumSeries, buildProbSeries, buildInsights, buildDrivers, deriveComeback, deriveTelemetry } from '../src/engine/insights.js'
 import { derivePrediction } from '../src/engine/prediction.js'
+import { toPercent } from '../src/engine/probability.js'
 
 const read = f => JSON.parse(fs.readFileSync(new URL(`../public/data/${f}`, import.meta.url)))
 const fixtures = read('fixtures.json')
@@ -137,10 +138,13 @@ for (const m of completed) {
     const probs = buildProbSeries({ match: m, events, pred })
     if (probs.length) {
       const anchor = probs[0]
+      // Minute zero IS the published pick, carried at the precision the pick
+      // is published at — the chart's own read-out sits an inch from the
+      // confidence dial, and whole numbers had them printing 58% and 58.0%.
       check(`${m.id}: prob series anchored at the published triple`,
-        anchor.home === Math.round(pred.reg.home * 100)
-          && anchor.draw === Math.round(pred.reg.draw * 100)
-          && anchor.away === Math.round(pred.reg.away * 100),
+        anchor.home === toPercent(pred.reg.home, 1)
+          && anchor.draw === toPercent(pred.reg.draw, 1)
+          && anchor.away === toPercent(pred.reg.away, 1),
         JSON.stringify(anchor))
       const last = probs[probs.length - 1]
       check(`${m.id}: prob series runs to full-time`, last.min === 60, `ends ${last.min}'`)
