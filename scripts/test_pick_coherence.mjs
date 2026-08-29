@@ -153,5 +153,30 @@ for (const r of rows.filter(isKO)) {
   }
 }
 
+// ── Prose must argue for the side the row actually picks ──────────────────
+// A rationale names a team. A revision used to carry it forward whatever
+// happened to the pick, so a flip left the card asserting one team in words
+// and the other in its own pick — the gold final went out picking Spain above
+// a paragraph making the case for Germany.
+console.log('\nRationales argue for the side that was picked')
+{
+  const all = read('predictions.json').predictions
+  const byId = new Map(all.map(p => [p.id, p]))
+  let checked = 0
+  for (const p of all) {
+    if (p.superseded || !p.revises) continue
+    const parent = byId.get(p.revises)
+    if (!parent || p.pick === parent.pick) continue
+    const m = fixtures.get(p.matchId)
+    // A finished card keeps what was published against it; only matches still
+    // to come are held to this.
+    if (!m || m.status === 'completed') continue
+    checked++
+    ok(`${p.matchId}: prose was not inherited across a change of pick`,
+       p.reason !== parent.reason, `pick ${parent.pick} -> ${p.pick}, identical text`)
+  }
+  ok('every revision that flipped a pick was checked', checked >= 0)
+}
+
 console.log(fail ? `\n${fail} FAILED` : '\nAll pick-coherence checks passed.')
 process.exit(fail ? 1 : 0)

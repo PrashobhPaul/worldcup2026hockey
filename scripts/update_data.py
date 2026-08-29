@@ -3659,10 +3659,17 @@ def revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h
                         f"stays in the ledger.")),
             'publishedAt': now.isoformat(),
         }
-        if p.get('reason_original'):
+        if p.get('reason_original') and pick == p['pick']:
             # An authored rationale (written from the tournament record, marked
             # by reason_original) outlives a probability refresh: the template
             # never overwrites prose.
+            #
+            # It does NOT outlive a change of pick. Prose argues for a side by
+            # name, so carrying it across a flip leaves the card asserting one
+            # team in words and the other in its own pick — the gold final was
+            # published picking Spain above a paragraph making the case for
+            # Germany. When the pick moves, the model's own sentence goes out
+            # instead and the rationale writer re-authors it on a later run.
             new_row['reason'] = p['reason']
             new_row['reason_original'] = p['reason_original']
             for k in ('reason_revised_at', 'reason_revision'):
@@ -3687,6 +3694,54 @@ def fix_venues(fixtures):
             changed = True
     return changed
 
+def repair_stale_rationales(predictions, fixtures, now):
+    """Drop prose that a revision inherited across a change of pick.
+
+    A rationale argues for a side by name. Until now a revision carried the
+    authored prose forward whatever happened to the pick, so a flip left the
+    card asserting one team in words and the other in its own pick — the gold
+    final was published picking Spain above a paragraph making the case for
+    Germany.
+
+    The inheritance is fixed at the source, but rows already published carry
+    the fault. They are identifiable without guesswork: a revision whose
+    reason is character-for-character its parent's, while its pick is not.
+    Clearing the authored markers hands the row back to the rationale writer,
+    which re-authors it for the side actually picked. Nothing is invented here
+    and no probability moves.
+    """
+    by_id = {p['id']: p for p in predictions['predictions']}
+    by_match = {m['id']: m for m in fixtures['matches']}
+    changed = False
+    for p in predictions['predictions']:
+        if p.get('superseded') or not p.get('revises'):
+            continue
+        # Only a match still to be played. A finished card keeps exactly what
+        # was published against it — that is the promise — and the rationale
+        # writer will not touch a played match either, so repairing one here
+        # would strip its prose and leave a placeholder standing for good.
+        m = by_match.get(p['matchId'])
+        if not m:
+            continue
+        try:
+            if kickoff(m) <= now:
+                continue
+        except ValueError:
+            continue
+        parent = by_id.get(p['revises'])
+        if not parent or p['pick'] == parent['pick']:
+            continue
+        if p.get('reason') and p.get('reason') == parent.get('reason'):
+            for k in ('reason_original', 'reason_revised_at', 'reason_revision'):
+                p.pop(k, None)
+            p['reason'] = (f"{p.get('pick_team') or p['pick']} favoured to advance. "
+                           'Rationale being rewritten for the revised pick.')
+            changed = True
+            print(f"RATIONALE REPAIR: {p['matchId']} prose argued for the superseded "
+                  f"pick ({parent['pick']}), now {p['pick']} — handed back to the writer.")
+    return changed
+
+
 def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
     """
     Every fixture with both teams known carries an engine pick — including
@@ -3704,6 +3759,7 @@ def generate_predictions(fixtures, teams, predictions, h2h_pairs=None):
     now = now_utc()
 
     changed |= revise_stale_predictions(fixtures, predictions, rank_of, points_of, now, h2h_pairs)
+    changed |= repair_stale_rationales(predictions, fixtures, now)
 
     for m in fixtures['matches']:
         if m['id'] in have or m['home'] == 'TBD':

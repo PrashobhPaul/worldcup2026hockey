@@ -4401,10 +4401,10 @@
       "pick": "HOME",
       "pick_confidence": 0.501,
       "pick_team": "ESP",
-      "reason": "Germany arrive with 4 wins from 6 matches this tournament, scoring 14 and conceding 7; Spain have won 4 of 6, 13 for and 8 against. The sides have already met once here — Germany 1-2 Spain, Spain taking it. Germany beat Argentina 2-1 in the semi-final. The goal difference between them across the tournament runs 2 in Germany's favour, which is the margin the pick leans on.",
+      "reason": "Spain arrive with 4 wins from 6 matches this tournament, scoring 13 and conceding 8; Germany have won 4 of 6, 14 for and 7 against. The sides have already met once here — Germany 1-2 Spain, Spain taking it. Spain beat Netherlands 4-3 in the semi-final. The records give the pick little to spare — this one rests on how Spain have finished their chances rather than any daylight in the numbers.",
       "publishedAt": "2026-08-29T14:46:54.236824+00:00",
-      "reason_original": "FIH #2 GER favoured over #5 ESP — points-based Elo with a full draw model. Revised pre-match; the original pick stays in the ledger.",
-      "reason_revised_at": "2026-08-29T08:11:03.258454+00:00",
+      "reason_original": "ESP favoured to advance. Rationale being rewritten for the revised pick.",
+      "reason_revised_at": "2026-08-29T14:55:15.361381+00:00",
       "reason_revision": "rationale composed by the engine from the tournament record; upgraded to an AI-authored one on a later run; pick and probabilities unchanged"
     }
   ]
