@@ -22,6 +22,7 @@ from update_data import (  # noqa: E402
     revise_stale_predictions, fix_venues, predict, points_from_rank,
     parse_match_page, apply_player_rankings, parse_match_report_goals,
     slot_knockouts, stage1_placements, normalize_captaincy, parse_h2h,
+    resolve_fixture_for_page, page_score_for, attach_missing_shootouts,
     team_form, form_delta, h2h_delta, effective_points, FORM_CAP, H2H_CAP, TMS_LINEUP_LINK,
     non_knockout_pick,
 )
@@ -337,9 +338,64 @@ check('an upcoming match yields no result', ('GER', 'BEL') not in results)
 check('"15 hours from now" is not a score', ('NZL', 'JPN') not in results)
 check('the tournament banner "15 - 30" is not a pair or score',
       all(k[0] in ('IND', 'PAK', 'FRA') for k in results))
-check('a pair repeated with different scores rejects the page',
-      parse_tms_results(['IND - WAL', '3 - 1', 'IND - WAL', '2 - 1']) is None)
+# The medal round is a genuine re-match weekend — bronze repeats a pool
+# pairing, gold a stage-2 one — so one ambiguous pairing must drop THAT PAIR,
+# never the page: returning None here is how finals day would have gone dark.
+_dup = parse_tms_results(['IND - WAL', '3 - 1', 'IND - WAL', '2 - 1', 'PAK - RSA', '4 - 4'])
+check('a pair repeated with different scores drops the pair, not the page',
+      _dup is not None and ('IND', 'WAL') not in _dup and _dup.get(('PAK', 'RSA')) == (4, 4))
 check('an empty page yields no results', parse_tms_results([]) == {})
+
+# Knockout rows carry the shoot-out — inline after the score or on its own
+# line. This is what left WAL v MAS and PAK v RSA "live" for a day: an
+# annotation no pattern recognised meant no score was read at all.
+_so = {}
+_r = parse_tms_results(['WAL - MAS', '&nbsp;', '2 - 2 (2 - 1) SO', 'D',
+                        'PAK - RSA', '&nbsp;', '4 - 4', 'SO (4 - 3)', 'G',
+                        'IND - ENG', '&nbsp;', '2 - 4', 'D'], shootouts_out=_so)
+check('an inline shoot-out yields the regulation score',
+      _r.get(('WAL', 'MAS')) == (2, 2) and _so.get(('WAL', 'MAS')) == (2, 1))
+check('a shoot-out on its own line is attached to its match',
+      _r.get(('PAK', 'RSA')) == (4, 4) and _so.get(('PAK', 'RSA')) == (4, 3))
+check('a decisive score gains no phantom shoot-out',
+      _r.get(('IND', 'ENG')) == (2, 4) and ('IND', 'ENG') not in _so)
+
+# A completed drawn knockout with no shoot-out on file cannot say who
+# advanced; the listing still shows it, so any later run may attach it.
+_fk = {'matches': [{'id': 'POS7', 'home': 'IND', 'away': 'BEL', 'phase': 'classification',
+                    'status': 'completed', 'score': {'home': 3, 'away': 3}}]}
+attach_missing_shootouts(_fk, {('IND', 'BEL'): (3, 4)})
+check('a drawn knockout picks up its missing shoot-out late',
+      _fk['matches'][0].get('shootout') == {'home': 3, 'away': 4})
+
+print('\nRe-match weekend: pages must find the right namesake')
+
+# The corruption of 29 Aug in miniature: the bronze final repeats a pool
+# pairing. The pool page must resolve to the pool match, the medal page to
+# the medal match, and neither may re-target a finished fixture.
+_refx = {'matches': [
+    {'id': 'A3', 'home': 'ARG', 'away': 'NED', 'date': '2026-08-18', 'status': 'completed'},
+    {'id': 'BRZ', 'home': 'NED', 'away': 'ARG', 'date': '2026-08-30', 'status': 'scheduled'},
+    {'id': 'B1', 'home': 'BEL', 'away': 'GER', 'date': '2026-08-17', 'status': 'completed'},
+]}
+_r1 = resolve_fixture_for_page(_refx, {'pair': ('NED', 'ARG'), 'date': '2026-08-30'})
+_r2 = resolve_fixture_for_page(_refx, {'pair': ('ARG', 'NED'), 'date': '2026-08-18'})
+_r3 = resolve_fixture_for_page(_refx, {'pair': ('BEL', 'GER'), 'date': '2026-08-30'})
+check('a medal page resolves to the medal match, not the pool re-match',
+      _r1 is not None and _r1['id'] == 'BRZ')
+check('the pool page still resolves to the pool match', _r2 is not None and _r2['id'] == 'A3')
+check('a page from another day never re-targets a finished fixture', _r3 is None)
+
+# And the listing consumer: on a re-match pair, the reversed-orientation
+# fallback read the EARLIER match's row as this one's — the exact mechanism
+# that "witnessed" a twelve-day-old pool score into the bronze final.
+_page = {('ARG', 'NED'): (1, 3)}
+_brz = _refx['matches'][1]
+check('a re-match never reads the earlier meeting through the reversed lookup',
+      page_score_for(_brz, _page, _refx) is None)
+_b1 = _refx['matches'][2]
+check('a single meeting still accepts the reversed orientation',
+      page_score_for(_b1, {('GER', 'BEL'): (2, 1)}, _refx) == (1, 2))
 
 print('\nMatch status honesty')
 
@@ -998,6 +1054,47 @@ _sch_bad = [no for no, exp in _SCHEDULE.items()
             if (_BY_NO[no]['date'], _BY_NO[no]['time'], _BY_NO[no]['venue']) != exp]
 check('classification, semis and medals sit on the official slots', not _sch_bad, f'wrong: {_sch_bad}')
 
+# The corruption of 29 Aug, stated as invariants. A medal match dated before
+# the semi-finals that decide who plays in it is not a data error to shrug at,
+# it is a result for a match that has not happened — the app showed a world
+# champion two days before the final.
+_bid = {x['id']: x for x in _m}
+_sf_day = max(_bid['SF1']['date'], _bid['SF2']['date'])
+for _mid in ('BRZ', 'GOLD'):
+    check(f'{_mid} is dated after the semi-finals that feed it',
+          _bid[_mid]['date'] > _sf_day, f"{_bid[_mid]['date']} vs semis {_sf_day}")
+check('a medal match is only completed once both semi-finals are',
+      all(_bid[x]['status'] == 'completed' for x in ('SF1', 'SF2'))
+      or all(_bid[x]['status'] != 'completed' for x in ('BRZ', 'GOLD')))
+_tms_ids = [x.get('tms_id') for x in _m if x.get('tms_id')]
+check('no two fixtures share a TMS id', len(_tms_ids) == len(set(_tms_ids)))
+
+# Probabilities carried by the active pick of any unplayed match stay inside
+# (0, 1): the model must never assert a certainty about hockey that has not
+# been played. (Spain stood at 100% to win the cup while the final was two
+# days away — that number came from the corrupted record, and this line is
+# what refuses to publish its like again.)
+with open(os.path.join(os.path.dirname(__file__), '..', 'public', 'data', 'predictions.json')) as _fh:
+    _preds = _json.load(_fh)['predictions']
+_undone = {x['id'] for x in _m if x['status'] != 'completed' and x['home'] != 'TBD'}
+_bad_p = [p['id'] for p in _preds
+          if p['matchId'] in _undone and not p.get('superseded')
+          and not (0.0 < max(p['p_home_win'], p['p_away_win']) < 1.0
+                   and 0.0 <= p['p_draw'] < 1.0
+                   and abs(p['p_home_win'] + p['p_draw'] + p['p_away_win'] - 1.0) < 0.01)]
+check('no active pick asserts certainty about an unplayed match', not _bad_p, f'{_bad_p}')
+# Only matches that have NOT kicked off: a pick whose match already ran is
+# ledger, however flat its model was — the reviser holds the same line.
+_now_utc = datetime.now(timezone.utc)
+_ko_future = {x['id'] for x in _m
+              if x['status'] != 'completed' and x['home'] != 'TBD'
+              and x['phase'] not in ('pool', 'stage2')
+              and datetime.fromisoformat(f"{x['date']}T{x['time']}:00+02:00") > _now_utc}
+_flat = [p['id'] for p in _preds
+         if p['matchId'] in _ko_future and not p.get('superseded') and p['p_draw'] == 0.0]
+check('future knockout picks carry the regulation draw mass (shoot-out fold)',
+      not _flat, f'{_flat}')
+
 # Match numbers must follow the running order within each day: the tournament is
 # read by number, so a fixture drifting to another slot is a visible error.
 _days = {}
@@ -1098,15 +1195,43 @@ _low = _brief.lower()
 for _phrase in PLUMBING:
     check(f'a brief never mentions "{_phrase}"', _phrase not in _low, _brief[-120:])
 check('a brief still reports the match', 'Netherlands' in _brief and '3-1' in _brief)
-check('one penalty corner is singular', '1 penalty corner ' in _brief or _brief.endswith('1 penalty corner.'),
+# The corners line is gone on purpose: "penalty corners won" is not a number
+# the FIH publishes — the old composer was counting corner GOALS and calling
+# them corners, which is exactly the invented-statistic the fact gate bans.
+# The singular/plural grammar it exercised is now checked where a count is
+# still an honest one: the card line.
+check('a lone card is singular', '1 yellow card was shown' in _brief,
       _brief.splitlines()[-1])
+check('a brief never counts penalty corners won', 'corners' not in _low or 'corner)' in _low,
+      _brief.splitlines()[-1])
+check('a goal minute is written as a word the gate can read back',
+      '12th minute' in _brief, _brief[:160])
+# The synthetic above has one goal on the feed against a 3-1 score — a
+# partial feed. The composer once narrated it as a one-goal afternoon; now it
+# must SAY the feed is partial and make no whole-match claims from it.
+check('a partial goal feed is declared, not papered over',
+      'details 1 goal of the 4' in _brief, _brief)
+check('no whole-match claim is made from a partial feed',
+      'whole of the scoring' not in _brief and 'open play' not in _brief
+      and 'at half-time' not in _brief, _brief)
+# The published-length rule is asked of a brief with a complete feed.
+_full = dict(_match, score={'home': 1, 'away': 0},
+             events=[e for e in _match['events']])
+_fb = _stories_mod.engine_brief(_full, _teams)
+check('a complete-feed brief clears its own fact gate',
+      len(_fb.split()) >= 120 and _fb.count('\n\n') == 2,
+      f"{len(_fb.split())} words, {_fb.count(chr(10)+chr(10)) + 1} paragraphs")
 check("a name ending in s takes a bare apostrophe",
       _stories_mod.possessive('Netherlands') == "Netherlands'" and _stories_mod.possessive('Wales') == "Wales'")
 check('other names keep the s', _stories_mod.possessive('Germany') == "Germany's")
 
 _missing = dict(_match, events=[])
 check('a brief with no scorer feed says so in plain words',
-      'has not been published yet' in _stories_mod.engine_brief(_missing, _teams))
+      'has not been published' in _stories_mod.engine_brief(_missing, _teams))
+# A genuine 0-0 is not "missing detail" — there is nothing to publish.
+_blank = dict(_match, events=[], score={'home': 0, 'away': 0})
+check('a goalless draw is reported as one, not as missing data',
+      'has not been published' not in _stories_mod.engine_brief(_blank, _teams))
 
 # And the briefs already published must be clean too — the generator changing
 # does not rewrite what is already in the file.

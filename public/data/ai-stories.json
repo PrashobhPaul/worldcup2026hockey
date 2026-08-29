@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T01:48:32.240567+00:00",
+  "updated_at": "2026-08-29T08:09:38.784902+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -243,57 +243,43 @@
     },
     {
       "matchId": "POS13",
-      "story": "France beat Japan 3-1 at the Wagener Stadion in Amstelveen, in a 13th/14th Place tie of the FIH Hockey World Cup 2026. Japan came in ranked 16th in the world, France 10th.\n\nJapan scored through Jun Watanabe (22', penalty stroke); France through Mattéo Desgouillons (17'), Timothée Clément (59') and Victor Charlet (59', penalty corner). The opener came in Q2 and the final goal in Q4.\n\nJapan won 0 penalty corners to France's 1. 2 cards were shown.",
-      "generatedAt": "2026-08-28T14:07:16.294421+00:00",
+      "story": "France beat Japan 3-1 at the Wagener Stadion in Amstelveen on 28 August, in the 13th/14th Place tie of the FIH Hockey World Cup 2026. The result settles 13th place for France; Japan finish 14th. Japan came into the match ranked 17th in the world, France 10th — 7 places between them on the FIH table.\n\nFrance scored through Mattéo Desgouillons (17th minute), Timothée Clément (59th minute) and Victor Charlet (59th minute, penalty corner); Japan replied through Jun Watanabe (22nd minute, penalty stroke). It stood 1-1 at half-time. The opening goal came in the 17th minute and the final goal in the 59th, from the 2nd quarter to the 4th.\n\nOf the 4 goals, 2 came in open play and 2 from the set piece. The sides were level at the interval, and France won the second half. 2 green cards were shown. The goals were spread across 4 different scorers. This was match 41 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784218+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },
     {
       "matchId": "POS9",
-      "story": "New Zealand ran out convincing winners over Ireland 6-3 at the Royal Leopold Club in Brussels, in a 9th/10th Place tie of the FIH Hockey World Cup 2026. New Zealand came in ranked 9th in the world, Ireland 11th.\n\nNew Zealand scored through Kane Russell (3', penalty corner), Kane Russell (14', penalty corner), George Baker (21'), Sam Lane (26', penalty corner), Sam Lane (46') and Finn Ward (58'); Ireland through Gregory Williams (37', penalty corner), Lee Cole (38', penalty stroke) and Jeremy Duncan (60', penalty corner). The opener came in Q1 and the final goal in Q4.\n\nNew Zealand won 3 penalty corners to Ireland's 2. 3 cards were shown.",
-      "generatedAt": "2026-08-28T14:07:16.294479+00:00",
+      "story": "New Zealand ran out convincing winners over Ireland 6-3 at the Royal Leopold Club in Brussels on 28 August, in the 9th/10th Place tie of the FIH Hockey World Cup 2026. The result settles 9th place for New Zealand; Ireland finish 10th. New Zealand came into the match ranked 9th in the world, Ireland 11th — 2 places between them on the FIH table.\n\nNew Zealand scored through Kane Russell (3rd minute, penalty corner), Kane Russell (14th minute, penalty corner), George Baker (21st minute), Sam Lane (26th minute, penalty corner), Sam Lane (46th minute) and Finn Ward (58th minute); Ireland replied through Gregory Williams (37th minute, penalty corner), Lee Cole (38th minute, penalty stroke) and Jeremy Duncan (60th minute, penalty corner). It stood 4-0 at half-time. The opening goal came in the 3rd minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 9 goals, 3 came in open play and 6 from the set piece. The 4th quarter was the busiest, with 3 of them. New Zealand led at the interval and were not caught. 3 green cards were shown. The goals were spread across 7 different scorers. This was match 44 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784435+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },
     {
       "matchId": "POS5",
-      "story": "Australia beat England 2-0 at the Wagener Stadion in Amstelveen, in a 5th/6th Place tie of the FIH Hockey World Cup 2026. England came in ranked 3rd in the world, Australia 6th.\n\nAustralia through Blake Govers (30', penalty corner) and Ky Willott (48', penalty corner). The opener came in Q2 and the final goal in Q4.\n\nEngland won 0 penalty corners to Australia's 2. 3 cards were shown.",
-      "generatedAt": "2026-08-28T18:14:25.105173+00:00",
+      "story": "Australia beat England 2-0 at the Wagener Stadion in Amstelveen on 28 August, in the 5th/6th Place tie of the FIH Hockey World Cup 2026. The result settles 5th place for Australia; England finish 6th. England came into the match ranked 6th in the world, Australia 4th — 2 places between them on the FIH table.\n\nAustralia scored through Blake Govers (30th minute, penalty corner) and Ky Willott (48th minute, penalty corner). It stood 0-1 at half-time. The opening goal came in the 30th minute and the final goal in the 48th, from the 2nd quarter to the 4th. Goals were scarce all afternoon — 2 goals in the sixty minutes was the whole of the scoring.\n\nEvery goal came from the set piece. Australia led at the interval and were not caught. Australia's defence kept England off the scoresheet entirely. 2 green cards and 1 yellow card were shown. This was match 45 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784550+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },
     {
       "matchId": "POS7",
-      "story": "India and Belgium shared a 3-3 draw at the Royal Leopold Club in Brussels, in a 7th/8th Place tie of the FIH Hockey World Cup 2026. India came in ranked 8th in the world, Belgium 2nd.\n\nIndia scored through Abhishek (6'), Harmanpreet Singh (31', penalty corner) and Harmanpreet Singh (60', penalty corner); Belgium through Roman Duvekot (22'), Hugo Labouchere (23', penalty corner) and Arthur de Sloover (47'). The opener came in Q1 and the final goal in Q4.\n\nIndia won 2 penalty corners to Belgium's 1. 2 cards were shown.",
-      "generatedAt": "2026-08-28T18:14:25.105262+00:00",
+      "story": "India and Belgium finished level at 3-3 after sixty minutes at the Royal Leopold Club in Brussels on 28 August, in the 7th/8th Place tie of the FIH Hockey World Cup 2026. India came into the match ranked 8th in the world, Belgium 1st — 7 places between them on the FIH table.\n\nIndia scored through Abhishek (6th minute), Harmanpreet Singh (31st minute, penalty corner) and Harmanpreet Singh (60th minute, penalty corner); Belgium replied through Roman Duvekot (22nd minute), Hugo Labouchere (23rd minute, penalty corner) and Arthur de Sloover (47th minute). It stood 1-2 at half-time. The opening goal came in the 6th minute and the final goal in the 60th, from the 1st quarter to the 4th.\n\nOf the 6 goals, 3 came in open play and 3 from the set piece. 1 green card and 1 yellow card were shown. The goals were spread across 5 different scorers. This was match 46 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784644+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },
     {
       "matchId": "SF1",
-      "story": "Spain edged Netherlands 4-3 at the Wagener Stadion in Amstelveen, in a Semi-Final tie of the FIH Hockey World Cup 2026. Netherlands came in ranked 1st in the world, Spain 7th.\n\nNetherlands scored through Koen Bijen (22'), Jip Janssen (57', penalty corner) and Joep de Mol (59', penalty corner); Spain through José Basterra (41'), José Basterra (50'), Pepe Cunill (51', penalty corner) and José Basterra (55', penalty stroke). The opener came in Q2 and the final goal in Q4.\n\nNetherlands won 2 penalty corners to Spain's 1. 1 card was shown.",
-      "generatedAt": "2026-08-28T18:14:25.105294+00:00",
+      "story": "Spain edged Netherlands 4-3 at the Wagener Stadion in Amstelveen on 28 August, in the Semi-Final tie of the FIH Hockey World Cup 2026. Netherlands came into the match ranked 3rd in the world, Spain 5th — 2 places between them on the FIH table.\n\nNetherlands scored through Koen Bijen (22nd minute), Jip Janssen (57th minute, penalty corner) and Joep de Mol (59th minute, penalty corner); Spain replied through José Basterra (41st minute), José Basterra (50th minute), Pepe Cunill (51st minute, penalty corner) and José Basterra (55th minute, penalty stroke). It stood 1-0 at half-time. The opening goal came in the 22nd minute and the final goal in the 59th, from the 2nd quarter to the 4th.\n\nOf the 7 goals, 3 came in open play and 4 from the set piece. The 4th quarter was the busiest, with 5 of them. Spain trailed at the interval and turned the match around in the second half. 1 yellow card was shown. The goals were spread across 5 different scorers. This was match 47 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784740+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     },
     {
       "matchId": "SF2",
-      "story": "Germany edged Argentina 2-1 at the Royal Leopold Club in Brussels, in a Semi-Final tie of the FIH Hockey World Cup 2026. Germany came in ranked 4th in the world, Argentina 5th.\n\nGermany scored through Justus Weigand (33') and Paul-Philipp Kaufmann (54'); Argentina through Tomas Domene (46', penalty corner). The opener came in Q3 and the final goal in Q4.\n\nGermany won 0 penalty corners to Argentina's 1. 3 cards were shown.",
-      "generatedAt": "2026-08-28T23:57:38.554590+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "BRZ",
-      "story": "Netherlands beat Argentina 3-1 at the Wagener Stadion in Amstelveen, in a 🥉 Bronze Medal Match tie of the FIH Hockey World Cup 2026. Netherlands came in ranked 3rd in the world, Argentina 7th.\n\nNetherlands scored through Thierry Brinkman (7'), Tijmen Reyenga (34', penalty corner) and Duco Telgenkamp (42'); Argentina through Nicolas della Torre (11', penalty corner). The opener came in Q1 and the final goal in Q3.\n\nNetherlands won 1 penalty corner to Argentina's 1. 1 card was shown.",
-      "generatedAt": "2026-08-29T01:48:32.240502+00:00",
-      "model": "hockey-ai-engine",
-      "source": "engine"
-    },
-    {
-      "matchId": "GOLD",
-      "story": "Spain edged Germany 2-1 at the Royal Leopold Club in Brussels, in a 🥇 Gold Medal Final tie of the FIH Hockey World Cup 2026. Spain came in ranked 5th in the world, Germany 2nd.\n\nSpain scored through José Basterra (30', penalty stroke) and José Basterra (50'); Germany through Justus Weigand (26'). The opener came in Q2 and the final goal in Q4.\n\nSpain won 0 penalty corners to Germany's 0.",
-      "generatedAt": "2026-08-29T01:48:32.240550+00:00",
+      "story": "Germany edged Argentina 2-1 at the Royal Leopold Club in Brussels on 28 August, in the Semi-Final tie of the FIH Hockey World Cup 2026. Germany came into the match ranked 2nd in the world, Argentina 7th — 5 places between them on the FIH table.\n\nGermany scored through Justus Weigand (33rd minute) and Paul-Philipp Kaufmann (54th minute); Argentina replied through Tomas Domene (46th minute, penalty corner). It stood 0-0 at half-time. The opening goal came in the 33rd minute and the final goal in the 54th, from the 3rd quarter to the 4th. Paul-Philipp Kaufmann's 54th-minute goal stood as the difference.\n\nOf the 3 goals, 2 came in open play and 1 from the set piece. The 4th quarter was the busiest, with 2 of them. The sides were level at the interval, and Germany won the second half. 2 green cards and 1 yellow card were shown. The goals were spread across 3 different scorers. This was match 48 of the tournament's fifty.",
+      "generatedAt": "2026-08-29T08:09:38.784832+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }

@@ -182,6 +182,16 @@ jobs:
       - name: Stamp the data fingerprint
         run: python3 scripts/data_fingerprint.py --write
 
+      # The gate that was missing on 29 Aug. The full suite already ran on
+      # every branch EXCEPT main — and main is where the data publishes. So
+      # when the medal round's re-matches corrupted the fixtures (a gold
+      # final "completed" nine days before its semi-finals, a champion at
+      # 100% two days early), the invariants that name exactly those states
+      # sat unexecuted while the corrupt files shipped to every reader. Data
+      # that cannot pass its own invariants does not publish, on main first.
+      - name: Refuse to publish data that fails its own invariants
+        run: python3 scripts/test_parsers.py
+
       - name: Commit & push if changed
         id: commit
         run: |
