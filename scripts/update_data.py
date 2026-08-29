@@ -2553,9 +2553,12 @@ def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
                            'player': who or f'{code} #{shirt}'})
     return events
 
-# Bumped when the report parser improves, so already-official matches re-read
-# the report once and pick up the better data instead of staying frozen.
-EVENTS_REV = 2
+# Bumped when the report parser improves — or when the FIH amends a report
+# after our one read, as with the 7/8th place match: the first published
+# timeline credited the 47th-minute goal to shirt 23, the corrected report
+# and the competition scorers table both say shirt 13. Already-official
+# matches re-read the report once per bump instead of staying frozen.
+EVENTS_REV = 3
 
 def apply_official_events(fixtures, players_doc):
     """Replace estimated timelines with the real one from the TMS match report."""

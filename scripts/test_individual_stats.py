@@ -139,6 +139,50 @@ check('the published split is the ledger it was built from',
       published == (ledger['FG'], ledger['PC'], ledger['PS']),
       f"published {published}, ledger {tuple(ledger.values())}")
 
+# A tournament total can agree while individual players do not: two goals
+# swapped between team-mates net out, and a card dropped from one player is
+# invisible unless someone counts his own row. Both happened — the 7/8th
+# place goal at 47' was published against the wrong Belgian until the FIH
+# amended its report, and a New Zealander's two green cards reached the
+# boards as none while the totals still balanced. So every published figure
+# is recounted against that player's own events.
+per_player = {}
+for m in matches:
+    for e in m.get('events') or []:
+        who = e.get('player')
+        if not who:
+            continue
+        row = per_player.setdefault(who, {'FG': 0, 'PC': 0, 'PS': 0,
+                                          'green': 0, 'yellow': 0, 'red': 0})
+        if e.get('type') == 'goal':
+            if e.get('via') in ('FG', 'PC', 'PS'):
+                row[e['via']] += 1
+        elif e.get('type') == 'green_card':
+            row['green'] += 1
+        elif e.get('type') == 'yellow_card':
+            row['yellow'] += 1
+        elif e.get('type') == 'red_card':
+            row['red'] += 1
+
+off = []
+for pl in players:
+    tally = per_player.get(pl['name'], {'FG': 0, 'PC': 0, 'PS': 0,
+                                        'green': 0, 'yellow': 0, 'red': 0})
+    for field, key in (('fg_scored', 'FG'), ('pc_scored', 'PC'),
+                       ('ps_scored', 'PS'), ('green_cards', 'green'),
+                       ('yellow_cards', 'yellow'), ('red_cards', 'red')):
+        if (pl.get(field) or 0) != tally[key]:
+            off.append(f"{pl['name']} ({pl['team']}) {field}: "
+                       f"published {pl.get(field) or 0}, ledger {tally[key]}")
+check('every player figure is the tally of that player\'s own events',
+      not off, '; '.join(off[:4]))
+
+# An event crediting a name no published player carries is a figure nobody
+# can be shown — the goal or card exists in the match record and on no board.
+orphans = sorted(set(per_player) - {pl['name'] for pl in players})
+check('every event names a player the boards carry',
+      not orphans, ', '.join(orphans[:4]))
+
 # Appearances are counted from the official team sheets, and everything the
 # rating does with a per-match rate depends on them. They were published a
 # whole run behind the sheets they come from — the pipeline derived them
