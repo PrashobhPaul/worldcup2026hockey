@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T14:19:39.839588+00:00",
+  "updated_at": "2026-08-30T16:24:46.576287+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -301,6 +301,13 @@
       "matchId": "BRZ",
       "story": "Argentina edged Netherlands 2-1 at the Royal Leopold Club in Brussels on 30 August, in the 🥉 Bronze Medal Match tie of the FIH Hockey World Cup 2026. Netherlands came into the match ranked 3rd in the world, Argentina 7th — 4 places between them on the FIH table.\n\nArgentina scored through Tomas Domene (41st minute) and Matias Rey (59th minute, penalty corner); Netherlands replied through Floris Middendorp (49th minute, penalty corner). It stood 0-0 at half-time. The opening goal came in the 41st minute and the final goal in the 59th, from the 3rd quarter to the 4th. Matias Rey's 59th-minute goal stood as the difference.\n\nOf the 3 goals, 1 came in open play and 2 from the set piece. The 4th quarter was the busiest, with 2 of them. The sides were level at the interval, and Argentina won the second half. 2 green cards and 1 yellow card were shown. The goals were spread across 3 different scorers. This was match 49 of the tournament's fifty.",
       "generatedAt": "2026-08-30T14:19:39.839563+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "GOLD",
+      "story": "Germany edged Spain 1-0 at the Royal Leopold Club in Brussels on 30 August, in the 🥇 Gold Medal Final tie of the FIH Hockey World Cup 2026. Spain came into the match ranked 5th in the world, Germany 2nd — 3 places between them on the FIH table.\n\nGermany scored through Michel Struthoff (44th minute). It stood 0-0 at half-time. The only goal on the official record came in the 44th minute, in the 3rd quarter. Goals were scarce all afternoon — 1 goal in the sixty minutes was the whole of the scoring. Michel Struthoff's 44th-minute goal stood as the difference.\n\nEvery goal came in open play. The sides were level at the interval, and Germany won the second half. Germany's defence kept Spain off the scoresheet entirely. 1 green card was shown. This was match 50 of the tournament's fifty.",
+      "generatedAt": "2026-08-30T16:24:46.576261+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }
