@@ -1,0 +1,364 @@
+{
+  "source": "scripts/llm_backtest.py (prompts) \u2014 answered without an API key",
+  "note": "One pick per match from a language model given only the tournament as it stood before that push-back. Prompts are rebuildable from the committed data; scripts/test_llm_backtest.py checks every promptSha.",
+  "method": "Each of the fifty prompts was answered in its own isolated session that was handed the SYSTEM instruction and that one prompt and nothing else \u2014 no repository, no web, no later match. No API key was used or committed. Anyone with a key of their own can regenerate this file from the same prompts by running scripts/llm_backtest.py.",
+  "provider": "claude-code",
+  "model": "isolated session per match, no API key",
+  "systemSha": "0f88d0bb44ba42f3f65de64874a2e88b2fa6dae0b0fc05a353f30b0b53b9d38e",
+  "ranAt": "2026-08-30T19:30:00+00:00",
+  "matchesAsked": 50,
+  "picksReturned": 50,
+  "unparsed": 0,
+  "picks": [
+    {
+      "matchId": "D1",
+      "kickoff": "2026-08-15T13:00",
+      "pick": "HOME",
+      "confidence": 0.82,
+      "promptSha": "92026481ca29f4878625565e0be4a3f19be44eeb2cc6ed63fbfcf2c430e8e282"
+    },
+    {
+      "matchId": "B1",
+      "kickoff": "2026-08-15T14:30",
+      "pick": "HOME",
+      "confidence": 0.78,
+      "promptSha": "6476df34a13d9e10a0285be1fc156ae01c5458a863e52975800a7fd8d1aa271d"
+    },
+    {
+      "matchId": "D2",
+      "kickoff": "2026-08-15T19:00",
+      "pick": "HOME",
+      "confidence": 0.68,
+      "promptSha": "40ec6475a8ff6f99955963c6f42c20c2d3808b98a79c72d967b762f0bbe8c957"
+    },
+    {
+      "matchId": "B2",
+      "kickoff": "2026-08-15T21:00",
+      "pick": "HOME",
+      "confidence": 0.66,
+      "promptSha": "f4689ae9245c6b8870e4f1abd37f4f41fe062bb87c5fe3bdfe07f7ca0aed5ab1"
+    },
+    {
+      "matchId": "C1",
+      "kickoff": "2026-08-16T11:30",
+      "pick": "HOME",
+      "confidence": 0.72,
+      "promptSha": "23129083e327cec3f247fe75ef45f7553846298b116ab08f83bd6d5b68eab5ed"
+    },
+    {
+      "matchId": "C2",
+      "kickoff": "2026-08-16T14:30",
+      "pick": "HOME",
+      "confidence": 0.63,
+      "promptSha": "6cc2f4885be13d96b1dd278b5d157f310f3ee31d0970b4563face0dcc142c52e"
+    },
+    {
+      "matchId": "A2",
+      "kickoff": "2026-08-16T16:00",
+      "pick": "HOME",
+      "confidence": 0.62,
+      "promptSha": "7cc2cb63661b05b4a7058af88018f12a85629846f229d633b36d6fcaf047c4e6"
+    },
+    {
+      "matchId": "A1",
+      "kickoff": "2026-08-16T19:00",
+      "pick": "HOME",
+      "confidence": 0.62,
+      "promptSha": "cadc762ac3e9ae9132e45fb22d437f287d27983dad6c0fa00fffde976fcf0fcf"
+    },
+    {
+      "matchId": "D4",
+      "kickoff": "2026-08-17T12:30",
+      "pick": "HOME",
+      "confidence": 0.47,
+      "promptSha": "f8245c9afe3e2559a17ce4eba026f70bdece21869a38a849d80946468961c363"
+    },
+    {
+      "matchId": "B4",
+      "kickoff": "2026-08-17T14:00",
+      "pick": "HOME",
+      "confidence": 0.58,
+      "promptSha": "10601ec318a6613ea76aeb734dcace34f4d940b253b2228c0bd7cb87e2c8dc4b"
+    },
+    {
+      "matchId": "D3",
+      "kickoff": "2026-08-17T15:00",
+      "pick": "AWAY",
+      "confidence": 0.42,
+      "promptSha": "f4a0f7e98e4a8aaf091185b21ae0bf32acd164e871d841e9f7ac37f13a71f99c"
+    },
+    {
+      "matchId": "B3",
+      "kickoff": "2026-08-17T20:30",
+      "pick": "AWAY",
+      "confidence": 0.42,
+      "promptSha": "9836a9a887a80dcc0af0e1379f15326b7b747c2abea825cd3c45f688cdf1571e"
+    },
+    {
+      "matchId": "A4",
+      "kickoff": "2026-08-18T09:30",
+      "pick": "HOME",
+      "confidence": 0.45,
+      "promptSha": "b4a17c448cb1f6e27703807a4c139ad0d1c0fe9b10a7f8851d54c8cc14b8bb14"
+    },
+    {
+      "matchId": "C3",
+      "kickoff": "2026-08-18T14:00",
+      "pick": "AWAY",
+      "confidence": 0.42,
+      "promptSha": "5e5b7baad5872a618c11331fdb130f473d5541deca2a374c6412b5cbafbe77b6"
+    },
+    {
+      "matchId": "C4",
+      "kickoff": "2026-08-18T17:00",
+      "pick": "HOME",
+      "confidence": 0.44,
+      "promptSha": "6ff5f3edf0a6a0b69bc75ade80c92166cc82794f0ccf18d54bebeb01b1b92f90"
+    },
+    {
+      "matchId": "A3",
+      "kickoff": "2026-08-18T18:00",
+      "pick": "AWAY",
+      "confidence": 0.52,
+      "promptSha": "8ac48e0e45723d06610f1450dcac2252d7df3644a8fcc074b81492b2b21e2e71"
+    },
+    {
+      "matchId": "D5",
+      "kickoff": "2026-08-19T12:30",
+      "pick": "HOME",
+      "confidence": 0.85,
+      "promptSha": "0df80233b35ba342f347faad367abe071241d50cc5b93f764f9d80b82766ee4a"
+    },
+    {
+      "matchId": "D6",
+      "kickoff": "2026-08-19T15:00",
+      "pick": "AWAY",
+      "confidence": 0.62,
+      "promptSha": "4b758031e2e042008384b2d42dbf597fc95a93d4d97fca9c26e4deb15c793227"
+    },
+    {
+      "matchId": "B6",
+      "kickoff": "2026-08-19T17:00",
+      "pick": "AWAY",
+      "confidence": 0.72,
+      "promptSha": "e1dd4677b053e337987f916d3a1cd915ea84cd5ce186f1983074cb88ffaad385"
+    },
+    {
+      "matchId": "B5",
+      "kickoff": "2026-08-19T20:30",
+      "pick": "HOME",
+      "confidence": 0.76,
+      "promptSha": "745b8a5deb0f38308427f870ea1ae670ec9292ede69516a2c6fb4af4b4d98f7f"
+    },
+    {
+      "matchId": "C5",
+      "kickoff": "2026-08-20T11:00",
+      "pick": "HOME",
+      "confidence": 0.89,
+      "promptSha": "f70078434a4d1b314f738cac1b13f7c66fca43dfaec38ce04a7f791841701711"
+    },
+    {
+      "matchId": "A6",
+      "kickoff": "2026-08-20T12:30",
+      "pick": "AWAY",
+      "confidence": 0.55,
+      "promptSha": "da551a8770365b3e0569b375864e87ea3b01247832200c2a85155845676f0061"
+    },
+    {
+      "matchId": "C6",
+      "kickoff": "2026-08-20T17:00",
+      "pick": "AWAY",
+      "confidence": 0.43,
+      "promptSha": "b9cb8d58c583858f1d7c4a6f2f07036979a425ff62cde2dd0fde59eba1b29b4a"
+    },
+    {
+      "matchId": "A5",
+      "kickoff": "2026-08-20T18:00",
+      "pick": "HOME",
+      "confidence": 0.95,
+      "promptSha": "8df9cb970cc45eca285b1642a452d23f4f2a4e329e837f0548d18a8fa141ee2a"
+    },
+    {
+      "matchId": "S2H1",
+      "kickoff": "2026-08-21T11:00",
+      "pick": "HOME",
+      "confidence": 0.47,
+      "promptSha": "3308893a5cd9653e0bc64718f4905100adf4057a0865691e4c17773e8289abfd"
+    },
+    {
+      "matchId": "S2H2",
+      "kickoff": "2026-08-21T14:00",
+      "pick": "HOME",
+      "confidence": 0.56,
+      "promptSha": "d3ffb1c63885b1521be413007b4f0c91e161d0479363d7c185c0a6d7f3aa4509"
+    },
+    {
+      "matchId": "S2F2",
+      "kickoff": "2026-08-21T17:00",
+      "pick": "HOME",
+      "confidence": 0.42,
+      "promptSha": "9c17cec0527e5567fc182c2bd0b2f140c291706ff235f27d960a79523d63e74d"
+    },
+    {
+      "matchId": "S2F1",
+      "kickoff": "2026-08-21T20:30",
+      "pick": "HOME",
+      "confidence": 0.42,
+      "promptSha": "0f670e50d24d2933de2f91fb72d14f2505f2be2f35cf914bfe4d59a83fb3c901"
+    },
+    {
+      "matchId": "S2G1",
+      "kickoff": "2026-08-22T10:00",
+      "pick": "HOME",
+      "confidence": 0.45,
+      "promptSha": "b3e170f7831299266c5b433b6a0666545d6a63f23d2a7c0670a7ce79cf84c0a8"
+    },
+    {
+      "matchId": "S2G2",
+      "kickoff": "2026-08-22T13:00",
+      "pick": "HOME",
+      "confidence": 0.6,
+      "promptSha": "caaf33e17d140eb92a576b29f3f8b624a1020704584c3f9afd33655d9edcd407"
+    },
+    {
+      "matchId": "S2E1",
+      "kickoff": "2026-08-22T16:00",
+      "pick": "HOME",
+      "confidence": 0.66,
+      "promptSha": "a83520fb95a9aba863774a00d0508206b2bddc3dee9bfcd7bbdd2ffb3ac1ec8b"
+    },
+    {
+      "matchId": "S2E2",
+      "kickoff": "2026-08-22T19:00",
+      "pick": "HOME",
+      "confidence": 0.45,
+      "promptSha": "9ca3fb118e91776c3904d1f1d17bdb44608792497e33a18f0c2e9dcb7800205d"
+    },
+    {
+      "matchId": "S2H3",
+      "kickoff": "2026-08-23T11:30",
+      "pick": "AWAY",
+      "confidence": 0.56,
+      "promptSha": "fd63bae1dba303376999e1e9d123f159b916e3bb5a603a893f8bff226d9de149"
+    },
+    {
+      "matchId": "S2H4",
+      "kickoff": "2026-08-23T14:30",
+      "pick": "AWAY",
+      "confidence": 0.47,
+      "promptSha": "009166f4f9ddcdc7fb8364c85ad409355a01b9b7794829d7346bf9109a51a2fc"
+    },
+    {
+      "matchId": "S2F3",
+      "kickoff": "2026-08-23T17:30",
+      "pick": "AWAY",
+      "confidence": 0.42,
+      "promptSha": "112b65f85ffa8a297ba94434e0085428fe144792172fed5bfe7551cb708b1d15"
+    },
+    {
+      "matchId": "S2F4",
+      "kickoff": "2026-08-23T20:30",
+      "pick": "HOME",
+      "confidence": 0.42,
+      "promptSha": "c71c903016bae091166a01e3ecf549b86c8928b3730489b893bfb3cca4018fa2"
+    },
+    {
+      "matchId": "S2G3",
+      "kickoff": "2026-08-24T09:30",
+      "pick": "HOME",
+      "confidence": 0.44,
+      "promptSha": "2f9d239f62843b73233db277e37e0a8f3659cf06d414024fa7599af35397637b"
+    },
+    {
+      "matchId": "S2G4",
+      "kickoff": "2026-08-24T12:30",
+      "pick": "HOME",
+      "confidence": 0.45,
+      "promptSha": "60d6003f9a0177f06413508e6b0ced28a6da9fd31348d5a11698d722d7e23dc8"
+    },
+    {
+      "matchId": "S2E3",
+      "kickoff": "2026-08-24T14:45",
+      "pick": "HOME",
+      "confidence": 0.58,
+      "promptSha": "57517de53bcbd47a102e01547bf4a726d00c1e01fe19345e174eaf5e67eda1f3"
+    },
+    {
+      "matchId": "S2E4",
+      "kickoff": "2026-08-24T18:00",
+      "pick": "HOME",
+      "confidence": 0.6,
+      "promptSha": "9e3f2c9aeb06b9af4e2d30838d779d860a06de411e589f7e48fe6f5798bf7609"
+    },
+    {
+      "matchId": "POS13",
+      "kickoff": "2026-08-28T09:30",
+      "pick": "AWAY",
+      "confidence": 0.58,
+      "promptSha": "7e21a09b77bb561f5e01b40779310eb1b68a513b564ea915622f2bf32631cac7"
+    },
+    {
+      "matchId": "POS15",
+      "kickoff": "2026-08-28T11:00",
+      "pick": "AWAY",
+      "confidence": 0.55,
+      "promptSha": "92ad322562457a7457fa6f56fabd69ace3da2886f309548a789376a19453b8d2"
+    },
+    {
+      "matchId": "POS11",
+      "kickoff": "2026-08-28T12:30",
+      "pick": "HOME",
+      "confidence": 0.52,
+      "promptSha": "83b4e6dc09442fa456f8a020fc4f6561e3562bfc3d1bec1338e82b84859c5d84"
+    },
+    {
+      "matchId": "POS9",
+      "kickoff": "2026-08-28T14:00",
+      "pick": "HOME",
+      "confidence": 0.6,
+      "promptSha": "0ed989e3f94086e5ebe6a975eea49e9c8cc8de11008b01e4905f68258f136f34"
+    },
+    {
+      "matchId": "POS5",
+      "kickoff": "2026-08-28T15:00",
+      "pick": "HOME",
+      "confidence": 0.62,
+      "promptSha": "3273e83c8c98b4ada0a9558a90d7d95c85e3bda623cb864324815fd1b6a02a09"
+    },
+    {
+      "matchId": "SF1",
+      "kickoff": "2026-08-28T18:00",
+      "pick": "HOME",
+      "confidence": 0.78,
+      "promptSha": "f9f7fdba33e03df09aaf572186d12d6862f1cec73042f8d9b8e654d4bf608b51"
+    },
+    {
+      "matchId": "POS7",
+      "kickoff": "2026-08-28T18:15",
+      "pick": "AWAY",
+      "confidence": 0.62,
+      "promptSha": "be04767ed6fce9fff835a04e588352b16bf2f92e66a281545b68d8dbab9710ed"
+    },
+    {
+      "matchId": "SF2",
+      "kickoff": "2026-08-28T20:30",
+      "pick": "AWAY",
+      "confidence": 0.55,
+      "promptSha": "13745f55b17dbfedecc9d99dfa7cc11eba3501f5946606d2b2797fa698c5e3d2"
+    },
+    {
+      "matchId": "BRZ",
+      "kickoff": "2026-08-30T14:00",
+      "pick": "HOME",
+      "confidence": 0.58,
+      "promptSha": "b1197ae370969a4e42aca7db55c810e74598cebe899b9b1f6d1f77d8ca560483"
+    },
+    {
+      "matchId": "GOLD",
+      "kickoff": "2026-08-30T16:30",
+      "pick": "AWAY",
+      "confidence": 0.52,
+      "promptSha": "72ffbdd781e7c4b613f1e878198339623a378446788bbde68ecedfc045bf6d5d"
+    }
+  ]
+}

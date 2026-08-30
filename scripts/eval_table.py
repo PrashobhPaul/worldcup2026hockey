@@ -151,9 +151,17 @@ def main():
 
     if llm:
         w(f"Language-model column: `{llm.get('provider')}` / `{llm.get('model')}`, "
-          f"run {llm.get('ranAt', '')[:10]}. ")
+          f"run {llm.get('ranAt', '')[:10]}.\n")
+        # How the committed column was produced belongs beside it. A reader who
+        # sees an LLM column in a repository that ships no key will otherwise be
+        # left to guess, and the guess that matters — that it saw the results —
+        # is the one thing the column would be worthless under.
+        if llm.get('method'):
+            w(llm['method'] + '\n')
         w('An LLM is not deterministic — a second run may differ, and that spread is itself '
-          'worth reporting. Re-run it and commit your own column.\n')
+          'worth reporting. Re-run it and commit your own column:\n')
+        w('```\npython3 scripts/llm_backtest.py\npython3 scripts/test_llm_backtest.py\n'
+          'python3 scripts/eval_table.py --write\n```\n')
     else:
         w('No language-model run is committed. Set `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` '
           '(optionally `AI_MODEL`) and run:\n')

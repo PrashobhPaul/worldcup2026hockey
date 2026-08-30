@@ -6,14 +6,21 @@ An accuracy figure produced with the result in front of the model is not a
 prediction, and there is no way to tell the two apart by looking at the number.
 So this does not trust the run: it rebuilds every prompt from the committed
 data and checks it against the SHA the run recorded, then reads the rebuilt
-prompt for anything that had not happened yet.
+prompt back — line by line, resolving every scoreline it cites to a real
+fixture — for anything that had not happened yet.
 
 Three things are checked per pick:
 
   * the prompt rebuilds to the same SHA — the committed picks were made from
     the evidence in this repository and no other;
-  * no fixture in it kicked off at or after the match being picked;
-  * the match's own scoreline is nowhere in it.
+  * every result the prompt cites resolves to a fixture that had already
+    pushed back when this one started;
+  * the match being picked is not among the fixtures it cites.
+
+The citation check is deliberately done on the rendered text rather than on
+build_prompt's inputs. Asking the builder which matches it selected only
+proves it agrees with itself; parsing what it actually printed is what catches
+a leak introduced by a change to the wording.
 
 With no backtest committed this passes and says so: the repository has to work
 for someone who has never set an API key.
@@ -23,10 +30,17 @@ Run: python3 scripts/test_llm_backtest.py
 import hashlib
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import llm_backtest as bt  # noqa: E402
+
+# The two shapes build_prompt prints a scoreline in: a line in a side's own
+# run of results, and a line in the head-to-head block.
+OWN = re.compile(r'^ {2}(\d{4}-\d{2}-\d{2}) vs ([A-Z]{3}) (\d+)-(\d+)$')
+MEETING = re.compile(r'^ {2}([A-Z]{3}) (\d+)-(\d+) ([A-Z]{3}) \(.*, (\d{4}-\d{2}-\d{2})\)$')
+SECTION = re.compile(r'^([A-Z]{3}) RESULTS IN ORDER:$')
 
 failures = []
 
@@ -37,6 +51,24 @@ def check(name, cond, detail=''):
     else:
         failures.append(name)
         print('  FAIL', name, '—', detail)
+
+
+def cited(prompt):
+    """Every (date, {two team codes}) the prompt states a scoreline for."""
+    out, owner = [], None
+    for line in prompt.split('\n'):
+        sec = SECTION.match(line)
+        if sec:
+            owner = sec.group(1)
+            continue
+        m = OWN.match(line)
+        if m and owner:
+            out.append((m.group(1), frozenset((owner, m.group(2)))))
+            continue
+        m = MEETING.match(line)
+        if m:
+            out.append((m.group(5), frozenset((m.group(1), m.group(4)))))
+    return out
 
 
 def main():
@@ -52,6 +84,11 @@ def main():
     teams = {t['code']: t for t in teams_doc['teams']}
     rankings = bt.load('rankings-history.json')
     by_id = {m['id']: m for m in fixtures['matches']}
+    # A cited scoreline names a date and two sides, never a fixture id, so the
+    # lookup that turns one back into a fixture is built once.
+    by_pairing = {}
+    for m in fixtures['matches']:
+        by_pairing.setdefault((m['date'], frozenset((m['home'], m['away']))), []).append(m)
 
     print(f"Backtest: {doc.get('provider')}/{doc.get('model')} · "
           f"{len(doc.get('picks', []))} pick(s)")
@@ -72,23 +109,28 @@ def main():
               'the committed pick was not made from this data')
 
         cut = bt.kickoff(target)
-        future = [m['id'] for m in fixtures['matches']
-                  if bt.kickoff(m) >= cut and m['id'] != mid
-                  and f"vs {m['home']} " in prompt or False]
-        # The real test: every date printed in the prompt belongs to a match
-        # that had already kicked off.
-        leaked = [m['id'] for m in bt.played_before(fixtures['matches'], target)
-                  if bt.kickoff(m) >= cut]
-        check(f'{mid} sees nothing that had not kicked off', not leaked and not future,
-              ', '.join(leaked or future))
+        later, unknown, itself = [], [], []
+        for date, pair in cited(prompt):
+            found = by_pairing.get((date, pair)) or []
+            if not found:
+                unknown.append(f'{date} {"/".join(sorted(pair))}')
+                continue
+            for m in found:
+                if m['id'] == mid:
+                    itself.append(mid)
+                elif bt.kickoff(m) >= cut:
+                    later.append(m['id'])
+        check(f'{mid} cites only fixtures that had already pushed back',
+              not later and not unknown,
+              ', '.join(later + unknown) or '')
+        check(f'{mid} does not carry its own result', not itself,
+              'its own scoreline is printed in the prompt')
 
-        score = f"{target['score']['home']}-{target['score']['away']}"
-        # A scoreline can legitimately appear as an earlier meeting between the
-        # same sides, so this looks for it on a line naming this match's stage.
+        # The header names the fixture being picked; a score there would be the
+        # answer written above the question.
         head = prompt.split('\n')[0]
-        check(f'{mid} does not carry its own result',
-              score not in head and 'RESULT' not in prompt.upper(),
-              f'{score} appears in the prompt header')
+        check(f'{mid} header states the fixture and no score',
+              head.startswith('MATCH: ') and not re.search(r'\d+-\d+', head), head)
 
         check(f'{mid} pick is a legal outcome',
               row.get('pick') in ('HOME', 'DRAW', 'AWAY'), str(row.get('pick')))
