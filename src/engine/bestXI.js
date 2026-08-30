@@ -170,6 +170,19 @@ export function xiRows(selected) {
  * rating alone, which meant a substitute who scored could displace a man who
  * started every match.
  */
+/**
+ * How much a stated role is worth against a rating.
+ *
+ * Enough to win a close call and not enough to field a clearly worse player.
+ * Ratings are percentile-based and sit in a band roughly 30-85 wide, so five
+ * points is about half a place in a line — a defender rated 66 still keeps his
+ * shirt from an un-positioned 70, and loses it to an 82.
+ */
+export const ROLE_EDGE = 5
+
+const rank = (p, role) =>
+  (p.ai_rating ?? 0) + (roleOf(p).role === role ? ROLE_EDGE : 0)
+
 const byIndex = (a, b) =>
   (b.starts ?? 0) - (a.starts ?? 0) ||
   (b.ai_rating ?? 0) - (a.ai_rating ?? 0) ||
@@ -200,14 +213,40 @@ export function bestXI(rawSquad) {
 
   const taken = new Set()
   const lines = LINES.map(line => {
+    // An outfield line is picked from the players the record gives that role
+    // AND the players it gives no role at all — together, best first.
+    //
+    // Role here is inferred from how a man scored: corner scorers are read as
+    // defenders, repeat field scorers as forwards. It is thin evidence, and
+    // half the tournament's rated players carry none of it. Taking it as a
+    // hard gate meant a nation's back four was whoever had once converted a
+    // corner, however poorly he rated, while its best-rated players waited for
+    // a line to run short — and the Netherlands, whose four highest-rated men
+    // scored nothing between them, fielded a back four averaging 42.8 behind a
+    // midfield of 82.9s. The eleven that came out was not a hockey judgement,
+    // it was an accident of who happened to score how.
+    //
+    // So a stated role still leads: it wins every tie and every close call
+    // through ROLE_EDGE. It just no longer beats a demonstrably better player.
+    // The goalkeeper's shirt stays gated absolutely — a rating cannot put an
+    // outfielder in goal.
+    const roled = byRole.get(line.role).filter(p => !taken.has(p.id))
+    const pool = line.role === 'Goalkeeper'
+      ? roled
+      : [...roled, ...spare.filter(p => !taken.has(p.id))]
+          .sort((a, b) => rank(b, line.role) - rank(a, line.role) || byIndex(a, b))
+
     const slots = []
-    for (const p of byRole.get(line.role)) {
+    for (const p of pool) {
       if (slots.length >= line.count) break
-      slots.push({ player: p, source: roleOf(p).source, offRole: false })
+      const { role, source } = roleOf(p)
+      slots.push({ player: p, source: role === line.role ? source : null,
+                   offRole: role !== line.role })
       taken.add(p.id)
     }
+    // A line still short of bodies takes whoever is left, as it always has.
     while (slots.length < line.count) {
-      const p = spare.find(x => !taken.has(x.id))
+      const p = spare.find(x => !taken.has(x.id)) ?? squad.find(x => !taken.has(x.id))
       if (!p) break
       slots.push({ player: p, source: null, offRole: true })
       taken.add(p.id)

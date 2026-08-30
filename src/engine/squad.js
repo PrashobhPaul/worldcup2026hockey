@@ -164,7 +164,24 @@ export function pickSquad(players, { topEight, semifinalists, eligible = () => t
     (!topEight || topEight.has(p.team)))
 
   const taken = new Set()
-  const inRole = role => field.filter(p => roleOf(p).role === role && !taken.has(p.id))
+  // Who may be considered for a shirt in this line.
+  //
+  // A stated role is thin evidence — it is inferred from how a man scored, and
+  // half the tournament's rated players never scored, so they carry none. Held
+  // as a hard gate it decided selections by accident: the players the record
+  // says most about were passed over for whoever had once converted a corner.
+  //
+  // So an outfield shirt considers the un-positioned too, and the slot's own
+  // measure separates them, which is the honest test anyway — the drag-flick
+  // shirt already requires a corner actually converted, so a non-scorer cannot
+  // take it, while the anchor's shirt is won on goals conceded per start,
+  // which a regular starter has earned whether or not he ever scored.
+  //
+  // The goalkeeper's shirt stays gated absolutely. No measure puts an
+  // outfielder in goal.
+  const unplaced = p => !roleOf(p).role && p.rating_group === 'Outfield'
+  const inRole = role => field.filter(p => !taken.has(p.id) &&
+    (roleOf(p).role === role || (role !== 'Goalkeeper' && unplaced(p))))
 
   const xi = []
   for (const slot of SLOTS) {
@@ -260,7 +277,8 @@ function rebalance(xi, field, taken, semifinalists) {
       const slot = held.slot
       const cand = field
         .filter(p => semifinalists.has(p.team) && !taken.has(p.id) &&
-          roleOf(p).role === slot.role)
+          (roleOf(p).role === slot.role ||
+           (slot.role !== 'Goalkeeper' && !roleOf(p).role && p.rating_group === 'Outfield')))
         .sort(slot.rank)[0]
       if (!cand) continue
       // Give up the least: the swap that costs the fewest rating points.

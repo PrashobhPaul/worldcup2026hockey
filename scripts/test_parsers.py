@@ -1255,6 +1255,43 @@ _dirty = [s['matchId'] for s in _published
 check(f'all {len(_published)} published briefs are free of it', not _dirty, ', '.join(_dirty[:6]))
 check('published briefs are not empty', all(s['story'].strip() for s in _published))
 
+# ---------------------------------------------------------------- corners
+# A penalty corner WON and one SCORED are different numbers. The pipeline once
+# wrote the count of corner goals into `penalty_corners`, which the match card
+# renders as "PC 3 | 1" and the insights read as "won the corner battle 3-1" —
+# the same invented statistic the brief composer was corrected for above. It
+# survived there because every match was already parsed and skipped, so the
+# next re-parse would have published it fifty times over.
+#
+# The FIH does not publish corners won anywhere this project can reach: the
+# match report omits it, and of the competition reports probed on 30 Aug only
+# scorers and cards answer at all. So the field must not exist, and the surfaces
+# that read it must go on reading nothing.
+with open(os.path.join(_HERE, 'update_data.py')) as _fh:
+    _pipeline = _fh.read()
+_assigns = [l.strip() for l in _pipeline.splitlines()
+            if "['penalty_corners']" in l and '=' in l.split("['penalty_corners']")[1][:3]]
+check('the pipeline never assigns penalty_corners', not _assigns, ' | '.join(_assigns[:3]))
+
+with open(os.path.join(_HERE, '..', 'public', 'data', 'fixtures.json')) as _fh:
+    _fixtures = _json.load(_fh)['matches']
+_withpc = [m['id'] for m in _fixtures if m.get('penalty_corners')]
+check('no published match carries a corners-won count', not _withpc, ', '.join(_withpc[:6]))
+
+# And the figures the app does publish must still total what the FIH's own
+# individual-statistics reports total. Every player row agreed once while the
+# sums did not, and nothing was summing.
+with open(os.path.join(_HERE, '..', 'public', 'data', 'players.json')) as _fh:
+    _players = _json.load(_fh)['players']
+_ev = [e for m in _fixtures for e in (m.get('events') or [])]
+for _field, _type, _via in (('fg_scored', 'goal', 'FG'), ('pc_scored', 'goal', 'PC'),
+                            ('ps_scored', 'goal', 'PS'), ('green_cards', 'green_card', None),
+                            ('yellow_cards', 'yellow_card', None), ('red_cards', 'red_card', None)):
+    _ours = sum(p.get(_field) or 0 for p in _players)
+    _ledger = sum(1 for e in _ev if e['type'] == _type and (_via is None or e.get('via') == _via))
+    check(f'{_field} totals match the event ledger ({_ours})', _ours == _ledger,
+          f'players.json {_ours} vs ledger {_ledger}')
+
 print()
 if failures:
     print(f'{len(failures)} parser check(s) FAILED: {", ".join(failures)}')

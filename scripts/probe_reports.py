@@ -33,8 +33,17 @@ MATCH_REPORTS = [
     'matchreport', 'matchsheet', 'lineupform', 'lineup', 'lineups',
     'teamsheet', 'teamlist', 'matchofficial', 'scoresheet', 'summary',
 ]
+# Penalty corners WON is the one FIH statistic the app cannot show: the match
+# report does not carry it, and nothing may be estimated. The competition
+# statistics page does publish it — 455 across the tournament, per team, with
+# a conversion rate — so the report that backs that page is what this looks
+# for. Names are guesses and are meant to be: the probe prints what each one
+# answers, and only a report that actually returns gets parsed.
 COMP_REPORTS = ['teams', 'poolstandings', 'lineups', 'matchresults', 'scorers',
-                'statistics', 'cards', 'matchschedule']
+                'statistics', 'cards', 'matchschedule',
+                'teamstatistics', 'teamstats', 'statisticsteams',
+                'penaltycorners', 'competitionstatistics', 'summary',
+                'tournamentstatistics', 'goals']
 
 
 def opener():
@@ -93,6 +102,14 @@ def main():
         body, ct = get(op, url, name)
         if body and body[:4] == b'%PDF' and name not in ('teams', 'poolstandings'):
             found.append((f'competition/{name}', body))
+
+    # Which names answered is the point of the run, and reading it off the
+    # dumps means inferring it from what is missing. Say it outright.
+    print('\n== What answered ==')
+    for label, names in (('match', MATCH_REPORTS), ('competition', COMP_REPORTS)):
+        got = [n for n in names if any(f == n or f == f'competition/{n}' for f, _ in found)]
+        print(f'  {label}: PDF from {", ".join(got) or "nothing"}')
+        print(f'  {label}: no PDF from {", ".join(n for n in names if n not in got)}')
 
     for name, body in found:
         lines = pdf_lines(body)
