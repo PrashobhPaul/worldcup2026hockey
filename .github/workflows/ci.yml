@@ -174,6 +174,26 @@ jobs:
       # if the model could not see the result. This rebuilds every prompt the
       # committed backtest recorded and checks it carries nothing that had not
       # kicked off. With no backtest committed it passes and says so.
+      # The Alive cut is a chain built stage by stage, and a chain fails
+      # silently at its end: it stopped at the semi-finals and left the beaten
+      # finalist counted alive in a finished tournament. This asserts the
+      # arithmetic the record forces, so the next missing link is loud.
+      - name: The Alive cut matches the record
+        run: npm run test:elimination
+
+      # Records are generated, and a generated file that someone edited by
+      # hand looks exactly like one that was computed. This recomputes every
+      # record from the match data and fails if the committed file differs,
+      # so a corrected result moves the record instead of leaving a stale one.
+      - name: The records are the record
+        run: npm run test:records
+
+      # The history table is fifteen editions this app did not watch. What can
+      # be checked is checked: no duplicate year, three medallists a row, one
+      # code per nation, and the 2026 row still agreeing with our own fixtures.
+      - name: Every World Cup is accounted for
+        run: npm run test:history
+
       - name: The backtest could not see the answer
         run: npm run test:backtest
 

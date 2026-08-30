@@ -1,16 +1,27 @@
 name: Update Hockey Data
 
 on:
-  schedule:
-    # Every 10 min through CET match hours (first push-backs are 09:30 CET =
-    # 07:30 UTC; the old 10-20 UTC window missed the morning games entirely,
-    # which is why match 29 sat scoreless for two hours). At 15-minute cadence
-    # a goal could sit unseen for most of a quarter — NED v IND showed 1-0
-    # while the real score was 3-1; ten minutes keeps the running score within
-    # a few minutes of the pitch.
-    - cron: '*/10 6-20 15-30 8 *'
-    # Hourly fallback rest of day
-    - cron: '0 * * * *'
+  # The tournament is complete: all fifty matches are played and the gold
+  # medal was decided on 30 August 2026. There is nothing left for a schedule
+  # to fetch, so there is no schedule.
+  #
+  # It was not harmless while it ran past the end. The hourly fallback kept
+  # firing against a finished tournament and kept committing to main —
+  # "data: auto-update", one file, one line, the data-version counter and
+  # nothing else. Every one of those told every installed app that the data
+  # had changed, so every install refetched the whole set, hourly, for a
+  # number that described no change at all. It also put every open pull
+  # request one commit behind main on files that conflict whole.
+  #
+  # To run the next tournament, restore the two lines below and set the day
+  # range to its dates. The match-hours cadence is the one that mattered: at
+  # fifteen minutes a goal could sit unseen for most of a quarter — NED v IND
+  # showed 1-0 while the real score was 3-1 — and the window has to start at
+  # 06:00 UTC because the first push-backs are 09:30 CET.
+  #
+  #   schedule:
+  #     - cron: '*/10 6-20 <first>-<last> <month> *'   # through match hours
+  #     - cron: '0 * * * *'                            # hourly fallback
   workflow_dispatch:
     inputs:
       probe_match_ids:
@@ -207,8 +218,25 @@ jobs:
           git config user.email "actions@github.com"
           git add public/data/
           git add public/emblem.png 2>/dev/null || true
+          # A version-only diff is not a data change, and publishing one is
+          # worse than publishing nothing: the counter is what tells an
+          # installed app to refetch, so a commit that moves only the counter
+          # sends every install to download a set identical to the one it
+          # already holds. That is exactly what shipped hourly once the
+          # tournament finished. The fingerprint hashes the published files,
+          # so it is the honest test of whether anything actually changed —
+          # if it is unchanged and the counter is the only difference, put the
+          # counter back and commit nothing.
           if ! git diff --staged --quiet; then
-            git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
+            others=$(git diff --staged --name-only | grep -v '^public/data/data-version.json$' || true)
+            fp_moved=$(git diff --staged -U0 -- public/data/data-version.json \
+                       | grep -c '^[+-].*"fingerprint"' || true)
+            if [ -z "$others" ] && [ "$fp_moved" -eq 0 ]; then
+              echo "Only the data-version counter moved and the fingerprint did not — nothing changed."
+              git restore --staged --worktree public/data/data-version.json
+            else
+              git commit -m "data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
+            fi
           fi
           # Anything unpushed goes out together — the merge above as well as
           # the rebuild — so the branch never holds main's data without this

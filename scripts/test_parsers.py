@@ -1292,6 +1292,24 @@ for _field, _type, _via in (('fg_scored', 'goal', 'FG'), ('pc_scored', 'goal', '
     check(f'{_field} totals match the event ledger ({_ours})', _ours == _ledger,
           f'players.json {_ours} vs ledger {_ledger}')
 
+# The data-version counter is the signal that tells an installed app to
+# refetch the whole published set. It must therefore move only when the set
+# actually changed. The merge driver used to bump it unconditionally, so a
+# rebase that reapplied an identical file — which the pipeline's push retry
+# does on every lost race — published a change notice for no change, and every
+# install downloaded a set identical to the one it already held. Hourly, once
+# the tournament finished and nothing else was left to write.
+from merge_data import merge_version  # noqa: E402
+_same = {'version': 619, 'updated_at': '2026-08-30T16:24:57', 'fingerprint': 'abc'}
+_moved = dict(_same, version=620, fingerprint='def')
+check('an identical merge holds the data version',
+      merge_version(dict(_same), dict(_same))[0]['version'] == 619)
+check('a counter-only difference holds the data version',
+      merge_version(dict(_same), dict(_same, version=620))[0]['version'] == 620)
+check('a real difference still advances the data version',
+      merge_version(dict(_same), _moved)[0]['version'] == 621)
+
+
 print()
 if failures:
     print(f'{len(failures)} parser check(s) FAILED: {", ".join(failures)}')

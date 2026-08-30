@@ -11,6 +11,15 @@
 // playwright-core is intentionally NOT a dependency of this app — it exists for
 // this one script. Install it where you run the smoke test:
 //   npm i --no-save playwright-core
+import { readFileSync } from 'node:fs'
+import { computeElimination } from '../src/engine/elimination.js'
+import { projectBracket, orderedResults } from '../src/engine/simulate.js'
+import { computeStandings } from '../src/engine/standings.js'
+
+const read = f => JSON.parse(readFileSync(new URL(`../public/data/${f}`, import.meta.url)))
+const teams = read('teams.json').teams
+const matches = read('fixtures.json').matches
+
 let chromium
 try { ({ chromium } = await import('playwright-core')) } catch {
   console.error('smoke_recovery needs playwright-core: npm i --no-save playwright-core')
@@ -70,10 +79,44 @@ const b = await chromium.launch({ executablePath: EXECUTABLE, args: ['--no-sandb
   const ctx = await b.newContext({ serviceWorkers: 'block' })
   const p = await ctx.newPage()
   await p.goto(ORIGIN + "/teams", { waitUntil: 'domcontentloaded' })
-  await p.waitForTimeout(3500)
+  // A fixed sleep was wrong twice over. A cold cache on a slow machine takes
+  // longer than three and a half seconds to fetch and store the whole set, so
+  // this failed on a perfectly healthy app; and had it been slower still, the
+  // assertion below would have run against a half-drawn page. Wait for the
+  // banner to clear, and fail only if it never does.
+  //
+  // Waiting on a length threshold was not enough: the page passes it while
+  // React is still rendering, and the assertion below then read a chip
+  // mid-flight and reported a count the app never actually showed. Wait for
+  // the chip itself to hold the same value twice.
+  const settled = await p.waitForFunction(
+    () => {
+      const t = document.body?.innerText ?? ''
+      if (/No tournament data/.test(t)) return false
+      const now = (/Alive \d+/.exec(t) ?? [null])[0]
+      if (!now) return false
+      const stable = window.__aliveSeen === now
+      window.__aliveSeen = now
+      return stable
+    },
+    null, { timeout: 45000, polling: 500 }).then(() => true).catch(() => false)
   const txt = (await p.locator('body').innerText()).replace(/\s+/g, ' ')
-  check('a healthy app shows no banner', !/No tournament data/.test(txt))
-  check('the Teams filters render', /All 16 Alive 8/.test(txt), txt.slice(0, 120))
+  check('a healthy app clears the banner once the data lands', settled, txt.slice(0, 160))
+
+  // The Alive chip is the count of nations still able to win the title, and
+  // it was asserted here as the literal "Alive 8" — true for one week of one
+  // tournament. It went stale the moment the field narrowed and said nothing
+  // when the real bug appeared: with every match played the grid counted two
+  // nations alive, because the elimination chain stopped at the semi-finals.
+  // So this now checks the rendered number against the engine that computes
+  // it, which is a claim that stays true for any tournament in any state.
+  const expected = teams.length - computeElimination(
+    teams, matches, orderedResults(matches), computeStandings(teams, matches),
+    projectBracket(teams, matches, computeStandings(teams, matches))).size
+  check('the Teams filters render', /All \d+/.test(txt), txt.slice(0, 160))
+  check(`the Alive chip agrees with the elimination engine (${expected})`,
+        new RegExp(`Alive ${expected}\\b`).test(txt),
+        (/Alive \d+/.exec(txt) ?? ['not shown'])[0])
   await ctx.close()
 }
 await b.close()

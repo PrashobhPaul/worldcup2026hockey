@@ -34,13 +34,25 @@ export default function SyncChip() {
   const matches = useLiveQuery(() => db.matches.toArray(), [], [])
   const done = matches.filter(m => m.status === 'completed' && m.score?.home != null).length
   const total = matches.length || 50
+  const finished = matches.length > 0 && done === matches.length
 
-  const s = STATE[status.state] ?? { dot: 'bg-pitch-500', text: 'text-pitch-400', word: 'SYNC' }
+  const base = STATE[status.state] ?? { dot: 'bg-pitch-500', text: 'text-pitch-400', word: 'SYNC' }
+  // LIVE describes sync health, but nobody reads it that way next to a match
+  // count: "LIVE 50/50" in the header of a tournament whose gold final has
+  // been played says the tournament is still on. A healthy sync of a finished
+  // tournament is COMPLETE. The trouble states keep their own words — being
+  // offline still matters after the last match.
+  const s = finished && (status.state === 'fresh' || status.state === 'synced')
+    ? { ...base, word: 'COMPLETE' }
+    : base
   const busy = status.state === 'syncing' || status.state === 'starting'
   const trouble = status.state === 'error' || status.state === 'offline'
+  const played = finished
+    ? `All ${total} matches played.`
+    : `${done} of ${total} matches completed.`
   const label = trouble
-    ? `Data sync ${status.state}${status.error ? ` — ${status.error}` : ''}. ${done} of ${total} matches completed. Tap to retry.`
-    : `${done} of ${total} matches completed. Refresh data — version ${status.version ?? 'unknown'}, synced ${age(status.at)}.`
+    ? `Data sync ${status.state}${status.error ? ` — ${status.error}` : ''}. ${played} Tap to retry.`
+    : `${played} Refresh data — version ${status.version ?? 'unknown'}, synced ${age(status.at)}.`
   return (
     <button onClick={() => syncData({ force: true })} disabled={busy}
       title={label} aria-label={label}
