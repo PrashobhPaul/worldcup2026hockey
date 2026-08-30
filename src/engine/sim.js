@@ -20,8 +20,9 @@
 // It is still a simulation and every surface says so. What it is not is
 // fiction: a reader can check any figure on this page against the record.
 
-import { xiRows } from './bestXI.js'
+import { xiRows, bestXI } from './bestXI.js'
 import { eliteTiers, pickSquad, pickRisingSquad } from './squad.js'
+import { SIM_ID } from '../content/sim.js'
 
 /** Both XIs line up 1-4-3-3, so the pitch draws the outfield as 4-3-3. */
 export const SIM_FORMATION = '4-3-3'
@@ -118,6 +119,10 @@ const top = (rows, of) => {
 }
 const lineOf = (rows, role) => rows.filter(r => r.role === role)
 const nameList = rows => rows.map(r => r.player).join(', ')
+// A side's name opens several of these sentences, and the names carry their
+// own article — "the World XI", "the Rising Stars" — so the capital has to be
+// applied here rather than written into the label.
+const Cap = t => (t ? t[0].toUpperCase() + t.slice(1) : t)
 const one = (n, s, pl) => `${n} ${n === 1 ? s : pl ?? `${s}s`}`
 
 /** Goals conceded per match, per nation, from the completed matches. */
@@ -141,7 +146,7 @@ function concededPerMatch(matches) {
  * These were four paragraphs of prose about players who are not in either XI.
  * A driver that cannot be recomputed from the sheet beside it is an opinion.
  */
-function drivers(home, away, conceded) {
+function drivers(home, away, conceded, L) {
   const rows = []
 
   const hPc = sum(home, r => r.pcGoals)
@@ -151,11 +156,11 @@ function drivers(home, away, conceded) {
     rows.push({
       key: 'driver',
       title: 'Penalty-corner battery',
-      detail: `The Best XI carry ${one(hPc, 'penalty-corner goal')} between them against `
-        + `${one(aPc, 'penalty-corner goal')} for the Rising Stars`
+      detail: `${Cap(L.home)} carry ${one(hPc, 'penalty-corner goal')} between them against `
+        + `${one(aPc, 'penalty-corner goal')} for ${L.away}`
         + (hFlick ? `, ${hFlick.player} alone accounting for ${hFlick.pcGoals}` : '')
         + `. Corners are the one routine a defence can rehearse for, and the model gives the `
-        + `${hPc >= aPc ? 'Best XI' : 'Rising Stars'} the edge on it.`,
+        + `${hPc >= aPc ? L.home : L.away} the edge on it.`,
     })
   }
 
@@ -208,14 +213,14 @@ function drivers(home, away, conceded) {
   return rows
 }
 
-function insights(home, away, result, base) {
+function insights(home, away, result, base, L) {
   const rows = []
   const hCaps = mean(home, r => r.caps)
   const aCaps = mean(away, r => r.caps)
   if (hCaps != null && aCaps != null) {
     rows.push({
       key: 'insight',
-      detail: `The Best XI arrived with ${Math.round(hCaps)} caps a man, the Rising Stars with `
+      detail: `${Cap(L.home)} arrived with ${Math.round(hCaps)} caps a man, ${L.away} with `
         + `${Math.round(aCaps)}. Experience is not in the rating and not in this model — it is `
         + `the one advantage the favourites hold that the scoreline above does not count.`,
     })
@@ -234,13 +239,13 @@ function insights(home, away, result, base) {
   const upset = result.away + result.draw
   rows.push({
     key: 'insight',
-    detail: `The Rising Stars take something from this fixture in ${upset.toFixed(0)}% of `
+    detail: `${Cap(L.away)} take something from this fixture in ${upset.toFixed(1)}% of `
       + `outcomes — a win or a draw. `
       + (upset >= 33
         ? 'A single match is a thin filter: the favourites are favourites and it is nowhere near '
           + 'decisive over sixty minutes.'
         : 'The gap is wide enough that an upset needs the run of play as well as the corners, '
-          + 'and the model hands the Best XI both.'),
+          + `and the model hands ${L.home} both.`),
   })
   return rows
 }
@@ -249,6 +254,71 @@ function insights(home, away, result, base) {
  * The simulation, end to end. Returns null until the record can support it —
  * an exhibition between two elevens the ratings have not picked yet is not
  * something to show a reader.
+ */
+/**
+ * One exhibition between two elevens already picked, end to end.
+ *
+ * The two sides and what they are called come in; every number goes out. It is
+ * the same arithmetic whichever two elevens are handed to it, which is what
+ * lets the Best XI meet the Rising Stars and each semi-finalist through one
+ * code path rather than several that could drift apart.
+ */
+export function playExhibition({ home, away, base, matches, labels, disclosure }) {
+  if (!base || home.length < 11 || away.length < 11) return null
+  const L = labels
+  const hAtt = strength(home, ATTACK)
+  const hDef = strength(home, DEFENCE)
+  const aAtt = strength(away, ATTACK)
+  const aDef = strength(away, DEFENCE)
+  if ([hAtt, hDef, aAtt, aDef].some(v => v == null)) return null
+
+  const lambdaHome = base.rate * (hAtt / aDef) ** ELASTICITY
+  const lambdaAway = base.rate * (aAtt / hDef) ** ELASTICITY
+  const result = { ...outcome(lambdaHome, lambdaAway), lambdaHome, lambdaAway }
+  const conceded = concededPerMatch(matches)
+
+  return {
+    home,
+    away,
+    base,
+    labels: L,
+    strengths: { hAtt, hDef, aAtt, aDef },
+    result,
+    score: { home: result.modal.home, away: result.modal.away },
+    decider: result.modal.home === result.modal.away ? 'FT · level' : 'FT',
+    cards: [
+      {
+        key: 'confidence',
+        title: `${Cap(result.home >= result.away ? L.home : L.away)} win`,
+        value: Math.round(Math.max(result.home, result.away)),
+        detail: `Over the full distribution ${L.home} win ${result.home.toFixed(1)}%, `
+          + `${L.away} ${result.away.toFixed(1)}%, and ${result.draw.toFixed(1)}% finish level. `
+          + `The likeliest single scoreline is ${result.modal.home}–${result.modal.away}, which `
+          + `comes up in ${(result.modal.p * 100).toFixed(1)}% of them.`,
+      },
+      ...drivers(home, away, conceded, L),
+      ...insights(home, away, result, base, L),
+      { key: 'disclosure', detail: disclosure },
+    ],
+  }
+}
+
+const RISING_DISCLOSURE =
+  'An Oracle-simulated exhibition, not a fixture and not a prediction — no FIH '
+  + 'endorsement implied. Every player named is on an official FIH team list; the Best XI '
+  + 'picks first, so this Rising Stars side is narrower than the Rising Stars XI on the '
+  + 'Tournament\u2019s Best tab.'
+
+const nationDisclosure = name =>
+  'An Oracle-simulated exhibition, not a fixture and not a prediction — no FIH '
+  + `endorsement implied. No ${name} player appears in the World XI: a man turns out for his `
+  + 'country, never against it, so the eleven he would have taken a shirt in is picked without '
+  + 'him. Every player named is on an official FIH team list.'
+
+/**
+ * The simulation the AI Lab has always shown: Tournament's Best XI against the
+ * Rising Stars XI. Returns null until the record can support it — an exhibition
+ * between two elevens the ratings have not picked yet is not something to show.
  */
 export function simulate(players, matches) {
   const base = goalRate(matches)
@@ -267,48 +337,98 @@ export function simulate(players, matches) {
     ? pickRisingSquad(players.filter(p => !taken.has(p.id)),
                       new Date(`${start}T00:00:00Z`), { ...tiers, requireBench: false })
     : { xi: [], shortfall: true }
-  const home = xiRows(bestSquad.xi)
-  const away = xiRows(risingSquad.xi)
-  if (home.length < 11 || away.length < 11) return null
-
-  const hAtt = strength(home, ATTACK)
-  const hDef = strength(home, DEFENCE)
-  const aAtt = strength(away, ATTACK)
-  const aDef = strength(away, DEFENCE)
-  if ([hAtt, hDef, aAtt, aDef].some(v => v == null)) return null
-
-  const lambdaHome = base.rate * (hAtt / aDef) ** ELASTICITY
-  const lambdaAway = base.rate * (aAtt / hDef) ** ELASTICITY
-  const result = { ...outcome(lambdaHome, lambdaAway), lambdaHome, lambdaAway }
-  const conceded = concededPerMatch(matches)
-
-  return {
-    home,
-    away,
+  return playExhibition({
+    home: xiRows(bestSquad.xi),
+    away: xiRows(risingSquad.xi),
     base,
-    strengths: { hAtt, hDef, aAtt, aDef },
-    result,
-    score: { home: result.modal.home, away: result.modal.away },
-    decider: result.modal.home === result.modal.away ? 'FT · level' : 'FT',
-    cards: [
-      {
-        key: 'confidence',
-        title: result.home >= result.away ? "Tournament's Best XI win" : 'Rising Stars XI win',
-        value: Math.round(Math.max(result.home, result.away)),
-        detail: `Over the full distribution the Best XI win ${result.home.toFixed(1)}%, the `
-          + `Rising Stars ${result.away.toFixed(1)}%, and ${result.draw.toFixed(1)}% finish level. `
-          + `The likeliest single scoreline is ${result.modal.home}–${result.modal.away}, which `
-          + `comes up in ${(result.modal.p * 100).toFixed(1)}% of them.`,
-      },
-      ...drivers(home, away, conceded),
-      ...insights(home, away, result, base),
-      {
-        key: 'disclosure',
-        detail: 'An Oracle-simulated exhibition, not a fixture and not a prediction — no FIH '
-          + 'endorsement implied. Every player named is on an official FIH team list; the Best XI '
-          + 'picks first, so this Rising Stars side is narrower than the Rising Stars XI on the '
-          + 'Tournament’s Best tab.',
-      },
-    ],
+    matches,
+    labels: { home: "the Tournament's Best XI", away: 'the Rising Stars' },
+    disclosure: RISING_DISCLOSURE,
+  })
+}
+
+/**
+ * The World XI against a nation, that nation excluded from it.
+ *
+ * A player turns out for his country, never against it, so the World XI for
+ * this fixture is picked over a field the nation has been removed from. That
+ * is the whole point of running one of these per opponent rather than picking
+ * a single eleven and sending it out four times: leaving Germany out of the
+ * World XI is what makes "the world against the champions" mean anything.
+ */
+export function exhibitionVsNation(players, matches, code, teamName) {
+  const base = goalRate(matches)
+  if (!base) return null
+  const tiers = eliteTiers(matches)
+  const world = pickSquad(players, { ...tiers, eligible: p => p.team !== code })
+  const nation = bestXI(players.filter(p => p.team === code))
+  const nationXI = nation.lines.flatMap(l => l.slots.map(s => ({ ...s.player, line: l })))
+  return playExhibition({
+    home: xiRows(world.xi),
+    away: xiRows(nationXI),
+    base,
+    matches,
+    labels: { home: 'the World XI', away: teamName },
+    disclosure: nationDisclosure(teamName),
+  })
+}
+
+/**
+ * Every exhibition the app shows, in the order it shows them.
+ *
+ * The four semi-finalists each meet a World XI picked without them, and the
+ * champions' fixture leads — it is the one a reader comes for once the
+ * tournament is over. The Rising Stars meeting closes the set: it asks a
+ * different question and is the only one that does not exclude anybody.
+ */
+export function exhibitions(players, matches, teams) {
+  const nameOf = code => (teams ?? []).find(t => t.code === code)?.name ?? code
+  const tiers = eliteTiers(matches)
+  const champion = championOf(matches)
+  const order = [...tiers.semifinalists].sort((a, b) =>
+    (b === champion) - (a === champion) || nameOf(a).localeCompare(nameOf(b)))
+
+  const out = []
+  for (const code of order) {
+    const sim = exhibitionVsNation(players, matches, code, nameOf(code))
+    if (!sim) continue
+    out.push({
+      id: `sim_world_xi_vs_${code.toLowerCase()}`,
+      kind: 'nation',
+      opponent: code,
+      opponentName: nameOf(code),
+      champion: code === champion,
+      homeLabel: `World XI (no ${code})`,
+      awayLabel: nameOf(code),
+      homeShort: 'WORLD',
+      awayShort: code,
+      sim,
+    })
   }
+  const rising = simulate(players, matches)
+  if (rising) {
+    out.push({
+      id: SIM_ID,
+      kind: 'rising',
+      champion: false,
+      homeLabel: "Tournament's Best XI",
+      awayLabel: 'Rising Stars XI',
+      homeShort: 'BEST',
+      awayShort: 'RISE',
+      sim: rising,
+    })
+  }
+  return out
+}
+
+/** Who lifted it, or null while the final is unplayed. */
+export function championOf(matches) {
+  const final = (matches ?? []).find(m => m.phase === 'gold-final')
+  if (!final || final.status !== 'completed' || final.score?.home == null) return null
+  if (final.score.home === final.score.away) {
+    const so = final.shootout
+    if (!so || so.home === so.away) return null
+    return so.home > so.away ? final.home : final.away
+  }
+  return final.score.home > final.score.away ? final.home : final.away
 }

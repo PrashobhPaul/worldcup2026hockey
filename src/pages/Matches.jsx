@@ -10,28 +10,49 @@ import StageSplit from '../components/StageSplit'
 import { effectiveStatus } from '../engine/clock'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { useNowTick } from '../hooks/useNowTick'
-import { SIM_ID, SIM_MATCH } from '../content/sim'
-import { simulate } from '../engine/sim'
+import { SIM_MATCH } from '../content/sim'
+import { exhibitions } from '../engine/sim'
 
 // The card only appears once the engine can actually pick both elevens: a
 // link promising a simulated scoreline that resolves to "not yet" is worse
 // than no link. The score shown is the one the sim page shows, from the same
 // call, so the two can never disagree.
-function SimulationCard({ sim }) {
-  if (!sim) return null
+function SimulationCard({ fixtures }) {
+  if (!fixtures?.length) return null
   return (
-    <div className="mb-4">
-      <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">✨ AI Simulation</div>
-      <Link to={`/match/sim/${SIM_ID}`}
-        className="flex items-center gap-3 rounded-xl border border-brand/20 bg-gradient-to-r from-brand/10 to-pitch-800 p-3.5 transition-colors hover:border-brand/40">
-        <span className="rounded-full border border-brand/30 bg-brand/10 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest text-brand">
-          {SIM_MATCH.statusChip}
-        </span>
-        <span className="min-w-0 flex-1 truncate text-sm font-semibold">
-          {SIM_MATCH.homeLabel} <span className="font-mono text-xs text-pitch-400">vs</span> {SIM_MATCH.awayLabel}
-        </span>
-        <span className="font-mono text-sm font-bold text-brand">{sim.score.home}–{sim.score.away}</span>
-      </Link>
+    <div id="sims" className="mb-4 scroll-mt-20">
+      <div className="mb-2 font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">
+        ✨ AI Simulations
+      </div>
+      <div className="space-y-2">
+        {fixtures.map(f => (
+          <Link key={f.id} to={`/match/sim/${f.id}`}
+            className={`flex items-center gap-3 rounded-xl border p-3.5 transition-colors ${
+              f.champion
+                ? 'border-brand/40 bg-gradient-to-r from-brand/15 to-pitch-800 hover:border-brand/60'
+                : 'border-white/5 bg-pitch-800 hover:border-brand/25'
+            }`}>
+            <span className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-widest ${
+              f.champion ? 'border-brand/40 bg-brand/15 text-brand' : 'border-white/10 bg-pitch-700 text-pitch-300'
+            }`}>
+              {f.champion ? '🏆 Champions' : SIM_MATCH.statusChip}
+            </span>
+            <span className="min-w-0 flex-1 truncate text-sm font-semibold">
+              {f.homeLabel} <span className="font-mono text-xs text-pitch-400">vs</span> {f.awayLabel}
+            </span>
+            <span className="shrink-0 font-mono text-sm font-bold text-brand">
+              {f.sim.score.home}–{f.sim.score.away}
+            </span>
+          </Link>
+        ))}
+      </div>
+      {/* A man turns out for his country, never against it — so each of these
+          is played against a World XI picked without that nation in it, and
+          they are five different World XIs rather than one sent out five
+          times. Said once here rather than on every card. */}
+      <p className="mt-2 font-mono text-[10px] leading-relaxed text-pitch-400">
+        Exhibitions, not fixtures. Each nation meets a World XI picked without its own players.
+      </p>
     </div>
   )
 }
@@ -89,10 +110,11 @@ export default function MatchesPage() {
   const calibration = useLiveQuery(() => db.meta.get('calibration'), [])
   const rec = publishedAccuracy(calibration, oracleRecord(all, predictions))
 
-  // Both elevens and the exhibition between them, from the same engine the
-  // sim page uses, so the card and the page cannot print two scorelines.
+  // Every exhibition, from the same engine the sim page uses, so a card and
+  // the page it opens cannot print two scorelines.
   const players = useLiveQuery(() => db.players.toArray(), [], [])
-  const sim = useMemo(() => simulate(players, matches ?? []), [players, matches])
+  const sims = useMemo(() => exhibitions(players, matches ?? [], teams),
+                       [players, matches, teams])
 
   // Membership follows the clock, not the stored status: a match past
   // push-back sits under Live (with its running clock and 0-0) the moment it
@@ -202,7 +224,11 @@ export default function MatchesPage() {
         ))}
       </div>
 
-      {tab === 'live' && <SimulationCard sim={sim} />}
+      {/* Results is where a reader lands once the tournament is over, and
+          these exhibitions are the part of it that is still worth reading.
+          They used to hang off the Live tab alone, which empties the moment
+          the last match ends — published where nobody would find them. */}
+      {(tab === 'results' || tab === 'live') && <SimulationCard fixtures={sims} />}
 
       {loading ? <Skeleton h={400} /> : (
         <div className="space-y-2.5">
