@@ -3050,6 +3050,15 @@
     "ARG-NED": [
       {
         "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
+        "date": "2026-08-30",
+        "home": "NED",
+        "away": "ARG",
+        "home_goals": 1,
+        "away_goals": 2,
+        "current": false
+      },
+      {
+        "competition": "FIH Hockey World Cup Belgium &amp; Netherlands 2026 (M)",
         "date": "2026-08-18",
         "home": "NED",
         "away": "ARG",
@@ -3203,5 +3212,5 @@
       }
     ]
   },
-  "updated_at": "2026-08-30T11:17:30.666661+00:00"
+  "updated_at": "2026-08-30T14:17:33.932106+00:00"
 }

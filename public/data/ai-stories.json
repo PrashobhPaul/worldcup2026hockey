@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T09:24:26.522129+00:00",
+  "updated_at": "2026-08-30T14:19:39.839588+00:00",
   "stories": [
     {
       "matchId": "A1",
@@ -294,6 +294,13 @@
       "matchId": "SF2",
       "story": "Germany edged Argentina 2-1 at the Royal Leopold Club in Brussels on 28 August, in the Semi-Final tie of the FIH Hockey World Cup 2026. Germany came into the match ranked 2nd in the world, Argentina 7th — 5 places between them on the FIH table.\n\nGermany scored through Justus Weigand (33rd minute) and Paul-Philipp Kaufmann (54th minute); Argentina replied through Tomas Domene (46th minute, penalty corner). It stood 0-0 at half-time. The opening goal came in the 33rd minute and the final goal in the 54th, from the 3rd quarter to the 4th. Paul-Philipp Kaufmann's 54th-minute goal stood as the difference.\n\nOf the 3 goals, 2 came in open play and 1 from the set piece. The 4th quarter was the busiest, with 2 of them. The sides were level at the interval, and Germany won the second half. 2 green cards and 1 yellow card were shown. The goals were spread across 3 different scorers. This was match 48 of the tournament's fifty.",
       "generatedAt": "2026-08-29T08:09:38.784832+00:00",
+      "model": "hockey-ai-engine",
+      "source": "engine"
+    },
+    {
+      "matchId": "BRZ",
+      "story": "Argentina edged Netherlands 2-1 at the Royal Leopold Club in Brussels on 30 August, in the 🥉 Bronze Medal Match tie of the FIH Hockey World Cup 2026. Netherlands came into the match ranked 3rd in the world, Argentina 7th — 4 places between them on the FIH table.\n\nArgentina scored through Tomas Domene (41st minute) and Matias Rey (59th minute, penalty corner); Netherlands replied through Floris Middendorp (49th minute, penalty corner). It stood 0-0 at half-time. The opening goal came in the 41st minute and the final goal in the 59th, from the 3rd quarter to the 4th. Matias Rey's 59th-minute goal stood as the difference.\n\nOf the 3 goals, 1 came in open play and 2 from the set piece. The 4th quarter was the busiest, with 2 of them. The sides were level at the interval, and Argentina won the second half. 2 green cards and 1 yellow card were shown. The goals were spread across 3 different scorers. This was match 49 of the tournament's fifty.",
+      "generatedAt": "2026-08-30T14:19:39.839563+00:00",
       "model": "hockey-ai-engine",
       "source": "engine"
     }

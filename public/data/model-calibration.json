@@ -1,7 +1,7 @@
 {
-  "matches": 48,
+  "matches": 49,
   "correct": 36,
-  "accuracy_pct": 75,
+  "accuracy_pct": 73,
   "draws": 8,
   "draws_called": 5,
   "by_stage": {
@@ -15,13 +15,13 @@
     },
     "knockout": {
       "correct": 4,
-      "matches": 8
+      "matches": 9
     }
   },
-  "brier": 0.3793,
-  "log_loss": 0.6767,
+  "brier": 0.3906,
+  "log_loss": 0.6919,
   "model": "NON_KNOCKOUT_MODEL_V2",
   "mode": "tournament",
   "method": "accuracy counts the picks as published \u2014 each match's active ledger row, graded like the match cards (a drawn knockout falls to the shoot-out winner where recorded, and to a miss where not). Brier and log-loss are the current model replayed as-of-then, with only the form, head-to-head and world-ranking table that existed before each push-back. The split matters: a recalibration may sharpen the model, but it must never move the public record of what was picked.",
-  "updated_at": "2026-08-29T16:08:04.011711+00:00"
+  "updated_at": "2026-08-30T14:19:50.562636+00:00"
 }
