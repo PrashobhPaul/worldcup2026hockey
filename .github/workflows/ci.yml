@@ -170,6 +170,21 @@ jobs:
       - name: Alerts work in the browser, the web app and the Android app
         run: npm run test:notifications
 
+      # A language-model column in the evaluation table is only worth reading
+      # if the model could not see the result. This rebuilds every prompt the
+      # committed backtest recorded and checks it carries nothing that had not
+      # kicked off. With no backtest committed it passes and says so.
+      - name: The backtest could not see the answer
+        run: npm run test:backtest
+
+      # The evaluation table is regenerated from the data, never edited. A
+      # committed table that no longer matches the record is a stale claim.
+      - name: The evaluation table matches the record
+        run: |
+          npm run eval:table
+          git diff --exit-code -- docs/EVALUATION.md \
+            || (echo "docs/EVALUATION.md is stale — run npm run eval:table" && exit 1)
+
       - name: Build
         run: npm run build
 

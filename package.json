@@ -37,7 +37,10 @@
     "icons": "python3 scripts/make_icons.py",
     "test:notifications": "node scripts/test_notifications.mjs",
     "smoke:ui": "node scripts/smoke_ui.mjs",
-    "smoke:onevalue": "node scripts/smoke_one_value.mjs"
+    "smoke:onevalue": "node scripts/smoke_one_value.mjs",
+    "test:backtest": "python3 scripts/test_llm_backtest.py",
+    "eval:table": "python3 scripts/eval_table.py --write",
+    "llm:backtest": "python3 scripts/llm_backtest.py"
   },
   "dependencies": {
     "@capacitor/core": "^8.5.0",
