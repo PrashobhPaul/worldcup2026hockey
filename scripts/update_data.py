@@ -18,7 +18,7 @@ Hockey.AI data pipeline — runs on GitHub Actions every 30 min.
 7. Bumps data-version.json only when something changed -> installed PWAs resync.
 
 Manual score entry: edit public/data/fixtures.json in the GitHub web UI
-(set score.home/score.away, status "completed", penalty_corners, events)
+(set score.home/score.away, status "completed", events)
 — this script will never overwrite a manually-entered score or timeline.
 """
 import io
@@ -1914,6 +1914,38 @@ def fetch_individual_stats(players_doc):
                                  f'{carded} card(s); the FIH cards report does '
                                  'not list him')
 
+    # ---- and the tournament totals, not only the players ----------------
+    #
+    # Player-by-player agreement is not the same as agreeing about the
+    # tournament. The FIH publishes a competition summary too — total goals
+    # split field/corner/stroke, total cards split red/yellow/green — and the
+    # app's own totals are the sum of its ledger. Those two can drift apart by
+    # a single goal's method while every individual row still reconciles,
+    # which is exactly what happened: 136 field / 97 corner here against
+    # 135 / 98 on the FIH's statistics page. Nothing was checking the sums, so
+    # nothing said so.
+    #
+    # The reports fetched above are per player, so summing them gives the
+    # governing body's own totals to hold ours against.
+    if scorers is not None:
+        theirs = (sum(r['fg'] for r in scorers), sum(r['pc'] for r in scorers),
+                  sum(r['ps'] for r in scorers))
+        ours = tuple(sum(p.get(k) or 0 for p in players)
+                     for k in ('fg_scored', 'pc_scored', 'ps_scored'))
+        if ours != theirs:
+            disagreed.append(f'tournament goals: we total {ours[0]}F/{ours[1]}PC/'
+                             f'{ours[2]}PS, the FIH scorers report totals '
+                             f'{theirs[0]}F/{theirs[1]}PC/{theirs[2]}PS')
+    if cards is not None:
+        theirs = (sum(r['red'] for r in cards), sum(r['yellow'] for r in cards),
+                  sum(r['green'] for r in cards))
+        ours = tuple(sum(p.get(k) or 0 for p in players)
+                     for k in ('red_cards', 'yellow_cards', 'green_cards'))
+        if ours != theirs:
+            disagreed.append(f'tournament cards: we total {ours[0]}R/{ours[1]}Y/'
+                             f'{ours[2]}G, the FIH cards report totals '
+                             f'{theirs[0]}R/{theirs[1]}Y/{theirs[2]}G')
+
     if scorers is None and cards is None:
         return False
     for line in disagreed:
@@ -2558,7 +2590,15 @@ def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
 # timeline credited the 47th-minute goal to shirt 23, the corrected report
 # and the competition scorers table both say shirt 13. Already-official
 # matches re-read the report once per bump instead of staying frozen.
-EVENTS_REV = 3
+# Bumped to 4 to re-read every match report once the tournament finished.
+# Two figures the app publishes disagreed with the FIH's own tournament
+# statistics page — one goal's method (a Malaysian corner recorded as a field
+# goal) and three cards the record does not hold at all — and a re-read is the
+# only way to pick up a report the FIH has since amended. It is safe to do now
+# and was not before: until this revision the same code path wrote corner
+# GOALS into `penalty_corners`, so re-parsing would have published fifty
+# invented corner counts.
+EVENTS_REV = 4
 
 def apply_official_events(fixtures, players_doc):
     """Replace estimated timelines with the real one from the TMS match report."""
@@ -2598,12 +2638,21 @@ def apply_official_events(fixtures, players_doc):
         events += cards
         events.sort(key=lambda e: e['minute'])
         m['events'] = events
-        pc = {s: sum(1 for e in events if e['team'] == m[s] and e['type'] == 'goal' and e.get('via') == 'PC')
-              for s in ('home', 'away')}
-        # PC goals are real; total PC attempts aren't in the report, so keep any
-        # prior estimate but never let it read below the real PC goals scored.
-        prev = m.get('penalty_corners') or {}
-        m['penalty_corners'] = {s: max(prev.get(s) or 0, pc[s]) for s in ('home', 'away')}
+        # A penalty corner WON and a penalty corner SCORED are two different
+        # numbers, and this line used to conflate them: it wrote the count of
+        # corner goals into `penalty_corners`, which the match card renders as
+        # "PC 3 | 1" and the insights read as "won the corner battle 3-1".
+        # The story composer was corrected for exactly this — test_parsers.py
+        # still carries the note — but the pipeline was not, and the fault sat
+        # dormant only because every match was already at the current
+        # events_rev and skipped. A re-parse would have published fifty
+        # invented corner counts at once.
+        #
+        # The match report does not give corners won. Team totals do, and they
+        # are read from the tournament statistics page into team-ratings.json
+        # (see fetch_team_penalty_corners); nothing is estimated per match, so
+        # the field stays absent and every surface that reads it stays silent.
+        m.pop('penalty_corners', None)
         m['stats'] = derive_stats_from_events(m)
         m['commentary'] = build_commentary(m)
         m['enrichment'] = 'official'

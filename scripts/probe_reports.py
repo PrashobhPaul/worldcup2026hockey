@@ -33,8 +33,17 @@ MATCH_REPORTS = [
     'matchreport', 'matchsheet', 'lineupform', 'lineup', 'lineups',
     'teamsheet', 'teamlist', 'matchofficial', 'scoresheet', 'summary',
 ]
+# Penalty corners WON is the one FIH statistic the app cannot show: the match
+# report does not carry it, and nothing may be estimated. The competition
+# statistics page does publish it — 455 across the tournament, per team, with
+# a conversion rate — so the report that backs that page is what this looks
+# for. Names are guesses and are meant to be: the probe prints what each one
+# answers, and only a report that actually returns gets parsed.
 COMP_REPORTS = ['teams', 'poolstandings', 'lineups', 'matchresults', 'scorers',
-                'statistics', 'cards', 'matchschedule']
+                'statistics', 'cards', 'matchschedule',
+                'teamstatistics', 'teamstats', 'statisticsteams',
+                'penaltycorners', 'competitionstatistics', 'summary',
+                'tournamentstatistics', 'goals']
 
 
 def opener():
