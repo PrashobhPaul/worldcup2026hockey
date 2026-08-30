@@ -41,13 +41,28 @@ const pcts = s => [...String(s).matchAll(/\d{1,3}(?:\.\d+)?%/g)].map(m => m[0])
 
 const byId = new Map(matches.map(m => [m.id, m]))
 const isKO = m => m.phase !== 'pool' && m.phase !== 'stage2'
+const winnerOf = m => (m.score?.home > m.score?.away ? m.home : m.away)
 
-// Every pick the ledger has published on a match still to be played, folded to
-// the numbers the app shows for it.
-const claims = predictions
+// Every pick the ledger has published, folded to the numbers the app shows.
+//
+// Pending picks are the sharp case — a figure still being claimed — so they are
+// what this checks while any remain. But a finished tournament has none, and
+// this gate then passed by finding nothing to look at: on the day the gold
+// final was played it went green having verified a single line of caption.
+// A graded pick is still printed on the match page and in the pick list, and
+// still has to be printed the one way, so it is checked in exactly the same
+// terms once the fixtures run out.
+const published = predictions
   .filter(p => !p.superseded && p.p_home_win != null)
   .map(p => ({ p, m: byId.get(p.matchId) }))
-  .filter(r => r.m && r.m.status !== 'completed')
+  .filter(r => r.m)
+const pending = published.filter(r => r.m.status !== 'completed')
+const scope = pending.length ? pending : published.filter(r => isKO(r.m))
+console.log(pending.length
+  ? `Checking ${scope.length} pick(s) still to be played`
+  : `Nothing left to play — checking the ${scope.length} graded knockout pick(s)`)
+
+const claims = scope
   .map(({ p, m }) => {
     const sum = p.p_home_win + (p.p_draw ?? 0) + p.p_away_win || 1
     const advHome = p.p_home_win + (p.p_draw ?? 0) / 2
@@ -83,7 +98,10 @@ const go = async route => {
 // Warm the local database once; every route below reuses it.
 await page.goto(O + '/', { waitUntil: 'domcontentloaded' })
 await page.waitForFunction(() => !document.getElementById('splash'), null, { timeout: 20000 }).catch(() => {})
-await page.waitForFunction(() => /FIH #\d/.test(document.body?.innerText ?? ''), null, { timeout: 25000 })
+// The header's fixture counter, not the next-match hero: the hero is gone once
+// the last fixture is played, and waiting on it timed this gate out entirely
+// the moment the tournament ended.
+await page.waitForFunction(() => /\d+\s*\/\s*\d+/.test(document.body?.innerText ?? ''), null, { timeout: 25000 })
 
 // ── 1. Every card that links to a match ───────────────────────────────────
 // Home hero, the Matches list and the Oracle pick list all render the same
@@ -105,9 +123,13 @@ for (const c of claims) {
   const all = linked.get(c.m.id)
   const rows = all.filter(r => r.found.length)
   ok(`${c.m.id} is carried on a card`, all.length > 0)
-  ok(`${c.m.id} states a probability on every card that shows it`,
-     rows.length === all.length,
-     `silent on ${all.filter(r => !r.found.length).map(r => r.label).join(', ')}`)
+  // At least one card states the figure — not every card. The home page's
+  // latest-results strip draws the compact card, which carries a scoreline and
+  // no pick by design; demanding a percentage there was this check inventing a
+  // requirement the app never had. What matters is the next assertion: wherever
+  // a figure IS printed, it is the published one.
+  ok(`${c.m.id} states its probability on a card`, rows.length > 0,
+     `silent on ${all.map(r => r.label).join(', ')}`)
   for (const r of rows) {
     const stray = r.found.filter(s => !c.allowed.has(s))
     ok(`${c.m.id} on ${r.label} prints only published figures`, stray.length === 0,
@@ -140,7 +162,11 @@ for (const c of claims) {
 console.log('\n3. Bracket · race · odds')
 const gold = claims.find(c => c.m.phase === 'gold-final')
 if (gold) {
-  const want = fmt(gold.confidence)
+  // Once the final is played the champion is settled, and the race, the odds
+  // table and the board all have to say so with the same certainty the app
+  // prints everywhere else.
+  const decided = gold.m.status === 'completed'
+  const want = decided ? fmt(1) : fmt(gold.confidence)
 
   await go('/prediction-race?tab=bracket')
   const tie = await page.evaluate(id => {
@@ -148,7 +174,7 @@ if (gold) {
       e.innerText.startsWith(id) && /%/.test(e.innerText) && e.innerText.length < 400)
     return hit ? hit.innerText : ''
   }, gold.m.id)
-  const tieStray = pcts(tie).filter(s => !gold.allowed.has(s))
+  const tieStray = pcts(tie).filter(s => !gold.allowed.has(s) && s !== fmt(1))
   ok('the bracket tie prints only published figures', tie !== '' && tieStray.length === 0,
      tie === '' ? 'tie card not found' : tieStray.join(', '))
   ok(`the bracket tie leads with ${want}`, pcts(tie).includes(want), pcts(tie).join(', '))
@@ -165,8 +191,8 @@ if (gold) {
   const row = await page.evaluate(name => {
     const tr = [...document.querySelectorAll('tr')].find(r => r.innerText.includes(name))
     return tr ? tr.innerText : ''
-  }, nameOf(gold.pick))
-  ok(`the odds table gives ${gold.pick} ${want} for the trophy`, pcts(row).includes(want),
+  }, nameOf(decided ? winnerOf(gold.m) : gold.pick))
+  ok(`the odds table gives ${decided ? winnerOf(gold.m) : gold.pick} ${want} for the trophy`, pcts(row).includes(want),
      `${pcts(row).join(', ')}`)
 }
 
@@ -174,9 +200,11 @@ if (gold) {
 // Its cards carry no link to the match, so section 1 cannot see them. They
 // showed a three-way split with a draw on knockout ties for as long as the
 // board has existed.
-console.log('\n3b. AI Lab board')
-await go('/ai-lab?tab=previews')
-for (const c of claims) {
+// The board previews fixtures still to come, so it has nothing to show once
+// the last one is played — and nothing to disagree with either.
+console.log(pending.length ? '\n3b. AI Lab board' : '\n3b. AI Lab board — no fixtures left to preview, skipped')
+if (pending.length) await go('/ai-lab?tab=previews')
+for (const c of (pending.length ? claims : [])) {
   // The innermost card, not an ancestor holding the whole board: an outer
   // container matches every name on the page and would have this check
   // reading one fixture's numbers against another's ledger row.
