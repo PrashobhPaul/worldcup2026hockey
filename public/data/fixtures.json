@@ -4,7 +4,7 @@
  "location": "Belgium & Netherlands",
  "start": "2026-08-15",
  "end": "2026-08-30",
- "last_updated": "2026-08-30T14:19:39.619541+00:00",
+ "last_updated": "2026-08-30T15:15:33.245142+00:00",
  "source": "FIH TMS",
  "phases": [
   "Pool A",
@@ -27553,7 +27553,7 @@
    "time": "16:30",
    "timezone": "CET",
    "venue": "BRU",
-   "status": "scheduled",
+   "status": "live",
    "score": {
     "home": null,
     "away": null
@@ -27889,7 +27889,12 @@
      "coach": "André Henning"
     }
    },
-   "tms_id": 22382
+   "tms_id": 22382,
+   "live_score": {
+    "home": 0,
+    "away": 0,
+    "at": "2026-08-30T15:13:54.774353+00:00"
+   }
   }
  ]
 }
