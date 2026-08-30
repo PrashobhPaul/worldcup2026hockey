@@ -25,7 +25,7 @@ export function usePotmRace(players, bundle) {
   }, [players, bundle])
 }
 
-function PotmRace({ byCode, race, bundle }) {
+function PotmRace({ byCode, race, bundle, finished }) {
   const [openId, setOpenId] = useState(null)
   const [showAll, setShowAll] = useState(false)
 
@@ -80,7 +80,12 @@ function PotmRace({ byCode, race, bundle }) {
         <h2 className="mt-1 font-display text-xl font-bold">🏑 Player of the Tournament 2026</h2>
         <div className="mt-2 flex items-center gap-2">
           <span className="rounded bg-amber-400/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase text-amber-400">
-            {AWARDS_STATE === 'speculated' ? 'Live race · not the official shortlist' : AWARDS_STATE}
+            {/* "Live" was true for a fortnight and stopped being true the
+                moment the gold final ended. The tournament's own state says
+                which it is, so the label cannot be left behind again. */}
+            {AWARDS_STATE === 'speculated'
+              ? `${finished ? 'Final standing' : 'Live race'} · not the official shortlist`
+              : AWARDS_STATE}
           </span>
         </div>
       </div>
@@ -122,13 +127,17 @@ export function AwardsView() {
   const byCode = new Map(teams.map(t => [t.code, t]))
   const bundle = useOracleBundle(teams, matches)
   const race = usePotmRace(players, bundle)
+  // Every fixture played is what makes this a final standing rather than a race.
+  const finished = matches.length > 0 && matches.every(m => m.status === 'completed')
   return (
     <div>
       <p className="mb-4 text-xs text-pitch-400">
-        The live Player of the Tournament race, computed from the match record.
+        {finished
+          ? 'The Player of the Tournament race as it finished, computed from the full match record.'
+          : 'The live Player of the Tournament race, computed from the match record.'}
       </p>
 
-      <PotmRace byCode={byCode} race={race} bundle={bundle} />
+      <PotmRace byCode={byCode} race={race} bundle={bundle} finished={finished} />
 
       <div className="mt-6">
         <Link to="/prediction-race" className="text-xs font-medium text-brand hover:underline">Oracle match record →</Link>

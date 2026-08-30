@@ -8,7 +8,6 @@ import { derivePrediction, publishedAccuracy } from '../engine/prediction'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
 import PredictionSplit from '../components/PredictionSplit'
-import { SIM_ID } from '../content/sim'
 import { useFavourite } from '../hooks/useFavourite'
 import { useNowTick } from '../hooks/useNowTick'
 import { effectiveStatus } from '../engine/clock'
@@ -22,7 +21,7 @@ const heroTiles = [
   { to: '/prediction-race', icon: Trophy, title: 'Championship Race' },
   { to: '/ai-lab', icon: FlaskConical, title: 'AI Lab' },
   { to: '/tournament?tab=stats', icon: BarChart3, title: 'Stats' },
-  { to: `/match/sim/${SIM_ID}`, icon: Sparkles, title: 'AI Simulation' },
+  { to: '/matches?tab=results#sims', icon: Sparkles, title: 'AI Simulation' },
 ]
 
 // The model's record on the hero: one quiet line, and a link to where it is
