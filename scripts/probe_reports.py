@@ -103,6 +103,14 @@ def main():
         if body and body[:4] == b'%PDF' and name not in ('teams', 'poolstandings'):
             found.append((f'competition/{name}', body))
 
+    # Which names answered is the point of the run, and reading it off the
+    # dumps means inferring it from what is missing. Say it outright.
+    print('\n== What answered ==')
+    for label, names in (('match', MATCH_REPORTS), ('competition', COMP_REPORTS)):
+        got = [n for n in names if any(f == n or f == f'competition/{n}' for f, _ in found)]
+        print(f'  {label}: PDF from {", ".join(got) or "nothing"}')
+        print(f'  {label}: no PDF from {", ".join(n for n in names if n not in got)}')
+
     for name, body in found:
         lines = pdf_lines(body)
         print(f'\n== {name}: {len(lines)} text lines ==')

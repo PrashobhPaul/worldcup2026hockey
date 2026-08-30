@@ -2590,15 +2590,16 @@ def _report_cards(pdf_bytes, home_code, away_code, shirt_name):
 # timeline credited the 47th-minute goal to shirt 23, the corrected report
 # and the competition scorers table both say shirt 13. Already-official
 # matches re-read the report once per bump instead of staying frozen.
-# Bumped to 4 to re-read every match report once the tournament finished.
-# Two figures the app publishes disagreed with the FIH's own tournament
-# statistics page — one goal's method (a Malaysian corner recorded as a field
-# goal) and three cards the record does not hold at all — and a re-read is the
-# only way to pick up a report the FIH has since amended. It is safe to do now
-# and was not before: until this revision the same code path wrote corner
-# GOALS into `penalty_corners`, so re-parsing would have published fifty
-# invented corner counts.
-EVENTS_REV = 4
+# Left at 3 deliberately, after a re-parse was prepared and then found to be
+# unnecessary. Two figures on the FIH's own app summary disagree with what this
+# app publishes — one Malaysian goal's method, and three cards — so the match
+# reports were re-read on 30 Aug to see whether the FIH had amended them. They
+# had not. The competition's own individual-statistics reports, pulled the same
+# day, state "AZRAI Abu Kamal 1 3 0 4" and card totals of "0 27 102", which is
+# exactly this record. The governing body's summary page and its own reports
+# disagree with each other; the reports are the source this pipeline reads, and
+# re-parsing fifty matches to arrive back where it started is churn, not a fix.
+EVENTS_REV = 3
 
 def apply_official_events(fixtures, players_doc):
     """Replace estimated timelines with the real one from the TMS match report."""
@@ -2648,10 +2649,15 @@ def apply_official_events(fixtures, players_doc):
         # events_rev and skipped. A re-parse would have published fifty
         # invented corner counts at once.
         #
-        # The match report does not give corners won. Team totals do, and they
-        # are read from the tournament statistics page into team-ratings.json
-        # (see fetch_team_penalty_corners); nothing is estimated per match, so
-        # the field stays absent and every surface that reads it stays silent.
+        # The match report does not give corners won, and neither does anything
+        # else this pipeline can reach. The public reports namespace was probed
+        # for it on 30 Aug — statistics, teamstatistics, teamstats,
+        # statisticsteams, penaltycorners, competitionstatistics,
+        # tournamentstatistics, summary, goals — and only scorers and cards
+        # answer under a competition. The FIH app shows 455 corners at 21.5%
+        # from an endpoint that wants a credential this project does not have.
+        # So the field stays absent and every surface that reads it stays
+        # silent, which is the honest answer and already how they behave.
         m.pop('penalty_corners', None)
         m['stats'] = derive_stats_from_events(m)
         m['commentary'] = build_commentary(m)
