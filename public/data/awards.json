@@ -1,0 +1,52 @@
+{
+  "state": "official",
+  "event": "FIH Hockey World Cup 2026",
+  "announced": "2026-08-30",
+  "provenance": {
+    "authority": "FIH",
+    "note": "The individual awards announced after the gold medal match. fih.hockey is unreachable from the environment this was recorded in, so the names were taken from the published announcement rather than read from the FIH directly. Every one is then checked against the official FIH team lists this app does hold — nation, position and, for the top scorer, the goal count against our own event ledger — by scripts/test_awards.mjs, which fails the build on any name that does not resolve.",
+    "checkedAgainst": "public/data/players.json (FIH entry lists) and the fixtures event ledger"
+  },
+  "awards": [
+    {
+      "key": "best_player",
+      "label": "Player of the Tournament",
+      "winner": "Tomas Domene",
+      "winnerDisplay": "Tomás Domene",
+      "team": "ARG",
+      "note": "Also the tournament's leading scorer."
+    },
+    {
+      "key": "top_scorer",
+      "label": "Top Scorer",
+      "winner": "Tomas Domene",
+      "winnerDisplay": "Tomás Domene",
+      "team": "ARG",
+      "goals": 10,
+      "note": "Ten goals, the outright lead."
+    },
+    {
+      "key": "best_goalkeeper",
+      "label": "Best Goalkeeper",
+      "winner": "Luis Calzado",
+      "winnerDisplay": "Luis Calzado",
+      "team": "ESP",
+      "note": "Behind the defence that took Spain to the final."
+    },
+    {
+      "key": "rising_star",
+      "label": "Best Young Player",
+      "winner": "Justus Warweg",
+      "winnerDisplay": "Justus Warweg",
+      "team": "GER",
+      "note": "Nineteen, and a world champion."
+    }
+  ],
+  "notAnnounced": [
+    {
+      "key": "fair_play",
+      "label": "Fair Play Trophy",
+      "reason": "Not in the announcement this was recorded from. It is left unfilled rather than guessed."
+    }
+  ]
+}
