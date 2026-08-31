@@ -74,6 +74,13 @@
       "source": "ai"
     },
     {
+      "matchId": "BRZ",
+      "story": "Argentina took bronze with a penalty-corner goal in the 59th minute, and the Netherlands finished their home World Cup in fourth. Nothing separated the sides for forty minutes; all three goals then arrived inside the last twenty.\n\nTomas Domene scored from open play in the 41st to end a goalless stretch that had lasted most of the match. Floris Middendorp answered from a corner in the 49th, six minutes after being carded, and a shoot-out began to look likely. Matias Rey settled it from a corner in the 59th — the last goal of the tournament for the side that scored more of them than anyone else.\n\nFor the Netherlands it is a hard way to end a fortnight in front of their own crowd: a semi-final lost from in front, then a bronze medal lost in the final minute. Derck de Vilder was carded in the 32nd, Middendorp in the 43rd and Jorrit Croon in the 46th, which is the shape a side takes when a match is slipping away from it. Argentina, beaten by Germany in the semi-final, leave with a medal and the tournament's leading scorer.",
+      "generatedAt": "2026-08-30T19:04:28.040584+00:00",
+      "model": "hockey-ai-engine",
+      "source": "ai"
+    },
+    {
       "matchId": "C1",
       "story": "Every goal in this match came from a penalty corner: three Australian, one Irish. On a night when neither side could break the other down in open play, the difference between them was entirely in the set piece, and Australia's was ruthless.\n\nJoel Rintala converted in the 7th and again in the 23rd, and Blake Govers made it three from another corner in the 27th. Every Australian goal came from a set piece and all three arrived before half-time, which is how a match ends up decided by the interval. Alistair Empey converted for Ireland in the 54th, a late reply to a game already gone.\n\nThe routine behind Australia's three was the difference: two different finishers, three conversions, all of them inside the opening half-hour. Ireland kept the Kookaburras to a single scoring route and will conclude they can live with them territorially; a match in which nobody scored from open play is not one they were outplayed in. They cannot yet live with them in the circle, which is a narrower problem and a more fixable one.",
       "generatedAt": "2026-08-24T19:26:09.005068+00:00",
@@ -143,6 +150,13 @@
       "matchId": "D6",
       "story": "The most goals either of these sides has scored in a World Cup meeting, and the fixture lived up to everything it usually promises. India led 4-2 at half-time in a first half that produced six goals, then closed the match out with the control that has been missing from their tournament so far.\n\nHarmanpreet Singh converted penalty corners in the 5th and again in the 21st. Abhishek added field goals in the 11th and the 24th. Pakistan refused to fold: Hannan Shahid in the 22nd, Sufyan Khan from a corner in the 24th, and Shahid again in the 46th. Hardik Singh's penalty stroke in the 35th proved the decisive fifth.\n\nTwo set-piece goals, two field goals and a stroke is the most varied scoring India have managed in this tournament, and a marked change from a pool campaign in which the corner had been carrying them alone. Abhishek's two from open play are the meaningful development, because they answer the criticism that has followed India since the England defeat. Pakistan scored three times against a top-eight defence and still lost; their defending of the counter, not their attack, is what ends their pool campaign.",
       "generatedAt": "2026-08-24T19:26:09.005068+00:00",
+      "source": "ai"
+    },
+    {
+      "matchId": "GOLD",
+      "story": "Germany are world champions, and one goal settled it. Michel Struthoff scored from open play in the 44th minute of a final neither side had managed to break for three quarters, and Spain — who had beaten Germany once already at this tournament — found no answer to it.\n\nIt was the lowest-scoring match of the knockout round and, on the evidence of the hour, entirely in character. Germany conceded seven goals across the whole tournament, fewer than any other side, and the final was that record distilled: patient, compact, content to let a tight match stay tight until one opening arrived. Justus Warweg was carded in the 49th and Germany saw out the closing stages without letting Spain near an equaliser.\n\nSpain, who had knocked the hosts out in the semi-final and beaten Germany in the second stage, will feel this was the one that got away. For Germany it is the reward for a fortnight in which they were rarely spectacular and almost never careless — five wins, one draw, one defeat, and a defence nobody solved twice.",
+      "generatedAt": "2026-08-30T19:04:28.040584+00:00",
+      "model": "hockey-ai-engine",
       "source": "ai"
     },
     {
@@ -293,20 +307,6 @@
     {
       "matchId": "SF2",
       "story": "Germany reached the final by scoring twice in a match that had produced nothing for half an hour, and by holding on when Argentina's best player pulled one back. Justus Weigand's field goal in the 33rd broke a deadlock that had survived two cautious quarters.\n\nTomas Domene, the tournament's leading scorer, levelled from a penalty corner in the 46th, and for eight minutes it was a semi-final again. Then Paul-Philipp Kaufmann scored from open play in the 54th and Germany shut the match down. Lucio Mendez was carded in the 50th, between the two goals, and Argentina spent the closing quarter chasing a match they had been level in moments earlier.\n\nIt was the lowest-scoring semi-final of the two and it turned on a single passage of play either side of the hour mark. Germany, beaten by Spain in the second stage, would get their rematch in the final. Argentina, who scored more goals than any other side at this tournament, were left with the bronze medal match and the sense that a single moment, rather than any pattern of play, had been the difference.",
-      "generatedAt": "2026-08-30T19:04:28.040584+00:00",
-      "model": "hockey-ai-engine",
-      "source": "ai"
-    },
-    {
-      "matchId": "BRZ",
-      "story": "Argentina took bronze with a penalty-corner goal in the 59th minute, and the Netherlands finished their home World Cup in fourth. Nothing separated the sides for forty minutes; all three goals then arrived inside the last twenty.\n\nTomas Domene scored from open play in the 41st to end a goalless stretch that had lasted most of the match. Floris Middendorp answered from a corner in the 49th, six minutes after being carded, and a shoot-out began to look likely. Matias Rey settled it from a corner in the 59th — the last goal of the tournament for the side that scored more of them than anyone else.\n\nFor the Netherlands it is a hard way to end a fortnight in front of their own crowd: a semi-final lost from in front, then a bronze medal lost in the final minute. Derck de Vilder was carded in the 32nd, Middendorp in the 43rd and Jorrit Croon in the 46th, which is the shape a side takes when a match is slipping away from it. Argentina, beaten by Germany in the semi-final, leave with a medal and the tournament's leading scorer.",
-      "generatedAt": "2026-08-30T19:04:28.040584+00:00",
-      "model": "hockey-ai-engine",
-      "source": "ai"
-    },
-    {
-      "matchId": "GOLD",
-      "story": "Germany are world champions, and one goal settled it. Michel Struthoff scored from open play in the 44th minute of a final neither side had managed to break for three quarters, and Spain — who had beaten Germany once already at this tournament — found no answer to it.\n\nIt was the lowest-scoring match of the knockout round and, on the evidence of the hour, entirely in character. Germany conceded seven goals across the whole tournament, fewer than any other side, and the final was that record distilled: patient, compact, content to let a tight match stay tight until one opening arrived. Justus Warweg was carded in the 49th and Germany saw out the closing stages without letting Spain near an equaliser.\n\nSpain, who had knocked the hosts out in the semi-final and beaten Germany in the second stage, will feel this was the one that got away. For Germany it is the reward for a fortnight in which they were rarely spectacular and almost never careless — five wins, one draw, one defeat, and a defence nobody solved twice.",
       "generatedAt": "2026-08-30T19:04:28.040584+00:00",
       "model": "hockey-ai-engine",
       "source": "ai"
