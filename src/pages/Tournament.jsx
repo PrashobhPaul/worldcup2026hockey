@@ -7,6 +7,8 @@ import { computeStandings, computeStage2Standings } from '../engine/standings'
 import { cardPoints } from '../engine/awards'
 import { isAtTournament, roleOf, positionBoards, LINES } from '../engine/bestXI'
 import { AwardsView } from './Awards'
+import RecordsView from '../components/RecordsView'
+import HistoryView from '../components/HistoryView'
 import OracleElevens from '../components/OracleElevens'
 import { useSwipeTabs } from '../components/useSwipeTabs'
 import { StandingsTable, Skeleton } from '../components/shared'
@@ -25,6 +27,8 @@ const VIEWS = [
   { id: 'stats', label: 'Stats' },
   { id: 'best', label: "Tournament's Best" },
   { id: 'awards', label: 'Awards' },
+  { id: 'records', label: 'Records' },
+  { id: 'history', label: 'History' },
 ]
 
 // Where a board's numbers come from. FIH boards count things the official
@@ -360,7 +364,7 @@ export default function TournamentPage() {
                 two-line title made the block taller than the emblem it was
                 supposed to sit level with. */}
             <h1 className="font-display text-xl font-bold leading-tight tracking-tight sm:text-2xl">Men&apos;s World Cup 2026</h1>
-            <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI and awards — live from completed matches</p>
+            <p className="mt-1 text-xs text-pitch-400">Standings, stat boards, Best XI, awards, records and every World Cup before this one</p>
           </div>
         </div>
       </div>
@@ -417,6 +421,10 @@ export default function TournamentPage() {
           {view === 'best' && <OracleElevens players={players} byCode={byCode} matches={matches} xi={xi} setXi={setXi} />}
 
           {view === 'awards' && <AwardsView />}
+
+          {view === 'records' && <RecordsView byCode={byCode} />}
+
+          {view === 'history' && <HistoryView byCode={byCode} />}
         </div>
       )}
     </div>

@@ -30,9 +30,31 @@ function ModelAccuracy() {
         <div className="mt-1 font-mono text-2xl font-bold text-brand">
           {correct}/{total} <span className="text-sm font-normal">· {pct}% of matches called</span>
           {rec.drawsCalled != null && <span className="text-sm font-normal text-pitch-300"> · {rec.drawsCalled}/{rec.draws} draws</span>}
-          {rec.brier != null && <span className="text-sm font-normal text-pitch-300"> · Brier {rec.brier}</span>}
         </div>
         <StageSplit stages={rec.stages} />
+        {/* The Brier score used to ride along as a bare "Brier 0.3956" at the
+            end of the accuracy line. It cannot any more: the repository now
+            publishes a second Brier — the binary one on the named pick, in
+            docs/EVALUATION.md, where the model and a language model are
+            compared — and two different measures sharing one word is the
+            fault this app has spent its time removing. Each carries its own
+            name wherever it appears. */}
+        {rec.brier != null && (
+          <div className="mt-3 rounded-lg border border-white/5 bg-pitch-900/60 p-3">
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">
+                Three-way Brier score
+              </span>
+              <span className="font-mono text-lg font-bold text-brand">{rec.brier}</span>
+            </div>
+            <p className="mt-1.5 text-xs leading-relaxed text-pitch-400">
+              Accuracy counts a pick at 51% and one at 97% the same. This does not: it is the squared
+              error of the full home / draw / away forecast against what happened, averaged over every
+              completed match, and <strong className="text-pitch-300">lower is better</strong>. A
+              forecaster who says 33% to everything scores 0.667; certainty that is always right scores 0.
+            </p>
+          </div>
+        )}
         <p className="mt-2 text-xs text-pitch-400">
           Every completed match, scored with the model using only the information available before its
           push-back. Recomputed after every result and reproducible from the open repository:

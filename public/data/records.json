@@ -1,0 +1,293 @@
+{
+  "source": "scripts/tournament_records.py",
+  "scope": "this tournament",
+  "note": "Records of the 2026 tournament, computed from the published match record. They are this edition's marks, not all-time World Cup records: the FIH's historical statistics are the authority on those and are not held here.",
+  "matches": 50,
+  "records": [
+    {
+      "key": "biggest_win",
+      "title": "Biggest winning margin",
+      "value": "6 goals",
+      "holders": [
+        {
+          "matchId": "D5",
+          "label": "pool",
+          "date": "2026-08-19",
+          "line": "ENG 8-2 WAL"
+        },
+        {
+          "matchId": "A6",
+          "label": "pool",
+          "date": "2026-08-20",
+          "line": "NZL 1-7 ARG"
+        }
+      ],
+      "detail": "The widest gap between the two scorelines in any match."
+    },
+    {
+      "key": "highest_scoring",
+      "title": "Highest-scoring match",
+      "value": "11 goals",
+      "holders": [
+        {
+          "matchId": "S2H2",
+          "label": "Stage 2 · Pool H",
+          "date": "2026-08-21",
+          "line": "IRL 7-4 MAS"
+        }
+      ],
+      "detail": "Both sides counted together."
+    },
+    {
+      "key": "most_by_a_team",
+      "title": "Most goals by one team in a match",
+      "value": "8",
+      "holders": [
+        {
+          "matchId": "D5",
+          "label": "pool",
+          "date": "2026-08-19",
+          "line": "ENG 8-2 WAL"
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "shootouts",
+      "title": "Matches decided by a shoot-out",
+      "value": "3",
+      "holders": [
+        {
+          "matchId": "POS15",
+          "label": "15th/16th Place",
+          "date": "2026-08-28",
+          "line": "WAL 2-2 MAS (2-1 SO)"
+        },
+        {
+          "matchId": "POS11",
+          "label": "11th/12th Place",
+          "date": "2026-08-28",
+          "line": "PAK 4-4 RSA (4-3 SO)"
+        },
+        {
+          "matchId": "POS7",
+          "label": "7th/8th Place",
+          "date": "2026-08-28",
+          "line": "IND 3-3 BEL (3-4 SO)"
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "earliest_goal",
+      "title": "Earliest goal",
+      "value": "minute 1",
+      "holders": [
+        {
+          "player": "Dylan Thomas",
+          "team": "NZL",
+          "teamName": "New Zealand",
+          "minute": 1
+        },
+        {
+          "player": "Joaquin Toscani",
+          "team": "ARG",
+          "teamName": "Argentina",
+          "minute": 1
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "latest_goal",
+      "title": "Latest goal",
+      "value": "minute 60",
+      "holders": [
+        {
+          "player": "Sam Hyland",
+          "team": "IRL",
+          "teamName": "Ireland",
+          "minute": 60
+        },
+        {
+          "player": "Louis Haertelmeyer",
+          "team": "FRA",
+          "teamName": "France",
+          "minute": 60
+        },
+        {
+          "player": "Tomas Domene",
+          "team": "ARG",
+          "teamName": "Argentina",
+          "minute": 60
+        },
+        {
+          "player": "Dayaan Cassiem",
+          "team": "RSA",
+          "teamName": "South Africa",
+          "minute": 60
+        },
+        {
+          "player": "Faizal Saari",
+          "team": "MAS",
+          "teamName": "Malaysia",
+          "minute": 60
+        },
+        {
+          "player": "Kazumasa Matsumoto",
+          "team": "JPN",
+          "teamName": "Japan",
+          "minute": 60
+        },
+        {
+          "player": "Sam Welsh",
+          "team": "WAL",
+          "teamName": "Wales",
+          "minute": 60
+        },
+        {
+          "player": "Hardik Singh",
+          "team": "IND",
+          "teamName": "India",
+          "minute": 60
+        },
+        {
+          "player": "Muhammad Hammadudin",
+          "team": "PAK",
+          "teamName": "Pakistan",
+          "minute": 60
+        },
+        {
+          "player": "Jeremy Duncan",
+          "team": "IRL",
+          "teamName": "Ireland",
+          "minute": 60
+        },
+        {
+          "player": "Harmanpreet Singh",
+          "team": "IND",
+          "teamName": "India",
+          "minute": 60
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "most_in_a_match",
+      "title": "Most goals by a player in one match",
+      "value": "4",
+      "holders": [
+        {
+          "matchId": "B5",
+          "label": "pool",
+          "date": "2026-08-19",
+          "line": "BEL 5-3 MAS",
+          "player": "Tom Boon",
+          "team": "BEL",
+          "teamName": "Belgium"
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "top_scorer",
+      "title": "Most goals",
+      "value": "10",
+      "holders": [
+        {
+          "player": "Tomas Domene",
+          "team": "ARG",
+          "teamName": "Argentina",
+          "goals": 10
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "top_pc",
+      "title": "Most penalty-corner goals",
+      "value": "8",
+      "holders": [
+        {
+          "player": "Harmanpreet Singh",
+          "team": "IND",
+          "teamName": "India"
+        }
+      ],
+      "detail": "The FIH publishes corner GOALS, never corners won, so this is goals from penalty corners and not a conversion rate."
+    },
+    {
+      "key": "top_fg",
+      "title": "Most field goals",
+      "value": "5",
+      "holders": [
+        {
+          "player": "José Basterra",
+          "team": "ESP",
+          "teamName": "Spain"
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "most_goals_team",
+      "title": "Most goals scored by a nation",
+      "value": "22",
+      "holders": [
+        {
+          "team": "ARG",
+          "teamName": "Argentina",
+          "detail": "in 7 matches"
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "best_defence",
+      "title": "Fewest goals conceded",
+      "value": "7",
+      "holders": [
+        {
+          "team": "GER",
+          "teamName": "Germany",
+          "detail": "in 7 matches"
+        }
+      ],
+      "detail": "Counted across every match played, so a nation that went further conceded over more hockey."
+    },
+    {
+      "key": "clean_sheets",
+      "title": "Most clean sheets",
+      "value": "2",
+      "holders": [
+        {
+          "team": "GER",
+          "teamName": "Germany"
+        },
+        {
+          "team": "AUS",
+          "teamName": "Australia"
+        }
+      ],
+      "detail": null
+    },
+    {
+      "key": "most_wins",
+      "title": "Most wins",
+      "value": "5",
+      "holders": [
+        {
+          "team": "ARG",
+          "teamName": "Argentina",
+          "detail": "from 7 matches"
+        },
+        {
+          "team": "GER",
+          "teamName": "Germany",
+          "detail": "from 7 matches"
+        }
+      ],
+      "detail": null
+    }
+  ]
+}

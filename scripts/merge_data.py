@@ -323,8 +323,20 @@ def merge_version(ours, theirs):
     # tree only after the last driver returns — so whoever ran `git merge`
     # restamps afterwards. The pipeline does it in update-data.yml; a local
     # merge is caught by `data_fingerprint.py --check`, which says what to run.
-    v = max((ours or {}).get('version', 0), (theirs or {}).get('version', 0)) + 1
-    base = theirs or ours or {}
+    #
+    # The counter says "the published set changed". It must therefore only
+    # move when the merge actually produced something, and the bump used to be
+    # unconditional: a rebase that reapplied the same file — which the push
+    # retry loop below does on every lost race — came out one version higher
+    # with every other field identical. That is a change notice for no change,
+    # and it costs every installed app a full refetch to discover as much.
+    ov, tv = (ours or {}).get('version', 0), (theirs or {}).get('version', 0)
+    base = dict(theirs or ours or {})
+    rest = lambda d: {k: v for k, v in (d or {}).items() if k != 'version'}  # noqa: E731
+    if rest(ours) == rest(theirs):
+        base['version'] = max(ov, tv)
+        return base, f'version held at {base["version"]} (nothing merged)'
+    v = max(ov, tv) + 1
     base['version'] = v
     return base, f'version -> {v}'
 

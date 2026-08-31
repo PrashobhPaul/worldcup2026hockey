@@ -33,7 +33,7 @@ const page = await ctx.newPage()
 /** The word the sync chip is showing right now. */
 const chip = () => page.evaluate(() => {
   const el = [...document.querySelectorAll('button span')]
-    .find(s => /^(LIVE|SYNCING|OFFLINE|RETRY|SYNC)$/.test(s.textContent.trim()))
+    .find(s => /^(LIVE|COMPLETE|SYNCING|OFFLINE|RETRY|SYNC)$/.test(s.textContent.trim()))
   return el ? el.textContent.trim() : '(none)'
 })
 const waitFor = async (pred, ms = 30000) => {
@@ -46,10 +46,21 @@ const waitFor = async (pred, ms = 30000) => {
   }
 }
 
+// The healthy word depends on the tournament, not on this file: LIVE while
+// there are matches left, COMPLETE once there are none. "LIVE 50/50" in the
+// header of a tournament whose gold final has been played says the tournament
+// is still on, which is why the chip stopped saying it — and why the expected
+// word is read from the fixtures rather than written down here, so this gate
+// is still right for the next tournament without being edited.
+const { readFileSync } = await import('node:fs')
+const FIX = JSON.parse(readFileSync(new URL('../public/data/fixtures.json', import.meta.url)))
+const HEALTHY = FIX.matches.every(m => m.status === 'completed' && m.score?.home != null)
+  ? 'COMPLETE' : 'LIVE'
+
 console.log('The OFFLINE light against a working network')
 
 await page.goto(ORIGIN, { waitUntil: 'domcontentloaded' })
-ok('the chip reaches LIVE on a healthy feed', await waitFor(w => w === 'LIVE'), await chip())
+ok(`the chip reaches ${HEALTHY} on a healthy feed`, await waitFor(w => w === HEALTHY), await chip())
 
 // ── The feed breaks; the network does not ────────────────────────────────
 // Every /data/ request fails while navigator.onLine stays true — the shape of
@@ -69,8 +80,8 @@ ok('a genuinely offline device does read OFFLINE',
 // ── And comes back ───────────────────────────────────────────────────────
 await page.unroute('**/data/**')
 await ctx.setOffline(false)
-ok('the chip returns to LIVE once the network is back',
-   await waitFor(w => w === 'LIVE'), await chip())
+ok(`the chip returns to ${HEALTHY} once the network is back`,
+   await waitFor(w => w === HEALTHY), await chip())
 
 await b.close()
 console.log(fail ? `\n${fail} FAILED` : '\nAll offline-indicator checks passed.')

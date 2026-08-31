@@ -183,6 +183,16 @@ async function _sync(force) {
   // Team component ratings — absent on a first deploy before the pipeline has
   // run, which must not break the sync.
   const teamRatings = await fetchJSON('team-ratings.json').catch(() => null)
+  // This tournament's records, and the roll of past World Cups. Both are
+  // optional in exactly the way the two above are: a deploy that predates
+  // them must still sync, and the views that read them draw nothing rather
+  // than breaking.
+  const records = await fetchJSON('records.json').catch(() => null)
+  const history = await fetchJSON('world-cup-history.json').catch(() => null)
+  // The official award winners, once the FIH has announced them. Optional in
+  // the same way: before the announcement there is no file and the Awards tab
+  // shows the race alone, which is what it showed all fortnight.
+  const awards = await fetchJSON('awards.json').catch(() => null)
 
   const teams = (teamsDoc.teams || []).map(t => ({
     ...t,
@@ -238,6 +248,9 @@ async function _sync(force) {
       })
       if (calibration) await db.meta.put({ id: 'calibration', ...calibration })
       if (teamRatings) await db.meta.put({ id: 'teamRatings', ...teamRatings })
+      if (records) await db.meta.put({ id: 'records', ...records })
+      if (history) await db.meta.put({ id: 'history', ...history })
+      if (awards) await db.meta.put({ id: 'awards', ...awards })
     })
 
   // Data is loaded either way, but the light reports the network, not the
