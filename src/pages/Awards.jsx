@@ -67,8 +67,12 @@ function OfficialAwards({ byCode, race, doc }) {
                 <span className="text-xl">{flag(a.team)}</span>
                 <div className="min-w-0">
                   <div className="truncate text-sm font-bold">{a.display}</div>
+                  {/* A team award names the nation and nothing else. Printing
+                      "Spain / Spain" underneath was the first draft. */}
                   <div className="font-mono text-[10px] text-pitch-400">
-                    {byCode.get(a.team)?.name ?? a.team}
+                    {a.kind === 'team'
+                      ? `${a.cards} cards — fewest of the sixteen`
+                      : (byCode.get(a.team)?.name ?? a.team)}
                     {a.goals != null && ` · ${a.goals} goals`}
                   </div>
                 </div>

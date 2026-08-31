@@ -4,7 +4,7 @@
   "announced": "2026-08-30",
   "provenance": {
     "authority": "FIH",
-    "note": "The individual awards announced after the gold medal match. fih.hockey is unreachable from the environment this was recorded in, so the names were taken from the published announcement rather than read from the FIH directly. Every one is then checked against the official FIH team lists this app does hold — nation, position and, for the top scorer, the goal count against our own event ledger — by scripts/test_awards.mjs, which fails the build on any name that does not resolve.",
+    "note": "The individual awards and the Fair Play Trophy announced after the gold medal match. fih.hockey is unreachable from the environment this was recorded in, so the names were taken from the published announcement and the FIH match centre rather than read from the FIH directly. Every one is then checked against the official FIH team lists this app does hold — nation, position, the top scorer's goal count against our own event ledger, and the fair-play winner's card count against that same ledger — by scripts/test_awards.mjs, which fails the build on any name that does not resolve or any figure that does not match.",
     "checkedAgainst": "public/data/players.json (FIH entry lists) and the fixtures event ledger"
   },
   "awards": [
@@ -40,13 +40,16 @@
       "winnerDisplay": "Justus Warweg",
       "team": "GER",
       "note": "Nineteen, and a world champion."
-    }
-  ],
-  "notAnnounced": [
+    },
     {
       "key": "fair_play",
       "label": "Fair Play Trophy",
-      "reason": "Not in the announcement this was recorded from. It is left unfilled rather than guessed."
+      "kind": "team",
+      "winner": "Spain",
+      "winnerDisplay": "Spain",
+      "team": "ESP",
+      "cards": 3,
+      "note": "Three cards in the whole tournament, all green — the fewest of the sixteen, and fewer than half the next-cleanest side."
     }
   ]
 }

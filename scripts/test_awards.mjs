@@ -59,15 +59,39 @@ for (const m of FIX) {
 }
 const best = Math.max(...ledger.values())
 
+// Cards per nation, counted from the ledger — the fair-play claim's evidence.
+const cards = new Map()
+for (const m of FIX) {
+  for (const e of m.events ?? []) {
+    if (e.type?.endsWith('_card')) cards.set(e.team, (cards.get(e.team) ?? 0) + 1)
+  }
+}
+
 for (const a of DOC.awards ?? []) {
   if (!a.winner) continue
+
+  check(`${a.key}: the nation is a real one`,
+        TEAMS.some(t => t.code === a.team), a.team)
+
+  // A team award names a nation, not a person, so it is checked as one: the
+  // trophy is for discipline, and this repository holds every card that was
+  // shown. If our own ledger does not make this side the cleanest, the award
+  // and the Discipline board would contradict each other on the same page.
+  if (a.kind === 'team') {
+    const own = cards.get(a.team) ?? 0
+    const fewest = Math.min(...TEAMS.map(t => cards.get(t.code) ?? 0))
+    const tied = TEAMS.filter(t => (cards.get(t.code) ?? 0) === fewest).length
+    check(`${a.key}: ${a.winner} shows ${a.cards} cards in our ledger (${own})`,
+          a.cards === own, `${a.cards} vs ${own}`)
+    check(`${a.key}: ${a.winner} is the cleanest side outright`,
+          own === fewest && tied === 1, `${own} vs fewest ${fewest}, ${tied} tied`)
+    continue
+  }
+
   const p = find(a.winner, a.team)
   check(`${a.key}: ${a.winner} is on the ${a.team} team list`, Boolean(p),
         p ? '' : 'not in players.json for that nation')
   if (!p) continue
-
-  check(`${a.key}: the nation is a real one`,
-        TEAMS.some(t => t.code === a.team), a.team)
 
   if (a.key === 'best_goalkeeper') {
     const pos = p.position_effective ?? p.position ?? ''
@@ -103,7 +127,7 @@ for (const a of DOC.awards ?? []) {
 const graded = gradeAwards(DOC, [])
 check('only announced awards are graded',
       graded.length === (DOC.awards ?? []).filter(a => a.winner).length)
-check('an unannounced award carries no grade',
+check('nothing is listed as both announced and not announced',
       (DOC.notAnnounced ?? []).every(n => !(DOC.awards ?? []).some(a => a.key === n.key && a.winner)))
 
 // The grade itself has to be able to say "missed". A grader that can only
