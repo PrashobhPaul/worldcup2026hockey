@@ -22,7 +22,7 @@
 //
 // Run: node scripts/test_awards.mjs
 import { readFileSync } from 'node:fs'
-import { gradeAwards, sameName } from '../src/engine/awardsOfficial.js'
+import { appNamed, compareAwards, sameName } from '../src/engine/awardsOfficial.js'
 
 const read = f => JSON.parse(readFileSync(new URL(`../public/data/${f}`, import.meta.url)))
 
@@ -123,23 +123,49 @@ for (const a of DOC.awards ?? []) {
   }
 }
 
-// Grading must never invent a verdict for an award nobody won.
-const graded = gradeAwards(DOC, [])
-check('only announced awards are graded',
-      graded.length === (DOC.awards ?? []).filter(a => a.winner).length)
+// What this app names for each award, and the rule behind it. The page prints
+// the basis under every name, so a name without one would be exactly the
+// unsourced claim this whole comparison exists to avoid.
+const first = FIX.reduce((min, m) => (!min || m.date < min ? m.date : min), null)
+const named = appNamed({ players: PLAYERS, matches: FIX,
+                         startDate: first ? new Date(`${first}T00:00:00Z`) : null })
+const rows = compareAwards(DOC, named)
+
+check('nothing is compared for an award nobody won',
+      rows.length === (DOC.awards ?? []).filter(a => a.winner).length)
 check('nothing is listed as both announced and not announced',
       (DOC.notAnnounced ?? []).every(n => !(DOC.awards ?? []).some(a => a.key === n.key && a.winner)))
 
-// The grade itself has to be able to say "missed". A grader that can only
-// return true is not a grader, and this repository has shipped one of those
-// before.
-const hof = [{ key: 'top_scorer', oraclePick: 'Somebody Else', oraclePickTeam: 'IND' }]
-const marked = gradeAwards(DOC, hof).find(a => a.key === 'top_scorer')
-check('a wrong pre-tournament pick is graded as a miss', marked?.called === false,
-      String(marked?.called))
-const hofRight = [{ key: 'top_scorer', oraclePick: DOC.awards.find(a => a.key === 'top_scorer')?.winner }]
-check('a right pre-tournament pick is graded as a hit',
-      gradeAwards(DOC, hofRight).find(a => a.key === 'top_scorer')?.called === true)
+for (const r of rows) {
+  check(`${r.key}: this app names someone for it`, Boolean(r.ours), 'no derived name')
+  if (!r.ours) continue
+  check(`${r.key}: the name carries the rule that produced it`,
+        typeof r.ours.basis === 'string' && r.ours.basis.length > 10, String(r.ours.basis))
+}
+
+// Two awards are read straight off figures the FIH publishes too, so on this
+// record they must agree. If they ever stop agreeing, our stats and the FIH's
+// have diverged and that is a data fault, not a difference of opinion.
+const scorer = rows.find(r => r.key === 'top_scorer')
+if (scorer) {
+  check('top_scorer: our stats name the same player the FIH did',
+        scorer.agrees === true, `${scorer.ours?.name} vs ${scorer.winner}`)
+}
+const fp = rows.find(r => r.key === 'fair_play')
+if (fp) {
+  check('fair_play: our card record names the same side the FIH did',
+        fp.agrees === true, `${fp.ours?.team} vs ${fp.team}`)
+}
+
+// The comparison has to be able to say "different". One that can only return
+// agreement is not a comparison, and this repository has shipped a check like
+// that before.
+const bent = compareAwards(DOC, { ...named,
+  top_scorer: { name: 'Somebody Else', team: 'IND', basis: 'a deliberately wrong name' } })
+check('a differing name is reported as a difference',
+      bent.find(a => a.key === 'top_scorer')?.agrees === false)
+check('a matching name is reported as agreement',
+      rows.find(a => a.key === 'top_scorer')?.agrees === true)
 
 console.log()
 if (failed) console.log(`${failed} award check(s) FAILED`)

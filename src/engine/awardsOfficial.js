@@ -1,50 +1,27 @@
-// Hockey.AI — the official awards, and how the Oracle did against them.
+// Hockey.AI — the official awards, and what this app's own stats named.
 //
-// The Awards tab was a prediction for a fortnight. The FIH has now announced
-// the winners, so it is a record, and the prediction becomes something to be
-// judged by rather than something to keep showing on its own.
+// The comparison here used to be against a list of names typed into
+// content/awards.js before the tournament. That was wrong twice over: those
+// names are not how this app names anyone, and reporting them as "the Oracle's
+// pick" told readers the app had guessed five times and missed five times when
+// it had done no such thing.
 //
-// This app publishes its accuracy everywhere else; the awards are no different
-// and no more flattering. There are two separate Oracle claims to grade, and
-// they are different claims made at different times:
+// The app names award winners from the record, by one ranking device — the
+// Hockey.AI Player Index — applied to the pool each award is drawn from:
 //
-//   * the pre-tournament pick, locked in content/awards.js before a ball was
-//     hit and never edited since (git is the audit trail);
-//   * the live Player of the Tournament race, recomputed after every match,
-//     which is the number the page has been showing all fortnight.
+//   Player of the Tournament   highest index of any player
+//   Top Scorer                 most goals (the FIH counts the same goals)
+//   Best Goalkeeper            highest index among goalkeepers
+//   Best Young Player          highest index among the rising-star pool
+//   Fair Play                  fewest card points per match played
 //
-// Both are graded, because reporting only the kinder one is the failure this
-// repository keeps designing against. As it happens both missed, and that is
-// printed as plainly as a hit would be.
+// Each basis is printed beside the name it produced, so a reader can check the
+// claim rather than take it. Where the app's name and the FIH's differ, that is
+// stated as a difference between two ways of measuring — not as a failed
+// prediction, because naming the best player from the record is not a forecast.
 
-/** Nothing is graded against an award the FIH has not announced. */
-export function officialAwards(doc) {
-  return (doc?.awards ?? []).filter(a => a.winner)
-}
-
-/**
- * One row per announced award: the winner, the pre-tournament pick, and
- * whether that pick was right.
- *
- * `hof` is the frozen pre-tournament list; rows are matched by key, so an
- * award with no locked pick simply reports the winner and says the Oracle
- * never named one, rather than being silently dropped.
- */
-export function gradeAwards(doc, hof) {
-  const picks = new Map((hof ?? []).map(a => [a.key, a]))
-  return officialAwards(doc).map(a => {
-    const pick = picks.get(a.key) ?? null
-    const called = pick ? sameName(pick.oraclePick, a.winner) : null
-    return {
-      ...a,
-      display: a.winnerDisplay ?? a.winner,
-      oraclePick: pick?.oraclePick ?? null,
-      oraclePickTeam: pick?.oraclePickTeam ?? null,
-      oracleReason: pick?.reason ?? null,
-      called,
-    }
-  })
-}
+import { isRising } from './bestXI.js'
+import { CARD_WEIGHT, teamLedger } from './awards.js'
 
 /** Names travel with and without accents; compare on the letters. */
 export function sameName(a, b) {
@@ -53,16 +30,79 @@ export function sameName(a, b) {
   return Boolean(a) && Boolean(b) && flat(a) === flat(b)
 }
 
+/** Nothing is compared against an award the FIH has not announced. */
+export function officialAwards(doc) {
+  return (doc?.awards ?? []).filter(a => a.winner)
+}
+
+const byIndex = (a, b) => (b.ai_rating ?? 0) - (a.ai_rating ?? 0) || a.name.localeCompare(b.name)
+const rated = list => (list ?? []).filter(p => p.ai_rating != null)
+
 /**
- * Where the live race put the actual winner.
+ * What this app's stats name for each award, with the basis that produced it.
  *
- * `race` is the scored list the Awards page already builds. Returning the rank
- * rather than a bare hit/miss is the honest form: a model that had the winner
- * third was closer than one that had him thirtieth, and both are misses.
+ * Every entry carries `basis` — the sentence the page prints under the name.
+ * A pick with no stated basis would be exactly the unsourced claim this
+ * function exists to remove.
  */
-export function racePlacement(race, winnerName) {
-  if (!race?.length || !winnerName) return null
-  const i = race.findIndex(p => sameName(p.name, winnerName))
-  if (i < 0) return null
-  return { rank: i + 1, player: race[i], leader: race[0], calledIt: i === 0 }
+export function appNamed({ players, matches, startDate }) {
+  const list = rated(players)
+  const out = {}
+
+  const top = [...list].sort(byIndex)[0]
+  if (top) {
+    out.best_player = { name: top.name, team: top.team, player: top,
+      basis: `highest Hockey.AI Player Index of any player — ${top.ai_rating}` }
+  }
+
+  const scorers = (players ?? []).filter(p => (p.goals ?? 0) > 0)
+    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0) || a.name.localeCompare(b.name))
+  if (scorers[0]) {
+    out.top_scorer = { name: scorers[0].name, team: scorers[0].team, player: scorers[0],
+      basis: `most goals — ${scorers[0].goals}` }
+  }
+
+  const keeper = list.filter(p => (p.position_effective ?? p.position) === 'Goalkeeper')
+    .sort(byIndex)[0]
+  if (keeper) {
+    out.best_goalkeeper = { name: keeper.name, team: keeper.team, player: keeper,
+      basis: `highest Player Index among goalkeepers — ${keeper.ai_rating}` }
+  }
+
+  const rising = list.filter(p => isRising(p, startDate)).sort(byIndex)[0]
+  if (rising) {
+    const why = isRising(rising, startDate)
+    out.rising_star = { name: rising.name, team: rising.team, player: rising,
+      basis: `highest Player Index among the rising-star pool (${why.reason}) — ${rising.ai_rating}` }
+  }
+
+  // Fair play is a team award, scored per match played: a side that went
+  // further is not punished for having been on the pitch longer.
+  const ledger = teamLedger(matches, players)
+  const teams = [...ledger.values()].filter(r => r.mp > 0)
+    .map(r => ({ ...r, perMatch: r.cardPoints / r.mp }))
+    .sort((a, b) => a.perMatch - b.perMatch || a.code.localeCompare(b.code))
+  if (teams[0]) {
+    out.fair_play = { name: teams[0].code, team: teams[0].code, teamRow: teams[0],
+      basis: `fewest card points per match — ${teams[0].cards} card${teams[0].cards === 1 ? '' : 's'} `
+        + `in ${teams[0].mp} (green ${CARD_WEIGHT.green}, yellow ${CARD_WEIGHT.yellow}, red ${CARD_WEIGHT.red})` }
+  }
+
+  return out
+}
+
+/**
+ * One row per announced award: the FIH's winner beside this app's own name for
+ * it, and whether the two agree.
+ *
+ * `agrees` is a comparison of two measurements, not a mark out of five.
+ */
+export function compareAwards(doc, named) {
+  return officialAwards(doc).map(a => {
+    const ours = named?.[a.key] ?? null
+    const agrees = ours
+      ? (a.kind === 'team' ? ours.team === a.team : sameName(ours.name, a.winner))
+      : null
+    return { ...a, display: a.winnerDisplay ?? a.winner, ours, agrees }
+  })
 }

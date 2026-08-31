@@ -5,8 +5,8 @@ import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
-import { AWARDS_STATE, AWARDS_DISCLAIMER, HOF_AWARDS, POTM_MODEL, potmScore } from '../content/awards'
-import { gradeAwards, racePlacement } from '../engine/awardsOfficial'
+import { AWARDS_STATE, AWARDS_DISCLAIMER, POTM_MODEL, potmScore } from '../content/awards'
+import { appNamed, compareAwards } from '../engine/awardsOfficial'
 import { isAtTournament, roleOf } from '../engine/bestXI'
 import { AwardIcon, DerivedBadge } from '../components/hockeyIcons'
 
@@ -27,17 +27,29 @@ export function usePotmRace(players, bundle) {
 }
 
 /**
- * The awards as the FIH announced them, with the Oracle graded beside each.
+ * The awards as the FIH announced them, with this app's own name beside each.
  *
- * This leads the tab now. For a fortnight the page showed a prediction because
- * a prediction was all there was; the winners exist, so they come first and the
- * prediction is demoted to the thing being marked. Every name here is checked
- * against the official team lists by scripts/test_awards.mjs before it can be
- * built, so a winner who is not in the FIH squad data fails the build rather
- * than reaching this component.
+ * The second column is NOT a prediction and is not scored as one. This app
+ * names an award winner from the record — one ranking device, the Hockey.AI
+ * Player Index, applied to the pool each award draws from — and the basis is
+ * printed under every name so a reader can check it. Where the two differ,
+ * they differ because they measure differently, which is worth showing and is
+ * not a miss.
+ *
+ * Every winner is checked against the official team lists by
+ * scripts/test_awards.mjs before this can be built.
  */
-function OfficialAwards({ byCode, race, doc }) {
-  const rows = gradeAwards(doc, HOF_AWARDS)
+function OfficialAwards({ byCode, doc, players, matches }) {
+  // The rising-star pool is age-relative, so it needs the day the tournament
+  // began. Read off the earliest fixture, exactly as OracleElevens does, so
+  // the two cannot disagree about who counts as rising.
+  const startDate = useMemo(() => {
+    const first = (matches ?? []).reduce((min, m) => (!min || m.date < min ? m.date : min), null)
+    return first ? new Date(`${first}T00:00:00Z`) : null
+  }, [matches])
+  const named = useMemo(
+    () => appNamed({ players, matches, startDate }), [players, matches, startDate])
+  const rows = compareAwards(doc, named)
   if (!rows.length) return null
   const flag = code => byCode.get(code)?.flag ?? '🏑'
 
@@ -49,15 +61,14 @@ function OfficialAwards({ byCode, race, doc }) {
         </p>
         <h2 className="mt-1 font-display text-xl font-bold">🏅 The awards of 2026</h2>
         <p className="mt-2 text-xs leading-relaxed text-pitch-300">
-          The winners, and how the Oracle did against each. Two separate claims are marked: the pick
-          locked before a ball was hit, and where the live race — the number this page showed all
-          fortnight — actually placed the winner.
+          The winners, with the name this app&apos;s own stats give each award beside it. Those names
+          are read off the finished record — the Hockey.AI Player Index, applied to the pool each
+          award draws from — and the basis is printed under every one.
         </p>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
         {rows.map(a => {
-          const place = a.key === 'best_player' ? racePlacement(race, a.winner) : null
           return (
             <div key={a.key} className="rounded-xl border border-white/5 bg-pitch-800 p-4">
               <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">
@@ -79,33 +90,28 @@ function OfficialAwards({ byCode, race, doc }) {
               </div>
               {a.note && <p className="mt-2 text-xs leading-relaxed text-pitch-300">{a.note}</p>}
 
-              {/* The grade. A miss is printed exactly as plainly as a hit. */}
-              {a.oraclePick && (
+              {/* What this app's own stats name, and the basis for it. Never
+                  scored as a prediction: naming the best player from a finished
+                  record is a measurement, and two measurements that disagree
+                  are two measurements, not a failed forecast. */}
+              {a.ours && (
                 <div className="mt-3 rounded-lg border border-white/5 bg-pitch-950/40 p-2.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className={`font-mono text-[10px] font-bold uppercase tracking-widest ${
-                      a.called ? 'text-live' : 'text-pitch-400'}`}>
-                      {a.called ? '✓ Oracle called it' : '✗ Oracle picked'}
-                    </span>
-                  </div>
-                  {!a.called && (
+                  <span className={`font-mono text-[10px] font-bold uppercase tracking-widest ${
+                    a.agrees ? 'text-live' : 'text-pitch-400'}`}>
+                    {a.agrees ? '✓ Hockey.AI names the same' : 'Hockey.AI names'}
+                  </span>
+                  {!a.agrees && (
                     <div className="mt-1 flex items-center gap-1.5">
-                      <span>{flag(a.oraclePickTeam)}</span>
-                      <span className="text-xs text-pitch-300">{a.oraclePick}</span>
+                      <span>{flag(a.ours.team)}</span>
+                      <span className="text-xs text-pitch-300">
+                        {a.ours.teamRow ? (byCode.get(a.ours.team)?.name ?? a.ours.team) : a.ours.name}
+                      </span>
                     </div>
                   )}
                   <p className="mt-1 font-mono text-[9px] leading-relaxed text-pitch-500">
-                    locked before the tournament, unedited since
+                    {a.ours.basis}
                   </p>
                 </div>
-              )}
-
-              {place && (
-                <p className="mt-2 font-mono text-[10px] leading-relaxed text-pitch-400">
-                  {place.calledIt
-                    ? `The live race led with ${a.display} too.`
-                    : `The live race placed ${a.display} ${ordinal(place.rank)}, behind ${place.leader.name}.`}
-                </p>
               )}
             </div>
           )
@@ -128,12 +134,6 @@ function OfficialAwards({ byCode, race, doc }) {
       )}
     </div>
   )
-}
-
-const ordinal = n => {
-  const s = ['th', 'st', 'nd', 'rd']
-  const v = n % 100
-  return n + (s[(v - 20) % 10] ?? s[v] ?? s[0])
 }
 
 function PotmRace({ byCode, race, bundle, finished }) {
@@ -247,12 +247,12 @@ export function AwardsView() {
 
   return (
     <div className="space-y-6">
-      {official && <OfficialAwards byCode={byCode} race={race} doc={awardsDoc} />}
+      {official && <OfficialAwards byCode={byCode} doc={awardsDoc} players={players} matches={matches} />}
 
       <div>
         <p className="mb-4 text-xs text-pitch-400">
           {official
-            ? 'Below is the Oracle’s own Player of the Tournament race, left exactly as it finished. It is kept because the app publishes what its model said, not only where the model was right.'
+            ? 'Below is the Player of the Tournament race, left exactly as it finished. It scores the race differently from the Player Index above — goals, team run and set-piece threat — so the two can name different players, and both are shown rather than one quietly chosen.'
             : finished
               ? 'The Player of the Tournament race as it finished, computed from the full match record.'
               : 'The live Player of the Tournament race, computed from the match record.'}
