@@ -194,6 +194,14 @@ jobs:
       - name: Every World Cup is accounted for
         run: npm run test:history
 
+      # An award winner is a person's name published as fact, and unlike every
+      # other figure here it cannot be recomputed from the match record. Each
+      # one is checked against the official FIH team lists: right nation, right
+      # position for the keeper, and a top-scorer count that matches our own
+      # event ledger and leads it outright.
+      - name: Every award winner is a real player
+        run: npm run test:awards
+
       - name: The backtest could not see the answer
         run: npm run test:backtest
 

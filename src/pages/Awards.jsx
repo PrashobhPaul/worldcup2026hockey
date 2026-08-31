@@ -5,7 +5,8 @@ import { db } from '../db'
 import { Skeleton } from '../components/shared'
 import { useOracleBundle } from '../engine/oracleBundle'
 import { formatProbability } from '../engine/probability.js'
-import { AWARDS_STATE, AWARDS_DISCLAIMER, POTM_MODEL, potmScore } from '../content/awards'
+import { AWARDS_STATE, AWARDS_DISCLAIMER, HOF_AWARDS, POTM_MODEL, potmScore } from '../content/awards'
+import { gradeAwards, racePlacement } from '../engine/awardsOfficial'
 import { isAtTournament, roleOf } from '../engine/bestXI'
 import { AwardIcon, DerivedBadge } from '../components/hockeyIcons'
 
@@ -23,6 +24,112 @@ export function usePotmRace(players, bundle) {
       .map(p => ({ ...p, prob: p.exp / z }))
       .sort((a, b) => b.prob - a.prob || a.name.localeCompare(b.name))
   }, [players, bundle])
+}
+
+/**
+ * The awards as the FIH announced them, with the Oracle graded beside each.
+ *
+ * This leads the tab now. For a fortnight the page showed a prediction because
+ * a prediction was all there was; the winners exist, so they come first and the
+ * prediction is demoted to the thing being marked. Every name here is checked
+ * against the official team lists by scripts/test_awards.mjs before it can be
+ * built, so a winner who is not in the FIH squad data fails the build rather
+ * than reaching this component.
+ */
+function OfficialAwards({ byCode, race, doc }) {
+  const rows = gradeAwards(doc, HOF_AWARDS)
+  if (!rows.length) return null
+  const flag = code => byCode.get(code)?.flag ?? '🏑'
+
+  return (
+    <div className="space-y-4">
+      <div className="rounded-2xl border border-amber-400/25 bg-gradient-to-br from-amber-400/10 to-pitch-900 p-5">
+        <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-amber-400">
+          Official · announced by the FIH
+        </p>
+        <h2 className="mt-1 font-display text-xl font-bold">🏅 The awards of 2026</h2>
+        <p className="mt-2 text-xs leading-relaxed text-pitch-300">
+          The winners, and how the Oracle did against each. Two separate claims are marked: the pick
+          locked before a ball was hit, and where the live race — the number this page showed all
+          fortnight — actually placed the winner.
+        </p>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        {rows.map(a => {
+          const place = a.key === 'best_player' ? racePlacement(race, a.winner) : null
+          return (
+            <div key={a.key} className="rounded-xl border border-white/5 bg-pitch-800 p-4">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-pitch-400">
+                {a.label}
+              </p>
+              <div className="mt-1.5 flex items-center gap-2">
+                <span className="text-xl">{flag(a.team)}</span>
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-bold">{a.display}</div>
+                  <div className="font-mono text-[10px] text-pitch-400">
+                    {byCode.get(a.team)?.name ?? a.team}
+                    {a.goals != null && ` · ${a.goals} goals`}
+                  </div>
+                </div>
+              </div>
+              {a.note && <p className="mt-2 text-xs leading-relaxed text-pitch-300">{a.note}</p>}
+
+              {/* The grade. A miss is printed exactly as plainly as a hit. */}
+              {a.oraclePick && (
+                <div className="mt-3 rounded-lg border border-white/5 bg-pitch-950/40 p-2.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className={`font-mono text-[10px] font-bold uppercase tracking-widest ${
+                      a.called ? 'text-live' : 'text-pitch-400'}`}>
+                      {a.called ? '✓ Oracle called it' : '✗ Oracle picked'}
+                    </span>
+                  </div>
+                  {!a.called && (
+                    <div className="mt-1 flex items-center gap-1.5">
+                      <span>{flag(a.oraclePickTeam)}</span>
+                      <span className="text-xs text-pitch-300">{a.oraclePick}</span>
+                    </div>
+                  )}
+                  <p className="mt-1 font-mono text-[9px] leading-relaxed text-pitch-500">
+                    locked before the tournament, unedited since
+                  </p>
+                </div>
+              )}
+
+              {place && (
+                <p className="mt-2 font-mono text-[10px] leading-relaxed text-pitch-400">
+                  {place.calledIt
+                    ? `The live race led with ${a.display} too.`
+                    : `The live race placed ${a.display} ${ordinal(place.rank)}, behind ${place.leader.name}.`}
+                </p>
+              )}
+            </div>
+          )
+        })}
+      </div>
+
+      {(doc?.notAnnounced ?? []).map(n => (
+        <p key={n.key} className="rounded-xl border border-white/5 bg-pitch-800 p-3 text-[11px] text-pitch-400">
+          <strong className="text-pitch-300">{n.label}:</strong> {n.reason}
+        </p>
+      ))}
+
+      {doc?.provenance?.note && (
+        <p className="rounded-xl border border-amber-400/20 bg-amber-400/5 p-3.5 text-[11px] leading-relaxed text-pitch-300">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-amber-400">
+            On sourcing ·{' '}
+          </span>
+          {doc.provenance.note}
+        </p>
+      )}
+    </div>
+  )
+}
+
+const ordinal = n => {
+  const s = ['th', 'st', 'nd', 'rd']
+  const v = n % 100
+  return n + (s[(v - 20) % 10] ?? s[v] ?? s[0])
 }
 
 function PotmRace({ byCode, race, bundle, finished }) {
@@ -124,22 +231,33 @@ export function AwardsView() {
   const players = useLiveQuery(
     () => db.players.toArray().then(rows => rows.filter(isAtTournament)), [], [])
   const matches = useLiveQuery(() => db.matches.toArray(), [], [])
+  const awardsDoc = useLiveQuery(() => db.meta.get('awards'), [])
   const byCode = new Map(teams.map(t => [t.code, t]))
   const bundle = useOracleBundle(teams, matches)
   const race = usePotmRace(players, bundle)
   // Every fixture played is what makes this a final standing rather than a race.
   const finished = matches.length > 0 && matches.every(m => m.status === 'completed')
+  // Announced awards outrank a model's guess at them, so they lead the tab and
+  // the race becomes the thing being marked rather than the headline.
+  const official = (awardsDoc?.awards ?? []).some(a => a.winner)
+
   return (
-    <div>
-      <p className="mb-4 text-xs text-pitch-400">
-        {finished
-          ? 'The Player of the Tournament race as it finished, computed from the full match record.'
-          : 'The live Player of the Tournament race, computed from the match record.'}
-      </p>
+    <div className="space-y-6">
+      {official && <OfficialAwards byCode={byCode} race={race} doc={awardsDoc} />}
 
-      <PotmRace byCode={byCode} race={race} bundle={bundle} finished={finished} />
+      <div>
+        <p className="mb-4 text-xs text-pitch-400">
+          {official
+            ? 'Below is the Oracle’s own Player of the Tournament race, left exactly as it finished. It is kept because the app publishes what its model said, not only where the model was right.'
+            : finished
+              ? 'The Player of the Tournament race as it finished, computed from the full match record.'
+              : 'The live Player of the Tournament race, computed from the match record.'}
+        </p>
 
-      <div className="mt-6">
+        <PotmRace byCode={byCode} race={race} bundle={bundle} finished={finished} />
+      </div>
+
+      <div>
         <Link to="/prediction-race" className="text-xs font-medium text-brand hover:underline">Oracle match record →</Link>
       </div>
     </div>
