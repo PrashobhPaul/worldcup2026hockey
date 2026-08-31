@@ -304,16 +304,13 @@ export function playExhibition({ home, away, base, matches, labels, disclosure }
 }
 
 const RISING_DISCLOSURE =
-  'An Oracle-simulated exhibition, not a fixture and not a prediction — no FIH '
-  + 'endorsement implied. Every player named is on an official FIH team list; the Best XI '
-  + 'picks first, so this Rising Stars side is narrower than the Rising Stars XI on the '
-  + 'Tournament\u2019s Best tab.'
+  'Every player named is on an official FIH team list. The Best XI picks first, so this '
+  + 'Rising Stars side is narrower than the Rising Stars XI on the Tournament\u2019s Best tab.'
 
 const nationDisclosure = name =>
-  'An Oracle-simulated exhibition, not a fixture and not a prediction — no FIH '
-  + `endorsement implied. No ${name} player appears in the World XI: a man turns out for his `
-  + 'country, never against it, so the eleven he would have taken a shirt in is picked without '
-  + 'him. Every player named is on an official FIH team list.'
+  `No ${name} player appears in the World XI: a man turns out for his country, never against `
+  + 'it, so the eleven he would have taken a shirt in is picked without him. Every player named '
+  + 'is on an official FIH team list.'
 
 /**
  * The simulation the AI Lab has always shown: Tournament's Best XI against the

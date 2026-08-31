@@ -49,7 +49,7 @@ export default function TeamRatingCard({ teamCode }) {
       </div>
       <ul className="space-y-1.5">{rows.map(c => <Row key={c.label} c={c} />)}</ul>
       <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-        Hockey.AI&apos;s rating, not an FIH one — a rate per match, ranked against the other fifteen sides.
+        A rate per match, ranked against the other fifteen sides.
       </p>
     </section>
   )

@@ -236,7 +236,7 @@ export default function TeamDetailPage() {
         </div>
         <BestElevenPitch squad={players} teamColor={team.color} />
         <p className="mt-3 font-mono text-[10px] leading-relaxed text-pitch-400">
-          Hockey.AI&apos;s own XI, not an FIH team sheet — selected by position, not rating alone.
+          Selected by position, not rating alone.
         </p>
         {players.length > 11 && (
           <div className="mt-4">

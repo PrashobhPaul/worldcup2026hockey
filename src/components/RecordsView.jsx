@@ -10,10 +10,9 @@ import { DerivedBadge } from './hockeyIcons'
 // match record and checked against it by scripts/test_records.py, so nothing
 // here is written by hand and nothing can outlive a corrected result.
 //
-// They are stated as THIS tournament's records and never as World Cup records.
-// The difference is not pedantry: claiming an all-time record needs the other
-// fifteen tournaments to compare against, and this app does not hold them.
-// The History view says the same thing about its own sourcing.
+// The `scope` field on the document is 'this tournament', not all-time: naming
+// an all-time World Cup record would need the other fifteen editions, which
+// this app does not hold. The heading says which edition and leaves it there.
 
 function Holder({ h, byCode }) {
   const code = h.team ?? null
@@ -91,10 +90,7 @@ export default function RecordsView({ byCode }) {
         </p>
         <h2 className="mt-1 font-display text-xl font-bold">🏑 The marks of 2026</h2>
         <p className="mt-2 text-xs leading-relaxed text-pitch-300">
-          Every one computed from the {doc.matches} completed matches, not written down. These are
-          this edition&apos;s records — <strong className="text-pitch-200">not</strong> all-time World Cup
-          records: naming one of those needs the other fifteen tournaments to compare against, and
-          the FIH&apos;s historical statistics are the authority on them.
+          Computed from the {doc.matches} completed matches of this edition.
         </p>
         <div className="mt-3"><DerivedBadge derived /></div>
       </div>
@@ -103,11 +99,6 @@ export default function RecordsView({ byCode }) {
         {records.map(rec => <RecordCard key={rec.key} rec={rec} byCode={byCode} />)}
       </div>
 
-      <p className="rounded-xl border border-white/5 bg-pitch-800 p-3.5 font-mono text-[10px] leading-relaxed text-pitch-400">
-        Reproduce these with python3 scripts/tournament_records.py. The committed file is checked
-        against a fresh computation on every build, so a corrected result moves the record rather
-        than leaving a stale one on this page.
-      </p>
     </div>
   )
 }
