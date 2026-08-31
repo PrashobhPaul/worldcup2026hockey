@@ -10,6 +10,12 @@
 // `winner` stays null until the pipeline fills it in. These are Hockey.AI's
 // standings for the same categories, and every surface that shows them says so.
 
+// The naming rules live in one module, read by this file and by
+// engine/awardsOfficial.js. The two import each other — awardRules borrows the
+// age, card and ledger helpers from here — which ES modules resolve because
+// every binding on both sides is a hoisted function used only at call time.
+// scripts/test_award_rules.mjs imports both to prove it.
+import * as rules from './awardRules.js'
 import { formatProbability } from './probability.js'
 
 /**
@@ -108,12 +114,18 @@ export function liveAwardLeaders({ players, matches, potmRanked, tournamentStart
              rising_star: none, fair_play: none, matchesGraded: done.length }
   }
 
-  // Player of the Tournament — the race leader, from the same ordering the
-  // race table renders, so the two can never disagree.
-  const top = (potmRanked ?? [])[0]
-  out.best_player = top
-    ? { status: 'leading', player: top, stat: `${formatProbability(top.prob)} of the race`,
-        chasers: (potmRanked ?? []).slice(1, 3) }
+  // Player of the Tournament — Player Index and goals, equally weighted, from
+  // engine/awardRules.js. It used to be the race leader instead, which meant
+  // this function and the awards page named different players for the same
+  // award; there is one rule now and both read it. `potmRanked` is still
+  // accepted so the race table can be rendered alongside, but it no longer
+  // decides who is named.
+  const potm = rules.playerOfTournament(players)
+  out.best_player = potm.length
+    ? { status: 'leading', player: potm[0].player,
+        stat: `index ${potm[0].parts.index} · ${potm[0].parts.goals} goal`
+          + `${potm[0].parts.goals === 1 ? '' : 's'}`,
+        chasers: potm.slice(1, 3).map(r => r.player) }
     : none
 
   // Top scorer — goals, ties kept visible rather than broken arbitrarily.
@@ -127,51 +139,39 @@ export function liveAwardLeaders({ players, matches, potmRanked, tournamentStart
         chasers: scorers.filter(p => p.goals < topGoals).slice(0, 2) }
     : none
 
-  // Best goalkeeper — the record carries no save counts, so this is the goals
-  // conceded per match by the keeper's team, which is the number it can
-  // actually support. Keepers share a team, so the tie-break is the Hockey.AI
-  // index; a team's second keeper never outranks its first on the same figure.
-  const keepers = players
-    .filter(p => p.position === 'Goalkeeper' && (ledger.get(p.team)?.mp ?? 0) > 0)
-    .map(p => {
-      const r = ledger.get(p.team)
-      return { ...p, gaPerMatch: r.ga / r.mp, cleanSheets: cleanSheetsFor(done, p.team) }
-    })
-    .sort((a, b) => a.gaPerMatch - b.gaPerMatch
-      || (b.ai_rating ?? 0) - (a.ai_rating ?? 0)
-      || a.name.localeCompare(b.name))
-  out.best_goalkeeper = keepers.length
-    ? { status: 'leading', player: keepers[0],
-        stat: `${keepers[0].gaPerMatch.toFixed(2)} conceded per match`
-          + (keepers[0].cleanSheets ? ` · ${keepers[0].cleanSheets} clean sheet${keepers[0].cleanSheets === 1 ? '' : 's'}` : ''),
-        chasers: keepers.slice(1, 3) }
+  // Best goalkeeper — Player Index, clean sheets and goals conceded per match,
+  // equally weighted, from engine/awardRules.js. It used to be conceded-per-
+  // match alone with the index only as a tie-break, which is a different award
+  // from the one the page named.
+  const gks = rules.bestGoalkeeper(players, matches)
+  out.best_goalkeeper = gks.length
+    ? { status: 'leading', player: gks[0].player,
+        stat: `${gks[0].parts.gaPerMatch.toFixed(2)} conceded per match`
+          + (gks[0].parts.cleanSheets
+              ? ` · ${gks[0].parts.cleanSheets} clean sheet${gks[0].parts.cleanSheets === 1 ? '' : 's'}`
+              : '')
+          + ` · index ${gks[0].parts.index}`,
+        chasers: gks.slice(1, 3).map(r => r.player) }
     : none
 
-  // Best junior — age is on the entry list, so eligibility is a fact; the
-  // ranking between eligible players is the Hockey.AI index.
+  // Best young player — highest Player Index among players UNDER 21, from
+  // engine/awardRules.js. The bound used to be 21 inclusive here.
   const start = tournamentStart ? new Date(`${tournamentStart}T00:00:00Z`) : null
-  const juniors = players
-    .map(p => ({ ...p, age: ageOn(p.dob, start) }))
-    .filter(p => p.age != null && p.age <= JUNIOR_MAX_AGE && p.ai_rating != null)
-    .sort((a, b) => (b.ai_rating ?? 0) - (a.ai_rating ?? 0) || a.name.localeCompare(b.name))
+  const juniors = rules.risingStar(players, start)
   out.rising_star = juniors.length
-    ? { status: 'leading', player: juniors[0],
-        stat: `${juniors[0].age} years old · index ${juniors[0].ai_rating}`
-          + (juniors[0].goals ? ` · ${juniors[0].goals} goal${juniors[0].goals === 1 ? '' : 's'}` : ''),
-        chasers: juniors.slice(1, 3) }
+    ? { status: 'leading', player: juniors[0].player,
+        stat: `${juniors[0].parts.age} years old · index ${juniors[0].parts.index}`
+          + (juniors[0].player.goals ? ` · ${juniors[0].player.goals} goal${juniors[0].player.goals === 1 ? '' : 's'}` : ''),
+        chasers: juniors.slice(1, 3).map(r => r.player) }
     : none
 
-  // Fair play — a team award, so it is scored per match played: a side that
-  // has played six matches is not punished for having been on the pitch
-  // longer than one that played four.
-  const teams = [...ledger.values()]
-    .filter(r => r.mp > 0)
-    .map(r => ({ ...r, perMatch: r.cardPoints / r.mp }))
-    .sort((a, b) => a.perMatch - b.perMatch || a.code.localeCompare(b.code))
-  out.fair_play = teams.length
-    ? { status: 'leading', team: teams[0],
-        stat: `${teams[0].cards} card${teams[0].cards === 1 ? '' : 's'} in ${teams[0].mp} match${teams[0].mp === 1 ? '' : 'es'}`,
-        chasers: teams.slice(1, 3) }
+  // Fair play — fewest card points per match played, from awardRules.js.
+  const clean = rules.fairPlay(matches, players)
+  out.fair_play = clean.length
+    ? { status: 'leading', team: clean[0].team,
+        stat: `${clean[0].parts.cards} card${clean[0].parts.cards === 1 ? '' : 's'} `
+          + `in ${clean[0].parts.mp} match${clean[0].parts.mp === 1 ? '' : 'es'}`,
+        chasers: clean.slice(1, 3).map(r => r.team) }
     : none
 
   out.matchesGraded = done.length

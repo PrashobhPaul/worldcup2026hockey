@@ -6,26 +6,23 @@
 // pick" told readers the app had guessed five times and missed five times when
 // it had done no such thing.
 //
-// The app names award winners from the record, by one ranking device — the
-// Hockey.AI Player Index — applied to the pool each award is drawn from:
+// The rules that name a winner are in engine/awardRules.js — one definition,
+// read by this file and by engine/awards.js, because they were two and had
+// drifted. This file only turns a winner into the sentence the page prints
+// beneath the name, and compares that name with the FIH's.
 //
-//   Player of the Tournament   highest index of any player
-//   Top Scorer                 most goals (the FIH counts the same goals)
-//   Best Goalkeeper            highest index among goalkeepers
-//   Best Young Player          highest index among the rising-star pool
-//   Fair Play                  fewest card points per match played
-//
-// Each basis is printed beside the name it produced, so a reader can check the
-// claim rather than take it. Where the app's name and the FIH's differ, that is
-// stated as a difference between two ways of measuring — not as a failed
-// prediction, because naming the best player from the record is not a forecast.
+// Where the two differ, that is stated as a difference between two ways of
+// measuring — not as a failed prediction, because naming the best player from
+// a finished record is a measurement rather than a forecast.
 
-import { isRising } from './bestXI.js'
-import { CARD_WEIGHT, teamLedger } from './awards.js'
+import {
+  playerOfTournament, topScorer, bestGoalkeeper, risingStar, fairPlay, RISING_STAR_UNDER,
+} from './awardRules.js'
+import { CARD_WEIGHT } from './awards.js'
 
 /** Names travel with and without accents; compare on the letters. */
 export function sameName(a, b) {
-  const flat = s => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+  const flat = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .toLowerCase().replace(/[^a-z]/g, '')
   return Boolean(a) && Boolean(b) && flat(a) === flat(b)
 }
@@ -35,57 +32,54 @@ export function officialAwards(doc) {
   return (doc?.awards ?? []).filter(a => a.winner)
 }
 
-const byIndex = (a, b) => (b.ai_rating ?? 0) - (a.ai_rating ?? 0) || a.name.localeCompare(b.name)
-const rated = list => (list ?? []).filter(p => p.ai_rating != null)
+const one = d => (Number.isInteger(d) ? d : Number(d).toFixed(2))
 
 /**
  * What this app's stats name for each award, with the basis that produced it.
  *
- * Every entry carries `basis` — the sentence the page prints under the name.
- * A pick with no stated basis would be exactly the unsourced claim this
- * function exists to remove.
+ * Every rule lives in engine/awardRules.js and nowhere else; this only turns
+ * each winner into the sentence the page prints under the name. A pick with no
+ * stated basis would be exactly the unsourced claim this function exists to
+ * remove.
  */
 export function appNamed({ players, matches, startDate }) {
-  const list = rated(players)
   const out = {}
 
-  const top = [...list].sort(byIndex)[0]
-  if (top) {
-    out.best_player = { name: top.name, team: top.team, player: top,
-      basis: `highest Hockey.AI Player Index of any player — ${top.ai_rating}` }
+  const potm = playerOfTournament(players)[0]
+  if (potm) {
+    out.best_player = { name: potm.player.name, team: potm.player.team, player: potm.player,
+      basis: `Player Index and goals, equally weighted — index ${potm.parts.index}, `
+        + `${potm.parts.goals} goal${potm.parts.goals === 1 ? '' : 's'}` }
   }
 
-  const scorers = (players ?? []).filter(p => (p.goals ?? 0) > 0)
-    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0) || a.name.localeCompare(b.name))
-  if (scorers[0]) {
-    out.top_scorer = { name: scorers[0].name, team: scorers[0].team, player: scorers[0],
-      basis: `most goals — ${scorers[0].goals}` }
+  const scorer = topScorer(players)[0]
+  if (scorer) {
+    out.top_scorer = { name: scorer.player.name, team: scorer.player.team, player: scorer.player,
+      basis: `most goals — ${scorer.parts.goals}` }
   }
 
-  const keeper = list.filter(p => (p.position_effective ?? p.position) === 'Goalkeeper')
-    .sort(byIndex)[0]
+  const keeper = bestGoalkeeper(players, matches)[0]
   if (keeper) {
-    out.best_goalkeeper = { name: keeper.name, team: keeper.team, player: keeper,
-      basis: `highest Player Index among goalkeepers — ${keeper.ai_rating}` }
+    out.best_goalkeeper = { name: keeper.player.name, team: keeper.player.team,
+      player: keeper.player,
+      basis: `Player Index, clean sheets and goals conceded per match, equally weighted — `
+        + `index ${keeper.parts.index}, ${keeper.parts.cleanSheets} clean sheet`
+        + `${keeper.parts.cleanSheets === 1 ? '' : 's'}, ${one(keeper.parts.gaPerMatch)} conceded per match` }
   }
 
-  const rising = list.filter(p => isRising(p, startDate)).sort(byIndex)[0]
-  if (rising) {
-    const why = isRising(rising, startDate)
-    out.rising_star = { name: rising.name, team: rising.team, player: rising,
-      basis: `highest Player Index among the rising-star pool (${why.reason}) — ${rising.ai_rating}` }
+  const young = risingStar(players, startDate)[0]
+  if (young) {
+    out.rising_star = { name: young.player.name, team: young.player.team, player: young.player,
+      basis: `highest Player Index among players under ${RISING_STAR_UNDER} — `
+        + `index ${young.parts.index}, age ${young.parts.age}` }
   }
 
-  // Fair play is a team award, scored per match played: a side that went
-  // further is not punished for having been on the pitch longer.
-  const ledger = teamLedger(matches, players)
-  const teams = [...ledger.values()].filter(r => r.mp > 0)
-    .map(r => ({ ...r, perMatch: r.cardPoints / r.mp }))
-    .sort((a, b) => a.perMatch - b.perMatch || a.code.localeCompare(b.code))
-  if (teams[0]) {
-    out.fair_play = { name: teams[0].code, team: teams[0].code, teamRow: teams[0],
-      basis: `fewest card points per match — ${teams[0].cards} card${teams[0].cards === 1 ? '' : 's'} `
-        + `in ${teams[0].mp} (green ${CARD_WEIGHT.green}, yellow ${CARD_WEIGHT.yellow}, red ${CARD_WEIGHT.red})` }
+  const clean = fairPlay(matches, players)[0]
+  if (clean) {
+    out.fair_play = { name: clean.team.code, team: clean.team.code, teamRow: clean.team,
+      basis: `fewest card points per match — ${clean.parts.cards} card`
+        + `${clean.parts.cards === 1 ? '' : 's'} in ${clean.parts.mp} `
+        + `(green ${CARD_WEIGHT.green}, yellow ${CARD_WEIGHT.yellow}, red ${CARD_WEIGHT.red})` }
   }
 
   return out
