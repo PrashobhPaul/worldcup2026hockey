@@ -1,0 +1,26 @@
+{
+  "title": "Men's FIH Hockey World Cup — every edition",
+  "provenance": {
+    "authority": "FIH",
+    "collected": "public records, cross-checked across independent sources",
+    "note": "The FIH is the authority on its own history, and this file was NOT read from it: fih.hockey, fih.ch and the FIH results archive are all unreachable from the environment this was assembled in. Every row below was instead taken from public records and only written where two independent sources agreed on it, which is a weaker chain than the rest of this repository runs on. The 2026 row is not here at all — it is computed from this app's own match record, which is the one edition it holds first-hand. Anyone able to reach the FIH archive should check these fifteen rows against it.",
+    "fields": "Nations are named as they competed. West Germany is recorded as West Germany, because that is who played."
+  },
+  "editions": [
+    {"year": 1971, "city": "Barcelona", "country": "Spain", "champion": "Pakistan", "championCode": "PAK", "runnerUp": "Spain", "runnerUpCode": "ESP", "third": "India", "thirdCode": "IND", "final": "1-0"},
+    {"year": 1973, "city": "Amstelveen", "country": "Netherlands", "champion": "Netherlands", "championCode": "NED", "runnerUp": "India", "runnerUpCode": "IND", "third": "West Germany", "thirdCode": "GER", "final": "2-2 (4-2 SO)"},
+    {"year": 1975, "city": "Kuala Lumpur", "country": "Malaysia", "champion": "India", "championCode": "IND", "runnerUp": "Pakistan", "runnerUpCode": "PAK", "third": "West Germany", "thirdCode": "GER", "final": "2-1"},
+    {"year": 1978, "city": "Buenos Aires", "country": "Argentina", "champion": "Pakistan", "championCode": "PAK", "runnerUp": "Netherlands", "runnerUpCode": "NED", "third": "Australia", "thirdCode": "AUS", "final": "3-2"},
+    {"year": 1982, "city": "Bombay", "country": "India", "champion": "Pakistan", "championCode": "PAK", "runnerUp": "West Germany", "runnerUpCode": "GER", "third": "Australia", "thirdCode": "AUS", "final": "3-1"},
+    {"year": 1986, "city": "London", "country": "England", "champion": "Australia", "championCode": "AUS", "runnerUp": "England", "runnerUpCode": "ENG", "third": "West Germany", "thirdCode": "GER", "final": null},
+    {"year": 1990, "city": "Lahore", "country": "Pakistan", "champion": "Netherlands", "championCode": "NED", "runnerUp": "Pakistan", "runnerUpCode": "PAK", "third": "Australia", "thirdCode": "AUS", "final": null},
+    {"year": 1994, "city": "Sydney", "country": "Australia", "champion": "Pakistan", "championCode": "PAK", "runnerUp": "Netherlands", "runnerUpCode": "NED", "third": "Australia", "thirdCode": "AUS", "final": null},
+    {"year": 1998, "city": "Utrecht", "country": "Netherlands", "champion": "Netherlands", "championCode": "NED", "runnerUp": "Spain", "runnerUpCode": "ESP", "third": "Germany", "thirdCode": "GER", "final": null},
+    {"year": 2002, "city": "Kuala Lumpur", "country": "Malaysia", "champion": "Germany", "championCode": "GER", "runnerUp": "Australia", "runnerUpCode": "AUS", "third": "Netherlands", "thirdCode": "NED", "final": null},
+    {"year": 2006, "city": "Mönchengladbach", "country": "Germany", "champion": "Germany", "championCode": "GER", "runnerUp": "Australia", "runnerUpCode": "AUS", "third": "Spain", "thirdCode": "ESP", "final": "4-3"},
+    {"year": 2010, "city": "New Delhi", "country": "India", "champion": "Australia", "championCode": "AUS", "runnerUp": "Germany", "runnerUpCode": "GER", "third": "Netherlands", "thirdCode": "NED", "final": null},
+    {"year": 2014, "city": "The Hague", "country": "Netherlands", "champion": "Australia", "championCode": "AUS", "runnerUp": "Netherlands", "runnerUpCode": "NED", "third": "Argentina", "thirdCode": "ARG", "final": null},
+    {"year": 2018, "city": "Bhubaneswar", "country": "India", "champion": "Belgium", "championCode": "BEL", "runnerUp": "Netherlands", "runnerUpCode": "NED", "third": "Australia", "thirdCode": "AUS", "final": null},
+    {"year": 2023, "city": "Bhubaneswar & Rourkela", "country": "India", "champion": "Germany", "championCode": "GER", "runnerUp": "Belgium", "runnerUpCode": "BEL", "third": "Netherlands", "thirdCode": "NED", "final": "3-3 (5-4 SO)"}
+  ]
+}

@@ -16,6 +16,7 @@ import { projectBracket, orderedResults } from './simulate.js'
 import { buildSnapshotSeries, toPercent, describeSnapshot } from './probability.js'
 import { computeStandings } from './standings.js'
 import { assignTiers } from './tiers.js'
+import { computeElimination } from './elimination.js'
 
 let _cache = { key: null, value: null }
 
@@ -48,52 +49,9 @@ export function computeOracleBundle(teams, matches, predictions) {
   const standings = computeStandings(teams, matches)
   const bracket = projectBracket(teams, matches, standings)
 
-  // Title-elimination point on the finished-count axis.
-  //
-  // The title race is the semi-final path and nothing else, so the honest
-  // definition is the bracket's: once the semi-finals name their four teams,
-  // everyone else is out of contention — including the sides that finished
-  // 3rd and 4th in Pools E and F, who play only for 5th to 8th. Reading it
-  // off the bracket rather than re-deriving it here is what keeps the Teams
-  // grid, the Oracle race and the team pages from disagreeing: they are all
-  // looking at the same four names.
-  //
-  // Before the semi-finals are named, a Stage-1 pool that has finished still
-  // settles part of it — 3rd and 4th drop into Pools G/H, which play only for
-  // places 9–16 — so that rule stays as the earlier signal.
-  const eliminationAt = new Map()
-  const markOut = (code, stage) => {
-    if (eliminationAt.has(code)) return
-    const lastIdx = results.reduce((acc, m, i) =>
-      (m.home === code || m.away === code) ? i + 1 : acc, 0)
-    eliminationAt.set(code, { finishedCount: lastIdx, stage })
-  }
-
-  const poolMatches = matches.filter(m => m.phase === 'pool')
-  for (const pool of standings) {
-    const done = poolMatches.filter(m => m.pool === pool.id).every(m =>
-      m.status === 'completed' && m.score?.home != null)
-    if (!done) continue
-    pool.standings.slice(2).forEach(row => markOut(row.team, 'Stage 2 (9–16)'))
-  }
-
-  // Once both semi-finals name their sides, the four of them are the title
-  // race and every other nation is out of it.
-  const semis = bracket.ties.filter(t => t.group === 'semi')
-  const contenders = new Set(semis.flatMap(t => [t.home, t.away]).filter(Boolean))
-  if (semis.length > 0 && semis.every(t => t.locked) && contenders.size === semis.length * 2) {
-    for (const t of teams) {
-      if (!contenders.has(t.code)) markOut(t.code, 'Stage 2 (5–8)')
-    }
-  }
-
-  // A semi-final that has been played settles two more.
-  for (const tie of bracket.ties) {
-    if (tie.played && tie.loser && tie.group === 'semi') {
-      const idx = results.findIndex(m => m.id === tie.id)
-      if (idx >= 0) eliminationAt.set(tie.loser, { finishedCount: idx + 1, stage: 'SF' })
-    }
-  }
+  // Title-elimination point on the finished-count axis, derived in
+  // engine/elimination.js so a node gate can reach it.
+  const eliminationAt = computeElimination(teams, matches, results, standings, bracket)
 
   // Who has earned a label. Derived from the same snapshot every surface
   // reads, so the badge on the Teams grid can never disagree with the one on
