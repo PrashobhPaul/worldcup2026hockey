@@ -199,6 +199,13 @@ jobs:
       # one is checked against the official FIH team lists: right nation, right
       # position for the keeper, and a top-scorer count that matches our own
       # event ledger and leads it outright.
+      # Two modules named award winners from different rules and nothing
+      # compared them, so they drifted and both shipped. The rules are one
+      # module now; this imports both callers and requires them to agree, and
+      # pins what each weighted score actually claims.
+      - name: One rule per award, both callers agreeing
+        run: npm run test:awardrules
+
       - name: Every award winner is a real player
         run: npm run test:awards
 

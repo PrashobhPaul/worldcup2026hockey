@@ -35,6 +35,7 @@
     "test:records": "python3 scripts/test_records.py",
     "test:history": "node scripts/test_history.mjs",
     "test:awards": "node scripts/test_awards.mjs",
+    "test:awardrules": "node scripts/test_award_rules.mjs",
     "records": "python3 scripts/tournament_records.py --write",
     "test:impact": "node scripts/test_impact.mjs",
     "test:sim": "node scripts/test_sim.mjs",
