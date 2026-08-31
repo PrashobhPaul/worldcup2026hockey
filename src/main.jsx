@@ -27,14 +27,30 @@ startAutoSync()
 // the running app swaps to the fresh build instead of lingering on the old one.
 // And poll for a new worker so a long-open app doesn't sit on a stale version.
 if ('serviceWorker' in navigator) {
+  // Reload on an UPDATE, never on the first install.
+  //
+  // clientsClaim makes a newly installed worker take control of the page that
+  // installed it, which fires controllerchange on a first visit exactly as it
+  // does on a real update. Reloading there threw away a page that already had
+  // the newest build: the app loaded, synced, and then did the whole thing a
+  // second time — which is the flicker of the match count climbing and the
+  // chip dropping back into SYNCING moments after it had settled.
+  //
+  // A first visit has no controller to change FROM. Remembering whether one
+  // was there at startup is the whole difference between an update and an
+  // install.
+  const hadController = Boolean(navigator.serviceWorker.controller)
   let reloading = false
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloading) return
+    if (!hadController || reloading) return
     reloading = true
     window.location.reload()
   })
   navigator.serviceWorker.ready.then(reg => {
-    setInterval(() => reg.update().catch(() => {}), 60 * 1000)
+    // Half-hourly, not every minute. This is a network request per tick for a
+    // new build, and with the tournament closed there is nothing behind it
+    // often enough to justify sixty of them an hour on a phone.
+    setInterval(() => reg.update().catch(() => {}), 30 * 60 * 1000)
   }).catch(() => {})
 }
 

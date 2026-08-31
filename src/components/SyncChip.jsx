@@ -40,13 +40,19 @@ export default function SyncChip() {
   // LIVE describes sync health, but nobody reads it that way next to a match
   // count: "LIVE 50/50" in the header of a tournament whose gold final has
   // been played says the tournament is still on. A healthy sync of a finished
-  // tournament is COMPLETE. The trouble states keep their own words — being
-  // offline still matters after the last match.
-  const s = finished && (status.state === 'fresh' || status.state === 'synced')
-    ? { ...base, word: 'COMPLETE' }
-    : base
+  // tournament is COMPLETE.
+  //
+  // And once the record is closed and every match of it is on the device, the
+  // chip says COMPLETE whatever the network is doing. It used to report the
+  // last fetch instead, so a phone holding the finished tournament in full
+  // showed RETRY — a warning about nothing, next to a complete record, with
+  // no action a reader could usefully take. Only an actual sync in flight
+  // still speaks, because that one is transient and visible.
   const busy = status.state === 'syncing' || status.state === 'starting'
-  const trouble = status.state === 'error' || status.state === 'offline'
+  const s = finished && !busy
+    ? { dot: 'bg-live', text: 'text-live', word: 'COMPLETE' }
+    : base
+  const trouble = !finished && (status.state === 'error' || status.state === 'offline')
   const played = finished
     ? `All ${total} matches played.`
     : `${done} of ${total} matches completed.`

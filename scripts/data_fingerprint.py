@@ -42,6 +42,24 @@ def fingerprint():
     return h.hexdigest()[:16]
 
 
+def is_final():
+    """True once every fixture has been played.
+
+    A finished tournament is the one state in which the published set will
+    never change again, and that changes what a client should do with it: stop
+    asking. The flag is derived from the fixtures rather than set by hand, so it
+    cannot claim a tournament is over while a match is still to come.
+    """
+    try:
+        with open(os.path.join(DATA, 'fixtures.json')) as fh:
+            matches = json.load(fh).get('matches') or []
+    except (OSError, ValueError):
+        return False
+    return bool(matches) and all(
+        m.get('status') == 'completed' and (m.get('score') or {}).get('home') is not None
+        for m in matches)
+
+
 def stamp(doc=None):
     """Write the current fingerprint into data-version.json."""
     path = os.path.join(DATA, VERSION_FILE)
@@ -49,6 +67,9 @@ def stamp(doc=None):
         with open(path) as fh:
             doc = json.load(fh)
     doc['fingerprint'] = fingerprint()
+    # Whether the record is closed. Clients read this to decide whether there
+    # is any point polling for a change.
+    doc['final'] = is_final()
     with open(path, 'w') as fh:
         json.dump(doc, fh, indent=2)
         fh.write('\n')

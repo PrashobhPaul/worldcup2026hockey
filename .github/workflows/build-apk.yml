@@ -54,10 +54,24 @@ jobs:
       # (every asset is already local). VITE_DATA_BASE is the one thing the app
       # needs from outside: the central data files, read straight from this
       # repository, so the app does not care whether the website is up.
+      # No VITE_DATA_BASE. The app reads the copy that ships inside it.
+      #
+      # It used to read raw.githubusercontent.com on every launch and every
+      # poll. That is rate-limited and slow from a phone, so a handful of
+      # launches exhausted it and the version check began failing — which is
+      # what put RETRY on the chip of an app whose data was complete. It also
+      # meant the app painted its own snapshot first and the fetched copy
+      # second, so a reader watched the match count climb from whatever the
+      # APK was built with to fifty.
+      #
+      # The tournament is over and the published set cannot change again, so
+      # the copy inside the APK is not a stale fallback any more — it is the
+      # record, identical to the website's, both built from the same commit.
+      # For a future tournament, restore VITE_DATA_BASE here and the app goes
+      # back to reading a central copy.
       - name: Build the interface for the app
         env:
           VITE_NATIVE: '1'
-          VITE_DATA_BASE: https://raw.githubusercontent.com/${{ github.repository }}/main/public/data
         run: |
           npm run build
           test -f dist/index.html
@@ -67,27 +81,34 @@ jobs:
             echo "::error::The app build carries the website's base path — it would load nothing once installed."
             exit 1
           fi
-          # And the app must not be left reading its own bundled snapshot.
-          grep -q 'raw.githubusercontent.com' dist/assets/*.js \
-            || { echo "::error::the app build has no central data URL compiled in"; exit 1; }
+          # The app carries the record, so the record has to actually be in
+          # there — and it has to be the whole thing. An APK is installed and
+          # kept; one shipped with a half-finished tournament is a permanently
+          # wrong app on somebody's phone, and that is precisely the fault this
+          # replaces (the old build read a rate-limited URL and painted its own
+          # stale snapshot first, so the match count climbed on every launch).
+          for f in data-version.json fixtures.json players.json teams.json awards.json; do
+            test -s "dist/data/$f" \
+              || { echo "::error::dist/data/$f is missing — the app would open on nothing."; exit 1; }
+          done
 
-          # Compiled in is not the same as answering. An APK is installed and
-          # kept, so one built against a data URL that does not serve is a blank
-          # app nobody can fix from their phone — the same ahead-of-reality
-          # mistake that took the website down. Read curl's own failure and the
-          # HTTP status separately: -w always prints a code, so `|| echo 000`
-          # on an unreachable host appends a second one and the comparison
-          # silently stops matching, waving through the outage it exists to catch.
-          if ! CODE=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "$VITE_DATA_BASE/data-version.json"); then
-            echo "::error::$VITE_DATA_BASE/data-version.json could not be reached at all. The app would open on its shipped snapshot and never update."
-            exit 1
-          fi
-          case "$CODE" in
-            2*) echo "::notice::central data answered HTTP $CODE — safe to build." ;;
-            *)
-              echo "::error::$VITE_DATA_BASE/data-version.json answered HTTP $CODE, so the app could never refresh. Fix the data path before building an APK."
-              exit 1 ;;
-          esac
+          # Complete, and known to be complete: every fixture played, and the
+          # stamp saying so, which is what tells the app to stop polling.
+          node -e '
+            const fs = require("fs");
+            const fx = JSON.parse(fs.readFileSync("dist/data/fixtures.json")).matches;
+            const ver = JSON.parse(fs.readFileSync("dist/data/data-version.json"));
+            const done = fx.filter(m => m.status === "completed" && m.score && m.score.home != null);
+            if (done.length !== fx.length) {
+              console.error(`::error::the app would ship ${done.length} of ${fx.length} matches played.`);
+              process.exit(1);
+            }
+            if (!ver.final) {
+              console.error("::error::data-version.json does not say the record is final, so the app would keep polling a set that cannot change.");
+              process.exit(1);
+            }
+            console.log(`::notice::app ships the complete record — ${fx.length} matches, final.`);
+          '
 
       - name: Prepare keystore
         env:
