@@ -111,9 +111,6 @@ export default function OracleElevens({ players, byCode, matches, xi, setXi }) {
           ? 'Every shirt filled on the component that defines it.'
           : 'Not the eleven highest ratings — the eleven shirts.'}
       </p>
-      <p className="font-mono text-[10px] leading-relaxed text-pitch-400">
-        Recomputed after every completed match. No editorial overrides.
-      </p>
     </div>
   )
 }

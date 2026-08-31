@@ -6,11 +6,10 @@ import { editions, honours } from '../engine/worldCupHistory.js'
 
 // Every Men's World Cup, and where this one sits in that line.
 //
-// Two things on this page come from different places and the page says which:
-// the fifteen past editions are a static record assembled from public sources,
-// and 2026 is derived live from this app's own fifty match records. The second
-// is the only edition this app can speak for first-hand, so it is the only one
-// not stored — see engine/worldCupHistory.js.
+// Two things on this page come from different places: the fifteen past editions
+// are a static record assembled from public sources (their sourcing is recorded
+// in world-cup-history.json), and 2026 is derived live from this app's own fifty
+// match records — see engine/worldCupHistory.js.
 //
 // The honours table is counted from the rows above it, never kept alongside
 // them. A stored tally is one edition away from disagreeing with the table a
@@ -84,9 +83,8 @@ export default function HistoryView({ byCode }) {
         </p>
         <h2 className="mt-1 font-display text-xl font-bold">🏆 Every World Cup</h2>
         <p className="mt-2 text-xs leading-relaxed text-pitch-300">
-          Newest first. The 2026 row is marked <span className="text-brand">•</span> and is not
-          stored anywhere — it is read from this app&apos;s own match record, the one edition it
-          holds first-hand.
+          Newest first. The 2026 row is marked <span className="text-brand">•</span> and is read
+          live from this app&apos;s own match record.
         </p>
       </div>
 
@@ -110,7 +108,7 @@ export default function HistoryView({ byCode }) {
       <div className="rounded-xl border border-white/5 bg-pitch-800 p-4">
         <h3 className="mb-1 font-display text-base font-semibold">Honours</h3>
         <p className="mb-3 text-[11px] text-pitch-400">
-          Counted from the table above, including 2026 — never kept separately.
+          Counted from the table above, including 2026.
         </p>
         <ol className="space-y-1.5">
           {table.map((r, i) => (
@@ -128,17 +126,6 @@ export default function HistoryView({ byCode }) {
         <p className="mt-2 font-mono text-[10px] text-pitch-500">gold · silver · bronze</p>
       </div>
 
-      {/* Where this came from, in the app and not only in the repository. The
-          rest of this app cites the FIH because it read the FIH; these fifteen
-          rows did not, and a reader is entitled to know which is which. */}
-      {doc.provenance?.note && (
-        <p className="rounded-xl border border-amber-400/20 bg-amber-400/5 p-3.5 text-[11px] leading-relaxed text-pitch-300">
-          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-amber-400">
-            On sourcing ·{' '}
-          </span>
-          {doc.provenance.note}
-        </p>
-      )}
     </div>
   )
 }

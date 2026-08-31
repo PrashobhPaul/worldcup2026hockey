@@ -48,17 +48,15 @@ function ModelAccuracy() {
               <span className="font-mono text-lg font-bold text-brand">{rec.brier}</span>
             </div>
             <p className="mt-1.5 text-xs leading-relaxed text-pitch-400">
-              Accuracy counts a pick at 51% and one at 97% the same. This does not: it is the squared
-              error of the full home / draw / away forecast against what happened, averaged over every
-              completed match, and <strong className="text-pitch-300">lower is better</strong>. A
-              forecaster who says 33% to everything scores 0.667; certainty that is always right scores 0.
+              Squared error of the full home / draw / away forecast against what happened, averaged
+              over every completed match. <strong className="text-pitch-300">Lower is better</strong>:
+              33% to everything scores 0.667, certainty that is always right scores 0.
             </p>
           </div>
         )}
         <p className="mt-2 text-xs text-pitch-400">
           Every completed match, scored with the model using only the information available before its
-          push-back. Recomputed after every result and reproducible from the open repository:
-          <span className="font-mono"> python3 scripts/backtest_model.py</span>.
+          push-back.
         </p>
       </div>
     </Section>
@@ -72,8 +70,8 @@ export default function TrustPage() {
         <p className="font-mono text-[11px] font-bold uppercase tracking-widest text-brand">Trust Center</p>
         <h1 className="mt-1 font-display text-2xl font-bold tracking-tight">Trust &amp; Privacy</h1>
         <p className="mt-2 text-sm leading-relaxed text-pitch-300">
-          This page is maintained by the app owner and describes the controls actually in place today.
-          It is a plain-English summary, not an independent certification.
+          Maintained by the app owner. It describes the controls actually in place today and is not
+          an independent audit or certification.
         </p>
       </div>
 
@@ -136,13 +134,6 @@ export default function TrustPage() {
         <p>
           Found a security or data problem? Open an issue on the published GitHub repository. Please keep
           exploitation details off public channels until acknowledged.
-        </p>
-      </Section>
-
-      <Section title="What this page is not">
-        <p>
-          Not an audit, certification, or legal guarantee. No claims are made regarding GDPR, HIPAA, PCI,
-          SOC&nbsp;2 or ISO&nbsp;27001 compliance.
         </p>
       </Section>
 

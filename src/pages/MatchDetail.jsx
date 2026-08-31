@@ -92,8 +92,8 @@ function MatchStatsPanel({ match, live }) {
         <span>🟩 {s.away.green_cards} · 🟨 {s.away.yellow_cards} · 🟥 {s.away.red_cards}</span>
       </div>
       <p className="mt-2.5 text-[10px] leading-relaxed text-pitch-400">
-        Every figure here comes from the FIH match record. Possession, shots and circle
-        entries are not part of it — FIH does not publish them, so neither do we.
+        From the FIH match record. Possession, shots and circle entries are not published for
+        this competition.
       </p>
     </div>
   )
