@@ -81,6 +81,19 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: `${base}index.html`,
+        // The data is NOT precached, deliberately.
+        //
+        // Precaching it looked right — the record is closed, so the files can
+        // never go stale — but it made a first visit fetch all 1.7 MB twice:
+        // once for the worker's install, and again for the app's own requests,
+        // which ask for a fresh copy and so do not read the precache. Measured
+        // on a first visit, that took the tournament from 13s to 22s.
+        //
+        // It is also unnecessary. Everything the app draws is written into
+        // IndexedDB on the first sync and read from there afterwards, so a
+        // return visit is already local, and now that a closed record stops
+        // polling there is no repeat fetch left to save. The runtime rule
+        // below still fills a cache for whatever does ask.
         // A new deploy must take over immediately, not sit behind the old
         // worker until every tab closes — that stickiness is what left
         // installed apps showing stale results. clientsClaim + skipWaiting

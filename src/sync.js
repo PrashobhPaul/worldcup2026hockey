@@ -97,6 +97,42 @@ async function storeIsEmpty() {
   }
 }
 
+/**
+ * The documents that are not the tournament itself: calibration, records, the
+ * World Cup history, the awards. Each is optional — a deploy that predates one
+ * simply does not serve it — so a miss is not a failure, and a document the
+ * device already holds is not refetched.
+ */
+const SIDE_DOCS = [
+  ['records', 'records.json'],
+  ['history', 'world-cup-history.json'],
+  ['awards', 'awards.json'],
+  ['teamRatings', 'team-ratings.json'],
+]
+
+async function backfillSideDocs() {
+  for (const [id, file] of SIDE_DOCS) {
+    const have = await db.meta.get(id).catch(() => null)
+    if (have) continue
+    const doc = await fetchJSON(file).catch(() => null)
+    if (doc) await db.meta.put({ id, ...doc }).catch(() => {})
+  }
+}
+
+/**
+ * Is the published record closed?
+ *
+ * data-version.json carries `final` once every fixture has been played, and
+ * the flag is derived from the fixtures rather than set by hand. A closed
+ * record cannot change, so there is nothing for a client to poll for — and a
+ * poll that cannot discover anything can still fail, which is how a finished
+ * tournament ended up showing RETRY on a working phone.
+ */
+export async function recordIsFinal() {
+  const meta = await db.meta.get('data').catch(() => null)
+  return Boolean(meta?.final)
+}
+
 export function syncData({ force = false } = {}) {
   if (_syncPromise) return _syncPromise
   _syncPromise = _sync(force)
@@ -163,6 +199,16 @@ async function _sync(force) {
         await db.meta.put({ id: 'calibration', ...cal }).catch(() => {})
       }
     }
+    // And so must a document the device has simply never seen.
+    //
+    // Every side document was fetched only on a full resync, and a resync
+    // happens only when the version or fingerprint moves. So a build that ADDS
+    // a file — the official awards, the records, the World Cup history — could
+    // not reach a device already holding the current stamp: it had nothing to
+    // resync to, and the page fell back to "no awards announced" on a phone
+    // whose data was otherwise perfectly current. Backfilling what is missing
+    // costs nothing when nothing is missing.
+    await backfillSideDocs()
     setStatus({ state: 'fresh', version: localMeta?.version ?? null, empty: false, error: null })
     return { status: 'fresh', version: localMeta?.version ?? null }
   }
@@ -179,20 +225,27 @@ async function _sync(force) {
     fetchJSON('h2h.json').catch(() => ({ pairs: {} })),
   ])
   // Model calibration (as-of-then replay) — optional, shown on the Trust page.
-  const calibration = await fetchJSON('model-calibration.json').catch(() => null)
-  // Team component ratings — absent on a first deploy before the pipeline has
-  // run, which must not break the sync.
-  const teamRatings = await fetchJSON('team-ratings.json').catch(() => null)
-  // This tournament's records, and the roll of past World Cups. Both are
-  // optional in exactly the way the two above are: a deploy that predates
-  // them must still sync, and the views that read them draw nothing rather
-  // than breaking.
-  const records = await fetchJSON('records.json').catch(() => null)
-  const history = await fetchJSON('world-cup-history.json').catch(() => null)
-  // The official award winners, once the FIH has announced them. Optional in
-  // the same way: before the announcement there is no file and the Awards tab
-  // shows the race alone, which is what it showed all fortnight.
-  const awards = await fetchJSON('awards.json').catch(() => null)
+  // The side documents, all at once.
+  //
+  // These used to be five awaits in a row, each with its own 12-second abort,
+  // and the awards were last. So the last one in the queue was the first to be
+  // starved: with a service worker installing its precache over the same
+  // connection, awards.json regularly did not arrive, `awards` stayed null,
+  // and the Awards tab fell back to "no awards announced" on a device whose
+  // data was otherwise complete. Blocking the service worker made the page
+  // correct, which is what identified the queue rather than the file.
+  //
+  // In parallel none of them is behind the others, and the whole group shares
+  // one timeout instead of stacking five. Each is still optional: a deploy
+  // that predates one simply does not serve it, and the views that read it
+  // draw nothing rather than breaking.
+  const [calibration, teamRatings, records, history, awards] = await Promise.all([
+    fetchJSON('model-calibration.json').catch(() => null),
+    fetchJSON('team-ratings.json').catch(() => null),
+    fetchJSON('records.json').catch(() => null),
+    fetchJSON('world-cup-history.json').catch(() => null),
+    fetchJSON('awards.json').catch(() => null),
+  ])
 
   const teams = (teamsDoc.teams || []).map(t => ({
     ...t,
@@ -243,6 +296,8 @@ async function _sync(force) {
         id: 'data',
         version: remote.version,
         fingerprint: remote.fingerprint ?? null,
+        // A closed record: carried through so the next launch knows not to poll.
+        final: Boolean(remote.final),
         updatedAt: remote.updated_at,
         syncedAt: Date.now(),
       })
@@ -267,29 +322,55 @@ async function _sync(force) {
 }
 
 // Poll for new data versions while the app is open (matches Soccer.AI's 60s cadence —
-// the version check is one tiny JSON fetch, so live results land within a minute)
+// the version check is one tiny JSON fetch, so live results land within a minute).
+//
+// Unless the record is closed. Once every fixture has been played the published
+// set cannot change, and polling it is not merely wasted: a request that could
+// never discover anything can still fail, and enough of them in a row lit RETRY
+// on a phone whose data was complete and correct. So a finished tournament
+// syncs once, to pick up anything the device has not seen, and then stops.
 export function startAutoSync(intervalMs = 60 * 1000) {
-  syncData()
+  let stopped = false
+  const timers = []
+  const stop = () => {
+    stopped = true
+    for (const t of timers) clearInterval(t)
+    timers.length = 0
+  }
+
+  // The first pass still runs — it is what fetches the record on a new device,
+  // and what backfills a document an older build never had. Only the repeating
+  // part is dropped.
+  syncData().then(async () => {
+    if (await recordIsFinal()) stop()
+  }).catch(() => {})
   // A failed first sync leaves the app with nothing to draw, so retry sooner
   // than the steady-state minute — and stop retrying fast once it lands.
   let quick = setInterval(() => {
+    if (stopped) { clearInterval(quick); return }
     if (_status.state === 'error' || _status.state === 'offline' || _status.empty) syncData({ force: true })
     else { clearInterval(quick); quick = null }
   }, 8000)
-  const id = setInterval(() => syncData(), intervalMs)
+  timers.push(quick)
+  const id = setInterval(() => { if (!stopped) syncData() }, intervalMs)
+  timers.push(id)
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') syncData()
+    if (!stopped && document.visibilityState === 'visible') syncData()
   })
   // The instant the network returns, resync — don't sit amber for up to a
   // minute waiting for the next poll.
   window.addEventListener('online', () => {
+    if (stopped) return
     _versionFails = 0
     syncData({ force: true })
   })
   // And the instant it goes, say so, instead of waiting for polls to fail
   // first. The device knows before any fetch does.
   window.addEventListener('offline', async () => {
+    // A closed record is already on the device in full; losing the network
+    // takes nothing away, so it is not worth an amber light.
+    if (stopped) return
     setStatus({ state: 'offline', empty: await storeIsEmpty(), error: null })
   })
-  return () => clearInterval(id)
+  return stop
 }

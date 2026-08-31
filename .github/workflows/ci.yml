@@ -203,6 +203,14 @@ jobs:
       # compared them, so they drifted and both shipped. The rules are one
       # module now; this imports both callers and requires them to agree, and
       # pins what each weighted score actually claims.
+      # The tournament is over, and three faults on a reader's phone came from
+      # an app that did not know it: RETRY over a complete record, the match
+      # count climbing because the app reloaded itself on a first install, and
+      # the awards never arriving because a new document could only reach a
+      # device through a resync it had no reason to run.
+      - name: A closed record behaves like one
+        run: npm run test:frozen
+
       - name: One rule per award, both callers agreeing
         run: npm run test:awardrules
 
